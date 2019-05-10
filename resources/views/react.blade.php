@@ -20,6 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="react-app"></div>
+    <div id="react-app">
+        <!-- ACA ES DONDE REACT DEBERÁ CREAR LA PÁGINA-->
+    </div>
 </body>
 </html>
