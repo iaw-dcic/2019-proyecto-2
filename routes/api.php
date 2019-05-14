@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/{id}/avatars', 'avatarController@index');
+Route::get('/{id}/avatars/{id}','avatarController@show');
+Route::post('/{id}/avatars', 'avatarController@store');
