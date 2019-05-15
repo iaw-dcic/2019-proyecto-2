@@ -7,9 +7,11 @@ export default class Example extends Component {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <div className="card">
-                            <div className="card-header">Test Component</div>
-                            <div className="card-body">I'm an test component!</div>
+                        <div className="jumbotron">
+                            <h1 className="display-4">Hola, mundo!</h1>
+                            <p className="lead">Este es mi primer test de
+                            <span className="font-weight-bold"> REACT</span>
+                            </p>
                         </div>
                     </div>
                 </div>
