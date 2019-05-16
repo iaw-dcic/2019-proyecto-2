@@ -5,13 +5,13 @@ import Example from './Example'
 
 class App extends Component {
     render () {
-    return (
-        <BrowserRouter>
-        <div>
-            <Example />
-        </div>
-        </BrowserRouter>
-    )
+        return (
+            <BrowserRouter>
+                <div>
+                    <Example />
+                </div>
+            </BrowserRouter>
+        )
     }
 }
 
