@@ -4,15 +4,15 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Example from './Example'
 
 class App extends Component {
-    render () {
+  render() {
     return (
-        <BrowserRouter>
+      <BrowserRouter>
         <div>
-            <Example />
+          <Example />
         </div>
-        </BrowserRouter>
+      </BrowserRouter>
     )
-    }
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('react-app'))
