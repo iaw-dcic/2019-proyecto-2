@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import './public/css/styleSidenav.css';
+//import './public/css/styleSidenav.css';
 
-class sideBar extends Component{
+export default class SideBar extends Component{
     render(){
         return (
             <div id="wrapper">
-            <div class="overlay"></div>
+            <div className="overlay"></div>
     
       
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
+        <nav className="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul className="nav sidebar-nav">
             
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Submanu title <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
+                <li className="dropdown">
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">Submanu title <span className="caret"></span></a>
+                  <ul className="dropdown-menu" role="menu">
+                    <li className="dropdown-header">Dropdown heading</li>
                     <li><a href="#">Submanu 1</a></li>
                     <li><a href="#">Submanu 2</a></li>
                     <li><a href="#">Submanu 3</a></li>

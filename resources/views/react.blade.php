@@ -19,10 +19,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
 </head>
-<body>
+@section('content')
     <div id="react-app">
         <!-- ACA ES DONDE REACT DEBERÁ CREAR LA PÁGINA-->
     </div>
-</body>
+<script src="{{asset('js/scriptSideNav.js')}}"></script>
+@endsection('content')
 </html>

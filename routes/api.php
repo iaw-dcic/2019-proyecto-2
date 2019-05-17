@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/{id}/avatars', 'userAvatarController@index');
-Route::get('/{id}/avatars/{id}','userAvatarController@show');
+Route::get('/{id}/avatars/{avatarId}','userAvatarController@show');
 Route::post('/{id}/avatars', 'userAvatarController@store');

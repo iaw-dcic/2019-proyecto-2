@@ -28,6 +28,8 @@
             <li>La contraseña al crear un usuario debe ser como mínimo de 8 caracteres </li>
             <li>Para los estilos y la presentación se usó el framework de estilos Bootstrap: https://getbootstrap.com/ </li>
             <li>para ciertas estilos de texto se usó Google Fonts: https://fonts.google.com/ </li>
+            <li> para manejo de recursos graficos desde react se uso WebPack https://opencollective.com/webpack</li>
+       
         
         </ul>
 </div>

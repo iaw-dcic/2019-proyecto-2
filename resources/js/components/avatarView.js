@@ -23,7 +23,7 @@ class avatarView extends Component{
     }
 
     handleCreateNewAvatar(event){
-        event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por al API
+        event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
         const avatar = {
             name = this.state.name
         }
@@ -33,9 +33,10 @@ class avatarView extends Component{
     }
 
     render(){
-    
-        <div class="text-center">
-            
-        </div>
+        return (
+            <div class="text-center">
+                
+            </div>
+        );
     }
 }
