@@ -11,6 +11,7 @@
         "build": "webpack --mode production"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
         "@babel/preset-react": "^7.0.0",
         "axios": "^0.18.0",
         "bootstrap": "^4.1.0",

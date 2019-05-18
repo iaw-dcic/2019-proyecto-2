@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-//import './public/css/styleSidenav.css';
+import '../scriptSideNav.js'
+import "./ComponentCSS/styleSidenav.css"
 
 export default class SideBar extends Component{
     render(){
@@ -26,6 +27,6 @@ export default class SideBar extends Component{
             </ul>
         </nav>
         </div>
-        );
+        )
     }
 }

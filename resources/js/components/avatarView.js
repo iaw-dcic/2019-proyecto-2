@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 
-class avatarView extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            name = '',
-            body = '',
-            userID = 1,
-            errors = []
-        }
+export default class AvatarView extends Component{
+    state = {
+        name : '',
+        body : '',
+        userID : 1,
+        errors : []
+    };
+    
+   /* constructor(props) {
+
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
     }
@@ -30,13 +30,16 @@ class avatarView extends Component{
         axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
         //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
 
-    }
+    }*/
 
     render(){
         return (
-            <div class="text-center">
-                
-            </div>
-        );
+            <>
+                <SideBar/>
+                <div>
+                    <Example/>
+                </div>
+            </>
+        )
     }
 }

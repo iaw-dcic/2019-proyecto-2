@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
-import SideBar from './sidebar'
+import Home from './Home'
+import AvatarView from './AvatarView'
 
 //LA PARTE DE REACT SE HACE AQUÍ!
 class App extends Component {
     render () {
     return (
         <BrowserRouter>
-         <SideBar />
-        <div>
-            <Example />
-        </div>
-       
+        <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/avatarView" component={AvatarView} />
+            </Switch>
         </BrowserRouter>
     )
     }
