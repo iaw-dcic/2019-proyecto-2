@@ -6,7 +6,6 @@ use Grambas\FootballData\FootballData;
 class DatabaseSeeder extends Seeder{
     /**
      * Seed the application's database.
-     *
      * @return void
      */
     public function run(){
@@ -22,95 +21,83 @@ class DatabaseSeeder extends Seeder{
             $user->save();
         });
 
-        $competitions = Football::getLeagues(['plan' => 'TIER_ONE']);
+        $competition = Football::getLeague(2000);
 
-        foreach($competitions as $competition){
-            $teams = Football::getLeagueTeams($competition->id);
-            $matches = Football::getLeagueMatches($competition->id);
+        $teams = Football::getLeagueTeams($competition['id']);
+        $matches = Football::getLeagueMatches($competition['id']);
+        $standings = Football::getLeagueStandings($competition['id']);
 
+        try{
+            Cloudder::upload($competition['emblemUrl']);
+            $result = Cloudder::getResult();
+            $image_id = $result['public_id'];
+            $image_url = $result['secure_url'];
+        }catch(\Exception $ex){
+            $image_id = -1;
+            $image_url = "NO_IMAGE_COMPETITION";
+        }
+
+        factory(\App\Campeonato::class, 1)->create([
+            'id' => $competition['id'],
+            'nombre' => $competition['name'],
+            'image_url' => $image_url,
+            'image_id' => $image_id
+        ]);
+
+        foreach($matches as $partido){
+            factory(\App\Partido::class, 1)->create([
+                'id' => $partido->id,
+                'campeonato_id' => $competition['id'],
+                'grupo' => $partido->group,
+                'local_id' => $partido->homeTeam->id,
+                'visitante_id' => $partido->awayTeam->id,   //Equipo
+                'goles_local' => ($partido->score->fullTime->homeTeam + $partido->score->halfTime->homeTeam + $partido->score->extraTime->homeTeam),
+                'goles_visitante' => ($partido->score->fullTime->awayTeam + $partido->score->halfTime->awayTeam + $partido->score->extraTime->awayTeam),
+                'resultado' => ($partido->score->fullTime->homeTeam + $partido->score->halfTime->homeTeam + $partido->score->extraTime->homeTeam).'-'.($partido->score->fullTime->awayTeam + $partido->score->halfTime->awayTeam + $partido->score->extraTime->awayTeam),
+                'ganador' => $partido->score->winner,
+                'finalizado' => $partido->status,
+                'fecha' => $partido->season->startDate
+            ]);
+        }
+        foreach($teams as $equipo){
             try{
-                Cloudder::upload($competition->emblemUrl);
+                Cloudder::upload($equipo->crestUrl);
                 $result = Cloudder::getResult();
                 $image_id = $result['public_id'];
                 $image_url = $result['secure_url'];
             }catch(\Exception $ex){
                 $image_id = -1;
-                $image_url = "NO_IMAGE";
+                $image_url = 'NO_IMAGE_EQUIPO';
             }
 
-            factory(\App\Torneo::class, 1)->create([
-                'id' => $competition->id,
-                'name' => $competition->name,
-                'code' => $competition->code,
+            factory(\App\Equipo::class, 1)->create([
+                'id' => $equipo->id,
+                'nombre' => $equipo->name,
                 'image_url' => $image_url,
-                'image_id' => $image_id
+                'image_id' => $image_id,
+                'club_colors' => $equipo->clubColors
             ]);
+        }
 
-            foreach($matches as $partido){
-                try{
-                    factory(\App\Partido::class, 1)->create([
-                        'id' => $partido->id,
-                        'torneo_id' => $competition->id,
-                        'local' => $partido->homeTeam->id,
-                        'visitante' => $partido->awayTeam->id,   //Equipo
-                        'resultado' => '1-0',
-                        'ganador' => $partido->score->winner,
-                        'finalizado' => $partido->status,
-                        'fecha' => $partido->season->startDate
-                    ]);
-                }catch(\Exception $ex){
+        foreach($standings as $grupos){
+            if($grupos->type != "TOTAL")
                     continue;
-                }
-            }
-
-            foreach($teams as $equipo){
-                try{
-                    Cloudder::upload($equipo->crestUrl);
-                    $result = Cloudder::getResult();
-                    $image_id = $result['public_id'];
-                    $image_url = $result['secure_url'];
-                }catch(\Exception $ex){
-                    $image_id = -1;
-                    $image_url = 'NO_IMAGE';
-                }
-
-                try{
-                    factory(\App\Equipo::class, 1)->create([
-                        'id' => $equipo->id,
-                        'name' => $equipo->name,
-                        'image_url' => $image_url,
-                        'image_id' => $image_id
-                    ]);
-                }catch(\Exception $ex){
-                    continue;
-                }
+            foreach($grupos->table as $table){
+                factory(\App\PosicionesCampeonato::class, 1)->create([
+                    'posicion' => $table->position,
+                    'grupo' => $grupos->group,
+                    'campeonato_id' => $competition['id'],
+                    'equipo_id' => $table->team->id,
+                    'partidos_jugados' => $table->playedGames,
+                    'partidos_ganados' => $table->won,
+                    'partidos_empatados' => $table->draw,
+                    'partidos_perdidos' => $table->lost,
+                    'puntos' => $table->points,
+                    'goles_a_favor' => $table->goalsFor,
+                    'goles_en_contra' => $table->goalsAgainst,
+                    'diferencia_de_goles' => $table->goalDifference,
+                ]);
             }
         }
     }
 }
-
-/*
-Para los eventos tengo que llenar estos datos de forma coherente:
-
-$table->string('ganador_partido');  //Depende de los jugadores
-$table->string('equipo_1'); //Depende del pais y la liga
-$table->string('equipo_2'); //Depende del país y la liga
-$table->string('resultado_partido');    //Depende si termino puede ser empate, equipo_1 o equipo_2
-$table->boolean('finalizado')->default(false);  //Depende del tiempo
-$table->time('tiempo'); //Solamente si comenzó
-*/
-
-/*
-Generador de resultados random
-
-$resultados = [];
-    for($i=0; $i<=6; $i++)
-        for($j=0; $j<=6; $j++)
-            array_push($resultados, $i.'-'.$j);
-*/
-
-/*
-$table->string('prediccion'); //Empate---Ganador1---Ganador2
-$table->string('resultado'); // 1-0     //Depende de si el juego termino ('resultado' => $faker->randomElement($resultados),)
-$table->boolean('activo')->default(true);   //Depende de si el juego termino
-*/

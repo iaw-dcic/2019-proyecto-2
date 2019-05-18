@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pronostico extends Model{
+class Prode extends Model{
+    public $timestamps = false;
 
     public function getUser(){
         return $this->belongsTo('App\User');

@@ -2,10 +2,10 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Torneo;
+use App\Campeonato;
 use Faker\Generator as Faker;
 
-$factory->define(Torneo::class, function (Faker $faker) {
+$factory->define(Campeonato::class, function (Faker $faker) {
     return [
         //
     ];

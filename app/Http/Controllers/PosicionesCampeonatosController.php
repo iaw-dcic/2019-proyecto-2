@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Partido;
+use App\PosicionesCampeonato;
 use Illuminate\Http\Request;
 
-class PartidosController extends Controller{
+class PosicionesCampeonatosController extends Controller{
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +18,10 @@ class PartidosController extends Controller{
     /**
      * Display the specified resource.
      *
-     * @param  \App\Partido  $partido
+     * @param  \App\PosicionesCampeonato  $posicionesCampeonato
      * @return \Illuminate\Http\Response
      */
-    public function show(Partido $partido){
+    public function show(PosicionesCampeonato $posicionesCampeonato){
         //
     }
 }

@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Response;
+use function GuzzleHttp\json_decode;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,24 @@ use Illuminate\Http\Response;
 
 
 Auth::routes();
-//Route::view('/{path?}', 'react');//->middleware('auth');
+Route::view('/{path?}', 'react');//->middleware('auth');
 
-Route::get('/', function(){
-    $competition =Football::getLeague('2001');
-    $teams = Football::getLeagueTeams('2001');
-    $matches = Football::getLeagueMatches('2001');
+Route::resource('/user', 'UsersController')->only([
+    'index', 'store', 'show', 'update', 'destroy'
+]);
+Route::resource('/leagues/{league}/prode', 'ProdeController')->only([
+    'index', 'store', 'show','update', 'destroy'
+]);
 
-});
+//Datos sobre los campeonatos, equipos, partidos y puntajes
+Route::get('/leagues', 'CampeonatosController@index');
+Route::get('/leagues/{league}', 'CampeonatosController@show');
+
+Route::get('/leagues/{league}/teams', 'EquiposController@index');
+Route::get('/leagues/{league}/teams/{team}', 'EquiposController@show');
+
+Route::get('/leagues/{league}/matches', 'PartidosController@index');
+Route::get('/leagues/{league}/matches/{match}', 'PartidosController@show');
+
+Route::get('/leagues/{league}/standings', 'PosicionesCampeonatosController@index');
+Route::get('/leagues/{league}/standings/{match}', 'PosicionesCampeonatosController@show');
