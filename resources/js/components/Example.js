@@ -9,7 +9,7 @@ export default class Example extends Component {
                     <div className="col-md-8">
                         <div className="card">
                             <div className="card-header">Test Component</div>
-                            <div className="card-body">I'm an test component!</div>
+                            <div className="card-body">I'm a test component!</div>
                         </div>
                     </div>
                 </div>

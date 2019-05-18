@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', 'PagesController@home');
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+
+Route::view('/react/{path?}', 'react')->middleware('auth')->name('react');
+
+Route::get('/about', 'PagesController@about')->name('about');
