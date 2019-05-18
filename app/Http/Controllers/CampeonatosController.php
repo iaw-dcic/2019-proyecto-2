@@ -3,26 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Campeonato;
-use Illuminate\Http\Request;
 
 class CampeonatosController extends Controller{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(){
-        //
+
+    public function getCampeonatos(){
+        $campeonatos = Campeonato::all();
+        if($campeonatos == null)
+            return Response()->json(['error' => '404 not found'], 404);
+        return Response()->json($campeonatos, 200);
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Campeonato  $campeonato
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Campeonato $campeonato){
-        //
+    public function getCampeonato($campeonato_id){
+        $campeonato = Campeonato::find($campeonato_id);
+        if($campeonato == null)
+            return Response()->json(['error' => '404 not found'], 404);
+        return Response()->json($campeonato, 200);
     }
 }

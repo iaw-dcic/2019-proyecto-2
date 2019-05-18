@@ -16,10 +16,10 @@ class Partido extends Model{
     }
 
     public function getLocal(){
-        return $this->hasOne('App\Equipo', 'local_id', 'id');
+        return $this->hasOne('App\Equipo', 'id', 'local_id');
     }
 
     public function getVisitante(){
-        return $this->hasOne('App\Equipo', 'visitante_id', 'id');
+        return $this->hasOne('App\Equipo', 'id', 'visitante_id');
     }
 }
