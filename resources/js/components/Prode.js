@@ -52,6 +52,12 @@ export default class Prode extends Component {
       var resultados = JSON.parse(resultadosEnLS);
       this.setState({ resultados });
     }
+    const ganadoresCuartosEnLS = localStorage.getItem('ganadoresCuartos');
+    console.log(ganadoresCuartosEnLS);
+    if(ganadoresCuartosEnLS){
+      var ganadoresCuartos = JSON.parse(ganadoresCuartosEnLS);
+      this.setState({ ganadoresCuartos });
+    }
   }
 
   handleChanges = (event) => {
@@ -63,34 +69,36 @@ export default class Prode extends Component {
     resultados[id] = resultado;
 
     this.setState({ resultados });
+    
+  }
+
+  componentDidUpdate(){
     localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
+    localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
   }
 
   crearGanadoresCuartos = () => {
-    console.log("entro");
     var ganadoresCuartos = { ...this.state.ganadoresCuartos };
     for (var i = 0; i < this.state.equipos.length / 2; i++) {
       let primerResultado = 'resultado_equipo1_partido' + i;
       let segundoResultado = 'resultado_equipo2_partido' + i;
-      // console.log(primerResultado);
-      // console.log(segundoResultado);
+      var partidoActualizar = 'ganador_partido' + (i+1);
+      var ganador = { ...ganadoresCuartos[partidoActualizar] };
       if (this.state.resultados[primerResultado] && this.state.resultados[segundoResultado]) { //check not null
-        var partidoActualizar = 'ganador_partido' + (i+1);
-        console.log(partidoActualizar);
         if (this.state.resultados[primerResultado] > this.state.resultados[segundoResultado]) {
           var indexEquipoGanador = i;
         }
         else {
           var indexEquipoGanador = i + 4;
         }
-
-        var ganador = { ...ganadoresCuartos[partidoActualizar] };
         ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
-        console.log(ganador);
-        ganadoresCuartos[partidoActualizar] = ganador;
       }
+      else{ //restore default
+        ganador = 'Ganador partido ' + (i+1);
+      }
+      ganadoresCuartos[partidoActualizar] = ganador;
     }
-    this.setState({ ganadoresCuartos });
+    this.setState({ ganadoresCuartos });    
   }
 
   render() {

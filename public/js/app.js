@@ -66045,37 +66045,33 @@ function (_Component) {
       _this.setState({
         resultados: resultados
       });
-
-      localStorage.setItem('resultados', JSON.stringify(_this.state.resultados));
     });
 
     _defineProperty(_assertThisInitialized(_this), "crearGanadoresCuartos", function () {
-      console.log("entro");
-
       var ganadoresCuartos = _objectSpread({}, _this.state.ganadoresCuartos);
 
       for (var i = 0; i < _this.state.equipos.length / 2; i++) {
         var primerResultado = 'resultado_equipo1_partido' + i;
-        var segundoResultado = 'resultado_equipo2_partido' + i; // console.log(primerResultado);
-        // console.log(segundoResultado);
+        var segundoResultado = 'resultado_equipo2_partido' + i;
+        var partidoActualizar = 'ganador_partido' + (i + 1);
+
+        var ganador = _objectSpread({}, ganadoresCuartos[partidoActualizar]);
 
         if (_this.state.resultados[primerResultado] && _this.state.resultados[segundoResultado]) {
           //check not null
-          var partidoActualizar = 'ganador_partido' + (i + 1);
-          console.log(partidoActualizar);
-
           if (_this.state.resultados[primerResultado] > _this.state.resultados[segundoResultado]) {
             var indexEquipoGanador = i;
           } else {
             var indexEquipoGanador = i + 4;
           }
 
-          var ganador = _objectSpread({}, ganadoresCuartos[partidoActualizar]);
-
           ganador = _this.state.equipos[indexEquipoGanador].nombre_equipo;
-          console.log(ganador);
-          ganadoresCuartos[partidoActualizar] = ganador;
+        } else {
+          //restore default
+          ganador = 'Ganador partido ' + (i + 1);
         }
+
+        ganadoresCuartos[partidoActualizar] = ganador;
       }
 
       _this.setState({
@@ -66134,6 +66130,22 @@ function (_Component) {
           resultados: resultados
         });
       }
+
+      var ganadoresCuartosEnLS = localStorage.getItem('ganadoresCuartos');
+      console.log(ganadoresCuartosEnLS);
+
+      if (ganadoresCuartosEnLS) {
+        var ganadoresCuartos = JSON.parse(ganadoresCuartosEnLS);
+        this.setState({
+          ganadoresCuartos: ganadoresCuartos
+        });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
+      localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
     }
   }, {
     key: "render",
@@ -66212,7 +66224,6 @@ function (_Component) {
     key: "crearSemifinales",
     value: function crearSemifinales() {
       var partidosSemifinales = [];
-      console.log(this.props.ganadoresCuartos);
       var primerSemifinal = {
         id: 4,
         nombre_equipo1: this.props.ganadoresCuartos.ganador_partido1,

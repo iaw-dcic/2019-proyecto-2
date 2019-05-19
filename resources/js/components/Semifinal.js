@@ -13,7 +13,6 @@ export default class Semifinal extends Component {
 
   crearSemifinales() {
     let partidosSemifinales = [];
-    console.log(this.props.ganadoresCuartos);
     let primerSemifinal = {
       id: 4,
       nombre_equipo1: this.props.ganadoresCuartos.ganador_partido1,
