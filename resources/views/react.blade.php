@@ -19,7 +19,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+
+@extends('layouts.app')
+
+@section('content')    
     <div id="react-app"></div>
-</body>
-</html>
+@endsection  
+
