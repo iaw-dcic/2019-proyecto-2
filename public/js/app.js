@@ -65854,7 +65854,134 @@ function (_Component) {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "col-xs-12 text-center"
+      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-striped"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Resultado 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xs-12 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary text-center center"
+      }, "Actualizar semifinales"))))));
+    }
+  }]);
+
+  return Cuartos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Final.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Final.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Final; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Final =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Final, _Component);
+
+  function Final() {
+    _classCallCheck(this, Final);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Final).call(this));
+  }
+
+  _createClass(Final, [{
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+    }
+  }, {
+    key: "crearFinal",
+    value: function crearFinal() {
+      var partidoFinal = [];
+      var _final = {
+        id: 6,
+        nombre_equipo1: this.props.ganadoresSemifinales.ganador_semifinal1,
+        nombre_equipo2: this.props.ganadoresSemifinales.ganador_semifinal2
+      };
+      partidoFinal.push(_final);
+      return partidoFinal;
+    }
+  }, {
+    key: "renderEquipos",
+    value: function renderEquipos() {
+      var _this = this;
+
+      var partidosFinal = this.crearFinal();
+      return partidosFinal.map(function (partido) {
+        var resultadoEquipo1 = _this.props.resultados['resultado_equipo1_partido' + partido.id];
+        var resultadoEquipo2 = _this.props.resultados['resultado_equipo2_partido' + partido.id];
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          resultadoEquipo1: resultadoEquipo1,
+          resultadoEquipo2: resultadoEquipo2,
+          onChanges: _this.props.handleChanges,
+          clave: partido.id,
+          key: partido.id,
+          nombre_equipo1: partido.nombre_equipo1,
+          nombre_equipo2: partido.nombre_equipo2
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "col-xs-12 text-center"
+      }, "Final"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-striped"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
@@ -65877,7 +66004,7 @@ function (_Component) {
     }
   }]);
 
-  return Cuartos;
+  return Final;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -65993,6 +66120,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
 /* harmony import */ var _Semifinal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Semifinal */ "./resources/js/components/Semifinal.js");
+/* harmony import */ var _Final__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Final */ "./resources/js/components/Final.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -66014,6 +66142,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -66050,6 +66179,8 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "crearGanadoresCuartos", function () {
       var ganadoresCuartos = _objectSpread({}, _this.state.ganadoresCuartos);
 
+      console.log("entro");
+
       for (var i = 0; i < _this.state.equipos.length / 2; i++) {
         var primerResultado = 'resultado_equipo1_partido' + i;
         var segundoResultado = 'resultado_equipo2_partido' + i;
@@ -66059,7 +66190,7 @@ function (_Component) {
 
         if (_this.state.resultados[primerResultado] && _this.state.resultados[segundoResultado]) {
           //check not null
-          if (_this.state.resultados[primerResultado] > _this.state.resultados[segundoResultado]) {
+          if (parseInt(_this.state.resultados[primerResultado]) > parseInt(_this.state.resultados[segundoResultado])) {
             var indexEquipoGanador = i;
           } else {
             var indexEquipoGanador = i + 4;
@@ -66076,6 +66207,46 @@ function (_Component) {
 
       _this.setState({
         ganadoresCuartos: ganadoresCuartos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "crearGanadoresSemifinales", function () {
+      var ganadoresSemifinales = _objectSpread({}, _this.state.ganadoresSemifinales);
+
+      console.log("entro");
+      var equipoActual = 1;
+      var indiceSemifinal = 1;
+
+      while (indiceSemifinal < 3) {
+        var primerResultado = 'resultado_equipo1_partido' + (indiceSemifinal + 3);
+        var segundoResultado = 'resultado_equipo2_partido' + (indiceSemifinal + 3);
+        var partidoActualizar = 'ganador_semifinal' + indiceSemifinal;
+
+        var ganador = _objectSpread({}, ganadoresSemifinales[partidoActualizar]);
+
+        console.log(ganador);
+
+        if (_this.state.resultados[primerResultado] && _this.state.resultados[segundoResultado]) {
+          //check not null
+          if (parseInt(_this.state.resultados[primerResultado]) > parseInt(_this.state.resultados[segundoResultado])) {
+            var indexEquipoGanador = 'ganador_partido' + equipoActual;
+          } else {
+            var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
+          }
+
+          ganador = _this.state.ganadoresCuartos[indexEquipoGanador];
+        } else {
+          //restore default
+          ganador = 'Ganador Semifinal ' + indiceSemifinal;
+        }
+
+        equipoActual += 2;
+        indiceSemifinal++;
+        ganadoresSemifinales[partidoActualizar] = ganador;
+      }
+
+      _this.setState({
+        ganadoresSemifinales: ganadoresSemifinales
       });
     });
 
@@ -66103,6 +66274,10 @@ function (_Component) {
         ganador_partido2: "Ganador partido 2",
         ganador_partido3: "Ganador partido 3",
         ganador_partido4: "Ganador partido 4"
+      },
+      ganadoresSemifinales: {
+        ganador_semifinal1: "Ganador semifinal 1",
+        ganador_semifinal2: "Ganador semifinal 2"
       }
     };
     return _this;
@@ -66132,12 +66307,20 @@ function (_Component) {
       }
 
       var ganadoresCuartosEnLS = localStorage.getItem('ganadoresCuartos');
-      console.log(ganadoresCuartosEnLS);
 
       if (ganadoresCuartosEnLS) {
         var ganadoresCuartos = JSON.parse(ganadoresCuartosEnLS);
         this.setState({
           ganadoresCuartos: ganadoresCuartos
+        });
+      }
+
+      var ganadoresSemifinalesEnLS = localStorage.getItem('ganadoresSemifinales');
+
+      if (ganadoresSemifinalesEnLS) {
+        var ganadoresSemifinales = JSON.parse(ganadoresSemifinalesEnLS);
+        this.setState({
+          ganadoresSemifinales: ganadoresSemifinales
         });
       }
     }
@@ -66146,6 +66329,7 @@ function (_Component) {
     value: function componentDidUpdate() {
       localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
       localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
+      localStorage.setItem('ganadoresSemifinales', JSON.stringify(this.state.ganadoresSemifinales));
     }
   }, {
     key: "render",
@@ -66155,9 +66339,15 @@ function (_Component) {
         handleChanges: this.handleChanges,
         crearGanadoresCuartos: this.crearGanadoresCuartos
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semifinal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        crearGanadoresSemifinales: this.crearGanadoresSemifinales,
         equipos: this.state.equipos,
         resultados: this.state.resultados,
         ganadoresCuartos: this.state.ganadoresCuartos,
+        handleChanges: this.handleChanges
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        equipos: this.state.equipos,
+        resultados: this.state.resultados,
+        ganadoresSemifinales: this.state.ganadoresSemifinales,
         handleChanges: this.handleChanges
       }));
     }
@@ -66193,13 +66383,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -66210,17 +66402,22 @@ function (_Component) {
   _inherits(Semifinal, _Component);
 
   function Semifinal() {
+    var _this;
+
     _classCallCheck(this, Semifinal);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Semifinal).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Semifinal).call(this));
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (event) {
+      event.preventDefault();
+
+      _this.props.crearGanadoresSemifinales();
+    });
+
+    return _this;
   }
 
   _createClass(Semifinal, [{
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
-    }
-  }, {
     key: "crearSemifinales",
     value: function crearSemifinales() {
       var partidosSemifinales = [];
@@ -66241,16 +66438,16 @@ function (_Component) {
   }, {
     key: "renderEquipos",
     value: function renderEquipos() {
-      var _this = this;
+      var _this2 = this;
 
       var partidosSemifinales = this.crearSemifinales();
       return partidosSemifinales.map(function (partido) {
-        var resultadoEquipo1 = _this.props.resultados['resultado_equipo1_partido' + partido.id];
-        var resultadoEquipo2 = _this.props.resultados['resultado_equipo2_partido' + partido.id];
+        var resultadoEquipo1 = _this2.props.resultados['resultado_equipo1_partido' + partido.id];
+        var resultadoEquipo2 = _this2.props.resultados['resultado_equipo2_partido' + partido.id];
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           resultadoEquipo1: resultadoEquipo1,
           resultadoEquipo2: resultadoEquipo2,
-          onChanges: _this.props.handleChanges,
+          onChanges: _this2.props.handleChanges,
           clave: partido.id,
           key: partido.id,
           nombre_equipo1: partido.nombre_equipo1,
@@ -66290,7 +66487,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary text-center center"
-      }, "Guardar"))))));
+      }, "Actualizar la final"))))));
     }
   }]);
 

@@ -7,8 +7,8 @@ export default class Cuartos extends Component {
     super();
   }
 
-  handleSubmit= (event) => {
-    event.preventDefault();    
+  handleSubmit = (event) => {
+    event.preventDefault();
     this.props.crearGanadoresCuartos();
   };
 
@@ -41,6 +41,7 @@ export default class Cuartos extends Component {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <form onSubmit={this.handleSubmit}>
+              <h1 className="col-xs-12 text-center">Cuartos</h1>
               <table className="table table-striped">
                 <thead>
                   <tr>
@@ -60,7 +61,7 @@ export default class Cuartos extends Component {
               </table>
               <div className="col-xs-12 text-center">
                 <button type="submit" className="btn btn-primary text-center center">
-                  Guardar
+                  Actualizar semifinales
                 </button>
               </div>
             </form>

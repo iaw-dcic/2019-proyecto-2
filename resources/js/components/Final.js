@@ -1,39 +1,31 @@
 import React, { Component } from 'react';
 import Partido from './Partido';
 
-export default class Semifinal extends Component {
+export default class Final extends Component {
 
   constructor() {
     super();
   }
   
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();    
-    this.props.crearGanadoresSemifinales();
-    
   };
 
-  crearSemifinales() {
-    let partidosSemifinales = [];
-    let primerSemifinal = {
-      id: 4,
-      nombre_equipo1: this.props.ganadoresCuartos.ganador_partido1,
-      nombre_equipo2: this.props.ganadoresCuartos.ganador_partido2
+  crearFinal() {
+    let partidoFinal = [];
+    let final = {
+      id: 6,
+      nombre_equipo1: this.props.ganadoresSemifinales.ganador_semifinal1,
+      nombre_equipo2: this.props.ganadoresSemifinales.ganador_semifinal2
     }
-    partidosSemifinales.push(primerSemifinal);
-    let segundaSemifinal = {
-      id: 5,
-      nombre_equipo1: this.props.ganadoresCuartos.ganador_partido3,
-      nombre_equipo2: this.props.ganadoresCuartos.ganador_partido4
-    }
-    partidosSemifinales.push(segundaSemifinal);
-    return partidosSemifinales;
+    partidoFinal.push(final);
+    return partidoFinal;
   }
 
 
   renderEquipos() {
-    var partidosSemifinales = this.crearSemifinales();
-    return partidosSemifinales.map(partido => {
+    var partidosFinal = this.crearFinal();
+    return partidosFinal.map(partido => {
       let resultadoEquipo1 = this.props.resultados['resultado_equipo1_partido' + partido.id];
       let resultadoEquipo2 = this.props.resultados['resultado_equipo2_partido' + partido.id];
       return <Partido resultadoEquipo1={resultadoEquipo1} resultadoEquipo2={resultadoEquipo2} onChanges={this.props.handleChanges} clave={partido.id} key={partido.id} nombre_equipo1={partido.nombre_equipo1} nombre_equipo2={partido.nombre_equipo2}></Partido>
@@ -46,7 +38,7 @@ export default class Semifinal extends Component {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <form onSubmit={this.handleSubmit}>
-              <h1 className="col-xs-12 text-center">Semifinal</h1>
+              <h1 className="col-xs-12 text-center">Final</h1>
               <table className="table table-striped">
                 <thead>
                   <tr>
@@ -66,7 +58,7 @@ export default class Semifinal extends Component {
               </table>
               <div className="col-xs-12 text-center">
                 <button type="submit" className="btn btn-primary text-center center">
-                  Actualizar la final
+                  Guardar
                 </button>
               </div>
             </form>
