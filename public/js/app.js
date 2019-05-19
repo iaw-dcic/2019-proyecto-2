@@ -65756,19 +65756,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BurgerIngredient/BurgerIngredient */ "./resources/js/components/Burger/BurgerIngredient/BurgerIngredient.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 
 
 
 var burger = function burger(props) {
+  var transformedIngredients = Object.keys(props.ingredients).map(function (igKey) {
+    return _toConsumableArray(Array(props.ingredients[igKey])).map(function (_, i) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        key: igKey + i,
+        type: igKey
+      });
+    });
+  }).reduce(function (arr, el) {
+    return arr.concat(el);
+  }, []);
+
+  if (transformedIngredients.length === 0) {
+    transformedIngredients = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comenza a agregar ingredientes!");
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Burger"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__["default"], {
     type: "bread-top"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    type: "cheese"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    type: "meat"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }), transformedIngredients, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__["default"], {
     type: "bread-bottom"
   }));
 };
@@ -65897,12 +65916,12 @@ BurgerIngredient.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hoc/Aux */ "./resources/js/hoc/Aux.js");
+/* harmony import */ var _hoc_AuxDiv__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hoc/AuxDiv */ "./resources/js/hoc/AuxDiv.js");
 
 
 
 var layout = function layout(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Toolbar,SideDrawer, Backdrop "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_AuxDiv__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Toolbar,SideDrawer, Backdrop "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
     className: "Content"
   }, props.children));
 };
@@ -65922,7 +65941,7 @@ var layout = function layout(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hoc/Aux */ "./resources/js/hoc/Aux.js");
+/* harmony import */ var _hoc_AuxDiv__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hoc/AuxDiv */ "./resources/js/hoc/AuxDiv.js");
 /* harmony import */ var _components_Burger_Burger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Burger/Burger */ "./resources/js/components/Burger/Burger.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -65952,15 +65971,32 @@ function (_Component) {
   _inherits(BurgerBuilder, _Component);
 
   function BurgerBuilder() {
+    var _getPrototypeOf2;
+
+    var _temp, _this;
+
     _classCallCheck(this, BurgerBuilder);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(BurgerBuilder).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(BurgerBuilder)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.state = {
+      ingredients: {
+        salad: 0,
+        bacon: 0,
+        cheese: 0,
+        meat: 0
+      }
+    }, _temp));
   }
 
   _createClass(BurgerBuilder, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Burger_Burger__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Build Controls"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_AuxDiv__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Burger_Burger__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        ingredients: this.state.ingredients
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Build Controls"));
     }
   }]);
 
@@ -65971,14 +66007,20 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/hoc/Aux.js":
-/*!*********************************!*\
-  !*** ./resources/js/hoc/Aux.js ***!
-  \*********************************/
+/***/ "./resources/js/hoc/AuxDiv.js":
+/*!************************************!*\
+  !*** ./resources/js/hoc/AuxDiv.js ***!
+  \************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\burger\\proyecto-2\\resources\\js\\hoc\\Aux.js'");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var aux = function aux(props) {
+  return props.children;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (aux);
 
 /***/ }),
 
