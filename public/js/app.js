@@ -65823,7 +65823,8 @@ function (_Component) {
           clave: partido.id,
           key: partido.id,
           nombre_equipo1: partido.nombre_equipo1,
-          nombre_equipo2: partido.nombre_equipo2
+          nombre_equipo2: partido.nombre_equipo2,
+          resultados: _this2.props.state.resultados
         });
       });
     }
@@ -65862,6 +65863,8 @@ function (_Component) {
         scope: "col"
       }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
+      }, "Elegir Ganador"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
       }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -65870,7 +65873,9 @@ function (_Component) {
         scope: "col"
       }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Resultado 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Resultado 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Elegir Ganador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-12 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
@@ -65964,7 +65969,8 @@ function (_Component) {
           clave: partido.id,
           key: partido.id,
           nombre_equipo1: partido.nombre_equipo1,
-          nombre_equipo2: partido.nombre_equipo2
+          nombre_equipo2: partido.nombre_equipo2,
+          resultados: _this.props.resultados
         });
       });
     }
@@ -65987,6 +65993,8 @@ function (_Component) {
         scope: "col"
       }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
+      }, "Elegir Ganador"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
       }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -65995,7 +66003,9 @@ function (_Component) {
         scope: "col"
       }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Resultado 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Resultado 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Elegir Ganador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-12 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
@@ -66050,18 +66060,12 @@ var Partido =
 function (_Component) {
   _inherits(Partido, _Component);
 
-  function Partido() {
-    var _getPrototypeOf2;
-
+  function Partido(props) {
     var _this;
 
     _classCallCheck(this, Partido);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Partido)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Partido).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "allowNumbersOnly", function (e) {
       var code = e.which ? e.which : e.keyCode;
@@ -66071,15 +66075,62 @@ function (_Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "actualizarState", function (e) {
+      if (e.target.id.includes("equipo1")) {
+        var input1 = e.target.value;
+
+        _this.setState({
+          texto_input1: input1
+        });
+      } else {
+        var input2 = e.target.value;
+
+        _this.setState({
+          texto_input2: input2
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChanges", function (e) {
+      _this.props.onChanges(e);
+
+      _this.actualizarState(e);
+    });
+
+    _this.state = {
+      texto_input1: '',
+      texto_input2: ''
+    };
     return _this;
   }
 
   _createClass(Partido, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var input1 = this.props.resultados['resultado_equipo1_partido' + this.props.clave];
+      var input2 = this.props.resultados['resultado_equipo2_partido' + this.props.clave];
+      this.setState({
+        texto_input1: input1,
+        texto_input2: input2
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-control custom-radio custom-control-inline"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        disabled: this.state.texto_input1 && this.state.texto_input2,
+        id: 'ganador_equipo1_partido' + this.props.clave,
+        name: 'customRadio' + this.props.clave,
+        className: "custom-control-input"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "custom-control-label",
+        htmlFor: 'ganador_equipo1_partido' + this.props.clave
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "hidden-sm hidden-md hidden-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onKeyPress: this.allowNumbersOnly,
@@ -66087,15 +66138,26 @@ function (_Component) {
         id: 'resultado_equipo1_partido' + this.props.clave,
         type: "text",
         className: "form-control input-sm",
-        onChange: this.props.onChanges
+        onChange: this.handleChanges
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onKeyPress: this.allowNumbersOnly,
         value: this.props.resultadoEquipo2,
         id: 'resultado_equipo2_partido' + this.props.clave,
         type: "text",
         className: "form-control input-sm",
-        onChange: this.props.onChanges
-      })));
+        onChange: this.handleChanges
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-control custom-radio custom-control-inline"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        disabled: this.state.texto_input1 && this.state.texto_input2,
+        id: 'ganador_equipo2_partido' + this.props.clave,
+        name: 'customRadio' + this.props.clave,
+        className: "custom-control-input"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "custom-control-label",
+        htmlFor: 'ganador_equipo2_partido' + this.props.clave
+      }, " "))));
     }
   }]);
 
@@ -66451,7 +66513,8 @@ function (_Component) {
           clave: partido.id,
           key: partido.id,
           nombre_equipo1: partido.nombre_equipo1,
-          nombre_equipo2: partido.nombre_equipo2
+          nombre_equipo2: partido.nombre_equipo2,
+          resultados: _this2.props.resultados
         });
       });
     }
@@ -66474,6 +66537,8 @@ function (_Component) {
         scope: "col"
       }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
+      }, "Elegir Ganador"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
       }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -66482,7 +66547,9 @@ function (_Component) {
         scope: "col"
       }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Resultado 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Resultado 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Elegir Ganador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-12 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",

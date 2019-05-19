@@ -36,7 +36,7 @@ export default class Semifinal extends Component {
     return partidosSemifinales.map(partido => {
       let resultadoEquipo1 = this.props.resultados['resultado_equipo1_partido' + partido.id];
       let resultadoEquipo2 = this.props.resultados['resultado_equipo2_partido' + partido.id];
-      return <Partido resultadoEquipo1={resultadoEquipo1} resultadoEquipo2={resultadoEquipo2} onChanges={this.props.handleChanges} clave={partido.id} key={partido.id} nombre_equipo1={partido.nombre_equipo1} nombre_equipo2={partido.nombre_equipo2}></Partido>
+      return <Partido resultadoEquipo1={resultadoEquipo1} resultadoEquipo2={resultadoEquipo2} onChanges={this.props.handleChanges} clave={partido.id} key={partido.id} nombre_equipo1={partido.nombre_equipo1} nombre_equipo2={partido.nombre_equipo2} resultados={this.props.resultados}></Partido>
     })
   } 
 
@@ -50,12 +50,14 @@ export default class Semifinal extends Component {
               <table className="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                  <th scope="col">#</th>
+                    <th scope="col">Elegir Ganador</th>
                     <th scope="col">Equipo 1</th>
                     <th scope="col">Resultado 1</th>
                     <th scope="col"> - </th>
                     <th scope="col">Equipo 2</th>
                     <th scope="col">Resultado 2</th>
+                    <th scope="col">Elegir Ganador</th>
                   </tr>
                 </thead>
                 <tbody>
