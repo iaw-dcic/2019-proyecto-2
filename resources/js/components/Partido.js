@@ -44,7 +44,7 @@ export default class Partido extends Component {
         <th scope="row"></th>
         <td>
           <div className="custom-control custom-radio custom-control-inline">
-            <input type="radio" disabled={(this.state.texto_input1 && this.state.texto_input2)} id={'ganador_equipo1_partido' + this.props.clave} name={'customRadio' + this.props.clave} className="custom-control-input" />
+            <input type="radio" disabled={((this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2)} id={'ganador_equipo1_partido' + this.props.clave} name={'customRadio' + this.props.clave} className="custom-control-input" onChange={this.props.actualizarResultadosBotones} />
             <label className="custom-control-label" htmlFor={'ganador_equipo1_partido' + this.props.clave}></label>
           </div>
         </td>
@@ -61,7 +61,7 @@ export default class Partido extends Component {
         </td>
         <td>
           <div className="custom-control custom-radio custom-control-inline">
-            <input type="radio" disabled={(this.state.texto_input1 && this.state.texto_input2)} id={'ganador_equipo2_partido' + this.props.clave} name={'customRadio' + this.props.clave} className="custom-control-input" />
+            <input type="radio" disabled={((this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2)} id={'ganador_equipo2_partido' + this.props.clave} name={'customRadio' + this.props.clave} className="custom-control-input" onChange={this.props.actualizarResultadosBotones} />
             <label className="custom-control-label" htmlFor={'ganador_equipo2_partido' + this.props.clave}> </label>
           </div>
         </td>

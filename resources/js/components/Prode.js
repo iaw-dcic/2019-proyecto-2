@@ -29,6 +29,22 @@ export default class Prode extends Component {
         resultado_equipo1_partido6: "",
         resultado_equipo2_partido6: "",
       },
+      resultadosBotones: {
+        ganador_equipo1_partido0: false,
+        ganador_equipo2_partido0: false,
+        ganador_equipo1_partido1: false,
+        ganador_equipo2_partido1: false,
+        ganador_equipo1_partido2: false,
+        ganador_equipo2_partido2: false,
+        ganador_equipo1_partido3: false,
+        ganador_equipo2_partido3: false,
+        ganador_equipo1_partido4: false,
+        ganador_equipo2_partido4: false,
+        ganador_equipo1_partido5: false,
+        ganador_equipo2_partido5: false,
+        ganador_equipo1_partido6: false,
+        ganador_equipo2_partido6: false,
+      },
       ganadoresCuartos: {
         ganador_partido1: "Ganador partido 1",
         ganador_partido2: "Ganador partido 2",
@@ -78,7 +94,38 @@ export default class Prode extends Component {
     resultados[id] = resultado;
 
     this.setState({ resultados });
+  }
 
+  actualizarResultadosBotones = (event) => {
+    let idActual = event.target.id;
+    let idButtonDesactivado = this.obtenerIdDesactivado(idActual);
+    let resultadosBotones = { ...this.state.resultadosBotones };
+    let resultado = { ...resultadosBotones[idActual] };
+    resultado = true;
+    resultadosBotones[idActual] = resultado;
+    this.setState({ resultadosBotones }, 
+      () => this.actualizarResultadosDesactivado(idButtonDesactivado));
+  }
+
+  actualizarResultadosDesactivado(idButtonDesactivado){
+    console.log(idButtonDesactivado);
+    let resultadosBotones = { ...this.state.resultadosBotones };
+    let resultado = { ...resultadosBotones[idButtonDesactivado] };
+    resultado = false;
+    resultadosBotones[idButtonDesactivado] = resultado;
+    this.setState({ resultadosBotones });
+  }
+  
+  obtenerIdDesactivado = (idAnterior) =>{
+    let resultadosBotones = { ...this.state.resultadosBotones };
+    var keysBotones = Object.keys(resultadosBotones);
+    if (keysBotones.indexOf(idAnterior) % 2 == 0) {
+      var indexButtonDesactivado = keysBotones.indexOf(idAnterior) + 1;
+    }
+    else {
+      var indexButtonDesactivado = keysBotones.indexOf(idAnterior) - 1;
+    }
+    return keysBotones[indexButtonDesactivado];
   }
 
   componentDidUpdate() {
@@ -118,25 +165,25 @@ export default class Prode extends Component {
     console.log("entro");
     var equipoActual = 1;
     var indiceSemifinal = 1;
-    while (indiceSemifinal < 3) {      
-      let primerResultado = 'resultado_equipo1_partido' + (indiceSemifinal+3);
-      let segundoResultado = 'resultado_equipo2_partido' + (indiceSemifinal+3);
+    while (indiceSemifinal < 3) {
+      let primerResultado = 'resultado_equipo1_partido' + (indiceSemifinal + 3);
+      let segundoResultado = 'resultado_equipo2_partido' + (indiceSemifinal + 3);
       var partidoActualizar = 'ganador_semifinal' + indiceSemifinal;
       var ganador = { ...ganadoresSemifinales[partidoActualizar] };
       console.log(ganador);
       if (this.state.resultados[primerResultado] && this.state.resultados[segundoResultado]) { //check not null
         if (parseInt(this.state.resultados[primerResultado]) > parseInt(this.state.resultados[segundoResultado])) {
-          var indexEquipoGanador = 'ganador_partido'+ equipoActual;
+          var indexEquipoGanador = 'ganador_partido' + equipoActual;
         }
         else {
-          var indexEquipoGanador = 'ganador_partido'+ (equipoActual + 1);
+          var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
         }
         ganador = this.state.ganadoresCuartos[indexEquipoGanador];
       }
       else { //restore default
         ganador = 'Ganador Semifinal ' + indiceSemifinal;
       }
-      equipoActual+=2;
+      equipoActual += 2;
       indiceSemifinal++;
       ganadoresSemifinales[partidoActualizar] = ganador;
     }
@@ -144,13 +191,13 @@ export default class Prode extends Component {
   }
 
 
-render() {
-  return (
-    <div>
-      <Cuartos state={this.state} handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} />
-      <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} />
-      <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} />
-    </div>
-  )
-}
+  render() {
+    return (
+      <div>
+        <Cuartos state={this.state} handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} actualizarResultadosBotones={this.actualizarResultadosBotones} />
+        <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} />
+        <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} />
+      </div>
+    )
+  }
 }
