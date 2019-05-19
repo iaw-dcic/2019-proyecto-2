@@ -4,70 +4,25 @@ import Partido from './Partido';
 export default class Cuartos extends Component {
 
   constructor() {
-
     super();
-    //Initialize the state in the constructor
-    this.state = {
-      equipos: [],
-      partidoCuartos: [],
-      resultados: {
-        resultado_equipo1_partido0: "",
-        resultado_equipo2_partido0: "",
-        resultado_equipo1_partido1: "",
-        resultado_equipo2_partido1: "",
-        resultado_equipo1_partido2: "",
-        resultado_equipo2_partido2: "",
-        resultado_equipo1_partido3: "",
-        resultado_equipo2_partido3: "",
-      }
-    }
   }
 
-  handleChanges = (event) => {
-    let id = event.target.id;
-    let value = event.target.value;
-    let resultados = { ...this.state.resultados };
-    let resultado = { ...resultados[id] };
-    resultado = value;
-    resultados[id] = resultado;
-
-    this.setState({ resultados });
-    localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit= (event) => {
+    event.preventDefault();    
+    this.props.crearGanadoresCuartos();
   };
-
-  componentDidMount() {
-    /* fetch API in action */
-    fetch('http://localhost:8000/equipos')
-      .then(response => {
-        return response.json();
-      })
-      .then(equipos => {
-        //Fetched product is stored in the state
-        this.setState({ equipos });
-      });
-
-    const resultadosEnLS = localStorage.getItem('resultados');
-    if (resultadosEnLS) {
-      var resultados = JSON.parse(resultadosEnLS);
-      this.setState({ resultados });
-    }
-  }
 
   renderEquipos() {
     var partidoCuartos = this.crearCuartos();
     return partidoCuartos.map(partido => {
-      let resultadoEquipo1 = this.state.resultados['resultado_equipo1_partido' + partido.id];
-      let resultadoEquipo2 = this.state.resultados['resultado_equipo2_partido' + partido.id];
-      return <Partido resultadoEquipo1={resultadoEquipo1} resultadoEquipo2={resultadoEquipo2} onChanges={this.handleChanges} clave={partido.id} key={partido.id} nombre_equipo1={partido.nombre_equipo1} nombre_equipo2={partido.nombre_equipo2}></Partido>
+      let resultadoEquipo1 = this.props.state.resultados['resultado_equipo1_partido' + partido.id];
+      let resultadoEquipo2 = this.props.state.resultados['resultado_equipo2_partido' + partido.id];
+      return <Partido resultadoEquipo1={resultadoEquipo1} resultadoEquipo2={resultadoEquipo2} onChanges={this.props.handleChanges} clave={partido.id} key={partido.id} nombre_equipo1={partido.nombre_equipo1} nombre_equipo2={partido.nombre_equipo2}></Partido>
     })
   }
 
   crearCuartos() {
-    var equiposDup = [... this.state.equipos];
+    var equiposDup = [... this.props.state.equipos];
     var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
     var arregloDerecha = equiposDup;
     var partidoCuartos = arregloIzquierda.map(equipo => {

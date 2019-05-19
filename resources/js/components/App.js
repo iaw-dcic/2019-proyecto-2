@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Cuartos from './Cuartos'
+import Prode from './Prode'
 
 class App extends Component {
     render () {
     return (
         <BrowserRouter>
         <div>
-            <Cuartos />
+            <Prode />
         </div>
         </BrowserRouter>
     )

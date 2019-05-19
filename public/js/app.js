@@ -65693,7 +65693,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
+/* harmony import */ var _Prode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Prode */ "./resources/js/components/Prode.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65731,7 +65731,7 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Prode__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }]);
 
@@ -65765,8 +65765,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -65798,84 +65796,30 @@ function (_Component) {
 
     _classCallCheck(this, Cuartos);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cuartos).call(this)); //Initialize the state in the constructor
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cuartos).call(this));
 
-    _defineProperty(_assertThisInitialized(_this), "handleChanges", function (event) {
-      var id = event.target.id;
-      var value = event.target.value;
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (event) {
+      event.preventDefault();
 
-      var resultados = _objectSpread({}, _this.state.resultados);
-
-      var resultado = _objectSpread({}, resultados[id]);
-
-      resultado = value;
-      resultados[id] = resultado;
-
-      _this.setState({
-        resultados: resultados
-      });
-
-      localStorage.setItem('resultados', JSON.stringify(_this.state.resultados));
+      _this.props.crearGanadoresCuartos();
     });
 
-    _this.state = {
-      equipos: [],
-      partidoCuartos: [],
-      resultados: {
-        resultado_equipo1_partido0: "",
-        resultado_equipo2_partido0: "",
-        resultado_equipo1_partido1: "",
-        resultado_equipo2_partido1: "",
-        resultado_equipo1_partido2: "",
-        resultado_equipo2_partido2: "",
-        resultado_equipo1_partido3: "",
-        resultado_equipo2_partido3: ""
-      }
-    };
     return _this;
   }
 
   _createClass(Cuartos, [{
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      /* fetch API in action */
-      fetch('http://localhost:8000/equipos').then(function (response) {
-        return response.json();
-      }).then(function (equipos) {
-        //Fetched product is stored in the state
-        _this2.setState({
-          equipos: equipos
-        });
-      });
-      var resultadosEnLS = localStorage.getItem('resultados');
-
-      if (resultadosEnLS) {
-        var resultados = JSON.parse(resultadosEnLS);
-        this.setState({
-          resultados: resultados
-        });
-      }
-    }
-  }, {
     key: "renderEquipos",
     value: function renderEquipos() {
-      var _this3 = this;
+      var _this2 = this;
 
       var partidoCuartos = this.crearCuartos();
       return partidoCuartos.map(function (partido) {
-        var resultadoEquipo1 = _this3.state.resultados['resultado_equipo1_partido' + partido.id];
-        var resultadoEquipo2 = _this3.state.resultados['resultado_equipo2_partido' + partido.id];
+        var resultadoEquipo1 = _this2.props.state.resultados['resultado_equipo1_partido' + partido.id];
+        var resultadoEquipo2 = _this2.props.state.resultados['resultado_equipo2_partido' + partido.id];
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           resultadoEquipo1: resultadoEquipo1,
           resultadoEquipo2: resultadoEquipo2,
-          onChanges: _this3.handleChanges,
+          onChanges: _this2.props.handleChanges,
           clave: partido.id,
           key: partido.id,
           nombre_equipo1: partido.nombre_equipo1,
@@ -65886,7 +65830,7 @@ function (_Component) {
   }, {
     key: "crearCuartos",
     value: function crearCuartos() {
-      var equiposDup = _toConsumableArray(this.state.equipos);
+      var equiposDup = _toConsumableArray(this.props.state.equipos);
 
       var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
       var arregloDerecha = equiposDup;
@@ -66029,6 +65973,317 @@ function (_Component) {
   }]);
 
   return Partido;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Prode.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Prode.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Prode; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
+/* harmony import */ var _Semifinal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Semifinal */ "./resources/js/components/Semifinal.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var Prode =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Prode, _Component);
+
+  function Prode() {
+    var _this;
+
+    _classCallCheck(this, Prode);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Prode).call(this)); //Initialize the state in the constructor
+
+    _defineProperty(_assertThisInitialized(_this), "handleChanges", function (event) {
+      var id = event.target.id;
+      var value = event.target.value;
+
+      var resultados = _objectSpread({}, _this.state.resultados);
+
+      var resultado = _objectSpread({}, resultados[id]);
+
+      resultado = value;
+      resultados[id] = resultado;
+
+      _this.setState({
+        resultados: resultados
+      });
+
+      localStorage.setItem('resultados', JSON.stringify(_this.state.resultados));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "crearGanadoresCuartos", function () {
+      console.log("entro");
+
+      var ganadoresCuartos = _objectSpread({}, _this.state.ganadoresCuartos);
+
+      for (var i = 0; i < _this.state.equipos.length / 2; i++) {
+        var primerResultado = 'resultado_equipo1_partido' + i;
+        var segundoResultado = 'resultado_equipo2_partido' + i; // console.log(primerResultado);
+        // console.log(segundoResultado);
+
+        if (_this.state.resultados[primerResultado] && _this.state.resultados[segundoResultado]) {
+          //check not null
+          var partidoActualizar = 'ganador_partido' + (i + 1);
+          console.log(partidoActualizar);
+
+          if (_this.state.resultados[primerResultado] > _this.state.resultados[segundoResultado]) {
+            var indexEquipoGanador = i;
+          } else {
+            var indexEquipoGanador = i + 4;
+          }
+
+          var ganador = _objectSpread({}, ganadoresCuartos[partidoActualizar]);
+
+          ganador = _this.state.equipos[indexEquipoGanador].nombre_equipo;
+          console.log(ganador);
+          ganadoresCuartos[partidoActualizar] = ganador;
+        }
+      }
+
+      _this.setState({
+        ganadoresCuartos: ganadoresCuartos
+      });
+    });
+
+    _this.state = {
+      equipos: [],
+      partidoCuartos: [],
+      resultados: {
+        resultado_equipo1_partido0: "",
+        resultado_equipo2_partido0: "",
+        resultado_equipo1_partido1: "",
+        resultado_equipo2_partido1: "",
+        resultado_equipo1_partido2: "",
+        resultado_equipo2_partido2: "",
+        resultado_equipo1_partido3: "",
+        resultado_equipo2_partido3: "",
+        resultado_equipo1_partido4: "",
+        resultado_equipo2_partido4: "",
+        resultado_equipo1_partido5: "",
+        resultado_equipo2_partido5: "",
+        resultado_equipo1_partido6: "",
+        resultado_equipo2_partido6: ""
+      },
+      ganadoresCuartos: {
+        ganador_partido1: "Ganador partido 1",
+        ganador_partido2: "Ganador partido 2",
+        ganador_partido3: "Ganador partido 3",
+        ganador_partido4: "Ganador partido 4"
+      }
+    };
+    return _this;
+  }
+
+  _createClass(Prode, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      //Get equipos
+      fetch('http://localhost:8000/equipos').then(function (response) {
+        return response.json();
+      }).then(function (equipos) {
+        _this2.setState({
+          equipos: equipos
+        });
+      }); //Check local storage
+
+      var resultadosEnLS = localStorage.getItem('resultados');
+
+      if (resultadosEnLS) {
+        var resultados = JSON.parse(resultadosEnLS);
+        this.setState({
+          resultados: resultados
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        state: this.state,
+        handleChanges: this.handleChanges,
+        crearGanadoresCuartos: this.crearGanadoresCuartos
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semifinal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        equipos: this.state.equipos,
+        resultados: this.state.resultados,
+        ganadoresCuartos: this.state.ganadoresCuartos,
+        handleChanges: this.handleChanges
+      }));
+    }
+  }]);
+
+  return Prode;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Semifinal.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Semifinal.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Semifinal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Semifinal =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Semifinal, _Component);
+
+  function Semifinal() {
+    _classCallCheck(this, Semifinal);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Semifinal).call(this));
+  }
+
+  _createClass(Semifinal, [{
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+    }
+  }, {
+    key: "crearSemifinales",
+    value: function crearSemifinales() {
+      var partidosSemifinales = [];
+      console.log(this.props.ganadoresCuartos);
+      var primerSemifinal = {
+        id: 4,
+        nombre_equipo1: this.props.ganadoresCuartos.ganador_partido1,
+        nombre_equipo2: this.props.ganadoresCuartos.ganador_partido2
+      };
+      partidosSemifinales.push(primerSemifinal);
+      var segundaSemifinal = {
+        id: 5,
+        nombre_equipo1: this.props.ganadoresCuartos.ganador_partido3,
+        nombre_equipo2: this.props.ganadoresCuartos.ganador_partido4
+      };
+      partidosSemifinales.push(segundaSemifinal);
+      return partidosSemifinales;
+    }
+  }, {
+    key: "renderEquipos",
+    value: function renderEquipos() {
+      var _this = this;
+
+      var partidosSemifinales = this.crearSemifinales();
+      return partidosSemifinales.map(function (partido) {
+        var resultadoEquipo1 = _this.props.resultados['resultado_equipo1_partido' + partido.id];
+        var resultadoEquipo2 = _this.props.resultados['resultado_equipo2_partido' + partido.id];
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          resultadoEquipo1: resultadoEquipo1,
+          resultadoEquipo2: resultadoEquipo2,
+          onChanges: _this.props.handleChanges,
+          clave: partido.id,
+          key: partido.id,
+          nombre_equipo1: partido.nombre_equipo1,
+          nombre_equipo2: partido.nombre_equipo2
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "col-xs-12 text-center"
+      }, "Semifinal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-striped"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Resultado 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xs-12 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary text-center center"
+      }, "Guardar"))))));
+    }
+  }]);
+
+  return Semifinal;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
