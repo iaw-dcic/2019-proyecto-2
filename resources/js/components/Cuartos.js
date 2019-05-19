@@ -26,21 +26,11 @@ export default class Cuartos extends Component {
   handleChanges = (event) => {
     let id = event.target.id;
     let value = event.target.value;
-    console.log(event.target.id);
-    console.log(event.target.value);
-    // 1. Make a shallow copy of the items
     let resultados = { ...this.state.resultados };
-    console.log(resultados);
-    // 2. Make a shallow copy of the item you want to mutate
     let resultado = { ...resultados[id] };
-    console.log(resultado);
-    // 3. Replace the property you're intested in
     resultado = value;
-    console.log(resultado);
-    // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
     resultados[id] = resultado;
-    console.log(resultados);
-    // 5. Set the state to our new copy
+
     this.setState({ resultados });
     localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
   }
@@ -59,14 +49,12 @@ export default class Cuartos extends Component {
         //Fetched product is stored in the state
         this.setState({ equipos });
       });
+
     const resultadosEnLS = localStorage.getItem('resultados');
-    console.log(resultadosEnLS);
-    console.log(JSON.parse(resultadosEnLS));
     if (resultadosEnLS) {
       var resultados = JSON.parse(resultadosEnLS);
       this.setState({ resultados });
     }
-
   }
 
   renderEquipos() {

@@ -65803,22 +65803,13 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "handleChanges", function (event) {
       var id = event.target.id;
       var value = event.target.value;
-      console.log(event.target.id);
-      console.log(event.target.value); // 1. Make a shallow copy of the items
 
       var resultados = _objectSpread({}, _this.state.resultados);
 
-      console.log(resultados); // 2. Make a shallow copy of the item you want to mutate
-
       var resultado = _objectSpread({}, resultados[id]);
 
-      console.log(resultado); // 3. Replace the property you're intested in
-
       resultado = value;
-      console.log(resultado); // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
-
       resultados[id] = resultado;
-      console.log(resultados); // 5. Set the state to our new copy
 
       _this.setState({
         resultados: resultados
@@ -65864,8 +65855,6 @@ function (_Component) {
         });
       });
       var resultadosEnLS = localStorage.getItem('resultados');
-      console.log(resultadosEnLS);
-      console.log(JSON.parse(resultadosEnLS));
 
       if (resultadosEnLS) {
         var resultados = JSON.parse(resultadosEnLS);
@@ -65973,13 +65962,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -65989,9 +65980,27 @@ function (_Component) {
   _inherits(Partido, _Component);
 
   function Partido() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, Partido);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Partido).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Partido)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "allowNumbersOnly", function (e) {
+      var code = e.which ? e.which : e.keyCode;
+
+      if (code > 31 && (code < 48 || code > 57)) {
+        e.preventDefault();
+      }
+    });
+
+    return _this;
   }
 
   _createClass(Partido, [{
@@ -66002,12 +66011,14 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "hidden-sm hidden-md hidden-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onKeyPress: this.allowNumbersOnly,
         value: this.props.resultadoEquipo1,
         id: 'resultado_equipo1_partido' + this.props.clave,
         type: "text",
         className: "form-control input-sm",
         onChange: this.props.onChanges
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onKeyPress: this.allowNumbersOnly,
         value: this.props.resultadoEquipo2,
         id: 'resultado_equipo2_partido' + this.props.clave,
         type: "text",
