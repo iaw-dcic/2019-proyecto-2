@@ -65747,9 +65747,280 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
   !*** ./resources/js/components/Cuartos.js ***!
   \********************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\jose\\react\\proyecto-2\\resources\\js\\components\\Cuartos.js: Support for the experimental syntax 'classProperties' isn't currently enabled (16:16):\n\n  14 |   }\n  15 | \n> 16 |   handleSubmit = e => {\n     |                ^\n  17 |     e.preventDefault();\n  18 |   };\n  19 | \n\nAdd @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.\n    at Object.raise (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:6322:17)\n    at Object.expectPlugin (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:7643:18)\n    at Object.parseClassProperty (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10769:12)\n    at Object.pushClassProperty (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10734:30)\n    at Object.parseClassMemberWithIsStatic (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10673:14)\n    at Object.parseClassMember (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10607:10)\n    at withTopicForbiddingContext (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10562:14)\n    at Object.withTopicForbiddingContext (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:9657:14)\n    at Object.parseClassBody (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10539:10)\n    at Object.parseClass (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10513:22)\n    at Object.parseExportDefaultExpression (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10938:19)\n    at Object.parseExport (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10844:31)\n    at Object.parseStatementContent (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:9867:27)\n    at Object.parseStatement (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:9763:17)\n    at Object.parseBlockOrModuleBlockBody (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10340:25)\n    at Object.parseBlockBody (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:10327:10)\n    at Object.parseTopLevel (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:9692:10)\n    at Object.parse (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:11209:17)\n    at parse (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\parser\\lib\\index.js:11245:38)\n    at parser (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:170:34)\n    at normalizeFile (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:138:11)\n    at runSync (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at process.nextTick (C:\\Users\\jose\\react\\proyecto-2\\node_modules\\@babel\\core\\lib\\transform.js:34:34)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Cuartos; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var Cuartos =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Cuartos, _Component);
+
+  function Cuartos() {
+    var _this;
+
+    _classCallCheck(this, Cuartos);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cuartos).call(this)); //Initialize the state in the constructor
+
+    _defineProperty(_assertThisInitialized(_this), "handleChanges", function (event) {
+      var id = event.target.id;
+      var value = event.target.value;
+      console.log(event.target.id);
+      console.log(event.target.value); // 1. Make a shallow copy of the items
+
+      var resultados = _objectSpread({}, _this.state.resultados);
+
+      console.log(resultados); // 2. Make a shallow copy of the item you want to mutate
+
+      var resultado = _objectSpread({}, resultados[id]);
+
+      console.log(resultado); // 3. Replace the property you're intested in
+
+      resultado = value;
+      console.log(resultado); // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
+
+      resultados[id] = resultado;
+      console.log(resultados); // 5. Set the state to our new copy
+
+      _this.setState({
+        resultados: resultados
+      });
+
+      localStorage.setItem('resultados', JSON.stringify(_this.state.resultados));
+    });
+
+    _this.state = {
+      equipos: [],
+      partidoCuartos: [],
+      resultados: {
+        resultado_equipo1_partido0: "",
+        resultado_equipo2_partido0: "",
+        resultado_equipo1_partido1: "",
+        resultado_equipo2_partido1: "",
+        resultado_equipo1_partido2: "",
+        resultado_equipo2_partido2: "",
+        resultado_equipo1_partido3: "",
+        resultado_equipo2_partido3: ""
+      }
+    };
+    return _this;
+  }
+
+  _createClass(Cuartos, [{
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      /* fetch API in action */
+      fetch('http://localhost:8000/equipos').then(function (response) {
+        return response.json();
+      }).then(function (equipos) {
+        //Fetched product is stored in the state
+        _this2.setState({
+          equipos: equipos
+        });
+      });
+      var resultadosEnLS = localStorage.getItem('resultados');
+      console.log(resultadosEnLS);
+      console.log(JSON.parse(resultadosEnLS));
+
+      if (resultadosEnLS) {
+        var resultados = JSON.parse(resultadosEnLS);
+        this.setState({
+          resultados: resultados
+        });
+      }
+    }
+  }, {
+    key: "renderEquipos",
+    value: function renderEquipos() {
+      var _this3 = this;
+
+      var partidoCuartos = this.crearCuartos();
+      return partidoCuartos.map(function (partido) {
+        var resultadoEquipo1 = _this3.state.resultados['resultado_equipo1_partido' + partido.id];
+        var resultadoEquipo2 = _this3.state.resultados['resultado_equipo2_partido' + partido.id];
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          resultadoEquipo1: resultadoEquipo1,
+          resultadoEquipo2: resultadoEquipo2,
+          onChanges: _this3.handleChanges,
+          clave: partido.id,
+          key: partido.id,
+          nombre_equipo1: partido.nombre_equipo1,
+          nombre_equipo2: partido.nombre_equipo2
+        });
+      });
+    }
+  }, {
+    key: "crearCuartos",
+    value: function crearCuartos() {
+      var equiposDup = _toConsumableArray(this.state.equipos);
+
+      var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
+      var arregloDerecha = equiposDup;
+      var partidoCuartos = arregloIzquierda.map(function (equipo) {
+        return {
+          id: equipo.id,
+          nombre_equipo1: equipo.nombre_equipo,
+          nombre_equipo2: arregloDerecha[equipo.id].nombre_equipo
+        };
+      });
+      return partidoCuartos;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-striped"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Resultado 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xs-12 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary text-center center"
+      }, "Guardar"))))));
+    }
+  }]);
+
+  return Cuartos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Partido.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Partido.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Partido; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Partido =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Partido, _Component);
+
+  function Partido() {
+    _classCallCheck(this, Partido);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Partido).apply(this, arguments));
+  }
+
+  _createClass(Partido, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "hidden-sm hidden-md hidden-lg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.resultadoEquipo1,
+        id: 'resultado_equipo1_partido' + this.props.clave,
+        type: "text",
+        className: "form-control input-sm",
+        onChange: this.props.onChanges
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.resultadoEquipo2,
+        id: 'resultado_equipo2_partido' + this.props.clave,
+        type: "text",
+        className: "form-control input-sm",
+        onChange: this.props.onChanges
+      })));
+    }
+  }]);
+
+  return Partido;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
 
 /***/ }),
 
