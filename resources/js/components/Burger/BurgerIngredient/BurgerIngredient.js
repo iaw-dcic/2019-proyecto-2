@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class BurgerIngredient extends Component {
+
+    state = {
+        ingredients: []
+    }
+
+    componentDidMount () {
+        axios.get('/api/ingredients').then(response => {
+          this.setState({
+            ingredients: response.data
+          })
+        })
+    }
+
     render () {
         let ingredient = null;
 
