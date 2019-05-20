@@ -65825,7 +65825,9 @@ function (_Component) {
           nombre_equipo1: partido.nombre_equipo1,
           nombre_equipo2: partido.nombre_equipo2,
           resultados: _this2.props.state.resultados,
-          actualizarResultadosBotones: _this2.props.actualizarResultadosBotones
+          actualizarResultadosBotones: _this2.props.actualizarResultadosBotones,
+          resultadoBotones: _this2.props.resultadoBotones,
+          desactivarBoton: _this2.props.desactivarBoton
         });
       });
     }
@@ -65972,7 +65974,9 @@ function (_Component) {
           nombre_equipo1: partido.nombre_equipo1,
           nombre_equipo2: partido.nombre_equipo2,
           resultados: _this.props.resultados,
-          actualizarResultadosBotones: _this.props.actualizarResultadosBotones
+          actualizarResultadosBotones: _this.props.actualizarResultadosBotones,
+          resultadoBotones: _this.props.resultadoBotones,
+          desactivarBoton: _this.props.desactivarBoton
         });
       });
     }
@@ -66069,6 +66073,14 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Partido).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_this), "radio1Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
+
+    _defineProperty(_assertThisInitialized(_this), "radio2Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
+
+    _defineProperty(_assertThisInitialized(_this), "input1Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
+
+    _defineProperty(_assertThisInitialized(_this), "input2Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
+
     _defineProperty(_assertThisInitialized(_this), "allowNumbersOnly", function (e) {
       var code = e.which ? e.which : e.keyCode;
 
@@ -66097,6 +66109,13 @@ function (_Component) {
       _this.props.onChanges(e);
 
       _this.actualizarState(e);
+
+      var valorInput1 = _this.input1Ref['current'].value;
+      var valorInput2 = _this.input2Ref['current'].value;
+
+      if (valorInput1 && valorInput1 && valorInput1 != valorInput2) {
+        _this.props.desactivarBoton(_this.radio1Ref['current'].id, _this.radio2Ref['current'].id);
+      }
     });
 
     _this.state = {
@@ -66119,6 +66138,10 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      if (!this.props.resultadoBotones) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null);
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66129,7 +66152,9 @@ function (_Component) {
         id: 'ganador_equipo1_partido' + this.props.clave,
         name: 'customRadio' + this.props.clave,
         className: "custom-control-input",
-        onChange: this.props.actualizarResultadosBotones
+        ref: this.radio1Ref,
+        onChange: this.props.actualizarResultadosBotones,
+        checked: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2 ? false : this.props.resultadoBotones['ganador_equipo1_partido' + this.props.clave]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: 'ganador_equipo1_partido' + this.props.clave
@@ -66139,6 +66164,7 @@ function (_Component) {
         onKeyPress: this.allowNumbersOnly,
         value: this.props.resultadoEquipo1,
         id: 'resultado_equipo1_partido' + this.props.clave,
+        ref: this.input1Ref,
         type: "text",
         className: "form-control input-sm",
         onChange: this.handleChanges
@@ -66146,6 +66172,7 @@ function (_Component) {
         onKeyPress: this.allowNumbersOnly,
         value: this.props.resultadoEquipo2,
         id: 'resultado_equipo2_partido' + this.props.clave,
+        ref: this.input2Ref,
         type: "text",
         className: "form-control input-sm",
         onChange: this.handleChanges
@@ -66153,11 +66180,13 @@ function (_Component) {
         className: "custom-control custom-radio custom-control-inline"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
+        ref: this.radio2Ref,
         disabled: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2,
         id: 'ganador_equipo2_partido' + this.props.clave,
         name: 'customRadio' + this.props.clave,
         className: "custom-control-input",
-        onChange: this.props.actualizarResultadosBotones
+        onChange: this.props.actualizarResultadosBotones,
+        checked: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2 ? false : this.props.resultadoBotones['ganador_equipo2_partido' + this.props.clave]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: 'ganador_equipo2_partido' + this.props.clave
@@ -66242,6 +66271,33 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "desactivarBoton", function (id, id2) {
+      var resultadosBotones = _objectSpread({}, _this.state.resultadosBotones);
+
+      var resultado = _objectSpread({}, resultadosBotones[id]);
+
+      resultado = false;
+      resultadosBotones[id] = resultado;
+
+      _this.setState({
+        resultadosBotones: resultadosBotones
+      }, function () {
+        resultadosBotones = _objectSpread({}, _this.state.resultadosBotones);
+
+        var resultado2 = _objectSpread({}, resultadosBotones[id2]);
+
+        resultado2 = false;
+        console.log(id2);
+        resultadosBotones[id2] = resultado2;
+
+        _this.setState({
+          resultadosBotones: resultadosBotones
+        });
+      });
+
+      return false;
+    });
+
     _defineProperty(_assertThisInitialized(_this), "actualizarResultadosBotones", function (event) {
       var idActual = event.target.id;
 
@@ -66278,24 +66334,36 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "crearGanadoresCuartos", function () {
       var ganadoresCuartos = _objectSpread({}, _this.state.ganadoresCuartos);
 
-      console.log("entro");
-
       for (var i = 0; i < _this.state.equipos.length / 2; i++) {
         var primerResultado = 'resultado_equipo1_partido' + i;
         var segundoResultado = 'resultado_equipo2_partido' + i;
+        var primerResultadoBoton = 'ganador_equipo1_partido' + i;
+        var segundoResultadoBoton = 'ganador_equipo2_partido' + i;
         var partidoActualizar = 'ganador_partido' + (i + 1);
 
         var ganador = _objectSpread({}, ganadoresCuartos[partidoActualizar]);
 
-        if (_this.state.resultados[primerResultado] && _this.state.resultados[segundoResultado]) {
-          //check not null
-          if (parseInt(_this.state.resultados[primerResultado]) > parseInt(_this.state.resultados[segundoResultado])) {
-            var indexEquipoGanador = i;
-          } else {
-            var indexEquipoGanador = i + 4;
-          }
+        var statePrimerResultado = parseInt(_this.state.resultados[primerResultado]);
+        var stateSegundoResultado = parseInt(_this.state.resultados[segundoResultado]);
+        var statePrimerResultadoBoton = _this.state.resultadosBotones[primerResultadoBoton];
+        var stateSegundoResultadoBoton = _this.state.resultadosBotones[segundoResultadoBoton];
 
-          ganador = _this.state.equipos[indexEquipoGanador].nombre_equipo;
+        if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) {
+          //check not null
+          if (statePrimerResultadoBoton || statePrimerResultado > stateSegundoResultado) {
+            //Si el boton esta prendido O el puntaje es mayor (Gana el primero)
+            var indexEquipoGanador = i;
+            ganador = _this.state.equipos[indexEquipoGanador].nombre_equipo;
+          } else {
+            if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) {
+              //Gana el segundo
+              var indexEquipoGanador = i + 4;
+              ganador = _this.state.equipos[indexEquipoGanador].nombre_equipo;
+            } else {
+              //Empate sin radio
+              ganador = 'Ganador partido ' + (i + 1);
+            }
+          }
         } else {
           //restore default
           ganador = 'Ganador partido ' + (i + 1);
@@ -66319,18 +66387,29 @@ function (_Component) {
       while (indiceSemifinal < 3) {
         var primerResultado = 'resultado_equipo1_partido' + (indiceSemifinal + 3);
         var segundoResultado = 'resultado_equipo2_partido' + (indiceSemifinal + 3);
+        var primerResultadoBoton = 'ganador_equipo1_partido' + (indiceSemifinal + 3);
+        var segundoResultadoBoton = 'ganador_equipo2_partido' + (indiceSemifinal + 3);
         var partidoActualizar = 'ganador_semifinal' + indiceSemifinal;
 
         var ganador = _objectSpread({}, ganadoresSemifinales[partidoActualizar]);
 
-        console.log(ganador);
+        var statePrimerResultado = parseInt(_this.state.resultados[primerResultado]);
+        var stateSegundoResultado = parseInt(_this.state.resultados[segundoResultado]);
+        var statePrimerResultadoBoton = _this.state.resultadosBotones[primerResultadoBoton];
+        var stateSegundoResultadoBoton = _this.state.resultadosBotones[segundoResultadoBoton];
 
-        if (_this.state.resultados[primerResultado] && _this.state.resultados[segundoResultado]) {
+        if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) {
           //check not null
-          if (parseInt(_this.state.resultados[primerResultado]) > parseInt(_this.state.resultados[segundoResultado])) {
+          if (statePrimerResultadoBoton || statePrimerResultado > stateSegundoResultado) {
             var indexEquipoGanador = 'ganador_partido' + equipoActual;
+            ganador = _this.state.ganadoresCuartos[indexEquipoGanador];
           } else {
-            var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
+            if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) {
+              var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
+              ganador = _this.state.ganadoresCuartos[indexEquipoGanador];
+            } else {
+              ganador = 'Ganador Semifinal ' + indiceSemifinal;
+            }
           }
 
           ganador = _this.state.ganadoresCuartos[indexEquipoGanador];
@@ -66465,23 +66544,29 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        state: this.state,
         handleChanges: this.handleChanges,
         crearGanadoresCuartos: this.crearGanadoresCuartos,
-        actualizarResultadosBotones: this.actualizarResultadosBotones
+        actualizarResultadosBotones: this.actualizarResultadosBotones,
+        resultadoBotones: this.state.resultadosBotones,
+        state: this.state,
+        desactivarBoton: this.desactivarBoton
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semifinal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         crearGanadoresSemifinales: this.crearGanadoresSemifinales,
         equipos: this.state.equipos,
         resultados: this.state.resultados,
         ganadoresCuartos: this.state.ganadoresCuartos,
         handleChanges: this.handleChanges,
-        actualizarResultadosBotones: this.actualizarResultadosBotones
+        actualizarResultadosBotones: this.actualizarResultadosBotones,
+        resultadoBotones: this.state.resultadosBotones,
+        desactivarBoton: this.desactivarBoton
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_3__["default"], {
         equipos: this.state.equipos,
         resultados: this.state.resultados,
         ganadoresSemifinales: this.state.ganadoresSemifinales,
         handleChanges: this.handleChanges,
-        actualizarResultadosBotones: this.actualizarResultadosBotones
+        actualizarResultadosBotones: this.actualizarResultadosBotones,
+        resultadoBotones: this.state.resultadosBotones,
+        desactivarBoton: this.desactivarBoton
       }));
     }
   }]);
@@ -66586,7 +66671,9 @@ function (_Component) {
           nombre_equipo1: partido.nombre_equipo1,
           nombre_equipo2: partido.nombre_equipo2,
           resultados: _this2.props.resultados,
-          actualizarResultadosBotones: _this2.props.actualizarResultadosBotones
+          actualizarResultadosBotones: _this2.props.actualizarResultadosBotones,
+          resultadoBotones: _this2.props.resultadoBotones,
+          desactivarBoton: _this2.props.desactivarBoton
         });
       });
     }

@@ -96,6 +96,22 @@ export default class Prode extends Component {
     this.setState({ resultados });
   }
 
+  desactivarBoton = (id,id2) => {
+    let resultadosBotones = { ...this.state.resultadosBotones };
+    let resultado = { ...resultadosBotones[id] };
+    resultado = false;
+    resultadosBotones[id] = resultado;
+    this.setState({ resultadosBotones }, () => {
+      resultadosBotones = { ...this.state.resultadosBotones };
+      let resultado2 = { ...resultadosBotones[id2] };
+      resultado2 = false;
+      console.log(id2);
+      resultadosBotones[id2] = resultado2;
+      this.setState({ resultadosBotones });
+    });
+    return false;
+  }
+
   actualizarResultadosBotones = (event) => {
     let idActual = event.target.id;
     let idButtonDesactivado = this.obtenerIdDesactivado(idActual);
@@ -103,11 +119,11 @@ export default class Prode extends Component {
     let resultado = { ...resultadosBotones[idActual] };
     resultado = true;
     resultadosBotones[idActual] = resultado;
-    this.setState({ resultadosBotones }, 
+    this.setState({ resultadosBotones },
       () => this.actualizarResultadosDesactivado(idButtonDesactivado));
   }
 
-  actualizarResultadosDesactivado(idButtonDesactivado){
+  actualizarResultadosDesactivado(idButtonDesactivado) {
     console.log(idButtonDesactivado);
     let resultadosBotones = { ...this.state.resultadosBotones };
     let resultado = { ...resultadosBotones[idButtonDesactivado] };
@@ -115,8 +131,8 @@ export default class Prode extends Component {
     resultadosBotones[idButtonDesactivado] = resultado;
     this.setState({ resultadosBotones });
   }
-  
-  obtenerIdDesactivado = (idAnterior) =>{
+
+  obtenerIdDesactivado = (idAnterior) => {
     let resultadosBotones = { ...this.state.resultadosBotones };
     var keysBotones = Object.keys(resultadosBotones);
     if (keysBotones.indexOf(idAnterior) % 2 == 0) {
@@ -136,20 +152,32 @@ export default class Prode extends Component {
 
   crearGanadoresCuartos = () => {
     var ganadoresCuartos = { ...this.state.ganadoresCuartos };
-    console.log("entro");
     for (var i = 0; i < this.state.equipos.length / 2; i++) {
       let primerResultado = 'resultado_equipo1_partido' + i;
       let segundoResultado = 'resultado_equipo2_partido' + i;
-      var partidoActualizar = 'ganador_partido' + (i + 1);
-      var ganador = { ...ganadoresCuartos[partidoActualizar] };
-      if (this.state.resultados[primerResultado] && this.state.resultados[segundoResultado]) { //check not null
-        if (parseInt(this.state.resultados[primerResultado]) > parseInt(this.state.resultados[segundoResultado])) {
+      let primerResultadoBoton = 'ganador_equipo1_partido' + i;
+      let segundoResultadoBoton = 'ganador_equipo2_partido' + i;
+      let partidoActualizar = 'ganador_partido' + (i + 1);
+      let ganador = { ...ganadoresCuartos[partidoActualizar] };
+      let statePrimerResultado = parseInt(this.state.resultados[primerResultado]);
+      let stateSegundoResultado = parseInt(this.state.resultados[segundoResultado]);
+      let statePrimerResultadoBoton = this.state.resultadosBotones[primerResultadoBoton]
+      let stateSegundoResultadoBoton = this.state.resultadosBotones[segundoResultadoBoton]
+
+      if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) { //check not null
+        if (statePrimerResultadoBoton || (statePrimerResultado > stateSegundoResultado)) { //Si el boton esta prendido O el puntaje es mayor (Gana el primero)
           var indexEquipoGanador = i;
+          ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
         }
         else {
-          var indexEquipoGanador = i + 4;
+          if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) { //Gana el segundo
+            var indexEquipoGanador = i + 4;
+            ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
+          }
+          else { //Empate sin radio
+            ganador = 'Ganador partido ' + (i + 1);
+          }
         }
-        ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
       }
       else { //restore default
         ganador = 'Ganador partido ' + (i + 1);
@@ -157,7 +185,6 @@ export default class Prode extends Component {
       ganadoresCuartos[partidoActualizar] = ganador;
     }
     this.setState({ ganadoresCuartos });
-
   }
 
   crearGanadoresSemifinales = () => {
@@ -168,15 +195,28 @@ export default class Prode extends Component {
     while (indiceSemifinal < 3) {
       let primerResultado = 'resultado_equipo1_partido' + (indiceSemifinal + 3);
       let segundoResultado = 'resultado_equipo2_partido' + (indiceSemifinal + 3);
+      let primerResultadoBoton = 'ganador_equipo1_partido' + (indiceSemifinal + 3);
+      let segundoResultadoBoton = 'ganador_equipo2_partido' + (indiceSemifinal + 3);
       var partidoActualizar = 'ganador_semifinal' + indiceSemifinal;
       var ganador = { ...ganadoresSemifinales[partidoActualizar] };
-      console.log(ganador);
-      if (this.state.resultados[primerResultado] && this.state.resultados[segundoResultado]) { //check not null
-        if (parseInt(this.state.resultados[primerResultado]) > parseInt(this.state.resultados[segundoResultado])) {
+      let statePrimerResultado = parseInt(this.state.resultados[primerResultado]);
+      let stateSegundoResultado = parseInt(this.state.resultados[segundoResultado]);
+      let statePrimerResultadoBoton = this.state.resultadosBotones[primerResultadoBoton]
+      let stateSegundoResultadoBoton = this.state.resultadosBotones[segundoResultadoBoton]
+
+      if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) { //check not null
+        if (statePrimerResultadoBoton || (statePrimerResultado > stateSegundoResultado)) {
           var indexEquipoGanador = 'ganador_partido' + equipoActual;
+          ganador = this.state.ganadoresCuartos[indexEquipoGanador];
         }
         else {
-          var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
+          if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) {
+            var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
+            ganador = this.state.ganadoresCuartos[indexEquipoGanador];
+          }
+          else{
+            ganador = 'Ganador Semifinal ' + indiceSemifinal;
+          }
         }
         ganador = this.state.ganadoresCuartos[indexEquipoGanador];
       }
@@ -189,14 +229,13 @@ export default class Prode extends Component {
     }
     this.setState({ ganadoresSemifinales });
   }
-
-
+  
   render() {
     return (
       <div>
-        <Cuartos state={this.state} handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} actualizarResultadosBotones={this.actualizarResultadosBotones} />
-        <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} />
-        <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} />
+        <Cuartos handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} state={this.state} desactivarBoton={this.desactivarBoton} />
+        <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
+        <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
       </div>
     )
   }
