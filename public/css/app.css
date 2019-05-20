@@ -10679,10 +10679,7 @@ a.text-dark:focus {
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
-}
-
-.Burger::-webkit-scrollbar {
-  width: 0 !important;
+  overflow: scroll;
 }
 
 @media (min-width: 500px) and (min-height: 400px) {
