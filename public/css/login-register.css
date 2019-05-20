@@ -13,6 +13,29 @@
 
 }
 
+#mainNav .navbar-brand {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+  
+.navbar-brand:hover, .navbar-brand:focus {
+    text-decoration: none;
+}
+
+#mainNav .navbar-brand {
+    font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
+}
+
 .card-container.card {
     max-width: 450px;
     padding: 40px 40px;
