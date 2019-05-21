@@ -11,6 +11,11 @@
 |
 */
 
-
+//Usuario registrado
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+Route::get('/home','Controller@index')->middleware('auth');
+//Route::view('/{path?}', 'react');//->middleware('auth');
+
+//Usuario no registrado
+Route::get('/','NotRegisterController@index');
+
