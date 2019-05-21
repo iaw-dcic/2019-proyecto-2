@@ -12,7 +12,7 @@ class App extends Component {
     render () {
         return (
             <BrowserRouter>
-                <Bar/>
+                {/* <Bar/> */}
                 <Switch>
                     <Route path="/" component={Dashboard} exact/>
                     <Route path="/mylab" component={Mylab} exact/>
