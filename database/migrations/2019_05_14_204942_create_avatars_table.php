@@ -17,6 +17,10 @@ class CreateAvatarsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name')->unique();
+            $table->string('skin');
+            $table->string('hair');
+            $table->string('eyes');
+            $table->string('mouth');
         });
     }
 

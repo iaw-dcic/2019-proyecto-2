@@ -1,0 +1,30 @@
+.Autoria{
+    text-align: center;
+    font-size: 65px;
+    padding-top: 5%;
+}
+
+.titulo{
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+    font-size: 80px;
+}
+.all-Info{
+    font-family: 'Abel', sans-serif;
+    font-weight: 400;
+}
+
+.tituloReadme{
+    font-family: 'Merriweather', serif;
+    font-weight: 500;
+}
+
+.general{
+    box-sizing: border-box;
+}
+
+.li{
+    font-size: 50px;
+    font-weight: bold;
+}
