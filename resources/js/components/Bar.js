@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Link, Route, Switch,} from 'react-router-dom'
 import './../css/creative.css'
 
 
@@ -18,7 +17,7 @@ export default class Bar extends Component {
                                 <a className="nav-link js-scroll-trigger" href="/about">About</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link js-scroll-trigger" href="/login">Sign in</a>
+                                <a className="nav-link js-scroll-trigger" href="/login">Login</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link js-scroll-trigger" href="/register">Sign up</a>
