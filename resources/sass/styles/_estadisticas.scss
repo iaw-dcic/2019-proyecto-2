@@ -1,0 +1,37 @@
+.contador-partidos {
+    position: relative;
+    padding: 8rem 0;
+
+    .ico-circle {
+        height: 100px;
+        width: 100px;
+        font-size: 2rem;
+        border-radius: 50%;
+        line-height: 1.55;
+        margin: 0 auto;
+        text-align: center;
+        box-shadow: 0 0 0 10px #24b67e;
+        display: block;
+    }
+
+    .counter-box {
+        color: #fff;
+        text-align: center;
+
+        .counter-ico {
+            margin-bottom: 1rem;
+        }
+
+        .counter-ico .ico-circle {
+            height: 60px;
+            width: 60px;
+            line-height: 1.8;
+            box-shadow: 0 0 0 10px #bbf5df;
+        }
+
+        .counter-num .counter {
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+    }
+}

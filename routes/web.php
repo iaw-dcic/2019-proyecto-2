@@ -2,7 +2,7 @@
 
 Auth::routes();
 Route::view('/', 'react');
-//Route::view('/{path?}', 'react');//->middleware('auth');
+Route::view('/{path?}', 'react');//->middleware('auth');
 
 Route::resource('/user', 'UsersController')->only([
     'index', 'store', 'show', 'update', 'destroy'
@@ -34,3 +34,5 @@ Route::get('/leagues/{league}/groups/matches', 'PartidosController@getPartidosPo
 Route::get('/leagues/{league}/standings/teams', 'PosicionesCampeonatosController@getPuntajesPorEquipos');
 Route::get('/leagues/{league}/standings/teams/{team}', 'PosicionesCampeonatosController@getPuntajesDeEquipo');
 Route::get('/leagues/{league}/standings/groups', 'PosicionesCampeonatosController@getPuntajesPorGrupos');
+
+//

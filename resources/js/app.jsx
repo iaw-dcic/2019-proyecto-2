@@ -1,2 +1,2 @@
-require('./bootstrap');
-require('./components/App');
+require('./scripts');
+//require('./components/App');

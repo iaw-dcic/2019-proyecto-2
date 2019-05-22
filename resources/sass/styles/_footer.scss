@@ -1,0 +1,23 @@
+section.footer {
+    margin-top: 4rem;
+    position: relative;
+    padding: 2rem 2rem 0;
+
+    footer {
+        text-align: center;
+        color: #fff;
+        padding-bottom: 4rem;
+    }
+
+    footer .copyright {
+        margin-bottom: .3rem;
+    }
+
+    footer .credits {
+        margin-bottom: 0;
+    }
+
+    footer .credits a {
+        color: #fff;
+    }
+}
