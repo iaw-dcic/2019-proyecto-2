@@ -9,9 +9,9 @@ class PartidosController extends Controller
     public function getPartidosRonda($ronda){
         $partidos= Partido::where('ronda','=',$ronda)->get();
         $arreglo=array();
-        $i=1;
+        $i=0;
         foreach($partidos as $partido){
-           $arreglo[$i++]= array(
+           $arreglo["items"][$i++]= array(
                'id' => $partido->id,
                 'jugador_uno' => $partido->nombreJugadorUno->nombre,
                 'jugador_dos' => $partido->nombreJugadorDos->nombre,

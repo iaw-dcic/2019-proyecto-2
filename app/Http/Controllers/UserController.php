@@ -39,8 +39,28 @@ class UserController extends Controller
    public function authAndRedirect($user)
    {
        Auth::login($user);
-
+       
        return redirect()->to('/home#');
    }
+
+
+   
+   public function user(){
+    $user=Auth::user();
+   // $user=User::find($id);
+    if($user !=null)
+     return response()->json($user, 200);
+   
+    else
+    return response()->json("null", 200);
+}
+public function logout() {
+    Auth::logout();
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'logout'
+    ], 200);
+}
 }
  

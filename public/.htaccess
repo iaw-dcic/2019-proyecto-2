@@ -4,7 +4,7 @@
     </IfModule>
 
     RewriteEngine On
- RewriteBase /pr2/
+    RewriteBase /pr2/
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
