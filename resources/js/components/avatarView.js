@@ -10,7 +10,7 @@ export default class AvatarView extends Component{
         errors : []
     };
     
-    //Hola, soy un cambio
+   
    /* constructor(props) {
 
         this.handleBodyChange = this.handleBodyChange.bind(this);

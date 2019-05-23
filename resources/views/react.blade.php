@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{asset('css/HomeStyle.css')}}" rel="stylesheet">
+
    
 </head>
 @section('content')

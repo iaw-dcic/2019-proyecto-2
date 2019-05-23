@@ -36,7 +36,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <a href="{{ route('readme') }}" class="nav-link">Readme</a>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
