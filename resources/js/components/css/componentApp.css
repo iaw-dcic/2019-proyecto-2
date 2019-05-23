@@ -3,11 +3,7 @@
 }
 
 #topFlex {
-    height: 150px;
-}
-
-#options {
-    overflow-y: scroll;
+    height: 350px;
 }
 
 #previous {

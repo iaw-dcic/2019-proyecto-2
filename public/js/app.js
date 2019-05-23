@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".d-flex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 150px;\r\n}\r\n\r\n#options {\r\n    overflow-y: scroll;\r\n}\r\n\r\n#previous {\r\n    height: 100px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}", ""]);
+exports.push([module.i, ".d-flex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 100px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}", ""]);
 
 // exports
 
@@ -66387,15 +66387,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -66406,54 +66404,9 @@ function (_Component) {
   _inherits(AvatarComponents, _Component);
 
   function AvatarComponents() {
-    var _getPrototypeOf2;
-
-    var _this;
-
     _classCallCheck(this, AvatarComponents);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AvatarComponents)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      element1: '',
-      element2: '',
-      element3: ''
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
-      //Con esto y el submit de esta forma, no es necesario tener un constructor
-      _this.setState({
-        text: e.target.value
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e) {
-      //Esto es para un formulario
-      e.preventDefault();
-
-      if (!_this.state.text.length) {
-        return;
-      }
-
-      var newItem = {
-        text: _this.state.text,
-        id: Date.now()
-      };
-
-      _this.setState(function (state) {
-        return {
-          items: state.items.concat(newItem),
-          //estos dos son estados
-          text: ''
-        };
-      });
-    });
-
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(AvatarComponents).apply(this, arguments));
   }
 
   _createClass(AvatarComponents, [{
@@ -66519,7 +66472,7 @@ function (_Component) {
   _createClass(AvatarView, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.avatar.element1, this.props.avatar.element2, this.props.avatar.element3);
     }
   }]);
 
@@ -66546,6 +66499,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _css_componentApp_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/componentApp.css */ "./resources/js/components/css/componentApp.css");
 /* harmony import */ var _css_componentApp_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_componentApp_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _AvatarView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AvatarView */ "./resources/js/components/AvatarView.js");
+/* harmony import */ var _AvatarComponents__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AvatarComponents */ "./resources/js/components/AvatarComponents.js");
+/* harmony import */ var _ElementSelect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ElementSelect */ "./resources/js/components/ElementSelect.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66556,17 +66512,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
+
+
+
+ //import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native';
+
+/*
+<Collapse>
+    <CollapseHeader>
+        <h3>Option 1</h3>
+    </CollapseHeader>
+    <CollapseBody>
+        <div><p>fdsafdsa</p></div>
+    </CollapseBody>
+</Collapse>
+*/
+//en el saveChanges llamo al axios para que le diga al controlador que metodo usar
+//tengo que usar un setstate para que, lo que trae el avatarcomponents, lo guarde en el avatar actual aca, y eso se refleja automaticamente en el avatarview
 
 var ComponentApp =
 /*#__PURE__*/
@@ -66574,9 +66548,38 @@ function (_Component) {
   _inherits(ComponentApp, _Component);
 
   function ComponentApp() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, ComponentApp);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ComponentApp).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ComponentApp)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      avatarActual: {
+        "element1": "test",
+        "element2": "test",
+        "element3": "test"
+      },
+      //this.props.avatar.elemento1
+      avataresTotales: []
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "saveChanges", function () {
+      _this.setState(function (state) {
+        return {//avatarActual: state.items.concat (item) llamar al controlador, update o create
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "returnToDefault", function () {});
+
+    return _this;
   }
 
   _createClass(ComponentApp, [{
@@ -66586,28 +66589,31 @@ function (_Component) {
         className: "d-flex justify-content-center",
         id: "topFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "p-2 bd-highlight",
+        className: "col-md-9",
         id: "editor"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mx-auto"
-      }, "Aca es donde se muestra el editor (Panel grande)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "p-2 bd-highlight",
+      }, "Aca es donde se muestra el editor (Panel grande)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarView__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        avatar: this.state.avatarActual
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3",
         id: "options"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "table-wrapper-scroll-y my-custom-scrollbar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Option 1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Option 2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Option 3"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center",
         id: "bottomFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "p-2 bd-highlight",
+        className: "col-md-9",
+        id: "previous"
+      }, "Aca se muestra los avatares creados previamente"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3",
         id: "save"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary",
-        onClick: ""
-      }, "Save Avatar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "p-2 bd-highlight",
-        id: "previous"
-      }, "Aca se muestra los avatares creados previamente")));
+        onClick: this.saveChanges
+      }, "Save Avatar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
+        onClick: this.returnToDefault
+      }, "Save Avatar"))));
     }
   }]);
 
@@ -66726,8 +66732,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
