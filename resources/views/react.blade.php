@@ -21,5 +21,6 @@
 </head>
 <body>
     <div id="react-app"></div>
+    <!-- Aca dentro REACT va a llenar lo que yo cree -->
 </body>
 </html>

@@ -5,14 +5,14 @@ import Example from './Example'
 
 class App extends Component {
     render () {
-    return (
-        <BrowserRouter>
-        <div>
-            <Example />
-        </div>
-        </BrowserRouter>
-    )
+        return (
+            <BrowserRouter>
+            <div>
+                <Example />
+            </div>
+            </BrowserRouter>
+        )
     }
 }
-
+//Esta aplicación el documento el que tiene el id' react-app'
 ReactDOM.render(<App />, document.getElementById('react-app'))
