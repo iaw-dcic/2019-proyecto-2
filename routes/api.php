@@ -18,6 +18,6 @@ use Illuminate\Http\Request;
 //});
  
 Route::get('partidos/{ronda}', 'PartidosController@getPartidosRonda');
-
+Route::get('partidos_dos/{ronda}', 'PartidosController@partidos_de_a_dos');
  Route::get('user', 'UserController@user');//->middleware('auth');
   

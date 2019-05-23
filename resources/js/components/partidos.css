@@ -1,0 +1,34 @@
+#contenedor{
+    margin-top:4rem;
+}
+
+.draws-matches .match-combine {
+    padding-right: 260px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.draws-matches .match tr.winner td.player-name {
+    border-left: 3px solid #75c5c0;
+    font-weight: 700;
+}
+.draws-matches .match td.player-name {
+    width: auto;
+    text-align: left;
+}
+.draws-matches .match td {
+    border: 1px solid #f0f0f0;
+        border-left-color: rgb(240, 240, 240);
+        border-left-style: solid;
+        border-left-width: 1px;
+    padding: 4px 10px;
+    font: 16px/22px Barlow,sans-serif;
+        font-weight: normal;
+    width: 10px;
+    text-align: center;
+    color: #333;
+}
+
+hr{
+    border: 2px;
+}

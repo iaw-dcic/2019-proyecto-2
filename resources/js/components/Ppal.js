@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-import Partidos from './Partidos'
+import NavIzq from './NavIzq'
 import Header from './Header'
 export default class Ppal extends Component {
 
     state = {
-        error: null,
-        isLoaded: false,
-        items: [],
+
         user: []
     };
     componentWillMount() {
@@ -30,11 +28,10 @@ export default class Ppal extends Component {
             return <div>Error: {this.state.error.message}</div>;
         } else
             return (
-
-                <div className="container" >
+                <React.Fragment>
                     <Header user={this.state.user} />
-                    <Partidos />
-                </div>
+                    <NavIzq />
+                </React.Fragment>
             );
     }
 

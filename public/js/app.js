@@ -6508,6 +6508,25 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/partidos.css":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/partidos.css ***!
+  \******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n\r\nhr{\r\n    border: 2px;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ppal.css":
 /*!**************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/ppal.css ***!
@@ -66462,18 +66481,138 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Partidos.js":
+/***/ "./resources/js/components/NavIzq.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/NavIzq.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NavIzq; });
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _PrimerRonda__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PrimerRonda */ "./resources/js/components/PrimerRonda.js");
+/* harmony import */ var _SegundaRonda__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SegundaRonda */ "./resources/js/components/SegundaRonda.js");
+/* harmony import */ var _Playoffs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Playoffs */ "./resources/js/components/Playoffs.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var NavIzq =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(NavIzq, _Component);
+
+  function NavIzq() {
+    _classCallCheck(this, NavIzq);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(NavIzq).apply(this, arguments));
+  }
+
+  _createClass(NavIzq, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "contenedor",
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-3"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "nav flex-column nav-pills"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link active show",
+        "data-toggle": "pill",
+        href: "#perfil"
+      }, "Mi perfil")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link",
+        "data-toggle": "pill",
+        href: "#primerRonda"
+      }, "Primer Ronda")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link",
+        "data-toggle": "pill",
+        href: "#segundaRonda"
+      }, "Segunda Ronda")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item  "
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link",
+        "data-toggle": "pill",
+        href: "#playoffs",
+        role: "button"
+      }, "Playoffs")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link",
+        "data-toggle": "pill",
+        href: "#ranking"
+      }, "Ranking")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-8"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "v-pills-tabContent",
+        className: "tab-content"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "primerRonda",
+        className: "tab-pane fade"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_PrimerRonda__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "segundaRonda",
+        className: "tab-pane fade"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_SegundaRonda__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "playoffs",
+        className: "tab-pane fade"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Playoffs__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+    }
+  }]);
+
+  return NavIzq;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Playoffs.js":
 /*!*********************************************!*\
-  !*** ./resources/js/components/Partidos.js ***!
+  !*** ./resources/js/components/Playoffs.js ***!
   \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Partidos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Playoffs; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66496,23 +66635,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var Partidos =
+
+var Playoffs =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Partidos, _Component);
+  _inherits(Playoffs, _Component);
 
-  function Partidos() {
+  function Playoffs() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Partidos);
+    _classCallCheck(this, Playoffs);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Partidos)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Playoffs)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       isLoaded: false,
@@ -66522,12 +66662,12 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Partidos, [{
+  _createClass(Playoffs, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('http://localhost/pr2/api/partidos/64').then(function (res) {
+      fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -66540,25 +66680,22 @@ function (_Component) {
     key: "render",
     value: function render() {
       var items = this.state.items;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Test Hola"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, items.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: item.id
-        }, item.jugador_uno, " vs ", item.jugador_dos);
-      }))))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, items.map(function (item, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "partido row",
+          key: i
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-8"
+        }, item.jugador_uno), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-8"
+        }, item.jugador_dos), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-4 ganador text-center"
+        }, "Djoko"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+      }));
     }
   }]);
 
-  return Partidos;
+  return Playoffs;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -66577,7 +66714,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Ppal; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Partidos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partidos */ "./resources/js/components/Partidos.js");
+/* harmony import */ var _NavIzq__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavIzq */ "./resources/js/components/NavIzq.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -66622,9 +66759,6 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Ppal)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      error: null,
-      isLoaded: false,
-      items: [],
       user: []
     });
 
@@ -66649,11 +66783,9 @@ function (_Component) {
     value: function render() {
       if (this.state.error) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Error: ", this.state.error.message);
-      } else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      } else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         user: this.state.user
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partidos__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavIzq__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -66661,6 +66793,228 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/PrimerRonda.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/PrimerRonda.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PrimerRonda; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var PrimerRonda =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PrimerRonda, _Component);
+
+  function PrimerRonda() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, PrimerRonda);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(PrimerRonda)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      isLoaded: false,
+      items: []
+    });
+
+    return _this;
+  }
+
+  _createClass(PrimerRonda, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      fetch('http://localhost/pr2/api/partidos/32').then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        _this2.setState({
+          isLoaded: true,
+          items: json.items
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var items = this.state.items;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, items.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: item.id
+        }, item.jugador_uno, " vs ", item.jugador_dos);
+      }));
+    }
+  }]);
+
+  return PrimerRonda;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SegundaRonda.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/SegundaRonda.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SegundaRonda; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var SegundaRonda =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SegundaRonda, _Component);
+
+  function SegundaRonda() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, SegundaRonda);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SegundaRonda)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      isLoaded: false,
+      items: []
+    });
+
+    return _this;
+  }
+
+  _createClass(SegundaRonda, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      fetch('http://localhost/pr2/api/partidos/16').then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        _this2.setState({
+          isLoaded: true,
+          items: json.items
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var items = this.state.items;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, items.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: item.id
+        }, item.jugador_uno, " vs ", item.jugador_dos);
+      }));
+    }
+  }]);
+
+  return SegundaRonda;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/partidos.css":
+/*!**********************************************!*\
+  !*** ./resources/js/components/partidos.css ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./partidos.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/partidos.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
