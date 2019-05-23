@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SideBar from './SideBar.js'
+import Example from './Example.js'
 import axios from 'axios';
 
 
@@ -36,6 +38,7 @@ export default class AvatarView extends Component{
     render(){
         return (
             <>
+
                 <SideBar/>
                 <div>
                     <Example/>

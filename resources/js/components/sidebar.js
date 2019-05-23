@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import '../scriptSideNav.js'
-import "./ComponentCSS/styleSidenav.css"
+//import "./ComponentCSS/styleSidenav.css"
+
+$(document).ready(function () {
+ 
+    $('[data-toggle="offcanvas"]').click(function () {
+          $('#wrapper').toggleClass('toggled');
+    });  
+  });
+
 
 export default class SideBar extends Component{
     render(){
