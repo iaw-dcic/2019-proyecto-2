@@ -1,0 +1,17 @@
+.d-flex {
+    margin-top: 2%;
+}
+
+#topFlex {
+    height: 150px;
+}
+
+#options {
+    overflow-y: scroll;
+}
+
+#previous {
+    height: 100px;
+    width: 50%;
+    overflow-x: scroll;
+}
