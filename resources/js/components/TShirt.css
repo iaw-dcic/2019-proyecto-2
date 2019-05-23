@@ -1,0 +1,16 @@
+.tshirt-container{
+}
+.tshirt-contents{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+.image{
+    background-image: url("/storage/uploads/basic_tee.png");
+    background-blend-mode: multiply;
+}
+.red{
+    background-color: red;
+}
