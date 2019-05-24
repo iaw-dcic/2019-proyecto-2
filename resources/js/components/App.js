@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter, Route, Switch,} from 'react-router-dom'
 
-import Bar from './Bar' 
 import Dashboard from './Dashboard' 
 import Mylab from './Mylab' 
 import Pagenotfound from './Pagenotfound' 
@@ -12,7 +11,6 @@ class App extends Component {
     render () {
         return (
             <BrowserRouter>
-                {/* <Bar/> */}
                 <Switch>
                     <Route path="/" component={Dashboard} exact/>
                     <Route path="/mylab" component={Mylab} exact/>

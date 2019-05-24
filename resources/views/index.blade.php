@@ -12,12 +12,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
 
-    <!-- Fonts -->
-    <!-- <link href="//fonts.gstatic.com" rel="dns-prefetch" type="text/css"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"> -->
-
     <!-- Styles -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"> -->
+    <link href="{{ asset('css/creative.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
