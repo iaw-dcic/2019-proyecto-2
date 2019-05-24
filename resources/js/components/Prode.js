@@ -14,6 +14,7 @@ export default class Prode extends Component {
       equipos: [],
       partidoCuartos: [],
       partidos: [],
+      partidosSemifinales: [],
       resultados: {
         resultado_equipo1_partido0: "",
         resultado_equipo2_partido0: "",
@@ -98,7 +99,6 @@ export default class Prode extends Component {
     localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
   }
 
-
   handleChanges = (event) => {
     let id = event.target.id;
     let value = event.target.value;
@@ -110,7 +110,78 @@ export default class Prode extends Component {
     this.setState({ resultados });
   }
 
-  desactivarBoton = (id,id2) => {
+  actualizarPartidos = (partido) => {
+    let partidos = { ...this.state.partidos };
+    let partidoActualizar = { ...this.state.partidos[partido.id] }
+    partidoActualizar = partido;
+    partidos[partido.id] = partidoActualizar;
+    this.setState({ partidos });
+  }
+
+  crearGanadoresCuartos = () => {
+    var partidosSemifinales = { ...this.state.partidosSemifinales }
+    // console.log(Object.values(this.state.partidos));
+    // console.log( this.state.partidos);
+    var partidosValues = Object.values(this.state.partidos);
+    var semifinales = partidosValues.filter(partido =>
+      partido.etapa === "cuartos"
+    ).map(partido => {
+      let idSemifinal = partido.id / 2;
+      let equipoSemifinal = partido.id % 2
+      let partidoSemifinal = { ...partidosSemifinales[idSemifinal]};
+      if (partido.boton1 || (partido.resultado1 > partido.resultado2)) {
+        partidoSemifinal.equipoSemifinal = partido.equipo1
+      }
+      else if  (partido.boton2 || (partido.resultado1 < partido.resultado2)){
+        partidoSemifinal.equipoSemifinal = partido.equipo2
+      }
+      else{
+        partidoSemifinal.equipoSemifinal = "N/A"
+      }
+      partidosSemifinales[idSemifinal] = partidoSemifinal;
+    });
+    console.log(semifinales);
+    this.setState({partidosSemifinales});
+    
+  }
+
+    //   var ganadoresCuartos = { ...this.state.ganadoresCuartos };
+    //   for (var i = 0; i < this.state.equipos.length / 2; i++) {
+    //     let primerResultado = 'resultado_equipo1_partido' + i;
+    //     let segundoResultado = 'resultado_equipo2_partido' + i;
+    //     let primerResultadoBoton = 'ganador_equipo1_partido' + i;
+    //     let segundoResultadoBoton = 'ganador_equipo2_partido' + i;
+    //     let partidoActualizar = 'ganador_partido' + (i + 1);
+    //     let ganador = { ...ganadoresCuartos[partidoActualizar] };
+    //     let statePrimerResultado = parseInt(this.state.resultados[primerResultado]);
+    //     let stateSegundoResultado = parseInt(this.state.resultados[segundoResultado]);
+    //     let statePrimerResultadoBoton = this.state.resultadosBotones[primerResultadoBoton]
+    //     let stateSegundoResultadoBoton = this.state.resultadosBotones[segundoResultadoBoton]
+
+    //     if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) { //check not null
+    //       if (statePrimerResultadoBoton || (statePrimerResultado > stateSegundoResultado)) { //Si el boton esta prendido O el puntaje es mayor (Gana el primero)
+    //         var indexEquipoGanador = i;
+    //         ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
+    //       }
+    //       else {
+    //         if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) { //Gana el segundo
+    //           var indexEquipoGanador = i + 4;
+    //           ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
+    //         }
+    //         else { //Empate sin radio
+    //           ganador = 'Ganador partido ' + (i + 1);
+    //         }
+    //       }
+    //     }
+    //     else { //restore default
+    //       ganador = 'Ganador partido ' + (i + 1);
+    //     }
+    //     ganadoresCuartos[partidoActualizar] = ganador;
+    //   }
+    //   this.setState({ ganadoresCuartos });
+  
+  /// CODIGO CANCER ABAJO 
+  desactivarBoton = (id, id2) => {
     let resultadosBotones = { ...this.state.resultadosBotones };
     let resultado = { ...resultadosBotones[id] };
     resultado = false;
@@ -158,42 +229,42 @@ export default class Prode extends Component {
   }
 
 
-  crearGanadoresCuartos = () => {
-    var ganadoresCuartos = { ...this.state.ganadoresCuartos };
-    for (var i = 0; i < this.state.equipos.length / 2; i++) {
-      let primerResultado = 'resultado_equipo1_partido' + i;
-      let segundoResultado = 'resultado_equipo2_partido' + i;
-      let primerResultadoBoton = 'ganador_equipo1_partido' + i;
-      let segundoResultadoBoton = 'ganador_equipo2_partido' + i;
-      let partidoActualizar = 'ganador_partido' + (i + 1);
-      let ganador = { ...ganadoresCuartos[partidoActualizar] };
-      let statePrimerResultado = parseInt(this.state.resultados[primerResultado]);
-      let stateSegundoResultado = parseInt(this.state.resultados[segundoResultado]);
-      let statePrimerResultadoBoton = this.state.resultadosBotones[primerResultadoBoton]
-      let stateSegundoResultadoBoton = this.state.resultadosBotones[segundoResultadoBoton]
+  // crearGanadoresCuartos = () => {
+  //   var ganadoresCuartos = { ...this.state.ganadoresCuartos };
+  //   for (var i = 0; i < this.state.equipos.length / 2; i++) {
+  //     let primerResultado = 'resultado_equipo1_partido' + i;
+  //     let segundoResultado = 'resultado_equipo2_partido' + i;
+  //     let primerResultadoBoton = 'ganador_equipo1_partido' + i;
+  //     let segundoResultadoBoton = 'ganador_equipo2_partido' + i;
+  //     let partidoActualizar = 'ganador_partido' + (i + 1);
+  //     let ganador = { ...ganadoresCuartos[partidoActualizar] };
+  //     let statePrimerResultado = parseInt(this.state.resultados[primerResultado]);
+  //     let stateSegundoResultado = parseInt(this.state.resultados[segundoResultado]);
+  //     let statePrimerResultadoBoton = this.state.resultadosBotones[primerResultadoBoton]
+  //     let stateSegundoResultadoBoton = this.state.resultadosBotones[segundoResultadoBoton]
 
-      if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) { //check not null
-        if (statePrimerResultadoBoton || (statePrimerResultado > stateSegundoResultado)) { //Si el boton esta prendido O el puntaje es mayor (Gana el primero)
-          var indexEquipoGanador = i;
-          ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
-        }
-        else {
-          if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) { //Gana el segundo
-            var indexEquipoGanador = i + 4;
-            ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
-          }
-          else { //Empate sin radio
-            ganador = 'Ganador partido ' + (i + 1);
-          }
-        }
-      }
-      else { //restore default
-        ganador = 'Ganador partido ' + (i + 1);
-      }
-      ganadoresCuartos[partidoActualizar] = ganador;
-    }
-    this.setState({ ganadoresCuartos });
-  }
+  //     if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) { //check not null
+  //       if (statePrimerResultadoBoton || (statePrimerResultado > stateSegundoResultado)) { //Si el boton esta prendido O el puntaje es mayor (Gana el primero)
+  //         var indexEquipoGanador = i;
+  //         ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
+  //       }
+  //       else {
+  //         if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) { //Gana el segundo
+  //           var indexEquipoGanador = i + 4;
+  //           ganador = this.state.equipos[indexEquipoGanador].nombre_equipo;
+  //         }
+  //         else { //Empate sin radio
+  //           ganador = 'Ganador partido ' + (i + 1);
+  //         }
+  //       }
+  //     }
+  //     else { //restore default
+  //       ganador = 'Ganador partido ' + (i + 1);
+  //     }
+  //     ganadoresCuartos[partidoActualizar] = ganador;
+  //   }
+  //   this.setState({ ganadoresCuartos });
+  // }
 
   crearGanadoresSemifinales = () => {
     var ganadoresSemifinales = { ...this.state.ganadoresSemifinales };
@@ -222,7 +293,7 @@ export default class Prode extends Component {
             var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
             ganador = this.state.ganadoresCuartos[indexEquipoGanador];
           }
-          else{
+          else {
             ganador = 'Ganador Semifinal ' + indiceSemifinal;
           }
         }
@@ -238,22 +309,14 @@ export default class Prode extends Component {
     this.setState({ ganadoresSemifinales });
   }
 
-  actualizarPartidos = (partido) => {
-    // console.log("entro");
-    // console.log(partido);
-    let partidos = { ...this.state.partidos };
-    let partidoActualizar = { ...this.state.partidos[partido.id]}
-    partidoActualizar = partido;
-    partidos[partido.id] = partidoActualizar;
-    this.setState({partidos});
-  }
-  
+
+
   render() {
     return (
       <div>
-        <Cuartos partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} state={this.state} desactivarBoton={this.desactivarBoton} />
-        {/* <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
-        <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} /> */}
+        <Cuartos equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} />
+        <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
+        <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
       </div>
     )
   }

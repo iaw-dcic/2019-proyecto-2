@@ -6,6 +6,7 @@ export default class Partido extends Component {
     this.state = {
       partido: {
         id: '',
+        etapa: '',
         equipo1: '',
         equipo2: '',
         resultado1: '',
@@ -20,13 +21,14 @@ export default class Partido extends Component {
   input2Ref = React.createRef();
 
   componentDidMount() {
-    console.log(this.props.partido)
+    // console.log(this.props.partido)
     var partido = Object.assign({}, this.state.partido);
     if (this.props.partido) {
       partido = {
         id: this.props.clave,
-        equipo1: this.props.partido.equipo1,
-        equipo2: this.props.partido.equipo2,
+        etapa: this.props.etapa,
+        equipo1: this.props.nombre_equipo1,
+        equipo2: this.props.nombre_equipo2,
         resultado1: this.props.partido.resultado1,
         resultado2: this.props.partido.resultado2,
         boton1: this.props.partido.boton1,
@@ -36,6 +38,9 @@ export default class Partido extends Component {
     else{
       partido = {
         id: this.props.clave,
+        etapa: this.props.etapa,
+        equipo1: this.props.nombre_equipo1,
+        equipo2: this.props.nombre_equipo2,
       }
     }
     this.setState({ partido });
@@ -80,17 +85,11 @@ export default class Partido extends Component {
         partido.boton2 = true;
         this.setState({ partido }, () => this.props.actualizarPartidos(this.state.partido));
       }
-      this.props.actualizarResultadosBotones(e);
     }
 
     handleChanges = (e) => {
       this.props.onChanges(e);
       this.actualizarInputs(e);
-      // let valorInput1 = this.state.resultado1;
-      // let valorInput2 = this.state.resultado2;
-      // if (valorInput1 && valorInput1 && (valorInput1 != valorInput2)) {
-      //   this.props.desactivarBoton(this.radio1Ref['current'].id, this.radio2Ref['current'].id)
-      // }
     }
 
     render() {
@@ -103,13 +102,13 @@ export default class Partido extends Component {
           <td>
             <div className="custom-control custom-radio custom-control-inline">
               <input type="radio"
-                disabled={((this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2)}
+                disabled={((this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2)}
                 id={'ganador_equipo1_partido' + this.props.clave}
                 name={'customRadio' + this.props.clave}
                 className="custom-control-input"
                 // ref={this.radio1Ref}
                 onChange={this.actualizarBotones}
-                checked={((this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2) ? false : this.state.partido.boton1 || false} />
+                checked={((this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2) ? false : this.state.partido.boton1 || false} />
               <label className="custom-control-label" htmlFor={'ganador_equipo1_partido' + this.props.clave}></label>
             </div>
           </td>
@@ -139,12 +138,12 @@ export default class Partido extends Component {
           <td>
             <div className="custom-control custom-radio custom-control-inline">
               <input type="radio"
-                disabled={((this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2)}
+                disabled={((this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2)}
                 id={'ganador_equipo2_partido' + this.props.clave}
                 name={'customRadio' + this.props.clave}
                 className="custom-control-input"
                 onChange={this.actualizarBotones}
-                checked={((this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2) ? false : this.state.partido.boton2 || false} />
+                checked={((this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2) ? false : this.state.partido.boton2 || false} />
               <label className="custom-control-label" htmlFor={'ganador_equipo2_partido' + this.props.clave}> </label>
             </div>
           </td>
