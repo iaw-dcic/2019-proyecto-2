@@ -65817,8 +65817,8 @@ function (_Component) {
         var resultadoEquipo1 = _this2.props.state.resultados['resultado_equipo1_partido' + partido.id];
         var resultadoEquipo2 = _this2.props.state.resultados['resultado_equipo2_partido' + partido.id];
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          resultadoEquipo1: resultadoEquipo1,
-          resultadoEquipo2: resultadoEquipo2,
+          partido: _this2.props.partidos[partido.id],
+          actualizarPartidos: _this2.props.actualizarPartidos,
           onChanges: _this2.props.handleChanges,
           clave: partido.id,
           key: partido.id,
@@ -66073,10 +66073,6 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Partido).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "radio1Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
-
-    _defineProperty(_assertThisInitialized(_this), "radio2Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
-
     _defineProperty(_assertThisInitialized(_this), "input1Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
 
     _defineProperty(_assertThisInitialized(_this), "input2Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
@@ -66089,38 +66085,88 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "actualizarState", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "actualizarInputs", function (e) {
+      var partido = Object.assign({}, _this.state.partido);
+      var valorInput1 = _this.input1Ref.current.value;
+      ;
+      var valorInput2 = _this.input2Ref.current.value;
+      ;
+
+      if (valorInput1 && valorInput1 && valorInput1 != valorInput2) {
+        partido.boton1 = false;
+        partido.boton2 = false;
+      }
+
       if (e.target.id.includes("equipo1")) {
+        partido.resultado1 = e.target.value;
         var input1 = e.target.value;
 
         _this.setState({
-          texto_input1: input1
+          texto_input1: input1,
+          partido: partido
+        }, function () {
+          return _this.props.actualizarPartidos(_this.state.partido);
         });
       } else {
+        partido.resultado2 = e.target.value;
         var input2 = e.target.value;
 
         _this.setState({
-          texto_input2: input2
+          texto_input2: input2,
+          partido: partido
+        }, function () {
+          return _this.props.actualizarPartidos(_this.state.partido);
         });
       }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "actualizarBotones", function (e) {
+      var partido = Object.assign({}, _this.state.partido);
+
+      if (e.target.id.includes("equipo1")) {
+        partido.boton1 = true;
+        partido.boton2 = false;
+
+        _this.setState({
+          partido: partido
+        }, function () {
+          return _this.props.actualizarPartidos(_this.state.partido);
+        });
+      } else {
+        partido.boton1 = false;
+        partido.boton2 = true;
+
+        _this.setState({
+          partido: partido
+        }, function () {
+          return _this.props.actualizarPartidos(_this.state.partido);
+        });
+      }
+
+      _this.props.actualizarResultadosBotones(e);
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleChanges", function (e) {
       _this.props.onChanges(e);
 
-      _this.actualizarState(e);
+      _this.actualizarInputs(e); // let valorInput1 = this.state.resultado1;
+      // let valorInput2 = this.state.resultado2;
+      // if (valorInput1 && valorInput1 && (valorInput1 != valorInput2)) {
+      //   this.props.desactivarBoton(this.radio1Ref['current'].id, this.radio2Ref['current'].id)
+      // }
 
-      var valorInput1 = _this.input1Ref['current'].value;
-      var valorInput2 = _this.input2Ref['current'].value;
-
-      if (valorInput1 && valorInput1 && valorInput1 != valorInput2) {
-        _this.props.desactivarBoton(_this.radio1Ref['current'].id, _this.radio2Ref['current'].id);
-      }
     });
 
     _this.state = {
-      texto_input1: '',
-      texto_input2: ''
+      partido: {
+        id: '',
+        equipo1: '',
+        equipo2: '',
+        resultado1: '',
+        resultado2: '',
+        boton1: '',
+        boton2: ''
+      }
     };
     return _this;
   }
@@ -66128,17 +66174,33 @@ function (_Component) {
   _createClass(Partido, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var input1 = this.props.resultados['resultado_equipo1_partido' + this.props.clave];
-      var input2 = this.props.resultados['resultado_equipo2_partido' + this.props.clave];
+      console.log(this.props.partido);
+      var partido = Object.assign({}, this.state.partido);
+
+      if (this.props.partido) {
+        partido = {
+          id: this.props.clave,
+          equipo1: this.props.partido.equipo1,
+          equipo2: this.props.partido.equipo2,
+          resultado1: this.props.partido.resultado1,
+          resultado2: this.props.partido.resultado2,
+          boton1: this.props.partido.boton1,
+          boton2: this.props.partido.boton2
+        };
+      } else {
+        partido = {
+          id: this.props.clave
+        };
+      }
+
       this.setState({
-        texto_input1: input1,
-        texto_input2: input2
+        partido: partido
       });
     }
   }, {
     key: "render",
     value: function render() {
-      if (!this.props.resultadoBotones) {
+      if (this.state.partido === "undefined") {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null);
       }
 
@@ -66151,10 +66213,10 @@ function (_Component) {
         disabled: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2,
         id: 'ganador_equipo1_partido' + this.props.clave,
         name: 'customRadio' + this.props.clave,
-        className: "custom-control-input",
-        ref: this.radio1Ref,
-        onChange: this.props.actualizarResultadosBotones,
-        checked: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2 ? false : this.props.resultadoBotones['ganador_equipo1_partido' + this.props.clave]
+        className: "custom-control-input" // ref={this.radio1Ref}
+        ,
+        onChange: this.actualizarBotones,
+        checked: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2 ? false : this.state.partido.boton1 || false
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: 'ganador_equipo1_partido' + this.props.clave
@@ -66180,13 +66242,12 @@ function (_Component) {
         className: "custom-control custom-radio custom-control-inline"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
-        ref: this.radio2Ref,
         disabled: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2,
         id: 'ganador_equipo2_partido' + this.props.clave,
         name: 'customRadio' + this.props.clave,
         className: "custom-control-input",
-        onChange: this.props.actualizarResultadosBotones,
-        checked: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2 ? false : this.props.resultadoBotones['ganador_equipo2_partido' + this.props.clave]
+        onChange: this.actualizarBotones,
+        checked: (this.state.texto_input1 || this.state.texto_input2) && this.state.texto_input1 != this.state.texto_input2 ? false : this.state.partido.boton2 || false
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: 'ganador_equipo2_partido' + this.props.clave
@@ -66287,7 +66348,6 @@ function (_Component) {
         var resultado2 = _objectSpread({}, resultadosBotones[id2]);
 
         resultado2 = false;
-        console.log(id2);
         resultadosBotones[id2] = resultado2;
 
         _this.setState({
@@ -66299,6 +66359,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarResultadosBotones", function (event) {
+      //Togglear el false a true
       var idActual = event.target.id;
 
       var idButtonDesactivado = _this.obtenerIdDesactivado(idActual);
@@ -66428,9 +66489,25 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "actualizarPartidos", function (partido) {
+      // console.log("entro");
+      // console.log(partido);
+      var partidos = _objectSpread({}, _this.state.partidos);
+
+      var partidoActualizar = _objectSpread({}, _this.state.partidos[partido.id]);
+
+      partidoActualizar = partido;
+      partidos[partido.id] = partidoActualizar;
+
+      _this.setState({
+        partidos: partidos
+      });
+    });
+
     _this.state = {
       equipos: [],
       partidoCuartos: [],
+      partidos: [],
       resultados: {
         resultado_equipo1_partido0: "",
         resultado_equipo2_partido0: "",
@@ -66517,12 +66594,29 @@ function (_Component) {
           ganadoresSemifinales: ganadoresSemifinales
         });
       }
+
+      var partidosEnLS = localStorage.getItem('partidos');
+
+      if (partidosEnLS) {
+        var partidos = JSON.parse(partidosEnLS);
+        this.setState({
+          partidos: partidos
+        });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
+      localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
+      localStorage.setItem('ganadoresSemifinales', JSON.stringify(this.state.ganadoresSemifinales));
+      localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
     }
   }, {
     key: "actualizarResultadosDesactivado",
     value: function actualizarResultadosDesactivado(idButtonDesactivado) {
-      console.log(idButtonDesactivado);
-
+      //Toggglea el true a false
+      // console.log(idButtonDesactivado);
       var resultadosBotones = _objectSpread({}, this.state.resultadosBotones);
 
       var resultado = _objectSpread({}, resultadosBotones[idButtonDesactivado]);
@@ -66534,38 +66628,16 @@ function (_Component) {
       });
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
-      localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
-      localStorage.setItem('ganadoresSemifinales', JSON.stringify(this.state.ganadoresSemifinales));
-    }
-  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        partidos: this.state.partidos,
+        actualizarPartidos: this.actualizarPartidos,
         handleChanges: this.handleChanges,
         crearGanadoresCuartos: this.crearGanadoresCuartos,
         actualizarResultadosBotones: this.actualizarResultadosBotones,
         resultadoBotones: this.state.resultadosBotones,
         state: this.state,
-        desactivarBoton: this.desactivarBoton
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semifinal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        crearGanadoresSemifinales: this.crearGanadoresSemifinales,
-        equipos: this.state.equipos,
-        resultados: this.state.resultados,
-        ganadoresCuartos: this.state.ganadoresCuartos,
-        handleChanges: this.handleChanges,
-        actualizarResultadosBotones: this.actualizarResultadosBotones,
-        resultadoBotones: this.state.resultadosBotones,
-        desactivarBoton: this.desactivarBoton
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        equipos: this.state.equipos,
-        resultados: this.state.resultados,
-        ganadoresSemifinales: this.state.ganadoresSemifinales,
-        handleChanges: this.handleChanges,
-        actualizarResultadosBotones: this.actualizarResultadosBotones,
-        resultadoBotones: this.state.resultadosBotones,
         desactivarBoton: this.desactivarBoton
       }));
     }

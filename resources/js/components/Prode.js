@@ -13,6 +13,7 @@ export default class Prode extends Component {
     this.state = {
       equipos: [],
       partidoCuartos: [],
+      partidos: [],
       resultados: {
         resultado_equipo1_partido0: "",
         resultado_equipo2_partido0: "",
@@ -83,7 +84,20 @@ export default class Prode extends Component {
       var ganadoresSemifinales = JSON.parse(ganadoresSemifinalesEnLS);
       this.setState({ ganadoresSemifinales });
     }
+    const partidosEnLS = localStorage.getItem('partidos');
+    if (partidosEnLS) {
+      var partidos = JSON.parse(partidosEnLS);
+      this.setState({ partidos });
+    }
   }
+
+  componentDidUpdate() {
+    localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
+    localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
+    localStorage.setItem('ganadoresSemifinales', JSON.stringify(this.state.ganadoresSemifinales));
+    localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
+  }
+
 
   handleChanges = (event) => {
     let id = event.target.id;
@@ -105,14 +119,13 @@ export default class Prode extends Component {
       resultadosBotones = { ...this.state.resultadosBotones };
       let resultado2 = { ...resultadosBotones[id2] };
       resultado2 = false;
-      console.log(id2);
       resultadosBotones[id2] = resultado2;
       this.setState({ resultadosBotones });
     });
     return false;
   }
 
-  actualizarResultadosBotones = (event) => {
+  actualizarResultadosBotones = (event) => { //Togglear el false a true
     let idActual = event.target.id;
     let idButtonDesactivado = this.obtenerIdDesactivado(idActual);
     let resultadosBotones = { ...this.state.resultadosBotones };
@@ -123,8 +136,8 @@ export default class Prode extends Component {
       () => this.actualizarResultadosDesactivado(idButtonDesactivado));
   }
 
-  actualizarResultadosDesactivado(idButtonDesactivado) {
-    console.log(idButtonDesactivado);
+  actualizarResultadosDesactivado(idButtonDesactivado) { //Toggglea el true a false
+    // console.log(idButtonDesactivado);
     let resultadosBotones = { ...this.state.resultadosBotones };
     let resultado = { ...resultadosBotones[idButtonDesactivado] };
     resultado = false;
@@ -144,11 +157,6 @@ export default class Prode extends Component {
     return keysBotones[indexButtonDesactivado];
   }
 
-  componentDidUpdate() {
-    localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
-    localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
-    localStorage.setItem('ganadoresSemifinales', JSON.stringify(this.state.ganadoresSemifinales));
-  }
 
   crearGanadoresCuartos = () => {
     var ganadoresCuartos = { ...this.state.ganadoresCuartos };
@@ -229,13 +237,23 @@ export default class Prode extends Component {
     }
     this.setState({ ganadoresSemifinales });
   }
+
+  actualizarPartidos = (partido) => {
+    // console.log("entro");
+    // console.log(partido);
+    let partidos = { ...this.state.partidos };
+    let partidoActualizar = { ...this.state.partidos[partido.id]}
+    partidoActualizar = partido;
+    partidos[partido.id] = partidoActualizar;
+    this.setState({partidos});
+  }
   
   render() {
     return (
       <div>
-        <Cuartos handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} state={this.state} desactivarBoton={this.desactivarBoton} />
-        <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
-        <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
+        <Cuartos partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} handleChanges={this.handleChanges} crearGanadoresCuartos={this.crearGanadoresCuartos} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} state={this.state} desactivarBoton={this.desactivarBoton} />
+        {/* <Semifinal crearGanadoresSemifinales={this.crearGanadoresSemifinales} equipos={this.state.equipos} resultados={this.state.resultados} ganadoresCuartos={this.state.ganadoresCuartos} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} />
+        <Final equipos={this.state.equipos} resultados={this.state.resultados} ganadoresSemifinales={this.state.ganadoresSemifinales} handleChanges={this.handleChanges} actualizarResultadosBotones={this.actualizarResultadosBotones} resultadoBotones={this.state.resultadosBotones} desactivarBoton={this.desactivarBoton} /> */}
       </div>
     )
   }
