@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n\r\nhr{\r\n    border: 2px;\r\n}", ""]);
+exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\n \r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }", ""]);
 
 // exports
 
@@ -66380,6 +66380,122 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
+/***/ "./resources/js/components/Cuartos.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Cuartos.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Cuartos; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var Cuartos =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Cuartos, _Component);
+
+  function Cuartos() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Cuartos);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Cuartos)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      item: []
+    });
+
+    return _this;
+  }
+
+  _createClass(Cuartos, [{
+    key: "handleClick",
+    value: function handleClick(param, e) {
+      console.log('Parameter', param);
+      console.log('Event', e);
+      document.getElementById("hola").innerHTML += "<p>" + param + "</p>";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var item = this.state.item;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "partido row "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 octavos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light"
+      }, "jugador")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light"
+      }, "jugador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-4 semis"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light "
+      }, "jugador")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light "
+      }, " jugador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 octavos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " "))));
+    }
+  }]);
+
+  return Cuartos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Header.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Header.js ***!
@@ -66540,7 +66656,7 @@ function (_Component) {
         id: "contenedor",
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-3"
+        className: "col-2"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "nav flex-column nav-pills"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -66568,14 +66684,35 @@ function (_Component) {
         "data-toggle": "pill",
         href: "#playoffs",
         role: "button"
-      }, "Playoffs")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      }, "Playoffs"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "nav navIzq"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link active show",
+        "data-toggle": "pill",
+        href: "#perfil"
+      }, "Perfil")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         className: "nav-link",
         "data-toggle": "pill",
-        href: "#ranking"
-      }, "Ranking")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-8"
+        href: "#primerRonda"
+      }, "1er")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link",
+        "data-toggle": "pill",
+        href: "#segundaRonda"
+      }, "2da")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "nav-item  "
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "nav-link",
+        "data-toggle": "pill",
+        href: "#playoffs",
+        role: "button"
+      }, "8vos")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-10"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         id: "v-pills-tabContent",
         className: "tab-content"
@@ -66599,16 +66736,16 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Playoffs.js":
-/*!*********************************************!*\
-  !*** ./resources/js/components/Playoffs.js ***!
-  \*********************************************/
+/***/ "./resources/js/components/Octavos.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Octavos.js ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Playoffs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Octavos; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
@@ -66636,6 +66773,158 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+var Octavos =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Octavos, _Component);
+
+  function Octavos() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Octavos);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Octavos)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      item: []
+    });
+
+    return _this;
+  }
+
+  _createClass(Octavos, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      fetch('http://localhost/pr2/api/partidos_dos/8').then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        _this2.setState({
+          item: json.items[_this2.props.i]
+        });
+      });
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(param, e) {
+      console.log('Parameter', param);
+      console.log('Event', e);
+      document.getElementById("hola").innerHTML += "<p>" + param + "</p>";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var item = this.state.item;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "partido row "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 octavos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugador"
+      }, item.jugador_uno_primer), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugadorabre"
+      }, item.juno_primer_abre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugador "
+      }, item.jugador_dos_primer), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugadorabre"
+      }, item.jdos_primer_abre))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-4 semis"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 octavos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugador"
+      }, item.jugador_uno_segundo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugadorabre"
+      }, item.juno_segundo_abre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugador ",
+        onClick: function onClick(e) {
+          return _this3.handleClick(item.jugador_dos_segundo, e);
+        }
+      }, item.jugador_dos_segundo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugadorabre"
+      }, item.jdos_segundo_abre)))));
+    }
+  }]);
+
+  return Octavos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Playoffs.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Playoffs.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Playoffs; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Octavos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Octavos */ "./resources/js/components/Octavos.js");
+/* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
+/* harmony import */ var _Semis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Semis */ "./resources/js/components/Semis.js");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
 var Playoffs =
 /*#__PURE__*/
 function (_Component) {
@@ -66655,7 +66944,6 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Playoffs)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      isLoaded: false,
       items: []
     });
 
@@ -66667,30 +66955,47 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
+      fetch('http://localhost/pr2/api/partidos_dos/8').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
-          isLoaded: true,
           items: json.items
         });
       });
     }
   }, {
+    key: "handleClick",
+    value: function handleClick(param, e) {
+      console.log('Parameter', param);
+      console.log('Event', e);
+      document.getElementById("hola").innerHTML += "<p>" + param + "</p>";
+    }
+  }, {
     key: "render",
     value: function render() {
       var items = this.state.items;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, items.map(function (item, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "partido row",
-          key: i
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-8"
-        }, item.jugador_uno), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-8"
-        }, item.jugador_dos), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-4 ganador text-center"
-        }, "Djoko"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "8vos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "4tos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-4 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Semis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "4tos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "8vos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        i: 0
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        i: 1
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        i: 2
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        i: 3
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "hola"
       }));
     }
   }]);
@@ -66982,6 +67287,112 @@ function (_Component) {
   }]);
 
   return SegundaRonda;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Semis.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Semis.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Semis; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var Semis =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Semis, _Component);
+
+  function Semis() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Semis);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Semis)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      item: []
+    });
+
+    return _this;
+  }
+
+  _createClass(Semis, [{
+    key: "handleClick",
+    value: function handleClick(param, e) {
+      console.log('Parameter', param);
+      console.log('Event', e);
+      document.getElementById("hola").innerHTML += "<p>" + param + "</p>";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var item = this.state.item;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "partido row "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 octavos"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-4 semis"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light "
+      }, " Jugador")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light "
+      }, " Jugador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 octavos"
+      })));
+    }
+  }]);
+
+  return Semis;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 

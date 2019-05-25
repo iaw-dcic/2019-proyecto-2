@@ -20,6 +20,7 @@ class CreateJugadoresTable extends Migration
             $table->integer('ranking')->nullable();
             $table->integer('edad')->nullable();
             $table->string('pais');
+            $table->string('abreviado')->nullable();
             
         });
     }

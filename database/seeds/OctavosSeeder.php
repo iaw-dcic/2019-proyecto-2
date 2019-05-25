@@ -17,23 +17,13 @@ class OctavosSeeder extends Seeder
             'ronda'=>'8',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '28', //ruud
-            'jugador_dos_id'=> '7',  //delpo
-            'ronda'=>'8',
-        ]);
-        DB::table('partidos')->insert([
-            'jugador_uno_id' => '38', //berretini
-            'jugador_dos_id'=> '42',  //peque
-            'ronda'=>'8',
-        ]);
-        DB::table('partidos')->insert([
-            'jugador_uno_id' => '27', //struf
-            'jugador_dos_id'=> '6',  //nishikori
-            'ronda'=>'8',
-        ]);
-        DB::table('partidos')->insert([
             'jugador_uno_id' => '8', //tsitipas
             'jugador_dos_id'=> '10',  //fognini
+            'ronda'=>'8',
+        ]);
+        DB::table('partidos')->insert([
+            'jugador_uno_id' => '28', //ruud
+            'jugador_dos_id'=> '7',  //delpo
             'ronda'=>'8',
         ]);
         DB::table('partidos')->insert([
@@ -42,10 +32,23 @@ class OctavosSeeder extends Seeder
             'ronda'=>'8',
         ]);
         DB::table('partidos')->insert([
+            'jugador_uno_id' => '38', //berretini
+            'jugador_dos_id'=> '42',  //peque
+            'ronda'=>'8',
+        ]); 
+        DB::table('partidos')->insert([
             'jugador_uno_id' => '33', //verdasco
             'jugador_dos_id'=> '11',  //kachanov
             'ronda'=>'8',
         ]);
+
+        DB::table('partidos')->insert([
+            'jugador_uno_id' => '27', //struf
+            'jugador_dos_id'=> '6',  //nishikori
+            'ronda'=>'8',
+        ]);
+      
+      
         DB::table('partidos')->insert([
             'jugador_uno_id' => '14', 
             'jugador_dos_id'=> '2',  //nadal

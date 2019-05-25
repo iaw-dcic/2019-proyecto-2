@@ -10,7 +10,8 @@ export default class NavIzq extends Component {
     render() {
 
         return <div id="contenedor" className="row">
-            <div className="col-3">
+            <div className="col-2">
+
                 <ul className="nav flex-column nav-pills">
                     <li className="nav-item">
                         <a className="nav-link active show" data-toggle="pill" href="#perfil">Mi perfil</a>
@@ -25,13 +26,28 @@ export default class NavIzq extends Component {
                         <a className="nav-link" data-toggle="pill" href="#playoffs" role="button">Playoffs</a>
 
                     </li>
+
+                </ul>
+
+                <ul className="nav navIzq">
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="pill" href="#ranking">Ranking</a>
+                        <a className="nav-link active show" data-toggle="pill" href="#perfil">Perfil</a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" data-toggle="pill" href="#primerRonda">1er</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" data-toggle="pill" href="#segundaRonda">2da</a>
+                    </li>
+                    <li className="nav-item  ">
+                        <a className="nav-link" data-toggle="pill" href="#playoffs" role="button">8vos</a>
+
+                    </li>
+
                 </ul>
             </div>
 
-            <div className="col-8" >
+            <div className="col-10" >
                 <div id="v-pills-tabContent" className="tab-content">
                     <div id="primerRonda" className="tab-pane fade">
                         <PrimerRonda />
