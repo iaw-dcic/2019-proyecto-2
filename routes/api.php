@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //cruce
-Route::middleware('auth:api')->get('/prodes','CancionesController@index');
+Route::middleware('auth:api')->get('/prodes/:idProde','ProdeController@index');

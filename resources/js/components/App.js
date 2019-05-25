@@ -22,9 +22,6 @@ class App extends Component {
                     <Route path="/prode/:idProde" component={IndexProde} />
                     <Route component={NotFound} />
                 </Switch>    
-                <div>
-                    <indexProde />
-                </div>
             </BrowserRouter>
         )
     }
