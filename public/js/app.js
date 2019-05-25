@@ -65742,28 +65742,20 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
-/***/ "./resources/js/components/Cuartos.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Cuartos.js ***!
-  \********************************************/
+/***/ "./resources/js/components/Panel.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Panel.js ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Cuartos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Panel; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -65786,61 +65778,52 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var Cuartos =
+var Panel =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Cuartos, _Component);
+  _inherits(Panel, _Component);
 
-  function Cuartos() {
+  function Panel() {
     var _this;
 
-    _classCallCheck(this, Cuartos);
+    _classCallCheck(this, Panel);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cuartos).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Panel).call(this));
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (event) {
       event.preventDefault();
 
-      _this.props.crearGanadoresCuartos();
+      if (_this.props.etapa !== "final") {
+        _this.props.crearGanadoresSiguienteEtapa(_this.props.etapa);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "capitalizeFirstLetter", function (string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
     });
 
     return _this;
   }
 
-  _createClass(Cuartos, [{
+  _createClass(Panel, [{
     key: "renderEquipos",
     value: function renderEquipos() {
       var _this2 = this;
 
-      var partidoCuartos = this.crearCuartos();
+      var partidoCuartos = Object.values(this.props.partidos).filter(function (partido) {
+        return partido.etapa === _this2.props.etapa;
+      });
       return partidoCuartos.map(function (partido) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          etapa: "cuartos",
+          etapa: _this2.props.etapa,
           partido: _this2.props.partidos[partido.id],
           actualizarPartidos: _this2.props.actualizarPartidos,
-          onChanges: _this2.props.handleChanges,
           clave: partido.id,
           key: partido.id,
-          nombre_equipo1: partido.nombre_equipo1,
-          nombre_equipo2: partido.nombre_equipo2
+          nombre_equipo1: partido.equipo1,
+          nombre_equipo2: partido.equipo2
         });
       });
-    }
-  }, {
-    key: "crearCuartos",
-    value: function crearCuartos() {
-      var equiposDup = _toConsumableArray(this.props.equipos);
-
-      var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
-      var arregloDerecha = equiposDup;
-      var partidoCuartos = arregloIzquierda.map(function (equipo) {
-        return {
-          id: equipo.id,
-          nombre_equipo1: equipo.nombre_equipo,
-          nombre_equipo2: arregloDerecha[equipo.id].nombre_equipo
-        };
-      });
-      return partidoCuartos;
     }
   }, {
     key: "render",
@@ -65855,7 +65838,7 @@ function (_Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "col-xs-12 text-center"
-      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, this.capitalizeFirstLetter(this.props.etapa)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-striped"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
@@ -65873,140 +65856,12 @@ function (_Component) {
         scope: "col"
       }, "Resultado 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Elegir Ganador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Elegir Ganador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), this.props.etapa !== "final" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-12 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary text-center center"
-      }, "Actualizar semifinales"))))));
-    }
-  }]);
-
-  return Cuartos;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Final.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/Final.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Final; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var Final =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Final, _Component);
-
-  function Final() {
-    _classCallCheck(this, Final);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Final).call(this));
-  }
-
-  _createClass(Final, [{
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
-    }
-  }, {
-    key: "crearFinal",
-    value: function crearFinal() {
-      var partidoFinal = [];
-      var _final = {
-        id: 6,
-        nombre_equipo1: this.props.ganadoresSemifinales.ganador_semifinal1,
-        nombre_equipo2: this.props.ganadoresSemifinales.ganador_semifinal2
-      };
-      partidoFinal.push(_final);
-      return partidoFinal;
-    }
-  }, {
-    key: "renderEquipos",
-    value: function renderEquipos() {
-      var _this = this;
-
-      var partidosFinal = this.crearFinal();
-      return partidosFinal.map(function (partido) {
-        var resultadoEquipo1 = _this.props.resultados['resultado_equipo1_partido' + partido.id];
-        var resultadoEquipo2 = _this.props.resultados['resultado_equipo2_partido' + partido.id];
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          resultadoEquipo1: resultadoEquipo1,
-          resultadoEquipo2: resultadoEquipo2,
-          onChanges: _this.props.handleChanges,
-          clave: partido.id,
-          key: partido.id,
-          nombre_equipo1: partido.nombre_equipo1,
-          nombre_equipo2: partido.nombre_equipo2,
-          resultados: _this.props.resultados,
-          actualizarResultadosBotones: _this.props.actualizarResultadosBotones,
-          resultadoBotones: _this.props.resultadoBotones,
-          desactivarBoton: _this.props.desactivarBoton
-        });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "col-xs-12 text-center"
-      }, "Final"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table table-striped"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Elegir Ganador"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Resultado 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Elegir Ganador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Actualizar ", this.props.siguienteEtapa)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-12 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
@@ -66015,7 +65870,7 @@ function (_Component) {
     }
   }]);
 
-  return Final;
+  return Panel;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -66094,25 +65949,15 @@ function (_Component) {
 
       if (e.target.id.includes("equipo1")) {
         partido.resultado1 = e.target.value;
-        var input1 = e.target.value;
-
-        _this.setState({
-          texto_input1: input1,
-          partido: partido
-        }, function () {
-          return _this.props.actualizarPartidos(_this.state.partido);
-        });
       } else {
         partido.resultado2 = e.target.value;
-        var input2 = e.target.value;
-
-        _this.setState({
-          texto_input2: input2,
-          partido: partido
-        }, function () {
-          return _this.props.actualizarPartidos(_this.state.partido);
-        });
       }
+
+      _this.setState({
+        partido: partido
+      }, function () {
+        return _this.props.actualizarPartidos(_this.state.partido);
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarBotones", function (e) {
@@ -66140,8 +65985,6 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleChanges", function (e) {
-      _this.props.onChanges(e);
-
       _this.actualizarInputs(e);
     });
 
@@ -66153,8 +65996,8 @@ function (_Component) {
         equipo2: '',
         resultado1: '',
         resultado2: '',
-        boton1: '',
-        boton2: ''
+        boton1: false,
+        boton2: false
       }
     };
     return _this;
@@ -66163,7 +66006,6 @@ function (_Component) {
   _createClass(Partido, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // console.log(this.props.partido)
       var partido = Object.assign({}, this.state.partido);
 
       if (this.props.partido) {
@@ -66203,13 +66045,13 @@ function (_Component) {
         className: "custom-control custom-radio custom-control-inline"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
-        disabled: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2,
+        disabled: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 !== this.state.partido.resultado2,
         id: 'ganador_equipo1_partido' + this.props.clave,
         name: 'customRadio' + this.props.clave,
         className: "custom-control-input" // ref={this.radio1Ref}
         ,
         onChange: this.actualizarBotones,
-        checked: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2 ? false : this.state.partido.boton1 || false
+        checked: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 !== this.state.partido.resultado2 ? false : this.state.partido.boton1 || false
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: 'ganador_equipo1_partido' + this.props.clave
@@ -66217,7 +66059,7 @@ function (_Component) {
         className: "hidden-sm hidden-md hidden-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onKeyPress: this.allowNumbersOnly,
-        value: this.props.resultadoEquipo1,
+        value: this.state.partido.resultado1 || '',
         id: 'resultado_equipo1_partido' + this.props.clave,
         ref: this.input1Ref,
         type: "text",
@@ -66225,7 +66067,7 @@ function (_Component) {
         onChange: this.handleChanges
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.nombre_equipo2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onKeyPress: this.allowNumbersOnly,
-        value: this.props.resultadoEquipo2,
+        value: this.state.partido.resultado2 || '',
         id: 'resultado_equipo2_partido' + this.props.clave,
         ref: this.input2Ref,
         type: "text",
@@ -66235,12 +66077,12 @@ function (_Component) {
         className: "custom-control custom-radio custom-control-inline"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
-        disabled: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2,
+        disabled: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 !== this.state.partido.resultado2,
         id: 'ganador_equipo2_partido' + this.props.clave,
         name: 'customRadio' + this.props.clave,
         className: "custom-control-input",
         onChange: this.actualizarBotones,
-        checked: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 != this.state.partido.resultado2 ? false : this.state.partido.boton2 || false
+        checked: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 !== this.state.partido.resultado2 ? false : this.state.partido.boton2 || false
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: 'ganador_equipo2_partido' + this.props.clave
@@ -66267,10 +66109,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Prode; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
-/* harmony import */ var _Semifinal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Semifinal */ "./resources/js/components/Semifinal.js");
-/* harmony import */ var _Final__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Final */ "./resources/js/components/Final.js");
+/* harmony import */ var _Panel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Panel */ "./resources/js/components/Panel.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -66295,8 +66143,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 var Prode =
 /*#__PURE__*/
 function (_Component) {
@@ -66307,22 +66153,23 @@ function (_Component) {
 
     _classCallCheck(this, Prode);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Prode).call(this)); //Initialize the state in the constructor
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Prode).call(this));
 
-    _defineProperty(_assertThisInitialized(_this), "handleChanges", function (event) {
-      var id = event.target.id;
-      var value = event.target.value;
+    _defineProperty(_assertThisInitialized(_this), "siguienteEtapa", {
+      cuartos: "semifinal",
+      semifinal: "final"
+    });
 
-      var resultados = _objectSpread({}, _this.state.resultados);
+    _defineProperty(_assertThisInitialized(_this), "inicializarPartidos", function (partidosEnLS) {
+      if (partidosEnLS && partidosEnLS.length > 2) {
+        var partidos = JSON.parse(partidosEnLS);
 
-      var resultado = _objectSpread({}, resultados[id]);
-
-      resultado = value;
-      resultados[id] = resultado;
-
-      _this.setState({
-        resultados: resultados
-      });
+        _this.setState({
+          partidos: partidos
+        });
+      } else {
+        _this.inicializarPartidos();
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarPartidos", function (partido) {
@@ -66338,195 +66185,90 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "crearGanadoresCuartos", function () {
-      var partidosSemifinales = _objectSpread({}, _this.state.partidosSemifinales); // console.log(Object.values(this.state.partidos));
-      // console.log( this.state.partidos);
-
+    _defineProperty(_assertThisInitialized(_this), "crearGanadoresSiguienteEtapa", function (etapaActual, siguienteEtapa) {
+      var partidos = _objectSpread({}, _this.state.partidos);
 
       var partidosValues = Object.values(_this.state.partidos);
-      var semifinales = partidosValues.filter(function (partido) {
-        return partido.etapa === "cuartos";
+      partidosValues.filter(function (partido) {
+        return partido.etapa === etapaActual;
       }).map(function (partido) {
-        var idSemifinal = partido.id / 2;
-        var equipoSemifinal = partido.id % 2;
+        var idSiguienteEtapa = Math.floor(partido.id / 2) + 4;
+        var equipoActualizar = "equipo" + (Math.floor(partido.id % 2) + 1);
 
-        var partidoSemifinal = _objectSpread({}, partidosSemifinales[idSemifinal]);
+        var partidoSiguienteEtapa = _objectSpread({}, partidos[idSiguienteEtapa]);
+
+        partidoSiguienteEtapa.etapa = _this.siguienteEtapa[etapaActual];
+        partidoSiguienteEtapa.id = idSiguienteEtapa;
 
         if (partido.boton1 || partido.resultado1 > partido.resultado2) {
-          partidoSemifinal.equipoSemifinal = partido.equipo1;
+          partidoSiguienteEtapa[equipoActualizar] = partido.equipo1;
         } else if (partido.boton2 || partido.resultado1 < partido.resultado2) {
-          partidoSemifinal.equipoSemifinal = partido.equipo2;
+          partidoSiguienteEtapa[equipoActualizar] = partido.equipo2;
         } else {
-          partidoSemifinal.equipoSemifinal = "N/A";
+          partidoSiguienteEtapa[equipoActualizar] = "N/A";
         }
 
-        partidosSemifinales[idSemifinal] = partidoSemifinal;
+        partidos[idSiguienteEtapa] = partidoSiguienteEtapa;
       });
-      console.log(semifinales);
 
       _this.setState({
-        partidosSemifinales: partidosSemifinales
+        partidos: partidos
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "desactivarBoton", function (id, id2) {
-      var resultadosBotones = _objectSpread({}, _this.state.resultadosBotones);
+    _defineProperty(_assertThisInitialized(_this), "inicializarPartidos", function () {
+      var partidos = _objectSpread({}, _this.state.partidos);
 
-      var resultado = _objectSpread({}, resultadosBotones[id]);
+      partidos = [];
 
-      resultado = false;
-      resultadosBotones[id] = resultado;
+      var equiposDup = _toConsumableArray(_this.state.equipos);
 
-      _this.setState({
-        resultadosBotones: resultadosBotones
-      }, function () {
-        resultadosBotones = _objectSpread({}, _this.state.resultadosBotones);
+      var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
+      var arregloDerecha = equiposDup;
+      var partidoCuartos = arregloIzquierda.map(function (equipo) {
+        var cuartos = {
+          id: equipo.id,
+          etapa: "cuartos",
+          equipo1: equipo.nombre_equipo,
+          equipo2: arregloDerecha[equipo.id].nombre_equipo,
+          boton1: false,
+          boton2: false
+        };
+        partidos.push(cuartos);
+      }); //Agregar semifinales
 
-        var resultado2 = _objectSpread({}, resultadosBotones[id2]);
+      var id = 4;
 
-        resultado2 = false;
-        resultadosBotones[id2] = resultado2;
-
-        _this.setState({
-          resultadosBotones: resultadosBotones
-        });
-      });
-
-      return false;
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "actualizarResultadosBotones", function (event) {
-      //Togglear el false a true
-      var idActual = event.target.id;
-
-      var idButtonDesactivado = _this.obtenerIdDesactivado(idActual);
-
-      var resultadosBotones = _objectSpread({}, _this.state.resultadosBotones);
-
-      var resultado = _objectSpread({}, resultadosBotones[idActual]);
-
-      resultado = true;
-      resultadosBotones[idActual] = resultado;
-
-      _this.setState({
-        resultadosBotones: resultadosBotones
-      }, function () {
-        return _this.actualizarResultadosDesactivado(idButtonDesactivado);
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "obtenerIdDesactivado", function (idAnterior) {
-      var resultadosBotones = _objectSpread({}, _this.state.resultadosBotones);
-
-      var keysBotones = Object.keys(resultadosBotones);
-
-      if (keysBotones.indexOf(idAnterior) % 2 == 0) {
-        var indexButtonDesactivado = keysBotones.indexOf(idAnterior) + 1;
-      } else {
-        var indexButtonDesactivado = keysBotones.indexOf(idAnterior) - 1;
+      for (var i = 0; i < 2; i++) {
+        var semifinal = {
+          id: id++,
+          etapa: "semifinal",
+          equipo1: "N/A",
+          equipo2: "N/A",
+          boton1: false,
+          boton2: false
+        };
+        partidos.push(semifinal);
       }
 
-      return keysBotones[indexButtonDesactivado];
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "crearGanadoresSemifinales", function () {
-      var ganadoresSemifinales = _objectSpread({}, _this.state.ganadoresSemifinales);
-
-      console.log("entro");
-      var equipoActual = 1;
-      var indiceSemifinal = 1;
-
-      while (indiceSemifinal < 3) {
-        var primerResultado = 'resultado_equipo1_partido' + (indiceSemifinal + 3);
-        var segundoResultado = 'resultado_equipo2_partido' + (indiceSemifinal + 3);
-        var primerResultadoBoton = 'ganador_equipo1_partido' + (indiceSemifinal + 3);
-        var segundoResultadoBoton = 'ganador_equipo2_partido' + (indiceSemifinal + 3);
-        var partidoActualizar = 'ganador_semifinal' + indiceSemifinal;
-
-        var ganador = _objectSpread({}, ganadoresSemifinales[partidoActualizar]);
-
-        var statePrimerResultado = parseInt(_this.state.resultados[primerResultado]);
-        var stateSegundoResultado = parseInt(_this.state.resultados[segundoResultado]);
-        var statePrimerResultadoBoton = _this.state.resultadosBotones[primerResultadoBoton];
-        var stateSegundoResultadoBoton = _this.state.resultadosBotones[segundoResultadoBoton];
-
-        if (!isNaN(statePrimerResultado) && !isNaN(stateSegundoResultado) || statePrimerResultadoBoton || stateSegundoResultadoBoton) {
-          //check not null
-          if (statePrimerResultadoBoton || statePrimerResultado > stateSegundoResultado) {
-            var indexEquipoGanador = 'ganador_partido' + equipoActual;
-            ganador = _this.state.ganadoresCuartos[indexEquipoGanador];
-          } else {
-            if (stateSegundoResultadoBoton || statePrimerResultado < stateSegundoResultado) {
-              var indexEquipoGanador = 'ganador_partido' + (equipoActual + 1);
-              ganador = _this.state.ganadoresCuartos[indexEquipoGanador];
-            } else {
-              ganador = 'Ganador Semifinal ' + indiceSemifinal;
-            }
-          }
-
-          ganador = _this.state.ganadoresCuartos[indexEquipoGanador];
-        } else {
-          //restore default
-          ganador = 'Ganador Semifinal ' + indiceSemifinal;
-        }
-
-        equipoActual += 2;
-        indiceSemifinal++;
-        ganadoresSemifinales[partidoActualizar] = ganador;
-      }
+      var _final = {
+        id: 6,
+        etapa: "final",
+        equipo1: "N/A",
+        equipo2: "N/A",
+        boton1: false,
+        boton2: false
+      };
+      partidos.push(_final);
 
       _this.setState({
-        ganadoresSemifinales: ganadoresSemifinales
+        partidos: partidos
       });
     });
 
     _this.state = {
       equipos: [],
-      partidoCuartos: [],
-      partidos: [],
-      partidosSemifinales: [],
-      resultados: {
-        resultado_equipo1_partido0: "",
-        resultado_equipo2_partido0: "",
-        resultado_equipo1_partido1: "",
-        resultado_equipo2_partido1: "",
-        resultado_equipo1_partido2: "",
-        resultado_equipo2_partido2: "",
-        resultado_equipo1_partido3: "",
-        resultado_equipo2_partido3: "",
-        resultado_equipo1_partido4: "",
-        resultado_equipo2_partido4: "",
-        resultado_equipo1_partido5: "",
-        resultado_equipo2_partido5: "",
-        resultado_equipo1_partido6: "",
-        resultado_equipo2_partido6: ""
-      },
-      resultadosBotones: {
-        ganador_equipo1_partido0: false,
-        ganador_equipo2_partido0: false,
-        ganador_equipo1_partido1: false,
-        ganador_equipo2_partido1: false,
-        ganador_equipo1_partido2: false,
-        ganador_equipo2_partido2: false,
-        ganador_equipo1_partido3: false,
-        ganador_equipo2_partido3: false,
-        ganador_equipo1_partido4: false,
-        ganador_equipo2_partido4: false,
-        ganador_equipo1_partido5: false,
-        ganador_equipo2_partido5: false,
-        ganador_equipo1_partido6: false,
-        ganador_equipo2_partido6: false
-      },
-      ganadoresCuartos: {
-        ganador_partido1: "Ganador partido 1",
-        ganador_partido2: "Ganador partido 2",
-        ganador_partido3: "Ganador partido 3",
-        ganador_partido4: "Ganador partido 4"
-      },
-      ganadoresSemifinales: {
-        ganador_semifinal1: "Ganador semifinal 1",
-        ganador_semifinal2: "Ganador semifinal 2"
-      }
+      partidos: []
     };
     return _this;
   }
@@ -66536,251 +66278,51 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      //Get equipos
+      var partidosEnLS = localStorage.getItem('partidos');
       fetch('http://localhost:8000/equipos').then(function (response) {
         return response.json();
       }).then(function (equipos) {
         _this2.setState({
           equipos: equipos
+        }, function () {
+          return _this2.inicializarPartidos(partidosEnLS);
         });
-      }); //Check local storage
-
-      var resultadosEnLS = localStorage.getItem('resultados');
-
-      if (resultadosEnLS) {
-        var resultados = JSON.parse(resultadosEnLS);
-        this.setState({
-          resultados: resultados
-        });
-      }
-
-      var ganadoresCuartosEnLS = localStorage.getItem('ganadoresCuartos');
-
-      if (ganadoresCuartosEnLS) {
-        var ganadoresCuartos = JSON.parse(ganadoresCuartosEnLS);
-        this.setState({
-          ganadoresCuartos: ganadoresCuartos
-        });
-      }
-
-      var ganadoresSemifinalesEnLS = localStorage.getItem('ganadoresSemifinales');
-
-      if (ganadoresSemifinalesEnLS) {
-        var ganadoresSemifinales = JSON.parse(ganadoresSemifinalesEnLS);
-        this.setState({
-          ganadoresSemifinales: ganadoresSemifinales
-        });
-      }
-
-      var partidosEnLS = localStorage.getItem('partidos');
-
-      if (partidosEnLS) {
-        var partidos = JSON.parse(partidosEnLS);
-        this.setState({
-          partidos: partidos
-        });
-      }
+      });
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      localStorage.setItem('resultados', JSON.stringify(this.state.resultados));
-      localStorage.setItem('ganadoresCuartos', JSON.stringify(this.state.ganadoresCuartos));
-      localStorage.setItem('ganadoresSemifinales', JSON.stringify(this.state.ganadoresSemifinales));
       localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
-    }
-  }, {
-    key: "actualizarResultadosDesactivado",
-    value: function actualizarResultadosDesactivado(idButtonDesactivado) {
-      //Toggglea el true a false
-      // console.log(idButtonDesactivado);
-      var resultadosBotones = _objectSpread({}, this.state.resultadosBotones);
-
-      var resultado = _objectSpread({}, resultadosBotones[idButtonDesactivado]);
-
-      resultado = false;
-      resultadosBotones[idButtonDesactivado] = resultado;
-      this.setState({
-        resultadosBotones: resultadosBotones
-      });
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        etapa: "cuartos",
+        siguienteEtapa: this.siguienteEtapa["cuartos"],
         equipos: this.state.equipos,
         partidos: this.state.partidos,
         actualizarPartidos: this.actualizarPartidos,
-        handleChanges: this.handleChanges,
-        crearGanadoresCuartos: this.crearGanadoresCuartos
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semifinal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        crearGanadoresSemifinales: this.crearGanadoresSemifinales,
+        crearGanadoresSiguienteEtapa: this.crearGanadoresSiguienteEtapa
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        etapa: "semifinal",
+        siguienteEtapa: this.siguienteEtapa["semifinal"],
         equipos: this.state.equipos,
-        resultados: this.state.resultados,
-        ganadoresCuartos: this.state.ganadoresCuartos,
-        handleChanges: this.handleChanges,
-        actualizarResultadosBotones: this.actualizarResultadosBotones,
-        resultadoBotones: this.state.resultadosBotones,
-        desactivarBoton: this.desactivarBoton
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        partidos: this.state.partidos,
+        actualizarPartidos: this.actualizarPartidos,
+        crearGanadoresSiguienteEtapa: this.crearGanadoresSiguienteEtapa
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        etapa: "final",
+        siguienteEtapa: "",
         equipos: this.state.equipos,
-        resultados: this.state.resultados,
-        ganadoresSemifinales: this.state.ganadoresSemifinales,
-        handleChanges: this.handleChanges,
-        actualizarResultadosBotones: this.actualizarResultadosBotones,
-        resultadoBotones: this.state.resultadosBotones,
-        desactivarBoton: this.desactivarBoton
+        partidos: this.state.partidos,
+        actualizarPartidos: this.actualizarPartidos,
+        crearGanadoresSiguienteEtapa: this.crearGanadoresSiguienteEtapa
       }));
     }
   }]);
 
   return Prode;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Semifinal.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Semifinal.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Semifinal; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-var Semifinal =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Semifinal, _Component);
-
-  function Semifinal() {
-    var _this;
-
-    _classCallCheck(this, Semifinal);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Semifinal).call(this));
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (event) {
-      event.preventDefault();
-
-      _this.props.crearGanadoresSemifinales();
-    });
-
-    return _this;
-  }
-
-  _createClass(Semifinal, [{
-    key: "crearSemifinales",
-    value: function crearSemifinales() {
-      var partidosSemifinales = [];
-      var primerSemifinal = {
-        id: 4,
-        nombre_equipo1: this.props.ganadoresCuartos.ganador_partido1,
-        nombre_equipo2: this.props.ganadoresCuartos.ganador_partido2
-      };
-      partidosSemifinales.push(primerSemifinal);
-      var segundaSemifinal = {
-        id: 5,
-        nombre_equipo1: this.props.ganadoresCuartos.ganador_partido3,
-        nombre_equipo2: this.props.ganadoresCuartos.ganador_partido4
-      };
-      partidosSemifinales.push(segundaSemifinal);
-      return partidosSemifinales;
-    }
-  }, {
-    key: "renderEquipos",
-    value: function renderEquipos() {
-      var _this2 = this;
-
-      var partidosSemifinales = this.crearSemifinales();
-      return partidosSemifinales.map(function (partido) {
-        var resultadoEquipo1 = _this2.props.resultados['resultado_equipo1_partido' + partido.id];
-        var resultadoEquipo2 = _this2.props.resultados['resultado_equipo2_partido' + partido.id];
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          resultadoEquipo1: resultadoEquipo1,
-          resultadoEquipo2: resultadoEquipo2,
-          onChanges: _this2.props.handleChanges,
-          clave: partido.id,
-          key: partido.id,
-          nombre_equipo1: partido.nombre_equipo1,
-          nombre_equipo2: partido.nombre_equipo2,
-          resultados: _this2.props.resultados,
-          actualizarResultadosBotones: _this2.props.actualizarResultadosBotones,
-          resultadoBotones: _this2.props.resultadoBotones,
-          desactivarBoton: _this2.props.desactivarBoton
-        });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "col-xs-12 text-center"
-      }, "Semifinal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table table-striped"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Elegir Ganador"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Equipo 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Resultado 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Equipo 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Resultado 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "Elegir Ganador"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderEquipos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xs-12 text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-primary text-center center"
-      }, "Actualizar la final"))))));
-    }
-  }]);
-
-  return Semifinal;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
