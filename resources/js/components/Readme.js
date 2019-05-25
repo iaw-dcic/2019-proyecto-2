@@ -29,7 +29,7 @@ export default class Readme extends Component{
                 <li>Para los estilos y la presentación se usó el framework de estilos Bootstrap: https://getbootstrap.com/ </li>
                 <li>para ciertas estilos de texto se usó Google Fonts: https://fonts.google.com/ </li>
                 <li> para manejo de recursos graficos desde react se uso WebPack https://opencollective.com/webpack</li>
-                <li> https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm</li>
+                <li> para manejo de rutas y saltos entre rutas en React se usó https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm</li>
            
             
             </ul>

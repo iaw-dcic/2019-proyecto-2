@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar.js'
-import Example from './Example.js'
+import Avatar from './Avatar.js'
 import axios from 'axios';
 
 
@@ -12,13 +12,15 @@ export default class AvatarView extends Component{
         errors : []
     };
     
-   
-   /* constructor(props) {
+   /*handleNameChange(nombre){
+        this.setState({name : nombre});
+   }
+    constructor(props) {
 
-        this.handleBodyChange = this.handleBodyChange.bind(this);
-        this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
+        //this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
     }
-
+    
     handleBodyChange(event){
         this.setState({
             [event.target.body] : event.target.value
@@ -38,11 +40,12 @@ export default class AvatarView extends Component{
     render(){
         return (
             <>
-
+            
                 <SideBar/>
                 <div>
-                    <Example/>
+                    <Avatar/>
                 </div>
+           
             </>
         )
     }
