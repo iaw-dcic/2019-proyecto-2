@@ -6584,6 +6584,25 @@ exports.push([module.i, ".Autoria{\r\n    text-align: center;\r\n    font-size: 
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/superponer.css":
+/*!*********************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/ComponentCSS/superponer.css ***!
+  \*********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".superponer{\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    bottom: 0px;\r\n\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -66469,10 +66488,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Avatar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RecursosGraficos/Caras/Cara1.png */ "./resources/js/components/RecursosGraficos/Caras/Cara1.png");
-/* harmony import */ var _RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ComponentCSS/CardStyle.css */ "./resources/js/components/ComponentCSS/CardStyle.css");
-/* harmony import */ var _ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ComponentCSS/CardStyle.css */ "./resources/js/components/ComponentCSS/CardStyle.css");
+/* harmony import */ var _ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ComponentCSS/superponer.css */ "./resources/js/components/ComponentCSS/superponer.css");
+/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66517,7 +66536,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Avatar).call(this, props));
     _this.state = {
-      nameValue: 'AvatarName'
+      nameValue: 'Ponme un Nombre!'
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
@@ -66541,11 +66560,17 @@ function (_Component) {
         className: "card-title text-center",
         value: this.state.nameValue,
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "card-img-bottom",
-        src: _RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1___default.a,
-        alt: "Card image cap"
-      })))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "hair superponer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+      }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "skin superponer"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eyes superponer"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mouth superponer"
+      }))))));
     }
   }]);
 
@@ -66653,7 +66678,13 @@ function (_Component) {
          //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
        }*/
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatar_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-9"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatar_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
     }
   }]);
 
@@ -66763,6 +66794,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./readmeStyle.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/readmeStyle.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/components/ComponentCSS/superponer.css":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/ComponentCSS/superponer.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./superponer.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/superponer.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -66928,17 +66989,6 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/RecursosGraficos/Caras/Cara1.png":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/RecursosGraficos/Caras/Cara1.png ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Cara1.png?e0c1ead68409676d18138e2dc54847a3";
-
-/***/ }),
-
 /***/ "./resources/js/components/SideBar.js":
 /*!********************************************!*\
   !*** ./resources/js/components/SideBar.js ***!
@@ -66951,8 +67001,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SideBar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RecursosGraficos/Caras/Cara1.png */ "./resources/js/components/RecursosGraficos/Caras/Cara1.png");
-/* harmony import */ var _RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Avatar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Avatar */ "./resources/js/components/Avatar.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66974,6 +67025,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SideBar =
 /*#__PURE__*/
 function (_Component) {
@@ -66986,69 +67038,105 @@ function (_Component) {
   }
 
   _createClass(SideBar, [{
+    key: "saevAvatar",
+    value: function saevAvatar(event) {
+      event.preventDefault(); //guardar el avatar, deberia de buscar los componentes usados a través del estado de Avatar!
+
+      alert('guardé el avatar!'); //axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
+
+      /*APi Token Laravel */
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar fixed-bottom  navbar-dark bg-dark"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row accordion d-flex justify-content-center back"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group dropup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info btn-lg dropdown-toggle",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, "Piel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _RecursosGraficos_Caras_Cara1_png__WEBPACK_IMPORTED_MODULE_1___default.a
+        className: "col-md-10 col-xl-6 py-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "accordion md-accordion accordion-2",
+        id: "accordionEx7",
+        role: "tablist",
+        "aria-multiselectable": "true"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header rgba-stylish-strong z-depth-1 mb-1",
+        role: "tab",
+        id: "heading1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        "data-toggle": "collapse",
+        "data-parent": "#accordionEx7",
+        href: "#collapse1",
+        "aria-expanded": "true",
+        "aria-controls": "collapse1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-0 white-text text-uppercase font-thin"
+      }, "Piel ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-down rotate-icon"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group dropup"
+        id: "collapse1",
+        className: "collapse",
+        role: "tabpanel",
+        "aria-labelledby": "heading1",
+        "data-parent": "#accordionEx7"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body mb-1 rgba-grey-light white-text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info btn-lg dropdown-toggle",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, "Cabello"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Action"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group dropup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info btn-lg dropdown-toggle",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, "Ojos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-menu "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Action"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group dropup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info btn-lg dropdown-toggle",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, "Boca"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-menu "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#"
-      }, "Action"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "btn btn-outline-success btn-lg",
-        type: "submit",
-        value: "Guardar Avatar"
-      }));
+        className: "btn btn-outline-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header rgba-stylish-strong z-depth-1 mb-1",
+        role: "tab",
+        id: "heading2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "collapsed",
+        "data-toggle": "collapse",
+        "data-parent": "#accordionEx7",
+        href: "#collapse2",
+        "aria-expanded": "false",
+        "aria-controls": "collapse2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-0 white-text text-uppercase font-thin"
+      }, "Ojos ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-down rotate-icon"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "collapse2",
+        className: "collapse",
+        role: "tabpanel",
+        "aria-labelledby": "heading2",
+        "data-parent": "#accordionEx7"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body mb-1 rgba-grey-light white-text"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header rgba-stylish-strong z-depth-1 mb-1",
+        role: "tab",
+        id: "heading3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "collapsed",
+        "data-toggle": "collapse",
+        "data-parent": "#accordionEx7",
+        href: "#collapse3",
+        "aria-expanded": "false",
+        "aria-controls": "collapse3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-0 white-text text-uppercase font-thin"
+      }, "Boca ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-down rotate-icon"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "collapse3",
+        className: "collapse",
+        role: "tabpanel",
+        "aria-labelledby": "heading3",
+        "data-parent": "#accordionEx7"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body mb-1 rgba-grey-light white-text"
+      }))))));
     }
   }]);
 
@@ -67077,8 +67165,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

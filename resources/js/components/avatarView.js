@@ -43,12 +43,16 @@ export default class AvatarView extends Component{
     render(){
         return (
             <>
-            
-                <SideBar/>
-                <div>
-                    <Avatar/>
+                <div className="d-flex">
+                    <div className="col-md-9">
+                        <Avatar/>
+                    </div>
+                
+                    <div className="col-md-3">
+                        <SideBar/>
+                    </div>
                 </div>
-           
+
             </>
         )
     }

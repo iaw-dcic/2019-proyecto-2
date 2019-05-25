@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import cara from './RecursosGraficos/Caras/Cara1.png'
+
 import './ComponentCSS/CardStyle.css'
+import './ComponentCSS/superponer.css'
 
 export default class Avatar extends Component {
     
@@ -25,15 +26,15 @@ export default class Avatar extends Component {
                             <div className="card-body">
                                 <input type="text" className="card-title text-center" value={this.state.nameValue} onChange={this.handleChange}/>
                             </div>
-                                <img className="card-img-bottom" src={cara} alt="Card image cap"/>
-                                /*Idea, cargar todo en divs distintos y manejar todo por CSS background  
-                                    
-                                    <div className="hair"></div>
-                                    <div className="skin">
-                                        <div className="eyes"></div>
-                                        <div className="mouth"></div>
-                                    </div>
-                                */  
+                        
+                        <div>
+                            
+                            <div className="hair superponer"><img src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/> </div>
+                            <div className="skin superponer"></div>
+                            <div className="eyes superponer"></div>
+                            <div className="mouth superponer"></div>
+                        </div>
+                                  
                         </div>
                     </div>
                 </div>
