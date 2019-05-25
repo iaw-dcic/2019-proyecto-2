@@ -65861,7 +65861,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 var burger = function burger(props) {
+  console.log("Estoy en burger: " + Object.keys(props.ingredients));
   var transformedIngredients = Object.keys(props.ingredients).map(function (igKey) {
+    //igKey es el nombre del ingrediente
     return _toConsumableArray(Array(props.ingredients[igKey])).map(function (_, i) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BurgerIngredient_BurgerIngredient__WEBPACK_IMPORTED_MODULE_1__["default"], {
         key: igKey + i,
@@ -65873,7 +65875,7 @@ var burger = function burger(props) {
   }, []);
 
   if (transformedIngredients.length === 0) {
-    transformedIngredients = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Empez\xE1 a agregar ingredientes!");
+    transformedIngredients = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Agreg\xE1 tus ingredientes!");
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66269,31 +66271,10 @@ function (_Component) {
     }
 
     return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(BurgerBuilder)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.state = {
-      ingredients: {
-        salad: 0,
-        bacon: 0,
-        cheese: 0,
-        meat: 1
-      }
+      ingredients: {}
     }, _this.addIngredientHandler = function (type) {
       var oldCount = _this.state.ingredients[type];
       var updatedCount = oldCount + 1;
-
-      var updatedIngredients = _objectSpread({}, _this.state.ingredients);
-
-      updatedIngredients[type] = updatedCount;
-
-      _this.setState({
-        ingredients: updatedIngredients
-      });
-    }, _this.removeIngredientHandler = function (type) {
-      var oldCount = _this.state.ingredients[type];
-
-      if (oldCount <= 0) {
-        return;
-      }
-
-      var updatedCount = oldCount - 1;
 
       var updatedIngredients = _objectSpread({}, _this.state.ingredients);
 
@@ -66306,7 +66287,53 @@ function (_Component) {
   }
 
   _createClass(BurgerBuilder, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios.get('/api/ingredients').then(function (response) {
+        _this2.data = response.data;
+        var ingredientsToAssign = {};
+
+        _this2.data.forEach(function (ingredient) {
+          //console.log("ingrediente: ",ingredient.name+ingredient.selectedIngredient);
+          //arrayIngredients.push(ingredient.name+ingredient.selectedIngredient);
+          ingredientsToAssign[ingredient.name + ingredient.selectedIngredient] = 0;
+        }); //const result = arrayIngredients.map(value => ({[value]: 0}));
+        //console.log("El arreglo es: ",result);
+
+
+        console.log("Estoy en el builder: ", ingredientsToAssign);
+
+        _this2.setState({
+          ingredients: response.data
+        });
+      });
+    }
+    /*state = {
+        ingredients: {
+            salad: 0,
+            bacon: 0,
+            cheese: 0,
+            meat: 1
+        }
+    }*/
+
+  }, {
     key: "render",
+
+    /*removeIngredientHandler = ( type ) => {
+        const oldCount = this.state.ingredients[type];
+        if ( oldCount <= 0 ) {
+            return;
+        }
+        const updatedCount = oldCount - 1;
+        const updatedIngredients = {
+            ...this.state.ingredients
+        };
+        updatedIngredients[type] = updatedCount;
+        this.setState( {ingredients: updatedIngredients } );
+    }*/
     value: function render() {
       var disabledInfo = _objectSpread({}, this.state.ingredients);
 
@@ -66317,10 +66344,6 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_AuxDiv__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Burger_Burger__WEBPACK_IMPORTED_MODULE_2__["default"], {
         ingredients: this.state.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Burger_BuildControls_BuildControls__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        ingredientAdded: this.addIngredientHandler,
-        ingredientRemoved: this.removeIngredientHandler,
-        disabled: disabledInfo
       }));
     }
   }]);
