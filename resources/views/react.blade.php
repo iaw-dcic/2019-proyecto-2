@@ -16,10 +16,20 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+    <!--  Roboto  font de material ui-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    @include('navBar')
+
     <div id="react-app"></div>
+
+    <footer class="fixed-bottom">
+        @include('footer')
+    </footer>
+
 </body>
 </html>

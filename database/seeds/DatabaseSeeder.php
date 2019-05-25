@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        //cargo los datos iniciales de mi BD
+         $this->call(CargaDeDatos::class);
     }
 }

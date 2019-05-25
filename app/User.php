@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //Relaciones        1 usuario -> muchos prodes
+    public function prodes(){
+        return $this->hasMany('App\Prode'); 
+    }
+
+     //mensajes de error
+     public static function messages($id = '') {
+        return [
+            'name.required' => 'Debe ingresar un nombre de usuario',
+            'email.required' => 'Debe ingresar un email',
+            'email.uniqued' => 'Ya existe un usuario con ese email',
+            'password.required' => 'Debe ingresar una password',
+        ];
+    }
 }
