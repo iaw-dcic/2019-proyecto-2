@@ -14,8 +14,6 @@
 
 Auth::routes();
 
-/**Esta comentado porque hace falta conectar la base de datos, luego de eso descomentarlo */
+Route::get('/readme', 'readMeController@index')->name('readme');
+
 Route::view('/{path?}', 'react')->middleware('auth');
-
-
-Route::get('/home', 'HomeController@index')->name('home');

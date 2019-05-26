@@ -14,5 +14,5 @@ class App extends Component {
         )
     }
 }
-//Esta aplicación el documento el que tiene el id' react-app'
+//Esta aplicación va en el documento el que tiene el id' react-app'
 ReactDOM.render(<App />, document.getElementById('react-app'))
