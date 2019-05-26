@@ -1,0 +1,1 @@
+console.log('Node has been installed!)
