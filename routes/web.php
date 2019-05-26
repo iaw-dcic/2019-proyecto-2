@@ -15,8 +15,7 @@
 Auth::routes();
 
 /**Esta comentado porque hace falta conectar la base de datos, luego de eso descomentarlo */
-Route::view('/{path?}', 'react');
-//->middleware('auth');
+Route::view('/{path?}', 'react')->middleware('auth');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
