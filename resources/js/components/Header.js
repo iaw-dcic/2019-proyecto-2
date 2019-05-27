@@ -3,16 +3,29 @@ import './ppal.css';
 
 export default class Header extends Component {
 
+    state = {
 
+        user: []
+    };
+
+    /* componentWillMount() {
+         fetch('http://localhost/pr2/api/user')
+             .then(res => res.json())
+             .then(json => {
+                 this.setState({
+                     user: json
+                 })
+ 
+             });
+ 
+     };*/
     render() {
         let nav;
-        if (this.props.user == "null") {
 
-            nav = <a href="/pr2/login" className="nav-link"> Login</a>
-        }
-        else {
-            nav = <a className="nav-link" onClick={this.handleLogout}> Logout</a>
-        }
+        // nav = <a href="/pr2/login" className="nav-link"> Login</a>
+
+        nav = <a className="nav-link" href=" "> Bienvenido</a>
+
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
                 <a className="navbar-brand" href="#">Master 1000 ROMA</a>

@@ -2,54 +2,62 @@ import React, { Component } from 'react';
 
 import './partidos.css'
 export default class Cuartos extends Component {
-    state = {
-        item: []
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
 
-
-
-    handleClick(param, e) {
-        console.log('Parameter', param);
-        console.log('Event', e);
-        document.getElementById("hola").innerHTML += "<p>" + param + "</p>";
+        } //state contents here
 
     }
+
+    handleClick(param, i, e) {
+        console.log('Parameter', param);
+        console.log('Event', e);
+        var id;
+        switch (i) {
+
+            case 1:
+                id = "semis_1_juno";
+                break;
+            case 2:
+                id = "semis_1_jdos";
+                break;
+            case 3:
+                id = "semis_2_juno";
+                break;
+            case 4:
+                id = "semis_2_jdos";
+                break;
+
+        }
+
+        this.props.jugador(param);
+
+
+    }
+
     render() {
-        var { item } = this.state;
+
 
         return <div>
 
-            <div className="partido row " >
-                <div className="col-2 octavos">
-                    <p> </p>
 
-                </div>
-                <div className="col-2 cuartos">
-                    <div className="row">
+            <div className="row">
+                <button type="button" id={"juno" + this.props.i} className="btn btn-light jugador"
+                > cuarto{this.props.i}j1
+                </button>
+                <button type="button" id={"junoabre" + this.props.i} className="btn btn-light jugadorabre"
+                >
+                </button>
+            </div>
 
-                        <button type="button" className="btn btn-light">jugador</button>
-                    </div>
-
-                    <div className="row">
-                        <button type="button" className="btn btn-light">jugador</button>
-                    </div>
-                </div>
-                <div className="col-4 semis">
-
-                </div>
-                <div className="col-2 cuartos">
-                    <div className="row ">
-                        <button type="button" className="btn btn-light ">jugador</button>
-                    </div>
-
-                    <div className="row" >
-                        <button type="button" className="btn btn-light "  > jugador</button>
-                    </div>
-                </div>
-                <div className="col-2 octavos">
-                    <p> </p>
-                </div>
-
+            <div className="row">
+                <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador "
+                >cuarto{this.props.i}j2
+                </button>
+                <button type="button" id={"jdosabre" + this.props.i} className="btn btn-light jugadorabre"
+                >
+                </button>
             </div>
 
         </div>

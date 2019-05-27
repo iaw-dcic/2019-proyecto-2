@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+ 
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,11 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
- // auth('api')->user();
-//});
- 
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+  auth('api')->user();
+});
+Route::post('insert','PartidosController@store');
 Route::get('partidos/{ronda}', 'PartidosController@getPartidosRonda');
 Route::get('partidos_dos/{ronda}', 'PartidosController@partidos_de_a_dos');
- Route::get('user', 'UserController@user');//->middleware('auth');
+ 
   

@@ -13,9 +13,17 @@ class PartidosController extends Controller
         foreach($partidos as $partido){
            $arreglo["items"][$i++]= array(
                'id' => $partido->id,
-                'jugador_uno' => $partido->nombreJugadorUno->nombre,
-                'jugador_dos' => $partido->nombreJugadorDos->nombre,
-                'resultado'=> $partido->resultado
+                'jugador_uno' =>  array(
+                    'id' =>$partido->nombreJugadorUno->id,
+                    'nombre'=> $partido->nombreJugadorUno->nombre,
+                    'abrev' => $partido->nombreJugadorUno->abreviado),
+                'jugador_dos' =>  array(
+                    'id' =>$partido->nombreJugadorDos->id,
+                     'nombre'=> $partido->nombreJugadorDos->nombre,
+                      'abrev' => $partido->nombreJugadorDos->abreviado),
+                'resultado'=> $partido->resultado,
+                'junonombre'=>$partido->nombreJugadorUno->nombre,
+                'jdosnombre'=>$partido->nombreJugadorDos->nombre
             );
        
         }
@@ -33,18 +41,34 @@ class PartidosController extends Controller
             $j= $i++;
             $arreglo["items"][$count]= array(
                'id_primer' => $partidos[$j]->id,
-                'jugador_uno_primer' =>  $partidos[$j]->nombreJugadorUno->nombre,
-                'jugador_dos_primer' =>  $partidos[$j]->nombreJugadorDos->nombre,
-                'juno_primer_abre' =>  $partidos[$j]->nombreJugadorUno->abreviado,
-                'jdos_primer_abre' =>  $partidos[$j]->nombreJugadorDos->abreviado,
-                'resultado_primer'=>  $partidos[$j]->resultado,
+                   'jug_uno_primer' => array(
+                    'id' =>$partidos[$j]->nombreJugadorUno->id,
+                    'nombre'=> $partidos[$j]->nombreJugadorUno->nombre,
+                    'abrev' => $partidos[$j]->nombreJugadorUno->abreviado),
+                   
+                    'resultado_primer'=>  $partidos[$j]->resultado,
+                   
+                    'jug_dos_primer' => array(
+                        'id' =>$partidos[$j]->nombreJugadorDos->id,
+                         'nombre'=> $partidos[$j]->nombreJugadorDos->nombre,
+                          'abrev' => $partidos[$j]->nombreJugadorDos->abreviado,
+                    ),
                
-               'id_segundo' =>  $partidos[$i]->id,
-                'jugador_uno_segundo' =>  $partidos[$i]->nombreJugadorUno->nombre,
-                'jugador_dos_segundo' => $partidos[$i]->nombreJugadorDos->nombre,
-                'juno_segundo_abre' =>  $partidos[$i]->nombreJugadorUno->abreviado,
-                'jdos_segundo_abre' =>  $partidos[$i]->nombreJugadorDos->abreviado,
-                'resultado_segundo'=> $partidos[$i]->resultado
+               
+                    'id_segundo' => $partidos[$i]->id,
+                  
+                    'jug_uno_seg' => array(
+                     'id' =>$partidos[$i]->nombreJugadorUno->id,
+                     'nombre'=> $partidos[$i]->nombreJugadorUno->nombre,
+                     'abrev' => $partidos[$i]->nombreJugadorUno->abreviado),
+                    
+                     'resultado_primer'=>  $partidos[$i]->resultado,
+                    
+                     'jug_dos_seg' => array(
+                         'id' =>$partidos[$i]->nombreJugadorDos->id,
+                          'nombre'=> $partidos[$i]->nombreJugadorDos->nombre,
+                           'abrev' => $partidos[$i]->nombreJugadorDos->abreviado,
+                     ),
             );
            $count++; 
          
@@ -53,5 +77,11 @@ class PartidosController extends Controller
              return response()->json($arreglo, 200);
         else
         return abort(404);
+    }
+
+    function store(Request $request){
+       
+       $partido= Partido::create($request->all());
+        return response()->json($partido, 201);
     }
 }

@@ -5,7 +5,9 @@ import Semis from './Semis';
 import './partidos.css'
 export default class Playoffs extends Component {
     state = {
-        items: []
+        items: [],
+        nombre: "",
+        jugador: ""
     };
 
     componentWillMount() {
@@ -18,12 +20,7 @@ export default class Playoffs extends Component {
             });
     }
 
-    handleClick(param, e) {
-        console.log('Parameter', param);
-        console.log('Event', e);
-        document.getElementById("hola").innerHTML += "<p>" + param + "</p>";
 
-    }
     render() {
         var { items } = this.state;
         return <div>
@@ -45,16 +42,195 @@ export default class Playoffs extends Component {
                     <p>8vos</p>
                 </div>
             </div>
-            <Octavos i={0} />
-            <Cuartos />
-            <Octavos i={1} />
-            <Semis />
-            <Octavos i={2} />
-            <Cuartos />
-            <Octavos i={3} />
-            <div id="hola"></div>
-        </div>
+
+
+            <div className="partido row " >
+                <div className="col-2 octavos">
+
+                    <Octavos i={0} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-4 semis">
+                    <p> </p>
+                </div>
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-2 octavos">
+                    <Octavos i={1} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+            </div>
+
+
+            <div className="partido row " >
+                <div className="col-2 octavos">
+                    <p> </p>
+
+                </div>
+                <div className="col-2 cuartos">
+                    <Cuartos i={0} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+                <div className="col-4 semis">
+
+                </div>
+                <div className="col-2 cuartos">
+                    <Cuartos i={1} nombre={this.nombre} jugador={this.jugador} />
+
+                </div>
+
+                <div className="col-2 octavos">
+                    <p> </p>
+                </div>
+
+            </div>
+
+
+            <div className="partido row " >
+                <div className="col-2 octavos">
+
+                    <Octavos i={2} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-4 semis">
+                    <p> </p>
+                </div>
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-2 octavos">
+                    <Octavos i={3} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+            </div>
+
+            <div className="partido row " >
+                <div className="col-2 octavos">
+
+                </div>
+                <div className="col-2 cuartos">
+
+                </div>
+                <div className="col-4   text-center">
+
+                    <Semis i={1} />
+
+                </div>
+                <div className="col-2 cuartos">
+
+                </div>
+                <div className="col-2 octavos">
+
+                </div>
+
+            </div>
+
+            <div className="partido row " >
+                <div className="col-2 octavos">
+
+                </div>
+                <div className="col-2 cuartos">
+
+                </div>
+                <div className="col-4   text-center">
+
+                    <Semis i={2} />
+
+                </div>
+                <div className="col-2 cuartos">
+
+                </div>
+                <div className="col-2 octavos">
+
+                </div>
+
+            </div>
+            <div className="partido row " >
+                <div className="col-2 octavos">
+
+                    <Octavos i={4} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-4 semis">
+                    <p> </p>
+                </div>
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-2 octavos">
+                    <Octavos i={5} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+            </div>
+
+            <div className="partido row " >
+                <div className="col-2 octavos">
+                    <p> </p>
+
+                </div>
+                <div className="col-2 cuartos">
+                    <Cuartos i={2} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+                <div className="col-4 semis">
+
+                </div>
+                <div className="col-2 cuartos">
+                    <Cuartos i={3} nombre={this.nombre} jugador={this.jugador} />
+
+                </div>
+
+                <div className="col-2 octavos">
+                    <p> </p>
+                </div>
+
+            </div>
+
+            <div className="partido row " >
+                <div className="col-2 octavos">
+
+                    <Octavos i={6} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-4 semis">
+                    <p> </p>
+                </div>
+                <div className="col-2 cuartos">
+                    <p> </p>
+                </div>
+                <div className="col-2 octavos">
+                    <Octavos i={7} nombre={this.nombre} jugador={this.jugador} />
+                </div>
+
+            </div>
+        </div >
 
 
     }
+    nombre = (newnombre) => {
+        this.setState({
+            nombre: newnombre
+        });
+    }
+    jugador = (newjugador) => {
+        this.setState({
+            jugador: newjugador
+        });
+    }
+
 }

@@ -19,7 +19,7 @@ class UserController extends Controller
    public function handleProviderCallback($provider)
    {
        // Obtenemos los datos del usuario
-       $social_user = Socialite::driver($provider)->user(); 
+       $social_user = Socialite::driver($provider)->stateless()->user(); 
        // Comprobamos si el usuario ya existe
        if ($user = User::where('email', $social_user->email)->first()) { 
            return $this->authAndRedirect($user); // Login y redirección
@@ -39,7 +39,7 @@ class UserController extends Controller
    public function authAndRedirect($user)
    {
        Auth::login($user);
-       
+        
        return redirect()->to('/home#');
    }
 

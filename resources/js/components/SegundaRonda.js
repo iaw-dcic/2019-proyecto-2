@@ -22,7 +22,7 @@ export default class SegundaRonda extends Component {
         return <ul>
             {items.map(item => (
                 <li key={item.id}>
-                    {item.jugador_uno} vs {item.jugador_dos}
+                    {item.junonombre} vs {item.jdosnombre}
                 </li>
             ))}
         </ul>
