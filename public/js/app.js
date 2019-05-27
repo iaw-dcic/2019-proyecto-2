@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#basePicture {\r\n    height: 42px;\r\n    width: 42px;\r\n}", ""]);
+exports.push([module.i, "#basePicture, #hairPicture, #shirtPicture, #beardPicture {\r\n    height: 200px;\r\n    width: 200px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}", ""]);
 
 // exports
 
@@ -6539,7 +6539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".d-flex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 175px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    top: 50%;\r\n}\r\n\r\n#avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
+exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 175px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    top: 50%;\r\n}\r\n\r\n#avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
 
 // exports
 
@@ -6558,7 +6558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".d-flex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.card {\r\n    height: 125px;\r\n    margin-right: 4px;\r\n}", ""]);
+exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#savedCard {\r\n    height: 125px;\r\n    margin-right: 4px;\r\n}\r\n\r\n#savedBase, #savedHair, #savedShirt, #savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n#selectButton {\r\n    position: relative;\r\n}", ""]);
 
 // exports
 
@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".d-flex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#saveButton {\r\n    margin-left: 4px;\r\n}", ""]);
+exports.push([module.i, "#textFlex, #buttonsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#saveButton {\r\n    margin-left: 4px;\r\n}", ""]);
 
 // exports
 
@@ -66436,13 +66436,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
  //Seleccion de todos los elementos para modificar el avatar
 
@@ -66452,17 +66454,195 @@ function (_Component) {
   _inherits(AvatarComponents, _Component);
 
   function AvatarComponents() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, AvatarComponents);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AvatarComponents).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AvatarComponents)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "changeAvatarHair", function (newHair) {
+      var returningAvatar = {
+        hair: newHair,
+        shirt: _this.props.avatar.shirt,
+        beard: _this.props.avatar.beard
+      };
+
+      _this.props.componentChange.bind(returningAvatar);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "changeAvatarShirt", function (newShirt) {
+      var returningAvatar = {
+        hair: _this.props.avatar.hair,
+        shirt: newShirt,
+        beard: _this.props.avatar.beard
+      };
+
+      _this.props.componentChange.bind(returningAvatar);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "changeAvatarBeard", function (newBeard) {
+      var returningAvatar = {
+        hair: _this.props.avatar.hair,
+        shirt: _this.props.avatar.shirt,
+        beard: newBeard
+      };
+
+      _this.props.componentChange.bind(returningAvatar);
+    });
+
+    return _this;
   }
 
   _createClass(AvatarComponents, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "table-wrapper-scroll-y my-custom-scrollbar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Option 1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Option 2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Option 3"))));
+        className: "accordion md-accordion",
+        id: "accordionEx1",
+        role: "tablist",
+        "aria-multiselectable": "true"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header",
+        role: "tab",
+        id: "headingTwo1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "collapsed",
+        "data-toggle": "collapse",
+        "data-parent": "#accordionEx1",
+        href: "#collapseTwo1",
+        "aria-expanded": "false",
+        "aria-controls": "collapseTwo1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-0"
+      }, "Hair ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-down rotate-icon"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "collapseTwo1",
+        className: "collapse",
+        role: "tabpanel",
+        "aria-labelledby": "headingTwo1",
+        "data-parent": "#accordionEx1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Hair1.png',
+        onClick: this.changeAvatarHair("Hair1.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Hair2.png',
+        onClick: this.changeAvatarHair("Hair2.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Hair3.png',
+        onClick: this.changeAvatarHair("Hair3.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Hair4.png',
+        onClick: this.changeAvatarHair("Hair4.png")
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header",
+        role: "tab",
+        id: "headingTwo2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "collapsed",
+        "data-toggle": "collapse",
+        "data-parent": "#accordionEx1",
+        href: "#collapseTwo21",
+        "aria-expanded": "false",
+        "aria-controls": "collapseTwo21"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-0"
+      }, "Shirts ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-down rotate-icon"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "collapseTwo21",
+        className: "collapse",
+        role: "tabpanel",
+        "aria-labelledby": "headingTwo21",
+        "data-parent": "#accordionEx1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-danger"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Shirt1.png',
+        onClick: this.changeAvatarShirt("Shirt1.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-danger"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Shirt2.png',
+        onClick: this.changeAvatarShirt("Shirt2.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-danger"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Shirt3.png',
+        onClick: this.changeAvatarShirt("Shirt3.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-danger"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Shirt4.png',
+        onClick: this.changeAvatarShirt("Shirt4.png")
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header",
+        role: "tab",
+        id: "headingThree31"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "collapsed",
+        "data-toggle": "collapse",
+        "data-parent": "#accordionEx1",
+        href: "#collapseThree31",
+        "aria-expanded": "false",
+        "aria-controls": "collapseThree31"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-0"
+      }, "Beards ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-down rotate-icon"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "collapseThree31",
+        className: "collapse",
+        role: "tabpanel",
+        "aria-labelledby": "headingThree31",
+        "data-parent": "#accordionEx1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Beard1.png',
+        onClick: this.changeAvatarBeard("Beard1.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Beard2.png',
+        onClick: this.changeAvatarBeard("Beard2.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Beard3.png',
+        onClick: this.changeAvatarBeard("Beard3.png")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/Beard4.png',
+        onClick: this.changeAvatarBeard("Beard4.png")
+      })))))));
     }
   }]);
 
@@ -66525,9 +66705,18 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).PUBLIC_URL + '/avatar_elements/BaseModel.png',
+        src: window.location.origin + '/avatar_elements/BaseModel.png',
         id: "basePicture"
-      }), this.props.avatar.hair, this.props.avatar.shirt, this.props.avatar.beard));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/' + this.props.avatar.hair + '.png',
+        id: "hairPicture"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/' + this.props.avatar.shirt + '.png',
+        id: "shirtPicture"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/avatar_elements/' + this.props.avatar.beard + '.png',
+        id: "beardPicture"
+      })));
     }
   }]);
 
@@ -66584,9 +66773,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- //en el saveChanges llamo al axios para que le diga al controlador que metodo usar
-//tengo que usar un setstate para que, lo que trae el avatarcomponents, lo guarde en el avatar actual aca, y eso se refleja automaticamente en el avatarview
-//Clase base de la aplicacion
+ //Clase base de la aplicacion
 
 var ComponentApp =
 /*#__PURE__*/
@@ -66608,18 +66795,34 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       avatarActual: {
-        "hair": "Hair1.png",
-        "shirt": "Shirt1.png",
-        "beard": "Beard1.png"
+        "hair": "Hair1",
+        "shirt": "Shirt1",
+        "beard": "Beard1"
       },
       avataresTotales: []
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentChange", function (avatar) {
+      var newActual = {
+        avatar_name: _this.state.avatarActual.avatar_name,
+        owner: _this.state.avatarActual.owner,
+        hair: avatar.hair,
+        shirt: avatar.shirt,
+        beard: avatar.beard
+      };
+
+      _this.setState(function (state) {
+        return {
+          avatarActual: newActual
+        };
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "saveChanges", function (event, name) {
       var newActual = {
         avatar_name: name,
         owner: _this.state.avatarActual.owner,
-        hair: name,
+        hair: _this.state.avatarActual.hair,
         shirt: _this.state.avatarActual.shirt,
         beard: _this.state.avatarActual.beard
       };
@@ -66640,9 +66843,9 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "returnToDefault", function () {
       _this.setState({
         avatarActual: {
-          "hair": "Hair2.png",
-          "shirt": "Shirt2.png",
-          "beard": "Beard2.png"
+          "hair": "Hair2",
+          "shirt": "Shirt4",
+          "beard": "Beard4"
         }
       });
     });
@@ -66672,7 +66875,10 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3",
         id: "options"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarComponents__WEBPACK_IMPORTED_MODULE_4__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarComponents__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        avatar: this.state.avatarActual,
+        componentChange: this.componentChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center",
         id: "bottomFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66756,12 +66962,27 @@ function (_Component) {
       }, this.props.avatarList.map(function (avatar) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card",
-          key: avatar.avatar_id
-        }, avatar.hair, avatar.shirt, avatar.beard, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          key: avatar.avatar_id,
+          id: "savedCard"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/avatar_elements/BaseModel.png',
+          id: "savedBase"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/avatar_elements/' + avatar.hair + '.png',
+          id: "savedHair"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/avatar_elements/' + avatar.shirt + '.png',
+          id: "savedShirt"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/avatar_elements/' + avatar.beard + '.png',
+          id: "savedBeard"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-text"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn btn-primary",
           id: "selectButton",
           onClick: _this.props.selectAvatar.bind(avatar)
-        }, avatar.name));
+        }, avatar.name)));
       })));
     }
   }]);

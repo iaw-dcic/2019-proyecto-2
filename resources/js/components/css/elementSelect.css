@@ -1,8 +1,19 @@
-.d-flex {
+#elementsFlex {
     margin-top: 2%;
 }
 
-.card {
+#savedCard {
     height: 125px;
     margin-right: 4px;
+}
+
+#savedBase, #savedHair, #savedShirt, #savedBeard {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    background-position: center center;
+}
+
+#selectButton {
+    position: relative;
 }

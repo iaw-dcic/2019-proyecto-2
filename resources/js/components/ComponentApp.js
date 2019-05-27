@@ -6,15 +6,12 @@ import AvatarComponents from './AvatarComponents'
 import ElementSelect from './ElementSelect'
 import Utilities from './Utilities'
 
-//en el saveChanges llamo al axios para que le diga al controlador que metodo usar
-//tengo que usar un setstate para que, lo que trae el avatarcomponents, lo guarde en el avatar actual aca, y eso se refleja automaticamente en el avatarview
-
 //Clase base de la aplicacion
 
 export default class ComponentApp extends Component {
     
     state = { 
-        avatarActual: {"hair":"Hair1.png", "shirt":"Shirt1.png", "beard":"Beard1.png"},
+        avatarActual: {"hair":"Hair1", "shirt":"Shirt1", "beard":"Beard1"},
         avataresTotales: []
     };
 
@@ -26,7 +23,8 @@ export default class ComponentApp extends Component {
                         <AvatarView avatar={this.state.avatarActual}/>
                     </div>
                     <div className="col-md-3" id="options">
-                        <AvatarComponents/>
+                        <AvatarComponents avatar={this.state.avatarActual}
+                                          componentChange={this.componentChange}/>
                     </div>
                 </div>
                 <div className="d-flex justify-content-center" id="bottomFlex">
@@ -43,13 +41,26 @@ export default class ComponentApp extends Component {
         );
     }
 
+    componentChange = (avatar) => {
+        const newActual = {
+            avatar_name: this.state.avatarActual.avatar_name,
+            owner: this.state.avatarActual.owner,
+            hair: avatar.hair,
+            shirt: avatar.shirt,
+            beard: avatar.beard
+        }
+        this.setState (state => ({
+            avatarActual: newActual
+        }));
+    }
+
     saveChanges = (event, name) => {
         const newActual = {
             avatar_name: name,
             owner: this.state.avatarActual.owner,
-            hair: name,
+            hair: this.state.avatarActual.hair,
             shirt: this.state.avatarActual.shirt,
-            beard: this.state.avatarActual.beard,
+            beard: this.state.avatarActual.beard
         }
         this.setState (state => ({
             avatarActual: newActual,
@@ -63,7 +74,7 @@ export default class ComponentApp extends Component {
 
     returnToDefault = () => {
         this.setState ({
-            avatarActual: {"hair":"Hair2.png", "shirt":"Shirt2.png", "beard":"Beard2.png"}
+            avatarActual: {"hair":"Hair2", "shirt":"Shirt4", "beard":"Beard4"}
         });
     }
 
