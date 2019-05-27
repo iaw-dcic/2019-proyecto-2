@@ -61,10 +61,8 @@ export default class Panel extends Component {
                                         </button>
                                     </div>
                                 ) : (
-                                        <div className="col-xs-12 text-center">
-                                            <button type="submit" className="btn btn-primary text-center center">
-                                                Guardar
-                                            </button>
+                                        <div>
+
                                         </div>
                                     )
 

@@ -43,6 +43,7 @@ export default class Prode extends Component {
   }
 
   actualizarPartidos = (partido) => {
+    console.log(partido);
     let partidos = { ...this.state.partidos };
     let partidoActualizar = { ...this.state.partidos[partido.id] }
     partidoActualizar = partido;
@@ -50,7 +51,7 @@ export default class Prode extends Component {
     this.setState({ partidos });
   }
 
-  crearGanadoresSiguienteEtapa = (etapaActual,siguienteEtapa) => {
+  crearGanadoresSiguienteEtapa = (etapaActual, siguienteEtapa) => {
     var partidos = { ...this.state.partidos }
     var partidosValues = Object.values(this.state.partidos);
     partidosValues.filter(partido =>
@@ -89,9 +90,12 @@ export default class Prode extends Component {
         equipo2: arregloDerecha[equipo.id].nombre_equipo,
         boton1: false,
         boton2: false,
+        resultado1: 0,
+        resultado2: 0,
       }
       partidos.push(cuartos);
     })
+    console.log("ENTRO");
 
     //Agregar semifinales
     var id = 4;
@@ -103,6 +107,8 @@ export default class Prode extends Component {
         equipo2: "N/A",
         boton1: false,
         boton2: false,
+        resultado1: 0,
+        resultado2: 0,
       }
       partidos.push(semifinal);
     }
@@ -114,18 +120,33 @@ export default class Prode extends Component {
       equipo2: "N/A",
       boton1: false,
       boton2: false,
+      resultado1: 0,
+      resultado2: 0,
     }
     partidos.push(final);
 
     this.setState({ partidos });
   }
-  
+
+  guardarCambios = (e) => {
+    axios.post("/partidos", this.state.partidos).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log("this is error", error);
+    });
+  }  
+
   render() {
     return (
       <div>
         <Panel etapa="cuartos" siguienteEtapa={this.siguienteEtapa["cuartos"]} equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
         <Panel etapa="semifinal" siguienteEtapa={this.siguienteEtapa["semifinal"]} equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
-        <Panel etapa="final" siguienteEtapa="" equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa}  />
+        <Panel etapa="final" siguienteEtapa="" equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
+        <div className="col-xs-12 text-center">
+          <button type="button" onClick={this.guardarCambios} className="btn btn-primary text-center center">
+            Guardar
+          </button>
+        </div>
       </div>
     )
   }

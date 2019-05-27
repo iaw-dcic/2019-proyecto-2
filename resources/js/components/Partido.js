@@ -21,6 +21,7 @@ export default class Partido extends Component {
   input2Ref = React.createRef();
 
   componentDidMount() {
+    console.log("entro");
     var partido = Object.assign({}, this.state.partido);
     if (this.props.partido) {
       partido = {
@@ -52,10 +53,18 @@ export default class Partido extends Component {
     }
   }
 
+  componentDidUpdate(){
+    // const partido = {...this.state.partido}
+    // partido = this.props.partido;
+    // this.setState({partido});
+  }
+
   actualizarInputs = (e) => {
     let partido = Object.assign({}, this.state.partido);
-    let valorInput1 = this.input1Ref.current.value;;
-    let valorInput2 = this.input2Ref.current.value;;
+    let valorInput1 = this.input1Ref.current.value;
+    let valorInput2 = this.input2Ref.current.value;
+    partido.equipo1= this.props.nombre_equipo1;
+    partido.equipo2= this.props.nombre_equipo2;
     if (valorInput1 && valorInput1 && (valorInput1 != valorInput2)) {
       partido.boton1 = false;
       partido.boton2 = false;
@@ -71,6 +80,8 @@ export default class Partido extends Component {
 
   actualizarBotones = (e) => {
     let partido = Object.assign({}, this.state.partido);
+    partido.equipo1= this.props.nombre_equipo1;
+    partido.equipo2= this.props.nombre_equipo2;
     if (e.target.id.includes("equipo1")) {
       partido.boton1 = true;
       partido.boton2 = false;

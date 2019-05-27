@@ -65861,12 +65861,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary text-center center"
-      }, "Actualizar ", this.props.siguienteEtapa)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xs-12 text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-primary text-center center"
-      }, "Guardar"))))));
+      }, "Actualizar ", this.props.siguienteEtapa)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)))));
     }
   }]);
 
@@ -65938,9 +65933,9 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "actualizarInputs", function (e) {
       var partido = Object.assign({}, _this.state.partido);
       var valorInput1 = _this.input1Ref.current.value;
-      ;
       var valorInput2 = _this.input2Ref.current.value;
-      ;
+      partido.equipo1 = _this.props.nombre_equipo1;
+      partido.equipo2 = _this.props.nombre_equipo2;
 
       if (valorInput1 && valorInput1 && valorInput1 != valorInput2) {
         partido.boton1 = false;
@@ -65962,6 +65957,8 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "actualizarBotones", function (e) {
       var partido = Object.assign({}, _this.state.partido);
+      partido.equipo1 = _this.props.nombre_equipo1;
+      partido.equipo2 = _this.props.nombre_equipo2;
 
       if (e.target.id.includes("equipo1")) {
         partido.boton1 = true;
@@ -66006,6 +66003,7 @@ function (_Component) {
   _createClass(Partido, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log("entro");
       var partido = Object.assign({}, this.state.partido);
 
       if (this.props.partido) {
@@ -66031,6 +66029,12 @@ function (_Component) {
       this.setState({
         partido: partido
       });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {// const partido = {...this.state.partido}
+      // partido = this.props.partido;
+      // this.setState({partido});
     }
   }, {
     key: "render",
@@ -66173,6 +66177,8 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarPartidos", function (partido) {
+      console.log(partido);
+
       var partidos = _objectSpread({}, _this.state.partidos);
 
       var partidoActualizar = _objectSpread({}, _this.state.partidos[partido.id]);
@@ -66232,10 +66238,13 @@ function (_Component) {
           equipo1: equipo.nombre_equipo,
           equipo2: arregloDerecha[equipo.id].nombre_equipo,
           boton1: false,
-          boton2: false
+          boton2: false,
+          resultado1: 0,
+          resultado2: 0
         };
         partidos.push(cuartos);
-      }); //Agregar semifinales
+      });
+      console.log("ENTRO"); //Agregar semifinales
 
       var id = 4;
 
@@ -66246,7 +66255,9 @@ function (_Component) {
           equipo1: "N/A",
           equipo2: "N/A",
           boton1: false,
-          boton2: false
+          boton2: false,
+          resultado1: 0,
+          resultado2: 0
         };
         partidos.push(semifinal);
       }
@@ -66257,12 +66268,22 @@ function (_Component) {
         equipo1: "N/A",
         equipo2: "N/A",
         boton1: false,
-        boton2: false
+        boton2: false,
+        resultado1: 0,
+        resultado2: 0
       };
       partidos.push(_final);
 
       _this.setState({
         partidos: partidos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "guardarCambios", function (e) {
+      axios.post("/partidos", _this.state.partidos).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log("this is error", error);
       });
     });
 
@@ -66318,7 +66339,13 @@ function (_Component) {
         partidos: this.state.partidos,
         actualizarPartidos: this.actualizarPartidos,
         crearGanadoresSiguienteEtapa: this.crearGanadoresSiguienteEtapa
-      }));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xs-12 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.guardarCambios,
+        className: "btn btn-primary text-center center"
+      }, "Guardar")));
     }
   }]);
 
