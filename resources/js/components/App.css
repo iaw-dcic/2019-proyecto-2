@@ -1,8 +1,7 @@
-#tshirt-container{
-    width: 600px;
-    height: 800px;
+#content{
+    align-items: center
 }
 
-#right_bar{
-    width: 100px;
+html {
+    scroll-behavior: smooth;
 }

@@ -2,28 +2,24 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import TShirt from './TShirt'
-import { SliderPicker } from 'react-color';
 import './App.css';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.tshirt = React.createRef();
+    }
 
-    handleColorChange = (color) => {
-        this.setState({ background: "#FFFFFF" });
+    handleColorChange(color) {
+        this.tshirt.changeColor(color);
     }
 
     render () {
     return (
         <BrowserRouter>
-        <div id="content">
-            <span id="tshirt-container">
-                <div>
-                    <TShirt id="tshirt"/>
-                </div>
-            </span>
-            <span id="right_bar">
-                <SliderPicker onChange={this.handleColorChange}/>
-            </span>
-        </div>
+            <div id="content" className="row justify-content-center">
+                <TShirt/>
+            </div>
         </BrowserRouter>
     )
     }

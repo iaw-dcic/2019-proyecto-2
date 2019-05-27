@@ -1,5 +1,18 @@
-.tshirt-container{
+#tshirt-container{
+    align-items: center;
+    padding: 20px;
+    width: 443px;
+    height: 467px;
+    position: relative;
 }
+
+#color_picker{
+    align-items: center;
+    padding: 20px;
+    width: 443px;
+    position: relative;
+}
+
 .tshirt-contents{
     position: absolute;
     left: 0px;
@@ -8,9 +21,53 @@
     bottom: 0px;
 }
 .image{
-    background-image: url("/storage/uploads/basic_tee.png");
+    background-size: cover;
     background-blend-mode: multiply;
 }
-.red{
-    background-color: red;
+
+#center_image{
+    padding: 20px;
+    margin-top: 120px;
+    margin-left: 125px;
+    width: 193px;
+    height: 193px;
+}
+
+#pocket_image{
+    padding: 20px;
+    margin-top: 100px;
+    margin-left: 225px;
+    width: 100px;
+    height: 100px;
+}
+
+.options{
+    overflow: auto;
+    display: inline;
+}
+
+.type_options{
+    display: flex;
+    flex-direction: row;
+}
+
+.image_button{
+    width: 50px;
+    height: 50px;
+    margin:10px;
+}
+
+.large_image_button{
+    width: 143px;
+    height: 147px;
+    margin:10px;
+}
+
+.option_label{
+    text-align: center;
+}
+
+#content{
+    display: flex;
+    flex-direction: row;
 }
