@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
+Route::get('/', 'PagesController@home')->name('home');
 
 Auth::routes();
 
 Route::view('/app/{path?}', 'react')->middleware('auth')->name('react');
 
 Route::get('/about', 'PagesController@about')->name('about');
+
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+//Route::resource('avatars', 'TaskController')->middleware('auth');
+
+Route::post('/app/avatars', 'TaskController@store')->middleware('auth');
+
+Route::post('/app/avatars/{avatar}', 'TaskController@update')->middleware('auth');

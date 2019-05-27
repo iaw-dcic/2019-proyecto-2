@@ -7,7 +7,17 @@
 }
 
 #previous {
-    height: 100px;
+    height: 175px;
     width: 50%;
     overflow-x: scroll;
+}
+
+#editor, #previous {
+    text-align: center;
+    top: 50%;
+}
+
+#avatarName {
+    margin-bottom: 4px;
+    width: 70%;
 }

@@ -33,6 +33,10 @@
                         @endauth
 
                         <a href="{{ route('about') }}">About</a>
+
+                        @auth
+                        <a href="{{ url('/logout') }}">Logout</a>
+                        @endauth
                     </div>
                 @endif
 

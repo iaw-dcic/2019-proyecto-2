@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Avatar extends Model {
     
     protected $fillable = [
-        'avatar_name', 'owner', 'element1', 'element2', 'element3'
+        'avatar_name', 'owner', 'hair', 'shirt', 'beard'
     ];
 
     protected $primaryKey = 'avatar_id';

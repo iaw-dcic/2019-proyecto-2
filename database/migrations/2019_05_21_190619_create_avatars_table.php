@@ -17,9 +17,9 @@ class CreateAvatarsTable extends Migration
             $table->increments ('avatar_id');
             $table->string ('avatar_name');
             $table->string ('owner');
-            $table->string ('element1');
-            $table->string ('element2');
-            $table->string ('element3');
+            $table->string ('hair');
+            $table->string ('shirt');
+            $table->string ('beard');
             $table->timestamps ();
         });
 
