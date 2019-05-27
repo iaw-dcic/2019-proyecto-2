@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter, Route, Switch,} from 'react-router-dom'
 
 import Dashboard from './Dashboard' 
-import Mylab from './Mylab' 
+import Profile from './Profile' 
+import Lab from './Lab' 
 import Pagenotfound from './Pagenotfound' 
 
 
@@ -13,7 +14,8 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" component={Dashboard} exact/>
-                    <Route path="/mylab" component={Mylab} exact/>
+                    <Route path="/profile" component={Profile} exact/>
+                    <Route path="/mylab" component={Lab} exact/>
                     <Route component={Pagenotfound}/>
                 </Switch>
             </BrowserRouter>

@@ -12,7 +12,7 @@ export default class Dashboard extends Component {
                         </div>
                         <div className="col-lg-8 align-self-baseline">
                             <p className="text-white-75 font-weight-light mb-5">Now begins a new experience in <strong>AvatarIO!</strong></p>
-                            <a className="btn btn-primary btn-xl js-scroll-trigger" href="/mylab">GET STARTED</a>
+                            <a className="btn btn-primary btn-xl js-scroll-trigger" href="/profile">GET STARTED</a>
                         </div>
                     </div>
                 </div>

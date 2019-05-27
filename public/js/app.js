@@ -6508,10 +6508,29 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Mylab.css":
-/*!********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/css/Mylab.css ***!
-  \********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Lab.css":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/css/Lab.css ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".options-avatar{\r\n    width: 18rem;\r\n    background-color: inherit;\r\n    border: inherit;\r\n}\r\n\r\n.buttons-options{\r\n    text-decoration: none !important;\r\n    padding: 8px 16px;\r\n}\r\n\r\n.buttons-options:hover {\r\n    background-color: #ddd;\r\n    color: black;\r\n}\r\n\r\n.previous, .next {\r\n    background-color: #f1f1f1;\r\n    color: black;\r\n}\r\n\r\n.previous{\r\n    margin-right: 2%;\r\n    float: left;\r\n}\r\n\r\n.next{\r\n    margin-left: 2%;\r\n    float: right;\r\n}\r\n  \r\n.round {\r\n    border-radius: 50%;\r\n}\r\n\r\n.text{\r\n    margin-top: 3%;\r\n    font-weight: bold;\r\n}\r\n  \r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Profile.css":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/css/Profile.css ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66309,8 +66328,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
-/* harmony import */ var _Mylab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mylab */ "./resources/js/components/Mylab.js");
-/* harmony import */ var _Pagenotfound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pagenotfound */ "./resources/js/components/Pagenotfound.js");
+/* harmony import */ var _Profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Profile */ "./resources/js/components/Profile.js");
+/* harmony import */ var _Lab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Lab */ "./resources/js/components/Lab.js");
+/* harmony import */ var _Pagenotfound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Pagenotfound */ "./resources/js/components/Pagenotfound.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66328,6 +66348,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66355,11 +66376,15 @@ function (_Component) {
         component: _Dashboard__WEBPACK_IMPORTED_MODULE_3__["default"],
         exact: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/mylab",
-        component: _Mylab__WEBPACK_IMPORTED_MODULE_4__["default"],
+        path: "/profile",
+        component: _Profile__WEBPACK_IMPORTED_MODULE_4__["default"],
         exact: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        component: _Pagenotfound__WEBPACK_IMPORTED_MODULE_5__["default"]
+        path: "/mylab",
+        component: _Lab__WEBPACK_IMPORTED_MODULE_5__["default"],
+        exact: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        component: _Pagenotfound__WEBPACK_IMPORTED_MODULE_6__["default"]
       })));
     }
   }]);
@@ -66435,7 +66460,7 @@ function (_Component) {
         className: "text-white-75 font-weight-light mb-5"
       }, "Now begins a new experience in ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "AvatarIO!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-primary btn-xl js-scroll-trigger",
-        href: "/mylab"
+        href: "/profile"
       }, "GET STARTED")))));
     }
   }]);
@@ -66447,20 +66472,20 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Mylab.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/Mylab.js ***!
-  \******************************************/
+/***/ "./resources/js/components/Lab.js":
+/*!****************************************!*\
+  !*** ./resources/js/components/Lab.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mylab; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Dashboard; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_Mylab_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../css/Mylab.css */ "./resources/js/css/Mylab.css");
-/* harmony import */ var _css_Mylab_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_Mylab_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _css_Lab_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../css/Lab.css */ "./resources/js/css/Lab.css");
+/* harmony import */ var _css_Lab_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_Lab_css__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66482,83 +66507,93 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Mylab =
+var Dashboard =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Mylab, _Component);
+  _inherits(Dashboard, _Component);
 
-  function Mylab() {
-    _classCallCheck(this, Mylab);
+  function Dashboard() {
+    _classCallCheck(this, Dashboard);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Mylab).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).apply(this, arguments));
   }
 
-  _createClass(Mylab, [{
+  _createClass(Dashboard, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "masthead"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "container h-100"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bs-example"
+        className: "row h-100 align-items-center justify-content-center text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "myCarousel",
-        className: "carousel slide",
-        "data-ride": "carousel"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
-        className: "carousel-indicators"
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, "This is some text within a card body."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card options-avatar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "list-group list-group-flush"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "data-target": "#myCarousel",
-        "data-slide-to": "0",
-        className: "active"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "data-target": "#myCarousel",
-        "data-slide-to": "1"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "data-target": "#myCarousel",
-        "data-slide-to": "2"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "carousel-inner"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "carousel-item active"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        width: "400",
-        src: "https://img-cdn.hipertextual.com/files/2019/03/hipertextual-whatsapp-permitira-realizar-busqueda-inversa-imagenes-recibidas-combatir-fake-news-2019852284.jpg?strip=all&lossy=1&quality=70&ssl=1",
-        alt: "First Slide"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "carousel-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        width: "400",
-        src: "https://img-cdn.hipertextual.com/files/2019/03/hipertextual-whatsapp-permitira-realizar-busqueda-inversa-imagenes-recibidas-combatir-fake-news-2019852284.jpg?strip=all&lossy=1&quality=70&ssl=1",
-        alt: "Second Slide"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "carousel-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        width: "400",
-        src: "https://img-cdn.hipertextual.com/files/2019/03/hipertextual-whatsapp-permitira-realizar-busqueda-inversa-imagenes-recibidas-combatir-fake-news-2019852284.jpg?strip=all&lossy=1&quality=70&ssl=1",
-        alt: "Third Slide"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "carousel-control-prev",
-        href: "#myCarousel",
-        "data-slide": "prev"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "carousel-control-prev-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "carousel-control-next",
-        href: "#myCarousel",
-        "data-slide": "next"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "carousel-control-next-icon"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "align-items-center justify-content-center text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-success"
-      }, "New avatar"))));
+        className: "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "previous round buttons-options"
+      }, "\u2039"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "text"
+      }, "BODY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "next round buttons-options"
+      }, "\u203A")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "previous round buttons-options"
+      }, "\u2039"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "text"
+      }, "EYES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "next round buttons-options"
+      }, "\u203A")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "previous round buttons-options"
+      }, "\u2039"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "text"
+      }, "HAIR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "next round buttons-options"
+      }, "\u203A")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "previous round buttons-options"
+      }, "\u2039"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "text"
+      }, "NOSE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "next round buttons-options"
+      }, "\u203A")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "previous round buttons-options"
+      }, "\u2039"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "text"
+      }, "MOUTH"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "next round buttons-options"
+      }, "\u203A"))))))));
     }
   }]);
 
-  return Mylab;
+  return Dashboard;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -66639,15 +66674,164 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/css/Mylab.css":
-/*!************************************!*\
-  !*** ./resources/js/css/Mylab.css ***!
-  \************************************/
+/***/ "./resources/js/components/Profile.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Profile.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Profile; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_Profile_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../css/Profile.css */ "./resources/js/css/Profile.css");
+/* harmony import */ var _css_Profile_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_Profile_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Profile =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Profile, _Component);
+
+  function Profile() {
+    _classCallCheck(this, Profile);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Profile).apply(this, arguments));
+  }
+
+  _createClass(Profile, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "masthead"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bs-example"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "myCarousel",
+        className: "carousel slide",
+        "data-ride": "carousel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
+        className: "carousel-indicators"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "data-target": "#myCarousel",
+        "data-slide-to": "0",
+        className: "active"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "data-target": "#myCarousel",
+        "data-slide-to": "1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "data-target": "#myCarousel",
+        "data-slide-to": "2"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "carousel-inner"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "carousel-item active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "400",
+        src: "https://img-cdn.hipertextual.com/files/2019/03/hipertextual-whatsapp-permitira-realizar-busqueda-inversa-imagenes-recibidas-combatir-fake-news-2019852284.jpg?strip=all&lossy=1&quality=70&ssl=1",
+        alt: "First Slide"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "carousel-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "400",
+        src: "https://img-cdn.hipertextual.com/files/2019/03/hipertextual-whatsapp-permitira-realizar-busqueda-inversa-imagenes-recibidas-combatir-fake-news-2019852284.jpg?strip=all&lossy=1&quality=70&ssl=1",
+        alt: "Second Slide"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "carousel-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "400",
+        src: "https://img-cdn.hipertextual.com/files/2019/03/hipertextual-whatsapp-permitira-realizar-busqueda-inversa-imagenes-recibidas-combatir-fake-news-2019852284.jpg?strip=all&lossy=1&quality=70&ssl=1",
+        alt: "Third Slide"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "carousel-control-prev",
+        href: "#myCarousel",
+        "data-slide": "prev"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "carousel-control-prev-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "carousel-control-next",
+        href: "#myCarousel",
+        "data-slide": "next"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "carousel-control-next-icon"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "align-items-center justify-content-center text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/mylab",
+        className: "btn btn-success"
+      }, "New avatar"))));
+    }
+  }]);
+
+  return Profile;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/css/Lab.css":
+/*!**********************************!*\
+  !*** ./resources/js/css/Lab.css ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./Mylab.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Mylab.css");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./Lab.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Lab.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/css/Profile.css":
+/*!**************************************!*\
+  !*** ./resources/js/css/Profile.css ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./Profile.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Profile.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

@@ -1,0 +1,40 @@
+.options-avatar{
+    width: 18rem;
+    background-color: inherit;
+    border: inherit;
+}
+
+.buttons-options{
+    text-decoration: none !important;
+    padding: 8px 16px;
+}
+
+.buttons-options:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous, .next {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.previous{
+    margin-right: 2%;
+    float: left;
+}
+
+.next{
+    margin-left: 2%;
+    float: right;
+}
+  
+.round {
+    border-radius: 50%;
+}
+
+.text{
+    margin-top: 3%;
+    font-weight: bold;
+}
+  

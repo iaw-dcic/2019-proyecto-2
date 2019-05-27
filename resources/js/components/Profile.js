@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import "./../css/Mylab.css"
+import "./../css/Profile.css"
 
-export default class Mylab extends Component {
+export default class Profile extends Component {
     render() {
         return (
             <div className="masthead">
@@ -35,7 +35,7 @@ export default class Mylab extends Component {
                     </div>                        
 
                     <div className="align-items-center justify-content-center text-center">
-                        <button className="btn btn-success">New avatar</button>
+                        <a href="/mylab" className="btn btn-success">New avatar</a>
                     </div>
 
                 </div>
