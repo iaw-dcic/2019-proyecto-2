@@ -14,4 +14,5 @@
 
 Auth::routes();
 Route::view('/mylab', 'index')->middleware('auth');
+Route::view('/profile', 'index')->middleware('auth');
 Route::view('/{path?}', 'index');

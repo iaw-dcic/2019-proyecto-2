@@ -2,6 +2,7 @@
     width: 18rem;
     background-color: inherit;
     border: inherit;
+    height: 480px;
 }
 
 .buttons-options{
@@ -37,4 +38,46 @@
     margin-top: 3%;
     font-weight: bold;
 }
-  
+
+.col-md-4{
+    width: auto !important;
+}
+
+#card-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-avatar{
+    position: relative;
+    width: 320px;
+}
+
+#eyes{
+    position:absolute;
+    left : 117px;
+    top: 142px;
+    z-index: 1;
+}
+
+#nose{
+    position:absolute;
+    left : 151px;
+    top: 165px;
+    z-index: 1;
+}
+
+#mouth{
+    position:absolute;
+    left : 140px;
+    top: 197px;
+    z-index: 1;
+}
+
+#hair{
+    position:absolute;
+    left : 29px;
+    top: 17px;
+    z-index: 1;
+}

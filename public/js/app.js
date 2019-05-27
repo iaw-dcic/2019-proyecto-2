@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".options-avatar{\r\n    width: 18rem;\r\n    background-color: inherit;\r\n    border: inherit;\r\n}\r\n\r\n.buttons-options{\r\n    text-decoration: none !important;\r\n    padding: 8px 16px;\r\n}\r\n\r\n.buttons-options:hover {\r\n    background-color: #ddd;\r\n    color: black;\r\n}\r\n\r\n.previous, .next {\r\n    background-color: #f1f1f1;\r\n    color: black;\r\n}\r\n\r\n.previous{\r\n    margin-right: 2%;\r\n    float: left;\r\n}\r\n\r\n.next{\r\n    margin-left: 2%;\r\n    float: right;\r\n}\r\n  \r\n.round {\r\n    border-radius: 50%;\r\n}\r\n\r\n.text{\r\n    margin-top: 3%;\r\n    font-weight: bold;\r\n}\r\n  \r\n", ""]);
+exports.push([module.i, ".options-avatar{\r\n    width: 18rem;\r\n    background-color: inherit;\r\n    border: inherit;\r\n    height: 480px;\r\n}\r\n\r\n.buttons-options{\r\n    text-decoration: none !important;\r\n    padding: 8px 16px;\r\n}\r\n\r\n.buttons-options:hover {\r\n    background-color: #ddd;\r\n    color: black;\r\n}\r\n\r\n.previous, .next {\r\n    background-color: #f1f1f1;\r\n    color: black;\r\n}\r\n\r\n.previous{\r\n    margin-right: 2%;\r\n    float: left;\r\n}\r\n\r\n.next{\r\n    margin-left: 2%;\r\n    float: right;\r\n}\r\n  \r\n.round {\r\n    border-radius: 50%;\r\n}\r\n\r\n.text{\r\n    margin-top: 3%;\r\n    font-weight: bold;\r\n}\r\n\r\n.col-md-4{\r\n    width: auto !important;\r\n}\r\n\r\n#card-body{\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n#content-avatar{\r\n    position: relative;\r\n    width: 320px;\r\n}\r\n\r\n#eyes{\r\n    position:absolute;\r\n    left : 117px;\r\n    top: 142px;\r\n    z-index: 1;\r\n}\r\n\r\n#nose{\r\n    position:absolute;\r\n    left : 151px;\r\n    top: 165px;\r\n    z-index: 1;\r\n}\r\n\r\n#mouth{\r\n    position:absolute;\r\n    left : 140px;\r\n    top: 197px;\r\n    z-index: 1;\r\n}\r\n\r\n#hair{\r\n    position:absolute;\r\n    left : 29px;\r\n    top: 17px;\r\n    z-index: 1;\r\n}", ""]);
 
 // exports
 
@@ -66532,14 +66532,38 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "card-body",
         className: "card-body"
-      }, "This is some text within a card body."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "content-avatar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "body",
+        src: "storage/bodies/1.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "eyes",
+        src: "storage/eyes/1.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "nose",
+        src: "storage/noses/1.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "mouth",
+        src: "storage/mouths/3.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "hair",
+        src: "storage/hairs/1.png"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card options-avatar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-group list-group-flush"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        placeholder: "Avatar name"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "list-group-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
@@ -66589,7 +66613,11 @@ function (_Component) {
       }, "MOUTH"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         className: "next round buttons-options"
-      }, "\u203A"))))))));
+      }, "\u203A")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success"
+      }, "Create"))))))));
     }
   }]);
 

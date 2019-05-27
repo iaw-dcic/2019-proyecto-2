@@ -18,12 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group( ['middleware' => 'auth' ], function(){
-   
+    Route::resource('/avatars', 'Api\AvatarsController'); 
+    Route::resource('/bodies', 'Api\BodiesController'); 
+    Route::resource('/eyes', 'Api\EyesController'); 
+    Route::resource('/hairs', 'Api\HairsController'); 
+    Route::resource('/mouths', 'Api\MouthsController'); 
+    Route::resource('/noses', 'Api\NosesController'); 
 });
-
-Route::resource('/avatars', 'Api\AvatarsController'); 
-Route::resource('/bodies', 'Api\BodiesController'); 
-Route::resource('/eyes', 'Api\EyesController'); 
-Route::resource('/hairs', 'Api\HairsController'); 
-Route::resource('/mouths', 'Api\MouthsController'); 
-Route::resource('/noses', 'Api\NosesController'); 
