@@ -1,7 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import cara from './RecursosGraficos/Caras/Cara1.png'
+import axios from 'axios'
+import avatar from './Avatar'
 
 export default class SideBar extends Component{
-    render(){
+    
+  saevAvatar(event){
+    event.preventDefault();
+    //guardar el avatar, deberia de buscar los componentes usados a través del estado de Avatar!
+    axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
+  }
+  
+  render(){
         return (
         <nav className="navbar fixed-bottom  navbar-dark bg-dark">
             <div className="btn-group dropup">
@@ -9,9 +19,8 @@ export default class SideBar extends Component{
               Piel
             </button>
             <div className="dropdown-menu">
-              <a className="dropdown-item" href="#">Action</a>
-              <a className="dropdown-item" href="#">Another action</a>
-              <a className="dropdown-item" href="#">Something else here</a>
+              <button className="dropdown-item" href="#"><img src={cara}/></button>
+              
             </div>
           </div>
 
@@ -20,9 +29,7 @@ export default class SideBar extends Component{
               Cabello
             </button>
             <div className="dropdown-menu">
-              <a className="dropdown-item" href="#">Action</a>
-              <a className="dropdown-item" href="#">Another action</a>
-              <a className="dropdown-item" href="#">Something else here</a>
+              <button className="dropdown-item" href="#">Action</button>
             </div>
           </div>
 
@@ -31,9 +38,7 @@ export default class SideBar extends Component{
               Ojos
             </button>
             <div className="dropdown-menu ">
-              <a className="dropdown-item" href="#">Action</a>
-              <a className="dropdown-item" href="#">Another action</a>
-              <a className="dropdown-item" href="#">Something else here</a>
+              <button className="dropdown-item" href="#">Action</button>
             </div>
           </div>
 
@@ -42,13 +47,11 @@ export default class SideBar extends Component{
               Boca
             </button>
             <div className="dropdown-menu ">
-              <a className="dropdown-item" href="#">Action</a>
-              <a className="dropdown-item" href="#">Another action</a>
-              <a className="dropdown-item" href="#">Something else here</a>
+              <button className="dropdown-item" href="#">Action</button>
             </div>
           </div>
 
-          <input className="btn btn-outline-success btn-lg" type="submit" value="Guardar Avatar"/>
+          <input className="btn btn-outline-success btn-lg" type="submit" value="Guardar Avatar" onClick="saveAvatar"/>
         </nav>
         )
     }

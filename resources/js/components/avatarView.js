@@ -7,7 +7,10 @@ import axios from 'axios';
 export default class AvatarView extends Component{
     state = {
         name : '',
-        body : '',
+        skin : '',
+        hair : '',
+        eyes : '',
+        mouth : '',
         userID : 1,
         errors : []
     };
