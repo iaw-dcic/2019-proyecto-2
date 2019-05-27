@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Partido extends Model
 {
+
+    protected $fillable = [
+        'jugador_uno_id', 'jugador_dos_id', 'ronda'
+    ];
     public function nombreJugadorUno(){
         
         return $this->belongsTo(\App\Jugadore::class, 'jugador_uno_id');

@@ -15,25 +15,40 @@ export default class Semis extends Component {
 
     }
     render() {
-        var { item } = this.state;
-        let j;
-        if (this.props.i == 1) {
-            j = <button type="button" className="btn btn-light "
-                onClick={(e) => this.handleClick(this.props.jugador, (Number(this.props.i)), e)}>
-
-            </ button>
+        let jugador1 = "";
+        let jugadorAbre1 = ""; let jugadorAbre2 = "";
+        let jugador2 = "";
+        if (this.props.jugador1 != null) {
+            jugador1 = this.props.jugador1.nombre;
+            jugadorAbre1 = this.props.jugador1.abrev;
         }
-        return <div>
+        if (this.props.jugador2 != null) {
+            jugador2 = this.props.jugador2.nombre;
+            jugadorAbre2 = this.props.jugador2.abrev;
+        }
+        return <div className="col-6">
 
+            <div className="row">
+                <button type="button" id={"juno" + this.props.i} className="btn btn-light jugador"
+                    onClick={(e) => this.handleClick(jugador1, (Number(this.props.i)), e)}>
+                    {jugador1}
+                </button>
+                <button type="button" id={"junoabre" + this.props.i} className="btn btn-light jugadorabre"
+                    onClick={(e) => this.handleClick(jugador1, (Number(this.props.i)), e)}>
+                    {jugadorAbre1}
+                </button>
+            </div>
 
-
-            <div className="row" id={"semis_" + this.props.i + "_juno"}>
-                semi{this.props.i}juno
-                    </div>
-
-            <div className="row" id={"semis_" + this.props.i + "_jdos"}>
-                semi{this.props.i}jdos
-                </div>
+            <div className="row">
+                <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador "
+                    onClick={(e) => this.handleClick(jugador2, (Number(this.props.i)), e)}>
+                    {jugador2}
+                </button>
+                <button type="button" id={"jdosabre" + this.props.i} className="btn btn-light jugadorabre"
+                    onClick={(e) => this.handleClick(jugador2, (Number(this.props.i)), e)}>
+                    {jugadorAbre2}
+                </button>
+            </div>
 
 
 

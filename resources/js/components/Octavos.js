@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import './partidos.css'
 export default class Octavos extends Component {
     state = {
@@ -23,63 +23,41 @@ export default class Octavos extends Component {
             });
     }
 
-    handleClick(param, i, e) {
-        console.log('Parameter', param);
-        console.log('Event', e);
+    async  handleCuartos(param, i, e) {
 
-        this.props.jugador(param);
-        switch (i) {
-            case 0:
-                this.props.nombre("cuartos_1_juno");
-                break;
-            case 1:
-                this.props.nombre("cuartos_1_jdos");
+        let token = document.head.querySelector('meta[name="csrf-token"]');
 
-                break;
-            case 2:
-                this.props.nombre("cuartos_2_juno");
-                break;
-            case 3:
-                this.props.nombre("cuartos_2_jdos");
-                break;
-            case 4:
-                this.props.nombre("cuartos_3_juno");
-                break;
-            case 5:
-                this.props.nombre("cuartos_3_jdos");
-                break;
-            case 6:
-                this.props.id("cuartos_4_juno");
-                break;
-            case 7:
-                this.props.nombre("cuartos_4_jdos");
-                break;
+        if (token) {
+            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        } else {
+            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
         }
-        // let ronda = 8;
-        // let idPlayer = 1;
-        // var data = JSON.stringify({ 'jugador_uno_id': idPlayer, 'ronda': ronda });
-        // console.log(data);
-        // fetch('http://localhost/pr2/api/insert/',
-        //     {
-        //         method: 'POST',
-        //         body: data,
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //     .then(res => res.json())
-        //     .then((data) => console.log(data))
-        //     .catch((err) => console.log(err));
+
+
+        try {
+            const response = await axios.post('http://localhost/pr2/api/insert', {
+                jugador_uno_id: '1',
+                jugador_dos_id: '2',
+                ronda: '4'
+            });
+
+            console.log('Returned data:', response);
+        } catch (e) {
+            console.log('axios request failed:', e);
+        }
+
 
 
     }
+
+    handleClick(param, i, e) {
+        console.log('Parameter', param);
+        console.log('Event', e);
+        this.props.setJugador(param, i);
+    }
     render() {
-        var { item } = this.state;
-
-
 
         return <div>
-
 
             <div className="row">
                 <button type="button" id={"juno" + this.props.i} className="btn btn-light jugador"

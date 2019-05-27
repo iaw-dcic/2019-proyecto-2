@@ -79,9 +79,14 @@ class PartidosController extends Controller
         return abort(404);
     }
 
-    function store(Request $request){
-       
-       $partido= Partido::create($request->all());
+  public  function store(Request $request){
+
+       $partido= Partido::create([
+           'jugador_uno_id'=> $request->get('jugador_uno_id'),
+           'jugador_dos_id'=> $request->get('jugador_dos_id'),
+            'ronda' => $request->get('ronda')
+            ]   
+           );
         return response()->json($partido, 201);
     }
 }
