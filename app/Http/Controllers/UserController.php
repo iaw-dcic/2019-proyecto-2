@@ -51,10 +51,11 @@ class UserController extends Controller
     $pronosticos= Pronostico::where('user_id','=',1)->get();
     $arreglo=array();
     $i=0; $count=0;
-    for($i; $i<$pronosticos->count(); $i++){
+    foreach($pronosticos as $pronostico){
         $arreglo["items"][$count]= array(
-           'pronostico' => $pronosticos[$i]->id,
+           'pronostico' => $pronostico->id,
         );
+        $count ++;
      }
        
     return response()->json($arreglo, 200);
