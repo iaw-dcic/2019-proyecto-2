@@ -66705,6 +66705,11 @@ function (_Component) {
       else
       const avatar = {
           name = this.state.name
+          face = this.state.face
+          hair = this.state.hair
+          eyes = this.state.eyes
+          mouth = this.state.mouth
+          userID = this.state.userID
       }
       axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
       //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
@@ -67102,7 +67107,8 @@ function (_Component) {
     key: "changeMouth",
     value: function changeMouth(event) {
       this.props.handleMouthChange(event);
-    }
+    } 
+
   }]);
 
   function SideBar(props) {
@@ -67226,8 +67232,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

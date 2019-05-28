@@ -65,6 +65,11 @@ export default class AvatarView extends Component{
         else
         const avatar = {
             name = this.state.name
+            face = this.state.face
+            hair = this.state.hair
+            eyes = this.state.eyes
+            mouth = this.state.mouth
+            userID = this.state.userID
         }
         axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
         //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
