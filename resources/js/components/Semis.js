@@ -27,7 +27,7 @@ export default class Semis extends Component {
         }
         return <div>
 
-            <div className="row">
+            <div className="row border" >
                 <button type="button" id={"juno" + this.props.i} className="btn btn-light jugador"
                     onClick={(e) => this.handleClick(this.props.jugador1, (Number(this.props.i)), e)}>
                     {jugador1Nombre}
@@ -38,7 +38,7 @@ export default class Semis extends Component {
                 </button>
             </div>
 
-            <div className="row">
+            <div className="row border">
                 <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador "
                     onClick={(e) => this.handleClick(this.props.jugador2, (Number(this.props.i)), e)}>
                     {jugador2Nombre}

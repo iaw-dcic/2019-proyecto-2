@@ -33,20 +33,20 @@ export default class Playoffs extends Component {
         var { items } = this.state;
         return <div>
 
-            <div className="row">
-                <div className="col-2">
+            <div className="row " >
+                <div className="col-2 header">
                     <p>8vos</p>
                 </div>
-                <div className="col-2">
+                <div className="col-2 header">
                     <p>4tos</p>
                 </div>
-                <div className="col-4 text-center">
+                <div className="col-4 header text-center">
                     <p>Semis</p>
                 </div>
-                <div className="col-2 ">
+                <div className="col-2  header">
                     <p>4tos</p>
                 </div>
-                <div className="col-2">
+                <div className="col-2 header">
                     <p>8vos</p>
                 </div>
             </div>
@@ -213,13 +213,13 @@ export default class Playoffs extends Component {
                 </div>
 
             </div>
-            <div className="row texto-final justify-content-center align-items-center minh-100">
+            <div className="row header texto-final justify-content-center align-items-center minh-100">
                 <h3> FINAL MASTER 1000 </h3>
             </div>
             <div className="row justify-content-center align-items-center minh-100">
                 <div className="col-2"></div>
                 <div className="col-2"></div>
-                <div className="col-2 justify-content-center align-items-center minh-100 ">
+                <div className="col-2  justify-content-center align-items-center minh-100 ">
                     <Final jugadorFinal={this.state.j1} setJugador={this.setCampeon} />
                 </div>
                 <div className="col-2  justify-content-center align-items-center minh-100">
@@ -229,15 +229,21 @@ export default class Playoffs extends Component {
                 <div className="col-2"></div>
             </div>
 
-            <div className="row texto-final justify-content-center align-items-center minh-100">
+            <div className="row header texto-final justify-content-center align-items-center minh-100">
                 <h3> CAMPEON </h3>
             </div>
             <div className="row texto-final justify-content-center align-items-center minh-100">
                 <h4> {this.state.campeon.nombre}  </h4>
             </div>
+
+
+            <div className="row">
+                <button type="button" className="btn btn-light"
+                    onClick={(e) => this.handleCuartos(e)}>
+                    Guardar
+            </button>
+            </div>
         </div >
-
-
 
     }
     nombre = (newnombre) => {
@@ -318,6 +324,32 @@ export default class Playoffs extends Component {
         this.setState({
             campeon: newjugador
         });
+
+    }
+
+    async  handleCuartos(e) {
+
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        if (token) {
+            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        } else {
+            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+        }
+        let array = array();
+        array()
+
+        try {
+            const response = await axios.post('http://localhost/pr2/api/insert', {
+                jugador_uno_id: '1',
+                jugador_dos_id: '2',
+                ronda: '4'
+            });
+
+            console.log('Returned data:', response);
+        } catch (e) {
+            console.log('axios request failed:', e);
+        }
 
     }
 }

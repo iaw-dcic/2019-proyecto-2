@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 use Socialite;
 use App\User;
+use App\Pronostico;
 
 use Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
    // Metodo encargado de la redireccion a Facebook
@@ -42,25 +43,39 @@ class UserController extends Controller
         
        return redirect()->to('/home#');
    }
+   
 
-
+ 
+   public function cantidadPronosticos(){
+    $user=Auth::user();
+    $pronosticos= Pronostico::where('user_id','=',1)->get();
+    $arreglo=array();
+    $i=0; $count=0;
+    for($i; $i<$pronosticos->count(); $i++){
+        $arreglo["items"][$count]= array(
+           'pronostico' => $pronosticos[$i]->id,
+        );
+     }
+       
+    return response()->json($arreglo, 200);
+}
    
    public function user(){
     $user=Auth::user();
    // $user=User::find($id);
     if($user !=null)
-     return response()->json($user, 200);
+       return response()->json($user, 200);
    
-    else
+         else
     return response()->json("null", 200);
 }
-public function logout() {
+/*public function logout() {
     Auth::logout();
 
     return response()->json([
         'status' => 'success',
         'message' => 'logout'
     ], 200);
-}
+}*/
 }
  

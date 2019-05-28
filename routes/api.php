@@ -16,8 +16,10 @@ use Illuminate\Http\Request;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //  auth('api')->user();
 //});
+Route::get('cantidadpronosticos','UserController@cantidadPronosticos');
 Route::post('insert','PartidosController@store');
 Route::get('partidos/{ronda}', 'PartidosController@getPartidosRonda');
+Route::get('pronostico/{pronostico}', 'PartidosController@getPartidosPronostico');
 Route::get('partidos_dos/{ronda}', 'PartidosController@partidos_de_a_dos');
  
   

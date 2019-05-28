@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Partido;
+
 class PartidosController extends Controller
 {
     public function getPartidosRonda($ronda){
@@ -88,5 +89,33 @@ class PartidosController extends Controller
             ]   
            );
         return response()->json($partido, 201);
+    }
+    public function getPartidosPronostico($pronostico){
+        $partidos= Partido::where('pronostico','=',$pronostico)->get();
+        $arreglo=array();
+        $i=0;
+        foreach($partidos as $partido){
+           $arreglo["items"][$i++]= array(
+               'id' => $partido->id,
+                'jugador_uno' =>  array(
+                    'id' =>$partido->nombreJugadorUno->id,
+                    'nombre'=> $partido->nombreJugadorUno->nombre,
+                    'abrev' => $partido->nombreJugadorUno->abreviado),
+                'jugador_dos' =>  array(
+                    'id' =>$partido->nombreJugadorDos->id,
+                     'nombre'=> $partido->nombreJugadorDos->nombre,
+                      'abrev' => $partido->nombreJugadorDos->abreviado),
+                'resultado'=> $partido->resultado,
+                 'ronda' => $partido->ronda,
+            );
+       
+        }
+        if($arreglo != null)
+             return response()->json($arreglo, 200);
+        else
+            return abort(404);
+    }
+    public function guardarPronostico(Request $request ){
+
     }
 }

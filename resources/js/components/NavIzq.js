@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PrimerRonda from './PrimerRonda';
 import SegundaRonda from './SegundaRonda';
 import Playoffs from './Playoffs';
+import Perfil from './Perfil';
 export default class NavIzq extends Component {
 
 
@@ -49,6 +50,10 @@ export default class NavIzq extends Component {
 
             <div className="col-10" >
                 <div id="v-pills-tabContent" className="tab-content">
+                    <div id="perfil" className="tab-pane fade">
+                        <Perfil />
+
+                    </div>
                     <div id="primerRonda" className="tab-pane fade">
                         <PrimerRonda />
 

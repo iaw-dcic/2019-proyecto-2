@@ -6532,7 +6532,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n.texto-final > h3{\r\n    text-align:center;\r\n}\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\n \r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }", ""]);
+exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n.texto-final > h3{\r\n    text-align:center;\r\n}\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\n \r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }\r\n\r\n.border {\r\n    border: 1px solid lightblue !important;\r\n}\r\n.header{\r\n    border: 2px solid  #3490dc;\r\n    margin-bottom:1rem;\r\n}", ""]);
 
 // exports
 
@@ -67210,7 +67210,7 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "row border"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "juno" + this.props.i,
@@ -67226,7 +67226,7 @@ function (_Component) {
           return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
       }, jugadorAbre1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "row border"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdos" + this.props.i,
@@ -67493,6 +67493,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PrimerRonda__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PrimerRonda */ "./resources/js/components/PrimerRonda.js");
 /* harmony import */ var _SegundaRonda__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SegundaRonda */ "./resources/js/components/SegundaRonda.js");
 /* harmony import */ var _Playoffs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Playoffs */ "./resources/js/components/Playoffs.js");
+/* harmony import */ var _Perfil__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Perfil */ "./resources/js/components/Perfil.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67510,6 +67511,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -67596,6 +67598,9 @@ function (_Component) {
         id: "v-pills-tabContent",
         className: "tab-content"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "perfil",
+        className: "tab-pane fade"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Perfil__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         id: "primerRonda",
         className: "tab-pane fade"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_PrimerRonda__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -67625,21 +67630,13 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Octavos; });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_3__);
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -67707,58 +67704,6 @@ function (_Component) {
       });
     }
   }, {
-    key: "handleCuartos",
-    value: function () {
-      var _handleCuartos = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(param, i, e) {
-        var token, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                token = document.head.querySelector('meta[name="csrf-token"]');
-
-                if (token) {
-                  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-                } else {
-                  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-                }
-
-                _context.prev = 2;
-                _context.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost/pr2/api/insert', {
-                  jugador_uno_id: '1',
-                  jugador_dos_id: '2',
-                  ronda: '4'
-                });
-
-              case 5:
-                response = _context.sent;
-                console.log('Returned data:', response);
-                _context.next = 12;
-                break;
-
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context["catch"](2);
-                console.log('axios request failed:', _context.t0);
-
-              case 12:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[2, 9]]);
-      }));
-
-      function handleCuartos(_x, _x2, _x3) {
-        return _handleCuartos.apply(this, arguments);
-      }
-
-      return handleCuartos;
-    }()
-  }, {
     key: "handleClick",
     value: function handleClick(param, i, e) {
       console.log('Parameter', param);
@@ -67770,32 +67715,32 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "juno" + this.props.i,
         className: "btn btn-light jugador",
         onClick: function onClick(e) {
           return _this3.handleClick(_this3.state.jugador_uno, Number(_this3.props.i), e);
         }
-      }, this.state.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, this.state.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "junoabre" + this.props.i,
         className: "btn btn-light jugadorabre",
         onClick: function onClick(e) {
           return _this3.handleClick(_this3.state.jugador_uno, Number(_this3.props.i), e);
         }
-      }, this.state.jugador_uno.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, this.state.jugador_uno.abrev)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdos" + this.props.i,
         className: "btn btn-light jugador ",
         onClick: function onClick(e) {
           return _this3.handleClick(_this3.state.jugador_dos, Number(_this3.props.i), e);
         }
-      }, this.state.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, this.state.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdosabre" + this.props.i,
         className: "btn btn-light jugadorabre",
@@ -67807,7 +67752,69 @@ function (_Component) {
   }]);
 
   return Octavos;
-}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Perfil.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Perfil.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NavIzq; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var NavIzq =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(NavIzq, _Component);
+
+  function NavIzq() {
+    _classCallCheck(this, NavIzq);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(NavIzq).apply(this, arguments));
+  }
+
+  _createClass(NavIzq, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "contenedor",
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }));
+    }
+  }]);
+
+  return NavIzq;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 
@@ -67823,15 +67830,23 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Playoffs; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Octavos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Octavos */ "./resources/js/components/Octavos.js");
-/* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
-/* harmony import */ var _Semis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Semis */ "./resources/js/components/Semis.js");
-/* harmony import */ var _Final__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Final */ "./resources/js/components/Final.js");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Octavos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Octavos */ "./resources/js/components/Octavos.js");
+/* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
+/* harmony import */ var _Semis__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Semis */ "./resources/js/components/Semis.js");
+/* harmony import */ var _Final__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Final */ "./resources/js/components/Final.js");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_6__);
+
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -67963,191 +67978,255 @@ function (_Component) {
   _createClass(Playoffs, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var items = this.state.items;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "8vos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "4tos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-4 text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Semis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2 "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "4tos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "8vos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row "
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-2 header"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "8vos")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-2 header"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "4tos")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-4 header text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Semis")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-2  header"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "4tos")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-2 header"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "8vos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 0,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 1,
         setJugador: this.setJugador
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 0,
         jugador1: this.state.c0j1,
         jugador2: this.state.c0j2,
         setJugador: this.setJugadorSemi
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 1,
         jugador1: this.state.c1j1,
         jugador2: this.state.c1j2,
         setJugador: this.setJugadorSemi
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 2,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 3,
         setJugador: this.setJugador
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 1,
         jugador1: this.state.s1j1,
         jugador2: this.state.s1j2,
         setJugador: this.setJugadorFinal
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 2,
         jugador1: this.state.s2j1,
         jugador2: this.state.s2j2,
         setJugador: this.setJugadorFinal
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 4,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 5,
         setJugador: this.setJugador
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 2,
         jugador1: this.state.c2j1,
         jugador2: this.state.c2j2,
         setJugador: this.setJugadorSemi
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 3,
         jugador1: this.state.c3j1,
         jugador2: this.state.c3j2,
         setJugador: this.setJugadorSemi
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 6,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 7,
         setJugador: this.setJugador
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row header texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2 justify-content-center align-items-center minh-100 "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-2  justify-content-center align-items-center minh-100 "
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
         jugadorFinal: this.state.j1,
         setJugador: this.setCampeon
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2  justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
         jugadorFinal: this.state.j2,
         setJugador: this.setCampeon
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row header texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ", this.state.campeon.nombre, "  ")));
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, " ", this.state.campeon.nombre, "  ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this2.handleCuartos(e);
+        }
+      }, "Guardar")));
     }
+  }, {
+    key: "handleCuartos",
+    value: function () {
+      var _handleCuartos = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
+        var token, array, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                token = document.head.querySelector('meta[name="csrf-token"]');
+
+                if (token) {
+                  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+                } else {
+                  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+                }
+
+                array = array();
+                array();
+                _context.prev = 4;
+                _context.next = 7;
+                return axios.post('http://localhost/pr2/api/insert', {
+                  jugador_uno_id: '1',
+                  jugador_dos_id: '2',
+                  ronda: '4'
+                });
+
+              case 7:
+                response = _context.sent;
+                console.log('Returned data:', response);
+                _context.next = 14;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](4);
+                console.log('axios request failed:', _context.t0);
+
+              case 14:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[4, 11]]);
+      }));
+
+      function handleCuartos(_x) {
+        return _handleCuartos.apply(this, arguments);
+      }
+
+      return handleCuartos;
+    }()
   }]);
 
   return Playoffs;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
 
@@ -68496,7 +68575,7 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "row border"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "juno" + this.props.i,
@@ -68512,7 +68591,7 @@ function (_Component) {
           return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
       }, jugadorAbre1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "row border"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdos" + this.props.i,

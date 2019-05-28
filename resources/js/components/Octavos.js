@@ -23,32 +23,7 @@ export default class Octavos extends Component {
             });
     }
 
-    async  handleCuartos(param, i, e) {
 
-        let token = document.head.querySelector('meta[name="csrf-token"]');
-
-        if (token) {
-            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-        } else {
-            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-        }
-
-
-        try {
-            const response = await axios.post('http://localhost/pr2/api/insert', {
-                jugador_uno_id: '1',
-                jugador_dos_id: '2',
-                ronda: '4'
-            });
-
-            console.log('Returned data:', response);
-        } catch (e) {
-            console.log('axios request failed:', e);
-        }
-
-
-
-    }
 
     handleClick(param, i, e) {
         console.log('Parameter', param);
@@ -59,7 +34,7 @@ export default class Octavos extends Component {
 
         return <div>
 
-            <div className="row">
+            <div className="row border">
                 <button type="button" id={"juno" + this.props.i} className="btn btn-light jugador"
                     onClick={(e) => this.handleClick(this.state.jugador_uno, (Number(this.props.i)), e)}>
                     {this.state.jugador_uno.nombre}</button>
@@ -68,7 +43,7 @@ export default class Octavos extends Component {
                     {this.state.jugador_uno.abrev}</button>
             </div>
 
-            <div className="row">
+            <div className="row border">
                 <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador "
                     onClick={(e) => this.handleClick(this.state.jugador_dos, (Number(this.props.i)), e)}>
                     {this.state.jugador_dos.nombre}</button>
