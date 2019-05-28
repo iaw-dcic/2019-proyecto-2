@@ -28,7 +28,9 @@
     text-align: center;
     color: #333;
 }
-
+.texto-final > h3{
+    text-align:center;
+}
 hr{
     border: 2px;
     color:black;

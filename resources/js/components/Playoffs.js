@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Octavos from './Octavos';
 import Cuartos from './Cuartos';
 import Semis from './Semis';
+import Final from './Final';
 import './partidos.css'
 export default class Playoffs extends Component {
     state = {
@@ -20,6 +21,9 @@ export default class Playoffs extends Component {
         s1j2: [],
         s2j1: [],
         s2j2: [],
+
+        j1: [], j2: [],
+        campeon: []
     };
 
 
@@ -126,12 +130,13 @@ export default class Playoffs extends Component {
 
                 </div>
 
-                <div className="col-4">
+                <div className="col-2">
 
-                    <Semis i={1} jugador1={this.state.s1j1} jugador2={this.state.s1j2} />
+                    <Semis i={1} jugador1={this.state.s1j1} jugador2={this.state.s1j2} setJugador={this.setJugadorFinal} />
+                </div>
 
-
-                    <Semis i={2} jugador1={this.state.s2j1} jugador2={this.state.s2j2} />
+                <div className="col-2">
+                    <Semis i={2} jugador1={this.state.s2j1} jugador2={this.state.s2j2} setJugador={this.setJugadorFinal} />
                 </div>
 
                 <div className="col-2 cuartos">
@@ -208,7 +213,30 @@ export default class Playoffs extends Component {
                 </div>
 
             </div>
+            <div className="row texto-final justify-content-center align-items-center minh-100">
+                <h3> FINAL MASTER 1000 </h3>
+            </div>
+            <div className="row justify-content-center align-items-center minh-100">
+                <div className="col-2"></div>
+                <div className="col-2"></div>
+                <div className="col-2 justify-content-center align-items-center minh-100 ">
+                    <Final jugadorFinal={this.state.j1} setJugador={this.setCampeon} />
+                </div>
+                <div className="col-2  justify-content-center align-items-center minh-100">
+                    <Final jugadorFinal={this.state.j2} setJugador={this.setCampeon} />
+                </div>
+                <div className="col-2"></div>
+                <div className="col-2"></div>
+            </div>
+
+            <div className="row texto-final justify-content-center align-items-center minh-100">
+                <h3> CAMPEON </h3>
+            </div>
+            <div className="row texto-final justify-content-center align-items-center minh-100">
+                <h4> {this.state.campeon.nombre}  </h4>
+            </div>
         </div >
+
 
 
     }
@@ -272,5 +300,24 @@ export default class Playoffs extends Component {
             });
 
     }
+    setJugadorFinal = (newjugador, i) => {
 
+        if (i == 1)
+            this.setState({
+                j1: newjugador
+            });
+        if (i == 2)
+            this.setState({
+                j2: newjugador
+            });
+
+
+    }
+    setCampeon = (newjugador) => {
+
+        this.setState({
+            campeon: newjugador
+        });
+
+    }
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './ppal.css';
-
+ 
 export default class Header extends Component {
-
+ 
     state = {
 
         user: []
@@ -28,7 +28,12 @@ export default class Header extends Component {
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-                <a className="navbar-brand" href="#">Master 1000 ROMA</a>
+                <a className="navbar-brand" href="/home">
+             
+                        Master 1000 - Roma
+                    
+                </a>
+
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span className="navbar-toggler-icon"></span>
                 </button>

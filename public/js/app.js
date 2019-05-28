@@ -6532,7 +6532,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\n \r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }", ""]);
+exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n.texto-final > h3{\r\n    text-align:center;\r\n}\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\n \r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }", ""]);
 
 // exports
 
@@ -67252,6 +67252,111 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Final.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Final.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Final; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var Final =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Final, _Component);
+
+  function Final() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Final);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Final)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      item: []
+    });
+
+    return _this;
+  }
+
+  _createClass(Final, [{
+    key: "handleClick",
+    value: function handleClick(param, e) {
+      console.log('Parameter', param);
+      console.log('Event', e);
+      this.props.setJugador(param);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var jugador1 = "";
+      var jugadorAbre1 = "";
+
+      if (this.props.jugadorFinal != null) {
+        jugador1 = this.props.jugadorFinal.nombre;
+        jugadorAbre1 = this.props.jugadorFinal.abrev;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugador",
+        onClick: function onClick(e) {
+          return _this2.handleClick(_this2.props.jugadorFinal, e);
+        }
+      }, jugador1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-light jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleClick(_this2.props.jugadorFinal, e);
+        }
+      }, jugadorAbre1));
+    }
+  }]);
+
+  return Final;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Header.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Header.js ***!
@@ -67337,8 +67442,8 @@ function (_Component) {
         className: "navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "navbar-brand",
-        href: "#"
-      }, "Master 1000 ROMA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        href: "/home"
+      }, "Master 1000 - Roma"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "navbar-toggler",
         type: "button",
         "data-toggle": "collapse",
@@ -67723,8 +67828,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Octavos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Octavos */ "./resources/js/components/Octavos.js");
 /* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
 /* harmony import */ var _Semis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Semis */ "./resources/js/components/Semis.js");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Final__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Final */ "./resources/js/components/Final.js");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
+/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67744,6 +67850,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -67781,7 +67888,10 @@ function (_Component) {
       s1j1: [],
       s1j2: [],
       s2j1: [],
-      s2j2: []
+      s2j2: [],
+      j1: [],
+      j2: [],
+      campeon: []
     });
 
     _defineProperty(_assertThisInitialized(_this), "nombre", function (newnombre) {
@@ -67829,6 +67939,21 @@ function (_Component) {
       });
       if (i == 1) _this.setState({
         s2j1: newjugador
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setJugadorFinal", function (newjugador, i) {
+      if (i == 1) _this.setState({
+        j1: newjugador
+      });
+      if (i == 2) _this.setState({
+        j2: newjugador
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setCampeon", function (newjugador) {
+      _this.setState({
+        campeon: newjugador
       });
     });
 
@@ -67916,15 +68041,19 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-2 cuartos"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-4"
+        className: "col-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 1,
         jugador1: this.state.s1j1,
-        jugador2: this.state.s1j2
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        jugador2: this.state.s1j2,
+        setJugador: this.setJugadorFinal
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 2,
         jugador1: this.state.s2j1,
-        jugador2: this.state.s2j2
+        jugador2: this.state.s2j2,
+        setJugador: this.setJugadorFinal
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-2 cuartos"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67987,7 +68116,33 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_1__["default"], {
         i: 7,
         setJugador: this.setJugador
-      }))));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 justify-content-center align-items-center minh-100 "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        jugadorFinal: this.state.j1,
+        setJugador: this.setCampeon
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2  justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        jugadorFinal: this.state.j2,
+        setJugador: this.setCampeon
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ", this.state.campeon.nombre, "  ")));
     }
   }]);
 
@@ -68315,47 +68470,46 @@ function (_Component) {
 
   _createClass(Semis, [{
     key: "handleClick",
-    value: function handleClick(param, e) {
+    value: function handleClick(param, i, e) {
       console.log('Parameter', param);
       console.log('Event', e);
+      this.props.setJugador(param, i);
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var jugador1 = "";
+      var jugador1Nombre = "";
       var jugadorAbre1 = "";
       var jugadorAbre2 = "";
-      var jugador2 = "";
+      var jugador2Nombre = "";
 
       if (this.props.jugador1 != null) {
-        jugador1 = this.props.jugador1.nombre;
+        jugador1Nombre = this.props.jugador1.nombre;
         jugadorAbre1 = this.props.jugador1.abrev;
       }
 
       if (this.props.jugador2 != null) {
-        jugador2 = this.props.jugador2.nombre;
+        jugador2Nombre = this.props.jugador2.nombre;
         jugadorAbre2 = this.props.jugador2.abrev;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "juno" + this.props.i,
         className: "btn btn-light jugador",
         onClick: function onClick(e) {
-          return _this2.handleClick(jugador1, Number(_this2.props.i), e);
+          return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
-      }, jugador1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, jugador1Nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "junoabre" + this.props.i,
         className: "btn btn-light jugadorabre",
         onClick: function onClick(e) {
-          return _this2.handleClick(jugador1, Number(_this2.props.i), e);
+          return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
       }, jugadorAbre1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
@@ -68364,14 +68518,14 @@ function (_Component) {
         id: "jdos" + this.props.i,
         className: "btn btn-light jugador ",
         onClick: function onClick(e) {
-          return _this2.handleClick(jugador2, Number(_this2.props.i), e);
+          return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
         }
-      }, jugador2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, jugador2Nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdosabre" + this.props.i,
         className: "btn btn-light jugadorabre",
         onClick: function onClick(e) {
-          return _this2.handleClick(jugador2, Number(_this2.props.i), e);
+          return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
         }
       }, jugadorAbre2)));
     }
