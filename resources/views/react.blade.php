@@ -3,6 +3,8 @@
 
 
 @section('content')
-    <div id="react-app"></div>
+    <div id="react-app">
+
+    </div>
 @endsection
 
