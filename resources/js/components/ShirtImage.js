@@ -5,32 +5,37 @@ export default class ShirtImage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            remera: '/images/remeras/remerablanca.png'
+            remera: '/images/remeras/remerablanca.png',
+            talle: 's'
         }
     }
 
     cambiarColorRemera(e, id) {
         switch (id) {
-            case "remera-colorAzul":    this.setState({ remera: '/images/remeras/remeraazul.png' }); 
-                                        break;
-            case "remera-colorBlanco":  this.setState({ remera: '/images/remeras/remerablanca.png' });  
-                                        break;
-            case "remera-colorRosa":    this.setState({ remera: '/images/remeras/remeraRosa.png' });  
-                                        break;
-            case "remera-colorAmarillo": this.setState({ remera: '/images/remeras/remeraAmarilla.png' });  
-                                         break;
-            case "remera-colorNegro":   this.setState({ remera: '/images/remeras/remeranegra.png' });  
-                                        break;
-            case "remera-colorNaranja": this.setState({ remera: '/images/remeras/remeranaranja.png' });  
-                                        break;
-            case "remera-colorVioleta": this.setState({ remera: '/images/remeras/remeravioleta.png' });  
-                                        break;
-            case "remera-colorCeleste": this.setState({ remera: '/images/remeras/remeraceleste.png' });  
-                                        break;
+            case "remera-colorAzul": this.setState({ remera: '/images/remeras/remeraazul.png' });
+                break;
+            case "remera-colorBlanco": this.setState({ remera: '/images/remeras/remerablanca.png' });
+                break;
+            case "remera-colorRosa": this.setState({ remera: '/images/remeras/remeraRosa.png' });
+                break;
+            case "remera-colorAmarillo": this.setState({ remera: '/images/remeras/remeraAmarilla.png' });
+                break;
+            case "remera-colorNegro": this.setState({ remera: '/images/remeras/remeranegra.png' });
+                break;
+            case "remera-colorNaranja": this.setState({ remera: '/images/remeras/remeranaranja.png' });
+                break;
+            case "remera-colorVioleta": this.setState({ remera: '/images/remeras/remeravioleta.png' });
+                break;
+            case "remera-colorCeleste": this.setState({ remera: '/images/remeras/remeraceleste.png' });
+                break;
             default: this.setState({ remera: '/images/remeras/remerablanca.png' });
         }
     }
 
+    cambiarTalle()
+    {
+
+    }
     render() {
         return (
             <section className="pricing py-5">
@@ -88,18 +93,22 @@ export default class ShirtImage extends Component {
                                             </div>
 
                                         </div>
-                                        <hr></hr>
-                                        <ul className="fa-ul">
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span>150GB Storage</li>
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span>Unlimited Public Projects</li>
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span>Community Access</li>
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span>Unlimited Private Projects</li>
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span>Dedicated Phone Support</li>
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
-                                            <li><span className="fa-li"><i className="fas fa-check"></i></span>Monthly Status Reports</li>
-                                        </ul>
-                                        <a href="#" className="btn btn-block btn-primary text-uppercase">Button</a>
+                                        <hr width="100%"></hr>
+
+                                        <form className="fa-ul">
+                                            <div className="form-group">
+                                            <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>    
+                                                <select className="form-control" id="exampleFormControlSelect1">
+                                                    <option className="fa-li">XS</option>
+                                                    <option className="fa-li">S</option>
+                                                    <option className="fa-li">M</option>
+                                                    <option className="fa-li">L</option>
+                                                    <option className="fa-li">XL</option>
+                                                    <option className="fa-li">XLL</option>
+                                                </select>
+                                            </div>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

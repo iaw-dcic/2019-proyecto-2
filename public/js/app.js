@@ -65792,7 +65792,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
     _this.state = {
-      remera: '/images/remeras/remerablanca.png'
+      remera: '/images/remeras/remerablanca.png',
+      talle: 's'
     };
     return _this;
   }
@@ -65855,6 +65856,9 @@ function (_Component) {
           });
       }
     }
+  }, {
+    key: "cambiarTalle",
+    value: function cambiarTalle() {}
   }, {
     key: "render",
     value: function render() {
@@ -66014,44 +66018,30 @@ function (_Component) {
         },
         type: "button",
         className: "btn-item-color"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "fa-ul"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
+        id: "exampleFormControlSelect1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Unlimited Users")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "XS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "150GB Storage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "S"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Unlimited Public Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "M"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Community Access"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Unlimited Private Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "XL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Dedicated Phone Support"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Unlimited"), " Free Subdomains"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Monthly Status Reports")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "btn btn-block btn-primary text-uppercase"
-      }, "Button"))))))));
+      }, "XLL")))))))))));
     }
   }]);
 
