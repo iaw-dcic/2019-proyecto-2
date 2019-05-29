@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65753,7 +65753,14 @@ function (_Component) {
           donuts: donuts
         };
       });
-    }
+    } // agregarDonut (donut) {
+    //   this.setState((state) => {
+    //     const donuts = { ...state.donuts };
+    //     donuts[`donut${Date.now()}`] = donut;
+    //     return ({ donuts });
+    //   })
+    // }
+
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
@@ -65767,19 +65774,22 @@ function (_Component) {
       var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row p-3"
+        className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col border"
+        className: "col fondo"
       }, Object.keys(this.state.donuts).map(function (key) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donut__WEBPACK_IMPORTED_MODULE_4__["default"], {
           key: key,
           clave: key,
           donut: _this2.state.donuts[key]
         });
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donuts__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        donuts: this.state.donuts,
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col fondo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donuts__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        donuts: this.state.donuts // agregarDonut={this.agregarDonut}
+        ,
         actualizarDonuts: this.actualizarDonuts
-      })));
+      }))));
     }
   }]);
 
@@ -65836,11 +65846,16 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var sabor = this.props.donut.sabor;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card mb-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "card-text"
-      }, sabor));
+      if (sabor == 1) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "img/Donas/donaVainilla.png",
+        className: "medio"
+      });else if (sabor == 2) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "img/Donas/donaChocolate.png",
+        className: "medio"
+      });else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "img/Donas/dona.png",
+        className: "medio"
+      });
     }
   }]);
 
@@ -65882,7 +65897,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
+ // import AgregarDonut from './AgregarDonut';
 
 var Donuts =
 /*#__PURE__*/
@@ -65900,15 +65915,11 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col border text-center p-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "border-bottom"
-      }, "Editar Donut"), Object.keys(this.props.donut).map(function (clave) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object.keys(this.props.donuts).map(function (clave) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditarDonuts__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: clave,
           clave: clave,
-          donut: _this.props.donut[clave],
+          donut: _this.props.donuts[clave],
           actualizarDonuts: _this.props.actualizarDonuts
         });
       }));
@@ -65918,13 +65929,7 @@ function (_React$Component) {
   return Donuts;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Donuts); // class Donuts {
-// 	getSabor(i) {
-// 		if (i == 1) return 'img/Donas/donaVainilla.png';
-// 		else if (i == 2) return 'img/Donas/donaChocolate.png';
-// 		else if (i == 3) return 'img/Donas/donaMixta.png';
-// 	}
-// }
+/* harmony default export */ __webpack_exports__["default"] = (Donuts);
 
 /***/ }),
 
@@ -65975,8 +65980,8 @@ function (_React$Component) {
   }
 
   _createClass(EditarDonuts, [{
-    key: "handleChange",
-    value: function handleChange(e) {
+    key: "handleClick",
+    value: function handleClick(e) {
       console.log(e.currentTarget.value);
 
       var donut = _objectSpread({}, this.props.donut);
@@ -65987,26 +65992,58 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "border p-2 m-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        value: this.props.donut.sabor,
-        onChange: this.handleChange,
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "font-weight-light mb-0"
+      }, "Sabor "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
         name: "sabor",
-        type: "text",
-        className: "form-control"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Chocolate"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Vainilla"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Mixto")))));
+        value: "1",
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasbotones",
+        src: "img/Donas/donaVainilla.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Vainilla "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        name: "sabor",
+        value: "2",
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasbotones",
+        src: "img/Donas/donaChocolate.png"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " Chocolate "));
     }
   }]);
 
   return EditarDonuts;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (EditarDonuts);
+/* harmony default export */ __webpack_exports__["default"] = (EditarDonuts); // 
+//       <button type="button" className="btn"
+//         value={this.props.donut.sabor}
+//         onClick={this.handleClick}
+//         name='sabor'
+//         type='text'
+//       >
+//       <img className="donasbotones" src="img/Donas/donaMixta.png" /><br> Mixta </button>
+//       <br><br>
+//       <h4 className="font-weight-light mb-0">Glaseado </h4>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoBlanco.png" /> <br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoChocolate.png" /> <br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoRosa.png" /><br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoCeleste.png" /><br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoNaranja.png" /><br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoVacio.png" /><br> </button>
+//       <br><br>
+//       <h4 className="font-weight-light mb-0">Decoración </h4>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/chispas1.png" /> <br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/chispas2.png" /> <br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/chispas3.png" /><br> </button>
+//       <br>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseado1.png" /> <br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseado2.png" /><br> </button>
+//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/sin.png" /><br> </button>
 
 /***/ }),
 
@@ -66021,10 +66058,7 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 var donuts = {
   donut1: {
-    sabor: "vainilla"
-  },
-  donut2: {
-    sabor: "chocolate"
+    sabor: 0
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (donuts);

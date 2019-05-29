@@ -1,19 +1,20 @@
 import React from 'react';
 import EditarDonuts from './EditarDonuts';
+// import AgregarDonut from './AgregarDonut';
 
 class Donuts extends React.Component {
  
   render() {
     return (
-      <div className="col border text-center p-2">
+      <div>
        
-        <h2 className="border-bottom">Editar Donut</h2>
+       {/* <AgregarDonut agregarDonut={this.props.agregarDonut}/> */}
 
-        { Object.keys(this.props.donut).map(clave => (
+        { Object.keys(this.props.donuts).map(clave => (
             <EditarDonuts 
                 key={clave} 
                 clave={clave} 
-                donut={this.props.donut[clave]}
+                donut={this.props.donuts[clave]}
                 actualizarDonuts={this.props.actualizarDonuts}
             ></EditarDonuts>
         ))}
@@ -25,15 +26,3 @@ class Donuts extends React.Component {
 }
 
 export default Donuts;
-
-
-
-
-// class Donuts {
-
-// 	getSabor(i) {
-// 		if (i == 1) return 'img/Donas/donaVainilla.png';
-// 		else if (i == 2) return 'img/Donas/donaChocolate.png';
-// 		else if (i == 3) return 'img/Donas/donaMixta.png';
-// 	}
-// }

@@ -23,6 +23,14 @@ class App extends Component {
     })
   }
 
+  // agregarDonut (donut) {
+  //   this.setState((state) => {
+  //     const donuts = { ...state.donuts };
+  //     donuts[`donut${Date.now()}`] = donut;
+  //     return ({ donuts });
+  //   })
+  // }
+
   componentDidMount() {
     this.setState({donuts});
   }
@@ -30,27 +38,29 @@ class App extends Component {
 	render() {
 		return (
       <BrowserRouter> 
-      <div className="row p-3">
-      <div className="col border">
+      <div className="row"> 
+      <div className="col fondo">     
         {
             Object.keys(this.state.donuts).map((key) => (
               <Donut 
                 key={key} 
                 clave={key}
                 donut={this.state.donuts[key]}>
-                </Donut>
+              </Donut>
 
             ))
           }
-
-       
       </div>
-      <Donuts 
-         donuts={this.state.donuts}
-         actualizarDonuts={this.actualizarDonuts}
-      ></Donuts>
-      
-    </div>
+
+      <div className="col fondo">
+        <Donuts 
+          donuts={this.state.donuts}
+         // agregarDonut={this.agregarDonut}
+          actualizarDonuts={this.actualizarDonuts}
+        ></Donuts> 
+      </div>
+
+</div>
     </BrowserRouter>
 		);
 	}
