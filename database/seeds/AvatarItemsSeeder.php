@@ -21,27 +21,27 @@ class AvatarItemsSeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {            
             // Body items
             BodyItem::create([
-                'resource' => ('bodyitem_'.$i.'png')
+                'resource' => ('bodyitem_'.$i.'.png')
             ]);
     
             // Head items
             HeadItem::create([
-                'resource' => ('headitem_'.$i.'png')
+                'resource' => ('headitem_'.$i.'.png')
             ]);
     
             // Extra items
             ExtraItem::create([
-                'resource' => ('extraitem_'.$i.'png')
+                'resource' => ('extraitem_'.$i.'.png')
             ]);
     
             // UpperBody items
             UpperBodyItem::create([
-                'resource' => ('upperbodyitem_'.$i.'png')
+                'resource' => ('upperbodyitem_'.$i.'.png')
             ]);
     
             // LowerBody items
             LowerBodyItem::create([
-                'resource' => ('lowerbodyitem_'.$i.'png')
+                'resource' => ('lowerbodyitem_'.$i.'.png')
             ]);
         }
     }

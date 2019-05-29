@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Main from './Main'
 import TodoApp from './TodoApp'
 
 class App extends Component {
@@ -8,7 +9,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={TodoApp}/>
+                    <Route exact path="/" component={Main}/>
                     {/* <Route component={NotFound}/> */}
                 </Switch>
             </BrowserRouter>

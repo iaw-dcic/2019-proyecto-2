@@ -10,7 +10,7 @@ export default class TodoAdd extends Component {
       return (
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="new-todo">
-              What needs to be done?
+              Que se necesita hacer?
             </label>
             <input
               id="new-todo"

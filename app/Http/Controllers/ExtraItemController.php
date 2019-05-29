@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ExtraItem;
 
 class ExtraItemController extends Controller
 {
@@ -13,7 +14,9 @@ class ExtraItemController extends Controller
      */
     public function index()
     {
-        return ExtraItem::all();
+        return response()->json([
+            'items' => ExtraItem::all()
+            ], 200);
     }
 
     /**
@@ -22,7 +25,7 @@ class ExtraItemController extends Controller
      * @param  \App\ExtraItem  $extraItem
      * @return \Illuminate\Http\Response
      */
-    public function show(BodyItem $extraItem)
+    public function show(ExtraItem $extraItem)
     {
         return $extraItem;
     }

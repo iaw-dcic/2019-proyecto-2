@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\HeadItem;
 
 class HeadItemController extends Controller
 {
@@ -13,7 +14,9 @@ class HeadItemController extends Controller
      */
     public function index()
     {
-        return HeadItem::all();
+        return response()->json([
+            'items' => HeadItem::all()
+            ], 200);
     }
 
     /**
@@ -22,7 +25,7 @@ class HeadItemController extends Controller
      * @param  \App\HeadItem  $headItem
      * @return \Illuminate\Http\Response
      */
-    public function show(BodyItem $headItem)
+    public function show(HeadItem $headItem)
     {
         return $headItem;
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UpperBodyItem;
 
 class UpperBodyItemController extends Controller
 {
@@ -13,7 +14,9 @@ class UpperBodyItemController extends Controller
      */
     public function index()
     {
-        return UpperBodyItem::all();
+        return response()->json([
+            'items' => UpperBodyItem::all()
+            ], 200);
     }
 
     /**
@@ -22,7 +25,7 @@ class UpperBodyItemController extends Controller
      * @param  \App\UpperBodyItem  $upperbodyItem
      * @return \Illuminate\Http\Response
      */
-    public function show(BodyItem $upperbodyItem)
+    public function show(UpperBodyItem $upperbodyItem)
     {
         return $upperbodyItem;
     }

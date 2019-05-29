@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\LowerBodyItem;
 
 class LowerBodyItemController extends Controller
 {
@@ -13,7 +14,9 @@ class LowerBodyItemController extends Controller
      */
     public function index()
     {
-        return LowerBodyItem::all();
+        return response()->json([
+            'items' => LowerBodyItem::all()
+            ], 200);
     }
 
     /**
@@ -22,7 +25,7 @@ class LowerBodyItemController extends Controller
      * @param  \App\LowerBodyItem  $lowerbodyItem
      * @return \Illuminate\Http\Response
      */
-    public function show(BodyItem $lowerbodyItem)
+    public function show(LowerBodyItem $lowerbodyItem)
     {
         return $lowerbodyItem;
     }

@@ -14,7 +14,9 @@ class BodyItemController extends Controller
      */
     public function index()
     {
-        return BodyItem::all();
+        return response()->json([
+            'items' => BodyItem::all()
+            ], 200);
     }
 
     /**

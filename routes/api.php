@@ -26,6 +26,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 ** Route::delete($uri, $callback);
 **/
 
+// GET ALL items de avatares
+Route::get('/resources','AvatarItemsController@index')->name('avataritems');
+
 
 // GET ALL y GET 1 recursos
 Route::get('/resources/body','BodyItemController@index')->name('bodyitems');
