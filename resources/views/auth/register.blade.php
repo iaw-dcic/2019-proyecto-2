@@ -5,7 +5,7 @@
 <section id="contact">
     <div class="container">
         <h2 class="text-center text-uppercase text-secondary mb-0">Registrarme</h2>
-        <hr class="star-dark mb-5">
+        <hr class="mb-5">
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <form name="sentMessage" id="contactForm" novalidate="novalidate" method="POST" action="{{ route('register') }}">

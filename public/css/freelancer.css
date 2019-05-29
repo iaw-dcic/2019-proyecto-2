@@ -7,9 +7,6 @@
 body {
   font-family: 'Lato';
 }
-.fondo{
-background-color: white;
-}
 
 h1,
 h2,
@@ -52,7 +49,7 @@ hr.star-light {
 
 hr.star-light:after {
   color: #fff;
-  background-color: #18BC9C;
+  background-color: #b6d1be;
 }
 
 hr.star-dark {
@@ -127,7 +124,7 @@ section h2 {
 }
 
 #mainNav .navbar-nav li.nav-item a.nav-link:hover {
-  color: #18BC9C;
+  color: #b6d1be;
 }
 
 #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
@@ -135,7 +132,7 @@ section h2 {
 }
 
 #mainNav .navbar-nav li.nav-item a.nav-link.active {
-  color: #18BC9C;
+  color: #b6d1be;
 }
 
 #mainNav .navbar-toggler {
@@ -160,11 +157,11 @@ section h2 {
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
     color: #fff;
-    background: #18BC9C;
+    background: #b6d1be;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
     color: #fff;
-    background: #18BC9C;
+    background: #b6d1be;
   }
   #mainNav.navbar-shrink {
     padding-top: 0.5rem;
@@ -320,7 +317,7 @@ header.masthead h2 {
 }
 
 .floating-label-form-group-with-focus label {
-  color: #18BC9C;
+  color: #b6d1be;
 }
 
 form .row:first-child .floating-label-form-group {
@@ -339,7 +336,7 @@ form .row:first-child .floating-label-form-group {
 }
 
 a {
-  color: #18BC9C;
+  color: #b6d1be;
 }
 
 a:focus, a:hover, a:active {
@@ -351,7 +348,7 @@ a:focus, a:hover, a:active {
 }
 
 .bg-primary {
-  background-color: #18BC9C !important;
+  background-color: #b6d1be !important;
 }
 
 .bg-secondary {
@@ -359,7 +356,7 @@ a:focus, a:hover, a:active {
 }
 
 .text-primary {
-  color: #18BC9C !important;
+  color: #b6d1be !important;
 }
 
 .text-secondary {
@@ -367,8 +364,8 @@ a:focus, a:hover, a:active {
 }
 
 .btn-primary {
-  background-color: #18BC9C;
-  border-color: #18BC9C;
+  background-color: #b6d1be;
+  border-color: #b6d1be;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {

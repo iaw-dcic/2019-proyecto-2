@@ -1,0 +1,23 @@
+
+  img.grande{
+    width: 375px;
+    height: 359px;
+  }
+
+  img.medio{
+    width: 550px;
+    height: 550px;
+  }
+
+  img.donasbotones{
+    width: 75px;
+    height: 75px;
+  }
+
+  .fondo{
+      background: #F4F6F6;
+  }
+
+  .colorbienvenido{
+    color: #F4F6F6;
+}

@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65693,8 +65693,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _EditarAvatar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditarAvatar */ "./resources/js/components/EditarAvatar.js");
+/* harmony import */ var _Donuts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Donuts */ "./resources/js/components/Donuts.js");
+/* harmony import */ var _Donut__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Donut */ "./resources/js/components/Donut.js");
+/* harmony import */ var _donutscargadas__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./donutscargadas */ "./resources/js/components/donutscargadas.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -65717,25 +65723,63 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var App =
 /*#__PURE__*/
 function (_Component) {
   _inherits(App, _Component);
 
   function App() {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
+    _this.state = {
+      donuts: {}
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: "actualizarDonuts",
+    value: function actualizarDonuts(clave, donut) {
+      this.setState(function (state) {
+        var donuts = _objectSpread({}, state.donuts);
+
+        donuts[clave] = donut;
+        return {
+          donuts: donuts
+        };
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        donuts: _donutscargadas__WEBPACK_IMPORTED_MODULE_5__["default"]
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col text-center p-2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col text-center p-2"
-      }));
+        className: "row p-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col border"
+      }, Object.keys(this.state.donuts).map(function (key) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donut__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          key: key,
+          clave: key,
+          donut: _this2.state.donuts[key]
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donuts__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        donuts: this.state.donuts,
+        actualizarDonuts: this.actualizarDonuts
+      })));
     }
   }]);
 
@@ -65743,242 +65787,150 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('react-app'));
-{
-  /* <div class="col text-center p-2">
-  <form class="form-horizontal">
-   <div class="row form-group"><label for="avatar-style" class="col-sm-3 control-label">Estilo</label>
-     <div class="col-sm-9">
-       <label><input type="radio" id="avatar-style-circle" name="avatar-style" value="Circle"> Circulo</label>
-  
-       <label><input type="radio" id="avatar-style-transparent" name="avatar-style" value="Transparent"> Transparente</label>
-     </div>
-   </div>
-   <div class="row form-group"><label for="topType" class="col-sm-3 control-label">💈 Pelo</label>
-     <div class="col-sm-9">
-       <select id="topType" class="form-control">
-         <option value="NoHair">Sin pelo</option>
-         <option value="Eyepatch">Parche</option>
-         <option value="Hat">Gorro</option>
-         <option value="Hijab">Hijab</option>
-         <option value="Turban">Turban</option>
-         <option value="WinterHat2">Gorro Coya</option>
-         <option value="WinterHat3">Gorro de invierno</option>
-         <option value="WinterHat4">Gorro de invierno con orejas</option>
-         <option value="WinterHat1">Gorro de invierno ruso</option>
-         <option value="LongHairFrida">Pelo Frida</option>
-         <option value="LongHairBun">Rodete</option>
-         <option value="LongHairDreads">Rastas</option>
-         <option value="ShortHairDreads02">Rastas cortas</option>
-         <option value="LongHairFro">Pelo Afro</option>
-         <option value="LongHairFroBand">Pelo Afro con vincha</option>
-         <option value="LongHairBob">Pelo corte bob</option>
-         <option value="LongHairNotTooLong">Pelo corto lacio</option>
-         <!-- <option value="LongHairShavedSides">LongHairShavedSides</option> -->
-         <option value="LongHairMiaWallace">Pelo corto con flequillo</option>
-         <option value="LongHairCurly">Pelo largo risado</option>
-         <option value="LongHairCurvy">Pelo largo ondulado</option>
-         <option value="LongHairBigHair">Pelo largo</option>
-         <option value="LongHairStraight">Pelo largo lacio</option>
-         <option value="LongHairStraight2">Pelo largo lacio 2</option>
-         <option value="LongHairStraightStrand">Pelo largo lacio 3</option>
-         <option value="ShortHairDreads01">Pelo corto</option>
-         <option value="ShortHairFrizzle">Pelo corto 1</option>
-         <option value="ShortHairShaggyMullet">Pelo corto 2</option>
-         <option value="ShortHairShortCurly">Pelo corto 3</option>
-         <option value="ShortHairShortFlat">Pelo corto 4</option>
-         <option value="ShortHairShortRound">Pelo corto 5</option>
-         <option value="ShortHairShortWaved">Pelo corto 6</option>
-         <option value="ShortHairSides">Pelo corto 7</option>
-         <option value="ShortHairTheCaesar">Pelo corto 8</option>
-         <option value="ShortHairTheCaesarSidePart">Pelo corto 9</option>
-       </select></div>
-   </div>
-   <div class="row form-group"><label for="hairColor" class="col-sm-3 control-label">↳ Color</label>
-     <div class="col-sm-9">
-       <select id="hairColor" class="form-control">
-         <option value="Black">Negro</option>
-         <option value="Brown">Castaño</option>
-         <option value="BrownDark">Castaño oscuro</option>
-         <option value="Blonde">Castaño claro</option>
-         <option value="BlondeGolden">Rubio</option>
-         <option value="PastelPink">Rosa</option>
-         <option value="Platinum">Platinado</option>
-         <option value="Red">Rojo</option>
-         <option value="Auburn">Anaranjado</option>
-         <option value="SilverGray">Gris</option>
-       </select></div>
-   </div>
-  
-   <div class="row form-group"><label for="accessoriesType" class="col-sm-3 control-label">👓 Accesorios</label>
-     <div class="col-sm-9"><select id="accessoriesType" class="form-control">
-         <option value="Blank">Nada</option>
-         <option value="Kurt">Lentes de sol</option>
-         <option value="Sunglasses">Lentes de sol 2</option>
-         <option value="Wayfarers">Lentes de sol 3</option>
-         <option value="Prescription01">Lentes de lectura 1</option>
-         <option value="Prescription02">Lentes de lectura 2</option>
-         <option value="Round">Lentes de lectura 3</option>
-  
-       </select></div>
-   </div>
-  
-   <div class="row form-group"><label for="facialHairType" class="col-sm-3 control-label">✂️ Barba</label>
-     <div class="col-sm-9"><select id="facialHairType" class="form-control">
-         <option value="Blank">Nada</option>
-         <option value="BeardMedium">BeardMedium</option>
-         <option value="BeardLight">BeardLight</option>
-         <option value="BeardMagestic">BeardMagestic</option>
-         <option value="MoustacheFancy">MoustacheFancy</option>
-         <option value="MoustacheMagnum">MoustacheMagnum</option>
-       </select></div>
-   </div>
-  
-   <div class="row form-group"><label for="facialHairColor" class="col-sm-3 control-label">↳ Color</label>
-     <div class="col-sm-9"><select id="facialHairColor" class="form-control">
-         <option value="Black">Negro</option>
-         <option value="Brown">Castaño</option>
-         <option value="BrownDark">Castaño oscuro</option>
-         <option value="Blonde">Castaño claro</option>
-         <option value="BlondeGolden">Rubio</option>
-         <option value="Platinum">Platinado</option>
-         <option value="Red">Rojo</option>
-         <option value="Auburn">Anaranjado</option>
-       </select></div>
-   </div>
-  
-   <div class="row form-group"><label for="clotheType" class="col-sm-3 control-label">👔 Ropa</label>
-     <div class="col-sm-9"><select id="clotheType" class="form-control">
-         <option value="BlazerShirt">Remera y saco</option>
-         <option value="BlazerSweater">Sweater y saco</option>
-         <option value="CollarSweater">Sweater</option>
-         <option value="GraphicShirt">Remera estampada</option>
-         <option value="Hoodie">Buzo</option>
-         <option value="Overall">Jardinero</option>
-         <option value="ShirtCrewNeck">Remera cuello redondo</option>
-         <option value="ShirtScoopNeck">Remera cuello redondo 2</option>
-         <option value="ShirtVNeck">Remera cuello en v</option>
-       </select></div>
-   </div>
-   <div class="row form-group"><label for="clotheColor" class="col-sm-3 control-label">↳ Color</label>
-     <div class="col-sm-9"><select id="clotheColor" class="form-control">
-         <option value="Black">Negro</option>
-         <option value="Blue01">Azul 1</option>
-         <option value="Blue02">Azul 2</option>
-         <option value="Blue03">Azul 3</option>
-         <option value="Gray01">Gris 1</option>
-         <option value="Gray02">Gris 2</option>
-         <option value="Heather">Gris 3</option>
-         <option value="PastelBlue">Celeste</option>
-         <option value="PastelGreen">Verde</option>
-         <option value="PastelOrange">Naranja</option>
-         <option value="PastelYellow">Amarillo</option>
-         <option value="PastelRed">Rosa</option>
-         <option value="Pink">Rosa 2</option>
-         <option value="Red">Rojo</option>
-         <option value="White">Blanco</option>
-       </select></div>
-   </div>
-   <div class="row form-group"><label for="graphicType" class="col-sm-3 control-label">↳ Gráfica</label>
-     <div class="col-sm-9"><select id="graphicType" class="form-control">
-         <option value="Bat">Murcielago</option>
-         <option value="Cumbia">Cumbia</option>
-         <option value="Deer">Ciervo</option>
-         <option value="Diamond">Diamante</option>
-         <option value="Hola">Hola</option>
-         <option value="Pizza">Pizza</option>
-         <option value="Resist">Resist</option>
-         <option value="Selena">Selena</option>
-         <option value="Bear">Oso</option>
-         <option value="SkullOutline">Calavera</option>
-         <option value="Skull">Calavera</option>
-       </select></div>
-   </div>
-   <div class="row form-group"><label for="eyeType" class="col-sm-3 control-label">👁 Ojos</label>
-     <div class="col-sm-9"><select id="eyeType" class="form-control">
-         <option value="Close">Cerrados</option>
-         <option value="Cry">Llorando</option>
-         <option value="Default">Default</option>
-         <option value="Dizzy">Muerto</option>
-         <option value="EyeRoll">Para arriba</option>
-         <option value="Happy">Felices</option>
-         <option value="Hearts">Corazones</option>
-         <option value="Side">Costado</option>
-         <option value="Squint">Achinados</option>
-         <option value="Surprised">Sorpresa</option>
-         <option value="Wink">Giño</option>
-         <option value="WinkWacky">Giño</option>
-       </select></div>
-   </div>
-   <div class="row form-group"><label for="eyebrowType" class="col-sm-3 control-label">✏️ Cejas</label>
-     <div class="col-sm-9"><select id="eyebrowType" class="form-control">
-         <option value="Angry">Enojadas</option>
-         <option value="AngryNatural">Enojadas 2</option>
-         <option value="Default">Default</option>
-         <option value="DefaultNatural">Default 2</option>
-         <option value="FlatNatural">Gruesas</option>
-         <option value="RaisedExcited">Hacia arriba</option>
-         <option value="RaisedExcitedNatural">Hacia arriba 2</option>
-         <option value="SadConcerned">Triste</option>
-         <option value="SadConcernedNatural">Triste 2</option>
-         <option value="UnibrowNatural">Unicejas</option>
-         <option value="UpDown">Arriba y abajo</option>
-         <option value="UpDownNatural">Arriba y abajo 2</option>
-       </select></div>
-   </div>
-   <div class="row form-group"><label for="mouthType" class="col-sm-3 control-label">👄 Boca</label>
-     <div class="col-sm-9"><select id="mouthType" class="form-control">
-         <option value="Concerned">Sorprendido</option>
-         <option value="Default">Default</option>
-         <option value="Disbelief">Consternado</option>
-         <option value="Eating">Comiendo</option>
-         <option value="Grimace">Mostrando dientes</option>
-         <option value="Sad">Triste</option>
-         <option value="ScreamOpen">Gritando</option>
-         <option value="Serious">Serio</option>
-         <option value="Smile">Sonriendo</option>
-         <option value="Tongue">Lengua</option>
-         <option value="Twinkle">Sonrisa</option>
-         <option value="Vomit">Vomitando</option>
-       </select></div>
-   </div>
-   <div class="row form-group"><label for="skinColor" class="col-sm-3 control-label">🎨 Piel</label>
-     <div class="col-sm-9"><select id="skinColor" class="form-control">
-         <option value="Tanned">Tostada</option>
-         <option value="Yellow">Amarilla</option>
-         <option value="Pale">Palida</option>
-         <option value="Light">Clara</option>
-         <option value="Brown">Morena</option>
-         <option value="DarkBrown">Morena oscura</option>
-         <option value="Black">Negra</option>
-       </select></div>
-   </div>
-  
-  </form>
-  
-  
-  </div> */
-}
-{
-  /* <Avatar
-           avatarStyle='Transparent'
-           topType='LongHairMiaWallace'
-           accessoriesType='Prescription02'
-           hairColor='BrownDark'
-           facialHairType='Blank'
-           clotheType='Hoodie'
-           clotheColor='PastelBlue'
-           eyeType='Happy'
-           eyebrowType='Default'
-           mouthType='Smile'
-           skinColor='Light'
-         /> */
-}
 
 /***/ }),
 
-/***/ "./resources/js/components/EditarAvatar.js":
+/***/ "./resources/js/components/Donut.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Donut.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Donut =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Donut, _React$Component);
+
+  function Donut() {
+    _classCallCheck(this, Donut);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Donut).apply(this, arguments));
+  }
+
+  _createClass(Donut, [{
+    key: "render",
+    value: function render() {
+      var sabor = this.props.donut.sabor;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card mb-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "card-text"
+      }, sabor));
+    }
+  }]);
+
+  return Donut;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Donut);
+
+/***/ }),
+
+/***/ "./resources/js/components/Donuts.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Donuts.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _EditarDonuts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarDonuts */ "./resources/js/components/EditarDonuts.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Donuts =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Donuts, _React$Component);
+
+  function Donuts() {
+    _classCallCheck(this, Donuts);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Donuts).apply(this, arguments));
+  }
+
+  _createClass(Donuts, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col border text-center p-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "border-bottom"
+      }, "Editar Donut"), Object.keys(this.props.donut).map(function (clave) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditarDonuts__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: clave,
+          clave: clave,
+          donut: _this.props.donut[clave],
+          actualizarDonuts: _this.props.actualizarDonuts
+        });
+      }));
+    }
+  }]);
+
+  return Donuts;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Donuts); // class Donuts {
+// 	getSabor(i) {
+// 		if (i == 1) return 'img/Donas/donaVainilla.png';
+// 		else if (i == 2) return 'img/Donas/donaChocolate.png';
+// 		else if (i == 3) return 'img/Donas/donaMixta.png';
+// 	}
+// }
+
+/***/ }),
+
+/***/ "./resources/js/components/EditarDonuts.js":
 /*!*************************************************!*\
-  !*** ./resources/js/components/EditarAvatar.js ***!
+  !*** ./resources/js/components/EditarDonuts.js ***!
   \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -65993,8 +65945,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -66013,26 +65963,26 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var EditarAvatar =
+var EditarDonuts =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(EditarAvatar, _React$Component);
+  _inherits(EditarDonuts, _React$Component);
 
-  function EditarAvatar() {
-    _classCallCheck(this, EditarAvatar);
+  function EditarDonuts() {
+    _classCallCheck(this, EditarDonuts);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EditarAvatar).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(EditarDonuts).apply(this, arguments));
   }
 
-  _createClass(EditarAvatar, [{
+  _createClass(EditarDonuts, [{
     key: "handleChange",
     value: function handleChange(e) {
       console.log(e.currentTarget.value);
 
-      var avatar = _objectSpread({}, this.prop.avatar);
+      var donut = _objectSpread({}, this.props.donut);
 
-      avatar = (_readOnlyError("avatar"), e.currentTarget.value);
-      this.actualizarAvatar(avatar);
+      donut[e.currentTarget.name] = e.currentTarget.value;
+      this.props.actualizarDonuts(this.props.clave, donut);
     }
   }, {
     key: "render",
@@ -66040,33 +65990,44 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "border p-2 m-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        "for": "topType",
-        "class": "col-sm-3 control-label"
-      }, "\uD83D\uDC88 Pelo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-sm-9"
+        className: "form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        "class": "form-control",
-        value: value,
+        value: this.props.donut.sabor,
         onChange: this.handleChange,
-        type: "text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "NoHair"
-      }, "Sin pelo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Hat"
-      }, "Gorro"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "LongHairNotTooLong"
-      }, "Pelo corto lacio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "LongHairMiaWallace"
-      }, "Pelo corto con flequillo")))));
+        name: "sabor",
+        type: "text",
+        className: "form-control"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Chocolate"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Vainilla"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Mixto")))));
     }
   }]);
 
-  return EditarAvatar;
+  return EditarDonuts;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (EditarAvatar);
+/* harmony default export */ __webpack_exports__["default"] = (EditarDonuts);
+
+/***/ }),
+
+/***/ "./resources/js/components/donutscargadas.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/donutscargadas.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var donuts = {
+  donut1: {
+    sabor: "vainilla"
+  },
+  donut2: {
+    sabor: "chocolate"
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (donuts);
 
 /***/ }),
 
