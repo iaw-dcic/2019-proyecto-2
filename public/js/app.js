@@ -65791,45 +65791,136 @@ function (_Component) {
   _createClass(ShirtImage, [{
     key: "render",
     value: function render() {
-      var _React$createElement, _React$createElement2;
+      var _React$createElement;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "carouselExampleControls",
-        "class": "carousel slide",
-        "data-ride": "carousel"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        "class": "pricing py-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "carousel-inner"
+        "class": "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "carousel-item active"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", (_React$createElement = {
-        "class": "img-fluid",
-        src: "/images/remerablanca_adelante.png"
-      }, _defineProperty(_React$createElement, "class", "d-block w-100"), _defineProperty(_React$createElement, "alt", "..."), _React$createElement))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "carousel-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", (_React$createElement2 = {
-        "class": "img-fluid",
-        src: "/images/remerablanca_atras.png"
-      }, _defineProperty(_React$createElement2, "class", "d-block w-100"), _defineProperty(_React$createElement2, "alt", "..."), _React$createElement2)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        "class": "carousel-control-prev",
-        href: "#carouselExampleControls",
-        role: "button",
-        "data-slide": "prev"
+        "class": "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-lg-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "card mb-5 mb-lg-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        "class": "card-title text-muted text-uppercase text-center"
+      }, "Free"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        "class": "card-price text-center"
+      }, "$0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "period"
+      }, "/month")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        "class": "fa-ul"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Single User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "5GB Storage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Unlimited Public Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Community Access"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "text-muted"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "carousel-control-prev-icon",
-        "aria-hidden": "true"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "sr-only"
-      }, "Previous")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        "class": "carousel-control-next",
-        href: "#carouselExampleControls",
-        role: "button",
-        "data-slide": "next"
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-times"
+      })), "Unlimited Private Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "text-muted"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "carousel-control-next-icon",
-        "aria-hidden": "true"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "sr-only"
-      }, "Next")));
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-times"
+      })), "Dedicated Phone Support"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "text-muted"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-times"
+      })), "Free Subdomain"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "text-muted"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-times"
+      })), "Monthly Status Reports")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "class": "btn btn-block btn-primary text-uppercase"
+      }, "Button")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-lg-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "card mb-5 mb-lg-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        "class": "card-title text-muted text-uppercase text-center"
+      }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", (_React$createElement = {
+        "class": "img-fluid",
+        height: "410",
+        src: "/images/remeras/remerablanca.png"
+      }, _defineProperty(_React$createElement, "class", "d-block w-100"), _defineProperty(_React$createElement, "alt", "..."), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "class": "btn btn-block btn-secondary text-uppercase"
+      }, "Guardar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-lg-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        "class": "card-title text-muted text-uppercase text-center"
+      }, "Pro"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        "class": "card-price text-center"
+      }, "$49", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "period"
+      }, "/month")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        "class": "fa-ul"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Unlimited Users")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "150GB Storage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Unlimited Public Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Community Access"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Unlimited Private Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Dedicated Phone Support"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Unlimited"), " Free Subdomains"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "fa-li"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-check"
+      })), "Monthly Status Reports")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "class": "btn btn-block btn-primary text-uppercase"
+      }, "Button")))))));
     }
   }]);
 
