@@ -10,11 +10,17 @@ export default class TodoApp extends Component {
 
     render() {
       return (
-        <div>
-          <h3>TODO</h3>
-          <TodoList items={this.state.items} />
-          <TodoAdd addItem={this.addItem}/>
-        </div>
+        <div className="container" style={{marginTop: 60 + 'px'}}>
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <div>
+                <h3>TODO</h3>
+                <TodoList items={this.state.items} />
+                <TodoAdd addItem={this.addItem}/>
+              </div>
+            </div>
+          </div>
+        </div>        
       );
     }
   
