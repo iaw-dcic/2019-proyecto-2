@@ -65793,7 +65793,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
     _this.state = {
       remera: '/images/remeras/remerablanca.png',
-      talle: 's'
+      talle: 'XS'
     };
     return _this;
   }
@@ -65858,7 +65858,11 @@ function (_Component) {
     }
   }, {
     key: "cambiarTalle",
-    value: function cambiarTalle() {}
+    value: function cambiarTalle(e) {
+      this.setState({
+        talle: e.target.value
+      });
+    }
   }, {
     key: "render",
     value: function render() {
@@ -66020,28 +66024,28 @@ function (_Component) {
         className: "btn-item-color"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "fa-ul"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Listado de talle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
-        id: "exampleFormControlSelect1"
+        onChange: function onChange(e) {
+          return _this2.cambiarTalle(e);
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        className: "fa-li"
+        value: "XS"
       }, "XS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        className: "fa-li"
+        value: "S"
       }, "S"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        className: "fa-li"
+        value: "M"
       }, "M"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        className: "fa-li"
+        value: "L"
       }, "L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        className: "fa-li"
+        value: "XL"
       }, "XL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        className: "fa-li"
-      }, "XLL")))))))))));
+        value: "XXL"
+      }, "XXL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "card-price text-center"
+      }, "Talle: ", this.state.talle, " "))))))));
     }
   }]);
 

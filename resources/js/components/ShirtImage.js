@@ -6,7 +6,7 @@ export default class ShirtImage extends Component {
         super(props);
         this.state = {
             remera: '/images/remeras/remerablanca.png',
-            talle: 's'
+            talle: 'XS'
         }
     }
 
@@ -32,9 +32,8 @@ export default class ShirtImage extends Component {
         }
     }
 
-    cambiarTalle()
-    {
-
+    cambiarTalle(e) {
+        this.setState({ talle: e.target.value });
     }
     render() {
         return (
@@ -95,19 +94,20 @@ export default class ShirtImage extends Component {
                                         </div>
                                         <hr width="100%"></hr>
 
-                                        <form className="fa-ul">
-                                            <div className="form-group">
-                                            <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>    
-                                                <select className="form-control" id="exampleFormControlSelect1">
-                                                    <option className="fa-li">XS</option>
-                                                    <option className="fa-li">S</option>
-                                                    <option className="fa-li">M</option>
-                                                    <option className="fa-li">L</option>
-                                                    <option className="fa-li">XL</option>
-                                                    <option className="fa-li">XLL</option>
-                                                </select>
-                                            </div>
-                                        </form>
+
+
+                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de talle</h5>
+                                        <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
+                                            <option value="XS">XS</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                        </select>
+                                        <h6 className="card-price text-center">Talle: {this.state.talle} </h6>
+
+
 
                                     </div>
                                 </div>
