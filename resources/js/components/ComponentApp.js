@@ -11,8 +11,13 @@ import Utilities from './Utilities'
 export default class ComponentApp extends Component {
     
     state = { 
-        avatarActual: {"hair":"Hair1", "shirt":"Shirt1", "beard":"Beard1"},
-        avataresTotales: []
+        currentAvatar: {
+            "avatar_name": "", 
+            "hair": "Hair1", 
+            "shirt": "Shirt1", 
+            "beard": "Beard1"
+        },
+        allAvatar: []
     };
 
     render () {
@@ -20,19 +25,20 @@ export default class ComponentApp extends Component {
             <>
                 <div className="d-flex justify-content-center" id="topFlex">
                     <div className="col-md-9" id="editor">
-                        <AvatarView avatar={this.state.avatarActual}/>
+                        <AvatarView avatar={this.state.currentAvatar}/>
                     </div>
                     <div className="col-md-3" id="options">
-                        <AvatarComponents avatar={this.state.avatarActual}
+                        <AvatarComponents avatar={this.state.currentAvatar}
                                           componentChange={this.componentChange}/>
                     </div>
                 </div>
                 <div className="d-flex justify-content-center" id="bottomFlex">
                     <div className="col-md-9" id="previous">
-                        <ElementSelect avatarList={this.state.avataresTotales} selectAvatar={this.setSavedAvatar}/>
+                        <ElementSelect avatarList={this.state.allAvatar} 
+                                       setSavedAvatar={this.setSavedAvatar}/>
                     </div>
                     <div className="col-md-3" id="buttons">
-                        <Utilities name={this.state.avatarActual.avatar_name} 
+                        <Utilities name={this.state.currentAvatar.avatar_name} 
                                    returnToDefault={this.returnToDefault} 
                                    saveChanges={this.saveChanges}/>
                     </div>
@@ -43,44 +49,65 @@ export default class ComponentApp extends Component {
 
     componentChange = (avatar) => {
         this.setState ({
-            avatarActual: {
-                "avatar_name":this.state.avatarActual.avatar_name, 
-                "owner":this.state.avatarActual.owner,
-                "hair":avatar.hair,
+            currentAvatar: {
+                "avatar_id": this.state.currentAvatar.avatar_id,
+                "avatar_name": this.state.currentAvatar.avatar_name, 
+                "owner": this.state.currentAvatar.owner,
+                "hair": avatar.hair,
                 "shirt": avatar.shirt,
                 "beard": avatar.beard
             }
         });
     }
 
-    saveChanges = (event, name) => {
-        const newActual = {
-            avatar_name: name,
-            owner: this.state.avatarActual.owner,
-            hair: this.state.avatarActual.hair,
-            shirt: this.state.avatarActual.shirt,
-            beard: this.state.avatarActual.beard
-        }
-        this.setState (state => ({
-            avatarActual: newActual,
-            avataresTotales: state.avataresTotales.concat (state.avatarActual)
-        }));
-        event.preventDefault ();
-        axios.post ('/avatars', 
-            this.state.avatarActual
-        );
+    saveChanges = (name) => {
+        this.setState ({
+            currentAvatar: {
+                "avatar_id": this.state.currentAvatar.avatar_id,
+                "avatar_name": name,
+                "owner": this.state.currentAvatar.owner,
+                "hair": this.state.currentAvatar.hair,
+                "shirt": this.state.currentAvatar.shirt,
+                "beard": this.state.currentAvatar.beard
+            },
+            allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+        });
+        axios.post ('/app/avatars', {
+            avatar_id: this.state.currentAvatar.avatar_id,
+            avatar_name: this.state.currentAvatar.avatar_name,
+            owner: this.state.currentAvatar.owner,
+            hair: this.state.currentAvatar.hair,
+            shirt: this.state.currentAvatar.shirt,
+            beard: this.state.currentAvatar.beard
+        }).then(response => {
+            console.log('from handle submit', response);
+        });;
     }
 
     returnToDefault = () => {
         this.setState ({
-            avatarActual: {"hair":"Hair2", "shirt":"Shirt4", "beard":"Beard4"}
+            currentAvatar: {
+                "avatar_id": this.state.currentAvatar.avatar_id,
+                "avatar_name": this.state.currentAvatar.avatar_name, 
+                "owner": this.state.currentAvatar.owner,
+                "hair": "Hair1",
+                "shirt": "Shirt1",
+                "beard": "Beard1"
+            }
         });
     }
 
     setSavedAvatar = (avatar) => {
-        this.setState (state => ({
-            avatarActual: avatar
-        }));
+        this.setState ({
+            currentAvatar: {
+                "avatar_id": avatar.avatar_id,
+                "avatar_name": avatar.avatar_name,
+                "owner": avatar.owner,
+                "hair": avatar.hair,
+                "shirt": avatar.shirt,
+                "beard": avatar.beard
+            }
+        });
     }
 
 }

@@ -4,7 +4,8 @@
 
 .savedCard {
     height: 125px;
-    margin-right: 4px;
+    width: 125px;
+    margin-right: 90px;
 }
 
 .savedBase, .savedHair, .savedShirt, .savedBeard {
@@ -14,6 +15,10 @@
     background-position: center center;
 }
 
+.selectButtonContainer {
+    text-align: center;
+}
+
 .selectButton {
-    position: relative;
+    position: absolute;
 }

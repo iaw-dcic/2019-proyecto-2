@@ -5,7 +5,7 @@ import "./css/avatarView.css";
 
 export default class AvatarView extends Component {
 
-    render() {
+    render () {
         return (
             <div className="mx-auto">
                 <div>

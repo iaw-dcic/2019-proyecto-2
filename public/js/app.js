@@ -6539,7 +6539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 175px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    top: 50%;\r\n}\r\n\r\n#avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
+exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 175px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    top: 50%;\r\n    height: 200px;\r\n}\r\n\r\n#avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
 
 // exports
 
@@ -6558,7 +6558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.savedCard {\r\n    height: 125px;\r\n    margin-right: 4px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n.selectButton {\r\n    position: relative;\r\n}", ""]);
+exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.savedCard {\r\n    height: 125px;\r\n    width: 125px;\r\n    margin-right: 90px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n.selectButtonContainer {\r\n    text-align: center;\r\n}\r\n\r\n.selectButton {\r\n    position: absolute;\r\n}", ""]);
 
 // exports
 
@@ -60886,7 +60886,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66436,18 +66436,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
  //Seleccion de todos los elementos para modificar el avatar
-//Crear una table que tenga tipo y direccion del archivo, y poner las 4 filas de abajo con un for
+//poner las 4 filas de abajo con un for
 
 var AvatarComponents =
 /*#__PURE__*/
@@ -66455,58 +66453,27 @@ function (_Component) {
   _inherits(AvatarComponents, _Component);
 
   function AvatarComponents() {
-    var _getPrototypeOf2;
-
-    var _this;
-
     _classCallCheck(this, AvatarComponents);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AvatarComponents)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "changeAvatarHair", function (newHair) {
-      var returningAvatar = {
-        hair: newHair,
-        shirt: _this.props.avatar.shirt,
-        beard: _this.props.avatar.beard
-      };
-
-      _this.props.componentChange.bind(returningAvatar);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "changeAvatarShirt", function (newShirt) {
-      var returningAvatar = {
-        hair: _this.props.avatar.hair,
-        shirt: newShirt,
-        beard: _this.props.avatar.beard
-      };
-
-      _this.props.componentChange.bind(returningAvatar);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "changeAvatarBeard", function (newBeard) {
-      var returningAvatar = {
-        hair: _this.props.avatar.hair,
-        shirt: _this.props.avatar.shirt,
-        beard: newBeard
-      };
-
-      _this.props.componentChange.bind(returningAvatar);
-    });
-
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(AvatarComponents).apply(this, arguments));
   }
 
   _createClass(AvatarComponents, [{
-    key: "render",
+    key: "contstructor",
 
     /*{this.props.avatarList.map (avatar => (
         <div className="card" key={avatar.avatar_id} id="savedCard"></div>
     ))}*/
+    value: function contstructor(props) {
+      this.changeAvatarHair = this.changeAvatarHair.bind(this);
+      this.changeAvatarShirt = this.changeAvatarShirt.bind(this);
+      this.changeAvatarBeard = this.changeAvatarBeard.bind(this);
+    }
+  }, {
+    key: "render",
     value: function render() {
+      var _this = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "accordion md-accordion",
         id: "accordionEx1",
@@ -66541,22 +66508,30 @@ function (_Component) {
         className: "btn btn-outline-primary"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Hair1.png',
-        onClick: this.changeAvatarHair("Hair1.png")
+        onClick: function onClick() {
+          return _this.changeAvatarHair('Hair1');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-primary"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Hair2.png',
-        onClick: this.changeAvatarHair("Hair2.png")
+        onClick: function onClick() {
+          return _this.changeAvatarHair('Hair2');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-primary"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Hair3.png',
-        onClick: this.changeAvatarHair("Hair3.png")
+        onClick: function onClick() {
+          return _this.changeAvatarHair('Hair3');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-primary"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Hair4.png',
-        onClick: this.changeAvatarHair("Hair4.png")
+        onClick: function onClick() {
+          return _this.changeAvatarHair('Hair4');
+        }
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66586,22 +66561,30 @@ function (_Component) {
         className: "btn btn-outline-danger"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Shirt1.png',
-        onClick: this.changeAvatarShirt("Shirt1.png")
+        onClick: function onClick() {
+          return _this.changeAvatarShirt('Shirt1');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-danger"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Shirt2.png',
-        onClick: this.changeAvatarShirt("Shirt2.png")
+        onClick: function onClick() {
+          return _this.changeAvatarShirt('Shirt2');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-danger"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Shirt3.png',
-        onClick: this.changeAvatarShirt("Shirt3.png")
+        onClick: function onClick() {
+          return _this.changeAvatarShirt('Shirt3');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-danger"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Shirt4.png',
-        onClick: this.changeAvatarShirt("Shirt4.png")
+        onClick: function onClick() {
+          return _this.changeAvatarShirt('Shirt4');
+        }
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66631,23 +66614,61 @@ function (_Component) {
         className: "btn btn-outline-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Beard1.png',
-        onClick: this.changeAvatarBeard("Beard1.png")
+        onClick: function onClick() {
+          return _this.changeAvatarBeard('Beard1');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Beard2.png',
-        onClick: this.changeAvatarBeard("Beard2.png")
+        onClick: function onClick() {
+          return _this.changeAvatarBeard('Beard2');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Beard3.png',
-        onClick: this.changeAvatarBeard("Beard3.png")
+        onClick: function onClick() {
+          return _this.changeAvatarBeard('Beard3');
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/Beard4.png',
-        onClick: this.changeAvatarBeard("Beard4.png")
+        onClick: function onClick() {
+          return _this.changeAvatarBeard('Beard4');
+        }
       })))))));
+    }
+  }, {
+    key: "changeAvatarHair",
+    value: function changeAvatarHair(newHair) {
+      var returningAvatar = {
+        hair: newHair,
+        shirt: this.props.avatar.shirt,
+        beard: this.props.avatar.beard
+      };
+      this.props.componentChange(returningAvatar);
+    }
+  }, {
+    key: "changeAvatarShirt",
+    value: function changeAvatarShirt(newShirt) {
+      var returningAvatar = {
+        hair: this.props.avatar.hair,
+        shirt: newShirt,
+        beard: this.props.avatar.beard
+      };
+      this.props.componentChange(returningAvatar);
+    }
+  }, {
+    key: "changeAvatarBeard",
+    value: function changeAvatarBeard(newBeard) {
+      var returningAvatar = {
+        hair: this.props.avatar.hair,
+        shirt: this.props.avatar.shirt,
+        beard: newBeard
+      };
+      this.props.componentChange(returningAvatar);
     }
   }]);
 
@@ -66799,19 +66820,21 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ComponentApp)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      avatarActual: {
+      currentAvatar: {
+        "avatar_name": "",
         "hair": "Hair1",
         "shirt": "Shirt1",
         "beard": "Beard1"
       },
-      avataresTotales: []
+      allAvatar: []
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentChange", function (avatar) {
       _this.setState({
-        avatarActual: {
-          "avatar_name": _this.state.avatarActual.avatar_name,
-          "owner": _this.state.avatarActual.owner,
+        currentAvatar: {
+          "avatar_id": _this.state.currentAvatar.avatar_id,
+          "avatar_name": _this.state.currentAvatar.avatar_name,
+          "owner": _this.state.currentAvatar.owner,
           "hair": avatar.hair,
           "shirt": avatar.shirt,
           "beard": avatar.beard
@@ -66819,41 +66842,55 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "saveChanges", function (event, name) {
-      var newActual = {
-        avatar_name: name,
-        owner: _this.state.avatarActual.owner,
-        hair: _this.state.avatarActual.hair,
-        shirt: _this.state.avatarActual.shirt,
-        beard: _this.state.avatarActual.beard
-      };
-
-      _this.setState(function (state) {
-        return {
-          avatarActual: newActual,
-          avataresTotales: state.avataresTotales.concat(state.avatarActual)
-        };
+    _defineProperty(_assertThisInitialized(_this), "saveChanges", function (name) {
+      _this.setState({
+        currentAvatar: {
+          "avatar_id": _this.state.currentAvatar.avatar_id,
+          "avatar_name": name,
+          "owner": _this.state.currentAvatar.owner,
+          "hair": _this.state.currentAvatar.hair,
+          "shirt": _this.state.currentAvatar.shirt,
+          "beard": _this.state.currentAvatar.beard
+        },
+        allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
       });
 
-      event.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/avatars', _this.state.avatarActual);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/app/avatars', {
+        avatar_id: _this.state.currentAvatar.avatar_id,
+        avatar_name: _this.state.currentAvatar.avatar_name,
+        owner: _this.state.currentAvatar.owner,
+        hair: _this.state.currentAvatar.hair,
+        shirt: _this.state.currentAvatar.shirt,
+        beard: _this.state.currentAvatar.beard
+      }).then(function (response) {
+        console.log('from handle submit', response);
+      });
+      ;
     });
 
     _defineProperty(_assertThisInitialized(_this), "returnToDefault", function () {
       _this.setState({
-        avatarActual: {
-          "hair": "Hair2",
-          "shirt": "Shirt4",
-          "beard": "Beard4"
+        currentAvatar: {
+          "avatar_id": _this.state.currentAvatar.avatar_id,
+          "avatar_name": _this.state.currentAvatar.avatar_name,
+          "owner": _this.state.currentAvatar.owner,
+          "hair": "Hair1",
+          "shirt": "Shirt1",
+          "beard": "Beard1"
         }
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "setSavedAvatar", function (avatar) {
-      _this.setState(function (state) {
-        return {
-          avatarActual: avatar
-        };
+      _this.setState({
+        currentAvatar: {
+          "avatar_id": avatar.avatar_id,
+          "avatar_name": avatar.avatar_name,
+          "owner": avatar.owner,
+          "hair": avatar.hair,
+          "shirt": avatar.shirt,
+          "beard": avatar.beard
+        }
       });
     });
 
@@ -66870,12 +66907,12 @@ function (_Component) {
         className: "col-md-9",
         id: "editor"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarView__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        avatar: this.state.avatarActual
+        avatar: this.state.currentAvatar
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3",
         id: "options"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarComponents__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        avatar: this.state.avatarActual,
+        avatar: this.state.currentAvatar,
         componentChange: this.componentChange
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center",
@@ -66884,13 +66921,13 @@ function (_Component) {
         className: "col-md-9",
         id: "previous"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ElementSelect__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        avatarList: this.state.avataresTotales,
-        selectAvatar: this.setSavedAvatar
+        avatarList: this.state.allAvatar,
+        setSavedAvatar: this.setSavedAvatar
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3",
         id: "buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Utilities__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        name: this.state.avatarActual.avatar_name,
+        name: this.state.currentAvatar.avatar_name,
         returnToDefault: this.returnToDefault,
         saveChanges: this.saveChanges
       }))));
@@ -66951,6 +66988,11 @@ function (_Component) {
   }
 
   _createClass(ElementSelect, [{
+    key: "contstructor",
+    value: function contstructor(props) {
+      this.selectAvatar = this.selectAvatar.bind(this);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -66960,8 +67002,10 @@ function (_Component) {
         id: "elementsFlex"
       }, this.props.avatarList.map(function (avatar) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card savedCard",
+          className: "card text-center savedCard",
           key: avatar.avatar_id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-body avatarImage"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/avatar_elements/BaseModel.png',
           className: "savedBase"
@@ -66974,13 +67018,20 @@ function (_Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/avatar_elements/' + avatar.beard + '.png',
           className: "savedBeard"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card-text"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-text selectButtonContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn btn-primary selectButton",
-          onClick: _this.props.selectAvatar.bind(avatar)
-        }, avatar.name)));
+          onClick: function onClick() {
+            return _this.selectAvatar(avatar);
+          }
+        }, avatar.avatar_name)));
       })));
+    }
+  }, {
+    key: "selectAvatar",
+    value: function selectAvatar(avatar) {
+      this.props.setSavedAvatar(avatar);
     }
   }]);
 
@@ -67027,7 +67078,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
  //Seccion de botones y nombre del avatar
-//Poner un estado nombre, y que valga el props. reemplazar todo lo del props con el state
 
 var Utilities =
 /*#__PURE__*/
@@ -67051,6 +67101,16 @@ function (_Component) {
       currentName: _this.props.name
     });
 
+    _defineProperty(_assertThisInitialized(_this), "updateName", function (event) {
+      _this.setState({
+        currentName: event.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "saveAvatar", function () {
+      _this.props.saveChanges(_this.state.currentName);
+    });
+
     return _this;
   }
 
@@ -67065,7 +67125,8 @@ function (_Component) {
         className: "form-control",
         id: "avatarName",
         placeholder: "Avatar Name",
-        value: this.state.currentName
+        defaultValue: this.state.currentName,
+        onChange: this.updateName
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center",
         id: "buttonsFlex"
@@ -67076,7 +67137,7 @@ function (_Component) {
       }, "Cancel Changes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary",
         id: "saveButton",
-        onClick: this.props.saveChanges.bind(this.state.currentName)
+        onClick: this.saveAvatar
       }, "Save Avatar")));
     }
   }]);
@@ -67226,8 +67287,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

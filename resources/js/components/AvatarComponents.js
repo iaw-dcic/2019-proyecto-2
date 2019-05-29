@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //Seleccion de todos los elementos para modificar el avatar
 
-//Crear una table que tenga tipo y direccion del archivo, y poner las 4 filas de abajo con un for
+//poner las 4 filas de abajo con un for
 
 export default class AvatarComponents extends Component {
 
@@ -11,7 +11,13 @@ export default class AvatarComponents extends Component {
         <div className="card" key={avatar.avatar_id} id="savedCard"></div>
     ))}*/
 
-    render() {
+    contstructor (props) {
+        this.changeAvatarHair = this.changeAvatarHair.bind (this);
+        this.changeAvatarShirt = this.changeAvatarShirt.bind (this);
+        this.changeAvatarBeard = this.changeAvatarBeard.bind (this);
+    }
+
+    render () {
         return (
             <>
                 <div className="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
@@ -28,10 +34,10 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseTwo1" className="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
                             <div className="card-body">
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair1.png'} onClick={this.changeAvatarHair ("Hair1.png")}/></button>
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair2.png'} onClick={this.changeAvatarHair ("Hair2.png")}/></button>
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair3.png'} onClick={this.changeAvatarHair ("Hair3.png")}/></button>
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair4.png'} onClick={this.changeAvatarHair ("Hair4.png")}/></button>
+                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair1.png'} onClick={() => this.changeAvatarHair('Hair1')}/></button>
+                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair2.png'} onClick={() => this.changeAvatarHair('Hair2')}/></button>
+                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair3.png'} onClick={() => this.changeAvatarHair('Hair3')}/></button>
+                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair4.png'} onClick={() => this.changeAvatarHair('Hair4')}/></button>
                             </div>
                         </div>
 
@@ -49,10 +55,10 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseTwo21" className="collapse" role="tabpanel" aria-labelledby="headingTwo21" data-parent="#accordionEx1">
                             <div className="card-body">
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt1.png'} onClick={this.changeAvatarShirt ("Shirt1.png")}/></button>
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt2.png'} onClick={this.changeAvatarShirt ("Shirt2.png")}/></button>
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt3.png'} onClick={this.changeAvatarShirt ("Shirt3.png")}/></button>
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt4.png'} onClick={this.changeAvatarShirt ("Shirt4.png")}/></button>
+                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt1.png'} onClick={() => this.changeAvatarShirt('Shirt1')}/></button>
+                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt2.png'} onClick={() => this.changeAvatarShirt('Shirt2')}/></button>
+                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt3.png'} onClick={() => this.changeAvatarShirt('Shirt3')}/></button>
+                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt4.png'} onClick={() => this.changeAvatarShirt('Shirt4')}/></button>
                             </div>
                         </div>
 
@@ -70,10 +76,10 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseThree31" className="collapse" role="tabpanel" aria-labelledby="headingThree31" data-parent="#accordionEx1">
                             <div className="card-body">
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard1.png'} onClick={this.changeAvatarBeard ("Beard1.png")}/></button>
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard2.png'} onClick={this.changeAvatarBeard ("Beard2.png")}/></button>
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard3.png'} onClick={this.changeAvatarBeard ("Beard3.png")}/></button>
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard4.png'} onClick={this.changeAvatarBeard ("Beard4.png")}/></button>
+                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard1.png'} onClick={() => this.changeAvatarBeard('Beard1')}/></button>
+                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard2.png'} onClick={() => this.changeAvatarBeard('Beard2')}/></button>
+                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard3.png'} onClick={() => this.changeAvatarBeard('Beard3')}/></button>
+                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard4.png'} onClick={() => this.changeAvatarBeard('Beard4')}/></button>
                             </div>
                         </div>
 
@@ -84,31 +90,31 @@ export default class AvatarComponents extends Component {
         );
     }
 
-    changeAvatarHair = (newHair) => {
+    changeAvatarHair (newHair) {
         const returningAvatar = {
             hair: newHair,
             shirt: this.props.avatar.shirt,
-            beard: this.props.avatar.beard
+            beard: this.props.avatar.beard,
         };
-        this.props.componentChange.bind (returningAvatar);
+        this.props.componentChange (returningAvatar);
     }
 
-    changeAvatarShirt = (newShirt) => {
+    changeAvatarShirt (newShirt) {
         const returningAvatar = {
             hair: this.props.avatar.hair,
             shirt: newShirt,
-            beard: this.props.avatar.beard
+            beard: this.props.avatar.beard,
         };
-        this.props.componentChange.bind (returningAvatar);
+        this.props.componentChange (returningAvatar);
     }
 
-    changeAvatarBeard = (newBeard) => {
+    changeAvatarBeard (newBeard) {
         const returningAvatar = {
             hair: this.props.avatar.hair,
             shirt: this.props.avatar.shirt,
-            beard: newBeard
+            beard: newBeard,
         };
-        this.props.componentChange.bind (returningAvatar);
+        this.props.componentChange (returningAvatar);
     }
 
 }

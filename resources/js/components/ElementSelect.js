@@ -5,19 +5,25 @@ import "./css/elementSelect.css";
 
 export default class ElementSelect extends Component {
 
-    render() {
+    contstructor (props) {
+        this.selectAvatar = this.selectAvatar.bind (this);
+    }
+
+    render () {
         return (
             <div>
                 <div className="d-flex justify-content-center" id="elementsFlex">
                     {this.props.avatarList.map (avatar => (
-                        <div className="card savedCard" key={avatar.avatar_id}>
-                            <img src={window.location.origin + '/avatar_elements/BaseModel.png'} className="savedBase"/>
-                            <img src={window.location.origin + '/avatar_elements/' + avatar.hair + '.png'} className="savedHair"/>
-                            <img src={window.location.origin + '/avatar_elements/' + avatar.shirt + '.png'} className="savedShirt"/>
-                            <img src={window.location.origin + '/avatar_elements/' + avatar.beard + '.png'} className="savedBeard"/>
-                            <div className="card-text">
-                                <button className="btn btn-primary selectButton" onClick={this.props.selectAvatar.bind (avatar)}>
-                                    {avatar.name}
+                        <div className="card text-center savedCard" key={avatar.avatar_id}>
+                            <div className="card-body avatarImage">
+                                <img src={window.location.origin + '/avatar_elements/BaseModel.png'} className="savedBase"/>
+                                <img src={window.location.origin + '/avatar_elements/' + avatar.hair + '.png'} className="savedHair"/>
+                                <img src={window.location.origin + '/avatar_elements/' + avatar.shirt + '.png'} className="savedShirt"/>
+                                <img src={window.location.origin + '/avatar_elements/' + avatar.beard + '.png'} className="savedBeard"/>
+                            </div>
+                            <div className="card-text selectButtonContainer">
+                                <button className="btn btn-primary selectButton" onClick={() => this.selectAvatar(avatar)}>
+                                    {avatar.avatar_name}
                                 </button>
                             </div>
                         </div>
@@ -25,6 +31,10 @@ export default class ElementSelect extends Component {
                 </div>
             </div>
         );
+    }
+
+    selectAvatar (avatar) {
+        this.props.setSavedAvatar (avatar);
     }
 
 }

@@ -4,15 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvatarsTable extends Migration
-{
+class CreateAvatarsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up () {
         Schema::create('avatars', function (Blueprint $table) {
             $table->increments ('avatar_id');
             $table->string ('avatar_name');
@@ -33,8 +31,7 @@ class CreateAvatarsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('avatars');
+    public function down () {
+        Schema::dropIfExists ('avatars');
     }
 }
