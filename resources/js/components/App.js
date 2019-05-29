@@ -5,12 +5,14 @@ import ShirtImage from './ShirtImage';
 
 
 class App extends Component {
-    render () {
+    render() {
         return (
             <BrowserRouter>
-            <div>
-                <ShirtImage />
-            </div>
+                <Switch>
+                  
+                    <Route path="/home" component={ShirtImage} />
+                   
+                </Switch>
             </BrowserRouter>
         )
     }

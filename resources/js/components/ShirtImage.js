@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-export default class ShirtImage extends Component {
+export default class ShirtImage extends Component { 
     render() {
         return (
 
             <section class="pricing py-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="card mb-5 mb-lg-0">
                                 <div class="card-body">
                                     <h5 class="card-title text-muted text-uppercase text-center">Free</h5>
@@ -27,37 +27,53 @@ export default class ShirtImage extends Component {
                                 </div>
                             </div>
                         </div>
-          
-                        <div class="col-lg-4">
+
+                        <div class="col-lg-6">
                             <div class="card mb-5 mb-lg-0">
                                 <div class="card-body">
                                     <h5 class="card-title text-muted text-uppercase text-center">Remera</h5>
-                                    <hr></hr>
-                                   
-                                    <img class="img-fluid" height="410" src="/images/remeras/remerablanca.png" class="d-block w-100" alt="..."></img>
-                                    
+                                    <img class="img-fluid" height="500" src="/images/remeras/remerablanca.png" class="d-block w-100" alt="..."></img>
                                     <a href="#" class="btn btn-block btn-secondary text-uppercase">Guardar</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
-                                    <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
-                                    <hr></hr>
-                                    <ul class="fa-ul">
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
-                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
-                                    </ul>
-                                    <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                    <h5 class="card-title text-muted text-uppercase text-center">Selecciona un color</h5>
+                                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+
+
+                                        <div class="btn-color" role="toolbar">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn-item-color" id="remeraazul" onClick="">1</button>
+                                                <button type="button" class="btn-item-color">2</button>
+                                                <button type="button" class="btn-item-color">3</button>
+                                                <button type="button" class="btn-item-color">4</button>
+                                            </div>
+
+                                            <div class="btn-group">
+                                                <button type="button" class="btn-item-color">5</button>
+                                                <button type="button" class="btn-item-color">6</button>
+                                                <button type="button" class="btn-item-color">7</button>
+                                                <button type="button" class="btn-item-color">8</button>
+                                            </div>
+
+                                        </div>
+                                        <hr></hr>
+                                        <ul class="fa-ul">
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+                                        </ul>
+                                        <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

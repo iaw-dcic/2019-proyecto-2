@@ -65731,7 +65731,10 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShirtImage__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/home",
+        component: _ShirtImage__WEBPACK_IMPORTED_MODULE_3__["default"]
+      })));
     }
   }]);
 
@@ -65800,7 +65803,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-lg-4"
+        "class": "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "card mb-5 mb-lg-0"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65857,33 +65860,66 @@ function (_Component) {
         href: "#",
         "class": "btn btn-block btn-primary text-uppercase"
       }, "Button")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-lg-4"
+        "class": "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "card mb-5 mb-lg-0"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         "class": "card-title text-muted text-uppercase text-center"
-      }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", (_React$createElement = {
+      }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", (_React$createElement = {
         "class": "img-fluid",
-        height: "410",
+        height: "500",
         src: "/images/remeras/remerablanca.png"
       }, _defineProperty(_React$createElement, "class", "d-block w-100"), _defineProperty(_React$createElement, "alt", "..."), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         "class": "btn btn-block btn-secondary text-uppercase"
       }, "Guardar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-lg-4"
+        "class": "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         "class": "card-title text-muted text-uppercase text-center"
-      }, "Pro"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        "class": "card-price text-center"
-      }, "$49", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "period"
-      }, "/month")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "Selecciona un color"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "btn-toolbar mb-3",
+        role: "toolbar",
+        "aria-label": "Toolbar with button groups"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "btn-color",
+        role: "toolbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "btn-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color",
+        id: "remeraazul",
+        onClick: ""
+      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color"
+      }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color"
+      }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color"
+      }, "4")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "btn-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color"
+      }, "5"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color"
+      }, "6"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color"
+      }, "7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "btn-item-color"
+      }, "8"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         "class": "fa-ul"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         "class": "fa-li"
@@ -65920,7 +65956,7 @@ function (_Component) {
       })), "Monthly Status Reports")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         "class": "btn btn-block btn-primary text-uppercase"
-      }, "Button")))))));
+      }, "Button"))))))));
     }
   }]);
 

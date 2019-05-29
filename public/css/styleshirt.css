@@ -47,6 +47,23 @@ section.pricing {
     opacity: 0.7;
     transition: all 0.2s;
   }
+
+  .btn-item-color{
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    opacity: 0.7;
+    transition: all 0.2s;
+    border-bottom: 2px dashed #9999ff;
+    
+  }
+
+ #remeraazul
+  {
+   background-color:#05347F
+  }
   
   /* Hover Effects on Card */
   
@@ -59,4 +76,6 @@ section.pricing {
     .pricing .card:hover .btn {
       opacity: 1;
     }
+  
   }
+
