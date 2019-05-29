@@ -14,15 +14,20 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
+        // controla que la aplicacion no este en mantenimiento
         \App\Http\Middleware\CheckForMaintenanceMode::class,
+        // Valida el tamaño de los post
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        // A todos los caracteres que llegan les quita los espacios de la izquierda
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
     ];
 
     /**
-     * The application's route middleware groups.
+     * The application's route middleware groups.'
+     * Cuando hago peticiones web el va a pasar por web
+     * y cuando hagamos peticiones api el pasa por api.
      *
      * @var array
      */
@@ -38,6 +43,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            //Limita el numero de peticiones, en 1 minuto no mas de 60
             'throttle:60,1',
             'bindings',
         ],
@@ -60,6 +66,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        // es el que permite validar el token
+        'jwt.auth' => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        // Me va a permitir refrescar el token
+        'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class,
     ];
 
     /**

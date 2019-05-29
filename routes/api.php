@@ -1,18 +1,17 @@
 <?php
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
+Route::post('recover', 'AuthController@recover');
 
-use Illuminate\Http\Request;
+/**
+ * Rutas que estan dentro de un grupo
+ */
+Route::group(['middleware' => ['jwt.auth']], function() {
+    Route::get('logout', 'AuthController@logout');
+    Route::get('test', function(){
+        return response()->json(['foo'=>'bar']);
+    });
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    //Me va a crear todas las rutas para el controlador ProdeController
+    Route::resource('/prode', 'ProdeController');
 });
