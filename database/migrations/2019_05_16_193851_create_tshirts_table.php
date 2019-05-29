@@ -17,6 +17,9 @@ class CreateTshirtsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->string('color');
+            $table->string('image');
+            $table->string('image_type');
+            $table->string('tshirt_type');
             $table->timestamps();
         });
     }

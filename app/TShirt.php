@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TShirt extends Model
-{
+class TShirt extends Model{
+    public $guarded = [];
     //
 }

@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import { SliderPicker } from 'react-color';
 import './TShirt.css'
+import Axios from 'axios';
 
 
 export default class Example extends Component {
 
     state = {
         tshirt_color: '#ffffff',
-        center_image: null,
-        pocket_image: null,
-        tshirt_image: "/storage/uploads/basic_tee.png",
-        tshirt_foreground_image: "/storage/uploads/basic_tee_foreground.png",
+        image: null,
+        image_type: "center",
+        tshirt_type: "men",
     }
 
     makeMenTee = () => {
-        this.setState({tshirt_image: "/storage/uploads/basic_tee.png",
-        tshirt_foreground_image: "/storage/uploads/basic_tee_foreground.png",});
+        this.setState({tshirt_type: "men"});
     }
 
     makeWomenTee = () => {
-        this.setState({tshirt_image: "/storage/uploads/women_tee.png",
-        tshirt_foreground_image: "/storage/uploads/women_tee_foreground.png",});
+        this.setState({tshirt_type: "women"});
     }
 
     changeColor = (color, event) => {
@@ -28,20 +26,30 @@ export default class Example extends Component {
     }
 
     clickCenterImage = (event) => {
-        this.setState({ center_image: <img id="center_image" className="image" alt={event.target.alt} src={event.target.src} />,
-            pocket_image: null });
+        this.setState({ image: event.target.src,
+            image_type: "center"});
     }
 
     removeCenterImage = () => {
-        this.setState({ center_image: null });
+        this.setState({ image: null });
     }
     clickPocketImage = (event) => {
-        this.setState({ pocket_image: <img id="pocket_image" className="image" alt={event.target.alt} src={event.target.src} />,
-            center_image: null });
+        this.setState({ image: event.target.src,
+            image_type: "pocket"});
     }
 
     removePocketImage = () => {
-        this.setState({ pocket_image: null });
+        this.setState({ image: null });
+    }
+
+    submit = event => {
+        event.preventDefault();
+        axios.post('/api/tshirts', {
+                tshirt_color: this.state.tshirt_color,
+                image: this.state.image,
+                image_type: this.state.image_type,
+                tshirt_type: this.state.tshirt_type,})
+            .then(res => {console.log(res); console.log(res.data)});
     }
 
     render() {
@@ -52,15 +60,14 @@ export default class Example extends Component {
                         <div className="container">
                             <div>
                                 <div id="tshirt_image"
-                                    className="tshirt-contents image"
-                                    style={{ backgroundColor: this.state.tshirt_color,
-                                            backgroundImage: 'url('+this.state.tshirt_image +')'}}>
-                                    {this.state.center_image}
-                                    {this.state.pocket_image}
+                                    className={"tshirt-contents image "+this.state.tshirt_type+"_image"}
+                                    style={{ backgroundColor: this.state.tshirt_color}}>
+                                    {this.state.image != null &&
+                                        <img className={'image ' + this.state.image_type} alt="image" src={this.state.image} />
+                                    }
                                 </div>
                                 <div id="tshirt_foreground"
-                                    className="tshirt-contents image"
-                                    style={{backgroundImage: 'url('+this.state.tshirt_foreground_image +')'}}>
+                                    className={"tshirt-contents image "+this.state.tshirt_type+"_foreground"}>
                                 </div>
                             </div>
                         </div>
@@ -100,6 +107,10 @@ export default class Example extends Component {
                             <div className="option_label">Women</div>
                             <img className="large_image_button" alt="none" src="/storage/uploads/women_tee.png" onClick={this.makeWomenTee} />
                         </div>
+                    </div>
+
+                    <div>
+                        <button className="btn btn-primary btn-sm" onClick={this.submit}>Guardar</button>
                     </div>
                 </span>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import TShirt from './TShirt'
 import './App.css';
 
@@ -14,14 +14,14 @@ class App extends Component {
         this.tshirt.changeColor(color);
     }
 
-    render () {
-    return (
-        <BrowserRouter>
-            <div id="content" className="row justify-content-center">
-                <TShirt/>
-            </div>
-        </BrowserRouter>
-    )
+    render() {
+        return (
+            <BrowserRouter>
+                <div id="content" className="row justify-content-center">
+                    <TShirt />
+                </div>
+            </BrowserRouter>
+        )
     }
 }
 
