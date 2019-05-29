@@ -40,22 +40,31 @@ export default class ShirtImage extends Component {
             <section className="pricing py-5">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-3">
+                        <div className="col-lg-4">
                             <div className="card mb-5 mb-lg-0">
                                 <div className="card-body">
-                                    <h5 className="card-title text-muted text-uppercase text-center">Free</h5>
-                                    <h6 className="card-price text-center">$0<span className="period">/month</span></h6>
+                                    <h5 className="card-title text-muted text-uppercase text-center">Logos</h5>
                                     <hr></hr>
-                                    <ul className="fa-ul">
-                                        <li><span className="fa-li"><i className="fas fa-check"></i></span>Single User</li>
-                                        <li><span className="fa-li"><i className="fas fa-check"></i></span>5GB Storage</li>
-                                        <li><span className="fa-li"><i className="fas fa-check"></i></span>Unlimited Public Projects</li>
-                                        <li><span className="fa-li"><i className="fas fa-check"></i></span>Community Access</li>
-                                        <li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Unlimited Private Projects</li>
-                                        <li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Dedicated Phone Support</li>
-                                        <li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Free Subdomain</li>
-                                        <li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Monthly Status Reports</li>
-                                    </ul>
+                                    <div class="logos">
+                                        <div class="col-sm-4 col-md-2">
+                                            <a href="#" class="thumbnail">
+                                                <img src="/images/logos/logo1.png"></img>
+                                                <hr width="1450%"></hr>
+                                                <img src="/images/logos/logo2.png"></img>
+                                                <hr width="1450%"></hr>
+                                                <img src="/images/logos/logo3.png"></img>
+                                                <hr width="1450%"></hr>
+                                                <img src="/images/logos/logo4.png"></img>
+                                                <hr width="1450%"></hr>
+                                                <img src="/images/logos/logo5.png"></img>
+                                                <hr width="1450%"></hr>
+                                                <img src="/images/logos/logo6.png"></img>
+                                                <hr width="1450%"></hr>
+                                                <img src="/images/logos/logo7.png"></img>
+                                                <hr width="1450%"></hr>
+                                            </a>
+                                        </div>
+                                    </div>
                                     <a className="btn btn-block btn-primary text-uppercase">Button</a>
                                 </div>
                             </div>
@@ -71,11 +80,11 @@ export default class ShirtImage extends Component {
                             </div>
                         </div>
 
-                        <div className="col-lg-3">
+                        <div className="col-lg-2">
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Seleccione un color</h5>
-                                    <div className="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div className="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
                                         <div id="listColours" className="btn-color" role="toolbar">
                                             <div className="btn-group">
                                                 <button id="remera-colorBlanco" onClick={(e) => this.cambiarColorRemera(e, "remera-colorBlanco")} type="button" className="btn-item-color">  </button>
@@ -95,8 +104,8 @@ export default class ShirtImage extends Component {
                                         <hr width="100%"></hr>
 
 
-
-                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de talle</h5>
+                                        <h2 id="tittle-talles">Talle {this.state.talle} </h2>
+                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
                                         <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
                                             <option value="XS">XS</option>
                                             <option value="S">S</option>
@@ -105,7 +114,6 @@ export default class ShirtImage extends Component {
                                             <option value="XL">XL</option>
                                             <option value="XXL">XXL</option>
                                         </select>
-                                        <h6 className="card-price text-center">Talle: {this.state.talle} </h6>
 
 
 

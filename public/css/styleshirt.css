@@ -41,22 +41,26 @@ section.pricing {
   .pricing .btn {
     font-size: 80%;
     border-radius: 5rem;
-    letter-spacing: .1rem;
+    letter-spacing: .2rem;
     font-weight: bold;
     padding: 1rem;
     opacity: 0.7;
     transition: all 0.2s;
+   
   }
 
   .btn-item-color{
-    font-size: 100%;
-    border-radius: 5rem;
+    font-size: 60%;
+    border-radius: 0.9rem;
+    border-color: black;
     letter-spacing: .1rem;
     font-weight: bold;
-    padding: 1.5rem;
+    padding: 0.9rem;
     opacity: 0.7;
     transition: all 0.2s;
-    border-bottom: 2px dashed #9999ff;
+    margin-top: 2%;
+    margin-left: 0%;
+    margin-right:0%;
     
   }
 
@@ -94,6 +98,15 @@ section.pricing {
  {
    background-color: #381B56
  }
+
+ .logos
+ {
+   width:310px;
+   height:460px;
+   overflow-y:scroll;
+   background-color: #f5f0f2;
+ }
+ 
   /* Hover Effects on Card */
   
   @media (min-width: 992px) {

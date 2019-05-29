@@ -65876,60 +65876,49 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-lg-3"
+        className: "col-lg-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Free"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "card-price text-center"
-      }, "$0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "period"
-      }, "/month")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "fa-ul"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Single User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "5GB Storage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Unlimited Public Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      })), "Community Access"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "text-muted"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-times"
-      })), "Unlimited Private Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "text-muted"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-times"
-      })), "Dedicated Phone Support"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "text-muted"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-times"
-      })), "Free Subdomain"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "text-muted"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa-li"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-times"
-      })), "Monthly Status Reports")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "logos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-sm-4 col-md-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "class": "thumbnail"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo1.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "1450%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo2.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "1450%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo3.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "1450%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo4.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "1450%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo5.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "1450%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo6.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "1450%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo7.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "1450%"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-primary text-uppercase"
       }, "Button")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
@@ -65947,7 +65936,7 @@ function (_Component) {
       }, _defineProperty(_React$createElement, "className", "d-block w-100"), _defineProperty(_React$createElement, "alt", "..."), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"
       }, "Guardar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-lg-3"
+        className: "col-lg-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65955,7 +65944,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
       }, "Seleccione un color"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-toolbar mb-3",
+        className: "btn-toolbar mb-2",
         role: "toolbar",
         "aria-label": "Toolbar with button groups"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66024,9 +66013,11 @@ function (_Component) {
         className: "btn-item-color"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle-talles"
+      }, "Talle ", this.state.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Listado de talle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
         onChange: function onChange(e) {
           return _this2.cambiarTalle(e);
@@ -66043,9 +66034,7 @@ function (_Component) {
         value: "XL"
       }, "XL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "XXL"
-      }, "XXL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-        className: "card-price text-center"
-      }, "Talle: ", this.state.talle, " "))))))));
+      }, "XXL")))))))));
     }
   }]);
 
