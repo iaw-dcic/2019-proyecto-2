@@ -13,7 +13,10 @@
 
 
 Auth::routes();
-
+//Vista inicial de la aplicación
+Route::get('/', 'InicioController@index')->name('home');
+//ReadMe
 Route::get('/readme', 'readMeController@index')->name('readme');
-
+//Componente editor de remeras
 Route::view('/{path?}', 'react')->middleware('auth');
+

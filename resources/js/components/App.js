@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ShirtImage from './ShirtImage';
-import Colors from './Colors';
 
 
 class App extends Component {
