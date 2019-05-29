@@ -6596,7 +6596,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".superponer{\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    bottom: 0px;\r\n\r\n}", ""]);
+exports.push([module.i, ".superponer{\r\n    /*position: absolute;*/\r\n    top: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    bottom: 0px;\r\n\r\n}", ""]);
 
 // exports
 
@@ -66525,7 +66525,8 @@ function (_Component) {
       event.preventDefault();
       this.setState({
         nameValue: event.target.value
-      }); //this.props.handleNameChange(this.state.nameValue);
+      });
+      this.props.handleNameChange(event);
     }
   }]);
 
@@ -66545,7 +66546,7 @@ function (_Component) {
   _createClass(Avatar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"
@@ -66560,7 +66561,15 @@ function (_Component) {
         className: "card-title text-center",
         value: this.state.nameValue,
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card config text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "hair superponer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
@@ -66570,7 +66579,7 @@ function (_Component) {
         className: "eyes superponer"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mouth superponer"
-      }))))));
+      })))))));
     }
   }]);
 
@@ -66601,15 +66610,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -66627,64 +66636,98 @@ var AvatarView =
 function (_Component) {
   _inherits(AvatarView, _Component);
 
-  function AvatarView() {
-    var _getPrototypeOf2;
+  _createClass(AvatarView, [{
+    key: "handleNameChange",
+    value: function handleNameChange(event) {
+      this.setState({
+        name: event.target.value
+      });
+    }
+  }, {
+    key: "handleFaceChange",
+    value: function handleFaceChange(event) {
+      this.setState({
+        face: event.target.name
+      });
+    }
+  }, {
+    key: "handleHairChange",
+    value: function handleHairChange(event) {
+      this.setState({
+        hair: event.target.name
+      });
+    }
+  }, {
+    key: "handleEyesChange",
+    value: function handleEyesChange(event) {
+      this.setState({
+        eyes: event.target.name
+      });
+    }
+  }, {
+    key: "handleMouthChange",
+    value: function handleMouthChange(event) {
+      this.setState({
+        mouth: event.target.name
+      });
+    }
+  }]);
 
+  function AvatarView(props) {
     var _this;
 
     _classCallCheck(this, AvatarView);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AvatarView)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AvatarView).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      name: '',
-      skin: '',
-      hair: '',
-      eyes: '',
-      mouth: '',
+      name: 'Default',
+      face: 'Cara1',
+      hair: 'Pelo1',
+      eyes: 'Ojos1',
+      mouth: 'Boca1',
       userID: 1,
       errors: []
     });
 
+    _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
+    _this.handleFaceChange = _this.handleFaceChange.bind(_assertThisInitialized(_this));
+    _this.handleHairChange = _this.handleHairChange.bind(_assertThisInitialized(_this));
+    _this.handleEyesChange = _this.handleEyesChange.bind(_assertThisInitialized(_this));
+    _this.handleMouthChange = _this.handleMouthChange.bind(_assertThisInitialized(_this)); //this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
+
     return _this;
   }
+  /*handleCreateNewAvatar(event){
+      event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
+       if(event.target.value ="")
+          alert("No se puede tener un avatar SIN nombre, por favor, ingrese un nombre")
+      else
+      const avatar = {
+          name = this.state.name
+      }
+      axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
+      //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
+    }*/
+
 
   _createClass(AvatarView, [{
     key: "render",
-
-    /*handleNameChange(nombre){
-         this.setState({name : nombre});
-    }
-     constructor(props) {
-           this.handleNameChange = this.handleNameChange.bind(this);
-         //this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
-     }
-     
-     handleBodyChange(event){
-         this.setState({
-             [event.target.body] : event.target.value
-         })
-     }
-       handleCreateNewAvatar(event){
-         event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
-         const avatar = {
-             name = this.state.name
-         }
-         axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
-         //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
-       }*/
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-9"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatar_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatar_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        handleNameChange: this.handleNameChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        handleFaceChange: this.handleFaceChange,
+        handleHairChange: this.handleHairChange,
+        handleEyesChange: this.handleEyesChange,
+        handleMouthChange: this.handleMouthChange
+      }))));
     }
   }]);
 
@@ -67008,15 +67051,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -67031,15 +67074,9 @@ var SideBar =
 function (_Component) {
   _inherits(SideBar, _Component);
 
-  function SideBar() {
-    _classCallCheck(this, SideBar);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(SideBar).apply(this, arguments));
-  }
-
   _createClass(SideBar, [{
-    key: "saevAvatar",
-    value: function saevAvatar(event) {
+    key: "saveAvatar",
+    value: function saveAvatar(event) {
       event.preventDefault(); //guardar el avatar, deberia de buscar los componentes usados a través del estado de Avatar!
 
       alert('guardé el avatar!'); //axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
@@ -67047,96 +67084,120 @@ function (_Component) {
       /*APi Token Laravel */
     }
   }, {
+    key: "changeSkin",
+    value: function changeSkin(event) {
+      this.props.handleFaceChange(event);
+    }
+  }, {
+    key: "changeHair",
+    value: function changeHair(event) {
+      this.props.handleHairChange(event);
+    }
+  }, {
+    key: "changeEyes",
+    value: function changeEyes(event) {
+      this.props.handleEyesChange(event);
+    }
+  }, {
+    key: "changeMouth",
+    value: function changeMouth(event) {
+      this.props.handleMouthChange(event);
+    }
+  }]);
+
+  function SideBar(props) {
+    var _this;
+
+    _classCallCheck(this, SideBar);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SideBar).call(this, props));
+    _this.saveAvatar = _this.saveAvatar.bind(_assertThisInitialized(_this));
+    _this.changeSkin = _this.changeSkin.bind(_assertThisInitialized(_this));
+    _this.changeHair = _this.changeHair.bind(_assertThisInitialized(_this));
+    _this.changeEyes = _this.changeEyes.bind(_assertThisInitialized(_this));
+    _this.changeMouth = _this.changeMouth.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(SideBar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row accordion d-flex justify-content-center back"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar fixed-bottom  navbar-dark bg-dark"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-10 col-xl-6 py-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "accordion md-accordion accordion-2",
-        id: "accordionEx7",
-        role: "tablist",
-        "aria-multiselectable": "true"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header rgba-stylish-strong z-depth-1 mb-1",
-        role: "tab",
-        id: "heading1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        "data-toggle": "collapse",
-        "data-parent": "#accordionEx7",
-        href: "#collapse1",
-        "aria-expanded": "true",
-        "aria-controls": "collapse1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "mb-0 white-text text-uppercase font-thin"
-      }, "Piel ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-angle-down rotate-icon"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "collapse1",
-        className: "collapse",
-        role: "tabpanel",
-        "aria-labelledby": "heading1",
-        "data-parent": "#accordionEx7"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body mb-1 rgba-grey-light white-text"
+        className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-primary"
+        type: "button",
+        className: "btn btn-info btn-lg dropdown-toggle",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Piel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        href: "#",
+        onClick: this.changeSkin
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        name: "Cara20",
         src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header rgba-stylish-strong z-depth-1 mb-1",
-        role: "tab",
-        id: "heading2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "collapsed",
-        "data-toggle": "collapse",
-        "data-parent": "#accordionEx7",
-        href: "#collapse2",
-        "aria-expanded": "false",
-        "aria-controls": "collapse2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "mb-0 white-text text-uppercase font-thin"
-      }, "Ojos ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-angle-down rotate-icon"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "collapse2",
-        className: "collapse",
-        role: "tabpanel",
-        "aria-labelledby": "heading2",
-        "data-parent": "#accordionEx7"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body mb-1 rgba-grey-light white-text"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header rgba-stylish-strong z-depth-1 mb-1",
-        role: "tab",
-        id: "heading3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "collapsed",
-        "data-toggle": "collapse",
-        "data-parent": "#accordionEx7",
-        href: "#collapse3",
-        "aria-expanded": "false",
-        "aria-controls": "collapse3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "mb-0 white-text text-uppercase font-thin"
-      }, "Boca ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-angle-down rotate-icon"
+        className: "btn-group dropup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-info btn-lg dropdown-toggle",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Cabello"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        href: "#",
+        onClick: this.changeHair
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        name: "Cabello20",
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "collapse3",
-        className: "collapse",
-        role: "tabpanel",
-        "aria-labelledby": "heading3",
-        "data-parent": "#accordionEx7"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body mb-1 rgba-grey-light white-text"
-      }))))));
+        className: "btn-group dropup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-info btn-lg dropdown-toggle",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Ojos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        href: "#",
+        onClick: this.changeEyes
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        name: "Ojos20",
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "btn-group dropup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-info btn-lg dropdown-toggle",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Boca"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        href: "#",
+        onClick: this.changeMouth
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        name: "Boca20",
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "btn btn-outline-success btn-lg",
+        type: "submit",
+        value: "Guardar Avatar",
+        onClick: this.saveAvatar
+      }));
     }
   }]);
 
@@ -67165,8 +67226,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

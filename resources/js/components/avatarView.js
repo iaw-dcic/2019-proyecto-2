@@ -6,32 +6,63 @@ import axios from 'axios';
 
 export default class AvatarView extends Component{
     state = {
-        name : '',
-        skin : '',
-        hair : '',
-        eyes : '',
-        mouth : '',
+        name : 'Default',
+        face : 'Cara1',
+        hair : 'Pelo1',
+        eyes : 'Ojos1',
+        mouth : 'Boca1',
         userID : 1,
         errors : []
     };
     
-   /*handleNameChange(nombre){
-        this.setState({name : nombre});
+   handleNameChange(event){
+   
+        this.setState({name : event.target.value});
    }
-    constructor(props) {
 
+   handleFaceChange(event){
+        this.setState({
+            face : event.target.name
+        })
+
+    }
+    handleHairChange(event){
+        this.setState({
+            hair : event.target.name
+        })
+
+    }
+    handleEyesChange(event){
+        this.setState({
+            eyes : event.target.name
+        })
+
+    }
+    handleMouthChange(event){
+        this.setState({
+            mouth : event.target.name
+        })
+
+    }
+
+    constructor(props) {
+        super(props)
         this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleFaceChange = this.handleFaceChange.bind(this);
+        this.handleHairChange = this.handleHairChange.bind(this);
+        this.handleEyesChange = this.handleEyesChange.bind(this);
+        this.handleMouthChange = this.handleMouthChange.bind(this);
+
         //this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
     }
     
-    handleBodyChange(event){
-        this.setState({
-            [event.target.body] : event.target.value
-        })
-    }
+  
 
-    handleCreateNewAvatar(event){
+    /*handleCreateNewAvatar(event){
         event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
+         if(event.target.value ="")
+            alert("No se puede tener un avatar SIN nombre, por favor, ingrese un nombre")
+        else
         const avatar = {
             name = this.state.name
         }
@@ -45,11 +76,18 @@ export default class AvatarView extends Component{
             <>
                 <div className="d-flex">
                     <div className="col-md-9">
-                        <Avatar/>
+                        <Avatar 
+                            handleNameChange={this.handleNameChange}
+                        />
                     </div>
                 
                     <div className="col-md-3">
-                        <SideBar/>
+                        <SideBar
+                            handleFaceChange={this.handleFaceChange}
+                            handleHairChange={this.handleHairChange}
+                            handleEyesChange={this.handleEyesChange}
+                            handleMouthChange={this.handleMouthChange}
+                        />
                     </div>
                 </div>
 

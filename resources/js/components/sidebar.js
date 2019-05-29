@@ -5,98 +5,85 @@ import avatar from './Avatar'
 
 export default class SideBar extends Component{
     
-  saevAvatar(event){
+  saveAvatar(event){
     event.preventDefault();
     //guardar el avatar, deberia de buscar los componentes usados a través del estado de Avatar!
     alert('guardé el avatar!');
     //axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
      /*APi Token Laravel */
   }
+
+  changeSkin(event){
+
+    this.props.handleFaceChange(event);
+  }
+  changeHair(event){
+
+    this.props.handleHairChange(event);
+  }
+  changeEyes(event){
+
+    this.props.handleEyesChange(event);
+  }
+  changeMouth(event){
+
+    this.props.handleMouthChange(event);
+  }
+
+  constructor(props){
+    super(props)
+    this.saveAvatar = this.saveAvatar.bind(this);
+    this.changeSkin = this.changeSkin.bind(this);
+    this.changeHair = this.changeHair.bind(this);
+    this.changeEyes = this.changeEyes.bind(this);
+    this.changeMouth = this.changeMouth.bind(this);
+  }
+
   
+
   render(){
         return (
 
-          <div className="row accordion d-flex justify-content-center back">
-         
-            <div className="col-md-10 col-xl-6 py-5">
-          
-
-              <div className="accordion md-accordion accordion-2" id="accordionEx7" role="tablist"
-                aria-multiselectable="true">
-          
-
-                <div className="card">
-          
-
-                  <div className="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading1">
-                    <a data-toggle="collapse" data-parent="#accordionEx7" href="#collapse1" aria-expanded="true"
-                      aria-controls="collapse1">
-                      <h5 className="mb-0 white-text text-uppercase font-thin">
-                        Piel <i className="fas fa-angle-down rotate-icon"></i>
-                      </h5>
-                    </a>
-                  </div>
-          
-
-                  <div id="collapse1" className="collapse" role="tabpanel" aria-labelledby="heading1"
-                    data-parent="#accordionEx7">
-                    <div className="card-body mb-1 rgba-grey-light white-text">
-                      <button className="btn btn-outline-primary"><img src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'} /></button>
-                    </div>
-                  </div>
-                </div>
-
-          
-
-                <div className="card">
-          
-
-                  <div className="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading2">
-                    <a className="collapsed" data-toggle="collapse" data-parent="#accordionEx7" href="#collapse2"
-                      aria-expanded="false" aria-controls="collapse2">
-                      <h5 className="mb-0 white-text text-uppercase font-thin">
-                        Ojos <i className="fas fa-angle-down rotate-icon"></i>
-                      </h5>
-                    </a>
-                  </div>
-          
-
-                  <div id="collapse2" className="collapse" role="tabpanel" aria-labelledby="heading2"
-                    data-parent="#accordionEx7">
-                    <div className="card-body mb-1 rgba-grey-light white-text">
-
-                    </div>
-                  </div>
-                </div>
-
-                <div className="card">
-          
-
-                  <div className="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading3">
-                    <a className="collapsed" data-toggle="collapse" data-parent="#accordionEx7" href="#collapse3"
-                      aria-expanded="false" aria-controls="collapse3">
-                      <h5 className="mb-0 white-text text-uppercase font-thin">
-                        Boca <i className="fas fa-angle-down rotate-icon"></i>
-                      </h5>
-                    </a>
-                  </div>
-          
-
-                  <div id="collapse3" className="collapse" role="tabpanel" aria-labelledby="heading3"
-                    data-parent="#accordionEx7">
-                    <div className="card-body mb-1 rgba-grey-light white-text">
-                      
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-          
+          <nav className="navbar fixed-bottom  navbar-dark bg-dark">
+            <div className="btn-group dropup">
+            <button type="button" className="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Piel
+            </button>
+            <div className="dropdown-menu">
+              <button className="dropdown-item" href="#" onClick={this.changeSkin}><img name="Cara20" src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/></button>
+              
             </div>
-
-          
           </div>
+
+          <div className="btn-group dropup">
+            <button type="button" className="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Cabello
+            </button>
+            <div className="dropdown-menu">
+              <button className="dropdown-item" href="#" onClick={this.changeHair}><img name="Cabello20" src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/></button>
+            </div>
+          </div>
+
+          <div className="btn-group dropup">
+            <button type="button" className="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Ojos
+            </button>
+            <div className="dropdown-menu ">
+              <button className="dropdown-item" href="#" onClick={this.changeEyes}><img name="Ojos20" src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/></button>
+            </div>
+          </div>
+
+          <div className="btn-group dropup">
+            <button type="button" className="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Boca
+            </button>
+            <div className="dropdown-menu ">
+              <button className="dropdown-item" href="#" onClick={this.changeMouth}><img name="Boca20" src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/></button>
+            </div>
+          </div>
+
+              <input className="btn btn-outline-success btn-lg" type="submit" value="Guardar Avatar" onClick={this.saveAvatar}/>
+        </nav>
 
         )
     }
