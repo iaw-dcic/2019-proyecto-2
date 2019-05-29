@@ -79,11 +79,11 @@ class MatchController extends Controller
      * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Match $match)
+    public function update(Request $request, $id)
     {
-        $partido = Prediction::find($match);
+        $match = Prediction::find($id);
 
-        $partido->name = $request->name;
+        $match->name = $request->name;
         $match->round = $request->round;
         $match->prediction_id = $request->prediction_id;
         $match->team_a = $request->team_a;
@@ -91,8 +91,8 @@ class MatchController extends Controller
         $match->goals_a = $request->goals_a;
         $match->goals_b = $request->goals_b;
 
-        if ($partido->save()) {
-            return response()->json($partido, 200);
+        if ($match->save()) {
+            return response()->json($match, 201);
         }
     }
 

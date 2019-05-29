@@ -17,8 +17,8 @@ class CreateMatchesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('round');
             $table->bigInteger('prediction_id');
-            $table->string('team_a');
-            $table->string('team_b');
+            $table->bigInteger('team_a');
+            $table->bigInteger('team_b');
             $table->BigInteger('goals_a');
             $table->BigInteger('goals_b');
             $table->timestamps();
