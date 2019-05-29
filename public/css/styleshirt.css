@@ -107,6 +107,12 @@ section.pricing {
    background-color: #f5f0f2;
  }
  
+ #tittle{
+  font-size: 120%;
+  text-align: center;
+ }
+
+ 
   /* Hover Effects on Card */
   
   @media (min-width: 992px) {

@@ -6,7 +6,8 @@ export default class ShirtImage extends Component {
         super(props);
         this.state = {
             remera: '/images/remeras/remerablanca.png',
-            talle: 'XS'
+            talle: 'XS',
+            tela:'Algodón'
         }
     }
 
@@ -34,6 +35,10 @@ export default class ShirtImage extends Component {
 
     cambiarTalle(e) {
         this.setState({ talle: e.target.value });
+    }
+
+    cambiarTela(e) {
+        this.setState({ tela: e.target.value });
     }
     render() {
         return (
@@ -104,7 +109,7 @@ export default class ShirtImage extends Component {
                                         <hr width="100%"></hr>
 
 
-                                        <h2 id="tittle-talles">Talle {this.state.talle} </h2>
+                                        <h2 id="tittle">Talle {this.state.talle} </h2>
                                         <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
                                         <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
                                             <option value="XS">XS</option>
@@ -113,6 +118,17 @@ export default class ShirtImage extends Component {
                                             <option value="L">L</option>
                                             <option value="XL">XL</option>
                                             <option value="XXL">XXL</option>
+                                        </select>
+                                        <hr width="100%"></hr>
+                                        
+                                        <h2 id="tittle">Tela {this.state.tela} </h2>
+                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
+                                        <select className="form-control" onChange={(e) => this.cambiarTela(e)}>
+                                            <option value="Algodón">Algodón</option>
+                                            <option value="Acetato">Acetato</option>
+                                            <option value="Lycra">Lycra</option>
+                                            <option value="Modal">Modal</option>
+                            
                                         </select>
 
 

@@ -65793,7 +65793,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
     _this.state = {
       remera: '/images/remeras/remerablanca.png',
-      talle: 'XS'
+      talle: 'XS',
+      tela: 'Algodón'
     };
     return _this;
   }
@@ -65861,6 +65862,13 @@ function (_Component) {
     value: function cambiarTalle(e) {
       this.setState({
         talle: e.target.value
+      });
+    }
+  }, {
+    key: "cambiarTela",
+    value: function cambiarTela(e) {
+      this.setState({
+        tela: e.target.value
       });
     }
   }, {
@@ -66014,7 +66022,7 @@ function (_Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "tittle-talles"
+        id: "tittle"
       }, "Talle ", this.state.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
       }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -66034,7 +66042,26 @@ function (_Component) {
         value: "XL"
       }, "XL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "XXL"
-      }, "XXL")))))))));
+      }, "XXL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Tela ", this.state.tela, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Listado de Telas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this2.cambiarTela(e);
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Algod\xF3n"
+      }, "Algod\xF3n"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Acetato"
+      }, "Acetato"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Lycra"
+      }, "Lycra"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Modal"
+      }, "Modal")))))))));
     }
   }]);
 
