@@ -1,0 +1,22 @@
+
+
+/* Button Style 5 (Size) */
+.hover-btn{
+    min-height: 20px;
+    line-height: 10px;
+}
+
+.hover-btn button{
+   margin:5px; 
+   color: black;
+}
+
+.hover-btn button:hover{
+    background:#b9b9b9;
+}
+
+.btn-style{
+    padding: 10px;
+    background-color:transparent; 
+    border-color:black;
+}
