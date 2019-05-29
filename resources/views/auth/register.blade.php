@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('react')
+
+@section('title','Registrarse')
 
 @section('content')
 <div class="container">
