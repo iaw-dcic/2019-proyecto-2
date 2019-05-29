@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="jumbotron">
-        <h1 class="display-4">Bienvenido</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1 class="display-4">Diseña tu remera</h1>
+        <p class="lead">En este sitio web es posible diseñarla configurando diferentes carácteristicas.</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p>Realizado por: Escudero, Johanna Valeria LU:105868 para la materia de Ingeniería en Aplicaciones Web - UNS.</p>
     </div>
 </div>
 @endsection
