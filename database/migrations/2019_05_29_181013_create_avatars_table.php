@@ -17,11 +17,11 @@ class CreateAvatarsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name')->nullable();
-            $table->unsignedInteger('body_id');
-            $table->unsignedInteger('head_id');
-            $table->unsignedInteger('upperbody_id');
-            $table->unsignedInteger('lowerbody_id');
-            $table->unsignedInteger('extra_id');
+            $table->unsignedInteger('body_id')->default(1);
+            $table->unsignedInteger('head_id')->default(1);
+            $table->unsignedInteger('upperbody_id')->default(1);
+            $table->unsignedInteger('lowerbody_id')->default(1);
+            $table->unsignedInteger('extra_id')->default(1);
             $table->timestamps();
         });
 
@@ -29,8 +29,8 @@ class CreateAvatarsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('body_id')->references('id')->on('body_items');
             $table->foreign('head_id')->references('id')->on('head_items');
-            $table->foreign('upperbody_id')->references('id')->on('upperbody_items');
-            $table->foreign('lowerbody_id')->references('id')->on('lowerbody_items');
+            $table->foreign('upperbody_id')->references('id')->on('upper_body_items');
+            $table->foreign('lowerbody_id')->references('id')->on('lower_body_items');
             $table->foreign('extra_id')->references('id')->on('extra_items');
         });
     }

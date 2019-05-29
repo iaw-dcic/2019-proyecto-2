@@ -13,15 +13,10 @@ class CreateLowerbodyItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lowerbody_items', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('avatar_id');
+        Schema::create('lower_body_items', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('resource');
             $table->timestamps();
-        });
-
-        Schema::table('lowerbody_items', function (Blueprint $table) {
-            $table->foreign('avatar_id')->references('id')->on('avatars');
         });
     }
 

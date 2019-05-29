@@ -13,4 +13,6 @@
 
 
 Auth::routes();
+
+// TODO: descomentar el middleware
 Route::view('/{path?}', 'react');//->middleware('auth');

@@ -6,11 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BodyItem extends Model
 {
-    //
-
-    public function avatar()
-    {
-        return $this->belongsTo('App\Avatar');
-    }
 
 }

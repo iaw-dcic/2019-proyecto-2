@@ -14,14 +14,9 @@ class CreateExtraItemsTable extends Migration
     public function up()
     {
         Schema::create('extra_items', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('avatar_id');
+            $table->increments('id');
             $table->string('resource');
             $table->timestamps();
-        });
-
-        Schema::table('extra_items', function (Blueprint $table) {
-            $table->foreign('avatar_id')->references('id')->on('avatars');
         });
     }
 

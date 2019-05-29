@@ -15,13 +15,8 @@ class CreateBodyItemsTable extends Migration
     {
         Schema::create('body_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('avatar_id');
             $table->string('resource');
             $table->timestamps();
-        });
-
-        Schema::table('body_items', function (Blueprint $table) {
-            $table->foreign('avatar_id')->references('id')->on('avatars');
         });
     }
     
