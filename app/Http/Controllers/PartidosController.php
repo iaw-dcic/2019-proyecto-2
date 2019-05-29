@@ -83,28 +83,33 @@ class PartidosController extends Controller
   public  function store(Request $request){
 
        $partido= Partido::create([
+        'pronostico' =>'1',
            'jugador_uno_id'=> $request->get('jugador_uno_id'),
            'jugador_dos_id'=> $request->get('jugador_dos_id'),
-            'ronda' => $request->get('ronda')
+            'ronda' => $request->get('ronda'),
+          
             ]   
            );
         return response()->json($partido, 201);
     }
-    public function getPartidosPronostico($pronostico){
-        $partidos= Partido::where('pronostico','=',$pronostico)->get();
+    
+    public function getPartidosPronostico($ronda,$pronostico){
+        $partidos= Partido::where('pronostico','=',$pronostico)->where('ronda', '=', $ronda)->get();
         $arreglo=array();
         $i=0;
         foreach($partidos as $partido){
            $arreglo["items"][$i++]= array(
                'id' => $partido->id,
-                'jugador_uno' =>  array(
-                    'id' =>$partido->nombreJugadorUno->id,
-                    'nombre'=> $partido->nombreJugadorUno->nombre,
-                    'abrev' => $partido->nombreJugadorUno->abreviado),
-                'jugador_dos' =>  array(
-                    'id' =>$partido->nombreJugadorDos->id,
-                     'nombre'=> $partido->nombreJugadorDos->nombre,
-                      'abrev' => $partido->nombreJugadorDos->abreviado),
+                'jugador_uno' => 
+               //  array(
+                //    'id' =>$partido->nombreJugadorUno->id,
+                     $partido->nombreJugadorUno->nombre,
+                //    'abrev' => $partido->nombreJugadorUno->abreviado),
+                'jugador_dos' =>  
+                //array(
+                //    'id' =>$partido->nombreJugadorDos->id,
+                      $partido->nombreJugadorDos->nombre,
+                //      'abrev' => $partido->nombreJugadorDos->abreviado),
                 'resultado'=> $partido->resultado,
                  'ronda' => $partido->ronda,
             );
@@ -113,9 +118,7 @@ class PartidosController extends Controller
         if($arreglo != null)
              return response()->json($arreglo, 200);
         else
-            return abort(404);
+            return response()->json("no hay", 404);
     }
-    public function guardarPronostico(Request $request ){
-
-    }
+     
 }

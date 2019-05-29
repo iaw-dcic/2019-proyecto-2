@@ -7,23 +7,25 @@ export default class Header extends Component {
 
         user: []
     };
-
-    /* componentWillMount() {
-         fetch('http://localhost/pr2/api/user')
-             .then(res => res.json())
-             .then(json => {
-                 this.setState({
-                     user: json
-                 })
- 
-             });
- 
-     };*/
+   
+    componentWillMount() {
+       
+        fetch('http://localhost/pr2/api/user')
+        
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    user: json,
+                })
+            });
+    }
     render() {
         let nav;
 
         // nav = <a href="/pr2/login" className="nav-link"> Login</a>
-
+        if(this.state.user.name != null){
+            nav = <a className="nav-link" href=" "> {this.state.user.name}</a>
+        }else
         nav = <a className="nav-link" href=" "> Bienvenido</a>
 
         return (

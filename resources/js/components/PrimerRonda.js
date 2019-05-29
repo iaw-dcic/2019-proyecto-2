@@ -19,11 +19,13 @@ export default class PrimerRonda extends Component {
     }
     render() {
         var { items } = this.state;
+
         return <ul>
             {items.map(item => (
                 <li key={item.id}>
                     {item.junonombre} vs {item.jdosnombre}
                 </li>
+
             ))}
         </ul>
 

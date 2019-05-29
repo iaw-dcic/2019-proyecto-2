@@ -15,7 +15,7 @@ export default class NavIzq extends Component {
 
                 <ul className="nav flex-column nav-pills">
                     <li className="nav-item">
-                        <a className="nav-link active show" data-toggle="pill" href="#perfil">Mi perfil</a>
+                        <a className="nav-link" data-toggle="pill" href="#perfil">Mi perfil</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" data-toggle="pill" href="#primerRonda">Primer Ronda</a>

@@ -23,7 +23,8 @@ export default class Playoffs extends Component {
         s2j2: [],
 
         j1: [], j2: [],
-        campeon: []
+        campeon: [],
+        user: []
     };
 
 
@@ -328,7 +329,78 @@ export default class Playoffs extends Component {
     }
 
     async  handleCuartos(e) {
+        if (this.state.c0j1.id == null || this.state.c0j2.id == null ||
+            this.state.c1j1.id == null || this.state.c1j2.id == null ||
+            this.state.c2j1.id == null || this.state.c2j2.id == null ||
+            this.state.c3j1.id == null || this.state.c3j2.id == null ||
+            this.state.s1j1.id == null || this.state.s1j2.id == null ||
+            this.state.s2j1.id == null || this.state.s2j2.id == null ||
+            this.state.j1.id == null || this.state.j2.id == null ||
+            this.state.campeon.id == null) {
+            alert("no se puede guardar el cuadro sin completar");
+        }
+        else {
+            this.addPronostico();
+            let token = document.head.querySelector('meta[name="csrf-token"]');
 
+            if (token) {
+                window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+            } else {
+                console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+            }
+
+            try {
+                const response = await axios.post('http://localhost/pr2/api/insert', {
+                    jugador_uno_id: this.state.c0j1.id,
+                    jugador_dos_id: this.state.c0j2.id,
+                    ronda: '4',
+                });
+
+                console.log('Returned data:', response);
+            } catch (e) {
+                console.log('axios request failed:', e);
+            }
+            try {
+                const response = await axios.post('http://localhost/pr2/api/insert', {
+                    jugador_uno_id: this.state.c1j1.id,
+                    jugador_dos_id: this.state.c1j2.id,
+                    ronda: '4'
+                });
+
+                console.log('Returned data:', response);
+            } catch (e) {
+                console.log('axios request failed:', e);
+            }
+            try {
+                const response = await axios.post('http://localhost/pr2/api/insert', {
+                    jugador_uno_id: this.state.c2j1.id,
+                    jugador_dos_id: this.state.c2j2.id,
+                    ronda: '4'
+                });
+
+                console.log('Returned data:', response);
+            } catch (e) {
+                console.log('axios request failed:', e);
+            }
+            try {
+                const response = await axios.post('http://localhost/pr2/api/insert', {
+                    jugador_uno_id: this.state.c3j1.id,
+                    jugador_dos_id: this.state.c3j2.id,
+                    ronda: '4'
+                });
+
+                console.log('Returned data:', response);
+            } catch (e) {
+                console.log('axios request failed:', e);
+            }
+
+
+
+        }
+    }
+
+
+    async addPronostico() {
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
         if (token) {
@@ -336,20 +408,13 @@ export default class Playoffs extends Component {
         } else {
             console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
         }
-        let array = array();
-        array()
 
         try {
-            const response = await axios.post('http://localhost/pr2/api/insert', {
-                jugador_uno_id: '1',
-                jugador_dos_id: '2',
-                ronda: '4'
-            });
-
+            const response = await axios.post('http://localhost/pr2/api/insertpronostico');
             console.log('Returned data:', response);
         } catch (e) {
             console.log('axios request failed:', e);
         }
-
     }
+
 }

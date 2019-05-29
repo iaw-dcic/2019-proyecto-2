@@ -26,8 +26,8 @@ export default class Octavos extends Component {
 
 
     handleClick(param, i, e) {
-        console.log('Parameter', param);
-        console.log('Event', e);
+        // console.log('Parameter', param);
+        //   console.log('Event', e);
         this.props.setJugador(param, i);
     }
     render() {

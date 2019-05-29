@@ -8,7 +8,7 @@ class Partido extends Model
 {
 
     protected $fillable = [
-        'jugador_uno_id', 'jugador_dos_id', 'ronda'
+        'jugador_uno_id', 'jugador_dos_id', 'ronda','pronostico'
     ];
     public function nombreJugadorUno(){
         

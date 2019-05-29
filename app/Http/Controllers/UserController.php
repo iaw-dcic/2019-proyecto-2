@@ -45,7 +45,15 @@ class UserController extends Controller
    }
    
 
- 
+   public function addPronostico(){
+    $pronostico= Pronostico::create([
+         
+            'user_id' => '1',
+          
+            ]   
+           );
+        return response()->json($pronostico, 201);
+   }
    public function cantidadPronosticos(){
     $user=Auth::user();
     $pronosticos= Pronostico::where('user_id','=',1)->get();
@@ -61,9 +69,9 @@ class UserController extends Controller
     return response()->json($arreglo, 200);
 }
    
-   public function user(){
-    $user=Auth::user();
-   // $user=User::find($id);
+   public function getuser(){
+    $user=auth()->guard('api')->user();
+   // $user=User::find(1);
     if($user !=null)
        return response()->json($user, 200);
    
