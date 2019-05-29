@@ -42,16 +42,15 @@ export default class ComponentApp extends Component {
     }
 
     componentChange = (avatar) => {
-        const newActual = {
-            avatar_name: this.state.avatarActual.avatar_name,
-            owner: this.state.avatarActual.owner,
-            hair: avatar.hair,
-            shirt: avatar.shirt,
-            beard: avatar.beard
-        }
-        this.setState (state => ({
-            avatarActual: newActual
-        }));
+        this.setState ({
+            avatarActual: {
+                "avatar_name":this.state.avatarActual.avatar_name, 
+                "owner":this.state.avatarActual.owner,
+                "hair":avatar.hair,
+                "shirt": avatar.shirt,
+                "beard": avatar.beard
+            }
+        });
     }
 
     saveChanges = (event, name) => {
@@ -67,9 +66,9 @@ export default class ComponentApp extends Component {
             avataresTotales: state.avataresTotales.concat (state.avatarActual)
         }));
         event.preventDefault ();
-        axios.post ('/avatars', {
-            avatarActual: this.state.avatarActual
-        });
+        axios.post ('/avatars', 
+            this.state.avatarActual
+        );
     }
 
     returnToDefault = () => {

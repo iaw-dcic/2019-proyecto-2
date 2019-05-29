@@ -10,13 +10,13 @@ export default class ElementSelect extends Component {
             <div>
                 <div className="d-flex justify-content-center" id="elementsFlex">
                     {this.props.avatarList.map (avatar => (
-                        <div className="card" key={avatar.avatar_id} id="savedCard">
-                            <img src={window.location.origin + '/avatar_elements/BaseModel.png'} id="savedBase"/>
-                            <img src={window.location.origin + '/avatar_elements/' + avatar.hair + '.png'} id="savedHair"/>
-                            <img src={window.location.origin + '/avatar_elements/' + avatar.shirt + '.png'} id="savedShirt"/>
-                            <img src={window.location.origin + '/avatar_elements/' + avatar.beard + '.png'} id="savedBeard"/>
+                        <div className="card savedCard" key={avatar.avatar_id}>
+                            <img src={window.location.origin + '/avatar_elements/BaseModel.png'} className="savedBase"/>
+                            <img src={window.location.origin + '/avatar_elements/' + avatar.hair + '.png'} className="savedHair"/>
+                            <img src={window.location.origin + '/avatar_elements/' + avatar.shirt + '.png'} className="savedShirt"/>
+                            <img src={window.location.origin + '/avatar_elements/' + avatar.beard + '.png'} className="savedBeard"/>
                             <div className="card-text">
-                                <button className="btn btn-primary" id="selectButton" onClick={this.props.selectAvatar.bind (avatar)}>
+                                <button className="btn btn-primary selectButton" onClick={this.props.selectAvatar.bind (avatar)}>
                                     {avatar.name}
                                 </button>
                             </div>

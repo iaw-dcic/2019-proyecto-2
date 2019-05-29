@@ -2,18 +2,18 @@
     margin-top: 2%;
 }
 
-#savedCard {
+.savedCard {
     height: 125px;
     margin-right: 4px;
 }
 
-#savedBase, #savedHair, #savedShirt, #savedBeard {
+.savedBase, .savedHair, .savedShirt, .savedBeard {
     height: 100px;
     width: 100px;
     position: absolute;
     background-position: center center;
 }
 
-#selectButton {
+.selectButton {
     position: relative;
 }

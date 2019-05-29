@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 
 //Seleccion de todos los elementos para modificar el avatar
 
+//Crear una table que tenga tipo y direccion del archivo, y poner las 4 filas de abajo con un for
+
 export default class AvatarComponents extends Component {
+
+
+    /*{this.props.avatarList.map (avatar => (
+        <div className="card" key={avatar.avatar_id} id="savedCard"></div>
+    ))}*/
 
     render() {
         return (
@@ -82,8 +89,8 @@ export default class AvatarComponents extends Component {
             hair: newHair,
             shirt: this.props.avatar.shirt,
             beard: this.props.avatar.beard
-        }
-        this.props.componentChange.bind (returningAvatar)
+        };
+        this.props.componentChange.bind (returningAvatar);
     }
 
     changeAvatarShirt = (newShirt) => {
@@ -91,8 +98,8 @@ export default class AvatarComponents extends Component {
             hair: this.props.avatar.hair,
             shirt: newShirt,
             beard: this.props.avatar.beard
-        }
-        this.props.componentChange.bind (returningAvatar)
+        };
+        this.props.componentChange.bind (returningAvatar);
     }
 
     changeAvatarBeard = (newBeard) => {
@@ -100,8 +107,8 @@ export default class AvatarComponents extends Component {
             hair: this.props.avatar.hair,
             shirt: this.props.avatar.shirt,
             beard: newBeard
-        }
-        this.props.componentChange.bind (returningAvatar)
+        };
+        this.props.componentChange.bind (returningAvatar);
     }
 
 }

@@ -6558,7 +6558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#savedCard {\r\n    height: 125px;\r\n    margin-right: 4px;\r\n}\r\n\r\n#savedBase, #savedHair, #savedShirt, #savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n#selectButton {\r\n    position: relative;\r\n}", ""]);
+exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.savedCard {\r\n    height: 125px;\r\n    margin-right: 4px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n.selectButton {\r\n    position: relative;\r\n}", ""]);
 
 // exports
 
@@ -60886,7 +60886,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66447,6 +66447,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
  //Seleccion de todos los elementos para modificar el avatar
+//Crear una table que tenga tipo y direccion del archivo, y poner las 4 filas de abajo con un for
 
 var AvatarComponents =
 /*#__PURE__*/
@@ -66501,6 +66502,10 @@ function (_Component) {
 
   _createClass(AvatarComponents, [{
     key: "render",
+
+    /*{this.props.avatarList.map (avatar => (
+        <div className="card" key={avatar.avatar_id} id="savedCard"></div>
+    ))}*/
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "accordion md-accordion",
@@ -66803,18 +66808,14 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentChange", function (avatar) {
-      var newActual = {
-        avatar_name: _this.state.avatarActual.avatar_name,
-        owner: _this.state.avatarActual.owner,
-        hair: avatar.hair,
-        shirt: avatar.shirt,
-        beard: avatar.beard
-      };
-
-      _this.setState(function (state) {
-        return {
-          avatarActual: newActual
-        };
+      _this.setState({
+        avatarActual: {
+          "avatar_name": _this.state.avatarActual.avatar_name,
+          "owner": _this.state.avatarActual.owner,
+          "hair": avatar.hair,
+          "shirt": avatar.shirt,
+          "beard": avatar.beard
+        }
       });
     });
 
@@ -66835,9 +66836,7 @@ function (_Component) {
       });
 
       event.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/avatars', {
-        avatarActual: _this.state.avatarActual
-      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/avatars', _this.state.avatarActual);
     });
 
     _defineProperty(_assertThisInitialized(_this), "returnToDefault", function () {
@@ -66961,26 +66960,24 @@ function (_Component) {
         id: "elementsFlex"
       }, this.props.avatarList.map(function (avatar) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card",
-          key: avatar.avatar_id,
-          id: "savedCard"
+          className: "card savedCard",
+          key: avatar.avatar_id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/avatar_elements/BaseModel.png',
-          id: "savedBase"
+          className: "savedBase"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/avatar_elements/' + avatar.hair + '.png',
-          id: "savedHair"
+          className: "savedHair"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/avatar_elements/' + avatar.shirt + '.png',
-          id: "savedShirt"
+          className: "savedShirt"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/avatar_elements/' + avatar.beard + '.png',
-          id: "savedBeard"
+          className: "savedBeard"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card-text"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn btn-primary",
-          id: "selectButton",
+          className: "btn btn-primary selectButton",
           onClick: _this.props.selectAvatar.bind(avatar)
         }, avatar.name)));
       })));
@@ -67018,16 +67015,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
  //Seccion de botones y nombre del avatar
+//Poner un estado nombre, y que valga el props. reemplazar todo lo del props con el state
 
 var Utilities =
 /*#__PURE__*/
@@ -67035,9 +67035,23 @@ function (_Component) {
   _inherits(Utilities, _Component);
 
   function Utilities() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, Utilities);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Utilities).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Utilities)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      currentName: _this.props.name
+    });
+
+    return _this;
   }
 
   _createClass(Utilities, [{
@@ -67051,7 +67065,7 @@ function (_Component) {
         className: "form-control",
         id: "avatarName",
         placeholder: "Avatar Name",
-        value: this.props.name
+        value: this.state.currentName
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center",
         id: "buttonsFlex"
@@ -67062,7 +67076,7 @@ function (_Component) {
       }, "Cancel Changes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary",
         id: "saveButton",
-        onClick: this.props.saveChanges.bind(this.props.name)
+        onClick: this.props.saveChanges.bind(this.state.currentName)
       }, "Save Avatar")));
     }
   }]);
@@ -67212,8 +67226,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
