@@ -51,26 +51,26 @@ export default class ShirtImage extends Component {
                                     <h5 className="card-title text-muted text-uppercase text-center">Logos</h5>
                                     <hr></hr>
                                     <div class="logos">
-                                        <div class="col-sm-4 col-md-2">
+                                        <div class="">
                                             <a href="#" class="thumbnail">
-                                                <img src="/images/logos/logo1.png"></img>
-                                                <hr width="1450%"></hr>
-                                                <img src="/images/logos/logo2.png"></img>
-                                                <hr width="1450%"></hr>
-                                                <img src="/images/logos/logo3.png"></img>
-                                                <hr width="1450%"></hr>
-                                                <img src="/images/logos/logo4.png"></img>
-                                                <hr width="1450%"></hr>
-                                                <img src="/images/logos/logo5.png"></img>
-                                                <hr width="1450%"></hr>
-                                                <img src="/images/logos/logo6.png"></img>
-                                                <hr width="1450%"></hr>
-                                                <img src="/images/logos/logo7.png"></img>
-                                                <hr width="1450%"></hr>
+                                                <img src="/images/logos/logo1.png" height="80px" width="80px"></img>
+                                                <hr width="100%"></hr>
+                                                <img src="/images/logos/logo2.png" height="80px" width="80px"></img>
+                                                <hr width="100%"></hr>
+                                                <img src="/images/logos/logo3.png" height="80px" width="80px"></img>
+                                                <hr width="100%"></hr>
+                                                <img src="/images/logos/logo4.png" height="80px" width="80px"></img>
+                                                <hr width="100%"></hr>
+                                                <img src="/images/logos/logo5.png" height="80px" width="80px"></img>
+                                                <hr width="100%"></hr>
+                                                <img src="/images/logos/logo6.png" height="80px" width="80px"></img>
+                                                <hr width="100%"></hr>
+                                                <img src="/images/logos/logo7.png" height="80px" width="80px"></img>
+                                                
                                             </a>
                                         </div>
                                     </div>
-                                    <a className="btn btn-block btn-primary text-uppercase">Button</a>
+                                   
                                 </div>
                             </div>
                         </div>

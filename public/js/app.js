@@ -65894,41 +65894,51 @@ function (_Component) {
       }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "logos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-sm-4 col-md-2"
+        "class": ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         "class": "thumbnail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo1.png"
+        src: "/images/logos/logo1.png",
+        height: "80px",
+        width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "1450%"
+        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo2.png"
+        src: "/images/logos/logo2.png",
+        height: "80px",
+        width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "1450%"
+        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo3.png"
+        src: "/images/logos/logo3.png",
+        height: "80px",
+        width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "1450%"
+        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo4.png"
+        src: "/images/logos/logo4.png",
+        height: "80px",
+        width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "1450%"
+        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo5.png"
+        src: "/images/logos/logo5.png",
+        height: "80px",
+        width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "1450%"
+        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo6.png"
+        src: "/images/logos/logo6.png",
+        height: "80px",
+        width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "1450%"
+        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo7.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "1450%"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-block btn-primary text-uppercase"
-      }, "Button")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        src: "/images/logos/logo7.png",
+        height: "80px",
+        width: "80px"
+      }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
