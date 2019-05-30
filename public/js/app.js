@@ -65796,6 +65796,7 @@ function (_Component) {
       remera: '/images/remeras/remerablanca.png',
       talle: "XS",
       tela: "Algodon",
+      estampa: "/images/logos/logo1.png",
       telas: [],
       talles: []
     };
@@ -65998,6 +65999,10 @@ function (_Component) {
         id: "imagenRemera",
         className: "d-block w-100",
         alt: "..."
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        height: "100",
+        src: this.state.estampa,
+        id: "imagenLogo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"
       }, "Crear dise\xF1o")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

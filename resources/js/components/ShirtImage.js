@@ -9,6 +9,7 @@ export default class ShirtImage extends Component {
             remera: '/images/remeras/remerablanca.png',
             talle: "XS",
             tela: "Algodon",
+            estampa: "/images/logos/logo1.png",
             telas: [],
             talles:[]
         }
@@ -96,6 +97,7 @@ export default class ShirtImage extends Component {
                                     <h5 className="card-title text-muted text-uppercase text-center">Remera</h5>
                                     <hr width="100%"></hr>
                                     <img height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
+                                    <img height="100" src={this.state.estampa}  id="imagenLogo" ></img>
                                     <a className="btn btn-block btn-secondary text-uppercase">Crear diseño</a>
                                    
                                 </div>

@@ -124,7 +124,20 @@ section.pricing {
   text-align: center;
  }
 
-   
+ #imagenRemera
+ {
+   position:absolute;
+   left:0px;
+   top:10px;
+   z-index:2;
+ }
+ #imagenLogo
+ {
+  position:absolute;
+  left:204px;
+  top:200px;
+  z-index:3;
+ }
   /* Hover Effects on Card */
   
   @media (min-width: 992px) {
