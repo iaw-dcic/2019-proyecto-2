@@ -65990,7 +65990,7 @@ function (_Component) {
         role: "toolbar",
         "aria-label": "Toolbar with button groups"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "listColours",
+        id: "listColours center",
         className: "btn-color",
         role: "toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

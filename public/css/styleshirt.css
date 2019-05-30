@@ -59,44 +59,49 @@ section.pricing {
     opacity: 0.7;
     transition: all 0.2s;
     margin-top: 2%;
-    margin-left: 0%;
-    margin-right:0%;
+    margin-left: 1%;
+    margin-right:1%;
     
   }
 
  #remera-colorAzul
   {
-   background-color:#05347F
+   background-color:#05347F;
   }
 
   #remera-colorRosa
   {
-    background-color:#E23045
+    background-color:#E23045;
+  
   }
   
   #remera-colorAmarillo
   {
-    background-color: #F7DE1E
+    background-color: #F7DE1E;
   }
 
  #remera-colorNegro
  {
-   background-color: #0F0F0F
+   background-color: #0F0F0F;
+ 
  }
 
  #remera-colorNaranja
  {
-   background-color: #DD4205
+   background-color: #DD4205;
+   
   }
 
  #remera-colorCeleste
  {
-   background-color: #04889E
+   background-color: #04889E;
+  
  }
 
  #remera-colorVioleta
  {
-   background-color: #381B56
+   background-color: #381B56;
+  
  }
 
  .logos
@@ -118,21 +123,7 @@ section.pricing {
   text-align: center;
  }
 
- .img-fluid
- {
-  position:absolute;
-  height:200px;
-  width:180px;
-  top: 40px;
-  left : 40px;
-  visibility:visible;
-  z-index:-1;
-  
- }
-
-
-
- 
+   
   /* Hover Effects on Card */
   
   @media (min-width: 992px) {

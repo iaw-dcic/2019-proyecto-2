@@ -91,7 +91,7 @@ export default class ShirtImage extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Seleccione un color</h5>
                                     <div className="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
-                                        <div id="listColours" className="btn-color" role="toolbar">
+                                        <div id="listColours center" className="btn-color" role="toolbar">
                                             <div className="btn-group">
                                                 <button id="remera-colorBlanco" onClick={(e) => this.cambiarColorRemera(e, "remera-colorBlanco")} type="button" className="btn-item-color">  </button>
                                                 <button id="remera-colorAzul" onClick={(e) => this.cambiarColorRemera(e, "remera-colorAzul")} type="button" className="btn-item-color"  >  </button>
