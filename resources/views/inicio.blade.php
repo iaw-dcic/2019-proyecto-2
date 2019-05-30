@@ -5,10 +5,12 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
   <div class="row no-gutter">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-    <div class="col-md-8 col-lg-6">
+    <div class="d-none d-md-flex col-md-6 col-lg-6 bg-image">
+       <!-- Imagen -->
+    </div>
+    <div class="col-md-6 col-lg-6">
       <div class="login d-flex align-items-center py-5">
         <div class="container">
           <div class="row">
