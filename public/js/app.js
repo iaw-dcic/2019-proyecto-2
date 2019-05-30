@@ -65990,7 +65990,9 @@ function (_Component) {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         height: "500",
         src: this.state.remera,
         id: "imagenRemera",
@@ -66006,7 +66008,9 @@ function (_Component) {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Seleccione un color"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Seleccione un color"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-toolbar mb-2",
         role: "toolbar",
         "aria-label": "Toolbar with button groups"

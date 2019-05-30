@@ -46,6 +46,7 @@ section.pricing {
     padding: 1rem;
     opacity: 0.7;
     transition: all 0.2s;
+  
    
   }
 
@@ -58,8 +59,8 @@ section.pricing {
     padding: 0.9rem;
     opacity: 0.7;
     transition: all 0.2s;
-    margin-top: 2%;
-    margin-left: 1%;
+    margin-top: 4%;
+    margin-left: 10%;
     margin-right:1%;
     
   }
