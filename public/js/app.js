@@ -65881,7 +65881,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-lg-4"
+        className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65889,66 +65889,78 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
       }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "logos"
+        className: "logos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "imagen-logos"
+        className: "imagen-logos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         "class": "thumbnail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo1.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo2.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo3.png",
+        height: "80px",
+        width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
+        src: "/images/logos/logo4.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo4.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo5.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo6.png",
         height: "80px",
         width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo7.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo8.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/images/logos/logo9.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
+        src: "/images/logos/logo9.png",
+        height: "80px",
+        width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo10.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo11.png",
         height: "80px",
         width: "80px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: "/images/logos/logo12.png",
         height: "80px",
         width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
       }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65966,7 +65978,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"
       }, "Guardar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-lg-2"
+        className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

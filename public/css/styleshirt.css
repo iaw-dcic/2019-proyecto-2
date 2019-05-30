@@ -101,7 +101,7 @@ section.pricing {
 
  .logos
  {
-   width:310px;
+   width:200px;
    height:512px;
    overflow-y:scroll;
    background-color: #f5f0f2;
@@ -109,7 +109,8 @@ section.pricing {
    
  }
  .imagen-logos{
-  border-image: 21px;
+  border-image: 300px;
+ 
  }
  
  #tittle{
