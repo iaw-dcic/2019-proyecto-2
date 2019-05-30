@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'api_token'
     ];
 
     /**
@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function shirts()
+    {
+        return $this->hasMany(Shirt::class);
+    }
+
+    public function addShirt($Shirt)
+    {
+        return $this->shirts()->create($Shirt);
+    }
 }

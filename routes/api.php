@@ -16,3 +16,20 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('shirts', 'ShirtController@index');
+Route::get('shirts/{shirt}', 'ShirtController@show');
+Route::get('shirts/static/shortsleeve', 'ShirtController@getShirt');
+Route::post('shirts/store/{user}', 'ShirtController@store');
+Route::patch('shirts/{shirt}', 'ShirtController@update');
+Route::delete('shirts/{shirt}', 'ShirtController@destroy');
+
+/*
+Route::middleware('auth:api')->get('shirts', 'ShirtController@index');
+Route::middleware('auth:api')->get('shirts/{shirt}', 'ShirtController@show');
+Route::middleware('auth:api')->post('shirts/{user}', 'ShirtController@store');
+Route::middleware('auth:api')->patch('shirts/{shirt}', 'ShirtController@update');
+Route::middleware('auth:api')->delete('shirts/{shirt}', 'ShirtController@destroy');
+*/
+Route::get('static/images/shirts/{type}/{color}', 'ShirtController@getStaticImage');
