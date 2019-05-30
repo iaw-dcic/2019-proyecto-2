@@ -101,15 +101,15 @@ class PartidosController extends Controller
            $arreglo["items"][$i++]= array(
                'id' => $partido->id,
                 'jugador_uno' => 
-               //  array(
-                //    'id' =>$partido->nombreJugadorUno->id,
-                     $partido->nombreJugadorUno->nombre,
-                //    'abrev' => $partido->nombreJugadorUno->abreviado),
+                array(
+                   'id' =>$partido->nombreJugadorUno->id,
+                     'nombre'=>$partido->nombreJugadorUno->nombre,
+                    'abrev' => $partido->nombreJugadorUno->abreviado),
                 'jugador_dos' =>  
-                //array(
-                //    'id' =>$partido->nombreJugadorDos->id,
-                      $partido->nombreJugadorDos->nombre,
-                //      'abrev' => $partido->nombreJugadorDos->abreviado),
+                array(
+                   'id' =>$partido->nombreJugadorDos->id,
+                  'nombre'=> $partido->nombreJugadorDos->nombre,
+                      'abrev' => $partido->nombreJugadorDos->abreviado),
                 'resultado'=> $partido->resultado,
                  'ronda' => $partido->ronda,
             );

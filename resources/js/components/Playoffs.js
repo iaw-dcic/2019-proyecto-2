@@ -401,6 +401,32 @@ export default class Playoffs extends Component {
             } catch (e) {
                 console.log('axios request failed:', e);
             }
+            //semis
+            try {
+                const response = await axios.post('http://localhost/pr2/api/insert', {
+                    jugador_uno_id: this.state.s1j1.id,
+                    jugador_dos_id: this.state.s1j2.id,
+                    ronda: '2',
+                    pronostico: pro
+                });
+
+                console.log('Returned data:', response);
+            } catch (e) {
+                console.log('axios request failed:', e);
+            }
+            try {
+                const response = await axios.post('http://localhost/pr2/api/insert', {
+                    jugador_uno_id: this.state.s2j1.id,
+                    jugador_dos_id: this.state.s2j2.id,
+                    ronda: '2',
+                    pronostico: pro
+                });
+
+                console.log('Returned data:', response);
+            } catch (e) {
+                console.log('axios request failed:', e);
+            }
+
 
         }
 

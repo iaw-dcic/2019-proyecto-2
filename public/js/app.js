@@ -67878,23 +67878,69 @@ function (_Component) {
       pOctavos5: [],
       pOctavos6: [],
       pOctavos7: [],
-      pCuartos0: [],
-      pCuartos2: [],
-      pCuartos1: [],
-      pCuartos3: [],
-      pSemis0: [],
-      pSemis1: [],
-      partidoFinal: [],
-      pronostico: 0
+      c0j1: [],
+      c0j2: [],
+      c1j1: [],
+      c1j2: [],
+      c2j1: [],
+      c2j2: [],
+      c3j1: [],
+      c3j2: [],
+      s1j1: [],
+      s1j2: [],
+      s2j1: [],
+      s2j2: [],
+      j1: [],
+      j2: [],
+      campeon: [],
+      pronostico: 0,
+      load: "false"
     });
 
     _defineProperty(_assertThisInitialized(_this), "setPronostico", function (newP) {
       _this.setState({
-        pCuartos0: Array()
+        pronostico: newP
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "cuartos0", function (cuart) {
+      _this.setState({
+        c0j1: cuart.jugador_uno,
+        c0j2: cuart.jugador_dos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "cuartos1", function (cuart) {
+      _this.setState({
+        c1j1: cuart.jugador_uno,
+        c1j2: cuart.jugador_dos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "cuartos2", function (cuart) {
+      _this.setState({
+        c2j1: cuart.jugador_uno,
+        c2j2: cuart.jugador_dos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "cuartos3", function (cuart) {
+      _this.setState({
+        c3j1: cuart.jugador_uno,
+        c3j2: cuart.jugador_dos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (newP, e) {
+      console.log("cambio semi");
+      console.log(newP);
 
       _this.setState({
-        pronostico: newP
+        s1j1: newP
+      }, function () {
+        _this.setState({
+          load: true
+        });
       });
     });
 
@@ -67902,115 +67948,132 @@ function (_Component) {
   }
 
   _createClass(Perfil, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (this.state.pronostico != nextState.pronostico || this.state.pCuartos0.jugador_uno == null) return true;else return false;
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
+    key: "componentWillMount",
+    //cargo los octavos de partidos
+    value: function componentWillMount() {
       var _this2 = this;
 
-      console.log(this.state.pronostico);
-
-      if (this.state.pronostico != -1) {
-        // fetch('http://localhost/pr2/api/pronostico/8/' + this.state.pronostico)
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         this.setState({
-        //             pOctavos0: json.items[0],
-        //             pOctavos1: json.items[1],
-        //               pOctavos2: json.items[2],
-        //               pOctavos3: json.items[3],
-        //               pOctavos4: json.items[4],
-        //               pOctavos5: json.items[5],
-        //              pOctavos6: json.items[6],
-        //              pOctavos7: json.items[7],
-        //         })
-        //     });
-        fetch('http://localhost/pr2/api/pronostico/4/' + this.state.pronostico).then(function (res) {
-          return res.json();
-        }).then(function (json) {
-          _this2.setState({
-            pCuartos0: json.items[0],
-            pCuartos1: json.items[1],
-            pCuartos2: json.items[2],
-            pCuartos3: json.items[3]
-          });
-        }); // fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue)
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         this.setState({
-        //             pSemis0: json.items[0],
-        //             pSemis1: json.items[1],
-        //         })
-        //     });
-        // fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue)
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         this.setState({
-        //             partidoFinal: json.partidos,
-        //         })
-        //     });
-      }
+      fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        _this2.setState({
+          pOctavos0: json.items[0],
+          pOctavos1: json.items[1],
+          pOctavos2: json.items[2],
+          pOctavos3: json.items[3],
+          pOctavos4: json.items[4],
+          pOctavos5: json.items[5],
+          pOctavos6: json.items[6],
+          pOctavos7: json.items[7]
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log("render");
+      var _this3 = this;
+
       var oct01 = "";
       var oct02 = "";
-
-      if (this.state.pOctavos0.jugador_uno != null) {
-        oct01 = this.state.pOctavos0.jugador_uno;
-        oct02 = this.state.pOctavos0.jugador_dos;
-      }
-
       var oct11 = "";
       var oct12 = "";
+      var oct21 = "";
+      var oct22 = "";
+      var oct31 = "";
+      var oct32 = "";
+      var oct31 = "";
+      var oct32 = "";
+      var oct41 = "";
+      var oct42 = "";
+      var oct51 = "";
+      var oct52 = "";
+      var oct61 = "";
+      var oct62 = "";
+      var oct71 = "";
+      var oct72 = ""; //si ya cargaron los partidos de octavos los seteo
 
-      if (this.state.pOctavos1.jugador_uno != null) {
-        oct11 = this.state.pOctavos1.jugador_uno;
-        oct12 = this.state.pOctavos1.jugador_dos;
-      }
+      if (this.state.pOctavos0.jugador_uno != null) {
+        oct01 = this.state.pOctavos0.jugador_uno.nombre;
+        oct11 = this.state.pOctavos1.jugador_uno.nombre;
+        var oct02 = this.state.pOctavos0.jugador_dos.nombre;
+        oct12 = this.state.pOctavos1.jugador_dos.nombre;
+        oct21 = this.state.pOctavos2.jugador_uno.nombre;
+        oct31 = this.state.pOctavos3.jugador_uno.nombre;
+        oct22 = this.state.pOctavos2.jugador_dos.nombre;
+        oct32 = this.state.pOctavos3.jugador_dos.nombre;
+        oct41 = this.state.pOctavos4.jugador_uno.nombre;
+        oct51 = this.state.pOctavos5.jugador_uno.nombre;
+        oct42 = this.state.pOctavos4.jugador_dos.nombre;
+        oct52 = this.state.pOctavos5.jugador_dos.nombre;
+        oct61 = this.state.pOctavos6.jugador_uno.nombre;
+        oct71 = this.state.pOctavos7.jugador_uno.nombre;
+        oct62 = this.state.pOctavos6.jugador_dos.nombre;
+        oct72 = this.state.pOctavos7.jugador_dos.nombre;
+      } //si ya cargaron los partidos de cuartos los seteo
+
 
       var cuar01 = "";
       var cuar02 = "";
-
-      if (this.state.pCuartos0.jugador_uno != null) {
-        cuar01 = this.state.pCuartos0.jugador_uno;
-        cuar02 = this.state.pCuartos0.jugador_dos;
-      }
-
+      var cuar31 = "";
+      var cuar32 = "";
       var cuar11 = "";
       var cuar12 = "";
-
-      if (this.state.pCuartos1.jugador_uno != null) {
-        cuar11 = this.state.pCuartos1.jugador_uno;
-        cuar12 = this.state.pCuartos1.jugador_dos;
-      }
-
       var cuar21 = "";
       var cuar22 = "";
 
-      if (this.state.pCuartos2.jugador_uno != null) {
-        cuar21 = this.state.pCuartos2.jugador_uno;
-        cuar22 = this.state.pCuartos2.jugador_dos;
+      if (this.state.c0j1 != null) {
+        cuar01 = this.state.c0j1;
       }
 
-      var cuar31 = "";
-      var cuar32 = "";
+      if (this.state.c0j2 != null) {
+        cuar02 = this.state.c0j2;
+      }
 
-      if (this.state.pCuartos3.jugador_uno != null) {
-        cuar31 = this.state.pCuartos3.jugador_uno;
-        cuar32 = this.state.pCuartos3.jugador_dos;
+      if (this.state.c1j1 != null) {
+        cuar11 = this.state.c1j1;
+      }
+
+      if (this.state.c1j2 != null) {
+        cuar12 = this.state.c1j2;
+      }
+
+      if (this.state.c2j1 != null) {
+        cuar21 = this.state.c2j1;
+      }
+
+      if (this.state.c2j2 != null) {
+        cuar22 = this.state.c2j2;
+      }
+
+      if (this.state.c3j1 != null) {
+        cuar31 = this.state.c3j1;
+      }
+
+      if (this.state.c3j2 != null) {
+        cuar32 = this.state.c3j2;
+      } //si ya cargaron los partidos de semis los seteo
+
+
+      var sem01 = "";
+      var sem02 = "";
+
+      if (this.state.s1j1 != null) {
+        sem01 = this.state.s1j1;
+      }
+
+      if (this.state.s1j2 != null) {
+        sem02 = this.state.s1j2;
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "contenedor"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pronostico_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
         setPronostico: this.setPronostico,
-        agregarProno: this.props.agregaProno
+        agregarProno: this.props.agregaProno,
+        cuartos0: this.cuartos0,
+        cuartos1: this.cuartos1,
+        cuartos2: this.cuartos2,
+        cuartos3: this.cuartos3
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -68029,8 +68092,64 @@ function (_Component) {
         scope: "col"
       }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, oct01, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), oct02), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", oct11, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), oct12)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, cuar01, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), cuar02), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, cuar11, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), cuar12), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "8 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "8"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "8 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "8")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " SEMINFINALISTA", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "SEMINFINALISTA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "SEMINFINALISTA", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "SEMINFINALISTA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "8 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "8"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "8", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "8")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, cuar21, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), cuar22), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, cuar31, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), cuar32), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "8  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "8"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "8  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "8"))))), " "));
-    }
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct01), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct02)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct11), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct12))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleClick(cuar01, e);
+        }
+      }, cuar01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, "  ", cuar02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, cuar11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, "  ", cuar12.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct21), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct22)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct31), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct32))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, sem01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "SEMINFINALISTA", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "SEMINFINALISTA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct41), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct42)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct51), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct52))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, cuar21.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, cuar31.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct61), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct62)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct71), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey"
+      }, oct72)))))), " "));
+    } //se encarga de cambiar el pronostico de la semi
+
   }]);
 
   return Perfil;
@@ -68397,7 +68516,7 @@ function (_Component) {
       var _handleCuartos = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var pro, token, response, _response, _response2, _response3;
+        var pro, token, response, _response, _response2, _response3, _response4, _response5;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -68411,7 +68530,7 @@ function (_Component) {
                 pro = this.state.pronost.id;
 
                 if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context.next = 47;
+                  _context.next = 67;
                   break;
                 }
 
@@ -68507,11 +68626,53 @@ function (_Component) {
                 console.log('axios request failed:', _context.t3);
 
               case 47:
+                _context.prev = 47;
+                _context.next = 50;
+                return axios.post('http://localhost/pr2/api/insert', {
+                  jugador_uno_id: this.state.s1j1.id,
+                  jugador_dos_id: this.state.s1j2.id,
+                  ronda: '2',
+                  pronostico: pro
+                });
+
+              case 50:
+                _response4 = _context.sent;
+                console.log('Returned data:', _response4);
+                _context.next = 57;
+                break;
+
+              case 54:
+                _context.prev = 54;
+                _context.t4 = _context["catch"](47);
+                console.log('axios request failed:', _context.t4);
+
+              case 57:
+                _context.prev = 57;
+                _context.next = 60;
+                return axios.post('http://localhost/pr2/api/insert', {
+                  jugador_uno_id: this.state.s2j1.id,
+                  jugador_dos_id: this.state.s2j2.id,
+                  ronda: '2',
+                  pronostico: pro
+                });
+
+              case 60:
+                _response5 = _context.sent;
+                console.log('Returned data:', _response5);
+                _context.next = 67;
+                break;
+
+              case 64:
+                _context.prev = 64;
+                _context.t5 = _context["catch"](57);
+                console.log('axios request failed:', _context.t5);
+
+              case 67:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[7, 14], [17, 24], [27, 34], [37, 44]]);
+        }, _callee, this, [[7, 14], [17, 24], [27, 34], [37, 44], [47, 54], [57, 64]]);
       }));
 
       function handleCuartos() {
@@ -68894,6 +69055,8 @@ function (_Component) {
       var _handlePronosticos = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
+        var _this4 = this;
+
         var selectBox, selectedValue;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -68902,8 +69065,31 @@ function (_Component) {
                 selectBox = document.getElementById("selectBox");
                 selectedValue = selectBox.options[selectBox.selectedIndex].value;
                 this.props.setPronostico(selectedValue);
+                console.log(this.state.pronostico);
 
-              case 3:
+                if (this.state.pronostico != -1) {
+                  fetch('http://localhost/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
+                    return res.json();
+                  }).then(function (json) {
+                    _this4.props.cuartos0(json.items[0]), _this4.props.cuartos1(json.items[1]), _this4.props.cuartos2(json.items[2]), _this4.props.cuartos3(json.items[3]);
+                  });
+                  fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
+                    return res.json();
+                  }).then(function (json) {
+                    _this4.setState({
+                      pSemis0: json.items[0],
+                      pSemis1: json.items[1]
+                    });
+                  }); // fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue)
+                  //     .then(res => res.json())
+                  //     .then(json => {
+                  //         this.setState({
+                  //             partidoFinal: json.partidos,
+                  //         })
+                  //     });
+                }
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -68920,7 +69106,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var i = "";
       var items = this.state.items;
@@ -68945,7 +69131,7 @@ function (_Component) {
         className: "form-control",
         id: "selectBox",
         onChange: function onChange(e) {
-          return _this4.handlePronosticos(e);
+          return _this5.handlePronosticos(e);
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null, " "), i))));
     }
