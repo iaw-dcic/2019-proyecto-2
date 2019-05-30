@@ -12,6 +12,7 @@ export default class ComponentApp extends Component {
     
     state = { 
         currentAvatar: {
+            "avatar_id": null,
             "avatar_name": "", 
             "hair": "Hair1", 
             "shirt": "Shirt1", 
@@ -51,8 +52,7 @@ export default class ComponentApp extends Component {
         this.setState ({
             currentAvatar: {
                 "avatar_id": this.state.currentAvatar.avatar_id,
-                "avatar_name": this.state.currentAvatar.avatar_name, 
-                "owner": this.state.currentAvatar.owner,
+                "avatar_name": this.state.currentAvatar.avatar_name,
                 "hair": avatar.hair,
                 "shirt": avatar.shirt,
                 "beard": avatar.beard
@@ -61,35 +61,54 @@ export default class ComponentApp extends Component {
     }
 
     saveChanges = (name) => {
-        this.setState ({
-            currentAvatar: {
-                "avatar_id": this.state.currentAvatar.avatar_id,
-                "avatar_name": name,
-                "owner": this.state.currentAvatar.owner,
-                "hair": this.state.currentAvatar.hair,
-                "shirt": this.state.currentAvatar.shirt,
-                "beard": this.state.currentAvatar.beard
-            },
-            allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
-        });
-        axios.post ('/app/avatars', {
-            avatar_id: this.state.currentAvatar.avatar_id,
-            avatar_name: this.state.currentAvatar.avatar_name,
-            owner: this.state.currentAvatar.owner,
-            hair: this.state.currentAvatar.hair,
-            shirt: this.state.currentAvatar.shirt,
-            beard: this.state.currentAvatar.beard
-        }).then(response => {
-            console.log('from handle submit', response);
-        });;
+        if (this.state.currentAvatar.avatar_id == null) {
+            axios.post ('api/app/avatars', {
+                avatar_name: this.state.currentAvatar.avatar_name,
+                hair: this.state.currentAvatar.hair,
+                shirt: this.state.currentAvatar.shirt,
+                beard: this.state.currentAvatar.beard
+            }).then (response => {
+                console.log('from handle submit', response);
+                this.setState ({
+                    currentAvatar: {
+                        "avatar_id": this.state.currentAvatar.avatar_id,
+                        "avatar_name": name,
+                        "hair": this.state.currentAvatar.hair,
+                        "shirt": this.state.currentAvatar.shirt,
+                        "beard": this.state.currentAvatar.beard
+                    },
+                    allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+                });
+            });
+        }
+        else {
+            axios.put ('api/app/avatars/{this.state.currentAvatar.avatar_id}', {
+                avatar_id: this.state.currentAvatar.avatar_id,
+                avatar_name: this.state.currentAvatar.avatar_name,
+                hair: this.state.currentAvatar.hair,
+                shirt: this.state.currentAvatar.shirt,
+                beard: this.state.currentAvatar.beard
+            }).then (response => {
+                console.log('from handle submit', response);
+                this.setState ({
+                    currentAvatar: {
+                        "avatar_id": this.state.currentAvatar.avatar_id,
+                        "avatar_name": name,
+                        "hair": this.state.currentAvatar.hair,
+                        "shirt": this.state.currentAvatar.shirt,
+                        "beard": this.state.currentAvatar.beard
+                    },
+                    allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+                });
+            });
+        }
     }
 
     returnToDefault = () => {
         this.setState ({
             currentAvatar: {
-                "avatar_id": this.state.currentAvatar.avatar_id,
-                "avatar_name": this.state.currentAvatar.avatar_name, 
-                "owner": this.state.currentAvatar.owner,
+                "avatar_id": -1,
+                "avatar_name": this.state.currentAvatar.avatar_name,
                 "hair": "Hair1",
                 "shirt": "Shirt1",
                 "beard": "Beard1"
@@ -102,7 +121,6 @@ export default class ComponentApp extends Component {
             currentAvatar: {
                 "avatar_id": avatar.avatar_id,
                 "avatar_name": avatar.avatar_name,
-                "owner": avatar.owner,
                 "hair": avatar.hair,
                 "shirt": avatar.shirt,
                 "beard": avatar.beard

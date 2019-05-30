@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/app/avatars', 'AvatarsController@store')->middleware('auth:api');
+
+Route::put('/app/avatars/{avatar}', 'AvatarsController@update')->middleware('auth:api');

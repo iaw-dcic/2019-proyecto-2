@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('tokenAuthentication')
 
     <title>@yield('myLayoutTitle', 'Laravel')</title>
 

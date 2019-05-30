@@ -66445,7 +66445,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
  //Seleccion de todos los elementos para modificar el avatar
-//poner las 4 filas de abajo con un for
 
 var AvatarComponents =
 /*#__PURE__*/
@@ -66460,10 +66459,6 @@ function (_Component) {
 
   _createClass(AvatarComponents, [{
     key: "contstructor",
-
-    /*{this.props.avatarList.map (avatar => (
-        <div className="card" key={avatar.avatar_id} id="savedCard"></div>
-    ))}*/
     value: function contstructor(props) {
       this.changeAvatarHair = this.changeAvatarHair.bind(this);
       this.changeAvatarShirt = this.changeAvatarShirt.bind(this);
@@ -66821,6 +66816,7 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       currentAvatar: {
+        "avatar_id": null,
         "avatar_name": "",
         "hair": "Hair1",
         "shirt": "Shirt1",
@@ -66834,7 +66830,6 @@ function (_Component) {
         currentAvatar: {
           "avatar_id": _this.state.currentAvatar.avatar_id,
           "avatar_name": _this.state.currentAvatar.avatar_name,
-          "owner": _this.state.currentAvatar.owner,
           "hair": avatar.hair,
           "shirt": avatar.shirt,
           "beard": avatar.beard
@@ -66843,37 +66838,55 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "saveChanges", function (name) {
-      _this.setState({
-        currentAvatar: {
-          "avatar_id": _this.state.currentAvatar.avatar_id,
-          "avatar_name": name,
-          "owner": _this.state.currentAvatar.owner,
-          "hair": _this.state.currentAvatar.hair,
-          "shirt": _this.state.currentAvatar.shirt,
-          "beard": _this.state.currentAvatar.beard
-        },
-        allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
-      });
+      if (_this.state.currentAvatar.avatar_id == null) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/app/avatars', {
+          avatar_name: _this.state.currentAvatar.avatar_name,
+          hair: _this.state.currentAvatar.hair,
+          shirt: _this.state.currentAvatar.shirt,
+          beard: _this.state.currentAvatar.beard
+        }).then(function (response) {
+          console.log('from handle submit', response);
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/app/avatars', {
-        avatar_id: _this.state.currentAvatar.avatar_id,
-        avatar_name: _this.state.currentAvatar.avatar_name,
-        owner: _this.state.currentAvatar.owner,
-        hair: _this.state.currentAvatar.hair,
-        shirt: _this.state.currentAvatar.shirt,
-        beard: _this.state.currentAvatar.beard
-      }).then(function (response) {
-        console.log('from handle submit', response);
-      });
-      ;
+          _this.setState({
+            currentAvatar: {
+              "avatar_id": _this.state.currentAvatar.avatar_id,
+              "avatar_name": name,
+              "hair": _this.state.currentAvatar.hair,
+              "shirt": _this.state.currentAvatar.shirt,
+              "beard": _this.state.currentAvatar.beard
+            },
+            allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
+          });
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('api/app/avatars/{this.state.currentAvatar.avatar_id}', {
+          avatar_id: _this.state.currentAvatar.avatar_id,
+          avatar_name: _this.state.currentAvatar.avatar_name,
+          hair: _this.state.currentAvatar.hair,
+          shirt: _this.state.currentAvatar.shirt,
+          beard: _this.state.currentAvatar.beard
+        }).then(function (response) {
+          console.log('from handle submit', response);
+
+          _this.setState({
+            currentAvatar: {
+              "avatar_id": _this.state.currentAvatar.avatar_id,
+              "avatar_name": name,
+              "hair": _this.state.currentAvatar.hair,
+              "shirt": _this.state.currentAvatar.shirt,
+              "beard": _this.state.currentAvatar.beard
+            },
+            allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
+          });
+        });
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "returnToDefault", function () {
       _this.setState({
         currentAvatar: {
-          "avatar_id": _this.state.currentAvatar.avatar_id,
+          "avatar_id": -1,
           "avatar_name": _this.state.currentAvatar.avatar_name,
-          "owner": _this.state.currentAvatar.owner,
           "hair": "Hair1",
           "shirt": "Shirt1",
           "beard": "Beard1"
@@ -66886,7 +66899,6 @@ function (_Component) {
         currentAvatar: {
           "avatar_id": avatar.avatar_id,
           "avatar_name": avatar.avatar_name,
-          "owner": avatar.owner,
           "hair": avatar.hair,
           "shirt": avatar.shirt,
           "beard": avatar.beard
@@ -67287,8 +67299,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

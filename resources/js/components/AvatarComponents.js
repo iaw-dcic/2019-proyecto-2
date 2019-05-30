@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 
 //Seleccion de todos los elementos para modificar el avatar
 
-//poner las 4 filas de abajo con un for
-
 export default class AvatarComponents extends Component {
-
-
-    /*{this.props.avatarList.map (avatar => (
-        <div className="card" key={avatar.avatar_id} id="savedCard"></div>
-    ))}*/
 
     contstructor (props) {
         this.changeAvatarHair = this.changeAvatarHair.bind (this);
