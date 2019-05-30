@@ -24,18 +24,14 @@ class AvatarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index($user, Request $request)
     {
-        //Obtengo el usuario logueado
-        $user=auth()->user();
-
-        dd(auth()->user());
-        dd($request);
-        
+        //Obtengo el usuario logueado=?
+        //dd(User::find($user)->avatars);
 
         return response()->json([
-            'user' => $user,
-            'avatars' => $user->avatars,
+            'user' => User::find($user),
+            'avatars' => User::find($user)->avatars,
             'status' => 'success'
             ], 200);
     }
@@ -46,10 +42,10 @@ class AvatarController extends Controller
      * RESTFULL: POST ALL
      * 
      * @param  \Illuminate\Http\Request  $request
-     * @param \App\User $user
+     * @param int $user
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, Request $request)
+    public function store($user, Request $request)
     {
         //
     }
@@ -60,10 +56,10 @@ class AvatarController extends Controller
      * RESTFULL: GET 1
      * 
      * @param  int  $id
-     * @param \App\User $user
+     * @param  int $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id, User $user)
+    public function show($id, $user)
     {
         //
     }
@@ -76,10 +72,10 @@ class AvatarController extends Controller
      * 
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @param \App\User $user
+     * @param  int $user
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user,Request $request, $id)
+    public function update($user,Request $request, $id)
     {
         //
     }
@@ -90,10 +86,10 @@ class AvatarController extends Controller
      * RESTFULL: DELETE
      * 
      * @param  int  $id
-     * @param \App\User $user
+     * @param  int $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user, $id)
+    public function destroy($user, $id)
     {
         //
     }
