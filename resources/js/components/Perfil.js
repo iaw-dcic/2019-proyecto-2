@@ -12,9 +12,9 @@ export default class Perfil extends Component {
     }
 
     setPronostico = (newP) => {
-        // this.setState({
-        //     pCuartos0: Array()
-        // })
+        this.setState({
+            pCuartos0: Array()
+        })
 
         this.setState({
             pronostico: newP
@@ -111,7 +111,7 @@ export default class Perfil extends Component {
             cuar32 = this.state.pCuartos3.jugador_dos;
         }
         return <div id="contenedor">
-            <Pronostico setPronostico={this.setPronostico} />
+            <Pronostico setPronostico={this.setPronostico} agregarProno={this.props.agregaProno} />
             <div className="container-fluid">
                 <div className="row">
                     < table className="table-responsive table-striped ">

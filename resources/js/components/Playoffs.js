@@ -5,6 +5,7 @@ import Semis from './Semis';
 import Final from './Final';
 import './partidos.css'
 export default class Playoffs extends Component {
+
     state = {
 
         c0j1: [],
@@ -24,7 +25,8 @@ export default class Playoffs extends Component {
 
         j1: [], j2: [],
         campeon: [],
-        user: []
+        user: [],
+        pronost: null
     };
 
 
@@ -240,7 +242,7 @@ export default class Playoffs extends Component {
 
             <div className="row">
                 <button type="button" className="btn btn-light"
-                    onClick={(e) => this.handleCuartos(e)}>
+                    onClick={(e) => this.handleCuartos()}>
                     Guardar
             </button>
             </div>
@@ -328,19 +330,21 @@ export default class Playoffs extends Component {
 
     }
 
-    async  handleCuartos(e) {
-        if (this.state.c0j1.id == null || this.state.c0j2.id == null ||
+    async handleCuartos() {
+        await this.addPronostico();
+
+
+
+        console.log("hanle cuartos : " + this.state.pronost.id);
+        var pro = this.state.pronost.id;
+        if (!(this.state.c0j1.id == null || this.state.c0j2.id == null ||
             this.state.c1j1.id == null || this.state.c1j2.id == null ||
             this.state.c2j1.id == null || this.state.c2j2.id == null ||
             this.state.c3j1.id == null || this.state.c3j2.id == null ||
             this.state.s1j1.id == null || this.state.s1j2.id == null ||
             this.state.s2j1.id == null || this.state.s2j2.id == null ||
             this.state.j1.id == null || this.state.j2.id == null ||
-            this.state.campeon.id == null) {
-            alert("no se puede guardar el cuadro sin completar");
-        }
-        else {
-            this.addPronostico();
+            this.state.campeon.id == null)) {
             let token = document.head.querySelector('meta[name="csrf-token"]');
 
             if (token) {
@@ -354,6 +358,7 @@ export default class Playoffs extends Component {
                     jugador_uno_id: this.state.c0j1.id,
                     jugador_dos_id: this.state.c0j2.id,
                     ronda: '4',
+                    pronostico: pro
                 });
 
                 console.log('Returned data:', response);
@@ -364,7 +369,8 @@ export default class Playoffs extends Component {
                 const response = await axios.post('http://localhost/pr2/api/insert', {
                     jugador_uno_id: this.state.c1j1.id,
                     jugador_dos_id: this.state.c1j2.id,
-                    ronda: '4'
+                    ronda: '4',
+                    pronostico: pro
                 });
 
                 console.log('Returned data:', response);
@@ -375,7 +381,8 @@ export default class Playoffs extends Component {
                 const response = await axios.post('http://localhost/pr2/api/insert', {
                     jugador_uno_id: this.state.c2j1.id,
                     jugador_dos_id: this.state.c2j2.id,
-                    ronda: '4'
+                    ronda: '4',
+                    pronostico: pro
                 });
 
                 console.log('Returned data:', response);
@@ -386,7 +393,8 @@ export default class Playoffs extends Component {
                 const response = await axios.post('http://localhost/pr2/api/insert', {
                     jugador_uno_id: this.state.c3j1.id,
                     jugador_dos_id: this.state.c3j2.id,
-                    ronda: '4'
+                    ronda: '4',
+                    pronostico: pro
                 });
 
                 console.log('Returned data:', response);
@@ -394,27 +402,62 @@ export default class Playoffs extends Component {
                 console.log('axios request failed:', e);
             }
 
-
-
         }
+
     }
 
 
     async addPronostico() {
-        let token = document.head.querySelector('meta[name="csrf-token"]');
+        if (this.state.c0j1.id == null || this.state.c0j2.id == null ||
+            this.state.c1j1.id == null || this.state.c1j2.id == null ||
+            this.state.c2j1.id == null || this.state.c2j2.id == null ||
+            this.state.c3j1.id == null || this.state.c3j2.id == null ||
+            this.state.s1j1.id == null || this.state.s1j2.id == null ||
+            this.state.s2j1.id == null || this.state.s2j2.id == null ||
+            this.state.j1.id == null || this.state.j2.id == null ||
+            this.state.campeon.id == null) {
+            alert("no se puede guardar el cuadro sin completar");
 
-        if (token) {
-            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-        } else {
-            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
         }
+        else {
+            let token = document.head.querySelector('meta[name="csrf-token"]');
 
-        try {
-            const response = await axios.post('http://localhost/pr2/api/insertpronostico');
-            console.log('Returned data:', response);
-        } catch (e) {
-            console.log('axios request failed:', e);
+            if (token) {
+                window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+            } else {
+                console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+            }
+
+            try {
+                const response = await axios.post('http://localhost/pr2/api/insertpronostico');
+                console.log('Returned data:', response);
+            } catch (e) {
+                console.log('axios request failed:', e);
+            }
+
+        }
+        await this.getUltimo();
+        this.props.agregarPronostico(this.state.pronost);
+    }
+    async  getUltimo() {
+
+        if (!(this.state.c0j1.id == null || this.state.c0j2.id == null ||
+            this.state.c1j1.id == null || this.state.c1j2.id == null ||
+            this.state.c2j1.id == null || this.state.c2j2.id == null ||
+            this.state.c3j1.id == null || this.state.c3j2.id == null ||
+            this.state.s1j1.id == null || this.state.s1j2.id == null ||
+            this.state.s2j1.id == null || this.state.s2j2.id == null ||
+            this.state.j1.id == null || this.state.j2.id == null ||
+            this.state.campeon.id == null)) {
+
+            const res = await fetch('http://localhost/pr2/api/ultimopronostico')
+            const something = await res.json();
+            this.setState({ pronost: something })
+
         }
     }
 
 }
+
+
+

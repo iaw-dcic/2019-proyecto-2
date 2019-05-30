@@ -5,15 +5,26 @@ export default class Pronostico extends Component {
         items: [],
 
     }
-    componentWillMount() {
+    componentDidMount() {
         fetch('http://localhost/pr2/api/cantidadpronosticos')
             .then(res => res.json())
             .then(json => {
-                this.setState({
-                    items: json.items,
-                })
+                if (json != null)
+                    this.setState({
+                        items: json.items,
+                    })
             });
 
+    }
+    componentWillReceiveProps() {
+        fetch('http://localhost/pr2/api/cantidadpronosticos')
+            .then(res => res.json())
+            .then(json => {
+                if (json != null)
+                    this.setState({
+                        items: json.items,
+                    })
+            });
     }
 
     async  handlePronosticos(e) {
@@ -26,9 +37,19 @@ export default class Pronostico extends Component {
 
 
     render() {
-
+        var i = "";
         var { items } = this.state;
-        return <div >
+        if (items != null) {
+            {
+                i = items.map((item, i) => (
+                    <option key={i}>
+                        {item.pronostico}
+                    </option>
+                ))
+            }
+        }
+
+        return <div>
             <div className="row">
                 <div className="form-group">
                     <div className="row">
@@ -37,11 +58,7 @@ export default class Pronostico extends Component {
                     <label >Selecciona el pronóstico a ver:</label>
                     <select className="form-control" id="selectBox" onChange={(e) => this.handlePronosticos(e)}>
                         <option> </option>
-                        {items.map((item, i) => (
-                            <option key={i}>
-                                {item.pronostico}
-                            </option>
-                        ))}
+                        {i}
 
                     </select>
                 </div>

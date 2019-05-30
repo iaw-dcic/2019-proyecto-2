@@ -46,14 +46,15 @@ class UserController extends Controller
    
 
    public function addPronostico(){
-    $pronostico= Pronostico::create([
-         
-            'user_id' => '1',
-          
-            ]   
-           );
-        return response()->json($pronostico, 201);
+    $pronostico= Pronostico::create([  'user_id' => '1'  ]   );
+        return response()->json($pronostico->id, 201);
    }
+   public function ultimoPronostico(){
+    $pronostico= Pronostico::select('id')->orderby('created_at','DESC')->first();
+
+    return response()->json($pronostico, 201);
+   }
+
    public function cantidadPronosticos(){
     $user=Auth::user();
     $pronosticos= Pronostico::where('user_id','=',1)->get();

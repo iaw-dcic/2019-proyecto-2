@@ -7,7 +7,9 @@ import Playoffs from './Playoffs';
 import Perfil from './Perfil';
 export default class NavIzq extends Component {
 
-
+    state = {
+        agregaProno: null,
+    }
     render() {
 
         return <div id="contenedor" className="row">
@@ -51,7 +53,7 @@ export default class NavIzq extends Component {
             <div className="col-10" >
                 <div id="v-pills-tabContent" className="tab-content">
                     <div id="perfil" className="tab-pane fade">
-                        <Perfil />
+                        <Perfil agregarProno={this.state.agregaProno} />
 
                     </div>
                     <div id="primerRonda" className="tab-pane fade">
@@ -63,12 +65,19 @@ export default class NavIzq extends Component {
 
                     </div>
                     <div id="playoffs" className="tab-pane fade">
-                        <Playoffs />
+                        <Playoffs agregarPronostico={this.agregarPronostico} />
 
                     </div>
                 </div>
             </div>
         </div >
+
+    }
+    agregarPronostico = (pronost) => {
+
+        this.setState({
+            agregarProno: pronost
+        });
 
     }
 }
