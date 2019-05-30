@@ -51,22 +51,23 @@ export default class ShirtImage extends Component {
                                     <h5 className="card-title text-muted text-uppercase text-center">Logos</h5>
                                     <hr></hr>
                                     <div class="logos">
-                                        <div class="">
+                                        <div class="imagen-logos">
                                             <a href="#" class="thumbnail">
                                                 <img src="/images/logos/logo1.png" height="80px" width="80px"></img>
-                                                <hr width="100%"></hr>
                                                 <img src="/images/logos/logo2.png" height="80px" width="80px"></img>
-                                                <hr width="100%"></hr>
                                                 <img src="/images/logos/logo3.png" height="80px" width="80px"></img>
                                                 <hr width="100%"></hr>
                                                 <img src="/images/logos/logo4.png" height="80px" width="80px"></img>
-                                                <hr width="100%"></hr>
                                                 <img src="/images/logos/logo5.png" height="80px" width="80px"></img>
-                                                <hr width="100%"></hr>
                                                 <img src="/images/logos/logo6.png" height="80px" width="80px"></img>
                                                 <hr width="100%"></hr>
                                                 <img src="/images/logos/logo7.png" height="80px" width="80px"></img>
-                                                
+                                                <img src="/images/logos/logo8.png" height="80px" width="80px"></img>
+                                                <img src="/images/logos/logo9.png" height="80px" width="80px"></img>
+                                                <hr width="100%"></hr>
+                                                <img src="/images/logos/logo10.png" height="80px" width="80px"></img>
+                                                <img src="/images/logos/logo11.png" height="80px" width="80px"></img>
+                                                <img src="/images/logos/logo12.png" height="80px" width="80px"></img>
                                             </a>
                                         </div>
                                     </div>
@@ -79,7 +80,8 @@ export default class ShirtImage extends Component {
                             <div className="card mb-5 mb-lg-0">
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Remera</h5>
-                                    <img className="img-fluid" height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
+                                    <img  height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
+                    
                                     <a className="btn btn-block btn-secondary text-uppercase">Guardar</a>
                                 </div>
                             </div>

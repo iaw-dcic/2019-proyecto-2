@@ -65760,8 +65760,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -65874,8 +65872,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _React$createElement,
-          _this2 = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pricing py-5"
@@ -65894,7 +65891,7 @@ function (_Component) {
       }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "logos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": ""
+        "class": "imagen-logos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         "class": "thumbnail"
@@ -65902,14 +65899,10 @@ function (_Component) {
         src: "/images/logos/logo1.png",
         height: "80px",
         width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/images/logos/logo2.png",
         height: "80px",
         width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/images/logos/logo3.png",
         height: "80px",
@@ -65920,14 +65913,10 @@ function (_Component) {
         src: "/images/logos/logo4.png",
         height: "80px",
         width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/images/logos/logo5.png",
         height: "80px",
         width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/images/logos/logo6.png",
         height: "80px",
@@ -65938,6 +65927,28 @@ function (_Component) {
         src: "/images/logos/logo7.png",
         height: "80px",
         width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo8.png",
+        height: "80px",
+        width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo9.png",
+        height: "80px",
+        width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo10.png",
+        height: "80px",
+        width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo11.png",
+        height: "80px",
+        width: "80px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/logos/logo12.png",
+        height: "80px",
+        width: "80px"
       }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65946,12 +65957,13 @@ function (_Component) {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", (_React$createElement = {
-        className: "img-fluid",
+      }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         height: "500",
         src: this.state.remera,
-        id: "imagenRemera"
-      }, _defineProperty(_React$createElement, "className", "d-block w-100"), _defineProperty(_React$createElement, "alt", "..."), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "imagenRemera",
+        className: "d-block w-100",
+        alt: "..."
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"
       }, "Guardar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-2"

@@ -102,15 +102,34 @@ section.pricing {
  .logos
  {
    width:310px;
-   height:460px;
+   height:512px;
    overflow-y:scroll;
    background-color: #f5f0f2;
+   padding: 10px;
+   
+ }
+ .imagen-logos{
+  border-image: 21px;
  }
  
  #tittle{
   font-size: 120%;
   text-align: center;
  }
+
+ .img-fluid
+ {
+  position:absolute;
+  height:200px;
+  width:180px;
+  top: 40px;
+  left : 40px;
+  visibility:visible;
+  z-index:-1;
+  
+ }
+
+
 
  
   /* Hover Effects on Card */
@@ -122,7 +141,7 @@ section.pricing {
       box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
     }
     .pricing .card:hover .btn {
-      opacity: 1;
+      opacity: 100;
     }
   
   }
