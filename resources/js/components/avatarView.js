@@ -11,6 +11,7 @@ export default class AvatarView extends Component{
         hair : 'Pelo1',
         eyes : 'Ojos1',
         mouth : 'Boca1',
+        AllAvatars : [],
         userID : 1,
         errors : []
     };
@@ -62,14 +63,15 @@ export default class AvatarView extends Component{
         event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
          if(event.target.value ="")
             alert("No se puede tener un avatar SIN nombre, por favor, ingrese un nombre")
-        else
-        const avatar = {
-            name = this.state.name
-            face = this.state.face
-            hair = this.state.hair
-            eyes = this.state.eyes
-            mouth = this.state.mouth
-            userID = this.state.userID
+        else{
+            const avatar = {
+                name = this.state.name
+                face = this.state.face
+                hair = this.state.hair
+                eyes = this.state.eyes
+                mouth = this.state.mouth
+                userID = this.state.userID
+            }
         }
         axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
         //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
@@ -83,6 +85,10 @@ export default class AvatarView extends Component{
                     <div className="col-md-9">
                         <Avatar 
                             handleNameChange={this.handleNameChange}
+                            face={this.state.face}
+                            hair={this.state.hair}
+                            eyes={this.state.eyes}
+                            mouth={this.state.mouth}
                         />
                     </div>
                 
@@ -92,6 +98,7 @@ export default class AvatarView extends Component{
                             handleHairChange={this.handleHairChange}
                             handleEyesChange={this.handleEyesChange}
                             handleMouthChange={this.handleMouthChange}
+                            AllAvatars={this.state.AllAvatars}
                         />
                     </div>
                 </div>

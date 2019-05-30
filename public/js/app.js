@@ -6565,6 +6565,25 @@ exports.push([module.i, "body {\r\n    background-color: #FFCC00;\r\n    padding
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/Sidebar.css":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/ComponentCSS/Sidebar.css ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".avataresPrevios{\r\n    overflow-x:scroll;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/readmeStyle.css":
 /*!**********************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/ComponentCSS/readmeStyle.css ***!
@@ -6596,7 +6615,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".superponer{\r\n    /*position: absolute;*/\r\n    top: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    bottom: 0px;\r\n\r\n}", ""]);
+exports.push([module.i, ".superponer{\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    bottom: 0px;\r\n\r\n}", ""]);
 
 // exports
 
@@ -60905,7 +60924,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66572,14 +66591,20 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "hair superponer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+        src: window.location.origin + '/RecursosGraficos/Caras/' + this.props.face + '.png'
       }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "skin superponer"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "eyes superponer"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mouth superponer"
-      })))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'
+      }))))))));
     }
   }]);
 
@@ -66686,6 +66711,7 @@ function (_Component) {
       hair: 'Pelo1',
       eyes: 'Ojos1',
       mouth: 'Boca1',
+      AllAvatars: [],
       userID: 1,
       errors: []
     });
@@ -66702,14 +66728,15 @@ function (_Component) {
       event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
        if(event.target.value ="")
           alert("No se puede tener un avatar SIN nombre, por favor, ingrese un nombre")
-      else
-      const avatar = {
-          name = this.state.name
-          face = this.state.face
-          hair = this.state.hair
-          eyes = this.state.eyes
-          mouth = this.state.mouth
-          userID = this.state.userID
+      else{
+          const avatar = {
+              name = this.state.name
+              face = this.state.face
+              hair = this.state.hair
+              eyes = this.state.eyes
+              mouth = this.state.mouth
+              userID = this.state.userID
+          }
       }
       axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
       //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
@@ -66724,14 +66751,19 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-9"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatar_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        handleNameChange: this.handleNameChange
+        handleNameChange: this.handleNameChange,
+        face: this.state.face,
+        hair: this.state.hair,
+        eyes: this.state.eyes,
+        mouth: this.state.mouth
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleFaceChange: this.handleFaceChange,
         handleHairChange: this.handleHairChange,
         handleEyesChange: this.handleEyesChange,
-        handleMouthChange: this.handleMouthChange
+        handleMouthChange: this.handleMouthChange,
+        AllAvatars: this.state.AllAvatars
       }))));
     }
   }]);
@@ -66812,6 +66844,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./Main.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/Main.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/components/ComponentCSS/Sidebar.css":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/ComponentCSS/Sidebar.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./Sidebar.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/Sidebar.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -67049,9 +67111,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SideBar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Avatar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Avatar */ "./resources/js/components/Avatar.js");
+/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ComponentCSS/superponer.css */ "./resources/js/components/ComponentCSS/superponer.css");
+/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ComponentCSS_Sidebar_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ComponentCSS/Sidebar.css */ "./resources/js/components/ComponentCSS/Sidebar.css");
+/* harmony import */ var _ComponentCSS_Sidebar_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_Sidebar_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Avatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Avatar */ "./resources/js/components/Avatar.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67069,6 +67135,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -67107,8 +67175,7 @@ function (_Component) {
     key: "changeMouth",
     value: function changeMouth(event) {
       this.props.handleMouthChange(event);
-    } 
-
+    }
   }]);
 
   function SideBar(props) {
@@ -67128,7 +67195,38 @@ function (_Component) {
   _createClass(SideBar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar fixed-bottom avataresPrevios"
+      }, this.props.AllAvatars.map(function (avatar) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row justify-content-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-8"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card  text-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "hair superponer"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/RecursosGraficos/Caras/' + avatar.face + '.png'
+        }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "skin superponer"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eyes superponer"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/RecursosGraficos/Pelo/' + avatar.hair + '.png'
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "mouth superponer"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.location.origin + '/RecursosGraficos/Boca/' + avatar.mouth + '.png'
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-outline-info btn-lg",
+          value: "Cargar" + avatar.name
+        })))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar fixed-bottom  navbar-dark bg-dark"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
@@ -67145,7 +67243,7 @@ function (_Component) {
         href: "#",
         onClick: this.changeSkin
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Cara20",
+        name: "Cara1",
         src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
@@ -67162,8 +67260,8 @@ function (_Component) {
         href: "#",
         onClick: this.changeHair
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Cabello20",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+        name: "Pelo1",
+        src: window.location.origin + '/RecursosGraficos/Pelos/Pelo1.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -67179,8 +67277,8 @@ function (_Component) {
         href: "#",
         onClick: this.changeEyes
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Ojos20",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+        name: "Ojos1",
+        src: window.location.origin + '/RecursosGraficos/Ojos/Ojos1.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -67196,14 +67294,14 @@ function (_Component) {
         href: "#",
         onClick: this.changeMouth
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Boca20",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+        name: "Boca1",
+        src: window.location.origin + '/RecursosGraficos/Bocas/Boca1.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "btn btn-outline-success btn-lg",
         type: "submit",
         value: "Guardar Avatar",
         onClick: this.saveAvatar
-      }));
+      })));
     }
   }]);
 
