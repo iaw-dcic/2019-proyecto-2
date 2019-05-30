@@ -17,6 +17,13 @@ export default class Playoffs extends Component {
     }
 
     componentDidMount() {
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+        
         axios.get('/api/playoffs').then(response => {
             this.setState({
                 playoffs: response.data,
@@ -107,8 +114,8 @@ export default class Playoffs extends Component {
         return (
             <>
                 <div>
-                    <select id='playoff' name="playoff" onChange={(e) => this.handleChange(e)} value={this.state.selected}>
-                        <option value=''>Seleccione</option>
+                    <select className="form-control" id='playoff' name="playoff" onChange={(e) => this.handleChange(e)} value={this.state.selected}>
+                        <option value=''>Elegir</option>
                         {
                             this.state.playoffs.map((arbol, id) => (
                                 <option key={id} value={id}>Playoff {id + 1}</option>

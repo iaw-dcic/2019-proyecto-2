@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('teams', 'PlayoffController@teams');
 Route::get('playoffs', 'PlayoffController@playoffs');
-Route::post('playoffs', 'PlayoffController@store');
+Route::middleware('auth:api')->post('playoffs', 'PlayoffController@store');
 Route::delete('playoffs/delete/{id}', 'PlayoffController@delete');

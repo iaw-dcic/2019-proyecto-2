@@ -7,9 +7,8 @@ export default class Container extends Component {
 
     constructor() {
         super()
-        var content1 = <Tournament />;
         this.state = {
-            content: content1
+            content: <Tournament />
         }
     }
 

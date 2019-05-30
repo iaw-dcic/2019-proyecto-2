@@ -65729,6 +65729,11 @@ function (_Component) {
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      localStorage.clear();
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Container__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
@@ -65792,9 +65797,8 @@ function (_Component) {
     _classCallCheck(this, Container);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Container).call(this));
-    var content1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tournament_Tournament__WEBPACK_IMPORTED_MODULE_2__["default"], null);
     _this.state = {
-      content: content1
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tournament_Tournament__WEBPACK_IMPORTED_MODULE_2__["default"], null)
     };
     return _this;
   }
@@ -65802,15 +65806,13 @@ function (_Component) {
   _createClass(Container, [{
     key: "handleChangeTournament",
     value: function handleChangeTournament() {
-      var content1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tournament_Tournament__WEBPACK_IMPORTED_MODULE_2__["default"], null);
       this.setState({
-        content: content1
+        content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tournament_Tournament__WEBPACK_IMPORTED_MODULE_2__["default"], null)
       });
     }
   }, {
     key: "handleChangePlayoffs",
     value: function handleChangePlayoffs() {
-      var content1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Playoffs_Playoffs__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       this.setState({
         content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Playoffs_Playoffs__WEBPACK_IMPORTED_MODULE_3__["default"], null)
       });
@@ -65923,6 +65925,11 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       axios.get('/api/playoffs').then(function (response) {
         _this2.setState({
           playoffs: response.data
@@ -66020,6 +66027,7 @@ function (_Component) {
 
       var i = 0;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
         id: "playoff",
         name: "playoff",
         onChange: function onChange(e) {
@@ -66028,7 +66036,7 @@ function (_Component) {
         value: this.state.selected
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: ""
-      }, "Seleccione"), this.state.playoffs.map(function (arbol, id) {
+      }, "Elegir"), this.state.playoffs.map(function (arbol, id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: id,
           value: id
@@ -66238,7 +66246,7 @@ function (_Component) {
       cuartos: [],
       semis: [],
       "final": [],
-      winner: ""
+      winner: ''
     };
     return _this;
   }
@@ -66246,11 +66254,47 @@ function (_Component) {
   _createClass(Container, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
+      if (localStorage.hasOwnProperty('teams')) {
+        var teamsAux = localStorage.getItem('teams');
+        var cuartosAux = localStorage.getItem('cuartos');
+        var semisAux = localStorage.getItem('semis');
+        var finalAux = localStorage.getItem('final');
+        var winnerAux = localStorage.getItem('winner');
+
+        try {
+          teamsAux = JSON.parse(teamsAux);
+          cuartosAux = JSON.parse(cuartosAux);
+          semisAux = JSON.parse(semisAux);
+          finalAux = JSON.parse(finalAux);
+          this.setState({
+            teams: teamsAux,
+            cuartos: cuartosAux,
+            semis: semisAux,
+            "final": finalAux,
+            winner: winnerAux
+          });
+        } catch (e) {
+          this.cleanStart();
+        }
+      } else {
+        this.cleanStart();
+      }
+    }
+  }, {
+    key: "cleanStart",
+    value: function cleanStart() {
       var _this2 = this;
 
       var cuartosAux = [];
       var semisAux = [];
       var finalAux = [];
+      var winnerAux = "";
 
       for (var i = 0; i < 8; i++) {
         cuartosAux[i] = "";
@@ -66269,9 +66313,18 @@ function (_Component) {
           teams: response.data,
           cuartos: cuartosAux,
           semis: semisAux,
-          "final": finalAux
+          "final": finalAux,
+          winner: winnerAux
         });
       });
+    }
+  }, {
+    key: "saveIntoLocalStorage",
+    value: function saveIntoLocalStorage() {
+      localStorage.setItem("teams", JSON.stringify(this.state.teams));
+      localStorage.setItem("cuartos", JSON.stringify(this.state.cuartos));
+      localStorage.setItem("semis", JSON.stringify(this.state.semis));
+      localStorage.setItem("final", JSON.stringify(this.state["final"]));
     }
   }, {
     key: "handleOctavosClick",
@@ -66292,6 +66345,7 @@ function (_Component) {
             this.setState({
               winner: name
             });
+            localStorage.setItem("winner", name);
           }
 
           finalAux[posFinal] = name;
@@ -66310,6 +66364,7 @@ function (_Component) {
       this.setState({
         cuartos: cuartosAux
       });
+      this.saveIntoLocalStorage();
     }
   }, {
     key: "handleCuartosClick",
@@ -66329,6 +66384,7 @@ function (_Component) {
             this.setState({
               winner: name
             });
+            localStorage.setItem("winner", name);
           }
 
           finalAux[posFinal] = name;
@@ -66341,6 +66397,7 @@ function (_Component) {
         this.setState({
           semis: semisAux
         });
+        this.saveIntoLocalStorage();
       }
     }
   }, {
@@ -66359,6 +66416,7 @@ function (_Component) {
             this.setState({
               winner: name
             });
+            localStorage.setItem("winner", name);
           }
         }
 
@@ -66366,6 +66424,7 @@ function (_Component) {
         this.setState({
           "final": finalAux
         });
+        this.saveIntoLocalStorage();
       }
     }
   }, {
@@ -66377,16 +66436,17 @@ function (_Component) {
         this.setState({
           winner: name
         });
+        localStorage.setItem("winner", name);
       }
     }
   }, {
     key: "handleSaveClick",
     value: function handleSaveClick(e) {
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-      window.axios.defaults.headers.common = {
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      };
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
       try {
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/playoffs', {

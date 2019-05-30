@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Container from './Container'
 
 class App extends Component {
+    componentDidMount(){
+        localStorage.clear();
+    }
     render() {
         return (
             <BrowserRouter>

@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rules\validarExistenciaTeam;
-use Auth;
 use DB;
 use App\Team;
 use App\Node;
 use App\Playoff;
 use Response;
-use App\User;
 
 class PlayoffController extends Controller
 {
@@ -21,7 +19,7 @@ class PlayoffController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth:api');
     }
 
     public function teams()
@@ -30,15 +28,16 @@ class PlayoffController extends Controller
         $arr = [];
         foreach ($teams as $team) {
             $arr[] = ['nombre' => $team->teamname];
-            //array_push($arr,$team->teamname);
         }
         return Response::json($arr);
     }
 
     public function playoffs()
     {
+        $user = auth('api')->user();
+
         $arr = [];
-        $playoffs = User::where('id', 1)->first()->playoffs()->getResults();
+        $playoffs = $user->playoffs()->getResults();
 
         foreach ($playoffs as $playoff) {
             $playoffArr = ['id' => $playoff->id, 'arbol' => $playoff->playoff()];
@@ -64,6 +63,7 @@ class PlayoffController extends Controller
         ]);
 
         $data = $request->all();
+        $user = auth('api')->user();
 
         try {
             DB::beginTransaction();
@@ -112,11 +112,11 @@ class PlayoffController extends Controller
 
             $raiz = $arbol[0];
             Playoff::create([
-                'user_id' => '1',
+                'user_id' => $user->id,
                 'raiz' => $raiz['id'],
             ]);
             DB::commit();
-            return response()->json([$arbol]);
+            return response()->json([$data]);
         } catch (\Exception $e) {
             DB::rollback();
             abort(500);
@@ -127,8 +127,13 @@ class PlayoffController extends Controller
     {
         try {
             DB::beginTransaction();
+            $user = auth('api')->user();
+            $playoff = Playoff::where('id',$id)->where('user_id',$user->id)->first();
 
-            $playoff = Playoff::where('id',$id)->first();
+            if($playoff==null){
+                abort(403, 'Unauthorized action.');
+            }
+
             $raiz = Node::where('id',$playoff->raiz)->first();
 
             $arbol = $raiz->getArbolEnArreglo();

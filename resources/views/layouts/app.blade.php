@@ -12,6 +12,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @auth
+    <meta name="api-token" content="{{ Auth::user()->api_token}}">
+    @endauth
+
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -29,7 +33,7 @@
     <!-- Main Stylesheet File -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/personalstyles.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/pruebatabla.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tabla.css') }}" rel="stylesheet">
 
     <!-- =======================================================
     Theme Name: Regna
@@ -118,7 +122,6 @@
     <script src="{{ asset('/lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('/lib/superfish/superfish.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
 
