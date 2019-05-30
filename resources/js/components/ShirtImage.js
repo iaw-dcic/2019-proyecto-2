@@ -81,7 +81,7 @@ export default class ShirtImage extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Remera</h5>
                                     <img  height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
-                                     <a className="btn btn-block btn-secondary text-uppercase">Guardar</a>
+                                     <a className="btn btn-block btn-secondary text-uppercase">Crear diseño</a>
                                 </div>
                             </div>
                         </div>
@@ -131,6 +131,13 @@ export default class ShirtImage extends Component {
                                             <option value="Modal">Modal</option>
                             
                                         </select>
+
+                                        <hr width="100%"></hr>
+                                        
+                                        <h2 id="tittle"> Mis Diseños </h2>
+                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de remeras</h5>
+                                        <a className="btn btn-block btn-secondary text-uppercase">Ver</a>
+
 
 
 

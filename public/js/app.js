@@ -65977,7 +65977,7 @@ function (_Component) {
         alt: "..."
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"
-      }, "Guardar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Crear dise\xF1o")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
@@ -66095,7 +66095,15 @@ function (_Component) {
         value: "Lycra"
       }, "Lycra"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "Modal"
-      }, "Modal")))))))));
+      }, "Modal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, " Mis Dise\xF1os "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Listado de remeras"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "btn btn-block btn-secondary text-uppercase"
+      }, "Ver"))))))));
     }
   }]);
 
