@@ -15,7 +15,7 @@ class userAvatarController extends Controller
     }
 
     public function index(){
-        $Avatares = User::findOrFail(Auth::user()->id)->avatars;
+        $Avatares = User::findOrFail(auth('api')->user()->id)->avatars;
         dd($Avatares);
         return $Avatares->toJson();
     }
@@ -28,7 +28,9 @@ class userAvatarController extends Controller
             'eyes' => 'required',
             'mouth' => 'required',
           ]);
-
+        $avatar = avatar::find($request->avatarID);
+        
+        if($avatar == null){
           $avatar = avatar::create([
             'name' => $validatedData['name'],
             'face' => $validatedData['face'],
@@ -36,17 +38,29 @@ class userAvatarController extends Controller
             'hair' => $validatedData['hair'],
             'mouth' => $validatedData['mouth'],
           ]);
-
-        return response()->json('Avatar guardado!');
+        dd($avatar->id);
+        return response()->json($avatar->id);
+        }
+        else{
+            update($avatar);
+        }
     }
 
     public function show($id){
-
+        $avatar = avatar::findOrFail($id);
     }
 
 
     public function update(avatar $avatar){
-
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'face' => 'required',
+            'hair' => 'required',
+            'eyes' => 'required',
+            'mouth' => 'required',
+        ]);
+        $avatar->update();
+        return response()->toJson('avatar actualizado!');
     }
 
     public function getUserID(Request $request){
@@ -56,9 +70,8 @@ class userAvatarController extends Controller
         return $ID; 
     }
 
-    public function getResources(String $type){
-        dd($type);
-        $recursos = DB::table('attires')->where('type',$type)->get();
+    public function getResources(){
+        $recursos = DB::table('attires')->where('type',"skin")->get();
         return $recursos->toJson();
     }
 

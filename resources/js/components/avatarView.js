@@ -13,6 +13,7 @@ export default class AvatarView extends Component{
         mouth : 'Boca1',
         AllAvatars : [],
         userID : -1,
+        avatarID : -1,
         errors : []
     };
     
@@ -107,7 +108,12 @@ export default class AvatarView extends Component{
                 userID = this.state.userID
             }
         }
-        axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
+        axios.post('api/' + userID + '/avatars', {avatar}).then(res => {
+            console.log(res);
+            this.setState({
+                avatarID : response.data
+            })
+        }) //hago el POST por Axios a la API que yo creé
         //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
 
     }*/

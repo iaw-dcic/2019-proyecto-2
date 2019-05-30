@@ -1,3 +1,6 @@
 .avataresPrevios{
     overflow-x:scroll;
 }
+.dropdown-menu{
+    overflow-y: scroll;
+}
