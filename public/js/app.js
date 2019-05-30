@@ -65959,54 +65959,52 @@ function (_Component) {
   }, {
     key: "handleOctavos",
     value: function handleOctavos(e) {
-      var pos = Math.floor(e.target.id / 2);
-      var cuartosAux = this.state.cuartos;
-      this.comprobarCuartos(e.target.innerHTML, pos);
-      cuartosAux[pos] = e.target.innerHTML;
-      this.setState({
-        cuartos: cuartosAux
-      });
+      if (e.target.innerHTML != "") {
+        var pos = Math.floor(e.target.id / 2);
+        var cuartosAux = this.state.cuartos;
+        var equipo = cuartosAux[pos];
+        if (equipo != "" && equipo != e.target.innerHTML) this.comprobarSemis(equipo, Math.floor(pos / 2));
+        cuartosAux[pos] = e.target.innerHTML;
+        this.setState({
+          cuartos: cuartosAux
+        });
+      }
     }
   }, {
     key: "handleCuartos",
     value: function handleCuartos(e) {
-      var pos = Math.floor(e.target.id / 2);
-      var semisAux = this.state.semis;
-      this.comprobarSemis(e.target.innerHTML, pos);
-      semisAux[pos] = e.target.innerHTML;
-      this.setState({
-        semis: semisAux
-      });
+      if (e.target.innerHTML != "") {
+        var pos = Math.floor(e.target.id / 2);
+        var semisAux = this.state.semis;
+        var equipo = semisAux[pos];
+        if (equipo != "" && equipo != e.target.innerHTML) this.comprobarFinal(equipo, Math.floor(pos / 2));
+        semisAux[pos] = e.target.innerHTML;
+        this.setState({
+          semis: semisAux
+        });
+      }
     }
   }, {
     key: "handleSemis",
     value: function handleSemis(e) {
-      var pos = Math.floor(e.target.id / 2);
-      var finalAux = this.state["final"];
-      this.comprobarFinal(e.target.innerHTML, pos);
-      finalAux[pos] = e.target.innerHTML;
-      this.setState({
-        "final": finalAux
-      });
+      if (e.target.innerHTML != "") {
+        var pos = Math.floor(e.target.id / 2);
+        var finalAux = this.state["final"];
+        var equipo = finalAux[pos];
+        if (equipo != "" && equipo != e.target.innerHTML) this.comprobarCampeon(equipo, Math.floor(pos / 2));
+        finalAux[pos] = e.target.innerHTML;
+        this.setState({
+          "final": finalAux
+        });
+      }
     }
   }, {
     key: "handleFinal",
     value: function handleFinal(e) {
-      var campeonAux = [e.target.innerHTML];
-      this.setState({
-        campeon: campeonAux
-      });
-    }
-  }, {
-    key: "comprobarCuartos",
-    value: function comprobarCuartos(name, pos) {
-      var cuartosAux = this.state.cuartos;
-
-      if (cuartosAux[pos] != "" && cuartosAux[pos] != name) {
-        this.comprobarSemis(name, Math.floor(pos / 2));
-        cuartosAux[pos] = "";
+      if (e.target.innerHTML != "") {
+        var campeonAux = [e.target.innerHTML];
         this.setState({
-          cuartos: cuartosAux
+          campeon: campeonAux
         });
       }
     }
@@ -66015,7 +66013,7 @@ function (_Component) {
     value: function comprobarSemis(name, pos) {
       var semisAux = this.state.semis;
 
-      if (semisAux[pos] != "" && semisAux[pos] != name) {
+      if (semisAux[pos] == name) {
         this.comprobarFinal(name, Math.floor(pos / 2));
         semisAux[pos] = "";
         this.setState({
@@ -66028,7 +66026,7 @@ function (_Component) {
     value: function comprobarFinal(name, pos) {
       var finalAux = this.state["final"];
 
-      if (finalAux[pos] != "" && finalAux[pos] != name) {
+      if (finalAux[pos] == name) {
         this.comprobarCampeon(name);
         finalAux[pos] = "";
         this.setState({
@@ -66041,7 +66039,7 @@ function (_Component) {
     value: function comprobarCampeon(name) {
       var campeonAux = this.state.campeon;
 
-      if (campeonAux[0] != "" && campeonAux[0] != name) {
+      if (campeonAux[0] == name) {
         campeonAux[0] = "";
         this.setState({
           campeon: campeonAux
