@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Listado de telas
+Route::get('/telas','TelasController@listadoTelas')->name('listadoTelas');
+//Listado de talles
+Route::get('/talles','TallesController@listadoTalles')->name('listadoTalles');

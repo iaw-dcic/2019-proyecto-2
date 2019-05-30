@@ -65758,6 +65758,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ShirtImage; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65778,6 +65780,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ShirtImage =
 /*#__PURE__*/
 function (_Component) {
@@ -65791,8 +65794,10 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
     _this.state = {
       remera: '/images/remeras/remerablanca.png',
-      talle: 'XS',
-      tela: 'Algodón'
+      talle: "XS",
+      tela: "Algodon",
+      telas: [],
+      talles: []
     };
     return _this;
   }
@@ -65870,9 +65875,25 @@ function (_Component) {
       });
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
+        _this2.setState({
+          telas: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/talles').then(function (response) {
+        _this2.setState({
+          talles: response.data
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pricing py-5"
@@ -65894,7 +65915,7 @@ function (_Component) {
         className: "imagen-logos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
-        "class": "thumbnail"
+        className: "thumbnail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img-thumbnail",
         src: "/images/logos/logo1.png",
@@ -65998,28 +66019,28 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorBlanco",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorBlanco");
+          return _this3.cambiarColorRemera(e, "remera-colorBlanco");
         },
         type: "button",
         className: "btn-item-color"
       }, "  "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorAzul",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorAzul");
+          return _this3.cambiarColorRemera(e, "remera-colorAzul");
         },
         type: "button",
         className: "btn-item-color"
       }, "  "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorRosa",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorRosa");
+          return _this3.cambiarColorRemera(e, "remera-colorRosa");
         },
         type: "button",
         className: "btn-item-color"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorAmarillo",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorAmarillo");
+          return _this3.cambiarColorRemera(e, "remera-colorAmarillo");
         },
         type: "button",
         className: "btn-item-color"
@@ -66028,28 +66049,28 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorNegro",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorNegro");
+          return _this3.cambiarColorRemera(e, "remera-colorNegro");
         },
         type: "button",
         className: "btn-item-color"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorNaranja",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorNaranja");
+          return _this3.cambiarColorRemera(e, "remera-colorNaranja");
         },
         type: "button",
         className: "btn-item-color"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorVioleta",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorVioleta");
+          return _this3.cambiarColorRemera(e, "remera-colorVioleta");
         },
         type: "button",
         className: "btn-item-color"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "remera-colorCeleste",
         onClick: function onClick(e) {
-          return _this2.cambiarColorRemera(e, "remera-colorCeleste");
+          return _this3.cambiarColorRemera(e, "remera-colorCeleste");
         },
         type: "button",
         className: "btn-item-color"
@@ -66062,21 +66083,14 @@ function (_Component) {
       }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
         onChange: function onChange(e) {
-          return _this2.cambiarTalle(e);
+          return _this3.cambiarTalle(e);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "XS"
-      }, "XS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "S"
-      }, "S"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "M"
-      }, "M"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "L"
-      }, "L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "XL"
-      }, "XL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "XXL"
-      }, "XXL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+      }, this.state.talles.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: item.tipo,
+          value: item.tipo
+        }, item.tipo);
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "tittle"
@@ -66085,17 +66099,14 @@ function (_Component) {
       }, "Listado de Telas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
         onChange: function onChange(e) {
-          return _this2.cambiarTela(e);
+          return _this3.cambiarTela(e);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Algod\xF3n"
-      }, "Algod\xF3n"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Acetato"
-      }, "Acetato"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Lycra"
-      }, "Lycra"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Modal"
-      }, "Modal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+      }, this.state.telas.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: item.nombre,
+          value: item.nombre
+        }, item.nombre);
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "tittle"

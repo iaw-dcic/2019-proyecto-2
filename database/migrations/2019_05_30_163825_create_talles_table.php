@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableTelas extends Migration
+class CreateTallesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableTelas extends Migration
      */
     public function up()
     {
-        Schema::create('table_telas', function (Blueprint $table) {
+        Schema::create('talles', function (Blueprint $table) {
             $table->string('talle');
             $table->timestamps();
 
@@ -28,6 +28,6 @@ class CreateTableTelas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_telas');
+        Schema::dropIfExists('talles');
     }
 }

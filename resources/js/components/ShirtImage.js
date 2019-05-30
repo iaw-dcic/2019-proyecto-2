@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class ShirtImage extends Component {
 
@@ -6,8 +7,10 @@ export default class ShirtImage extends Component {
         super(props);
         this.state = {
             remera: '/images/remeras/remerablanca.png',
-            talle: 'XS',
-            tela:'Algodón'
+            talle: "XS",
+            tela: "Algodon",
+            telas: [],
+            talles:[]
         }
     }
 
@@ -40,6 +43,17 @@ export default class ShirtImage extends Component {
     cambiarTela(e) {
         this.setState({ tela: e.target.value });
     }
+
+
+    componentDidMount() {
+        axios.get('/api/telas').then(response => {
+            this.setState({telas: response.data})
+        })
+        axios.get('/api/talles').then(response => {
+            this.setState({talles: response.data})
+        })
+    }
+ 
     render() {
         return (
             <section className="pricing py-5">
@@ -52,7 +66,7 @@ export default class ShirtImage extends Component {
                                     <hr></hr>
                                     <div className="logos">
                                         <div className="imagen-logos">
-                                            <a href="#" class="thumbnail">
+                                            <a href="#" className="thumbnail">
                                                 <img className="img-thumbnail" src="/images/logos/logo1.png" height="80px" width="80px"></img>
                                                 <img className="img-thumbnail" src="/images/logos/logo2.png" height="80px" width="80px"></img>
                                                 <img className="img-thumbnail" src="/images/logos/logo3.png" height="80px" width="80px"></img>
@@ -65,13 +79,13 @@ export default class ShirtImage extends Component {
                                                 <hr width="100%"></hr>
                                                 <img className="img-thumbnail" src="/images/logos/logo9.png" height="80px" width="80px"></img>
                                                 <img className="img-thumbnail" src="/images/logos/logo10.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail"src="/images/logos/logo11.png" height="80px" width="80px"></img>
+                                                <img className="img-thumbnail" src="/images/logos/logo11.png" height="80px" width="80px"></img>
                                                 <img className="img-thumbnail" src="/images/logos/logo12.png" height="80px" width="80px"></img>
                                                 <hr width="100%"></hr>
                                             </a>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -80,8 +94,8 @@ export default class ShirtImage extends Component {
                             <div className="card mb-5 mb-lg-0">
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Remera</h5>
-                                    <img  height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
-                                     <a className="btn btn-block btn-secondary text-uppercase">Crear diseño</a>
+                                    <img height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
+                                    <a className="btn btn-block btn-secondary text-uppercase">Crear diseño</a>
                                 </div>
                             </div>
                         </div>
@@ -105,42 +119,39 @@ export default class ShirtImage extends Component {
                                                 <button id="remera-colorVioleta" onClick={(e) => this.cambiarColorRemera(e, "remera-colorVioleta")} type="button" className="btn-item-color"></button>
                                                 <button id="remera-colorCeleste" onClick={(e) => this.cambiarColorRemera(e, "remera-colorCeleste")} type="button" className="btn-item-color"></button>
                                             </div>
-
                                         </div>
-                                        <hr width="100%"></hr>
 
+                                        <hr width="100%"></hr>
 
                                         <h2 id="tittle">Talle {this.state.talle} </h2>
                                         <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
                                         <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
-                                            <option value="XS">XS</option>
-                                            <option value="S">S</option>
-                                            <option value="M">M</option>
-                                            <option value="L">L</option>
-                                            <option value="XL">XL</option>
-                                            <option value="XXL">XXL</option>
+                                            {
+                                                this.state.talles.map((item)=> (
+                                                    <option key={item.tipo} value={item.tipo}>{item.tipo}</option>
+                                                ))
+
+                                            }
                                         </select>
+
                                         <hr width="100%"></hr>
-                                        
+
                                         <h2 id="tittle">Tela {this.state.tela} </h2>
                                         <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
                                         <select className="form-control" onChange={(e) => this.cambiarTela(e)}>
-                                            <option value="Algodón">Algodón</option>
-                                            <option value="Acetato">Acetato</option>
-                                            <option value="Lycra">Lycra</option>
-                                            <option value="Modal">Modal</option>
-                            
+                                            {
+                                                this.state.telas.map((item)=> (
+                                                    <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
+                                                ))
+                                            }
                                         </select>
 
                                         <hr width="100%"></hr>
-                                        
+
                                         <h2 id="tittle"> Mis Diseños </h2>
                                         <h5 className="card-title text-muted text-uppercase text-center">Listado de remeras</h5>
-                                        <a className="btn btn-block btn-secondary text-uppercase">Ver</a>
-
-
-
-
+                                        <a className="btn btn-block btn-secondary text-uppercase">Ver</a>                                
+                                        
                                     </div>
                                 </div>
                             </div>
