@@ -15,18 +15,21 @@ class ExtraItemController extends Controller
     public function index()
     {
         return response()->json([
-            'items' => ExtraItem::all()
+            'items' => ExtraItem::all(),
+            'status' => 'success'
             ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\ExtraItem  $extraItem
      * @return \Illuminate\Http\Response
      */
-    public function show(ExtraItem $extraItem)
+    public function show($extraItem)
     {
-        return $extraItem;
+        return response()->json([
+            'item' => ExtraItem::find($extraItem),
+            'status' => 'success'
+            ], 200);
     }
 }

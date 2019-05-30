@@ -15,18 +15,21 @@ class BodyItemController extends Controller
     public function index()
     {
         return response()->json([
-            'items' => BodyItem::all()
+            'items' => BodyItem::all(),
+            'status' => 'success'
             ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\BodyItem  $bodyItem
      * @return \Illuminate\Http\Response
      */
-    public function show(BodyItem $bodyItem)
+    public function show($bodyItem)    
     {
-        return $bodyItem;
+        return response()->json([
+            'item' => BodyItem::find($bodyItem),
+            'status' => 'success'
+            ], 200);
     }
 }

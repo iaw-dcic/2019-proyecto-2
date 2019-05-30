@@ -15,18 +15,21 @@ class UpperBodyItemController extends Controller
     public function index()
     {
         return response()->json([
-            'items' => UpperBodyItem::all()
+            'items' => UpperBodyItem::all(),
+            'status' => 'success'
             ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\UpperBodyItem  $upperbodyItem
      * @return \Illuminate\Http\Response
      */
-    public function show(UpperBodyItem $upperbodyItem)
+    public function show($upperbodyItem)
     {
-        return $upperbodyItem;
+        return response()->json([
+            'item' => UpperBodyItem::find($upperbodyItem),
+            'status' => 'success'
+            ], 200);
     }
 }

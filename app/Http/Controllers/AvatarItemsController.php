@@ -25,7 +25,8 @@ class AvatarItemsController extends Controller
                 'upperbodyitems' => UpperBodyItem::all(),
                 'lowerbodyitems' => LowerBodyItem::all(),
                 'extraitems' => ExtraItem::all(),
-                ]
+            ],
+            'status' => 'success'
             ], 200);
     }
 }

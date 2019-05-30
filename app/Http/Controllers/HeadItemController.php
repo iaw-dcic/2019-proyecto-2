@@ -15,18 +15,21 @@ class HeadItemController extends Controller
     public function index()
     {
         return response()->json([
-            'items' => HeadItem::all()
+            'items' => HeadItem::all(),
+            'status' => 'success'
             ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\HeadItem  $headItem
      * @return \Illuminate\Http\Response
      */
-    public function show(HeadItem $headItem)
+    public function show($headItem)
     {
-        return $headItem;
+        return response()->json([
+            'item' => HeadItem::find($headItem),
+            'status' => 'success'
+            ], 200);
     }
 }

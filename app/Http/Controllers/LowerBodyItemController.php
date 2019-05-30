@@ -15,18 +15,21 @@ class LowerBodyItemController extends Controller
     public function index()
     {
         return response()->json([
-            'items' => LowerBodyItem::all()
+            'items' => LowerBodyItem::all(),
+            'status' => 'success'
             ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\LowerBodyItem  $lowerbodyItem
      * @return \Illuminate\Http\Response
      */
-    public function show(LowerBodyItem $lowerbodyItem)
+    public function show($lowerbodyItem)
     {
-        return $lowerbodyItem;
+        return response()->json([
+            'item' => LowerBodyItem::find($lowerbodyItem),
+            'status' => 'success'
+            ], 200);
     }
 }
