@@ -66011,14 +66011,55 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleChangeOctavos",
+    value: function handleChangeOctavos(team, i) {
+      var aux = this.state.cuartos;
+      i = Math.trunc(i / 2);
+      aux[i] = team;
+      this.setState({
+        cuartos: aux
+      });
+    }
+  }, {
+    key: "handleChangeCuartos",
+    value: function handleChangeCuartos(team, i) {
+      var aux = this.state.semifinal;
+      i = Math.trunc(i / 2);
+      aux[i] = team;
+      this.setState({
+        semifinal: aux
+      });
+    }
+  }, {
+    key: "handleChangeSemifinal",
+    value: function handleChangeSemifinal(team, i) {
+      var aux = this.state["final"];
+      i = Math.trunc(i / 2);
+      aux[i] = team;
+      this.setState({
+        "final": aux
+      });
+    }
+  }, {
+    key: "handleChangeFinal",
+    value: function handleChangeFinal(team) {
+      var aux = this.state.ganador;
+      aux = team;
+      this.setState({
+        ganador: aux
+      });
+      console.log(this.state.ganador);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var octavos = [];
       {
         this.state.teams.map(function (team) {
           return octavos.push(team.name);
         });
-        console.log(octavos);
       }
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
@@ -66028,19 +66069,139 @@ function (_Component) {
         id: "tableOctavos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, octavos[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, octavos[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[0], 0);
+        }
+      }, octavos[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[1], 1);
+        }
+      }, octavos[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[2], 2);
+        }
+      }, octavos[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[3], 3);
+        }
+      }, octavos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[4], 4);
+        }
+      }, octavos[4]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[5], 5);
+        }
+      }, octavos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[6], 6);
+        }
+      }, octavos[6]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[7], 7);
+        }
+      }, octavos[7])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[8], 8);
+        }
+      }, octavos[8]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[9], 9);
+        }
+      }, octavos[9])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[10], 10);
+        }
+      }, octavos[10]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[11], 11);
+        }
+      }, octavos[11])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[12], 12);
+        }
+      }, octavos[12]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[13], 13);
+        }
+      }, octavos[13])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[14], 14);
+        }
+      }, octavos[14]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeOctavos(octavos[15], 15);
+        }
+      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableCuartos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[0], 0);
+        }
+      }, this.state.cuartos[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[1], 1);
+        }
+      }, this.state.cuartos[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[2], 2);
+        }
+      }, this.state.cuartos[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[3], 3);
+        }
+      }, this.state.cuartos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[4], 4);
+        }
+      }, this.state.cuartos[4]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[5], 5);
+        }
+      }, this.state.cuartos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[6], 6);
+        }
+      }, this.state.cuartos[6]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(_this3.state.cuartos[7], 7);
+        }
+      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableSemifinal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        id: "tableFinal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemifinal(_this3.state.semifinal[0], 0);
+        }
+      }, this.state.semifinal[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemifinal(_this3.state.semifinal[1], 1);
+        }
+      }, this.state.semifinal[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemifinal(_this3.state.semifinal[2], 2);
+        }
+      }, this.state.semifinal[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemifinal(_this3.state.semifinal[3], 3);
+        }
+      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " FINAL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tablefinal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeFinal(_this3.state["final"][0]);
+        }
+      }, this.state["final"][0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeFinal(_this3.state["final"][1]);
+        }
+      }, this.state["final"][1]))));
     }
   }]);
 
@@ -66069,8 +66230,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
