@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65796,7 +65796,7 @@ function (_Component) {
       remera: '/images/remeras/remerablanca.png',
       talle: "XS",
       tela: "Algodon",
-      estampa: "/images/logos/logo12.png",
+      logo: null,
       telas: [],
       talles: [],
       colores: [],
@@ -65864,6 +65864,13 @@ function (_Component) {
       }
     }
   }, {
+    key: "cambiarLogo",
+    value: function cambiarLogo(e, src) {
+      this.setState({
+        logo: src
+      });
+    }
+  }, {
     key: "cambiarTalle",
     value: function cambiarTalle(e) {
       this.setState({
@@ -65927,13 +65934,15 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "imagen-logos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
         className: "thumbnail"
       }, this.state.logos.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           key: item.logo,
           className: "img-thumbnail",
           src: item.logo,
+          onClick: function onClick(e) {
+            return _this3.cambiarLogo(e, item.logo);
+          },
           height: "80px",
           width: "80px"
         });
@@ -65953,9 +65962,9 @@ function (_Component) {
         id: "imagenRemera",
         className: "d-block w-100",
         alt: "..."
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }), this.state.logo != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         height: "100",
-        src: this.state.estampa,
+        src: this.state.logo,
         id: "imagenLogo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"

@@ -110,15 +110,16 @@ section.pricing {
 
  .logos
  {
-   width:200px;
-   height:512px;
+   width:100%;
+   height:0.1%;
    overflow-y:scroll;
    background-color: #f5f0f2;
-   padding: 10px;
+   padding: 1%;
+  
    
  }
  .imagen-logos{
-  border-image: 300px;
+  border-image: 10%;
  
  }
  
@@ -126,28 +127,22 @@ section.pricing {
   font-size: 120%;
   text-align: center;
  }
-/* Revisar como superponer imagenes
- #imagenRemera
- {
-   position:absolute;
-   left:0px;
-   top:10px;
-   z-index:2;
- }
+
+
  #imagenLogo
  {
   position:absolute;
-  left:204px;
-  top:200px;
+  left:40%;
+  top:45%;
   z-index:3;
  }
- */
+ 
   /* Hover Effects on Card */
   
   @media (min-width: 992px) {
     .pricing .card:hover {
-      margin-top: -.25rem;
-      margin-bottom: .25rem;
+      margin-top: 2%;
+      margin-bottom: 2%;
       box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
     }
     .pricing .card:hover .btn {
