@@ -1,4 +1,9 @@
+ @extends('layouts.app')
+ 
+ @section('content')
+
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -17,9 +22,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/fixture.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="react-app"></div>
+    <h1>LLAVES DE COPA AMERICA 2019</h1>
+
+    <div id="react-app">     
+        
+    </div>
 </body>
 </html>
+@endSection()
