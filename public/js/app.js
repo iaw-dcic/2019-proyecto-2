@@ -67443,10 +67443,18 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('http://localhost/pr2/api/user').then(function (res) {
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      var miInit = {
+        headers: {
+          'X-CSRF-TOKEN': token.content,
+          'Authorization': 'Bearer ' + api_token.content
+        }
+      };
+      fetch('http://localhost/pr2/api/user', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
-        _this2.setState({
+        if (json != null) _this2.setState({
           user: json
         });
       });
@@ -69028,7 +69036,15 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch('http://localhost/pr2/api/cantidadpronosticos').then(function (res) {
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      var miInit = {
+        headers: {
+          'X-CSRF-TOKEN': token.content,
+          'Authorization': 'Bearer ' + api_token.content
+        }
+      };
+      fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this2.setState({

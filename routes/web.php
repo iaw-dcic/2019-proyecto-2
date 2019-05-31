@@ -14,7 +14,8 @@
  
 Auth::routes();
 
-Route::view('/home', 'react');//->middleware('auth');
+Route::view('/home', 'react')->middleware('auth');
+
  Route::get('auth/{provider}', 'UserController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'UserController@handleProviderCallback');
  

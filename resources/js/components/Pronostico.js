@@ -6,7 +6,16 @@ export default class Pronostico extends Component {
 
     }
     componentDidMount() {
-        fetch('http://localhost/pr2/api/cantidadpronosticos')
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        var miInit = {
+            headers: {
+                'X-CSRF-TOKEN': token.content,
+                'Authorization': 'Bearer ' + api_token.content
+            }
+        }
+        fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
             .then(res => res.json())
             .then(json => {
                 if (json != null)

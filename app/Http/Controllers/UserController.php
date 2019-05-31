@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 use Socialite;
 use App\User;
 use App\Pronostico;
-
+use Illuminate\Support\Str;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->middleware('auth:api');
+    }
+
    // Metodo encargado de la redireccion a Facebook
    public function redirectToProvider($provider)
    {
@@ -29,7 +35,7 @@ class UserController extends Controller
            $user = User::create([
                'name' => $social_user->name,
                'email' => $social_user->email,
-               'avatar' => $social_user->avatar,
+               'api_token' => Str::random(60),
            ]);
 
            return $this->authAndRedirect($user); // Login y redirección
@@ -49,6 +55,7 @@ class UserController extends Controller
     $pronostico= Pronostico::create([  'user_id' => '1'  ]   );
         return response()->json($pronostico->id, 201);
    }
+   
    public function ultimoPronostico(){
     $pronostico= Pronostico::select('id')->orderby('created_at','DESC')->first();
 
@@ -56,8 +63,8 @@ class UserController extends Controller
    }
 
    public function cantidadPronosticos(){
-    $user=Auth::user();
-    $pronosticos= Pronostico::where('user_id','=',1)->get();
+    $user=auth('api')->user();
+    $pronosticos= Pronostico::where('user_id','=',$user->id)->get();
     $arreglo=array();
     $i=0; $count=0;
     foreach($pronosticos as $pronostico){
@@ -66,8 +73,10 @@ class UserController extends Controller
         );
         $count ++;
      }
-       
-    return response()->json($arreglo, 200);
+    if($arreglo !=null)
+         return response()->json($arreglo, 200);
+    else
+    return response()->json("null", 404);
 }
    
    public function getuser(){

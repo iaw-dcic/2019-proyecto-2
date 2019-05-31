@@ -1,39 +1,50 @@
 import React, { Component } from 'react';
 import './ppal.css';
- 
+
 export default class Header extends Component {
- 
+
     state = {
 
         user: []
     };
-   
+
     componentWillMount() {
-       
-        fetch('http://localhost/pr2/api/user')
-        
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+
+        var miInit = {
+            headers: {
+                'X-CSRF-TOKEN': token.content,
+                'Authorization': 'Bearer ' + api_token.content
+            }
+        }
+        fetch('http://localhost/pr2/api/user', miInit)
             .then(res => res.json())
             .then(json => {
-                this.setState({
-                    user: json,
-                })
+                if (json != null)
+                    this.setState({
+                        user: json,
+                    })
             });
+
     }
+
     render() {
         let nav;
 
         // nav = <a href="/pr2/login" className="nav-link"> Login</a>
-        if(this.state.user.name != null){
+        if (this.state.user.name != null) {
             nav = <a className="nav-link" href=" "> {this.state.user.name}</a>
-        }else
-        nav = <a className="nav-link" href=" "> Bienvenido</a>
+        } else
+            nav = <a className="nav-link" href=" "> Bienvenido</a>
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
                 <a className="navbar-brand" href="/home">
-             
-                        Master 1000 - Roma
-                    
+
+                    Master 1000 - Roma
+
                 </a>
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -60,4 +71,3 @@ export default class Header extends Component {
     }
 
 }
- 
