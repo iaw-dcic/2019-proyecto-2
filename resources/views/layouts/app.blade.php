@@ -15,6 +15,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/config-app.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"> -->
 </head>
 <body>
     <div id="app">
@@ -70,7 +72,8 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+             @yield('sectioncontent')    
+             @yield('content')              
         </main>
     </div>
 </body>
