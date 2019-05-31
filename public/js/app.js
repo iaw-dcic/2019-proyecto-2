@@ -65791,19 +65791,23 @@ function (_Component) {
   _createClass(Game, [{
     key: "render",
     value: function render() {
+      var child1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "list-group-item list-group-item-action",
+        id: this.props.id1,
+        onClick: this.props.onClick,
+        disabled: this.props.disable
+      }, this.props.teamA);
+      var child2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "list-group-item list-group-item-action",
+        id: this.props.id2,
+        onClick: this.props.onClick,
+        disabled: this.props.disable
+      }, this.props.teamB);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "list-group-item list-group-item-action",
-        id: this.props.id1,
-        onClick: this.props.onClick
-      }, this.props.teamA), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "list-group-item list-group-item-action",
-        id: this.props.id2,
-        onClick: this.props.onClick
-      }, this.props.teamB)));
+      }, child1, child2));
     }
   }]);
 
@@ -65869,35 +65873,80 @@ function (_Component) {
       octavos: [],
       cuartos: ["", "", "", "", "", "", "", ""],
       semis: ["", "", "", ""],
-      "final": ["", ""]
+      "final": ["", ""],
+      prodes: [],
+      champ: 'empty',
+      id: 0,
+      name: 'Nuevo prode'
     };
     _this.onClickOctavos = _this.onClickOctavos.bind(_assertThisInitialized(_this));
     _this.onClickCuartos = _this.onClickCuartos.bind(_assertThisInitialized(_this));
     _this.onClickSemis = _this.onClickSemis.bind(_assertThisInitialized(_this));
+    _this.onClickFinal = _this.onClickFinal.bind(_assertThisInitialized(_this));
+    _this.save = _this.save.bind(_assertThisInitialized(_this));
+    _this.search = _this.search.bind(_assertThisInitialized(_this));
+    _this["new"] = _this["new"].bind(_assertThisInitialized(_this));
+    _this.clear = _this.clear.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Table, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this2 = this;
-
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var data = ["River", "Cruzeiro", "San Lorenzo", "Cerro Porteño", "LDU Quito", "Olimpia", "Paranaense", "Boca", "Godoy Cruz", "Palmeiras", "Gremio", "Libertad", "Emelec", "Flamengo", "Nacional", "Internacional"];
+      this.setState({
+        octavos: data
+      });
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      var self = this;
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/teams').then(function (response) {
-        _this2.setState({
-          octavos: response.data
+        self.setState({
+          prodes: response.data
         });
-      })["catch"](function (errors) {
-        console.log(errors);
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }, {
     key: "render",
     value: function render() {
-      if (this.state.octavos[0] != undefined) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
-      }, this.createTableOctavos(), this.createTableCuartos(), this.createTableSemis(), this.createTableFinal()));else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary mb-2 mr-2",
+        onClick: this.save
+      }, "guardar cambios"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary mb-2 mr-2",
+        onClick: this["new"]
+      }, "nuevo prode"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary mb-2 mr-2",
+        onClick: this.clear
+      }, "limpiar cambios"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "list-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "list-group-item list-group-item-action active"
+      }, "Mis prodes"), this.state.prodes.map(function (prode, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          id: prode.id,
+          className: "list-group-item list-group-item-action",
+          onClick: _this2.search
+        }, prode.created_at);
+      })), this.createTableOctavos(), this.createTableCuartos(), this.createTableSemis(), this.createTableFinal(), this.createChampion()));
     }
   }, {
     key: "createTableOctavos",
@@ -65905,15 +65954,20 @@ function (_Component) {
       var table = [];
       var i = 0;
       var children = [];
+      var disabled = "";
 
       while (i < 16) {
-        children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          teamA: this.state.octavos[i].name,
-          teamB: this.state.octavos[i + 1].name,
+        if (this.state.cuartos[Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
+        var child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          teamA: this.state.octavos[i],
+          teamB: this.state.octavos[i + 1],
           id1: i,
           id2: i + 1,
-          onClick: this.onClickOctavos
-        }));
+          onClick: this.onClickOctavos,
+          create: this.create,
+          disable: disabled
+        });
+        children.push(child);
         i = i + 2;
       }
 
@@ -65929,14 +65983,17 @@ function (_Component) {
       var table = [];
       var i = 0;
       var children = [];
+      var disabled;
 
       while (i < 8) {
+        if (this.state.cuartos[i] == "" || this.state.cuartos[i + 1] == "" || this.state.semis[Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
         children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.cuartos[i],
           teamB: this.state.cuartos[i + 1],
           id1: i,
           id2: i + 1,
-          onClick: this.onClickCuartos
+          onClick: this.onClickCuartos,
+          disable: disabled
         }));
         i = i + 2;
       }
@@ -65953,14 +66010,17 @@ function (_Component) {
       var table = [];
       var i = 0;
       var children = [];
+      var disabled;
 
       while (i < 4) {
+        if (this.state.semis[i] == "" || this.state.semis[i + 1] == "" || this.state["final"][Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
         children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.semis[i],
           teamB: this.state.semis[i + 1],
           id1: i,
           id2: i + 1,
-          onClick: this.onClickSemis
+          onClick: this.onClickSemis,
+          disable: disabled
         }));
         i = i + 2;
       }
@@ -65977,12 +66037,16 @@ function (_Component) {
       var table = [];
       var i = 0;
       var children = [];
+      var disabled;
+      if (this.state["final"][i] == "" || this.state["final"][i + 1] == "") disabled = "disabled";else disabled = "";
+      if (this.state.champ != "empty") disabled = "disabled";
       children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
         teamA: this.state["final"][i],
         teamB: this.state["final"][i + 1],
         id1: "0",
         id2: "1",
-        onClick: this.onClick
+        onClick: this.onClickFinal,
+        disable: disabled
       }));
       table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "final",
@@ -65991,20 +66055,17 @@ function (_Component) {
       return table;
     }
   }, {
+    key: "createChampion",
+    value: function createChampion() {
+      if (this.state.champ != "empty") return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Champion: ", this.state.champ);else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " No champion yet");
+    }
+  }, {
     key: "onClickOctavos",
     value: function onClickOctavos(e) {
-      var parent = e.target.parentElement;
       var team = e.target.innerHTML;
       var index = Math.floor(e.target.id / 2);
       var teams = this.state.cuartos;
       teams[index] = team;
-      var nodes = parent.getElementsByTagName('BUTTON');
-
-      for (var i = 0; i < nodes.length; i++) {
-        nodes[i].disabled = true;
-      }
-
-      e.target.style.color = "#00FF00";
       this.setState({
         cuartos: teams
       });
@@ -66015,17 +66076,9 @@ function (_Component) {
       var team = e.target.innerHTML;
 
       if (team != "") {
-        var parent = e.target.parentElement;
         var index = Math.floor(e.target.id / 2);
         var teams = this.state.semis;
         teams[index] = team;
-        var nodes = parent.getElementsByTagName('BUTTON');
-
-        for (var i = 0; i < nodes.length; i++) {
-          nodes[i].disabled = true;
-        }
-
-        e.target.style.color = "#00FF00";
         this.setState({
           semis: teams
         });
@@ -66034,20 +66087,103 @@ function (_Component) {
   }, {
     key: "onClickSemis",
     value: function onClickSemis(e) {
-      var parent = e.target.parentElement;
       var team = e.target.innerHTML;
       var index = Math.floor(e.target.id / 2);
       var teams = this.state["final"];
       teams[index] = team;
-      var nodes = parent.getElementsByTagName('BUTTON');
-
-      for (var i = 0; i < nodes.length; i++) {
-        nodes[i].disabled = true;
-      }
-
-      e.target.style.color = "#00FF00";
       this.setState({
         "final": teams
+      });
+    }
+  }, {
+    key: "onClickFinal",
+    value: function onClickFinal(e) {
+      var team = e.target.innerHTML;
+      this.setState({
+        champ: team
+      });
+    }
+  }, {
+    key: "create",
+    value: function create(e) {
+      var hijos = e.target.getElementsByTagName('BUTTON');
+      hijos[0].disabled = false;
+      hijos[1].disabled = false;
+    }
+  }, {
+    key: "save",
+    value: function save() {
+      var self = this;
+
+      if (this.state.id == 0) {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/teams', {
+          data: this.state
+        }).then(function (response) {
+          self.setState({
+            prodes: response.data,
+            id: response.data[response.data.length - 1]['id'],
+            name: response.data[response.data.length - 1]['created_at']
+          });
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('/api/teams/' + this.state.id, {
+          data: this.state
+        }).then(function (response) {
+          console.log("guardado");
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    }
+  }, {
+    key: "search",
+    value: function search(e) {
+      var id = e.target.id;
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/teams/' + id).then(function (response) {
+        var octavos = response.data[0]['octavos'].split(',');
+        var cuartos = response.data[0]['cuartos'].split(',');
+        var semis = response.data[0]['semis'].split(',');
+
+        var _final = response.data[0]['final'].split(',');
+
+        var champ = response.data[0]['champ'];
+        var name = response.data[0]['created_at'];
+        self.setState({
+          octavos: octavos,
+          cuartos: cuartos,
+          semis: semis,
+          "final": _final,
+          champ: champ,
+          id: id,
+          name: name
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "new",
+    value: function _new() {
+      this.setState({
+        cuartos: ["", "", "", "", "", "", "", ""],
+        semis: ["", "", "", ""],
+        "final": ["", ""],
+        champ: 'empty',
+        id: 0,
+        name: "Nuevo prode"
+      });
+    }
+  }, {
+    key: "clear",
+    value: function clear() {
+      this.setState({
+        cuartos: ["", "", "", "", "", "", "", ""],
+        semis: ["", "", "", ""],
+        "final": ["", ""],
+        champ: 'empty'
       });
     }
   }]);
