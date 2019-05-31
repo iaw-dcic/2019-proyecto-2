@@ -53,12 +53,6 @@ export default class Partido extends Component {
     }
   }
 
-  componentDidUpdate(){
-    // const partido = {...this.state.partido}
-    // partido = this.props.partido;
-    // this.setState({partido});
-  }
-
   actualizarInputs = (e) => {
     let partido = Object.assign({}, this.state.partido);
     let valorInput1 = this.input1Ref.current.value;

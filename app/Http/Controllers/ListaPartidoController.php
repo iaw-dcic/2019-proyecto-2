@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ListaPartido;
 use App\Partido;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,19 +15,15 @@ class ListaPartidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getAllPartidos()
     {
-        //
+        $user_id = Auth::user()->id;
+        return User::all()->find($user_id)->listaPartidos()->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function getLista($id)
     {
-        //
+        return ListaPartido::all()->find($id)->partidos()->get();
     }
 
     /**
@@ -86,9 +83,24 @@ class ListaPartidoController extends Controller
      * @param  \App\ListaPartido  $listaPartido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ListaPartido $listaPartido)
+    public function update(Request $request)
     {
-        //
+        $idPartido = $request["idPartido"];
+        $partidos = $request["partidos"];
+        $partidosActualizar = ListaPartido::all()->find($idPartido)->partidos()->get();
+
+        foreach ($partidosActualizar as $partido) {
+            $id = $partido->numero_partido;
+            $partido-> etapa = $partidos[$id]["etapa"];
+            $partido-> equipo1 = $partidos[$id]["equipo1"];
+            $partido-> equipo2 = $partidos[$id]["equipo2"];
+            $partido-> boton1 = $partidos[$id]["boton1"];
+            $partido-> boton2 = $partidos[$id]["boton2"];
+            $partido-> resultado1 = $partidos[$id]["resultado1"];
+            $partido-> resultado2 = $partidos[$id]["resultado2"];
+            $partido-> save();
+        }
+        return $partidosActualizar;
     }
 
     /**

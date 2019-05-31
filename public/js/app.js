@@ -66031,12 +66031,6 @@ function (_Component) {
       });
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {// const partido = {...this.state.partido}
-      // partido = this.props.partido;
-      // this.setState({partido});
-    }
-  }, {
     key: "render",
     value: function render() {
       if (this.state.partido === "undefined") {
@@ -66287,7 +66281,16 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "actualizarCambios", function (e) {
+      axios.put("/partidos", _this.state).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log("this is error", error);
+      });
+    });
+
     _this.state = {
+      idPartido: 6,
       equipos: [],
       partidos: []
     };
@@ -66343,7 +66346,7 @@ function (_Component) {
         className: "col-xs-12 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        onClick: this.guardarCambios,
+        onClick: this.actualizarCambios,
         className: "btn btn-primary text-center center"
       }, "Guardar")));
     }

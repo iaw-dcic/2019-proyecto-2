@@ -6,6 +6,7 @@ export default class Prode extends Component {
   constructor() {
     super();
     this.state = {
+      idPartido: 6,
       equipos: [],
       partidos: [],
     }
@@ -136,6 +137,14 @@ export default class Prode extends Component {
     });
   }  
 
+  actualizarCambios = (e) => {
+    axios.put("/partidos", this.state).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log("this is error", error);
+    });
+  }  
+
   render() {
     return (
       <div>
@@ -143,7 +152,7 @@ export default class Prode extends Component {
         <Panel etapa="semifinal" siguienteEtapa={this.siguienteEtapa["semifinal"]} equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
         <Panel etapa="final" siguienteEtapa="" equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
         <div className="col-xs-12 text-center">
-          <button type="button" onClick={this.guardarCambios} className="btn btn-primary text-center center">
+          <button type="button" onClick={this.actualizarCambios} className="btn btn-primary text-center center">
             Guardar
           </button>
         </div>
