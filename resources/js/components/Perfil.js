@@ -57,6 +57,18 @@ export default class Perfil extends Component {
             c3j2: cuart.jugador_dos,
         })
     }
+    semis1 = (semi) => {
+        this.setState({
+            s1j1: semi.jugador_uno,
+            s1j2: semi.jugador_dos,
+        })
+    }
+    semis2 = (semi) => {
+        this.setState({
+            s2j1: semi.jugador_uno,
+            s2j2: semi.jugador_dos,
+        })
+    }
     //cargo los octavos de partidos
     componentWillMount() {
         fetch('http://localhost/pr2/api/partidos/8')
@@ -122,19 +134,28 @@ export default class Perfil extends Component {
 
 
         //si ya cargaron los partidos de semis los seteo
-        var sem01 = ""; var sem02 = "";
-        if (this.state.s1j1 != null) {
+        var sem01 = ""; var sem02 = ""; var sem11 = ""; var sem12 = "";
+        if (this.state.s1j1.nombre != null) {
+
             sem01 = this.state.s1j1;
+
         }
         if (this.state.s1j2 != null) {
             sem02 = this.state.s1j2;
         }
+        if (this.state.s2j1.nombre != null) {
 
+            sem11 = this.state.s2j1;
+
+        }
+        if (this.state.s2j2 != null) {
+            sem12 = this.state.s2j2;
+        }
         return <div id="contenedor">
             <Pronostico setPronostico={this.setPronostico} agregarProno={this.props.agregaProno}
 
                 cuartos0={this.cuartos0} cuartos1={this.cuartos1} cuartos2={this.cuartos2} cuartos3={this.cuartos3}
-
+                semis1={this.semis1} semis2={this.semis2}
             />
 
 
@@ -204,9 +225,9 @@ export default class Perfil extends Component {
                                 <td><button className="btn btn-light">{sem01.nombre}</button><br></br>
                                     <button className="btn btn-light">  {sem02.nombre}</button>
                                 </td>
-                                <td>SEMINFINALISTA
-                                    <br></br>
-                                    SEMINFINALISTA</td>
+                                <td><button className="btn btn-light">{sem11.nombre}</button><br></br>
+                                    <button className="btn btn-light">  {sem12.nombre}</button>
+                                </td>
                                 <td></td>
                                 <td>    </td>
                             </tr>

@@ -17,7 +17,7 @@ class CreatePartidosTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('jugador_uno_id');
-            $table->unsignedBigInteger('jugador_dos_id');
+            $table->unsignedBigInteger('jugador_dos_id')->nullable();
             $table->integer('resultado')->nullable();  // 1 o 2 dependiendo jugador
             $table->integer('sets')->nullable(); // 2 o 3 
             $table->integer('ronda'); //32 16 8vos 4tos 2(semi) 1(final)

@@ -13,7 +13,7 @@
 
  
 Auth::routes();
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::view('/home', 'react')->middleware('auth');
 
  Route::get('auth/{provider}', 'UserController@redirectToProvider')->name('social.auth');

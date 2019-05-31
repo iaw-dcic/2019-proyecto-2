@@ -241,7 +241,7 @@ export default class Playoffs extends Component {
 
 
             <div className="row">
-                <button type="button" className="btn btn-light"
+                <button type="button" className="btn btn-primary"
                     onClick={(e) => this.handleCuartos()}>
                     Guardar
             </button>
@@ -355,73 +355,23 @@ export default class Playoffs extends Component {
 
             try {
                 const response = await axios.post('http://localhost/pr2/api/insert', {
-                    jugador_uno_id: this.state.c0j1.id,
-                    jugador_dos_id: this.state.c0j2.id,
-                    ronda: '4',
-                    pronostico: pro
+                    pronostico: pro,
+                    c0j1: this.state.c0j1.id,
+                    c0j2: this.state.c0j2.id,
+                    c1j1: this.state.c1j1.id,
+                    c1j2: this.state.c1j2.id,
+                    c2j1: this.state.c2j1.id,
+                    c2j2: this.state.c2j2.id,
+                    c3j1: this.state.c3j1.id,
+                    c3j2: this.state.c3j2.id,
+                    s1j1: this.state.s1j1.id,
+                    s1j2: this.state.s1j2.id,
+                    s2j1: this.state.s2j1.id,
+                    s2j2: this.state.s2j2.id,
+                    f1: this.state.j1.id,
+                    f2: this.state.j2.id,
+                    campeon: this.state.campeon.id,
                 });
-
-                console.log('Returned data:', response);
-            } catch (e) {
-                console.log('axios request failed:', e);
-            }
-            try {
-                const response = await axios.post('http://localhost/pr2/api/insert', {
-                    jugador_uno_id: this.state.c1j1.id,
-                    jugador_dos_id: this.state.c1j2.id,
-                    ronda: '4',
-                    pronostico: pro
-                });
-
-                console.log('Returned data:', response);
-            } catch (e) {
-                console.log('axios request failed:', e);
-            }
-            try {
-                const response = await axios.post('http://localhost/pr2/api/insert', {
-                    jugador_uno_id: this.state.c2j1.id,
-                    jugador_dos_id: this.state.c2j2.id,
-                    ronda: '4',
-                    pronostico: pro
-                });
-
-                console.log('Returned data:', response);
-            } catch (e) {
-                console.log('axios request failed:', e);
-            }
-            try {
-                const response = await axios.post('http://localhost/pr2/api/insert', {
-                    jugador_uno_id: this.state.c3j1.id,
-                    jugador_dos_id: this.state.c3j2.id,
-                    ronda: '4',
-                    pronostico: pro
-                });
-
-                console.log('Returned data:', response);
-            } catch (e) {
-                console.log('axios request failed:', e);
-            }
-            //semis
-            try {
-                const response = await axios.post('http://localhost/pr2/api/insert', {
-                    jugador_uno_id: this.state.s1j1.id,
-                    jugador_dos_id: this.state.s1j2.id,
-                    ronda: '2',
-                    pronostico: pro
-                });
-
-                console.log('Returned data:', response);
-            } catch (e) {
-                console.log('axios request failed:', e);
-            }
-            try {
-                const response = await axios.post('http://localhost/pr2/api/insert', {
-                    jugador_uno_id: this.state.s2j1.id,
-                    jugador_dos_id: this.state.s2j2.id,
-                    ronda: '2',
-                    pronostico: pro
-                });
-
                 console.log('Returned data:', response);
             } catch (e) {
                 console.log('axios request failed:', e);
@@ -431,8 +381,6 @@ export default class Playoffs extends Component {
         }
 
     }
-
-
     async addPronostico() {
         if (this.state.c0j1.id == null || this.state.c0j2.id == null ||
             this.state.c1j1.id == null || this.state.c1j2.id == null ||
@@ -446,10 +394,15 @@ export default class Playoffs extends Component {
 
         }
         else {
+            let api_token = document.querySelector('meta[name="api-token"]');
+
+
+
             let token = document.head.querySelector('meta[name="csrf-token"]');
 
-            if (token) {
+            if (token && api_token) {
                 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+                window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
             } else {
                 console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
             }
@@ -476,7 +429,17 @@ export default class Playoffs extends Component {
             this.state.j1.id == null || this.state.j2.id == null ||
             this.state.campeon.id == null)) {
 
-            const res = await fetch('http://localhost/pr2/api/ultimopronostico')
+            let api_token = document.querySelector('meta[name="api-token"]');
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+
+            var miInit = {
+                headers: {
+                    'X-CSRF-TOKEN': token.content,
+                    'Authorization': 'Bearer ' + api_token.content
+                }
+            }
+
+            const res = await fetch('http://localhost/pr2/api/ultimopronostico', miInit)
             const something = await res.json();
             this.setState({ pronost: something })
 

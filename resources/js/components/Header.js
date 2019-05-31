@@ -33,11 +33,18 @@ export default class Header extends Component {
     render() {
         let nav;
 
-        // nav = <a href="/pr2/login" className="nav-link"> Login</a>
         if (this.state.user.name != null) {
-            nav = <a className="nav-link" href=" "> {this.state.user.name}</a>
+            nav = <div className="btn-group">
+                <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hola {this.state.user.name} !
+                </button>
+                <div className="dropdown-menu">
+                    <a className="dropdown-item" href="/logout">Cerrar Sesion</a>
+                </div>
+            </div>
+
         } else
-            nav = <a className="nav-link" href=" "> Bienvenido</a>
+            nav = <a className="nav-link" href="/login"> Login</a>
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">

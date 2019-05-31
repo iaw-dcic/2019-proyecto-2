@@ -26,7 +26,16 @@ export default class Pronostico extends Component {
 
     }
     componentWillReceiveProps() {
-        fetch('http://localhost/pr2/api/cantidadpronosticos')
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        var miInit = {
+            headers: {
+                'X-CSRF-TOKEN': token.content,
+                'Authorization': 'Bearer ' + api_token.content
+            }
+        }
+        fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
             .then(res => res.json())
             .then(json => {
                 if (json != null)
@@ -34,8 +43,6 @@ export default class Pronostico extends Component {
                         items: json.items,
                     })
             });
-
-
 
     }
 
@@ -60,10 +67,9 @@ export default class Pronostico extends Component {
             fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
-                    this.setState({
-                        pSemis0: json.items[0],
-                        pSemis1: json.items[1],
-                    })
+                    this.props.semis1(json.items[0]),
+                        this.props.semis2(json.items[1])
+
                 });
             // fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue)
             //     .then(res => res.json())

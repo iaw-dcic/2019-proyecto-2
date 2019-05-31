@@ -67462,17 +67462,27 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var nav; // nav = <a href="/pr2/login" className="nav-link"> Login</a>
+      var nav;
 
       if (this.state.user.name != null) {
-        nav = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          className: "nav-link",
-          href: " "
-        }, " ", this.state.user.name);
+        nav = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "btn-group"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-primary dropdown-toggle",
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }, "Hola ", this.state.user.name, " !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dropdown-menu"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          className: "dropdown-item",
+          href: "/logout"
+        }, "Cerrar Sesion")));
       } else nav = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-link",
-        href: " "
-      }, " Bienvenido");
+        href: "/login"
+      }, " Login");
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
@@ -67939,6 +67949,20 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "semis1", function (semi) {
+      _this.setState({
+        s1j1: semi.jugador_uno,
+        s1j2: semi.jugador_dos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "semis2", function (semi) {
+      _this.setState({
+        s2j1: semi.jugador_uno,
+        s2j2: semi.jugador_dos
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleClick", function (newP, e) {
       console.log("cambio semi");
       console.log(newP);
@@ -68064,13 +68088,23 @@ function (_Component) {
 
       var sem01 = "";
       var sem02 = "";
+      var sem11 = "";
+      var sem12 = "";
 
-      if (this.state.s1j1 != null) {
+      if (this.state.s1j1.nombre != null) {
         sem01 = this.state.s1j1;
       }
 
       if (this.state.s1j2 != null) {
         sem02 = this.state.s1j2;
+      }
+
+      if (this.state.s2j1.nombre != null) {
+        sem11 = this.state.s2j1;
+      }
+
+      if (this.state.s2j2 != null) {
+        sem12 = this.state.s2j2;
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -68081,7 +68115,9 @@ function (_Component) {
         cuartos0: this.cuartos0,
         cuartos1: this.cuartos1,
         cuartos2: this.cuartos2,
-        cuartos3: this.cuartos3
+        cuartos3: this.cuartos3,
+        semis1: this.semis1,
+        semis2: this.semis2
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -68131,7 +68167,11 @@ function (_Component) {
         className: "btn btn-light"
       }, sem01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light"
-      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "SEMINFINALISTA", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "SEMINFINALISTA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, sem11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light-grey"
       }, oct41), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light-grey"
@@ -68512,7 +68552,7 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-light",
+        className: "btn btn-primary",
         onClick: function onClick(e) {
           return _this2.handleCuartos();
         }
@@ -68524,8 +68564,7 @@ function (_Component) {
       var _handleCuartos = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var pro, token, response, _response, _response2, _response3, _response4, _response5;
-
+        var pro, token, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -68538,7 +68577,7 @@ function (_Component) {
                 pro = this.state.pronost.id;
 
                 if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context.next = 67;
+                  _context.next = 17;
                   break;
                 }
 
@@ -68553,10 +68592,22 @@ function (_Component) {
                 _context.prev = 7;
                 _context.next = 10;
                 return axios.post('http://localhost/pr2/api/insert', {
-                  jugador_uno_id: this.state.c0j1.id,
-                  jugador_dos_id: this.state.c0j2.id,
-                  ronda: '4',
-                  pronostico: pro
+                  pronostico: pro,
+                  c0j1: this.state.c0j1.id,
+                  c0j2: this.state.c0j2.id,
+                  c1j1: this.state.c1j1.id,
+                  c1j2: this.state.c1j2.id,
+                  c2j1: this.state.c2j1.id,
+                  c2j2: this.state.c2j2.id,
+                  c3j1: this.state.c3j1.id,
+                  c3j2: this.state.c3j2.id,
+                  s1j1: this.state.s1j1.id,
+                  s1j2: this.state.s1j2.id,
+                  s2j1: this.state.s2j1.id,
+                  s2j2: this.state.s2j2.id,
+                  f1: this.state.j1.id,
+                  f2: this.state.j2.id,
+                  campeon: this.state.campeon.id
                 });
 
               case 10:
@@ -68571,116 +68622,11 @@ function (_Component) {
                 console.log('axios request failed:', _context.t0);
 
               case 17:
-                _context.prev = 17;
-                _context.next = 20;
-                return axios.post('http://localhost/pr2/api/insert', {
-                  jugador_uno_id: this.state.c1j1.id,
-                  jugador_dos_id: this.state.c1j2.id,
-                  ronda: '4',
-                  pronostico: pro
-                });
-
-              case 20:
-                _response = _context.sent;
-                console.log('Returned data:', _response);
-                _context.next = 27;
-                break;
-
-              case 24:
-                _context.prev = 24;
-                _context.t1 = _context["catch"](17);
-                console.log('axios request failed:', _context.t1);
-
-              case 27:
-                _context.prev = 27;
-                _context.next = 30;
-                return axios.post('http://localhost/pr2/api/insert', {
-                  jugador_uno_id: this.state.c2j1.id,
-                  jugador_dos_id: this.state.c2j2.id,
-                  ronda: '4',
-                  pronostico: pro
-                });
-
-              case 30:
-                _response2 = _context.sent;
-                console.log('Returned data:', _response2);
-                _context.next = 37;
-                break;
-
-              case 34:
-                _context.prev = 34;
-                _context.t2 = _context["catch"](27);
-                console.log('axios request failed:', _context.t2);
-
-              case 37:
-                _context.prev = 37;
-                _context.next = 40;
-                return axios.post('http://localhost/pr2/api/insert', {
-                  jugador_uno_id: this.state.c3j1.id,
-                  jugador_dos_id: this.state.c3j2.id,
-                  ronda: '4',
-                  pronostico: pro
-                });
-
-              case 40:
-                _response3 = _context.sent;
-                console.log('Returned data:', _response3);
-                _context.next = 47;
-                break;
-
-              case 44:
-                _context.prev = 44;
-                _context.t3 = _context["catch"](37);
-                console.log('axios request failed:', _context.t3);
-
-              case 47:
-                _context.prev = 47;
-                _context.next = 50;
-                return axios.post('http://localhost/pr2/api/insert', {
-                  jugador_uno_id: this.state.s1j1.id,
-                  jugador_dos_id: this.state.s1j2.id,
-                  ronda: '2',
-                  pronostico: pro
-                });
-
-              case 50:
-                _response4 = _context.sent;
-                console.log('Returned data:', _response4);
-                _context.next = 57;
-                break;
-
-              case 54:
-                _context.prev = 54;
-                _context.t4 = _context["catch"](47);
-                console.log('axios request failed:', _context.t4);
-
-              case 57:
-                _context.prev = 57;
-                _context.next = 60;
-                return axios.post('http://localhost/pr2/api/insert', {
-                  jugador_uno_id: this.state.s2j1.id,
-                  jugador_dos_id: this.state.s2j2.id,
-                  ronda: '2',
-                  pronostico: pro
-                });
-
-              case 60:
-                _response5 = _context.sent;
-                console.log('Returned data:', _response5);
-                _context.next = 67;
-                break;
-
-              case 64:
-                _context.prev = 64;
-                _context.t5 = _context["catch"](57);
-                console.log('axios request failed:', _context.t5);
-
-              case 67:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[7, 14], [17, 24], [27, 34], [37, 44], [47, 54], [57, 64]]);
+        }, _callee, this, [[7, 14]]);
       }));
 
       function handleCuartos() {
@@ -68695,7 +68641,7 @@ function (_Component) {
       var _addPronostico = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var token, response;
+        var api_token, token, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -68706,46 +68652,48 @@ function (_Component) {
                 }
 
                 alert("no se puede guardar el cuadro sin completar");
-                _context2.next = 16;
+                _context2.next = 17;
                 break;
 
               case 4:
+                api_token = document.querySelector('meta[name="api-token"]');
                 token = document.head.querySelector('meta[name="csrf-token"]');
 
-                if (token) {
+                if (token && api_token) {
                   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+                  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
                 } else {
                   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
                 }
 
-                _context2.prev = 6;
-                _context2.next = 9;
+                _context2.prev = 7;
+                _context2.next = 10;
                 return axios.post('http://localhost/pr2/api/insertpronostico');
 
-              case 9:
+              case 10:
                 response = _context2.sent;
                 console.log('Returned data:', response);
-                _context2.next = 16;
+                _context2.next = 17;
                 break;
 
-              case 13:
-                _context2.prev = 13;
-                _context2.t0 = _context2["catch"](6);
+              case 14:
+                _context2.prev = 14;
+                _context2.t0 = _context2["catch"](7);
                 console.log('axios request failed:', _context2.t0);
 
-              case 16:
-                _context2.next = 18;
+              case 17:
+                _context2.next = 19;
                 return this.getUltimo();
 
-              case 18:
+              case 19:
                 this.props.agregarPronostico(this.state.pronost);
 
-              case 19:
+              case 20:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[6, 13]]);
+        }, _callee2, this, [[7, 14]]);
       }));
 
       function addPronostico() {
@@ -68760,31 +68708,39 @@ function (_Component) {
       var _getUltimo = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var res, something;
+        var api_token, token, miInit, res, something;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context3.next = 8;
+                  _context3.next = 11;
                   break;
                 }
 
-                _context3.next = 3;
-                return fetch('http://localhost/pr2/api/ultimopronostico');
-
-              case 3:
-                res = _context3.sent;
+                api_token = document.querySelector('meta[name="api-token"]');
+                token = document.head.querySelector('meta[name="csrf-token"]');
+                miInit = {
+                  headers: {
+                    'X-CSRF-TOKEN': token.content,
+                    'Authorization': 'Bearer ' + api_token.content
+                  }
+                };
                 _context3.next = 6;
-                return res.json();
+                return fetch('http://localhost/pr2/api/ultimopronostico', miInit);
 
               case 6:
+                res = _context3.sent;
+                _context3.next = 9;
+                return res.json();
+
+              case 9:
                 something = _context3.sent;
                 this.setState({
                   pronost: something
                 });
 
-              case 8:
+              case 11:
               case "end":
                 return _context3.stop();
             }
@@ -69057,7 +69013,15 @@ function (_Component) {
     value: function componentWillReceiveProps() {
       var _this3 = this;
 
-      fetch('http://localhost/pr2/api/cantidadpronosticos').then(function (res) {
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      var miInit = {
+        headers: {
+          'X-CSRF-TOKEN': token.content,
+          'Authorization': 'Bearer ' + api_token.content
+        }
+      };
+      fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this3.setState({
@@ -69092,10 +69056,7 @@ function (_Component) {
                   fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.setState({
-                      pSemis0: json.items[0],
-                      pSemis1: json.items[1]
-                    });
+                    _this4.props.semis1(json.items[0]), _this4.props.semis2(json.items[1]);
                   }); // fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue)
                   //     .then(res => res.json())
                   //     .then(json => {

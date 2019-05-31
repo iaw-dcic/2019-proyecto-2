@@ -49,4 +49,11 @@
   .social-btn .btn i {
   font-size: 20px;
   }
-  
+
+  body {
+    background: url('../fondo.png');
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }

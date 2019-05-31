@@ -10,6 +10,7 @@ export default class NavIzq extends Component {
     state = {
         agregaProno: null,
     }
+
     render() {
 
         return <div id="contenedor" className="row">

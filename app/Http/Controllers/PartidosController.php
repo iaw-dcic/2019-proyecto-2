@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Partido;
+use DB;
+use Response;
 
 class PartidosController extends Controller
 {
@@ -80,18 +82,6 @@ class PartidosController extends Controller
         return abort(404);
     }
 
-  public  function store(Request $request){
-
-       $partido= Partido::create([
-        'pronostico' =>$request->get('pronostico'),
-           'jugador_uno_id'=> $request->get('jugador_uno_id'),
-           'jugador_dos_id'=> $request->get('jugador_dos_id'),
-            'ronda' => $request->get('ronda'),
-          
-            ]   
-           );
-        return response()->json($partido, 201);
-    }
     
     public function getPartidosPronostico($ronda,$pronostico){
         $partidos= Partido::where('pronostico','=',$pronostico)->where('ronda', '=', $ronda)->get();
@@ -121,4 +111,77 @@ class PartidosController extends Controller
             return response()->json("no hay", 404);
     }
      
+
+
+public  function store(Request $request){
+    try {
+        DB::beginTransaction();
+        $pronostico= $request->get('pronostico');
+        $partido= Partido::create([
+            'pronostico' =>  $pronostico,
+          'jugador_uno_id'=> $request->get('c0j1'),
+           'jugador_dos_id'=> $request->get('c0j2'),
+            'ronda' => '4',
+            ]   
+           );
+        $partido1= Partido::create([
+            'pronostico' =>  $pronostico,
+           'jugador_uno_id'=> $request->get('c1j1'),
+           'jugador_dos_id'=> $request->get('c1j2'),
+            'ronda' => '4',
+            ]   
+           );
+           $partido2= Partido::create([
+            'pronostico' =>  $pronostico,
+           'jugador_uno_id'=> $request->get('c2j1'),
+           'jugador_dos_id'=> $request->get('c2j2'),
+            'ronda' => '4',
+            ]   
+           );
+           $partido3= Partido::create([
+            'pronostico' =>  $pronostico,
+           'jugador_uno_id'=> $request->get('c3j1'),
+           'jugador_dos_id'=> $request->get('c3j2'),
+            'ronda' => '4',
+            ]   
+           );
+           $partido4= Partido::create([
+            'pronostico' =>  $pronostico,
+           'jugador_uno_id'=> $request->get('s1j1'),
+           'jugador_dos_id'=> $request->get('s1j2'),
+            'ronda' => '2',
+            ]   
+           );
+           $partido4= Partido::create([
+            'pronostico' =>  $pronostico,
+           'jugador_uno_id'=> $request->get('s2j1'),
+           'jugador_dos_id'=> $request->get('s2j2'),
+            'ronda' => '2',
+            ]   
+           );
+           $partido5= Partido::create([
+            'pronostico' =>  $pronostico,
+           'jugador_uno_id'=> $request->get('f1'),
+           'jugador_dos_id'=> $request->get('f2'),
+            'ronda' => '1',
+            ]   
+           );
+           $partido5= Partido::create([
+            'pronostico' =>  $pronostico,
+           'jugador_uno_id'=> $request->get('campeon'),
+            'ronda' => '0',
+            ]   
+           );
+           DB::commit();
+           return response()->json('Ok',200);
+       } catch (\Exception $e) {
+
+           DB::rollback();
+           abort(500);
+       }
+   
+    
+        return response()->json($partido, 201);
+    }
+
 }

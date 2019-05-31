@@ -52,12 +52,15 @@ class UserController extends Controller
    
 
    public function addPronostico(){
-    $pronostico= Pronostico::create([  'user_id' => '1'  ]   );
+    $user=auth('api')->user();
+    $pronostico= Pronostico::create([  'user_id' => $user->id  ]   );
         return response()->json($pronostico->id, 201);
    }
-   
+
    public function ultimoPronostico(){
-    $pronostico= Pronostico::select('id')->orderby('created_at','DESC')->first();
+    $user=auth('api')->user();
+    $pronostico= Pronostico::select('id')->where('user_id','=',$user->id)
+    ->orderby('created_at','DESC')->first();
 
     return response()->json($pronostico, 201);
    }
@@ -75,8 +78,13 @@ class UserController extends Controller
      }
     if($arreglo !=null)
          return response()->json($arreglo, 200);
-    else
-    return response()->json("null", 404);
+    else{
+        $arreglo["items"][0]=array(
+            'pronostico' => '0',
+         );
+         return response()->json($arreglo, 201);
+    }
+   
 }
    
    public function getuser(){
@@ -88,13 +96,6 @@ class UserController extends Controller
          else
     return response()->json("null", 200);
 }
-/*public function logout() {
-    Auth::logout();
-
-    return response()->json([
-        'status' => 'success',
-        'message' => 'logout'
-    ], 200);
-}*/
+ 
 }
  
