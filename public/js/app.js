@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65996,12 +65996,11 @@ function (_Component) {
         className: "card-title text-muted text-uppercase text-center"
       }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
+        value: this.state.talle,
         onChange: function onChange(e) {
           return _this3.cambiarTalle(e);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        selected: true
-      }, this.state.talle), this.state.talles.map(function (item) {
+      }, this.state.talles.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: item.tipo,
           value: item.tipo
@@ -66014,12 +66013,11 @@ function (_Component) {
         className: "card-title text-muted text-uppercase text-center"
       }, "Listado de Telas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
+        value: this.state.tela,
         onChange: function onChange(e) {
           return _this3.cambiarTela(e);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        selected: true
-      }, this.state.tela), this.state.telas.map(function (item) {
+      }, this.state.telas.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: item.nombre,
           value: item.nombre

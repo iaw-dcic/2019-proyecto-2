@@ -126,8 +126,8 @@ export default class ShirtImage extends Component {
 
                                     <h2 id="tittle">Talle {this.state.talle} </h2>
                                     <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
-                                    <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
-                                        <option selected>{this.state.talle}</option>
+                                    <select className="form-control" value={this.state.talle} onChange={(e) => this.cambiarTalle(e)}>
+                                       
                                     {
                                         this.state.talles.map((item) => (
                                             <option key={item.tipo} value={item.tipo}>{item.tipo}</option>
@@ -140,8 +140,7 @@ export default class ShirtImage extends Component {
 
                                     <h2 id="tittle">Tela {this.state.tela} </h2>
                                     <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
-                                    <select className="form-control" onChange={(e) => this.cambiarTela(e)}>
-                                        <option selected>{this.state.tela}</option>
+                                    <select className="form-control" value={this.state.tela} onChange={(e) => this.cambiarTela(e)}>
                                         {
                                             this.state.telas.map((item) => (
                                                 <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
@@ -150,7 +149,6 @@ export default class ShirtImage extends Component {
                                     </select>
 
                                     <hr width="100%"></hr>
-
                                     <h2 id="tittle"> Mis Diseños </h2>
                                     <h5 className="card-title text-muted text-uppercase text-center">Listado de remeras</h5>
                                     <a className="btn btn-block btn-secondary text-uppercase">Ver</a>
