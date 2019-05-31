@@ -35,6 +35,6 @@ class ImportAvatarRoutes extends Command {
      * @return mixed
      */
     public function handle () {
-        DB::unprepared(file_get_contents(‘database/migrations/avatarRoutes.sql’));
+        DB::unprepared(file_get_contents('database/migrations/avatarRoutes.sql'));
     }
 }
