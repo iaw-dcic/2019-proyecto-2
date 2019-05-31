@@ -16,10 +16,10 @@ class CreatePartidosTable extends Migration
         Schema::create('partidos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('prode_id');
-            $table->integer('equipo_1_id');
-            $table->integer('equipo_2_id');
-            $table->integer('equipo_1_goles');
-            $table->integer('equipo_2_goles');
+            $table->integer('equipo_1_id')->nullable();
+            $table->integer('equipo_2_id')->nullable();
+            $table->integer('equipo_1_goles')->default(0);
+            $table->integer('equipo_2_goles')->default(0);
             $table->timestamps();
         });
     }

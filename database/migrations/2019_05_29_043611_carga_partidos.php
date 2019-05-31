@@ -13,63 +13,388 @@ class CargaPartidos extends Migration
      */
     public function up()
     {
+        //Equipos
+        App\Equipo::create([
+            'nombre'=>'Royal Pari',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Macara(E)',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'La Equidad',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Deportivo Santaní',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Sol de América(P)',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Botafogo',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Union La Calera',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Atletico Mineiro',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Zulia',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Palestino',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Unión Española',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Sporting Cristal',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'River Plate(U)',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Colón',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Argentinos Juniors',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Deportes Tolima',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Liverpool(U)',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Caracas',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Independiente del Valle',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Universidad Católica',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Rionegro Águilas',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Independiente',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Universidad Catolica(E)',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Melgar',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Deportivo Cali',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Peñarol',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Fluminense',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Atlético Nacional',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Corinthians',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Deportivo Lara',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Montevideo Wanderers(U)',
+            'escudo'=>'escudo.jpg'
+        ]);
+        App\Equipo::create([
+            'nombre'=>'Cerro(U)',
+            'escudo'=>'escudo.jpg'
+        ]);
 
-        //Partidos iniciales
+        //Partidos 
+        //Iniciales
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
             'equipo_1_id'=>'1',
-            'equipo_2_id'=>'2',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'2'
         ]);
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'2',
+            'equipo_2_id'=>'1'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
             'equipo_1_id'=>'3',
-            'equipo_2_id'=>'4',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'4'
         ]);
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'4',
+            'equipo_2_id'=>'3'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
             'equipo_1_id'=>'5',
-            'equipo_2_id'=>'6',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'6'
         ]);
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'6',
+            'equipo_2_id'=>'5'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
             'equipo_1_id'=>'7',
-            'equipo_2_id'=>'8',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'8'
         ]);
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'8',
+            'equipo_2_id'=>'7'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
             'equipo_1_id'=>'9',
-            'equipo_2_id'=>'10',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'10'
         ]);
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'10',
+            'equipo_2_id'=>'9'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
             'equipo_1_id'=>'11',
-            'equipo_2_id'=>'12',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'12'
         ]);
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'12',
+            'equipo_2_id'=>'11'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
             'equipo_1_id'=>'13',
-            'equipo_2_id'=>'14',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'14'
         ]);
         App\Partido::create([
-            'prode_id'=>'1',
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'14',
+            'equipo_2_id'=>'13'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
             'equipo_1_id'=>'15',
-            'equipo_2_id'=>'16',
-            'equipo_1_goles'=>'0',
-            'equipo_2_goles'=>'0'
+            'equipo_2_id'=>'16'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'16',
+            'equipo_2_id'=>'15'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'17',
+            'equipo_2_id'=>'18'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'18',
+            'equipo_2_id'=>'17'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'19',
+            'equipo_2_id'=>'20'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'20',
+            'equipo_2_id'=>'19'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'21',
+            'equipo_2_id'=>'22'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'22',
+            'equipo_2_id'=>'21'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'23',
+            'equipo_2_id'=>'24'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'24',
+            'equipo_2_id'=>'23'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'25',
+            'equipo_2_id'=>'26'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'26',
+            'equipo_2_id'=>'25'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'27',
+            'equipo_2_id'=>'28'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'28',
+            'equipo_2_id'=>'27'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'29',
+            'equipo_2_id'=>'30'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'30',
+            'equipo_2_id'=>'29'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'31',
+            'equipo_2_id'=>'32'
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+            'equipo_1_id'=>'32',
+            'equipo_2_id'=>'31'
+        ]);
+        //Octavos
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        //Cuartos
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        //Semis
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        App\Partido::create([
+            'prode_id'=>'-1',
+        ]);
+        //Final
+        App\Partido::create([
+            'prode_id'=>'-1',
         ]);
     }
 
