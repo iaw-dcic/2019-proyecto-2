@@ -47,6 +47,7 @@ export default class SideBar extends Component{
         return (
           <>
             <nav className="navbar fixed-bottom avataresPrevios">
+              <a className="navbar-brand" >Tus Avatares</a>
               {this.props.AllAvatars.map(avatar=>(
                   
                     <div className="container">

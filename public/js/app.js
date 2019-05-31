@@ -60924,7 +60924,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66572,7 +66572,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card config text-center"
+        className: "card config text-center mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -66587,7 +66587,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card config text-center"
+        className: "card config text-center mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "hair superponer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -66696,6 +66696,39 @@ function (_Component) {
         mouth: event.target.name
       });
     }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/token').then(function (response) {
+        _this2.setState({
+          api_token: response.data
+        });
+      });
+      var config = {
+        headers: {
+          'Authorization': "Bearer " + this.state.api_token
+        }
+      };
+      var bodyParameters = {
+        key: "value"
+      };
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/user', bodyParameters, config).then(function (response) {
+        console.log(response);
+
+        _this2.setState({
+          userID: response.data
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/' + this.state.userID + 'avatars').then(function (response) {
+        _this2.setState({
+          AllAvatars: response.data
+        });
+      });
+    }
   }]);
 
   function AvatarView(props) {
@@ -66711,8 +66744,9 @@ function (_Component) {
       hair: 'Pelo1',
       eyes: 'Ojos1',
       mouth: 'Boca1',
+      api_token: '',
       AllAvatars: [],
-      userID: 1,
+      userID: -1,
       errors: []
     });
 
@@ -67197,7 +67231,9 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar fixed-bottom avataresPrevios"
-      }, this.props.AllAvatars.map(function (avatar) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "navbar-brand"
+      }, "Tus Avatares"), this.props.AllAvatars.map(function (avatar) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67330,8 +67366,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

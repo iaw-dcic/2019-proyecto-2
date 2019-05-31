@@ -23,7 +23,7 @@ export default class Avatar extends Component {
                 <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <div className="card config text-center">
+                        <div className="card config text-center mx-auto">
                             <div className="card-body">
                                 <input type="text" className="card-title text-center"  value={this.state.nameValue} onChange={this.handleChange}/>
                             </div>
@@ -36,7 +36,7 @@ export default class Avatar extends Component {
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-8">
-                            <div className="card config text-center">
+                            <div className="card config text-center mx-auto">
                             
                             <div>
                                 
