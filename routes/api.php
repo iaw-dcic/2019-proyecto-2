@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/telas','TelasController@listadoTelas')->name('listadoTelas');
 //Listado de talles
 Route::get('/talles','TallesController@listadoTalles')->name('listadoTalles');
+//Listado de colores
+Route::get('/colores','ColourController@listadoColores')->name('listadoColores');

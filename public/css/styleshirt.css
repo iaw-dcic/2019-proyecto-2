@@ -52,54 +52,57 @@ section.pricing {
 
   .btn-item-color{
     font-size: 60%;
-    border-radius: 0.9rem;
+    border-radius: 1.9rem;
     border-color: black;
-    letter-spacing: .1rem;
+    letter-spacing: .2rem;
     font-weight: bold;
-    padding: 0.9rem;
+    padding: 0.4rem;
     opacity: 0.7;
     transition: all 0.2s;
-    margin-top: 4%;
-    margin-left: 10%;
+    margin-top: 1%;
+    margin-left: 1%;
     margin-right:1%;
+    width:29px;
+    height:22px;
     
   }
 
- #remera-colorAzul
+  
+ #colorAzul
   {
    background-color:#05347F;
   }
 
-  #remera-colorRosa
+  #colorRosa
   {
     background-color:#E23045;
   
   }
   
-  #remera-colorAmarillo
+  #colorAmarillo
   {
     background-color: #F7DE1E;
   }
 
- #remera-colorNegro
+ #colorNegro
  {
    background-color: #0F0F0F;
  
  }
 
- #remera-colorNaranja
+ #colorNaranja
  {
    background-color: #DD4205;
    
   }
 
- #remera-colorCeleste
+ #colorCeleste
  {
    background-color: #04889E;
   
  }
 
- #remera-colorVioleta
+ #colorVioleta
  {
    background-color: #381B56;
   
@@ -123,7 +126,7 @@ section.pricing {
   font-size: 120%;
   text-align: center;
  }
-
+/* Revisar como superponer imagenes
  #imagenRemera
  {
    position:absolute;
@@ -138,6 +141,7 @@ section.pricing {
   top:200px;
   z-index:3;
  }
+ */
   /* Hover Effects on Card */
   
   @media (min-width: 992px) {

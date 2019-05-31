@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Talle extends Model
+class Colour extends Model
 {
     protected $fillable = [
-        'talle', 
+        'color', 
     ];
 }

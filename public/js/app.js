@@ -65796,9 +65796,10 @@ function (_Component) {
       remera: '/images/remeras/remerablanca.png',
       talle: "XS",
       tela: "Algodon",
-      estampa: "/images/logos/logo1.png",
+      estampa: "/images/logos/logo12.png",
       telas: [],
-      talles: []
+      talles: [],
+      colores: []
     };
     return _this;
   }
@@ -65807,49 +65808,49 @@ function (_Component) {
     key: "cambiarColorRemera",
     value: function cambiarColorRemera(e, id) {
       switch (id) {
-        case "remera-colorAzul":
+        case "colorAzul":
           this.setState({
             remera: '/images/remeras/remeraazul.png'
           });
           break;
 
-        case "remera-colorBlanco":
+        case "colorBlanco":
           this.setState({
             remera: '/images/remeras/remerablanca.png'
           });
           break;
 
-        case "remera-colorRosa":
+        case "colorRosa":
           this.setState({
             remera: '/images/remeras/remeraRosa.png'
           });
           break;
 
-        case "remera-colorAmarillo":
+        case "colorAmarillo":
           this.setState({
             remera: '/images/remeras/remeraAmarilla.png'
           });
           break;
 
-        case "remera-colorNegro":
+        case "colorNegro":
           this.setState({
             remera: '/images/remeras/remeranegra.png'
           });
           break;
 
-        case "remera-colorNaranja":
+        case "colorNaranja":
           this.setState({
             remera: '/images/remeras/remeranaranja.png'
           });
           break;
 
-        case "remera-colorVioleta":
+        case "colorVioleta":
           this.setState({
             remera: '/images/remeras/remeravioleta.png'
           });
           break;
 
-        case "remera-colorCeleste":
+        case "colorCeleste":
           this.setState({
             remera: '/images/remeras/remeraceleste.png'
           });
@@ -65888,6 +65889,11 @@ function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/talles').then(function (response) {
         _this2.setState({
           talles: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/colores').then(function (response) {
+        _this2.setState({
+          colores: response.data
         });
       });
     }
@@ -65993,7 +65999,7 @@ function (_Component) {
         className: "card-title text-muted text-uppercase text-center"
       }, "Remera"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         height: "500",
         src: this.state.remera,
         id: "imagenRemera",
@@ -66005,7 +66011,7 @@ function (_Component) {
         id: "imagenLogo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"
-      }, "Crear dise\xF1o")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Crear dise\xF1o"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
@@ -66017,72 +66023,23 @@ function (_Component) {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-toolbar mb-2",
-        role: "toolbar",
-        "aria-label": "Toolbar with button groups"
+        role: "toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "listColours center",
+        id: "listColours",
         className: "btn-color",
         role: "toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorBlanco",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorBlanco");
-        },
-        type: "button",
-        className: "btn-item-color"
-      }, "  "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorAzul",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorAzul");
-        },
-        type: "button",
-        className: "btn-item-color"
-      }, "  "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorRosa",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorRosa");
-        },
-        type: "button",
-        className: "btn-item-color"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorAmarillo",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorAmarillo");
-        },
-        type: "button",
-        className: "btn-item-color"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorNegro",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorNegro");
-        },
-        type: "button",
-        className: "btn-item-color"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorNaranja",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorNaranja");
-        },
-        type: "button",
-        className: "btn-item-color"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorVioleta",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorVioleta");
-        },
-        type: "button",
-        className: "btn-item-color"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "remera-colorCeleste",
-        onClick: function onClick(e) {
-          return _this3.cambiarColorRemera(e, "remera-colorCeleste");
-        },
-        type: "button",
-        className: "btn-item-color"
+      }, this.state.colores.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          key: item.color,
+          id: item.color,
+          value: item.color,
+          onClick: function onClick(e) {
+            return _this3.cambiarColorRemera(e, item.color);
+          },
+          className: "btn-item-color"
+        }, "  ");
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {

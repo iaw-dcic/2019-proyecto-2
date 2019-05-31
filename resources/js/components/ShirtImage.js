@@ -9,29 +9,31 @@ export default class ShirtImage extends Component {
             remera: '/images/remeras/remerablanca.png',
             talle: "XS",
             tela: "Algodon",
-            estampa: "/images/logos/logo1.png",
+            estampa: "/images/logos/logo12.png",
             telas: [],
-            talles:[]
+            talles: [],
+            colores: []
         }
     }
 
     cambiarColorRemera(e, id) {
+
         switch (id) {
-            case "remera-colorAzul": this.setState({ remera: '/images/remeras/remeraazul.png' });
+            case "colorAzul": this.setState({ remera: '/images/remeras/remeraazul.png' });
                 break;
-            case "remera-colorBlanco": this.setState({ remera: '/images/remeras/remerablanca.png' });
+            case "colorBlanco": this.setState({ remera: '/images/remeras/remerablanca.png' });
                 break;
-            case "remera-colorRosa": this.setState({ remera: '/images/remeras/remeraRosa.png' });
+            case "colorRosa": this.setState({ remera: '/images/remeras/remeraRosa.png' });
                 break;
-            case "remera-colorAmarillo": this.setState({ remera: '/images/remeras/remeraAmarilla.png' });
+            case "colorAmarillo": this.setState({ remera: '/images/remeras/remeraAmarilla.png' });
                 break;
-            case "remera-colorNegro": this.setState({ remera: '/images/remeras/remeranegra.png' });
+            case "colorNegro": this.setState({ remera: '/images/remeras/remeranegra.png' });
                 break;
-            case "remera-colorNaranja": this.setState({ remera: '/images/remeras/remeranaranja.png' });
+            case "colorNaranja": this.setState({ remera: '/images/remeras/remeranaranja.png' });
                 break;
-            case "remera-colorVioleta": this.setState({ remera: '/images/remeras/remeravioleta.png' });
+            case "colorVioleta": this.setState({ remera: '/images/remeras/remeravioleta.png' });
                 break;
-            case "remera-colorCeleste": this.setState({ remera: '/images/remeras/remeraceleste.png' });
+            case "colorCeleste": this.setState({ remera: '/images/remeras/remeraceleste.png' });
                 break;
             default: this.setState({ remera: '/images/remeras/remerablanca.png' });
         }
@@ -48,13 +50,16 @@ export default class ShirtImage extends Component {
 
     componentDidMount() {
         axios.get('/api/telas').then(response => {
-            this.setState({telas: response.data})
+            this.setState({ telas: response.data })
         })
         axios.get('/api/talles').then(response => {
-            this.setState({talles: response.data})
+            this.setState({ talles: response.data })
+        })
+        axios.get('/api/colores').then(response => {
+            this.setState({ colores: response.data })
         })
     }
- 
+
     render() {
         return (
             <section className="pricing py-5">
@@ -96,10 +101,11 @@ export default class ShirtImage extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Remera</h5>
                                     <hr width="100%"></hr>
-                                    <img height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
-                                    <img height="100" src={this.state.estampa}  id="imagenLogo" ></img>
-                                    <a className="btn btn-block btn-secondary text-uppercase">Crear diseño</a>
-                                   
+                                    <div>
+                                        <img height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
+                                        <img height="100" src={this.state.estampa} id="imagenLogo" ></img>
+                                        <a className="btn btn-block btn-secondary text-uppercase">Crear diseño</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -109,54 +115,50 @@ export default class ShirtImage extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Seleccione un color</h5>
                                     <hr width="100%"></hr>
-                                    <div className="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
-                                        <div id="listColours center" className="btn-color" role="toolbar">
-                                            <div className="btn-group">
-                                                <button id="remera-colorBlanco" onClick={(e) => this.cambiarColorRemera(e, "remera-colorBlanco")} type="button" className="btn-item-color">  </button>
-                                                <button id="remera-colorAzul" onClick={(e) => this.cambiarColorRemera(e, "remera-colorAzul")} type="button" className="btn-item-color"  >  </button>
-                                                <button id="remera-colorRosa" onClick={(e) => this.cambiarColorRemera(e, "remera-colorRosa")} type="button" className="btn-item-color"></button>
-                                                <button id="remera-colorAmarillo" onClick={(e) => this.cambiarColorRemera(e, "remera-colorAmarillo")} type="button" className="btn-item-color"></button>
-                                            </div>
+                                    
+                                    <div className="btn-toolbar mb-2" role="toolbar">
+                                        <div id="listColours" className="btn-color" role="toolbar">
+                                        <div className="btn-group" >
+                                            {
+                                                this.state.colores.map((item) => (
+                                                    <button key={item.color} id={item.color} value={item.color} onClick={(e) => this.cambiarColorRemera(e, item.color)} className="btn-item-color">  </button>
 
-                                            <div className="btn-group">
-                                                <button id="remera-colorNegro" onClick={(e) => this.cambiarColorRemera(e, "remera-colorNegro")} type="button" className="btn-item-color"></button>
-                                                <button id="remera-colorNaranja" onClick={(e) => this.cambiarColorRemera(e, "remera-colorNaranja")} type="button" className="btn-item-color"></button>
-                                                <button id="remera-colorVioleta" onClick={(e) => this.cambiarColorRemera(e, "remera-colorVioleta")} type="button" className="btn-item-color"></button>
-                                                <button id="remera-colorCeleste" onClick={(e) => this.cambiarColorRemera(e, "remera-colorCeleste")} type="button" className="btn-item-color"></button>
-                                            </div>
+                                                ))
+                                            }
                                         </div>
+                                    </div>
+                                    
+                                    <hr width="100%"></hr>
 
-                                        <hr width="100%"></hr>
+                                    <h2 id="tittle">Talle {this.state.talle} </h2>
+                                    <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
+                                    <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
+                                    {
+                                        this.state.talles.map((item) => (
+                                            <option key={item.tipo} value={item.tipo}>{item.tipo}</option>
+                                        ))
 
-                                        <h2 id="tittle">Talle {this.state.talle} </h2>
-                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
-                                        <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
-                                            {
-                                                this.state.talles.map((item)=> (
-                                                    <option key={item.tipo} value={item.tipo}>{item.tipo}</option>
-                                                ))
+                                    }
+                                    </select>
 
-                                            }
-                                        </select>
+                                    <hr width="100%"></hr>
 
-                                        <hr width="100%"></hr>
+                                    <h2 id="tittle">Tela {this.state.tela} </h2>
+                                    <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
+                                    <select className="form-control" onChange={(e) => this.cambiarTela(e)}>
+                                        {
+                                            this.state.telas.map((item) => (
+                                                <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
+                                            ))
+                                        }
+                                    </select>
 
-                                        <h2 id="tittle">Tela {this.state.tela} </h2>
-                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
-                                        <select className="form-control" onChange={(e) => this.cambiarTela(e)}>
-                                            {
-                                                this.state.telas.map((item)=> (
-                                                    <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
-                                                ))
-                                            }
-                                        </select>
+                                    <hr width="100%"></hr>
 
-                                        <hr width="100%"></hr>
+                                    <h2 id="tittle"> Mis Diseños </h2>
+                                    <h5 className="card-title text-muted text-uppercase text-center">Listado de remeras</h5>
+                                    <a className="btn btn-block btn-secondary text-uppercase">Ver</a>
 
-                                        <h2 id="tittle"> Mis Diseños </h2>
-                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de remeras</h5>
-                                        <a className="btn btn-block btn-secondary text-uppercase">Ver</a>                                
-                                        
                                     </div>
                                 </div>
                             </div>
