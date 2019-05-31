@@ -65929,72 +65929,14 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         className: "thumbnail"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo1.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo2.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo3.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo4.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo5.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo6.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo7.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo8.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo9.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo10.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo11.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-thumbnail",
-        src: "/images/logos/logo12.png",
-        height: "80px",
-        width: "80px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
+      }, this.state.logos.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          key: item.logo,
+          className: "img-thumbnail",
+          src: item.logo,
+          height: "80px",
+          width: "80px"
+        });
       }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

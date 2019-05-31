@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Colour;
 use App\Tela;
 use App\Talle;
+use App\Logo;
 use Illuminate\Http\Request;
 
 class VistaDiseñarController extends Controller
@@ -60,6 +61,16 @@ class VistaDiseñarController extends Controller
     /**View del Listado de Logos */
     public function listadoLogos()
     {
-        
+        $logos = Logo::get('logo');
+        $arreglo = [];
+
+        foreach($logos as $logo){
+            $arreglo[] = ['logo' => $logo->logo];
+        }
+
+        if ($arreglo != null)
+            return response()->json($arreglo, 200);
+        else
+            return abort(404);
     }
 }

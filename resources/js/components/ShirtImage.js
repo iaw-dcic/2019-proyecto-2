@@ -60,7 +60,7 @@ export default class ShirtImage extends Component {
             this.setState({ colores: response.data })
         })
         axios.get('/api/logos').then(response=> {
-            this.setState({ logos:response.data })
+            this.setState({ logos: response.data })
         })
     }
 
@@ -77,21 +77,13 @@ export default class ShirtImage extends Component {
                                     <div className="logos">
                                         <div className="imagen-logos">
                                             <a href="#" className="thumbnail">
-                                                <img className="img-thumbnail" src="/images/logos/logo1.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo2.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo3.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo4.png" height="80px" width="80px"></img>
-                                                <hr width="100%"></hr>
-                                                <img className="img-thumbnail" src="/images/logos/logo5.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo6.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo7.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo8.png" height="80px" width="80px"></img>
-                                                <hr width="100%"></hr>
-                                                <img className="img-thumbnail" src="/images/logos/logo9.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo10.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo11.png" height="80px" width="80px"></img>
-                                                <img className="img-thumbnail" src="/images/logos/logo12.png" height="80px" width="80px"></img>
-                                                <hr width="100%"></hr>
+                                            {
+                                                this.state.logos.map((item) => (
+                                                    
+                                                    <img  key={item.logo} className="img-thumbnail" src={item.logo} height="80px" width="80px"></img>
+                                               
+                                                ))
+                                            } 
                                             </a>
                                         </div>
                                     </div>
