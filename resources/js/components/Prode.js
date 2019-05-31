@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
 class Prode extends Component{
     render(){
         return(
-            <div>Listar Prode</div>
+            <div className="Prode">
+                Componente Prode
+            </div>
         );
     }
 }

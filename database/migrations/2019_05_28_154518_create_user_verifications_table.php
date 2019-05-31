@@ -17,6 +17,8 @@ class CreateUserVerificationsTable extends Migration
             $table->string('token');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+        /**El me manda un correo y despues de verificarlo me deja ingresar */
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_verified')->default(0);
         });

@@ -10,8 +10,6 @@ export default class Example extends Component {
                         <div className="card">
                             <div className="card-header">No anda</div>
                             <div className="card-body">I'm an saddasd test component!</div>
-                            <h1>adasdsad</h1>
-                            <h1>Ahora si la concha de tu hermana</h1>
                         </div>
                     </div>
                 </div>

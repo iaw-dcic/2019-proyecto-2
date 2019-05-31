@@ -30,7 +30,7 @@
 
                 <div class="collapse navbar-collapse" id="collapse_target">
 
-                        <a class="navbar-brand" href="{{ route('home') }}"><img src="./futbol.png" alt="home"></a>
+                        <a class="navbar-brand" href="{{ route('react') }}"><img src="./futbol.png" alt="home"></a>
                         <span class="navbar-text">Prode</span>
                         </a>
                     <ul class="navbar-nav">

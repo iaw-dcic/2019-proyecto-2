@@ -1,22 +1,25 @@
-import Routes from './Routes';
-
 import React, { Component } from 'react';
+
+
+import Routes from './Routes'
 import ReactDOM from 'react-dom';
-import { Route, Switch } from 'react-router-dom';
-import { BrowserRouter as Router ,Link  } from 'react-router-dom';
-import Example from './Example';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
-    render () {
+
+
+
+  render() {
     return (
-        <Router>
-        <div>
-            <Example />
-        </div>
-        <Routes/>
-        </Router>
-    )
-    }
+
+
+          <div className="container-fluid">
+            <Routes/>
+          </div>
+
+    );
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('react-app'))
