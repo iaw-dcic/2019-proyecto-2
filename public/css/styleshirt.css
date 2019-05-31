@@ -131,9 +131,11 @@ section.pricing {
 
  #imagenLogo
  {
+  width:30%;
+  height:30%;
   position:absolute;
-  left:40%;
-  top:45%;
+  left:35%;
+  top:40%;
   z-index:3;
  }
  
