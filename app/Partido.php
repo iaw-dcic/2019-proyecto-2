@@ -8,11 +8,7 @@ class Partido extends Model{
     public $timestamps = false;
 
     public function getProdes(){
-        return $this->hasMany('App\Prode');
-    }
-
-    public function getCampeonato(){
-        return $this->belongsTo('App\Campeonato');
+        return $this->belongsToMany('App\Prode')->using('App\PartidoProde');
     }
 
     public function getLocal(){

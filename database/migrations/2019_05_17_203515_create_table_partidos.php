@@ -13,19 +13,13 @@ class CreateTablePartidos extends Migration{
     public function up(){
         Schema::create('partidos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('campeonato_id');
-            $table->string('grupo')->nullable(false);
             $table->integer('local_id')->nullable(false);
             $table->integer('visitante_id')->nullable(false);
-            $table->integer('goles_local')->nullable();
-            $table->integer('goles_visitante')->nullable();
-            $table->string('resultado')->nullable();
-            $table->string('ganador')->nullable();
-            $table->dateTime('fecha')->nullable(false);
-            $table->string('finalizado');
+            $table->string('fase')->nullable(true);
+            $table->integer('goles_local')->nullable(true);
+            $table->integer('goles_visitante')->nullable(true);
             $table->foreign('local_id')->references('id')->on('equipos');
             $table->foreign('visitante_id')->references('id')->on('equipos');
-            $table->foreign('campeonato_id')->references('id')->on('campeonatos');
         });
     }
 

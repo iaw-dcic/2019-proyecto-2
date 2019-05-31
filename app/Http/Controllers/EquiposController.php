@@ -3,39 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Equipo;
-use Illuminate\Http\Request;
 use App\Partido;
+use App\Prode;
+use App\User;
 
 class EquiposController extends Controller{
-    public function getEquipo($equipo_id){
-        $equipo = Equipo::find($equipo_id);
-        if($equipo == null)
-            return Response()->json(['error' => '404 not found'], 404);
-        return Response()->json($equipo, 200);
-    }
-
-    public function getEquipos(){
-        $equipo = Equipo::all();
-        if($equipo == null)
-            return Response()->json(['error' => '404 not found'], 404);
-        return Response()->json($equipo, 200);
-    }
-
-    public function getEquiposPorCampeonato($campeonato_id){
-        $ids_equipos = Partido::where(['campeonato_id' => $campeonato_id])->get()->groupBy('local_id')->keys();
-        $equipos = [];
-        foreach($ids_equipos as $equipo_id)
-            array_push($equipos, Equipo::find($equipo_id));
+    public function getEquipos($user_id){
+        /*
+        if(Auth::user()->id != $user_id)
+            return Response()->json(['error' => '401 Unauthorized'], 401);
+        $user = Auth::user();
+        */
+        $equipos = Equipo::all();
         if($equipos == null)
             return Response()->json(['error' => '404 not found'], 404);
         return Response()->json($equipos, 200);
     }
 
-    public function getGrupos($campeonato_id){
-        $grupos = Partido::where('campeonato_id', $campeonato_id)->get()->groupBy('grupo')->keys();
-
-        if($grupos == null)
+    public function getEquipo($user_id, $team_id){
+        /*
+        if(Auth::user()->id != $user_id)
+            return Response()->json(['error' => '401 Unauthorized'], 401);
+        $user = Auth::user();
+        */
+        $equipo = Equipo::find($team_id);
+        
+        if($equipo == null)
             return Response()->json(['error' => '404 not found'], 404);
-        return Response()->json($grupos, 200);
+        return Response()->json($equipo, 200);
     }
 }

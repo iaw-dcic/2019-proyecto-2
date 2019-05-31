@@ -1,6 +1,7 @@
 .contador-partidos {
     position: relative;
     padding: 8rem 0;
+    background-image: url(../../images/footer-bg.jpg);
 
     .ico-circle {
         height: 100px;
@@ -10,7 +11,7 @@
         line-height: 1.55;
         margin: 0 auto;
         text-align: center;
-        box-shadow: 0 0 0 10px #24b67e;
+        box-shadow: 0 0 0 10px $primary-color;
         display: block;
     }
 
@@ -26,7 +27,7 @@
             height: 60px;
             width: 60px;
             line-height: 1.8;
-            box-shadow: 0 0 0 10px #bbf5df;
+            box-shadow: 0 0 0 10px #bbcff5;
         }
 
         .counter-num .counter {

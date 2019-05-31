@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Prode extends Model{
     public $timestamps = false;
 
-    public function getUser(){
-        return $this->belongsTo('App\User');
+    public function getUsers(){
+        return $this->belongsToMany('App\User')->using('App\ProdeUser');
     }
 
-    public function getPartido(){
-        return $this->belongsTo('App\Partido');
+    public function getPartidos(){
+        return $this->belongsToMany('App\Partido')->using('App\PartidoProde');
     }
 }

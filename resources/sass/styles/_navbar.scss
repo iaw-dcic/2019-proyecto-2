@@ -77,36 +77,36 @@
 
   .navbar-b.navbar-reduce {
     transition: all .5s ease-in-out;
-    background-color: #fff;
+    background-color: #0f4583;
     padding-top: 15px;
     padding-bottom: 15px;
   }
 
   .navbar-b.navbar-reduce .nav-link {
-    color: #24b67e;
+    color: white;
   }
 
   .navbar-b.navbar-reduce .nav-link:before {
-    background-color: #24b67e;
+    background-color: white;
   }
 
   .navbar-b.navbar-reduce .nav-link:hover {
-    color: #24b67e;
+    color: white;
   }
 
   .navbar-b.navbar-reduce .show > .nav-link,
   .navbar-b.navbar-reduce .active > .nav-link,
   .navbar-b.navbar-reduce .nav-link.show,
   .navbar-b.navbar-reduce .nav-link.active {
-    color: #24b67e;
+    color: white;
   }
 
   .navbar-b.navbar-reduce .navbar-brand {
-    color: #24b67e;
+    color: white;
   }
 
   .navbar-b.navbar-reduce .navbar-toggler span {
-    background-color: #1B1B1B;
+    background-color: white;
   }
 
   .navbar-b .navbar-brand {
@@ -134,13 +134,13 @@
   }
 
   .navbar-b .dropdown-menu .dropdown-item:hover {
-    background-color: #24b67e;
+    background-color: $primary-color;
     color: #fff;
     transition: all 500ms ease;
   }
 
   .navbar-b .dropdown-menu .dropdown-item.active {
-    background-color: #24b67e;
+    background-color: $primary-color;
   }
 
   /*--/ Hamburger Navbar /--*/

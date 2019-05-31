@@ -30,6 +30,7 @@ div.jQBracket{font-family:Arial;font-size:14px;position:relative}div.jQBracket .
 .contador-partidos {
   position: relative;
   padding: 8rem 0;
+  background-image: url(/images/footer-bg.jpg?49b268298fae8b68fb5814ee44c9a8b6);
 }
 
 .contador-partidos .ico-circle {
@@ -40,7 +41,7 @@ div.jQBracket{font-family:Arial;font-size:14px;position:relative}div.jQBracket .
   line-height: 1.55;
   margin: 0 auto;
   text-align: center;
-  box-shadow: 0 0 0 10px #24b67e;
+  box-shadow: 0 0 0 10px #0f4583;
   display: block;
 }
 
@@ -57,7 +58,7 @@ div.jQBracket{font-family:Arial;font-size:14px;position:relative}div.jQBracket .
   height: 60px;
   width: 60px;
   line-height: 1.8;
-  box-shadow: 0 0 0 10px #bbf5df;
+  box-shadow: 0 0 0 10px #bbcff5;
 }
 
 .contador-partidos .counter-box .counter-num .counter {
@@ -69,6 +70,7 @@ section.footer {
   margin-top: 4rem;
   position: relative;
   padding: 2rem 2rem 0;
+  background-image: url(/images/footer-bg.jpg?49b268298fae8b68fb5814ee44c9a8b6);
 }
 
 section.footer footer {
@@ -168,36 +170,36 @@ section.footer footer .credits a {
 
 .navbar-b.navbar-reduce {
   transition: all 0.5s ease-in-out;
-  background-color: #fff;
+  background-color: #0f4583;
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
 .navbar-b.navbar-reduce .nav-link {
-  color: #24b67e;
+  color: white;
 }
 
 .navbar-b.navbar-reduce .nav-link:before {
-  background-color: #24b67e;
+  background-color: white;
 }
 
 .navbar-b.navbar-reduce .nav-link:hover {
-  color: #24b67e;
+  color: white;
 }
 
 .navbar-b.navbar-reduce .show > .nav-link,
 .navbar-b.navbar-reduce .active > .nav-link,
 .navbar-b.navbar-reduce .nav-link.show,
 .navbar-b.navbar-reduce .nav-link.active {
-  color: #24b67e;
+  color: white;
 }
 
 .navbar-b.navbar-reduce .navbar-brand {
-  color: #24b67e;
+  color: white;
 }
 
 .navbar-b.navbar-reduce .navbar-toggler span {
-  background-color: #1B1B1B;
+  background-color: white;
 }
 
 .navbar-b .navbar-brand {
@@ -225,13 +227,13 @@ section.footer footer .credits a {
 }
 
 .navbar-b .dropdown-menu .dropdown-item:hover {
-  background-color: #24b67e;
+  background-color: #0f4583;
   color: #fff;
   transition: all 500ms ease;
 }
 
 .navbar-b .dropdown-menu .dropdown-item.active {
-  background-color: #24b67e;
+  background-color: #0f4583;
 }
 
 /*--/ Hamburger Navbar /--*/
@@ -304,6 +306,7 @@ section.footer footer .credits a {
   height: 100vh;
   position: relative;
   color: #fff;
+  background-image: url(/images/intro-bg.jpg?19899a52abf46bc036ddabeb40a7321e);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -380,6 +383,10 @@ body {
   color: #4e4e4e;
 }
 
+body p {
+  margin: 0;
+}
+
 body h1,
 body h2,
 body h3,
@@ -395,7 +402,7 @@ body a {
 }
 
 body a:hover {
-  color: #24b67e;
+  color: #0f4583;
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
@@ -407,7 +414,7 @@ body a:hover {
 }
 
 .overlay-mf {
-  background-color: #24b67e;
+  background-color: #0f4583;
   position: absolute;
   top: 0;
   left: 0px;
@@ -420,14 +427,14 @@ body a:hover {
 .line-mf {
   width: 40px;
   height: 5px;
-  background-color: #24b67e;
+  background-color: #0f4583;
   margin: 0 auto;
 }
 
 .back-to-top {
   position: fixed;
   display: none;
-  background: #24b67e;
+  background: #0f4583;
   color: #fff;
   width: 44px;
   height: 44px;
@@ -465,7 +472,7 @@ body a:hover {
   top: calc(50% - 30px);
   left: calc(50% - 30px);
   border: 6px solid #f2f2f2;
-  border-top: 6px solid #24b67e;
+  border-top: 6px solid #0f4583;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -505,12 +512,6 @@ section.pronosticos {
   padding-top: 4rem;
 }
 
-section.equipos .title-box,
-section.partidos .title-box,
-section.pronosticos .title-box {
-  margin-bottom: 4rem;
-}
-
 section.equipos .title-a,
 section.partidos .title-a,
 section.pronosticos .title-a {
@@ -530,8 +531,10 @@ section.partidos .line-mf,
 section.pronosticos .line-mf {
   width: 40px;
   height: 5px;
-  background-color: #24b67e;
+  background-color: #0f4583;
   margin: 0 auto;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 577px) {
@@ -583,6 +586,15 @@ section.pronosticos .line-mf {
   .bg-image {
     background-attachment: scroll;
   }
+}
+
+div.jQBracket .tools {
+  visibility: hidden;
+  flex: none;
+}
+
+div.jQBracket .bracket {
+  float: none;
 }
 
 /*!

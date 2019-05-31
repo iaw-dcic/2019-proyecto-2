@@ -37,6 +37,6 @@ class User extends Authenticatable{
     ];
 
     public function getProdes(){
-        return $this->hasMany('App\Prode');
+        return $this->belongsToMany('App\Prode')->using('App\ProdeUser');
     }
 }

@@ -17,11 +17,11 @@ class CreateUsersTable extends Migration{
             $table->string('username')->nullable(false)->unique();
             $table->string('image_url')->nullable();
             $table->string('image_id')->nullable();
-            $table->string('description', 300);
-            $table->string('email')->unique()->nullable(false);;
+            $table->string('description', 300)->nullable();
+            $table->string('email')->unique()->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 300)->nullable(false);
-            $table->boolean("active")->default(true);
+            $table->boolean("active")->default();
             $table->rememberToken();
             $table->timestamps();
         });
