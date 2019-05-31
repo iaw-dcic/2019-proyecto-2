@@ -12,7 +12,8 @@ export default class ShirtImage extends Component {
             estampa: "/images/logos/logo12.png",
             telas: [],
             talles: [],
-            colores: []
+            colores: [],
+            logos: []
         }
     }
 
@@ -57,6 +58,9 @@ export default class ShirtImage extends Component {
         })
         axios.get('/api/colores').then(response => {
             this.setState({ colores: response.data })
+        })
+        axios.get('/api/logos').then(response=> {
+            this.setState({ logos:response.data })
         })
     }
 

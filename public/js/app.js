@@ -65799,7 +65799,8 @@ function (_Component) {
       estampa: "/images/logos/logo12.png",
       telas: [],
       talles: [],
-      colores: []
+      colores: [],
+      logos: []
     };
     return _this;
   }
@@ -65894,6 +65895,11 @@ function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/colores').then(function (response) {
         _this2.setState({
           colores: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/logos').then(function (response) {
+        _this2.setState({
+          logos: response.data
         });
       });
     }

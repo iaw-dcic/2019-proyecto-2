@@ -17,8 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Listado de telas
-Route::get('/telas','TelasController@listadoTelas')->name('listadoTelas');
+Route::get('/telas','VistaDiseñarController@listadoTelas')->name('listadoTelas');
 //Listado de talles
-Route::get('/talles','TallesController@listadoTalles')->name('listadoTalles');
+Route::get('/talles','VistaDiseñarController@listadoTalles')->name('listadoTalles');
 //Listado de colores
-Route::get('/colores','ColourController@listadoColores')->name('listadoColores');
+Route::get('/colores','VistaDiseñarController@listadoColores')->name('listadoColores');
+//Listado de logos
+Route::get('/logos','VistaDiseñarController@listadoLogos')->name('listadoLogos');
