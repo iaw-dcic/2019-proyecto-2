@@ -65999,7 +65999,9 @@ function (_Component) {
         onChange: function onChange(e) {
           return _this3.cambiarTalle(e);
         }
-      }, this.state.talles.map(function (item) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, this.state.talle), this.state.talles.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: item.tipo,
           value: item.tipo
@@ -66015,7 +66017,9 @@ function (_Component) {
         onChange: function onChange(e) {
           return _this3.cambiarTela(e);
         }
-      }, this.state.telas.map(function (item) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, this.state.tela), this.state.telas.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: item.nombre,
           value: item.nombre

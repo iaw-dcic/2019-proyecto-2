@@ -78,11 +78,9 @@ export default class ShirtImage extends Component {
                                         <div className="imagen-logos">
                                             <a href="#" className="thumbnail">
                                             {
-                                                this.state.logos.map((item) => (
-                                                    
+                                                this.state.logos.map((item) => (   
                                                     <img  key={item.logo} className="img-thumbnail" src={item.logo} height="80px" width="80px"></img>
-                                               
-                                                ))
+                                                 ))
                                             } 
                                             </a>
                                         </div>
@@ -129,6 +127,7 @@ export default class ShirtImage extends Component {
                                     <h2 id="tittle">Talle {this.state.talle} </h2>
                                     <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
                                     <select className="form-control" onChange={(e) => this.cambiarTalle(e)}>
+                                        <option selected>{this.state.talle}</option>
                                     {
                                         this.state.talles.map((item) => (
                                             <option key={item.tipo} value={item.tipo}>{item.tipo}</option>
@@ -142,6 +141,7 @@ export default class ShirtImage extends Component {
                                     <h2 id="tittle">Tela {this.state.tela} </h2>
                                     <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
                                     <select className="form-control" onChange={(e) => this.cambiarTela(e)}>
+                                        <option selected>{this.state.tela}</option>
                                         {
                                             this.state.telas.map((item) => (
                                                 <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
