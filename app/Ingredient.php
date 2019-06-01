@@ -3,8 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Burger;
 
 class Ingredient extends Model
 {
-    protected $fillable = ['name', 'burger_id'];
+    public function burgers()
+    {
+        return $this->belongsToMany(Burger::class);
+    }
 }

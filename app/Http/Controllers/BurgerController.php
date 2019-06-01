@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Burger;
+use App\Ingredient;
+use Auth;
+
 
 class BurgerController extends Controller
 {
-
-    
+ 
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +18,31 @@ class BurgerController extends Controller
      */
     public function index()
     { 
-        $burgers= Burger::all();
-        return $burgers->toJson();
+        //$user_id = auth()->id();
+        //$burgers= Burger::all()->where('user_id',$user_id);
+        $burgers= Burger::all()->where('user_id',22);
+
+        $response= array();
+
+        $ingredientsArray= array();
+
+
+        foreach ($burgers as $burger){
+            $burgerIngredients= $burger->ingredients()->get();
+
+            foreach ($burgerIngredients as $ingredient) {
+                array_push($ingredientsArray,$ingredient->type);
+            }
+
+            $burgersJSON = array(
+                "id"=> $burger->id,
+                "ingredients"=>$ingredientsArray
+            );
+            $response[]=$burgersJSON;
+            $ingredientsArray= array();
+        }
+
+        return json_encode($response);
     }
 
      /**
@@ -29,8 +54,26 @@ class BurgerController extends Controller
     public function store(Request $request)
     {
         $burger = new Burger;
+        $burger->user_id= $request->user_id;
         $burger->save();
 
+        $ingredientsArray= [];
+        $allIngredients = Ingredient::all('type');
+
+        foreach ($request->ingredients as $ing) {       
+            if ($allIngredients->contains("type",$ing)) {
+              array_push($ingredientsArray,$ing);
+            } 
+        }
+
+        //Attach ingredient only if doesnt already exists
+        foreach ($ingredientsArray as $ing) {
+            if (!$burger->ingredients->contains($ing)) {
+                $ingredientToAdd= Ingredient::where('type',$ing)->first();
+                $burger->ingredients()->attach($ingredientToAdd);
+            }
+        }
+   
         return response()->json('Hamburguesa creada!');
     }
 }

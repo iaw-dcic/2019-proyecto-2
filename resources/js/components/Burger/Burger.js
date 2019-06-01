@@ -3,27 +3,16 @@ import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const burger = props => {
 
-    let transformedIngredients = Object.keys( props.ingredients )
-        .map( igKey => {
+    let transformedIngredients = Object.keys( props.ingredients)
+    .map( igKey => {
             return [...Array( props.ingredients[igKey] )].map( ( _, i ) => {
                 return <BurgerIngredient key={igKey + i} type={igKey} />;
             } );
-        } )
-        .reduce((arr, el) => {
-            return arr.concat(el)
-        }, []);
-    /*console.log("Estoy en burger: "+Object.keys(props.ingredients));
+    } )
+    .reduce((arr, el) => {
+        return arr.concat(el)
+    }, []);
 
-    let transformedIngredients = Object.keys( props.ingredients )
-        .map( igKey => { //igKey es el nombre del ingrediente
-            return [...Array( props.ingredients[igKey] )].map( ( _, i ) => {
-             return <BurgerIngredient key={igKey + i} type={igKey} />;
-            } );
-        })
-        .reduce((arr, el) => {
-            return arr.concat(el);
-        }, []);
-    */
     if (transformedIngredients.length === 0) {
         transformedIngredients = <p>Agregá tus ingredientes!</p>;
     }

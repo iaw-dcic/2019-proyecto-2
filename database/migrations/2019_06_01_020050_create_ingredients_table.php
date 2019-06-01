@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthTokenToUsersTable extends Migration
+class CreateIngredientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddAuthTokenToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('auth_token');
+        Schema::create('ingredients', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('ingredient');
+            $table->string('type');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddAuthTokenToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('auth_token');
-        });
+        Schema::dropIfExists('ingredients');
     }
 }
