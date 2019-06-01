@@ -26,14 +26,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 ** Route::delete($uri, $callback);
 **/
 
+// API avatares
+Route::middleware('auth:api')->get('/avatars','AvatarController@index')
+->name('get_avatars');
+Route::middleware('auth:api')->post('/avatars','AvatarController@store')
+->name('post_avatars');
+Route::middleware('auth:api')->get('/avatars/{id}','AvatarController@show')
+->name('show_avatar');
+Route::middleware('auth:api')->patch('/avatars/{id}','AvatarController@update')
+->name('update_avatar');
+Route::middleware('auth:api')->delete('/avatars/{id}','AvatarController@destroy')
+->name('delete_avatar');
 
-Route::get('/{user}/avatars','AvatarController@index')->name('avatars');
-
-
+// API recursos de avatares
 
 // GET ALL items de avatares
 Route::get('/resources','AvatarItemsController@index')->name('avataritems');
-
 
 // GET ALL y GET 1 recursos
 Route::get('/resources/body','BodyItemController@index')->name('bodyitems');

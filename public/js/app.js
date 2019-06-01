@@ -66003,11 +66003,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _BodyItems__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BodyItems */ "./resources/js/components/BodyItems.js");
-/* harmony import */ var _HeadItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HeadItems */ "./resources/js/components/HeadItems.js");
-/* harmony import */ var _ExtraItems__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ExtraItems */ "./resources/js/components/ExtraItems.js");
-/* harmony import */ var _UpperbodyItems__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./UpperbodyItems */ "./resources/js/components/UpperbodyItems.js");
-/* harmony import */ var _LowerbodyItems__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LowerbodyItems */ "./resources/js/components/LowerbodyItems.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _BodyItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BodyItems */ "./resources/js/components/BodyItems.js");
+/* harmony import */ var _HeadItems__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HeadItems */ "./resources/js/components/HeadItems.js");
+/* harmony import */ var _ExtraItems__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ExtraItems */ "./resources/js/components/ExtraItems.js");
+/* harmony import */ var _UpperbodyItems__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UpperbodyItems */ "./resources/js/components/UpperbodyItems.js");
+/* harmony import */ var _LowerbodyItems__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LowerbodyItems */ "./resources/js/components/LowerbodyItems.js");
+/* harmony import */ var _UserAvatars__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./UserAvatars */ "./resources/js/components/UserAvatars.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66027,6 +66030,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -66056,22 +66061,19 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "state", {
       isLoaded: false,
       error: null,
-      items: []
-      /* componentDidMount() is a lifecycle method
-       * that gets called after the component is rendered
-       */
-
+      items: [],
+      api_token: null
     });
 
     return _this;
   }
 
   _createClass(Main, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "fetchResources",
+    value: function fetchResources() {
       var _this2 = this;
 
-      /* fetch API in action */
+      /* fetch API */
       fetch('/api/resources').then(function (response) {
         return response.json();
       }).then(function (result) {
@@ -66089,6 +66091,20 @@ function (_Component) {
         });
       });
     }
+    /* componentDidMount() is a lifecycle method
+     * that gets called after the component is rendered
+     */
+
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var element = document.getElementById('api_token').content;
+      console.log(element);
+      this.setState({
+        api_token: element
+      });
+      this.fetchResources();
+    }
   }, {
     key: "renderApp",
     value: function renderApp() {
@@ -66101,15 +66117,17 @@ function (_Component) {
       } else if (!isLoaded) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Lista de items para avatares"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BodyItems__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserAvatars__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          api_token: this.state.api_token
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Lista de items para avatares"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BodyItems__WEBPACK_IMPORTED_MODULE_2__["default"], {
           items: this.state.items.bodyitems
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeadItems__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeadItems__WEBPACK_IMPORTED_MODULE_3__["default"], {
           items: this.state.items.headitems
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UpperbodyItems__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UpperbodyItems__WEBPACK_IMPORTED_MODULE_5__["default"], {
           items: this.state.items.upperbodyitems
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LowerbodyItems__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LowerbodyItems__WEBPACK_IMPORTED_MODULE_6__["default"], {
           items: this.state.items.lowerbodyitems
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ExtraItems__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ExtraItems__WEBPACK_IMPORTED_MODULE_4__["default"], {
           items: this.state.items.extraitems
         }));
       }
@@ -66500,6 +66518,197 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (UpperbodyItems);
+
+/***/ }),
+
+/***/ "./resources/js/components/UserAvatars.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/UserAvatars.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var UserAvatars =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(UserAvatars, _Component);
+
+  function UserAvatars() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, UserAvatars);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(UserAvatars)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      nombre_avatar: '',
+      status_nuevo: null,
+      isCreated: false,
+      status: null,
+      error: false,
+      isLoaded: false,
+      avatars: [],
+      user: null
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState({
+        nombre_avatar: e.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "nuevoAvatar", function (e) {
+      e.preventDefault();
+
+      _this.setState({
+        nombre_avatar: ''
+      });
+
+      console.log("UserAvatars: Boton nuevo avatar");
+
+      _this.fetchNuevoAvatar();
+    });
+
+    return _this;
+  }
+
+  _createClass(UserAvatars, [{
+    key: "fetchNuevoAvatar",
+    value: function fetchNuevoAvatar() {
+      var _this2 = this;
+
+      var bearer = 'Bearer ' + this.props.api_token;
+      var nombre = this.state.nombre_avatar;
+      var data = JSON.stringify({
+        'nombre': nombre
+      });
+      console.log("UserAvatars: DATOS FORM: " + data);
+      console.log("UserAvatars: realizando fetch para creacion de nuevo avatar");
+      fetch('/api/avatars', {
+        method: 'POST',
+        headers: {
+          'Authorization': bearer,
+          'Accept': 'application/json'
+        },
+        nombre: data
+      }).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        console.log(result);
+        console.log("UserAvatars: finalizado fetch para creacion de nuevo avatar");
+      }).then(function (result) {
+        _this2.render();
+      });
+    }
+  }, {
+    key: "fetchAvatars",
+    value: function fetchAvatars() {
+      var _this3 = this;
+
+      var bearer = 'Bearer ' + this.props.api_token;
+      console.log("UserAvatars: realizando fetch de avatares");
+      fetch('/api/avatars', {
+        method: 'GET',
+        headers: {
+          'Authorization': bearer,
+          'Accept': 'application/json'
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        if (result.message) {
+          _this3.setState({
+            status: result.message,
+            error: true,
+            isLoaded: true
+          });
+        } else {
+          _this3.setState({
+            status: result.status,
+            isLoaded: true,
+            user: result.data.user,
+            avatars: result.data.avatars
+          });
+        }
+
+        console.log("UserAvatars: finalizado fetch de avatares");
+      });
+    }
+  }, {
+    key: "renderApp",
+    value: function renderApp() {
+      var _this$state = this.state,
+          error = _this$state.error,
+          isLoaded = _this$state.isLoaded;
+
+      if (error) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Error: ", this.state.status);
+      } else if (isLoaded) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Avatares de ", this.state.user.name, ":", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.avatars.map(function (item) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: item.id
+          }, item.name);
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.nuevoAvatar
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: "nombre"
+        }, "Nombre:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          id: "nombre_avatar",
+          onChange: this.handleChange,
+          value: this.state.campo_nombre
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Nuevo")));
+      } else {
+        return;
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.fetchAvatars();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.renderApp());
+    }
+  }]);
+
+  return UserAvatars;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (UserAvatars);
 
 /***/ }),
 

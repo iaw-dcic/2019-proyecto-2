@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
+
 import BodyItems from './BodyItems'
 import HeadItems from './HeadItems'
 import ExtraItems from './ExtraItems'
 import UpperbodyItems from './UpperbodyItems'
 import LowerbodyItems from './LowerbodyItems'
+import UserAvatars from './UserAvatars'
 
 
 export default class Main extends Component {
@@ -12,35 +15,45 @@ export default class Main extends Component {
     isLoaded: false,
     error: null,
     items: [],
+    api_token: null,
   }
+
+  fetchResources(){
+    /* fetch API */
+    fetch('/api/resources')
+    .then( (response) => {
+      return response.json();
+    })
+    .then( (result) => {
+        this.setState({
+          isLoaded: true,
+          items: result.items,              
+        });
+      },
+      // Note: it's important to handle errors here
+      // instead of a catch() block so that we don't swallow
+      // exceptions from actual bugs in components.
+      (error) => {
+        this.setState({
+        isLoaded: true,
+        error
+      });
+    }
+  )
+  }
+
 
   /* componentDidMount() is a lifecycle method
    * that gets called after the component is rendered
    */
   componentDidMount() {
-    /* fetch API in action */
-    fetch('/api/resources')
-      .then(response => {
-        return response.json();
-      })
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items,              
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-    }
+    const element = document.getElementById('api_token').content;
+    console.log(element);
+    this.setState({
+      api_token : element
+    });
+    this.fetchResources();    
+  }
 
   renderApp(){
     const { error, isLoaded, } = this.state;
@@ -60,7 +73,8 @@ export default class Main extends Component {
     } 
     else {
       return (
-      <div>                
+      <div>
+        <UserAvatars api_token={this.state.api_token}/>
         <h3>Lista de items para avatares</h3>
         <BodyItems items={this.state.items.bodyitems} />
         <HeadItems items={this.state.items.headitems}/>

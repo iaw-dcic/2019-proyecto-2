@@ -6,8 +6,11 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @auth<!-- API Token -->
+    <meta id="api_token" name="api-token" content="{{ auth()->user()->api_token }}">
+    @endauth
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title','My Snoovatar')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,12 +22,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <title>@yield('title','My Snoovatar')</title>
+    
   </head>
   <body>
     <div id="wrap">
         @include('layouts.header')
-
         @yield('content')        
     </div>
     @include('layouts.footer')
