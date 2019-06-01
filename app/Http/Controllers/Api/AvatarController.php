@@ -1,21 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use App\Avatar;
 use App\User;
 
 class AvatarController extends Controller
 {
-    /*
-    public function __construct(){
-
-        $this->middleware('auth');
-
-    }
-    */
-
     /**
      * Display a listing of the resource.
      *
@@ -79,21 +73,14 @@ class AvatarController extends Controller
          }
          else{
             // Coinciden los tokens
-            
-            
             // Valido la entrada
             $datos = $request->validate([
                 'nombre' => 'string|max:64',
             ]);
-            
-
-            return response()->json([
-                'input' => $request->nombre,
-            ],200);
 
             // Creo nuevo avatar
             $avatar = new Avatar;
-            $avatar->name = $request->get('nombre');
+            $avatar->name = $datos['nombre'];
             
             // Guardo avatar
             $user->avatars()->save($avatar);

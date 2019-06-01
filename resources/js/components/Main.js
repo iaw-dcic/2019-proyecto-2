@@ -1,38 +1,31 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
 
-import BodyItems from './BodyItems'
-import HeadItems from './HeadItems'
-import ExtraItems from './ExtraItems'
-import UpperbodyItems from './UpperbodyItems'
-import LowerbodyItems from './LowerbodyItems'
-import UserAvatars from './UserAvatars'
+import UserHome from './UserHome'
 
 
 export default class Main extends Component {
 
-  state ={
-    isLoaded: false,
-    error: null,
-    items: [],
-    api_token: null,
+  constructor(props){
+    super(props);
+    const element = document.getElementById('api_token').content;
+    this.state = {
+      isLoaded: true,
+      error: null,
+      api_token: element,
+    }
   }
-
   fetchResources(){
-    /* fetch API */
     fetch('/api/resources')
     .then( (response) => {
       return response.json();
     })
-    .then( (result) => {
+    .then(
+      (result) => {
         this.setState({
           isLoaded: true,
           items: result.items,              
         });
       },
-      // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
       (error) => {
         this.setState({
         isLoaded: true,
@@ -42,60 +35,34 @@ export default class Main extends Component {
   )
   }
 
-
-  /* componentDidMount() is a lifecycle method
-   * that gets called after the component is rendered
-   */
-  componentDidMount() {
-    const element = document.getElementById('api_token').content;
-    console.log(element);
-    this.setState({
-      api_token : element
-    });
-    this.fetchResources();    
-  }
-
   renderApp(){
     const { error, isLoaded, } = this.state;
     if (error) {
       return (
-        <div>
+        <div className="container testing">
           Error: {error.message}
         </div>
       );
     } 
     else if (!isLoaded) {
       return (
-        <div>
-          Loading...
+        <div className="container testing">
+          <div className="col-md-8 testing">
+            <i className="fa fa-spinner fa-spin"></i>
+          </div>
         </div>
       );
     } 
     else {
       return (
-      <div>
-        <UserAvatars api_token={this.state.api_token}/>
-        <h3>Lista de items para avatares</h3>
-        <BodyItems items={this.state.items.bodyitems} />
-        <HeadItems items={this.state.items.headitems}/>
-        <UpperbodyItems items={this.state.items.upperbodyitems}/>
-        <LowerbodyItems items={this.state.items.lowerbodyitems}/>
-        <ExtraItems items={this.state.items.extraitems}/>
-      </div>
+          <UserHome api_token={this.state.api_token}/>
       );
     }
   }
    
   render() {
-   /* Some css code has been removed for brevity */
     return (
-      <div className="container" style={{marginTop: 60 + 'px'}}>
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            {this.renderApp()}  
-          </div>
-        </div>
-      </div> 
+        this.renderApp()
     );
   }
 }

@@ -2,33 +2,29 @@ import React, { Component } from 'react'
 
 class UserAvatars extends Component{
 
-    state = {
-        nombre_avatar: '',
-        status_nuevo: null,
-        isCreated: false,
-
-        status: null,
-        error: false,
-        isLoaded: false,
-        avatars: [],
-        user: null,
+    constructor(props){
+        super(props);
+        this.state= {
+            nombre_avatar: '',
+            status_nuevo: null,
+            isCreated: false,
+    
+            status: null,
+            error: false,
+            isLoaded: false,
+            avatars: [],
+        }
     }
 
-    fetchNuevoAvatar(){
-        const bearer = 'Bearer ' + this.props.api_token;
-        const nombre = this.state.nombre_avatar;
-        const data = JSON.stringify({
-            'nombre': nombre
-        })
-        console.log("UserAvatars: DATOS FORM: "+data);        
-        console.log("UserAvatars: realizando fetch para creacion de nuevo avatar");
+    fetchNuevoAvatar(data){
+        const bearer = 'Bearer ' + this.props.api_token
         fetch('/api/avatars', { 
             method: 'POST',
             headers: {
                 'Authorization': bearer, 
                 'Accept': 'application/json'  
             },
-            nombre: data
+            body: data
         })
         .then( 
             (response) => {                        
@@ -37,21 +33,18 @@ class UserAvatars extends Component{
         )
         .then(
             (result) => {
-                console.log(result);
-                console.log("UserAvatars: finalizado fetch para creacion de nuevo avatar");
+                if (result.status == 'success'){
+                    this.setState(state => ({
+                        avatars: state.avatars.concat(result.data.avatar),                        
+                    }));
+                }
             }
-        )
-        .then(
-            (result) =>{
-                this.render();
-            }
-        ); 
+        );
     }
 
 
     fetchAvatars(){
-        const bearer = 'Bearer ' + this.props.api_token;
-        console.log("UserAvatars: realizando fetch de avatares");
+        const bearer = 'Bearer ' + this.props.api_token
         fetch('/api/avatars', { 
             method: 'GET',
             headers: {
@@ -80,55 +73,15 @@ class UserAvatars extends Component{
                         {
                             status: result.status,
                             isLoaded: true,
-                            user: result.data.user,
                             avatars: result.data.avatars,                    
                         }
                     );
                 }
-                console.log("UserAvatars: finalizado fetch de avatares")
             },
         );        
     }
 
-    renderApp(){
-        const { error, isLoaded, } = this.state;
-        if (error){         
-            return (
-                <div>
-                    Error: {this.state.status}
-                </div>
-            )
-        }
-        else if (isLoaded){          
-            return(
-                <div>
-                    Avatares de {this.state.user.name}:
-                    <ul>
-                    {this.state.avatars.map(item => 
-                        <li key={item.id}>
-                            {item.name}
-                        </li>
-                    )}
-                    </ul>
-                    <form onSubmit={this.nuevoAvatar}>
-                        <label htmlFor="nombre">
-                            Nombre: 
-                        </label>
-                        <input
-                            id="nombre_avatar"
-                            onChange={this.handleChange}
-                            value={this.state.campo_nombre}
-                        />
-                        <button>
-                            Nuevo
-                        </button>
-                    </form>
-                </div>
-            );
-        }else{
-            return;
-        }
-    }
+    
 
     componentDidMount(){
         this.fetchAvatars();
@@ -140,16 +93,65 @@ class UserAvatars extends Component{
 
     nuevoAvatar = (e) =>{
         e.preventDefault();
+
+        const nombre = this.state.nombre_avatar;
         this.setState({ nombre_avatar: ''});
-        console.log("UserAvatars: Boton nuevo avatar");
-        this.fetchNuevoAvatar();        
+        
+        let data = new FormData();
+        data.append("nombre", nombre);
+
+        this.fetchNuevoAvatar(data);        
     }
+
+    renderApp(){
+        const { error, isLoaded, } = this.state;
+        if (error){         
+            return (
+                <span>
+                    Error: {this.state.status}
+                </span>
+            )
+        }
+        else if (isLoaded){          
+            return(
+                <div>
+                    Tus avatares: 
+                    <ul>
+                    {this.state.avatars.map(item => 
+                        <li key={item.id}>
+                            {item.name}
+                        </li>
+                    )}
+                    </ul>
+                    <form onSubmit={this.nuevoAvatar}>
+                        <label htmlFor="nombre_avatar">
+                            Nombre: 
+                        </label>
+                        <input
+                            id="nombre_avatar"
+                            onChange={this.handleChange}
+                            value={this.state.nombre_avatar}
+                        />
+                        <button>
+                            Nuevo
+                        </button>
+                    </form>
+                </div>
+            );
+        }else{
+            return(
+                <span>
+                    Cargando avatares de usuario 
+                    <i className="fa fa-spinner fa-spin loading"></i>
+                </span>
+            );
+        }
+    }
+
 
     render(){
         return (
-            <div>
-                {this.renderApp()}
-            </div>
+            this.renderApp()
         );
     }
 

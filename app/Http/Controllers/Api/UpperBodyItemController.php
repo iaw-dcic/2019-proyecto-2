@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\ExtraItem;
+use App\Http\Controllers\Controller;
 
-class ExtraItemController extends Controller
+use App\UpperBodyItem;
+
+class UpperBodyItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,7 @@ class ExtraItemController extends Controller
     public function index()
     {
         return response()->json([
-            'items' => ExtraItem::all(),
+            'items' => UpperBodyItem::all(),
             'status' => 'success'
             ], 200);
     }
@@ -25,10 +27,10 @@ class ExtraItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($extraItem)
+    public function show($upperbodyItem)
     {
         return response()->json([
-            'item' => ExtraItem::find($extraItem),
+            'item' => UpperBodyItem::find($upperbodyItem),
             'status' => 'success'
             ], 200);
     }

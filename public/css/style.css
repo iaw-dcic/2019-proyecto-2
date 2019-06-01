@@ -1,0 +1,117 @@
+body{
+    padding-top: 60px;
+}
+
+.rounded-big {
+    border-radius: 1.0rem !important;
+}
+
+.rounded-top-lg {
+    border-top-left-radius: 1.0rem !important;
+    border-top-right-radius: 1.0rem !important;
+}
+
+.rounded-bottom-lg {
+    border-bottom-right-radius: 1.0rem !important;
+    border-bottom-left-radius: 1.0rem !important;
+}
+
+.card-link:hover {
+    color: #b59ad8 /* primary */
+}
+
+.link-perfil:hover {
+    color: #b59ad8; /* primary */
+    text-decoration:none;
+}
+
+.about-title {
+    display: block;
+    margin: 5px 10px 0 10px;
+    font-size: 28px;
+ }
+
+.about-info {
+    height: auto;
+    width: auto;
+    display: block;
+    font-size: 18px;
+    margin: 10px 10px 5px 10px;
+}
+
+.about-link {
+    color:#ececee; /* light */
+    display: inline-block;
+    font-size: 18px;
+    margin: 5px 0 0 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.about-link:hover {
+    color: #282149; /* secondary*/
+    text-decoration: none;
+}
+
+.eliminar-link:hover {
+    color: #c41549; /* danger */
+    text-decoration: none;
+}
+
+.titulo{
+    font-family: Galada;
+}
+
+.titulo-h1 {
+    font-size: 2.5rem;
+}
+
+.titulo.h2 {
+    font-size: 2rem;
+}
+
+.titulo-h3 {
+    font-size: 1.75rem;
+}
+
+.titulo-h4 {
+    font-size: 1.5rem;
+  }
+
+.titulo-h5 {
+    font-size: 1.25rem;
+}
+
+.titulo-h6 {
+    font-size: 1rem;
+}
+
+.loading {
+    font-size: 1.5rem;
+}
+
+.testing {
+    border: 2px solid red;
+}
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+}
