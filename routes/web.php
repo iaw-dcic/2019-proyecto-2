@@ -13,4 +13,8 @@
 
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+
+Route::view('/home', 'react')->middleware('auth');
+
+//Route::view('/Home', 'react');//->middleware('auth');
+Route::view('/{path?}', 'inicio');//->middleware('auth');
