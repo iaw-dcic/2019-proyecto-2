@@ -65806,6 +65806,32 @@ function (_Component) {
   }
 
   _createClass(ShirtImage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
+        _this2.setState({
+          telas: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/talles').then(function (response) {
+        _this2.setState({
+          talles: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/colores').then(function (response) {
+        _this2.setState({
+          colores: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/logos').then(function (response) {
+        _this2.setState({
+          logos: response.data
+        });
+      });
+    }
+  }, {
     key: "cambiarColorRemera",
     value: function cambiarColorRemera(e, id) {
       switch (id) {
@@ -65885,29 +65911,10 @@ function (_Component) {
       });
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
-        _this2.setState({
-          telas: response.data
-        });
-      });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/talles').then(function (response) {
-        _this2.setState({
-          talles: response.data
-        });
-      });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/colores').then(function (response) {
-        _this2.setState({
-          colores: response.data
-        });
-      });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/logos').then(function (response) {
-        _this2.setState({
-          logos: response.data
-        });
+    key: "eliminarLogo",
+    value: function eliminarLogo(e) {
+      if (this.state.logo != null) this.setState({
+        logo: null
       });
     }
   }, {
@@ -65925,14 +65932,14 @@ function (_Component) {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "logos"
+      }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Logos centrales "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "imagen-logos"
+        className: "container-imagenesLogos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "thumbnail"
       }, this.state.logos.map(function (item) {
@@ -65942,11 +65949,17 @@ function (_Component) {
           src: item.logo,
           onClick: function onClick(e) {
             return _this3.cambiarLogo(e, item.logo);
-          },
-          height: "80px",
-          width: "80px"
+          }
         });
-      }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: function onClick(e) {
+          return _this3.eliminarLogo(e);
+        },
+        "class": "btn btn-secondary"
+      }, "Eliminar logo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        height: "10%"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
