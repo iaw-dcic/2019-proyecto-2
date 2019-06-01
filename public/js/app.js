@@ -6618,7 +6618,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#content{\n    align-items: center\n}\n\nhtml {\n    scroll-behavior: smooth;\n}\n", ""]);
+exports.push([module.i, "#content{\n    align-items: center\n}\n\n#myTshirts {\n    height: 200px;\n    width: 70%;\n}\n\n.arrow{\n    width: 40px;\n    height: 40px;\n    margin: 5px;\n    background-color: #999999;\n    border-radius: 50%;\n}\n", ""]);
 
 // exports
 
@@ -6637,7 +6637,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#tshirt-container{\n    align-items: center;\n    padding: 20px;\n    width: 443px;\n    height: 467px;\n    position: relative;\n}\n\n#color_picker{\n    align-items: center;\n    padding: 20px;\n    width: 443px;\n    position: relative;\n}\n\n.tshirt-contents{\n    position: absolute;\n    left: 0px;\n    right: 0px;\n    top: 0px;\n    bottom: 0px;\n}\n.image{\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.center{\n    padding: 20px;\n    margin-top: 120px;\n    margin-left: 125px;\n    width: 193px;\n    height: 193px;\n}\n\n.pocket{\n    padding: 20px;\n    margin-top: 100px;\n    margin-left: 225px;\n    width: 100px;\n    height: 100px;\n}\n\n.options{\n    overflow: auto;\n    display: inline;\n}\n\n.type_options{\n    display: flex;\n    flex-direction: row;\n}\n\n.image_button{\n    width: 50px;\n    height: 50px;\n    margin:10px;\n}\n\n.large_image_button{\n    width: 143px;\n    height: 147px;\n    margin:10px;\n}\n\n.option_label{\n    text-align: center;\n}\n\n#content{\n    display: flex;\n    flex-direction: row;\n}\n\n.men_image{\n    background-image: url('/storage/uploads/basic_tee.png')\n}\n.men_foreground{\n    background-image: url('/storage/uploads/basic_tee_foreground.png')\n}\n\n.women_image{\n    background-image: url('/storage/uploads/women_tee.png')\n}\n.women_foreground{\n    background-image: url('/storage/uploads/women_tee_foreground.png')\n}\n", ""]);
+exports.push([module.i, "#tshirt-container{\n    align-items: center;\n    width: 143px;\n    height: 147px;\n    position: relative;\n}\n\n.center{\n    padding: 6px;\n    margin-top: 40px;\n    margin-left: 40px;\n    width: 64px;\n    height: 64px;\n}\n\n.pocket{\n    padding: 7px;\n    margin-top: 33px;\n    margin-left: 73px;\n    width: 33px;\n    height: 33px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/TShirtEditor.css":
+/*!**********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/TShirtEditor.css ***!
+  \**********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#tshirt-editor-container{\n    align-items: center;\n    width: 443px;\n    height: 467px;\n    position: relative;\n}\n\n#color_picker{\n    align-items: center;\n    padding: 20px;\n    width: 443px;\n    position: relative;\n}\n\n.tshirt-contents{\n    position: absolute;\n    left: 0px;\n    right: 0px;\n    top: 0px;\n    bottom: 0px;\n}\n.image{\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.editor-center{\n    padding: 20px;\n    margin-top: 120px;\n    margin-left: 125px;\n    width: 193px;\n    height: 193px;\n}\n\n.editor-pocket{\n    padding: 20px;\n    margin-top: 100px;\n    margin-left: 225px;\n    width: 100px;\n    height: 100px;\n}\n\n.options{\n    overflow: auto;\n    display: inline;\n}\n\n.type_options{\n    display: flex;\n    flex-direction: row;\n}\n\n.image_button{\n    width: 50px;\n    height: 50px;\n    margin:10px;\n}\n\n.large_image_button{\n    width: 143px;\n    height: 147px;\n    margin:10px;\n}\n\n.option_label{\n    text-align: center;\n}\n\n#content{\n    display: flex;\n    flex-direction: row;\n}\n\n.men_image{\n    background-image: url('/storage/uploads/basic_tee.png')\n}\n.men_foreground{\n    background-image: url('/storage/uploads/basic_tee_foreground.png')\n}\n\n.women_image{\n    background-image: url('/storage/uploads/women_tee.png')\n}\n.women_foreground{\n    background-image: url('/storage/uploads/women_tee_foreground.png')\n}\n", ""]);
 
 // exports
 
@@ -73939,6 +73958,17 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-horizontal-scrolling-menu/build/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/react-horizontal-scrolling-menu/build/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports=function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(r,i,function(t){return e[t]}.bind(null,i));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=2)}([function(e,t){e.exports=__webpack_require__(/*! react */ "./node_modules/react/index.js")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={alignItems:"center",display:"flex",userSelect:"none"};t.defaultMenuStyle=r;var i={overflow:"hidden",userSelect:"none"};t.defaultWrapperStyle=i;var s={alignCenter:!0,alignOnResize:!0,arrowClass:"scroll-menu-arrow",arrowDisabledClass:"scroll-menu-arrow--disabled",arrowLeft:null,arrowRight:null,clickWhenDrag:!1,data:[],dragging:!0,hideArrows:!1,hideSingleArrow:!1,inertiaScrolling:!1,inertiaScrollingSlowdown:.25,innerWrapperClass:"menu-wrapper--inner",innerWrapperStyle:{textAlign:"left",userSelect:"none",whiteSpace:"nowrap"},itemClass:"menu-item-wrapper",itemClassActive:"active",itemStyle:{display:"inline-block"},menuClass:"horizontal-menu",menuStyle:r,onSelect:function(){return!1},onUpdate:function(){return!1},scrollBy:0,scrollToSelected:!1,selected:"",transition:.4,translate:0,useButtonRole:!0,wrapperClass:"menu-wrapper",wrapperStyle:i,wheel:!0,xPoint:0};t.defaultProps=s},function(e,t,n){"use strict";var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});var i=r(n(3));t.default=i.default},function(e,t,n){"use strict";var r=this&&this.__extends||function(){var e=function(t,n){return(e=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(t,n)};return function(t,n){function r(){this.constructor=t}e(t,n),t.prototype=null===n?Object.create(n):(r.prototype=n.prototype,new r)}}(),i=this&&this.__assign||function(){return(i=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var i in t=arguments[n])Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e}).apply(this,arguments)},s=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});var a=s(n(0)),o=n(1),l=n(4),u=n(5),d=function(e){function t(t){var n=e.call(this,t)||this;return n.state={dragging:!1,firstItemVisible:!0,lastItemVisible:!1,leftArrowVisible:!1,rightArrowVisible:!0,startDragTranslate:0,translate:n.props.translate,xDraggedDistance:0,xPoint:0},n.setRef=function(e){var t=Object.entries(e)[0],r=t[0],i=t[1];i.elem&&(n.ref[r]=i)},n.setMenuInnerRef=function(e){n.menuInner=e},n.setWrapperRef=function(e){n.menuWrapper=e},n.checkFirstLastItemVisibility=function(e){var t=e.translate,r=void 0===t?n.state.translate:t,i=n.menuItems,s=!0,a=!1;if(i){var o=n.getVisibleItems({offset:r});s=o.includes(i[0]),a=o.includes(i.slice(-1)[0])}return{firstItemVisible:s,lastItemVisible:a}},n.setFirstLastItemVisibility=function(){var e=n.state,t=e.firstItemVisible,r=e.lastItemVisible,i=n.checkFirstLastItemVisibility({}),s=i.firstItemVisible,a=i.lastItemVisible;if(t!==s||r!==a){var o=!s,l=!a;n.setState({firstItemVisible:s,lastItemVisible:a,leftArrowVisible:o,rightArrowVisible:l})}},n.onLoad=function(){n.setInitial(),n.mounted=!0},n.resizeHandler=function(){if(!n.props.alignOnResize)return!1;clearTimeout(n.resizeTimer),n.resizeTimer=setTimeout(function(){return n.resize()},250)},n.resize=function(){var e=n.props.alignCenter;n.updateWidth({});var t=n.getVisibleItems({}),r=n.getOffsetToItemByIndex({index:t[0]&&t[0][1].index||0}),i=e?n.getCenterOffset({items:t}):0;n.setState({translate:-r+i})},n.setInitial=function(){var e=n.props,t=e.selected,r=e.data,s=e.translate,a=e.scrollToSelected,u=e.alignCenter,d=n.state.translate;if(!r||!r.length)return!1;n.menuItems.length&&r===n.data||(n.menuItems=n.getMenuItems(),n.data=r),n.updateWidth({});var f=i({},n.state);(!n.mounted&&s===o.defaultProps.translate||!l.translateIsValid(s)&&!l.translateIsValid(d))&&(f.translate=u?n.firstPageOffset:o.defaultProps.translate);var c=n.checkFirstLastItemVisibility({translate:s}),m=c.firstItemVisible,p=c.lastItemVisible;(f.firstItemVisible=m,f.lastItemVisible=p,f.leftArrowVisible=!m,f.rightArrowVisible=!p,a)&&(n.isScrollNeeded({itemId:t,translate:f.translate})&&(f.translate=n.getOffsetToItemByKey(t)));n.setState(i({},f))},n.isScrollNeeded=function(e){var t=e.itemId,r=e.translate,i=void 0===r?n.state.translate:r,s=(n.menuItems,n.getItemByKey(t));return!n.getVisibleItems({offset:i}).includes(s)},n.scrollTo=function(e){var t=n.state.translate,r=n.getOffsetToItemByKey(e);if(n.selected=e,t===r)return!1;n.setState({translate:r})},n.getMenuItems=function(){return Object.entries(n.ref).slice(0,n.props.data.length||0)},n.getItemsWidth=function(e){var t=e.items;return(void 0===t?n.menuItems:t).map(function(e){return e[1].elem}).filter(Boolean).reduce(function(e,t){return e+l.getClientRect(t).width},0)},n.getWidth=function(e){var t=e.items,r=window&&window.innerWidth,i=l.getClientRect(n.menuWrapper);return{wWidth:r,menuPos:i.x,menuWidth:i.width,allItemsWidth:n.getItemsWidth({items:t})}},n.updateWidth=function(e){var t=e.items,r=void 0===t?n.menuItems:t,i=n.getWidth({items:r}),s=i.wWidth,a=i.menuPos,o=i.menuWidth,l=i.allItemsWidth,u=n.getPagesOffsets({allItemsWidth:l,items:r,menuPos:a,menuWidth:o,wWidth:s}),d=u.firstPageOffset,f=u.lastPageOffset;n.menuPos=a,n.wWidth=s,n.allItemsWidth=l,n.menuWidth=o,n.firstPageOffset=d,n.lastPageOffset=f},n.getFirstPageOffset=function(e){var t=e.items,r=void 0===t?n.menuItems:t,i=e.offset,s=void 0===i?n.state.translate:i,a=e.menuWidth,o=void 0===a?n.menuWidth:a,l=n.getVisibleItems({items:r,menuWidth:o,offset:s});return n.getCenterOffset({items:l,menuWidth:o})},n.getLastPageOffset=function(e){var t=e.items,r=void 0===t?n.menuItems:t,i=e.allItemsWidth,s=void 0===i?n.allItemsWidth:i,a=e.wWidth,o=(void 0===a&&n.wWidth,e.menuPos),l=(void 0===o&&n.menuPos,e.menuWidth),u=void 0===l?n.menuWidth:l,d=n.getVisibleItems({items:r,menuWidth:u,offset:-s+u});return n.getCenterOffset({items:d,menuWidth:u})},n.getPagesOffsets=function(e){var t=e.items,r=void 0===t?n.menuItems:t,i=e.allItemsWidth,s=void 0===i?n.allItemsWidth:i,a=e.wWidth,o=void 0===a?n.wWidth:a,l=e.menuPos,u=void 0===l?n.menuPos:l,d=e.menuWidth,f=void 0===d?n.menuWidth:d,c=e.offset,m=void 0===c?n.state.translate:c;return{firstPageOffset:n.getFirstPageOffset({items:r,menuPos:u,menuWidth:f,offset:m,wWidth:o}),lastPageOffset:n.getLastPageOffset({allItemsWidth:s,items:r,menuPos:u,menuWidth:f,wWidth:o})}},n.onItemClick=function(e){var t=n.props,r=t.clickWhenDrag,i=t.onSelect;if(n.state.xDraggedDistance>5&&!r)return!1;n.selected=e,i&&i(e)},n.getVisibleItems=function(e){var t=e.items,r=void 0===t?n.menuItems:t,i=e.menuWidth,s=void 0===i?n.menuWidth:i,a=e.offset,u=void 0===a?n.state.translate:a,d=e.translate,f=void 0===d?n.state.translate||o.defaultProps.translate:d;return r.filter(function(e){var t=l.getClientRect(e[1].elem).width,i=n.getItemInd(r,e),a=n.getOffsetToItemByIndex({index:i,menuItems:r,translate:f});return n.elemVisible({elWidth:t,menuWidth:s,offset:u,x:a})})},n.elemVisible=function(e){var t=e.x,r=e.offset,i=void 0===r?0:r,s=e.elWidth,a=e.menuWidth,o=void 0===a?n.menuWidth:a,l=t+i;return l>=-1&&l+s<=o+1},n.getItemInd=function(e,t){return void 0===e&&(e=n.menuItems),e&&t?e.findIndex(function(e){return e[0]===t[0]}):0},n.getNextItemInd=function(e,t){var r=n.menuItems;if(e){if(!t.length)return 0}else if(!t.length)return r.length;var i=e?n.getItemInd(r,t[0])-1:n.getItemInd(r,t.slice(-1)[0])+1;return i<0?0:i},n.getOffsetToItemByKey=function(e){var t=n.state.translate,r=n.getItemIndexByKey(e);if(-1===r)return t;var i=n.props.alignCenter;t=n.getOffsetToItemByIndex({index:r});var s=n.getVisibleItems({offset:-t});return t=-(t-(i?n.getCenterOffset({items:s}):o.defaultProps.translate)),n.itBeforeStart(t)?t=n.getOffsetAtStart():n.itAfterEnd(t)&&(t=n.getOffsetAtEnd()),t},n.getItemByKey=function(e){return n.menuItems.find(function(t){return t[1].key===e})||["null",{key:"n",elem:null,index:-1}]},n.getItemIndexByKey=function(e){return e?n.menuItems.findIndex(function(t){return t[1].key===e}):-1},n.getOffsetToItemByIndex=function(e){var t=e.index,r=e.menuItems,i=void 0===r?n.menuItems:r,s=e.translate,a=void 0===s?n.state.translate:s;if(!i.length)return 0;var o=t>=i.length?i.length-1:t;return+l.getClientRect(i[o][1].elem).x-a-n.menuPos},n.getScrollRightOffset=function(e,t){void 0===t&&(t=n.menuItems);var r=n.props.scrollBy,i=r?e[0][1].index+r:n.getNextItem((e.slice(-1)[0]&&e.slice(-1)||t.slice(-1))[0][1].key)[1].index;return-n.getOffsetToItemByIndex({index:i,menuItems:t})},n.getScrollLeftOffset=function(e,t){void 0===t&&(t=n.menuItems);var r=n.props.scrollBy,i=n.getPrevItem((e[0]&&e[0][1]||t[0][1]).key)[1].index-(r?r-1:e.length);return-n.getOffsetToItemByIndex({index:i<0?0:i,menuItems:t})},n.getNextItem=function(e){var t=n.menuItems;return t[t.findIndex(function(t){return t[1].key===e})+1]||t.slice(-1)[0]},n.getPrevItem=function(e){var t=n.menuItems;return t[t.findIndex(function(t){return t[1].key===e})-1]||t[0]},n.getOffset=function(e,t){void 0===t&&(t=n.menuItems);var r=n.getVisibleItems({items:t});return e?n.getScrollLeftOffset(r,t):n.getScrollRightOffset(r,t)},n.getCenterOffset=function(e){var t=e.items,r=void 0===t?n.menuItems:t,i=e.menuWidth,s=void 0===i?n.menuWidth:i;return r.length?(s-n.getItemsWidth({items:r}))/2:0},n.handleWheel=function(e){if(!n.props.wheel)return!1;e.deltaY<0?n.handleArrowClick():n.handleArrowClick(!1)},n.getOffsetAtStart=function(){var e=n.firstPageOffset;return n.props.alignCenter?e:o.defaultProps.translate},n.getOffsetAtEnd=function(){var e=n.props.alignCenter,t=n,r=t.allItemsWidth,i=t.menuWidth,s=t.lastPageOffset,a=r-i;return e?-a-s:-a},n.handleArrowClickRight=function(){n.handleArrowClick(!1)},n.handleArrowClick=function(e){void 0===e&&(e=!0);var t=n.props.alignCenter,r=n,i=r.allItemsWidth,s=r.menuWidth;if(!t&&!e&&i<s)return!1;var a=0,l=n.getVisibleItems({}),u=l[0]&&0===l[0][1].index,d=l.slice(-1)[0]&&l.slice(-1)[0][1].index===n.menuItems.length-1,f=n.getOffset(e);if(e&&(u||n.itBeforeStart(f)))a=n.getOffsetAtStart();else if(e||!d&&!n.itAfterEnd(f)){var c=t?n.getCenterOffset({items:n.getVisibleItems({offset:f})}):0;a=f+c}else a=n.getOffsetAtEnd();n.setState({startDragTranslate:0,translate:a,xDraggedDistance:0,xPoint:o.defaultProps.xPoint})},n.itBeforeStart=function(e){var t=n.props.alignCenter,r=n,i=r.menuWidth,s=r.allItemsWidth,a=r.firstPageOffset;return s<i||(t?e>a:e>o.defaultProps.translate)},n.itAfterEnd=function(e){var t=n.props.alignCenter,r=n,i=r.menuWidth,s=r.allItemsWidth,a=r.lastPageOffset;return s<i||(t?e<o.defaultProps.translate&&Math.abs(e)>s-i+a:e<o.defaultProps.translate&&Math.abs(e)>s-i)},n.getPoint=function(e){return"touches"in e?e.touches[0].clientX:"clientX"in e?e.clientX:0},n.handleDragStart=function(e){if(e&&"buttons"in e&&2===e.buttons)return!1;if(!n.props.dragging)return!1;var t=n.state.translate;n.dragHistory=[{time:Date.now(),position:t}],n.setState({dragging:!0,startDragTranslate:t,xDraggedDistance:0,xPoint:0})},n.handleDrag=function(e){var t=n.props.dragging,r=n.state,i=r.translate,s=r.dragging,a=r.xPoint,l=r.xDraggedDistance;if(!t||!s)return!1;var u=n.getPoint(e),d=a===o.defaultProps.xPoint?o.defaultProps.xPoint:a-u,f=i-d;n.itBeforeStart(f)?f-=Math.abs(d)/2:n.itAfterEnd(f)&&(f+=Math.abs(d)/2),0!==d&&n.dragHistory.push({time:Date.now(),position:f});var c=f;n.setState({translate:c,xDraggedDistance:l+Math.abs(d),xPoint:u})},n.handleDragStop=function(e){var t=n,r=t.allItemsWidth,i=t.menuWidth,s=n.state,a=s.translate,l=s.xPoint,u=void 0===l?n.getPoint(e):l,d=n.state,f=d.dragging,c=d.startDragTranslate,m=n.props,p=m.dragging,g=m.alignCenter;if(!p||!f)return!1;if(n.props.inertiaScrolling){var h=Date.now(),v=n.dragHistory.filter(function(e){return h-e.time<150});if(v.length>2){var I=v[0],y=v[v.length-1],w=(y.position-I.position)/(y.time-I.time);a+=(w*=n.props.inertiaScrollingSlowdown)*(1e3*n.props.transition)}}var P=a;n.itBeforeStart(a)?(P=n.getOffsetAtStart(),u=o.defaultProps.xPoint):n.itAfterEnd(a)&&(P=n.getOffsetAtEnd(),u=o.defaultProps.xPoint),!g&&r<=i&&(P=o.defaultProps.translate,u=o.defaultProps.xPoint),n.setState({dragging:!1,translate:P,xPoint:u},function(){return n.onUpdate({translate:P,translateOld:c})})},n.isArrowsVisible=function(){var e=n,t=e.allItemsWidth,r=e.menuWidth,i=e.props.hideArrows;return!Boolean(i&&t<=r)},n.onUpdate=function(e){var t=e.translate,r=void 0===t?n.state.translate:t,i=e.translateOld,s=void 0===i?n.state.translate:i,a=n.props.onUpdate,o=n.lastTranslateUpdate;r!==s&&r!==o&&(n.lastTranslateUpdate=r,"function"==typeof a&&a({translate:r}))},n.ref={},n.menuWrapper=null,n.menuInner=null,n.mounted=!1,n.needUpdate=!1,n.allItemsWidth=0,n.menuPos=0,n.menuWidth=0,n.wWidth=0,n.firstPageOffset=0,n.lastPageOffset=0,n.lastTranslateUpdate=0,n.menuItems=[],n.selected=String(t.selected)||"",n.onLoadTimer=0,n.rafTimer=0,n.resizeTimer=0,n.data=null,n.dragHistory=[],f(n),n}return r(t,e),t.prototype.componentDidMount=function(){var e=this;this.setInitial(),window.requestAnimationFrame=window.requestAnimationFrame||function(){return!1};var t=l.testPassiveEventSupport(),n=!t||{passive:!0,capture:!0},r=!!t&&{passive:!0,capture:!1};window.addEventListener("load",this.onLoad,r),window.addEventListener("resize",this.resizeHandler,r),document.addEventListener("mousemove",this.handleDrag,n),document.addEventListener("mouseup",this.handleDragStop,n),this.onLoadTimer=setTimeout(function(){return e.onLoad(),e.forceUpdate()},0)},t.prototype.shouldComponentUpdate=function(e,t){var n=this.state,r=n.translate,i=n.dragging,s=n.firstItemVisible,a=n.lastItemVisible,o=t.translate,u=t.dragging,d=t.firstItemVisible,f=t.lastItemVisible,c=this.props,m=c.translate,p=c.selected,g=c.scrollToSelected,h=e.translate,v=e.selected,I=l.notUndefOrNull(h)&&m!==h,y=h!==o||r!==o||I,w=l.notUndefOrNull(v)&&p!==v,P=w||this.selected!==v,b=y||P,W=s!==d,S=a!==f,O=o,C=this.props.data!==e.data||this.props.data.length!==e.data.length,x=l.translateIsValid(h)&&I&&!C;return(C||g&&w)&&(this.needUpdate=!0),b&&(w&&(this.selected=v),x&&(O=h)),x&&this.setState({translate:+O}),C||y||i!==u||b||W||S},t.prototype.componentDidUpdate=function(e,t){var n=this;this.needUpdate&&(this.needUpdate=!1,this.onLoad());var r=t.translate,i=this.state,s=i.translate;i.dragging||r===s||this.onUpdate({translate:s,translateOld:r});var a=this.props,o=a.hideSingleArrow,l=a.transition;o&&(requestAnimationFrame(this.setFirstLastItemVisibility),this.rafTimer=setTimeout(function(){return requestAnimationFrame(n.setFirstLastItemVisibility)},1e3*l+10))},t.prototype.componentWillUnmount=function(){window.removeEventListener("resize",this.resizeHandler),document.removeEventListener("mousemove",this.handleDrag),document.removeEventListener("mouseup",this.handleDragStop),clearTimeout(this.rafTimer),clearTimeout(this.onLoadTimer),clearTimeout(this.resizeTimer)},t.prototype.render=function(){var e=this.props,t=e.arrowClass,n=e.arrowDisabledClass,r=e.arrowLeft,s=e.arrowRight,l=e.data,d=e.inertiaScrolling,f=e.innerWrapperStyle,c=e.innerWrapperClass,m=e.itemStyle,p=e.itemClass,g=e.itemClassActive,h=e.menuStyle,v=e.menuClass,I=e.transition,y=e.useButtonRole,w=e.wrapperClass,P=e.wrapperStyle,b=this.state,W=b.translate,S=b.dragging,O=b.leftArrowVisible,C=b.rightArrowVisible,x=this.selected,_=this.mounted;if(!l||!l.length)return null;var A=!_||this.isArrowsVisible(),V=i({},o.defaultMenuStyle,h),D=i({},o.defaultWrapperStyle,P),T=i({},o.defaultProps.itemStyle,m),k={className:t,disabledClass:n};return a.default.createElement("div",{className:v,style:V,onWheel:this.handleWheel},r&&a.default.createElement(u.ArrowWrapper,i({},k,{isDisabled:!A||!O,onClick:this.handleArrowClick}),r),a.default.createElement("div",{className:w,style:D,ref:this.setWrapperRef,onMouseDown:this.handleDragStart,onTouchStart:this.handleDragStart,onTouchEnd:this.handleDragStop,onMouseMove:this.handleDrag,onTouchMove:this.handleDrag},a.default.createElement(u.InnerWrapper,{data:l,translate:W,dragging:S,mounted:_,transition:_?I:0,selected:x,setRef:this.setRef,setMenuInnerRef:this.setMenuInnerRef,onClick:this.onItemClick,innerWrapperStyle:f,innerWrapperClass:c,itemStyle:T,itemClass:p,itemClassActive:g,inertiaScrolling:d,useButtonRole:y})),s&&a.default.createElement(u.ArrowWrapper,i({},k,{isDisabled:!A||!C,onClick:this.handleArrowClickRight}),s))},t.defaultProps=o.defaultProps,t}(a.default.Component);t.ScrollMenu=d;var f=function(e){+a.default.version.match(/^(\d{1,2})\./)[1]>=16&&(e.componentDidCatch=function(e,t){console.log("ScrollMenu catched error: ",e,t)})};t.default=d},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});t.notUndefOrNull=function(e){return void 0!==e&&null!==e};t.getClientRect=function(e){if(!e||!e.getBoundingClientRect||"function"!=typeof e.getBoundingClientRect)return{width:0,x:0};var t=e.getBoundingClientRect(),n=t.left,r=void 0===n?0:n,i=t.width;return{width:void 0===i?0:i,x:+r}};t.formatTranslate=function(e){return+e.toFixed(0)};var r=function(e){return"number"==typeof e&&!isNaN(+e)};t.translateIsValid=r;t.validateTranslate=function(e,t){return r(e)?+e:t};t.testPassiveEventSupport=function(){var e=!1;try{var t={get passive(){return e=!0,!1}};window.addEventListener("testPassiveEventSupport",t,t),window.removeEventListener("testPassiveEventSupport",t,t)}catch(t){e=!1}return e}},function(e,t,n){"use strict";var r=this&&this.__extends||function(){var e=function(t,n){return(e=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(t,n)};return function(t,n){function r(){this.constructor=t}e(t,n),t.prototype=null===n?Object.create(n):(r.prototype=n.prototype,new r)}}(),i=this&&this.__assign||function(){return(i=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var i in t=arguments[n])Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e}).apply(this,arguments)},s=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});var a=s(n(0)),o=n(1),l={disabledClass:o.defaultProps.arrowDisabledClass},u=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r(t,e),t.prototype.render=function(){var e=this.props,t=e.isDisabled,n=e.className,r=e.disabledClass,i=e.onClick,s=e.children,o=n+" "+(t?r:"");return a.default.createElement("div",{className:o,onClick:function(){return i()}},a.default.cloneElement(s,s.props))},t.defaultProps=l,t}(a.default.PureComponent);t.ArrowWrapper=u,t.innerStyle=function(e){var t=e.translate,n=e.dragging,r=e.mounted,i=e.transition,s=e.inertiaScrolling;return{transform:"translate3d("+t+"px, 0px, 0px)",transition:"transform "+(n||!r?"0":i)+"s"+(s?" ease-out":""),width:"9900px"}};var d=function(e){function n(){var t=null!==e&&e.apply(this,arguments)||this;return t.setMenuInnerRef=function(e){(0,t.props.setMenuInnerRef)({menuInner:{key:"menuInner",elem:e}})},t.setRef=function(e,n,r,i){var s;(0,t.props.setRef)(((s={})[e]={index:r,key:n,elem:i},s))},t.isElementActive=function(e,t){return String(e)===String(t)},t.setItems=function(e,n){return e.map(function(e){var r=e.props.onClick,i=void 0===r?function(){return!1}:r,s={onClick:function(){return t.forwardClickHandler(e.key,i)},selected:t.isElementActive(e.key,n)};return a.default.cloneElement(e,s)})},t.forwardClickHandler=function(e,n){return void 0===n&&(n=function(){return!1}),function(){var r=t.props.onClick;n(),r(e)}},t}return r(n,e),n.prototype.render=function(){var e=this,n=this.props,r=n.translate,s=n.dragging,o=n.mounted,l=n.transition,u=n.innerWrapperStyle,d=n.innerWrapperClass,f=n.itemStyle,c=n.itemClass,m=n.itemClassActive,p=n.data,g=n.selected,h=n.inertiaScrolling,v=n.useButtonRole,I=this.setItems(p,g),y=t.innerStyle({dragging:s,inertiaScrolling:h,mounted:o,transition:l,translate:r}),w=i({},y,u);return a.default.createElement("div",{className:d,style:w,ref:function(t){return e.setMenuInnerRef(t)}},I.map(function(t,n){return a.default.createElement("div",{ref:function(r){return e.setRef("menuitem-"+n,String(t.key||""),n,r)},className:c+" "+(t.props.selected?m:""),key:"menuItem-"+t.key,style:f,onClick:t.props.onClick(),tabIndex:1,role:v?"button":""},t)}))},n.defaultProps={data:[],dragging:!0,mounted:!1,selected:o.defaultProps.selected,transition:o.defaultProps.transition,translate:o.defaultProps.translate},n}(a.default.PureComponent);t.InnerWrapper=d}]);
+
+/***/ }),
+
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -75702,6 +75732,1871 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/react-scroll-horizontal/dist/index.es.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-scroll-horizontal/dist/index.es.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global, process) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x.default : x;
+}
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var mapToZero_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+exports['default'] = mapToZero;
+
+function mapToZero(obj) {
+  var ret = {};
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      ret[key] = 0;
+    }
+  }
+  return ret;
+}
+
+module.exports = exports['default'];
+});
+
+unwrapExports(mapToZero_1);
+
+var stripStyle_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+exports['default'] = stripStyle;
+
+function stripStyle(style) {
+  var ret = {};
+  for (var key in style) {
+    if (!Object.prototype.hasOwnProperty.call(style, key)) {
+      continue;
+    }
+    ret[key] = typeof style[key] === 'number' ? style[key] : style[key].val;
+  }
+  return ret;
+}
+
+module.exports = exports['default'];
+});
+
+unwrapExports(stripStyle_1);
+
+var stepper_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+exports["default"] = stepper;
+
+var reusedTuple = [0, 0];
+
+function stepper(secondPerFrame, x, v, destX, k, b, precision) {
+  // Spring stiffness, in kg / s^2
+
+  // for animations, destX is really spring length (spring at rest). initial
+  // position is considered as the stretched/compressed position of a spring
+  var Fspring = -k * (x - destX);
+
+  // Damping, in kg / s
+  var Fdamper = -b * v;
+
+  // usually we put mass here, but for animation purposes, specifying mass is a
+  // bit redundant. you could simply adjust k and b accordingly
+  // let a = (Fspring + Fdamper) / mass;
+  var a = Fspring + Fdamper;
+
+  var newV = v + a * secondPerFrame;
+  var newX = x + newV * secondPerFrame;
+
+  if (Math.abs(newV) < precision && Math.abs(newX - destX) < precision) {
+    reusedTuple[0] = destX;
+    reusedTuple[1] = 0;
+    return reusedTuple;
+  }
+
+  reusedTuple[0] = newX;
+  reusedTuple[1] = newV;
+  return reusedTuple;
+}
+
+module.exports = exports["default"];
+// array reference around.
+});
+
+unwrapExports(stepper_1);
+
+var performanceNow = createCommonjsModule(function (module) {
+// Generated by CoffeeScript 1.7.1
+(function() {
+  var getNanoSeconds, hrtime, loadTime;
+
+  if ((typeof performance !== "undefined" && performance !== null) && performance.now) {
+    module.exports = function() {
+      return performance.now();
+    };
+  } else if ((typeof process !== "undefined" && process !== null) && process.hrtime) {
+    module.exports = function() {
+      return (getNanoSeconds() - loadTime) / 1e6;
+    };
+    hrtime = process.hrtime;
+    getNanoSeconds = function() {
+      var hr;
+      hr = hrtime();
+      return hr[0] * 1e9 + hr[1];
+    };
+    loadTime = getNanoSeconds();
+  } else if (Date.now) {
+    module.exports = function() {
+      return Date.now() - loadTime;
+    };
+    loadTime = Date.now();
+  } else {
+    module.exports = function() {
+      return new Date().getTime() - loadTime;
+    };
+    loadTime = new Date().getTime();
+  }
+
+}).call(commonjsGlobal);
+});
+
+var performanceNow$1 = createCommonjsModule(function (module) {
+// Generated by CoffeeScript 1.12.2
+(function() {
+  var getNanoSeconds, hrtime, loadTime, moduleLoadTime, nodeLoadTime, upTime;
+
+  if ((typeof performance !== "undefined" && performance !== null) && performance.now) {
+    module.exports = function() {
+      return performance.now();
+    };
+  } else if ((typeof process !== "undefined" && process !== null) && process.hrtime) {
+    module.exports = function() {
+      return (getNanoSeconds() - nodeLoadTime) / 1e6;
+    };
+    hrtime = process.hrtime;
+    getNanoSeconds = function() {
+      var hr;
+      hr = hrtime();
+      return hr[0] * 1e9 + hr[1];
+    };
+    moduleLoadTime = getNanoSeconds();
+    upTime = process.uptime() * 1e9;
+    nodeLoadTime = moduleLoadTime - upTime;
+  } else if (Date.now) {
+    module.exports = function() {
+      return Date.now() - loadTime;
+    };
+    loadTime = Date.now();
+  } else {
+    module.exports = function() {
+      return new Date().getTime() - loadTime;
+    };
+    loadTime = new Date().getTime();
+  }
+
+}).call(commonjsGlobal);
+
+
+});
+
+var root = typeof window === 'undefined' ? commonjsGlobal : window
+  , vendors = ['moz', 'webkit']
+  , suffix = 'AnimationFrame'
+  , raf = root['request' + suffix]
+  , caf = root['cancel' + suffix] || root['cancelRequest' + suffix];
+
+for(var i = 0; !raf && i < vendors.length; i++) {
+  raf = root[vendors[i] + 'Request' + suffix];
+  caf = root[vendors[i] + 'Cancel' + suffix]
+      || root[vendors[i] + 'CancelRequest' + suffix];
+}
+
+// Some versions of FF have rAF but not cAF
+if(!raf || !caf) {
+  var last = 0
+    , id = 0
+    , queue = []
+    , frameDuration = 1000 / 60;
+
+  raf = function(callback) {
+    if(queue.length === 0) {
+      var _now = performanceNow$1()
+        , next = Math.max(0, frameDuration - (_now - last));
+      last = next + _now;
+      setTimeout(function() {
+        var cp = queue.slice(0);
+        // Clear queue here to prevent
+        // callbacks from appending listeners
+        // to the current frame's queue
+        queue.length = 0;
+        for(var i = 0; i < cp.length; i++) {
+          if(!cp[i].cancelled) {
+            try{
+              cp[i].callback(last);
+            } catch(e) {
+              setTimeout(function() { throw e }, 0);
+            }
+          }
+        }
+      }, Math.round(next));
+    }
+    queue.push({
+      handle: ++id,
+      callback: callback,
+      cancelled: false
+    });
+    return id
+  };
+
+  caf = function(handle) {
+    for(var i = 0; i < queue.length; i++) {
+      if(queue[i].handle === handle) {
+        queue[i].cancelled = true;
+      }
+    }
+  };
+}
+
+var raf_1 = function(fn) {
+  // Wrap in a new function to prevent
+  // `cancel` potentially being assigned
+  // to the native rAF function
+  return raf.call(root, fn)
+};
+var cancel = function() {
+  caf.apply(root, arguments);
+};
+var polyfill = function(object) {
+  if (!object) {
+    object = root;
+  }
+  object.requestAnimationFrame = raf;
+  object.cancelAnimationFrame = caf;
+};
+raf_1.cancel = cancel;
+raf_1.polyfill = polyfill;
+
+var shouldStopAnimation_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+exports['default'] = shouldStopAnimation;
+
+function shouldStopAnimation(currentStyle, style, currentVelocity) {
+  for (var key in style) {
+    if (!Object.prototype.hasOwnProperty.call(style, key)) {
+      continue;
+    }
+
+    if (currentVelocity[key] !== 0) {
+      return false;
+    }
+
+    var styleValue = typeof style[key] === 'number' ? style[key] : style[key].val;
+    // stepper will have already taken care of rounding precision errors, so
+    // won't have such thing as 0.9999 !=== 1
+    if (currentStyle[key] !== styleValue) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+module.exports = exports['default'];
+});
+
+unwrapExports(shouldStopAnimation_1);
+
+var Motion_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _mapToZero2 = _interopRequireDefault(mapToZero_1);
+
+
+
+var _stripStyle2 = _interopRequireDefault(stripStyle_1);
+
+
+
+var _stepper4 = _interopRequireDefault(stepper_1);
+
+
+
+var _performanceNow2 = _interopRequireDefault(performanceNow);
+
+
+
+var _raf2 = _interopRequireDefault(raf_1);
+
+
+
+var _shouldStopAnimation2 = _interopRequireDefault(shouldStopAnimation_1);
+
+
+
+var _react2 = _interopRequireDefault(react__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+
+
+var _propTypes2 = _interopRequireDefault(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a);
+
+var msPerFrame = 1000 / 60;
+
+var Motion = (function (_React$Component) {
+  _inherits(Motion, _React$Component);
+
+  _createClass(Motion, null, [{
+    key: 'propTypes',
+    value: {
+      // TOOD: warn against putting a config in here
+      defaultStyle: _propTypes2['default'].objectOf(_propTypes2['default'].number),
+      style: _propTypes2['default'].objectOf(_propTypes2['default'].oneOfType([_propTypes2['default'].number, _propTypes2['default'].object])).isRequired,
+      children: _propTypes2['default'].func.isRequired,
+      onRest: _propTypes2['default'].func
+    },
+    enumerable: true
+  }]);
+
+  function Motion(props) {
+    var _this = this;
+
+    _classCallCheck(this, Motion);
+
+    _React$Component.call(this, props);
+    this.wasAnimating = false;
+    this.animationID = null;
+    this.prevTime = 0;
+    this.accumulatedTime = 0;
+    this.unreadPropStyle = null;
+
+    this.clearUnreadPropStyle = function (destStyle) {
+      var dirty = false;
+      var _state = _this.state;
+      var currentStyle = _state.currentStyle;
+      var currentVelocity = _state.currentVelocity;
+      var lastIdealStyle = _state.lastIdealStyle;
+      var lastIdealVelocity = _state.lastIdealVelocity;
+
+      for (var key in destStyle) {
+        if (!Object.prototype.hasOwnProperty.call(destStyle, key)) {
+          continue;
+        }
+
+        var styleValue = destStyle[key];
+        if (typeof styleValue === 'number') {
+          if (!dirty) {
+            dirty = true;
+            currentStyle = _extends({}, currentStyle);
+            currentVelocity = _extends({}, currentVelocity);
+            lastIdealStyle = _extends({}, lastIdealStyle);
+            lastIdealVelocity = _extends({}, lastIdealVelocity);
+          }
+
+          currentStyle[key] = styleValue;
+          currentVelocity[key] = 0;
+          lastIdealStyle[key] = styleValue;
+          lastIdealVelocity[key] = 0;
+        }
+      }
+
+      if (dirty) {
+        _this.setState({ currentStyle: currentStyle, currentVelocity: currentVelocity, lastIdealStyle: lastIdealStyle, lastIdealVelocity: lastIdealVelocity });
+      }
+    };
+
+    this.startAnimationIfNecessary = function () {
+      // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
+      // call cb? No, otherwise accidental parent rerender causes cb trigger
+      _this.animationID = _raf2['default'](function (timestamp) {
+        // check if we need to animate in the first place
+        var propsStyle = _this.props.style;
+        if (_shouldStopAnimation2['default'](_this.state.currentStyle, propsStyle, _this.state.currentVelocity)) {
+          if (_this.wasAnimating && _this.props.onRest) {
+            _this.props.onRest();
+          }
+
+          // no need to cancel animationID here; shouldn't have any in flight
+          _this.animationID = null;
+          _this.wasAnimating = false;
+          _this.accumulatedTime = 0;
+          return;
+        }
+
+        _this.wasAnimating = true;
+
+        var currentTime = timestamp || _performanceNow2['default']();
+        var timeDelta = currentTime - _this.prevTime;
+        _this.prevTime = currentTime;
+        _this.accumulatedTime = _this.accumulatedTime + timeDelta;
+        // more than 10 frames? prolly switched browser tab. Restart
+        if (_this.accumulatedTime > msPerFrame * 10) {
+          _this.accumulatedTime = 0;
+        }
+
+        if (_this.accumulatedTime === 0) {
+          // no need to cancel animationID here; shouldn't have any in flight
+          _this.animationID = null;
+          _this.startAnimationIfNecessary();
+          return;
+        }
+
+        var currentFrameCompletion = (_this.accumulatedTime - Math.floor(_this.accumulatedTime / msPerFrame) * msPerFrame) / msPerFrame;
+        var framesToCatchUp = Math.floor(_this.accumulatedTime / msPerFrame);
+
+        var newLastIdealStyle = {};
+        var newLastIdealVelocity = {};
+        var newCurrentStyle = {};
+        var newCurrentVelocity = {};
+
+        for (var key in propsStyle) {
+          if (!Object.prototype.hasOwnProperty.call(propsStyle, key)) {
+            continue;
+          }
+
+          var styleValue = propsStyle[key];
+          if (typeof styleValue === 'number') {
+            newCurrentStyle[key] = styleValue;
+            newCurrentVelocity[key] = 0;
+            newLastIdealStyle[key] = styleValue;
+            newLastIdealVelocity[key] = 0;
+          } else {
+            var newLastIdealStyleValue = _this.state.lastIdealStyle[key];
+            var newLastIdealVelocityValue = _this.state.lastIdealVelocity[key];
+            for (var i = 0; i < framesToCatchUp; i++) {
+              var _stepper = _stepper4['default'](msPerFrame / 1000, newLastIdealStyleValue, newLastIdealVelocityValue, styleValue.val, styleValue.stiffness, styleValue.damping, styleValue.precision);
+
+              newLastIdealStyleValue = _stepper[0];
+              newLastIdealVelocityValue = _stepper[1];
+            }
+
+            var _stepper2 = _stepper4['default'](msPerFrame / 1000, newLastIdealStyleValue, newLastIdealVelocityValue, styleValue.val, styleValue.stiffness, styleValue.damping, styleValue.precision);
+
+            var nextIdealX = _stepper2[0];
+            var nextIdealV = _stepper2[1];
+
+            newCurrentStyle[key] = newLastIdealStyleValue + (nextIdealX - newLastIdealStyleValue) * currentFrameCompletion;
+            newCurrentVelocity[key] = newLastIdealVelocityValue + (nextIdealV - newLastIdealVelocityValue) * currentFrameCompletion;
+            newLastIdealStyle[key] = newLastIdealStyleValue;
+            newLastIdealVelocity[key] = newLastIdealVelocityValue;
+          }
+        }
+
+        _this.animationID = null;
+        // the amount we're looped over above
+        _this.accumulatedTime -= framesToCatchUp * msPerFrame;
+
+        _this.setState({
+          currentStyle: newCurrentStyle,
+          currentVelocity: newCurrentVelocity,
+          lastIdealStyle: newLastIdealStyle,
+          lastIdealVelocity: newLastIdealVelocity
+        });
+
+        _this.unreadPropStyle = null;
+
+        _this.startAnimationIfNecessary();
+      });
+    };
+
+    this.state = this.defaultState();
+  }
+
+  Motion.prototype.defaultState = function defaultState() {
+    var _props = this.props;
+    var defaultStyle = _props.defaultStyle;
+    var style = _props.style;
+
+    var currentStyle = defaultStyle || _stripStyle2['default'](style);
+    var currentVelocity = _mapToZero2['default'](currentStyle);
+    return {
+      currentStyle: currentStyle,
+      currentVelocity: currentVelocity,
+      lastIdealStyle: currentStyle,
+      lastIdealVelocity: currentVelocity
+    };
+  };
+
+  // it's possible that currentStyle's value is stale: if props is immediately
+  // changed from 0 to 400 to spring(0) again, the async currentStyle is still
+  // at 0 (didn't have time to tick and interpolate even once). If we naively
+  // compare currentStyle with destVal it'll be 0 === 0 (no animation, stop).
+  // In reality currentStyle should be 400
+
+  Motion.prototype.componentDidMount = function componentDidMount() {
+    this.prevTime = _performanceNow2['default']();
+    this.startAnimationIfNecessary();
+  };
+
+  Motion.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+    if (this.unreadPropStyle != null) {
+      // previous props haven't had the chance to be set yet; set them here
+      this.clearUnreadPropStyle(this.unreadPropStyle);
+    }
+
+    this.unreadPropStyle = props.style;
+    if (this.animationID == null) {
+      this.prevTime = _performanceNow2['default']();
+      this.startAnimationIfNecessary();
+    }
+  };
+
+  Motion.prototype.componentWillUnmount = function componentWillUnmount() {
+    if (this.animationID != null) {
+      _raf2['default'].cancel(this.animationID);
+      this.animationID = null;
+    }
+  };
+
+  Motion.prototype.render = function render() {
+    var renderedChildren = this.props.children(this.state.currentStyle);
+    return renderedChildren && _react2['default'].Children.only(renderedChildren);
+  };
+
+  return Motion;
+})(_react2['default'].Component);
+
+exports['default'] = Motion;
+module.exports = exports['default'];
+
+// after checking for unreadPropStyle != null, we manually go set the
+// non-interpolating values (those that are a number, without a spring
+// config)
+});
+
+unwrapExports(Motion_1);
+
+var StaggeredMotion_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _mapToZero2 = _interopRequireDefault(mapToZero_1);
+
+
+
+var _stripStyle2 = _interopRequireDefault(stripStyle_1);
+
+
+
+var _stepper4 = _interopRequireDefault(stepper_1);
+
+
+
+var _performanceNow2 = _interopRequireDefault(performanceNow);
+
+
+
+var _raf2 = _interopRequireDefault(raf_1);
+
+
+
+var _shouldStopAnimation2 = _interopRequireDefault(shouldStopAnimation_1);
+
+
+
+var _react2 = _interopRequireDefault(react__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+
+
+var _propTypes2 = _interopRequireDefault(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a);
+
+var msPerFrame = 1000 / 60;
+
+function shouldStopAnimationAll(currentStyles, styles, currentVelocities) {
+  for (var i = 0; i < currentStyles.length; i++) {
+    if (!_shouldStopAnimation2['default'](currentStyles[i], styles[i], currentVelocities[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+var StaggeredMotion = (function (_React$Component) {
+  _inherits(StaggeredMotion, _React$Component);
+
+  _createClass(StaggeredMotion, null, [{
+    key: 'propTypes',
+    value: {
+      // TOOD: warn against putting a config in here
+      defaultStyles: _propTypes2['default'].arrayOf(_propTypes2['default'].objectOf(_propTypes2['default'].number)),
+      styles: _propTypes2['default'].func.isRequired,
+      children: _propTypes2['default'].func.isRequired
+    },
+    enumerable: true
+  }]);
+
+  function StaggeredMotion(props) {
+    var _this = this;
+
+    _classCallCheck(this, StaggeredMotion);
+
+    _React$Component.call(this, props);
+    this.animationID = null;
+    this.prevTime = 0;
+    this.accumulatedTime = 0;
+    this.unreadPropStyles = null;
+
+    this.clearUnreadPropStyle = function (unreadPropStyles) {
+      var _state = _this.state;
+      var currentStyles = _state.currentStyles;
+      var currentVelocities = _state.currentVelocities;
+      var lastIdealStyles = _state.lastIdealStyles;
+      var lastIdealVelocities = _state.lastIdealVelocities;
+
+      var someDirty = false;
+      for (var i = 0; i < unreadPropStyles.length; i++) {
+        var unreadPropStyle = unreadPropStyles[i];
+        var dirty = false;
+
+        for (var key in unreadPropStyle) {
+          if (!Object.prototype.hasOwnProperty.call(unreadPropStyle, key)) {
+            continue;
+          }
+
+          var styleValue = unreadPropStyle[key];
+          if (typeof styleValue === 'number') {
+            if (!dirty) {
+              dirty = true;
+              someDirty = true;
+              currentStyles[i] = _extends({}, currentStyles[i]);
+              currentVelocities[i] = _extends({}, currentVelocities[i]);
+              lastIdealStyles[i] = _extends({}, lastIdealStyles[i]);
+              lastIdealVelocities[i] = _extends({}, lastIdealVelocities[i]);
+            }
+            currentStyles[i][key] = styleValue;
+            currentVelocities[i][key] = 0;
+            lastIdealStyles[i][key] = styleValue;
+            lastIdealVelocities[i][key] = 0;
+          }
+        }
+      }
+
+      if (someDirty) {
+        _this.setState({ currentStyles: currentStyles, currentVelocities: currentVelocities, lastIdealStyles: lastIdealStyles, lastIdealVelocities: lastIdealVelocities });
+      }
+    };
+
+    this.startAnimationIfNecessary = function () {
+      // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
+      // call cb? No, otherwise accidental parent rerender causes cb trigger
+      _this.animationID = _raf2['default'](function (timestamp) {
+        var destStyles = _this.props.styles(_this.state.lastIdealStyles);
+
+        // check if we need to animate in the first place
+        if (shouldStopAnimationAll(_this.state.currentStyles, destStyles, _this.state.currentVelocities)) {
+          // no need to cancel animationID here; shouldn't have any in flight
+          _this.animationID = null;
+          _this.accumulatedTime = 0;
+          return;
+        }
+
+        var currentTime = timestamp || _performanceNow2['default']();
+        var timeDelta = currentTime - _this.prevTime;
+        _this.prevTime = currentTime;
+        _this.accumulatedTime = _this.accumulatedTime + timeDelta;
+        // more than 10 frames? prolly switched browser tab. Restart
+        if (_this.accumulatedTime > msPerFrame * 10) {
+          _this.accumulatedTime = 0;
+        }
+
+        if (_this.accumulatedTime === 0) {
+          // no need to cancel animationID here; shouldn't have any in flight
+          _this.animationID = null;
+          _this.startAnimationIfNecessary();
+          return;
+        }
+
+        var currentFrameCompletion = (_this.accumulatedTime - Math.floor(_this.accumulatedTime / msPerFrame) * msPerFrame) / msPerFrame;
+        var framesToCatchUp = Math.floor(_this.accumulatedTime / msPerFrame);
+
+        var newLastIdealStyles = [];
+        var newLastIdealVelocities = [];
+        var newCurrentStyles = [];
+        var newCurrentVelocities = [];
+
+        for (var i = 0; i < destStyles.length; i++) {
+          var destStyle = destStyles[i];
+          var newCurrentStyle = {};
+          var newCurrentVelocity = {};
+          var newLastIdealStyle = {};
+          var newLastIdealVelocity = {};
+
+          for (var key in destStyle) {
+            if (!Object.prototype.hasOwnProperty.call(destStyle, key)) {
+              continue;
+            }
+
+            var styleValue = destStyle[key];
+            if (typeof styleValue === 'number') {
+              newCurrentStyle[key] = styleValue;
+              newCurrentVelocity[key] = 0;
+              newLastIdealStyle[key] = styleValue;
+              newLastIdealVelocity[key] = 0;
+            } else {
+              var newLastIdealStyleValue = _this.state.lastIdealStyles[i][key];
+              var newLastIdealVelocityValue = _this.state.lastIdealVelocities[i][key];
+              for (var j = 0; j < framesToCatchUp; j++) {
+                var _stepper = _stepper4['default'](msPerFrame / 1000, newLastIdealStyleValue, newLastIdealVelocityValue, styleValue.val, styleValue.stiffness, styleValue.damping, styleValue.precision);
+
+                newLastIdealStyleValue = _stepper[0];
+                newLastIdealVelocityValue = _stepper[1];
+              }
+
+              var _stepper2 = _stepper4['default'](msPerFrame / 1000, newLastIdealStyleValue, newLastIdealVelocityValue, styleValue.val, styleValue.stiffness, styleValue.damping, styleValue.precision);
+
+              var nextIdealX = _stepper2[0];
+              var nextIdealV = _stepper2[1];
+
+              newCurrentStyle[key] = newLastIdealStyleValue + (nextIdealX - newLastIdealStyleValue) * currentFrameCompletion;
+              newCurrentVelocity[key] = newLastIdealVelocityValue + (nextIdealV - newLastIdealVelocityValue) * currentFrameCompletion;
+              newLastIdealStyle[key] = newLastIdealStyleValue;
+              newLastIdealVelocity[key] = newLastIdealVelocityValue;
+            }
+          }
+
+          newCurrentStyles[i] = newCurrentStyle;
+          newCurrentVelocities[i] = newCurrentVelocity;
+          newLastIdealStyles[i] = newLastIdealStyle;
+          newLastIdealVelocities[i] = newLastIdealVelocity;
+        }
+
+        _this.animationID = null;
+        // the amount we're looped over above
+        _this.accumulatedTime -= framesToCatchUp * msPerFrame;
+
+        _this.setState({
+          currentStyles: newCurrentStyles,
+          currentVelocities: newCurrentVelocities,
+          lastIdealStyles: newLastIdealStyles,
+          lastIdealVelocities: newLastIdealVelocities
+        });
+
+        _this.unreadPropStyles = null;
+
+        _this.startAnimationIfNecessary();
+      });
+    };
+
+    this.state = this.defaultState();
+  }
+
+  StaggeredMotion.prototype.defaultState = function defaultState() {
+    var _props = this.props;
+    var defaultStyles = _props.defaultStyles;
+    var styles = _props.styles;
+
+    var currentStyles = defaultStyles || styles().map(_stripStyle2['default']);
+    var currentVelocities = currentStyles.map(function (currentStyle) {
+      return _mapToZero2['default'](currentStyle);
+    });
+    return {
+      currentStyles: currentStyles,
+      currentVelocities: currentVelocities,
+      lastIdealStyles: currentStyles,
+      lastIdealVelocities: currentVelocities
+    };
+  };
+
+  StaggeredMotion.prototype.componentDidMount = function componentDidMount() {
+    this.prevTime = _performanceNow2['default']();
+    this.startAnimationIfNecessary();
+  };
+
+  StaggeredMotion.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+    if (this.unreadPropStyles != null) {
+      // previous props haven't had the chance to be set yet; set them here
+      this.clearUnreadPropStyle(this.unreadPropStyles);
+    }
+
+    this.unreadPropStyles = props.styles(this.state.lastIdealStyles);
+    if (this.animationID == null) {
+      this.prevTime = _performanceNow2['default']();
+      this.startAnimationIfNecessary();
+    }
+  };
+
+  StaggeredMotion.prototype.componentWillUnmount = function componentWillUnmount() {
+    if (this.animationID != null) {
+      _raf2['default'].cancel(this.animationID);
+      this.animationID = null;
+    }
+  };
+
+  StaggeredMotion.prototype.render = function render() {
+    var renderedChildren = this.props.children(this.state.currentStyles);
+    return renderedChildren && _react2['default'].Children.only(renderedChildren);
+  };
+
+  return StaggeredMotion;
+})(_react2['default'].Component);
+
+exports['default'] = StaggeredMotion;
+module.exports = exports['default'];
+
+// it's possible that currentStyle's value is stale: if props is immediately
+// changed from 0 to 400 to spring(0) again, the async currentStyle is still
+// at 0 (didn't have time to tick and interpolate even once). If we naively
+// compare currentStyle with destVal it'll be 0 === 0 (no animation, stop).
+// In reality currentStyle should be 400
+
+// after checking for unreadPropStyles != null, we manually go set the
+// non-interpolating values (those that are a number, without a spring
+// config)
+});
+
+unwrapExports(StaggeredMotion_1);
+
+var mergeDiff_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+exports['default'] = mergeDiff;
+
+function mergeDiff(prev, next, onRemove) {
+  // bookkeeping for easier access of a key's index below. This is 2 allocations +
+  // potentially triggering chrome hash map mode for objs (so it might be faster
+
+  var prevKeyIndex = {};
+  for (var i = 0; i < prev.length; i++) {
+    prevKeyIndex[prev[i].key] = i;
+  }
+  var nextKeyIndex = {};
+  for (var i = 0; i < next.length; i++) {
+    nextKeyIndex[next[i].key] = i;
+  }
+
+  // first, an overly elaborate way of merging prev and next, eliminating
+  // duplicates (in terms of keys). If there's dupe, keep the item in next).
+  // This way of writing it saves allocations
+  var ret = [];
+  for (var i = 0; i < next.length; i++) {
+    ret[i] = next[i];
+  }
+  for (var i = 0; i < prev.length; i++) {
+    if (!Object.prototype.hasOwnProperty.call(nextKeyIndex, prev[i].key)) {
+      // this is called my TM's `mergeAndSync`, which calls willLeave. We don't
+      // merge in keys that the user desires to kill
+      var fill = onRemove(i, prev[i]);
+      if (fill != null) {
+        ret.push(fill);
+      }
+    }
+  }
+
+  // now all the items all present. Core sorting logic to have the right order
+  return ret.sort(function (a, b) {
+    var nextOrderA = nextKeyIndex[a.key];
+    var nextOrderB = nextKeyIndex[b.key];
+    var prevOrderA = prevKeyIndex[a.key];
+    var prevOrderB = prevKeyIndex[b.key];
+
+    if (nextOrderA != null && nextOrderB != null) {
+      // both keys in next
+      return nextKeyIndex[a.key] - nextKeyIndex[b.key];
+    } else if (prevOrderA != null && prevOrderB != null) {
+      // both keys in prev
+      return prevKeyIndex[a.key] - prevKeyIndex[b.key];
+    } else if (nextOrderA != null) {
+      // key a in next, key b in prev
+
+      // how to determine the order between a and b? We find a "pivot" (term
+      // abuse), a key present in both prev and next, that is sandwiched between
+      // a and b. In the context of our above example, if we're comparing a and
+      // d, b's (the only) pivot
+      for (var i = 0; i < next.length; i++) {
+        var pivot = next[i].key;
+        if (!Object.prototype.hasOwnProperty.call(prevKeyIndex, pivot)) {
+          continue;
+        }
+
+        if (nextOrderA < nextKeyIndex[pivot] && prevOrderB > prevKeyIndex[pivot]) {
+          return -1;
+        } else if (nextOrderA > nextKeyIndex[pivot] && prevOrderB < prevKeyIndex[pivot]) {
+          return 1;
+        }
+      }
+      // pluggable. default to: next bigger than prev
+      return 1;
+    }
+    // prevOrderA, nextOrderB
+    for (var i = 0; i < next.length; i++) {
+      var pivot = next[i].key;
+      if (!Object.prototype.hasOwnProperty.call(prevKeyIndex, pivot)) {
+        continue;
+      }
+      if (nextOrderB < nextKeyIndex[pivot] && prevOrderA > prevKeyIndex[pivot]) {
+        return 1;
+      } else if (nextOrderB > nextKeyIndex[pivot] && prevOrderA < prevKeyIndex[pivot]) {
+        return -1;
+      }
+    }
+    // pluggable. default to: next bigger than prev
+    return -1;
+  });
+}
+
+module.exports = exports['default'];
+// to loop through and find a key's index each time), but I no longer care
+});
+
+unwrapExports(mergeDiff_1);
+
+var TransitionMotion_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var _mapToZero2 = _interopRequireDefault(mapToZero_1);
+
+
+
+var _stripStyle2 = _interopRequireDefault(stripStyle_1);
+
+
+
+var _stepper4 = _interopRequireDefault(stepper_1);
+
+
+
+var _mergeDiff2 = _interopRequireDefault(mergeDiff_1);
+
+
+
+var _performanceNow2 = _interopRequireDefault(performanceNow);
+
+
+
+var _raf2 = _interopRequireDefault(raf_1);
+
+
+
+var _shouldStopAnimation2 = _interopRequireDefault(shouldStopAnimation_1);
+
+
+
+var _react2 = _interopRequireDefault(react__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+
+
+var _propTypes2 = _interopRequireDefault(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a);
+
+var msPerFrame = 1000 / 60;
+
+// the children function & (potential) styles function asks as param an
+// Array<TransitionPlainStyle>, where each TransitionPlainStyle is of the format
+// {key: string, data?: any, style: PlainStyle}. However, the way we keep
+// internal states doesn't contain such a data structure (check the state and
+// TransitionMotionState). So when children function and others ask for such
+// data we need to generate them on the fly by combining mergedPropsStyles and
+// currentStyles/lastIdealStyles
+function rehydrateStyles(mergedPropsStyles, unreadPropStyles, plainStyles) {
+  // Copy the value to a `const` so that Flow understands that the const won't
+  // change and will be non-nullable in the callback below.
+  var cUnreadPropStyles = unreadPropStyles;
+  if (cUnreadPropStyles == null) {
+    return mergedPropsStyles.map(function (mergedPropsStyle, i) {
+      return {
+        key: mergedPropsStyle.key,
+        data: mergedPropsStyle.data,
+        style: plainStyles[i]
+      };
+    });
+  }
+  return mergedPropsStyles.map(function (mergedPropsStyle, i) {
+    for (var j = 0; j < cUnreadPropStyles.length; j++) {
+      if (cUnreadPropStyles[j].key === mergedPropsStyle.key) {
+        return {
+          key: cUnreadPropStyles[j].key,
+          data: cUnreadPropStyles[j].data,
+          style: plainStyles[i]
+        };
+      }
+    }
+    return { key: mergedPropsStyle.key, data: mergedPropsStyle.data, style: plainStyles[i] };
+  });
+}
+
+function shouldStopAnimationAll(currentStyles, destStyles, currentVelocities, mergedPropsStyles) {
+  if (mergedPropsStyles.length !== destStyles.length) {
+    return false;
+  }
+
+  for (var i = 0; i < mergedPropsStyles.length; i++) {
+    if (mergedPropsStyles[i].key !== destStyles[i].key) {
+      return false;
+    }
+  }
+
+  // we have the invariant that mergedPropsStyles and
+  // currentStyles/currentVelocities/last* are synced in terms of cells, see
+  // mergeAndSync comment for more info
+  for (var i = 0; i < mergedPropsStyles.length; i++) {
+    if (!_shouldStopAnimation2['default'](currentStyles[i], destStyles[i].style, currentVelocities[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// core key merging logic
+
+// things to do: say previously merged style is {a, b}, dest style (prop) is {b,
+// c}, previous current (interpolating) style is {a, b}
+// **invariant**: current[i] corresponds to merged[i] in terms of key
+
+// steps:
+// turn merged style into {a?, b, c}
+//    add c, value of c is destStyles.c
+//    maybe remove a, aka call willLeave(a), then merged is either {b, c} or {a, b, c}
+// turn current (interpolating) style from {a, b} into {a?, b, c}
+//    maybe remove a
+//    certainly add c, value of c is willEnter(c)
+// loop over merged and construct new current
+// dest doesn't change, that's owner's
+function mergeAndSync(willEnter, willLeave, didLeave, oldMergedPropsStyles, destStyles, oldCurrentStyles, oldCurrentVelocities, oldLastIdealStyles, oldLastIdealVelocities) {
+  var newMergedPropsStyles = _mergeDiff2['default'](oldMergedPropsStyles, destStyles, function (oldIndex, oldMergedPropsStyle) {
+    var leavingStyle = willLeave(oldMergedPropsStyle);
+    if (leavingStyle == null) {
+      didLeave({ key: oldMergedPropsStyle.key, data: oldMergedPropsStyle.data });
+      return null;
+    }
+    if (_shouldStopAnimation2['default'](oldCurrentStyles[oldIndex], leavingStyle, oldCurrentVelocities[oldIndex])) {
+      didLeave({ key: oldMergedPropsStyle.key, data: oldMergedPropsStyle.data });
+      return null;
+    }
+    return { key: oldMergedPropsStyle.key, data: oldMergedPropsStyle.data, style: leavingStyle };
+  });
+
+  var newCurrentStyles = [];
+  var newCurrentVelocities = [];
+  var newLastIdealStyles = [];
+  var newLastIdealVelocities = [];
+  for (var i = 0; i < newMergedPropsStyles.length; i++) {
+    var newMergedPropsStyleCell = newMergedPropsStyles[i];
+    var foundOldIndex = null;
+    for (var j = 0; j < oldMergedPropsStyles.length; j++) {
+      if (oldMergedPropsStyles[j].key === newMergedPropsStyleCell.key) {
+        foundOldIndex = j;
+        break;
+      }
+    }
+    // TODO: key search code
+    if (foundOldIndex == null) {
+      var plainStyle = willEnter(newMergedPropsStyleCell);
+      newCurrentStyles[i] = plainStyle;
+      newLastIdealStyles[i] = plainStyle;
+
+      var velocity = _mapToZero2['default'](newMergedPropsStyleCell.style);
+      newCurrentVelocities[i] = velocity;
+      newLastIdealVelocities[i] = velocity;
+    } else {
+      newCurrentStyles[i] = oldCurrentStyles[foundOldIndex];
+      newLastIdealStyles[i] = oldLastIdealStyles[foundOldIndex];
+      newCurrentVelocities[i] = oldCurrentVelocities[foundOldIndex];
+      newLastIdealVelocities[i] = oldLastIdealVelocities[foundOldIndex];
+    }
+  }
+
+  return [newMergedPropsStyles, newCurrentStyles, newCurrentVelocities, newLastIdealStyles, newLastIdealVelocities];
+}
+
+var TransitionMotion = (function (_React$Component) {
+  _inherits(TransitionMotion, _React$Component);
+
+  _createClass(TransitionMotion, null, [{
+    key: 'propTypes',
+    value: {
+      defaultStyles: _propTypes2['default'].arrayOf(_propTypes2['default'].shape({
+        key: _propTypes2['default'].string.isRequired,
+        data: _propTypes2['default'].any,
+        style: _propTypes2['default'].objectOf(_propTypes2['default'].number).isRequired
+      })),
+      styles: _propTypes2['default'].oneOfType([_propTypes2['default'].func, _propTypes2['default'].arrayOf(_propTypes2['default'].shape({
+        key: _propTypes2['default'].string.isRequired,
+        data: _propTypes2['default'].any,
+        style: _propTypes2['default'].objectOf(_propTypes2['default'].oneOfType([_propTypes2['default'].number, _propTypes2['default'].object])).isRequired
+      }))]).isRequired,
+      children: _propTypes2['default'].func.isRequired,
+      willEnter: _propTypes2['default'].func,
+      willLeave: _propTypes2['default'].func,
+      didLeave: _propTypes2['default'].func
+    },
+    enumerable: true
+  }, {
+    key: 'defaultProps',
+    value: {
+      willEnter: function willEnter(styleThatEntered) {
+        return _stripStyle2['default'](styleThatEntered.style);
+      },
+      // recall: returning null makes the current unmounting TransitionStyle
+      // disappear immediately
+      willLeave: function willLeave() {
+        return null;
+      },
+      didLeave: function didLeave() {}
+    },
+    enumerable: true
+  }]);
+
+  function TransitionMotion(props) {
+    var _this = this;
+
+    _classCallCheck(this, TransitionMotion);
+
+    _React$Component.call(this, props);
+    this.unmounting = false;
+    this.animationID = null;
+    this.prevTime = 0;
+    this.accumulatedTime = 0;
+    this.unreadPropStyles = null;
+
+    this.clearUnreadPropStyle = function (unreadPropStyles) {
+      var _mergeAndSync = mergeAndSync(_this.props.willEnter, _this.props.willLeave, _this.props.didLeave, _this.state.mergedPropsStyles, unreadPropStyles, _this.state.currentStyles, _this.state.currentVelocities, _this.state.lastIdealStyles, _this.state.lastIdealVelocities);
+
+      var mergedPropsStyles = _mergeAndSync[0];
+      var currentStyles = _mergeAndSync[1];
+      var currentVelocities = _mergeAndSync[2];
+      var lastIdealStyles = _mergeAndSync[3];
+      var lastIdealVelocities = _mergeAndSync[4];
+
+      for (var i = 0; i < unreadPropStyles.length; i++) {
+        var unreadPropStyle = unreadPropStyles[i].style;
+        var dirty = false;
+
+        for (var key in unreadPropStyle) {
+          if (!Object.prototype.hasOwnProperty.call(unreadPropStyle, key)) {
+            continue;
+          }
+
+          var styleValue = unreadPropStyle[key];
+          if (typeof styleValue === 'number') {
+            if (!dirty) {
+              dirty = true;
+              currentStyles[i] = _extends({}, currentStyles[i]);
+              currentVelocities[i] = _extends({}, currentVelocities[i]);
+              lastIdealStyles[i] = _extends({}, lastIdealStyles[i]);
+              lastIdealVelocities[i] = _extends({}, lastIdealVelocities[i]);
+              mergedPropsStyles[i] = {
+                key: mergedPropsStyles[i].key,
+                data: mergedPropsStyles[i].data,
+                style: _extends({}, mergedPropsStyles[i].style)
+              };
+            }
+            currentStyles[i][key] = styleValue;
+            currentVelocities[i][key] = 0;
+            lastIdealStyles[i][key] = styleValue;
+            lastIdealVelocities[i][key] = 0;
+            mergedPropsStyles[i].style[key] = styleValue;
+          }
+        }
+      }
+
+      // unlike the other 2 components, we can't detect staleness and optionally
+      // opt out of setState here. each style object's data might contain new
+      // stuff we're not/cannot compare
+      _this.setState({
+        currentStyles: currentStyles,
+        currentVelocities: currentVelocities,
+        mergedPropsStyles: mergedPropsStyles,
+        lastIdealStyles: lastIdealStyles,
+        lastIdealVelocities: lastIdealVelocities
+      });
+    };
+
+    this.startAnimationIfNecessary = function () {
+      if (_this.unmounting) {
+        return;
+      }
+
+      // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
+      // call cb? No, otherwise accidental parent rerender causes cb trigger
+      _this.animationID = _raf2['default'](function (timestamp) {
+        // https://github.com/chenglou/react-motion/pull/420
+        // > if execution passes the conditional if (this.unmounting), then
+        // executes async defaultRaf and after that component unmounts and after
+        // that the callback of defaultRaf is called, then setState will be called
+        // on unmounted component.
+        if (_this.unmounting) {
+          return;
+        }
+
+        var propStyles = _this.props.styles;
+        var destStyles = typeof propStyles === 'function' ? propStyles(rehydrateStyles(_this.state.mergedPropsStyles, _this.unreadPropStyles, _this.state.lastIdealStyles)) : propStyles;
+
+        // check if we need to animate in the first place
+        if (shouldStopAnimationAll(_this.state.currentStyles, destStyles, _this.state.currentVelocities, _this.state.mergedPropsStyles)) {
+          // no need to cancel animationID here; shouldn't have any in flight
+          _this.animationID = null;
+          _this.accumulatedTime = 0;
+          return;
+        }
+
+        var currentTime = timestamp || _performanceNow2['default']();
+        var timeDelta = currentTime - _this.prevTime;
+        _this.prevTime = currentTime;
+        _this.accumulatedTime = _this.accumulatedTime + timeDelta;
+        // more than 10 frames? prolly switched browser tab. Restart
+        if (_this.accumulatedTime > msPerFrame * 10) {
+          _this.accumulatedTime = 0;
+        }
+
+        if (_this.accumulatedTime === 0) {
+          // no need to cancel animationID here; shouldn't have any in flight
+          _this.animationID = null;
+          _this.startAnimationIfNecessary();
+          return;
+        }
+
+        var currentFrameCompletion = (_this.accumulatedTime - Math.floor(_this.accumulatedTime / msPerFrame) * msPerFrame) / msPerFrame;
+        var framesToCatchUp = Math.floor(_this.accumulatedTime / msPerFrame);
+
+        var _mergeAndSync2 = mergeAndSync(_this.props.willEnter, _this.props.willLeave, _this.props.didLeave, _this.state.mergedPropsStyles, destStyles, _this.state.currentStyles, _this.state.currentVelocities, _this.state.lastIdealStyles, _this.state.lastIdealVelocities);
+
+        var newMergedPropsStyles = _mergeAndSync2[0];
+        var newCurrentStyles = _mergeAndSync2[1];
+        var newCurrentVelocities = _mergeAndSync2[2];
+        var newLastIdealStyles = _mergeAndSync2[3];
+        var newLastIdealVelocities = _mergeAndSync2[4];
+
+        for (var i = 0; i < newMergedPropsStyles.length; i++) {
+          var newMergedPropsStyle = newMergedPropsStyles[i].style;
+          var newCurrentStyle = {};
+          var newCurrentVelocity = {};
+          var newLastIdealStyle = {};
+          var newLastIdealVelocity = {};
+
+          for (var key in newMergedPropsStyle) {
+            if (!Object.prototype.hasOwnProperty.call(newMergedPropsStyle, key)) {
+              continue;
+            }
+
+            var styleValue = newMergedPropsStyle[key];
+            if (typeof styleValue === 'number') {
+              newCurrentStyle[key] = styleValue;
+              newCurrentVelocity[key] = 0;
+              newLastIdealStyle[key] = styleValue;
+              newLastIdealVelocity[key] = 0;
+            } else {
+              var newLastIdealStyleValue = newLastIdealStyles[i][key];
+              var newLastIdealVelocityValue = newLastIdealVelocities[i][key];
+              for (var j = 0; j < framesToCatchUp; j++) {
+                var _stepper = _stepper4['default'](msPerFrame / 1000, newLastIdealStyleValue, newLastIdealVelocityValue, styleValue.val, styleValue.stiffness, styleValue.damping, styleValue.precision);
+
+                newLastIdealStyleValue = _stepper[0];
+                newLastIdealVelocityValue = _stepper[1];
+              }
+
+              var _stepper2 = _stepper4['default'](msPerFrame / 1000, newLastIdealStyleValue, newLastIdealVelocityValue, styleValue.val, styleValue.stiffness, styleValue.damping, styleValue.precision);
+
+              var nextIdealX = _stepper2[0];
+              var nextIdealV = _stepper2[1];
+
+              newCurrentStyle[key] = newLastIdealStyleValue + (nextIdealX - newLastIdealStyleValue) * currentFrameCompletion;
+              newCurrentVelocity[key] = newLastIdealVelocityValue + (nextIdealV - newLastIdealVelocityValue) * currentFrameCompletion;
+              newLastIdealStyle[key] = newLastIdealStyleValue;
+              newLastIdealVelocity[key] = newLastIdealVelocityValue;
+            }
+          }
+
+          newLastIdealStyles[i] = newLastIdealStyle;
+          newLastIdealVelocities[i] = newLastIdealVelocity;
+          newCurrentStyles[i] = newCurrentStyle;
+          newCurrentVelocities[i] = newCurrentVelocity;
+        }
+
+        _this.animationID = null;
+        // the amount we're looped over above
+        _this.accumulatedTime -= framesToCatchUp * msPerFrame;
+
+        _this.setState({
+          currentStyles: newCurrentStyles,
+          currentVelocities: newCurrentVelocities,
+          lastIdealStyles: newLastIdealStyles,
+          lastIdealVelocities: newLastIdealVelocities,
+          mergedPropsStyles: newMergedPropsStyles
+        });
+
+        _this.unreadPropStyles = null;
+
+        _this.startAnimationIfNecessary();
+      });
+    };
+
+    this.state = this.defaultState();
+  }
+
+  TransitionMotion.prototype.defaultState = function defaultState() {
+    var _props = this.props;
+    var defaultStyles = _props.defaultStyles;
+    var styles = _props.styles;
+    var willEnter = _props.willEnter;
+    var willLeave = _props.willLeave;
+    var didLeave = _props.didLeave;
+
+    var destStyles = typeof styles === 'function' ? styles(defaultStyles) : styles;
+
+    // this is special. for the first time around, we don't have a comparison
+    // between last (no last) and current merged props. we'll compute last so:
+    // say default is {a, b} and styles (dest style) is {b, c}, we'll
+    // fabricate last as {a, b}
+    var oldMergedPropsStyles = undefined;
+    if (defaultStyles == null) {
+      oldMergedPropsStyles = destStyles;
+    } else {
+      oldMergedPropsStyles = defaultStyles.map(function (defaultStyleCell) {
+        // TODO: key search code
+        for (var i = 0; i < destStyles.length; i++) {
+          if (destStyles[i].key === defaultStyleCell.key) {
+            return destStyles[i];
+          }
+        }
+        return defaultStyleCell;
+      });
+    }
+    var oldCurrentStyles = defaultStyles == null ? destStyles.map(function (s) {
+      return _stripStyle2['default'](s.style);
+    }) : defaultStyles.map(function (s) {
+      return _stripStyle2['default'](s.style);
+    });
+    var oldCurrentVelocities = defaultStyles == null ? destStyles.map(function (s) {
+      return _mapToZero2['default'](s.style);
+    }) : defaultStyles.map(function (s) {
+      return _mapToZero2['default'](s.style);
+    });
+
+    var _mergeAndSync3 = mergeAndSync(
+    // Because this is an old-style createReactClass component, Flow doesn't
+    // understand that the willEnter and willLeave props have default values
+    // and will always be present.
+    willEnter, willLeave, didLeave, oldMergedPropsStyles, destStyles, oldCurrentStyles, oldCurrentVelocities, oldCurrentStyles, // oldLastIdealStyles really
+    oldCurrentVelocities);
+
+    var mergedPropsStyles = _mergeAndSync3[0];
+    var currentStyles = _mergeAndSync3[1];
+    var currentVelocities = _mergeAndSync3[2];
+    var lastIdealStyles = _mergeAndSync3[3];
+    var lastIdealVelocities = _mergeAndSync3[4];
+    // oldLastIdealVelocities really
+
+    return {
+      currentStyles: currentStyles,
+      currentVelocities: currentVelocities,
+      lastIdealStyles: lastIdealStyles,
+      lastIdealVelocities: lastIdealVelocities,
+      mergedPropsStyles: mergedPropsStyles
+    };
+  };
+
+  // after checking for unreadPropStyles != null, we manually go set the
+  // non-interpolating values (those that are a number, without a spring
+  // config)
+
+  TransitionMotion.prototype.componentDidMount = function componentDidMount() {
+    this.prevTime = _performanceNow2['default']();
+    this.startAnimationIfNecessary();
+  };
+
+  TransitionMotion.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+    if (this.unreadPropStyles) {
+      // previous props haven't had the chance to be set yet; set them here
+      this.clearUnreadPropStyle(this.unreadPropStyles);
+    }
+
+    var styles = props.styles;
+    if (typeof styles === 'function') {
+      this.unreadPropStyles = styles(rehydrateStyles(this.state.mergedPropsStyles, this.unreadPropStyles, this.state.lastIdealStyles));
+    } else {
+      this.unreadPropStyles = styles;
+    }
+
+    if (this.animationID == null) {
+      this.prevTime = _performanceNow2['default']();
+      this.startAnimationIfNecessary();
+    }
+  };
+
+  TransitionMotion.prototype.componentWillUnmount = function componentWillUnmount() {
+    this.unmounting = true;
+    if (this.animationID != null) {
+      _raf2['default'].cancel(this.animationID);
+      this.animationID = null;
+    }
+  };
+
+  TransitionMotion.prototype.render = function render() {
+    var hydratedStyles = rehydrateStyles(this.state.mergedPropsStyles, this.unreadPropStyles, this.state.currentStyles);
+    var renderedChildren = this.props.children(hydratedStyles);
+    return renderedChildren && _react2['default'].Children.only(renderedChildren);
+  };
+
+  return TransitionMotion;
+})(_react2['default'].Component);
+
+exports['default'] = TransitionMotion;
+module.exports = exports['default'];
+
+// list of styles, each containing interpolating values. Part of what's passed
+// to children function. Notice that this is
+// Array<ActualInterpolatingStyleObject>, without the wrapper that is {key: ...,
+// data: ... style: ActualInterpolatingStyleObject}. Only mergedPropsStyles
+// contains the key & data info (so that we only have a single source of truth
+// for these, and to save space). Check the comment for `rehydrateStyles` to
+// see how we regenerate the entirety of what's passed to children function
+
+// the array that keeps track of currently rendered stuff! Including stuff
+// that you've unmounted but that's still animating. This is where it lives
+
+// it's possible that currentStyle's value is stale: if props is immediately
+// changed from 0 to 400 to spring(0) again, the async currentStyle is still
+// at 0 (didn't have time to tick and interpolate even once). If we naively
+// compare currentStyle with destVal it'll be 0 === 0 (no animation, stop).
+// In reality currentStyle should be 400
+});
+
+unwrapExports(TransitionMotion_1);
+
+var presets = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+exports["default"] = {
+  noWobble: { stiffness: 170, damping: 26 }, // the default, if nothing provided
+  gentle: { stiffness: 120, damping: 14 },
+  wobbly: { stiffness: 180, damping: 12 },
+  stiff: { stiffness: 210, damping: 20 }
+};
+module.exports = exports["default"];
+});
+
+unwrapExports(presets);
+
+var spring_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports['default'] = spring;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+
+
+var _presets2 = _interopRequireDefault(presets);
+
+var defaultConfig = _extends({}, _presets2['default'].noWobble, {
+  precision: 0.01
+});
+
+function spring(val, config) {
+  return _extends({}, defaultConfig, config, { val: val });
+}
+
+module.exports = exports['default'];
+});
+
+unwrapExports(spring_1);
+
+var reorderKeys_1 = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+exports['default'] = reorderKeys;
+
+var hasWarned = false;
+
+function reorderKeys() {
+  if (true) {
+    if (!hasWarned) {
+      hasWarned = true;
+      console.error('`reorderKeys` has been removed, since it is no longer needed for TransitionMotion\'s new styles array API.');
+    }
+  }
+}
+
+module.exports = exports['default'];
+});
+
+unwrapExports(reorderKeys_1);
+
+var reactMotion = createCommonjsModule(function (module, exports) {
+
+exports.__esModule = true;
+
+function _interopRequire(obj) { return obj && obj.__esModule ? obj['default'] : obj; }
+
+
+
+exports.Motion = _interopRequire(Motion_1);
+
+
+
+exports.StaggeredMotion = _interopRequire(StaggeredMotion_1);
+
+
+
+exports.TransitionMotion = _interopRequire(TransitionMotion_1);
+
+
+
+exports.spring = _interopRequire(spring_1);
+
+
+
+exports.presets = _interopRequire(presets);
+
+
+
+exports.stripStyle = _interopRequire(stripStyle_1);
+
+// deprecated, dummy warning function
+
+
+
+exports.reorderKeys = _interopRequire(reorderKeys_1);
+});
+
+unwrapExports(reactMotion);
+var reactMotion_1 = reactMotion.Motion;
+var reactMotion_2 = reactMotion.StaggeredMotion;
+var reactMotion_3 = reactMotion.TransitionMotion;
+var reactMotion_4 = reactMotion.spring;
+var reactMotion_5 = reactMotion.presets;
+var reactMotion_6 = reactMotion.stripStyle;
+var reactMotion_7 = reactMotion.reorderKeys;
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+var ScrollHorizontal = function (_Component) {
+  inherits(ScrollHorizontal, _Component);
+
+  function ScrollHorizontal(props) {
+    classCallCheck(this, ScrollHorizontal);
+
+    var _this = possibleConstructorReturn(this, (ScrollHorizontal.__proto__ || Object.getPrototypeOf(ScrollHorizontal)).call(this, props));
+
+    _this.componentDidUpdate = function (prevProps) {
+      if (prevProps.animValues !== _this.props.animValues) {
+        var currentAnimValues = _this.state.animValues;
+        _this.setState({
+          animValues: currentAnimValues + _this.props.animValues
+        }, _this.calculate());
+      } else {
+        _this.calculate();
+      }
+    };
+
+    _this.state = { animValues: 0 };
+
+    _this.onScrollStart = _this.onScrollStart.bind(_this);
+    _this.resetMin = _this.resetMin.bind(_this);
+    _this.resetMax = _this.resetMax.bind(_this);
+    return _this;
+  }
+
+  createClass(ScrollHorizontal, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      // Place the 'lock__' class on the HTML element - if toggled
+      if (this.props.pageLock) {
+        var orig = document.firstElementChild.className;
+        document.firstElementChild.className = orig + (orig ? ' ' : '') + 'locked__';
+      }
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (this.props.pageLock) {
+        document.firstElementChild.className = document.firstElementChild.className.replace(/ ?locked__/, '');
+      }
+    }
+  }, {
+    key: 'onScrollStart',
+    value: function onScrollStart(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      // If scrolling on x axis, change to y axis. Otherwise, just get the y deltas.
+      // (Basically, this for Apple mice that allow horizontal scrolling by default)
+      var rawData = e.deltaY ? e.deltaY : e.deltaX;
+      var mouseY = Math.floor(rawData);
+
+      // Bring in the existing animation values
+      var animationValue = this.state.animValues;
+      var newAnimationValue = animationValue + mouseY;
+      var newAnimationValueNegative = animationValue - mouseY;
+
+      if (!this.caniscroll()) {
+        return;
+      }
+
+      var scrolling = function scrolling() {
+        _this2.props.reverseScroll ? _this2.setState({ animValues: newAnimationValueNegative }) : _this2.setState({ animValues: newAnimationValue });
+      };
+
+      // Begin Scrolling Animation
+      window.requestAnimationFrame(scrolling);
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (this.calculate.timer !== void 0 && this.props.children === nextProps.children && this.state.animValues === nextState.animValues && this.props.animValues === nextProps.animValues) {
+        return false;
+      }
+
+      if (this.props.children === nextProps.children && this.caniscroll() === false) {
+        return false;
+      }
+
+      return true;
+    }
+  }, {
+    key: 'caniscroll',
+    value: function caniscroll() {
+      var el = react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.findDOMNode(this.hScrollParent);
+      var rect = el.getBoundingClientRect();
+      var scroller = el.firstElementChild;
+
+      return scroller.offsetLeft < rect.left || scroller.offsetLeft + scroller.offsetWidth > rect.width;
+    }
+  }, {
+    key: 'calculate',
+    value: function calculate() {
+      var _this3 = this;
+
+      // Cancel the previous calculate
+      clearTimeout(this.calculate.timer);
+
+      // Lazy to calculate, prevent max recurse call
+      this.calculate.timer = setTimeout(function () {
+        // Calculate the bounds of the scroll area
+        var el = react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.findDOMNode(_this3.hScrollParent);
+
+        var max = el.lastElementChild.scrollWidth;
+        var win = el.offsetWidth;
+
+        // Get the new animation values
+        var curr = _this3.state.animValues;
+
+        // Establish the bounds. We do this every time b/c it might change.
+        var bounds = -(max - win);
+
+        // Logic to hold everything in place
+        if (curr >= 1) {
+          _this3.resetMin();
+        } else if (curr <= bounds) {
+          var x = bounds + 1;
+          _this3.resetMax(x);
+        }
+      });
+    }
+  }, {
+    key: 'resetMin',
+    value: function resetMin() {
+      this.setState({ animValues: 0 });
+    }
+  }, {
+    key: 'resetMax',
+    value: function resetMax(x) {
+      this.setState({ animValues: x });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var _props = this.props,
+          config = _props.config,
+          style = _props.style,
+          children = _props.children;
+      var width = style.width,
+          height = style.height;
+
+      var springConfig = config || reactMotion_5.noWobble;
+
+      // Styles
+      var styles = _extends({
+        height: height || '100%',
+        width: width || '100%',
+        overflow: 'hidden',
+        position: 'relative'
+      }, style);
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        'div',
+        {
+          onWheel: this.onScrollStart,
+          ref: function ref(r) {
+            _this4.hScrollParent = r;
+          },
+          style: styles,
+          className: 'scroll-horizontal ' + (this.props.className || '')
+        },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+          reactMotion_1,
+          { style: { z: reactMotion_4(this.state.animValues, springConfig) } },
+          function (_ref) {
+            var z = _ref.z;
+
+            var scrollingElementStyles = {
+              transform: 'translate3d(' + z + 'px, 0,0)',
+              display: 'inline-flex',
+              height: '100%',
+              position: 'absolute',
+              willChange: 'transform'
+            };
+
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+              'div',
+              { style: scrollingElementStyles },
+              children
+            );
+          }
+        )
+      );
+    }
+  }]);
+  return ScrollHorizontal;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+ScrollHorizontal.propTypes = {
+  reverseScroll: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  pageLock: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  config: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object,
+  style: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object,
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.array.isRequired,
+  animValues: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number
+};
+
+ScrollHorizontal.defaultProps = {
+  reverseScroll: false,
+  pageLock: false,
+  config: null,
+  style: { width: '100%', height: '100%' },
+  className: null,
+  animValues: null
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ScrollHorizontal);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -81388,9 +83283,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _TShirt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TShirt */ "./resources/js/components/TShirt.js");
-/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.css */ "./resources/js/components/App.css");
-/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.css */ "./resources/js/components/App.css");
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _TShirtEditor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TShirtEditor */ "./resources/js/components/TShirtEditor.js");
+/* harmony import */ var _TShirt__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TShirt */ "./resources/js/components/TShirt.js");
+/* harmony import */ var react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-horizontal-scrolling-menu */ "./node_modules/react-horizontal-scrolling-menu/build/index.js");
+/* harmony import */ var react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_scroll_horizontal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-scroll-horizontal */ "./node_modules/react-scroll-horizontal/dist/index.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -81401,13 +83300,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -81420,28 +83324,88 @@ var App =
 function (_Component) {
   _inherits(App, _Component);
 
-  function App(props) {
+  function App() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, App);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.tshirt = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      my_tshirts: []
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onSelect", function (key) {});
+
     return _this;
   }
 
   _createClass(App, [{
-    key: "handleColorChange",
-    value: function handleColorChange(color) {
-      this.tshirt.changeColor(color);
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+
+      if (token) {
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      } else {
+        console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+      }
+
+      if (api_token) {
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      } else {
+        console.error('api token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+      }
+
+      try {
+        var response = axios.get('/api/tshirts').then(function (res) {
+          console.log(res.data);
+
+          _this2.setState({
+            my_tshirts: res.data
+          });
+        });
+      } catch (e) {
+        console.log('axios request failed:', e);
+      }
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "content",
         className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TShirt__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TShirtEditor__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "myTshirts"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        data: this.state.my_tshirts.map(function (tshirt, key) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TShirt__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            key: key,
+            tshirt_type: tshirt.tshirt_type,
+            image_type: tshirt.image_type,
+            image: tshirt.image,
+            tshirt_color: tshirt.color
+          });
+        }),
+        arrowLeft: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow left"
+        }),
+        arrowRight: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow right"
+        }),
+        onSelect: this.onSelect
+      }))));
     }
   }]);
 
@@ -81491,15 +83455,149 @@ if(false) {}
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Example; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TShirt; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _TShirt_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TShirt.css */ "./resources/js/components/TShirt.css");
+/* harmony import */ var _TShirt_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_TShirt_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var TShirt =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TShirt, _Component);
+
+  function TShirt() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, TShirt);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TShirt)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "getColor", function () {
+      return _this.props.tshirt_color ? _this.props.tshirt_color : '#ffffff';
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getType", function () {
+      return _this.props.tshirt_type ? _this.props.tshirt_type : 'men';
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getImage", function () {
+      return _this.props.image ? _this.props.image : null;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getImageType", function () {
+      return _this.props.image_type ? _this.props.image_type : 'center';
+    });
+
+    return _this;
+  }
+
+  _createClass(TShirt, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tshirt-container",
+        className: "row justify-content-center large_image_button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tshirt_image",
+        className: "tshirt-contents image " + this.getType() + "_image",
+        style: {
+          backgroundColor: this.getColor()
+        }
+      }, this.getImage() != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: 'image ' + this.getImageType(),
+        alt: "image",
+        src: this.getImage()
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tshirt_foreground",
+        className: "tshirt-contents image " + this.getType() + "_foreground"
+      }))));
+    }
+  }]);
+
+  return TShirt;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TShirtEditor.css":
+/*!**************************************************!*\
+  !*** ./resources/js/components/TShirtEditor.css ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./TShirtEditor.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/TShirtEditor.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/components/TShirtEditor.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/TShirtEditor.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TShirtEditor; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-color */ "./node_modules/react-color/lib/index.js");
 /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_color__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _TShirt_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TShirt.css */ "./resources/js/components/TShirt.css");
-/* harmony import */ var _TShirt_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_TShirt_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _TShirtEditor_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TShirtEditor.css */ "./resources/js/components/TShirtEditor.css");
+/* harmony import */ var _TShirtEditor_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_TShirtEditor_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -81524,51 +83622,59 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-var Example =
+var TShirtEditor =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Example, _Component);
+  _inherits(TShirtEditor, _Component);
 
-  function Example() {
+  function TShirtEditor() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Example);
+    _classCallCheck(this, TShirtEditor);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Example)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TShirtEditor)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      tshirt_color: '#ffffff',
-      image: null,
-      image_type: "center",
-      tshirt_type: "men"
+      tshirt_color: localStorage.getItem('tshirt_color') ? localStorage.getItem('tshirt_color') : '#bf4040',
+      image: localStorage.getItem('image') ? localStorage.getItem('image') : null,
+      image_type: localStorage.getItem('image_type') ? localStorage.getItem('image_type') : "center",
+      tshirt_type: localStorage.getItem('tshirt_type') ? localStorage.getItem('tshirt_type') : "men"
     });
 
     _defineProperty(_assertThisInitialized(_this), "makeMenTee", function () {
+      localStorage.setItem('tshirt_type', 'men');
+
       _this.setState({
         tshirt_type: "men"
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "makeWomenTee", function () {
+      localStorage.setItem('tshirt_type', 'women');
+
       _this.setState({
         tshirt_type: "women"
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "changeColor", function (color, event) {
+      localStorage.setItem('tshirt_color', color.hex);
+
       _this.setState({
         tshirt_color: color.hex
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "clickCenterImage", function (event) {
+      localStorage.setItem('image_type', 'center');
+      localStorage.setItem('image', event.target.src);
+
       _this.setState({
         image: event.target.src,
         image_type: "center"
@@ -81576,12 +83682,17 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "removeCenterImage", function () {
+      localStorage.setItem('image', null);
+
       _this.setState({
         image: null
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "clickPocketImage", function (event) {
+      localStorage.setItem('image_type', 'pocket');
+      localStorage.setItem('image', event.target.src);
+
       _this.setState({
         image: event.target.src,
         image_type: "pocket"
@@ -81589,6 +83700,8 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "removePocketImage", function () {
+      localStorage.setItem('image', null);
+
       _this.setState({
         image: null
       });
@@ -81596,27 +83709,44 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "submit", function (event) {
       event.preventDefault();
-      axios.post('/api/tshirts', {
-        tshirt_color: _this.state.tshirt_color,
-        image: _this.state.image,
-        image_type: _this.state.image_type,
-        tshirt_type: _this.state.tshirt_type
-      }).then(function (res) {
-        console.log(res);
-        console.log(res.data);
-      });
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+
+      if (token) {
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      } else {
+        console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+      }
+
+      if (api_token) {
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      } else {
+        console.error('api token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+      }
+
+      try {
+        var response = axios.post('/api/tshirts', {
+          tshirt_color: _this.state.tshirt_color,
+          image: _this.state.image,
+          image_type: _this.state.image_type,
+          tshirt_type: _this.state.tshirt_type
+        });
+      } catch (e) {
+        console.log('axios request failed:', e);
+      }
     });
 
     return _this;
   }
 
-  _createClass(Example, [{
+  _createClass(TShirtEditor, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "tshirt-container",
+        id: "tshirt-editor-container",
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
@@ -81627,7 +83757,7 @@ function (_Component) {
           backgroundColor: this.state.tshirt_color
         }
       }, this.state.image != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: 'image ' + this.state.image_type,
+        className: 'image editor-' + this.state.image_type,
         alt: "image",
         src: this.state.image
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -81712,14 +83842,14 @@ function (_Component) {
         alt: "none",
         src: "/storage/uploads/women_tee.png",
         onClick: this.makeWomenTee
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, document.querySelector('meta[name="api-token"]') && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-sm",
         onClick: this.submit
       }, "Guardar"))));
     }
   }]);
 
-  return Example;
+  return TShirtEditor;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 

@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/tshirts', 'TShirtsController@store');
+Route::post('/tshirts', 'TShirtsController@store')->middleware('auth:api');
+Route::get('/tshirts', 'TShirtsController@index')->middleware('auth:api');

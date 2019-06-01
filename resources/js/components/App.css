@@ -2,6 +2,15 @@
     align-items: center
 }
 
-html {
-    scroll-behavior: smooth;
+#myTshirts {
+    height: 200px;
+    width: 70%;
+}
+
+.arrow{
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #999999;
+    border-radius: 50%;
 }
