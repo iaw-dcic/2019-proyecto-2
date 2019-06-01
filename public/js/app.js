@@ -65936,11 +65936,9 @@ function (_Component) {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, "Logos centrales"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "tittle"
-      }, "Logos centrales "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "card-title text-muted text-uppercase text-center"
-      }, "Seleccione el logo elegido"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, " Seleccione el logo "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-imagenesLogos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "thumbnail"
@@ -65953,7 +65951,7 @@ function (_Component) {
             return _this3.cambiarLogo(e, item.logo);
           }
         });
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         onClick: function onClick(e) {
           return _this3.eliminarLogo(e);
@@ -65989,9 +65987,11 @@ function (_Component) {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
-      }, "Seleccione un color"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+      }, "Colores disponibles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Seleccione un color "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-toolbar mb-2",
         role: "toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

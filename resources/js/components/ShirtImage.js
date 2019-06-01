@@ -83,11 +83,10 @@ export default class ShirtImage extends Component {
                             <div className="card mb-5 mb-lg-0">
 
                                 <div className="card-body">
-                                    <h5 className="card-title text-muted text-uppercase text-center">Logos</h5>
+                                    <h5 className="card-title text-muted text-uppercase text-center">Logos centrales</h5>
                                   
                                     <hr></hr>
-                                    <h2 id="tittle">Logos centrales </h2>
-                                    <h5 className="card-title text-muted text-uppercase text-center">Seleccione el logo elegido</h5>
+                                    <h2 id="tittle"> Seleccione el logo </h2>
                                     <hr></hr>
                                     <div className="container-imagenesLogos">
                                         <a className="thumbnail">
@@ -100,7 +99,7 @@ export default class ShirtImage extends Component {
                                         </a>
                                     </div>
                                 </div>
-                                <hr></hr>
+                            
                                 <button type="button" onClick={(e) => this.eliminarLogo(e)} class="btn btn-secondary">Eliminar logo</button>
                                 
                             </div>
@@ -127,9 +126,10 @@ export default class ShirtImage extends Component {
                         <div className="col-lg-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title text-muted text-uppercase text-center">Seleccione un color</h5>
+                                    <h5 className="card-title text-muted text-uppercase text-center">Colores disponibles</h5>
                                     <hr width="100%"></hr>
-
+                                    <h2 id="tittle">Seleccione un color </h2>
+                                    <hr></hr>
                                     <div className="btn-toolbar mb-2" role="toolbar">
                                         <div id="listColours" className="btn-color" role="toolbar">
                                             <div className="btn-group" >

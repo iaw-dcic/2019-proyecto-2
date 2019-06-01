@@ -70,9 +70,11 @@ section.pricing {
   .container-imagenesLogos
   {
     position: relative;
-    top: 1%; 
-    left: 1%;
-    height: 10%;
+ 
+    top: 0.1%; 
+    left: 0.1%;
+    height: 0.01%;
+    width: 100%;
     display: flex;
     overflow-y: scroll;
   
@@ -80,10 +82,10 @@ section.pricing {
     z-index: 3;
   }
   .img-thumbnail{
-    padding:2%;
-    border:3%;
-    width:28%;
-    height:26%;
+    padding:1%;
+    border:1%;
+    width:29%;
+    height:19%;
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 2%;
