@@ -50,7 +50,7 @@ class ListaPartidoController extends Controller
             $nuevoPartido-> boton2 = $partido["boton2"];
             $nuevoPartido-> resultado1 = $partido["resultado1"];
             $nuevoPartido-> resultado2 = $partido["resultado2"];
-            $nuevoPartido-> numero_partido = $partido["id"];
+            $nuevoPartido-> numero_partido = $partido["numero_partido"];
             $nuevoPartido-> save();
         }  
         return $request->all();

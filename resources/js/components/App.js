@@ -8,15 +8,18 @@ class App extends Component {
 
     constructor() {
         super();
-
     }
+
     state = {
         partidosDelUsuario: [],
     }
-    componentDidMount() {
 
+    componentDidMount() {
+        this.actualizarPartidosUsuarios();
+    }
+
+    actualizarPartidosUsuarios = () => {
         axios.get("/partidos").then(response => {
-        //    console.log(response["data"]);
             var partidosDelUsuario = response["data"];
             this.setState({ partidosDelUsuario });
         }).catch(error => {
@@ -49,12 +52,13 @@ class App extends Component {
                 </div>
                 <Route
                     exact path="/prode/:listaId"
-                    component = {Prode}>
+                    component={Prode}>
                 </Route>
-                {/* <Route
+
+                <Route
                     exact path="/prode"
-                    component = {Prode}>
-                </Route> */}
+                    render={(props) => <Prode {...props} actualizarPartidosUsuarios={this.actualizarPartidosUsuarios} />}
+                />
 
             </BrowserRouter>
         )

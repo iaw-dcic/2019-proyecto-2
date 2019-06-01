@@ -23,7 +23,7 @@ export default class Prode extends Component {
 
   inicializarState = () => {
     var partidosEnLS = localStorage.getItem('partidos');
-    fetch('http://localhost:8000/equipos')
+    fetch('/equipos')
       .then(response => {
         return response.json();
       })
@@ -148,11 +148,10 @@ export default class Prode extends Component {
   }
 
   guardarCambios = (e) => {
-    //console.log("entro POST");
     axios.post("/partidos", this.state.partidos).then(response => {
-      //console.log(response);
+      this.props.actualizarPartidosUsuarios();
     }).catch(error => {
-      //console.log("this is error", error);
+      console.log("this is error", error);
     });
   }
 
@@ -170,7 +169,6 @@ export default class Prode extends Component {
     });
   }
 
-  component
   componentWillUnmount() {
     this.unlisten();
   }

@@ -65696,6 +65696,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Prode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Prode */ "./resources/js/components/Prode.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -65735,28 +65737,31 @@ function (_Component) {
       partidosDelUsuario: []
     });
 
+    _defineProperty(_assertThisInitialized(_this), "actualizarPartidosUsuarios", function () {
+      axios.get("/partidos").then(function (response) {
+        var partidosDelUsuario = response["data"];
+
+        _this.setState({
+          partidosDelUsuario: partidosDelUsuario
+        });
+      })["catch"](function (error) {
+        console.log("this is error", error);
+      });
+    });
+
     return _this;
   }
 
   _createClass(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      axios.get("/partidos").then(function (response) {
-        //    console.log(response["data"]);
-        var partidosDelUsuario = response["data"];
-
-        _this2.setState({
-          partidosDelUsuario: partidosDelUsuario
-        });
-      })["catch"](function (error) {
-        console.log("this is error", error);
-      });
+      this.actualizarPartidosUsuarios();
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65784,6 +65789,14 @@ function (_Component) {
         exact: true,
         path: "/prode/:listaId",
         component: _Prode__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
+        path: "/prode",
+        render: function render(props) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Prode__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
+            actualizarPartidosUsuarios: _this2.actualizarPartidosUsuarios
+          }));
+        }
       }));
     }
   }]);
@@ -66223,7 +66236,7 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "inicializarState", function () {
       var partidosEnLS = localStorage.getItem('partidos');
-      fetch('http://localhost:8000/equipos').then(function (response) {
+      fetch('/equipos').then(function (response) {
         return response.json();
       }).then(function (equipos) {
         console.log("sarasa");
@@ -66363,9 +66376,10 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "guardarCambios", function (e) {
-      //console.log("entro POST");
-      axios.post("/partidos", _this.state.partidos).then(function (response) {//console.log(response);
-      })["catch"](function (error) {//console.log("this is error", error);
+      axios.post("/partidos", _this.state.partidos).then(function (response) {
+        _this.props.actualizarPartidosUsuarios();
+      })["catch"](function (error) {
+        console.log("this is error", error);
       });
     });
 
@@ -66374,8 +66388,6 @@ function (_Component) {
       })["catch"](function (error) {//console.log("this is error", error);
       });
     });
-
-    _defineProperty(_assertThisInitialized(_this), "component", void 0);
 
     _this.state = {
       idPartido: '',
