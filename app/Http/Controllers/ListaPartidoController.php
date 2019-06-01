@@ -17,6 +17,9 @@ class ListaPartidoController extends Controller
      */
     public function getAllPartidos()
     {
+        if(!Auth::check()){
+            return [];
+        }
         $user_id = Auth::user()->id;
         return User::all()->find($user_id)->listaPartidos()->get();
     }
@@ -50,7 +53,6 @@ class ListaPartidoController extends Controller
             $nuevoPartido-> numero_partido = $partido["id"];
             $nuevoPartido-> save();
         }  
-        return Auth::user();   
         return $request->all();
     }
 

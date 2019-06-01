@@ -15,13 +15,13 @@
 Auth::routes();
 Route::get('/equipos', 'EquipoController@index')->name('index');
 
-Route::put("/partidos", 'ListaPartidoController@update');//->middleware('auth');
-// Route::post("/partidos", 'ListaPartidoController@store');//->middleware('auth');
+Route::put("/partidos", 'ListaPartidoController@update')->middleware('auth');
+Route::post("/partidos", 'ListaPartidoController@store')->middleware('auth');
 Route::get("/partidos/{id}", 'ListaPartidoController@getLista');
 Route::get("/partidos", 'ListaPartidoController@getAllPartidos');
 
 Route::view('/{path?}', 'react');//->middleware('auth');
-Route::get("/partidos", 'ListaPartidoController@getAllPartidos');//->middleware('auth');
+Route::get("/partidos", 'ListaPartidoController@getAllPartidos')->middleware('auth');
 
 //redireccionar invalidos 
 Route::any('{query}', 

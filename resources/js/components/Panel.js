@@ -19,7 +19,7 @@ export default class Panel extends Component {
             return partido.etapa === this.props.etapa;
         })
         return partidoCuartos.map(partido => {
-            return <Partido etapa={this.props.etapa} partido={this.props.partidos[partido.id]} actualizarPartidos={this.props.actualizarPartidos} clave={partido.id} key={partido.id} nombre_equipo1={partido.equipo1} nombre_equipo2={partido.equipo2}></Partido>
+            return <Partido etapa={this.props.etapa} partido={this.props.partidos[partido.numero_partido]} actualizarPartidos={this.props.actualizarPartidos} clave={partido.numero_partido} key={partido.numero_partido} nombre_equipo1={partido.equipo1} nombre_equipo2={partido.equipo2}></Partido>
         })
     }
 

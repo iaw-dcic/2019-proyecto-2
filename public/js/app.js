@@ -65683,19 +65683,17 @@ if (token) {
 /*!****************************************!*\
   !*** ./resources/js/components/App.js ***!
   \****************************************/
-/*! exports provided: history */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "history", function() { return history; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! history */ "./node_modules/history/esm/history.js");
-/* harmony import */ var _Prode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Prode */ "./resources/js/components/Prode.js");
+/* harmony import */ var _Prode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Prode */ "./resources/js/components/Prode.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65721,8 +65719,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var history = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
-
 var App =
 /*#__PURE__*/
 function (_Component) {
@@ -65735,15 +65731,10 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
 
-    _defineProperty(_assertThisInitialized(_this), "nuevoProde", function () {
-      console.log("entro");
-
-      _this.context.history.push('/prode');
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      partidosDelUsuario: []
     });
 
-    _this.state = {
-      partidosDelUsuario: []
-    };
     return _this;
   }
 
@@ -65753,7 +65744,7 @@ function (_Component) {
       var _this2 = this;
 
       axios.get("/partidos").then(function (response) {
-        console.log(response["data"]);
+        //    console.log(response["data"]);
         var partidosDelUsuario = response["data"];
 
         _this2.setState({
@@ -65780,15 +65771,19 @@ function (_Component) {
         type: "button",
         className: "btn btn-primary text-center center"
       }, "Nuevo prode")), this.state.partidosDelUsuario.map(function (lista) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/prode/" + lista.id,
+          key: lista.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           className: "btn btn-primary text-center center",
           key: lista.id,
           value: lista.id
-        }, "Prode existente");
+        }, "Prode existente"));
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/prode",
-        component: _Prode__WEBPACK_IMPORTED_MODULE_4__["default"]
+        exact: true,
+        path: "/prode/:listaId",
+        component: _Prode__WEBPACK_IMPORTED_MODULE_3__["default"]
       }));
     }
   }]);
@@ -65874,10 +65869,10 @@ function (_Component) {
       return partidoCuartos.map(function (partido) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           etapa: _this2.props.etapa,
-          partido: _this2.props.partidos[partido.id],
+          partido: _this2.props.partidos[partido.numero_partido],
           actualizarPartidos: _this2.props.actualizarPartidos,
-          clave: partido.id,
-          key: partido.id,
+          clave: partido.numero_partido,
+          key: partido.numero_partido,
           nombre_equipo1: partido.equipo1,
           nombre_equipo2: partido.equipo2
         });
@@ -65944,6 +65939,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -65975,6 +65972,8 @@ function (_Component) {
     _classCallCheck(this, Partido);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Partido).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "x", void 0);
 
     _defineProperty(_assertThisInitialized(_this), "input1Ref", react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
 
@@ -66045,7 +66044,7 @@ function (_Component) {
 
     _this.state = {
       partido: {
-        id: '',
+        numero_partido: '',
         etapa: '',
         equipo1: '',
         equipo2: '',
@@ -66061,12 +66060,11 @@ function (_Component) {
   _createClass(Partido, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("entro");
-      var partido = Object.assign({}, this.state.partido);
+      var partido = _objectSpread({}, this.state.partido);
 
       if (this.props.partido) {
         partido = {
-          id: this.props.clave,
+          numero_partido: this.props.clave,
           etapa: this.props.etapa,
           equipo1: this.props.nombre_equipo1,
           equipo2: this.props.nombre_equipo2,
@@ -66077,7 +66075,7 @@ function (_Component) {
         };
       } else {
         partido = {
-          id: this.props.clave,
+          numero_partido: this.props.clave,
           etapa: this.props.etapa,
           equipo1: this.props.nombre_equipo1,
           equipo2: this.props.nombre_equipo2
@@ -66089,9 +66087,17 @@ function (_Component) {
       });
     }
   }, {
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(newProps) {
+      var partido = newProps.partido;
+      this.setState({
+        partido: partido
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      if (this.state.partido === "undefined") {
+      if (this.state.partido === "undefined" && this.props.partido) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null);
       }
 
@@ -66104,8 +66110,7 @@ function (_Component) {
         disabled: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 !== this.state.partido.resultado2,
         id: 'ganador_equipo1_partido' + this.props.clave,
         name: 'customRadio' + this.props.clave,
-        className: "custom-control-input" // ref={this.radio1Ref}
-        ,
+        className: "custom-control-input",
         onChange: this.actualizarBotones,
         checked: (this.state.partido.resultado1 || this.state.partido.resultado2) && this.state.partido.resultado1 !== this.state.partido.resultado2 ? false : this.state.partido.boton1 || false
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -66216,27 +66221,110 @@ function (_Component) {
       semifinal: "final"
     });
 
+    _defineProperty(_assertThisInitialized(_this), "inicializarState", function () {
+      var partidosEnLS = localStorage.getItem('partidos');
+      fetch('http://localhost:8000/equipos').then(function (response) {
+        return response.json();
+      }).then(function (equipos) {
+        console.log("sarasa");
+
+        _this.setState({
+          idPartido: _this.props.match.params.listaId || '',
+          equipos: equipos
+        }, function () {
+          return _this.inicializarPartidos(partidosEnLS);
+        });
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "inicializarPartidos", function (partidosEnLS) {
-      if (partidosEnLS && partidosEnLS.length > 2) {
+      if (partidosEnLS && partidosEnLS.length > 2 && !_this.state.idPartido) {
         var partidos = JSON.parse(partidosEnLS);
 
         _this.setState({
           partidos: partidos
         });
       } else {
-        _this.inicializarPartidos();
+        if (_this.state.idPartido) {
+          axios.get("/partidos/" + _this.state.idPartido).then(function (response) {
+            var partidos = response["data"];
+
+            _this.setState({
+              partidos: partidos
+            });
+          })["catch"](function (error) {
+            console.log("this is error", error);
+          });
+        } else {
+          _this.inicializarPartidosNormal();
+        }
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "actualizarPartidos", function (partido) {
-      console.log(partido);
-
+    _defineProperty(_assertThisInitialized(_this), "inicializarPartidosNormal", function () {
       var partidos = _objectSpread({}, _this.state.partidos);
 
-      var partidoActualizar = _objectSpread({}, _this.state.partidos[partido.id]);
+      partidos = [];
+
+      var equiposDup = _toConsumableArray(_this.state.equipos);
+
+      var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
+      var arregloDerecha = equiposDup;
+      var partidoCuartos = arregloIzquierda.map(function (equipo) {
+        var cuartos = {
+          numero_partido: equipo.id,
+          etapa: "cuartos",
+          equipo1: equipo.nombre_equipo,
+          equipo2: arregloDerecha[equipo.id].nombre_equipo,
+          boton1: false,
+          boton2: false,
+          resultado1: 0,
+          resultado2: 0
+        };
+        partidos.push(cuartos);
+      }); //console.log("ENTRO");
+      //Agregar semifinales
+
+      var id = 4;
+
+      for (var i = 0; i < 2; i++) {
+        var semifinal = {
+          numero_partido: id++,
+          etapa: "semifinal",
+          equipo1: "N/A",
+          equipo2: "N/A",
+          boton1: false,
+          boton2: false,
+          resultado1: 0,
+          resultado2: 0
+        };
+        partidos.push(semifinal);
+      }
+
+      var _final = {
+        numero_partido: 6,
+        etapa: "final",
+        equipo1: "N/A",
+        equipo2: "N/A",
+        boton1: false,
+        boton2: false,
+        resultado1: 0,
+        resultado2: 0
+      };
+      partidos.push(_final);
+
+      _this.setState({
+        partidos: partidos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "actualizarPartidos", function (partido) {
+      var partidos = _objectSpread({}, _this.state.partidos);
+
+      var partidoActualizar = _objectSpread({}, _this.state.partidos[partido.numero_partido]);
 
       partidoActualizar = partido;
-      partidos[partido.id] = partidoActualizar;
+      partidos[partido.numero_partido] = partidoActualizar;
 
       _this.setState({
         partidos: partidos
@@ -66250,8 +66338,8 @@ function (_Component) {
       partidosValues.filter(function (partido) {
         return partido.etapa === etapaActual;
       }).map(function (partido) {
-        var idSiguienteEtapa = Math.floor(partido.id / 2) + 4;
-        var equipoActualizar = "equipo" + (Math.floor(partido.id % 2) + 1);
+        var idSiguienteEtapa = Math.floor(partido.numero_partido / 2) + 4;
+        var equipoActualizar = "equipo" + (Math.floor(partido.numero_partido % 2) + 1);
 
         var partidoSiguienteEtapa = _objectSpread({}, partidos[idSiguienteEtapa]);
 
@@ -66274,81 +66362,23 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "inicializarPartidos", function () {
-      var partidos = _objectSpread({}, _this.state.partidos);
-
-      partidos = [];
-
-      var equiposDup = _toConsumableArray(_this.state.equipos);
-
-      var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
-      var arregloDerecha = equiposDup;
-      var partidoCuartos = arregloIzquierda.map(function (equipo) {
-        var cuartos = {
-          id: equipo.id,
-          etapa: "cuartos",
-          equipo1: equipo.nombre_equipo,
-          equipo2: arregloDerecha[equipo.id].nombre_equipo,
-          boton1: false,
-          boton2: false,
-          resultado1: 0,
-          resultado2: 0
-        };
-        partidos.push(cuartos);
-      });
-      console.log("ENTRO"); //Agregar semifinales
-
-      var id = 4;
-
-      for (var i = 0; i < 2; i++) {
-        var semifinal = {
-          id: id++,
-          etapa: "semifinal",
-          equipo1: "N/A",
-          equipo2: "N/A",
-          boton1: false,
-          boton2: false,
-          resultado1: 0,
-          resultado2: 0
-        };
-        partidos.push(semifinal);
-      }
-
-      var _final = {
-        id: 6,
-        etapa: "final",
-        equipo1: "N/A",
-        equipo2: "N/A",
-        boton1: false,
-        boton2: false,
-        resultado1: 0,
-        resultado2: 0
-      };
-      partidos.push(_final);
-
-      _this.setState({
-        partidos: partidos
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "guardarCambios", function (e) {
-      axios.post("/partidos", _this.state.partidos).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log("this is error", error);
+      //console.log("entro POST");
+      axios.post("/partidos", _this.state.partidos).then(function (response) {//console.log(response);
+      })["catch"](function (error) {//console.log("this is error", error);
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarCambios", function (e) {
-      axios.put("/partidos", _this.state).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log("this is error", error);
+      axios.put("/partidos", _this.state).then(function (response) {//console.log(response);
+      })["catch"](function (error) {//console.log("this is error", error);
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "component", void 0);
+
     _this.state = {
-      idPartido: 6,
+      idPartido: '',
       equipos: [],
       partidos: []
     };
@@ -66358,23 +66388,30 @@ function (_Component) {
   _createClass(Prode, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      var partidosEnLS = localStorage.getItem('partidos');
-      fetch('http://localhost:8000/equipos').then(function (response) {
-        return response.json();
-      }).then(function (equipos) {
-        _this2.setState({
-          equipos: equipos
-        }, function () {
-          return _this2.inicializarPartidos(partidosEnLS);
-        });
-      });
+      this.inicializarState();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
+      if (this.state.idPartido) {
+        localStorage.setItem('partidos/' + this.state.idPartido, JSON.stringify(this.state.partidos));
+      } else {
+        localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
+      }
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      this.unlisten = this.props.history.listen(function (location, action) {
+        _this2.inicializarState();
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.unlisten();
     }
   }, {
     key: "render",
@@ -66400,13 +66437,19 @@ function (_Component) {
         partidos: this.state.partidos,
         actualizarPartidos: this.actualizarPartidos,
         crearGanadoresSiguienteEtapa: this.crearGanadoresSiguienteEtapa
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), this.state.idPartido ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xs-12 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         onClick: this.actualizarCambios,
         className: "btn btn-primary text-center center"
-      }, "Guardar")));
+      }, "Actualizar")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xs-12 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.guardarCambios,
+        className: "btn btn-primary text-center center"
+      }, "Crear")));
     }
   }]);
 
