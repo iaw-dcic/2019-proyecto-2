@@ -65932,13 +65932,15 @@ function (_Component) {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
       }, "Logos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "tittle"
-      }, "Logos centrales "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Logos centrales "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Seleccione el logo elegido"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-imagenesLogos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "thumbnail"
@@ -65957,9 +65959,7 @@ function (_Component) {
           return _this3.eliminarLogo(e);
         },
         "class": "btn btn-secondary"
-      }, "Eliminar logo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        height: "10%"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Eliminar logo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
@@ -66052,7 +66052,7 @@ function (_Component) {
         className: "card-title text-muted text-uppercase text-center"
       }, "Listado de remeras"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase"
-      }, "Ver"))))))));
+      }, "Ver")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)))))));
     }
   }]);
 
