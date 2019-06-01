@@ -11,7 +11,6 @@ export default class AvatarView extends Component{
         hair : 'Pelo1',
         eyes : 'Ojos1',
         mouth : 'Boca1',
-        api_token: '',
         AllAvatars : [],
         userID : -1,
         errors : []
@@ -47,43 +46,37 @@ export default class AvatarView extends Component{
 
     }
 
-    componentDidMount () {
-        axios.get('/api/token' , ).then(response => {
-            this.setState({
-                api_token: response.data
-            })
-        })
+    getUser(){
 
+    }
+
+    componentDidMount () {
+        let token = document.head.querySelector('meta[name="api-token"]');
+        token = token.content; //obtengo el api-token del usuario
+   
+        //preparo el mensaje para mandar el token
         var config = {
-            headers: {'Authorization': "Bearer " + this.state.api_token}
+            headers: {'Authorization': "Bearer " + token}
         };
         
         var bodyParameters = {
            key: "value"
         }
-        
-        axios.get( 
-          '/api/user',
+        //intento hacer la llamada por axios
+        axios.post( 
+          'api/user/',
           bodyParameters,
           config
         ).then((response) => {
+            console.log(response.data)
+            this.setState({
+                userID : response.data
+            })
           console.log(response)
-          this.setState({
-              userID:response.data
-          })
         }).catch((error) => {
           console.log(error)
         });
-
-
-        axios.get('/api/' + this.state.userID + 'avatars').then(response => {
-          this.setState({
-            AllAvatars: response.data
-          })
-        })
-      }
-
-
+    }
 
     constructor(props) {
         super(props)

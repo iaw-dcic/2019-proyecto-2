@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".config{\r\n    width:75%;\r\n    margin: 0 auto; /* Added */\r\n    float: none; /* Added */\r\n    margin-bottom: 10px; /* Added */\r\n}", ""]);
+exports.push([module.i, ".config{\r\n    width:75%;\r\n    margin: 0 auto; /* Added */\r\n    float: none; /* Added */\r\n    margin-bottom: 10px; /* Added */\r\n   \r\n}\r\n.cara .ojos .pelo .boca{\r\n    size:50px;\r\n}", ""]);
 
 // exports
 
@@ -66589,19 +66589,19 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card config text-center mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hair superponer"
+        className: "hair superponer cara"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Caras/' + this.props.face + '.png'
       }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "skin superponer"
+        className: "skin superponer ojos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eyes superponer"
+        className: "eyes superponer pelo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mouth superponer"
+        className: "mouth superponer boca"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'
       }))))))));
@@ -66697,36 +66697,33 @@ function (_Component) {
       });
     }
   }, {
+    key: "getUser",
+    value: function getUser() {}
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/token').then(function (response) {
-        _this2.setState({
-          api_token: response.data
-        });
-      });
+      var token = document.head.querySelector('meta[name="api-token"]');
+      token = token.content;
       var config = {
         headers: {
-          'Authorization': "Bearer " + this.state.api_token
+          'Authorization': "Bearer " + token
         }
       };
       var bodyParameters = {
         key: "value"
       };
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/user', bodyParameters, config).then(function (response) {
-        console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/' + token, bodyParameters, config).then(function (response) {
+        console.log(response.data);
 
         _this2.setState({
           userID: response.data
         });
+
+        console.log(response);
       })["catch"](function (error) {
         console.log(error);
-      });
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/' + this.state.userID + 'avatars').then(function (response) {
-        _this2.setState({
-          AllAvatars: response.data
-        });
       });
     }
   }]);
@@ -66744,7 +66741,6 @@ function (_Component) {
       hair: 'Pelo1',
       eyes: 'Ojos1',
       mouth: 'Boca1',
-      api_token: '',
       AllAvatars: [],
       userID: -1,
       errors: []
@@ -67227,6 +67223,13 @@ function (_Component) {
   }
 
   _createClass(SideBar, [{
+    key: "getRecurso",
+    value: function getRecurso() {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos/').then(function (response) {
+        response.data.map;
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {

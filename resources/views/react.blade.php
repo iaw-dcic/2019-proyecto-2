@@ -24,6 +24,7 @@
    
 </head>
 @section('content')
+    
     <div id="react-app">
         <!-- ACA ES DONDE REACT DEBERÁ CREAR LA PÁGINA-->
     </div>

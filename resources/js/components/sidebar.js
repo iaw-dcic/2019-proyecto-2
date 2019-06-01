@@ -41,6 +41,12 @@ export default class SideBar extends Component{
     this.changeMouth = this.changeMouth.bind(this);
   }
 
+  getRecurso(){
+    axios.get('api/recursos/').then((response)=>{
+      response.data.map
+    })
+  }
+
   
 
   render(){

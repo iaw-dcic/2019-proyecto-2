@@ -11,12 +11,13 @@ use Illuminate\Support\Facades\DB;
 class userAvatarController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api', ['except' => ['getUserApiToken']]);
+        $this->middleware('auth:api');
     }
 
     public function index(){
         $Avatares = User::findOrFail(Auth::user()->id)->avatars;
-        return $avatares->toJson();
+        dd($Avatares);
+        return $Avatares->toJson();
     }
 
     public function store(Request $request){
@@ -48,14 +49,19 @@ class userAvatarController extends Controller
 
     }
 
-    public function getUserID(){
-        $ID = Auth::user()->id;
-        return $ID->toJson(); 
+    public function getUserID(Request $request){
+        
+        $user = Auth::guard('api')->user();
+        dd($user);
+        $ID = $user->id;
+        //$ID = Auth::guard('api')->user();
+        return $ID; 
     }
 
-    public function getUserApiToken(){
-        $user = User::find(1);
-        $token = $user->api_token;
-        return $token;
+    public function getResources(String $type){
+        dd($type);
+        $recursos = DB::table('attires')->where('type',$type)->get();
+        return $recursos->toJson();
     }
+
 }

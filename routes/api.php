@@ -16,9 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/{id}/avatars', 'userAvatarController@index');
-Route::get('/{id}/avatars/{avatarId}','userAvatarController@show');
+Route::post('/{id}/avatars', 'userAvatarController@index');
+Route::post('/{id}/avatars/{avatarId}','userAvatarController@show');
 Route::post('/{id}/avatars', 'userAvatarController@store');
-Route::put('/{id}/avatars/{avatarId}', 'userAvatarController@update');
-Route::get('/user' ,'userAvatarController@getUserID');
-Route::get('/token', 'userAvatarController@getUserApiToken');
+Route::post('/{id}/avatars/{avatarId}', 'userAvatarController@update');
+Route::post('/user' ,'userAvatarController@getUserID');
+Route::get('/recursos/{recurso}','userAvatarController@getResources');
+
