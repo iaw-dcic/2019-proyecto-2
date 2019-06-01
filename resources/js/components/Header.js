@@ -39,7 +39,7 @@ export default class Header extends Component {
                     Hola {this.state.user.name} !
                 </button>
                 <div className="dropdown-menu">
-                    <a className="dropdown-item" href="/logout">Cerrar Sesion</a>
+                    <a className="dropdown-item" href="logout">Cerrar Sesion</a>
                 </div>
             </div>
 

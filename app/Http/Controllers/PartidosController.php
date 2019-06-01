@@ -10,6 +10,8 @@ use Response;
 class PartidosController extends Controller
 {
     public function getPartidosRonda($ronda){
+        try {
+            DB::beginTransaction();
         $partidos= Partido::where('ronda','=',$ronda)->get();
         $arreglo=array();
         $i=0;
@@ -30,10 +32,18 @@ class PartidosController extends Controller
             );
        
         }
-        if($arreglo != null)
-             return response()->json($arreglo, 200);
-        else
-            return abort(404);
+           DB::commit();
+        return response()->json($arreglo,200);
+    } catch (\Exception $e) {
+
+        DB::rollback();
+        abort(500);
+    }
+
+        // if($arreglo != null)
+        //      return response()->json($arreglo, 200);
+        // else
+        //     return abort(404);
     }
     
     public function partidos_de_a_dos($ronda){
@@ -84,9 +94,20 @@ class PartidosController extends Controller
 
     
     public function getPartidosPronostico($ronda,$pronostico){
+        try {
+            DB::beginTransaction();
         $partidos= Partido::where('pronostico','=',$pronostico)->where('ronda', '=', $ronda)->get();
         $arreglo=array();
         $i=0;
+        if($ronda == 0){
+            $arreglo["items"][$i++]= array(
+                'id' => $partidos[0]->id,
+                 'jugador_uno' => 
+                 array(
+                    'id' =>$partidos[0]->nombreJugadorUno->id,
+                      'nombre'=>$partidos[0]->nombreJugadorUno->nombre,
+                     'abrev' => $partidos[0]->nombreJugadorUno->abreviado));
+        } else{
         foreach($partidos as $partido){
            $arreglo["items"][$i++]= array(
                'id' => $partido->id,
@@ -104,11 +125,18 @@ class PartidosController extends Controller
                  'ronda' => $partido->ronda,
             );
        
-        }
-        if($arreglo != null)
-             return response()->json($arreglo, 200);
-        else
-            return response()->json("no hay", 404);
+        }}
+        DB::commit();
+        return response()->json($arreglo,200);
+    } catch (\Exception $e) {
+
+        DB::rollback();
+        abort(500);
+    }
+        // if($arreglo != null)
+        //      return response()->json($arreglo, 200);
+        // else
+        //     return response()->json("no hay", 404);
     }
      
 
@@ -183,5 +211,10 @@ public  function store(Request $request){
     
         return response()->json($partido, 201);
     }
+
+public function eliminarPronostico(Request $request){
+    $partidos=Partido::where('pronostico', '=', '1')->where('ronda','!=','16')->where('ronda','!=','32')->get(); //->delete()
+    return response()->json($partidos,200);
+}
 
 }

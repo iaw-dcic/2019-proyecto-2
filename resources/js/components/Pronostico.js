@@ -15,6 +15,7 @@ export default class Pronostico extends Component {
                 'Authorization': 'Bearer ' + api_token.content
             }
         }
+
         fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
             .then(res => res.json())
             .then(json => {
@@ -25,7 +26,9 @@ export default class Pronostico extends Component {
             });
 
     }
+
     componentWillReceiveProps() {
+
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -35,6 +38,7 @@ export default class Pronostico extends Component {
                 'Authorization': 'Bearer ' + api_token.content
             }
         }
+
         fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
             .then(res => res.json())
             .then(json => {
@@ -71,14 +75,20 @@ export default class Pronostico extends Component {
                         this.props.semis2(json.items[1])
 
                 });
-            // fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue)
-            //     .then(res => res.json())
-            //     .then(json => {
-            //         this.setState({
-            //             partidoFinal: json.partidos,
-            //         })
-            //     });
+            fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue)
+                .then(res => res.json())
+                .then(json => {
 
+                    this.props.final(json.items[0])
+
+                });
+            fetch('http://localhost/pr2/api/pronostico/0/' + selectedValue)
+                .then(res => res.json())
+                .then(json => {
+
+                    this.props.campeon(json.items[0])
+
+                });
         }
     }
 

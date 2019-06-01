@@ -67477,7 +67477,7 @@ function (_Component) {
           className: "dropdown-menu"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "dropdown-item",
-          href: "/logout"
+          href: "logout"
         }, "Cerrar Sesion")));
       } else nav = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-link",
@@ -67847,6 +67847,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pronostico_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pronostico.js */ "./resources/js/components/Pronostico.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -67896,18 +67898,12 @@ function (_Component) {
       pOctavos5: [],
       pOctavos6: [],
       pOctavos7: [],
-      c0j1: [],
-      c0j2: [],
-      c1j1: [],
-      c1j2: [],
-      c2j1: [],
-      c2j2: [],
-      c3j1: [],
-      c3j2: [],
-      s1j1: [],
-      s1j2: [],
-      s2j1: [],
-      s2j2: [],
+      c0: [],
+      c1: [],
+      c2: [],
+      c3: [],
+      s1: [],
+      s2: [],
       j1: [],
       j2: [],
       campeon: [],
@@ -67923,52 +67919,226 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "cuartos0", function (cuart) {
       _this.setState({
-        c0j1: cuart.jugador_uno,
-        c0j2: cuart.jugador_dos
+        c0: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "cuartos1", function (cuart) {
       _this.setState({
-        c1j1: cuart.jugador_uno,
-        c1j2: cuart.jugador_dos
+        c1: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "cuartos2", function (cuart) {
       _this.setState({
-        c2j1: cuart.jugador_uno,
-        c2j2: cuart.jugador_dos
+        c2: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "cuartos3", function (cuart) {
       _this.setState({
-        c3j1: cuart.jugador_uno,
-        c3j2: cuart.jugador_dos
+        c3: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "semis1", function (semi) {
       _this.setState({
-        s1j1: semi.jugador_uno,
-        s1j2: semi.jugador_dos
+        s1: semi
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "semis2", function (semi) {
       _this.setState({
-        s2j1: semi.jugador_uno,
-        s2j2: semi.jugador_dos
+        s2: semi
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleClick", function (newP, e) {
-      console.log("cambio semi");
-      console.log(newP);
-
+    _defineProperty(_assertThisInitialized(_this), "final", function (f) {
       _this.setState({
-        s1j1: newP
+        j1: f.jugador_uno,
+        j2: f.jugador_dos
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "champion", function (c) {
+      _this.setState({
+        campeon: c.jugador_uno
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleC0", function (newP, e) {
+      _this.setState(function (_ref) {
+        var s1 = _ref.s1;
+        return {
+          s1: _objectSpread({}, s1, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleC1", function (newP, e) {
+      _this.setState(function (_ref2) {
+        var s2 = _ref2.s2;
+        return {
+          s1: _objectSpread({}, s2, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleC2", function (newP, e) {
+      _this.setState(function (_ref3) {
+        var s1 = _ref3.s1;
+        return {
+          s1: _objectSpread({}, s1, {
+            jugador_dos: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleC3", function (newP, e) {
+      _this.setState(function (_ref4) {
+        var s2 = _ref4.s2;
+        return {
+          s2: _objectSpread({}, s2, {
+            jugador_dos: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc0", function (newP, e) {
+      _this.setState(function (_ref5) {
+        var c0 = _ref5.c0;
+        return {
+          c0: _objectSpread({}, c0, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc1", function (newP, e) {
+      _this.setState(function (_ref6) {
+        var c1 = _ref6.c1;
+        return {
+          c1: _objectSpread({}, c1, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc2", function (newP, e) {
+      _this.setState(function (_ref7) {
+        var c0 = _ref7.c0;
+        return {
+          c0: _objectSpread({}, c0, {
+            jugador_dos: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc3", function (newP, e) {
+      _this.setState(function (_ref8) {
+        var c1 = _ref8.c1;
+        return {
+          c1: _objectSpread({}, c1, {
+            jugador_dos: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc4", function (newP, e) {
+      _this.setState(function (_ref9) {
+        var c2 = _ref9.c2;
+        return {
+          c2: _objectSpread({}, c2, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc5", function (newP, e) {
+      _this.setState(function (_ref10) {
+        var c3 = _ref10.c3;
+        return {
+          c3: _objectSpread({}, c3, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc6", function (newP, e) {
+      _this.setState(function (_ref11) {
+        var c2 = _ref11.c2;
+        return {
+          c2: _objectSpread({}, c2, {
+            jugador_dos: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOc7", function (newP, e) {
+      _this.setState(function (_ref12) {
+        var c3 = _ref12.c3;
+        return {
+          c3: _objectSpread({}, c3, {
+            jugador_dos: newP
+          })
+        };
       }, function () {
         _this.setState({
           load: true
@@ -68025,22 +68195,22 @@ function (_Component) {
       var oct72 = ""; //si ya cargaron los partidos de octavos los seteo
 
       if (this.state.pOctavos0.jugador_uno != null) {
-        oct01 = this.state.pOctavos0.jugador_uno.nombre;
-        oct11 = this.state.pOctavos1.jugador_uno.nombre;
-        var oct02 = this.state.pOctavos0.jugador_dos.nombre;
-        oct12 = this.state.pOctavos1.jugador_dos.nombre;
-        oct21 = this.state.pOctavos2.jugador_uno.nombre;
-        oct31 = this.state.pOctavos3.jugador_uno.nombre;
-        oct22 = this.state.pOctavos2.jugador_dos.nombre;
-        oct32 = this.state.pOctavos3.jugador_dos.nombre;
-        oct41 = this.state.pOctavos4.jugador_uno.nombre;
-        oct51 = this.state.pOctavos5.jugador_uno.nombre;
-        oct42 = this.state.pOctavos4.jugador_dos.nombre;
-        oct52 = this.state.pOctavos5.jugador_dos.nombre;
-        oct61 = this.state.pOctavos6.jugador_uno.nombre;
-        oct71 = this.state.pOctavos7.jugador_uno.nombre;
-        oct62 = this.state.pOctavos6.jugador_dos.nombre;
-        oct72 = this.state.pOctavos7.jugador_dos.nombre;
+        oct01 = this.state.pOctavos0.jugador_uno;
+        oct11 = this.state.pOctavos1.jugador_uno;
+        oct02 = this.state.pOctavos0.jugador_dos;
+        oct12 = this.state.pOctavos1.jugador_dos;
+        oct21 = this.state.pOctavos2.jugador_uno;
+        oct31 = this.state.pOctavos3.jugador_uno;
+        oct22 = this.state.pOctavos2.jugador_dos;
+        oct32 = this.state.pOctavos3.jugador_dos;
+        oct41 = this.state.pOctavos4.jugador_uno;
+        oct51 = this.state.pOctavos5.jugador_uno;
+        oct42 = this.state.pOctavos4.jugador_dos;
+        oct52 = this.state.pOctavos5.jugador_dos;
+        oct61 = this.state.pOctavos6.jugador_uno;
+        oct71 = this.state.pOctavos7.jugador_uno;
+        oct62 = this.state.pOctavos6.jugador_dos;
+        oct72 = this.state.pOctavos7.jugador_dos;
       } //si ya cargaron los partidos de cuartos los seteo
 
 
@@ -68053,36 +68223,24 @@ function (_Component) {
       var cuar21 = "";
       var cuar22 = "";
 
-      if (this.state.c0j1 != null) {
-        cuar01 = this.state.c0j1;
+      if (this.state.c0 != null && this.state.c0.jugador_uno != null) {
+        cuar01 = this.state.c0.jugador_uno;
+        cuar02 = this.state.c0.jugador_dos;
       }
 
-      if (this.state.c0j2 != null) {
-        cuar02 = this.state.c0j2;
+      if (this.state.c1 != null && this.state.c1.jugador_uno != null) {
+        cuar11 = this.state.c1.jugador_uno;
+        cuar12 = this.state.c1.jugador_dos;
       }
 
-      if (this.state.c1j1 != null) {
-        cuar11 = this.state.c1j1;
+      if (this.state.c2 != null && this.state.c2.jugador_uno != null) {
+        cuar21 = this.state.c2.jugador_uno;
+        cuar22 = this.state.c2.jugador_dos;
       }
 
-      if (this.state.c1j2 != null) {
-        cuar12 = this.state.c1j2;
-      }
-
-      if (this.state.c2j1 != null) {
-        cuar21 = this.state.c2j1;
-      }
-
-      if (this.state.c2j2 != null) {
-        cuar22 = this.state.c2j2;
-      }
-
-      if (this.state.c3j1 != null) {
-        cuar31 = this.state.c3j1;
-      }
-
-      if (this.state.c3j2 != null) {
-        cuar32 = this.state.c3j2;
+      if (this.state.c3 != null && this.state.c3.jugador_uno != null) {
+        cuar31 = this.state.c3.jugador_uno;
+        cuar32 = this.state.c3.jugador_dos;
       } //si ya cargaron los partidos de semis los seteo
 
 
@@ -68091,20 +68249,31 @@ function (_Component) {
       var sem11 = "";
       var sem12 = "";
 
-      if (this.state.s1j1.nombre != null) {
-        sem01 = this.state.s1j1;
+      if (this.state.s1 != null && this.state.s1.jugador_uno != null) {
+        sem01 = this.state.s1.jugador_uno;
+        sem02 = this.state.s1.jugador_dos;
       }
 
-      if (this.state.s1j2 != null) {
-        sem02 = this.state.s1j2;
+      if (this.state.s2 != null && this.state.s2.jugador_uno != null) {
+        sem11 = this.state.s2.jugador_uno;
+        sem12 = this.state.s2.jugador_dos;
       }
 
-      if (this.state.s2j1.nombre != null) {
-        sem11 = this.state.s2j1;
+      var f1 = "";
+      var f2 = "";
+
+      if (this.state.j1 != null) {
+        f1 = this.state.j1;
       }
 
-      if (this.state.s2j2 != null) {
-        sem12 = this.state.s2j2;
+      if (this.state.j2 != null) {
+        f2 = this.state.j2;
+      }
+
+      var camp = "";
+
+      if (this.state.campeon != null) {
+        camp = this.state.campeon;
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -68117,13 +68286,15 @@ function (_Component) {
         cuartos2: this.cuartos2,
         cuartos3: this.cuartos3,
         semis1: this.semis1,
-        semis2: this.semis2
+        semis2: this.semis2,
+        "final": this["final"],
+        campeon: this.champion
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "row table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table-responsive table-striped "
+        className: "table-striped "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Octavos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -68137,33 +68308,66 @@ function (_Component) {
       }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct01), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct02)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct11), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct12))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc0(oct01, e);
+        }
+      }, oct01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc0(oct02, e);
+        }
+      }, oct02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc1(oct11, e);
+        }
+      }, oct11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc1(oct12, e);
+        }
+      }, oct12.nombre))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleClick(cuar01, e);
+          return _this3.handleC0(cuar01, e);
         }
       }, cuar01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleC0(cuar02, e);
+        }
       }, "  ", cuar02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleC1(cuar11, e);
+        }
       }, cuar11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleC1(cuar12, e);
+        }
       }, "  ", cuar12.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct21), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct22)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct31), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct32))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc2(oct21, e);
+        }
+      }, oct21.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc2(oct22, e);
+        }
+      }, oct22.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc3(oct31, e);
+        }
+      }, oct31.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc3(oct32, e);
+        }
+      }, oct32.nombre))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light"
       }, sem01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light"
@@ -68172,30 +68376,96 @@ function (_Component) {
       }, sem11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light"
       }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct41), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct42)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct51), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct52))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc4(oct41, e);
+        }
+      }, oct41.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc4(oct42, e);
+        }
+      }, oct42.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc5(oct51, e);
+        }
+      }, oct51.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc5(oct52, e);
+        }
+      }, oct52.nombre))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleC2(cuar21, e);
+        }
       }, cuar21.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleC2(cuar22, e);
+        }
       }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleC3(cuar31, e);
+        }
       }, cuar31.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleC3(cuar32, e);
+        }
       }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct61), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct62)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct71), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light-grey"
-      }, oct72)))))), " "));
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc6(oct61, e);
+        }
+      }, oct61.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc6(oct62, e);
+        }
+      }, oct62.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc7(oct71, e);
+        }
+      }, oct71.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light-grey",
+        onClick: function onClick(e) {
+          return _this3.handleOc7(oct71, e);
+        }
+      }, oct72.nombre)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row header texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2  justify-content-center align-items-center minh-100 "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, " ", f1.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2  justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-light"
+      }, " ", f2.nombre, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row header texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ", camp.nombre, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary"
+      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary"
+      }, "Eliminar")));
     } //se encarga de cambiar el pronostico de la semi
 
   }]);
@@ -69057,13 +69327,17 @@ function (_Component) {
                     return res.json();
                   }).then(function (json) {
                     _this4.props.semis1(json.items[0]), _this4.props.semis2(json.items[1]);
-                  }); // fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue)
-                  //     .then(res => res.json())
-                  //     .then(json => {
-                  //         this.setState({
-                  //             partidoFinal: json.partidos,
-                  //         })
-                  //     });
+                  });
+                  fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
+                    return res.json();
+                  }).then(function (json) {
+                    _this4.props["final"](json.items[0]);
+                  });
+                  fetch('http://localhost/pr2/api/pronostico/0/' + selectedValue).then(function (res) {
+                    return res.json();
+                  }).then(function (json) {
+                    _this4.props.campeon(json.items[0]);
+                  });
                 }
 
               case 5:
