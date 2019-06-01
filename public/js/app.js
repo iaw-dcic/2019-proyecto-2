@@ -6539,7 +6539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 175px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    top: 50%;\r\n    height: 200px;\r\n}\r\n\r\n#avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
+exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 175px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    top: 50%;\r\n    height: 200px;\r\n}\r\n\r\n#buttons {\r\n    margin-top: 5%;\r\n}", ""]);
 
 // exports
 
@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#textFlex, #buttonsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#saveButton {\r\n    margin-left: 4px;\r\n}", ""]);
+exports.push([module.i, "#textFlex, #buttonsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#saveButton {\r\n    margin-left: 4px;\r\n}\r\n\r\n#avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
 
 // exports
 
@@ -66436,13 +66436,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
  //Seleccion de todos los elementos para modificar el avatar
 
@@ -66452,9 +66454,85 @@ function (_Component) {
   _inherits(AvatarComponents, _Component);
 
   function AvatarComponents() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, AvatarComponents);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AvatarComponents).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AvatarComponents)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "createElements", function (type) {
+      var table = [];
+
+      switch (type) {
+        case 'hair':
+          {
+            var _loop = function _loop(I) {
+              table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+                className: "btn btn-outline-primary"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: window.location.origin + '/avatar_elements/Hair' + I + '.png',
+                onClick: function onClick() {
+                  return _this.changeAvatarHair('Hair' + I);
+                }
+              })));
+            };
+
+            for (var I = 1; I <= 4; I++) {
+              _loop(I);
+            }
+
+            return table;
+          }
+
+        case 'shirt':
+          {
+            var _loop2 = function _loop2(I) {
+              table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+                className: "btn btn-outline-danger"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: window.location.origin + '/avatar_elements/Shirt' + I + '.png',
+                onClick: function onClick() {
+                  return _this.changeAvatarShirt('Shirt' + I);
+                }
+              })));
+            };
+
+            for (var I = 1; I <= 4; I++) {
+              _loop2(I);
+            }
+
+            return table;
+          }
+
+        case 'beard':
+          {
+            var _loop3 = function _loop3(I) {
+              table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+                className: "btn btn-outline-info"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: window.location.origin + '/avatar_elements/Beard' + I + '.png',
+                onClick: function onClick() {
+                  return _this.changeAvatarBeard('Beard' + I);
+                }
+              })));
+            };
+
+            for (var I = 1; I <= 4; I++) {
+              _loop3(I);
+            }
+
+            return table;
+          }
+      }
+    });
+
+    return _this;
   }
 
   _createClass(AvatarComponents, [{
@@ -66467,8 +66545,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "accordion md-accordion",
         id: "accordionEx1",
@@ -66499,35 +66575,7 @@ function (_Component) {
         "data-parent": "#accordionEx1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-primary"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Hair1.png',
-        onClick: function onClick() {
-          return _this.changeAvatarHair('Hair1');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-primary"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Hair2.png',
-        onClick: function onClick() {
-          return _this.changeAvatarHair('Hair2');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-primary"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Hair3.png',
-        onClick: function onClick() {
-          return _this.changeAvatarHair('Hair3');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-primary"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Hair4.png',
-        onClick: function onClick() {
-          return _this.changeAvatarHair('Hair4');
-        }
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.createElements('hair')))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header",
@@ -66552,35 +66600,7 @@ function (_Component) {
         "data-parent": "#accordionEx1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-danger"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Shirt1.png',
-        onClick: function onClick() {
-          return _this.changeAvatarShirt('Shirt1');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-danger"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Shirt2.png',
-        onClick: function onClick() {
-          return _this.changeAvatarShirt('Shirt2');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-danger"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Shirt3.png',
-        onClick: function onClick() {
-          return _this.changeAvatarShirt('Shirt3');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-danger"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Shirt4.png',
-        onClick: function onClick() {
-          return _this.changeAvatarShirt('Shirt4');
-        }
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.createElements('shirt')))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header",
@@ -66605,35 +66625,7 @@ function (_Component) {
         "data-parent": "#accordionEx1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Beard1.png',
-        onClick: function onClick() {
-          return _this.changeAvatarBeard('Beard1');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Beard2.png',
-        onClick: function onClick() {
-          return _this.changeAvatarBeard('Beard2');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Beard3.png',
-        onClick: function onClick() {
-          return _this.changeAvatarBeard('Beard3');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-outline-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.location.origin + '/avatar_elements/Beard4.png',
-        onClick: function onClick() {
-          return _this.changeAvatarBeard('Beard4');
-        }
-      })))))));
+      }, this.createElements('beard'))))));
     }
   }, {
     key: "changeAvatarHair",
@@ -66845,7 +66837,7 @@ function (_Component) {
           shirt: _this.state.currentAvatar.shirt,
           beard: _this.state.currentAvatar.beard
         }).then(function (response) {
-          console.log('from handle submit', response);
+          console.log('From Handle Submit ', response);
 
           _this.setState({
             currentAvatar: {
@@ -66866,7 +66858,7 @@ function (_Component) {
           shirt: _this.state.currentAvatar.shirt,
           beard: _this.state.currentAvatar.beard
         }).then(function (response) {
-          console.log('from handle submit', response);
+          console.log('From Handle Submit ', response);
 
           _this.setState({
             currentAvatar: {
@@ -66943,6 +66935,17 @@ function (_Component) {
         returnToDefault: this.returnToDefault,
         saveChanges: this.saveChanges
       }))));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/app/avatars').then(function (response) {
+        _this2.setState({
+          allAvatar: response.data
+        });
+      });
     }
   }]);
 
@@ -67299,8 +67302,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tomi_\Documents\Github\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Documentos\GitHub\ProyectoIAW2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

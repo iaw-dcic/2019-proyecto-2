@@ -5,3 +5,8 @@
 #saveButton {
     margin-left: 4px;
 }
+
+#avatarName {
+    margin-bottom: 4px;
+    width: 70%;
+}

@@ -15,6 +15,7 @@ class AvatarComponents extends Migration {
             $table->increments ('avatar_id');
             $table->string ('element_type');
             $table->string ('element_source');
+            $table->string ('element_var');
             $table->timestamps ();
         });
     }

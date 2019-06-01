@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Validator;
 use Auth;
 
 class AvatarsController extends Controller {
+
+    public function index () {
+        $avatar = Avatar::select('*')->where('owner', Auth::user()->name)->get();
+
+        return $avatares->toJson ();
+    }
     
     public function store (Request $request) {
         $attributes = array (

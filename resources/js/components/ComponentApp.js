@@ -10,7 +10,7 @@ import Utilities from './Utilities'
 
 export default class ComponentApp extends Component {
     
-    state = { 
+    state = {
         currentAvatar: {
             "avatar_id": null,
             "avatar_name": "", 
@@ -48,6 +48,14 @@ export default class ComponentApp extends Component {
         );
     }
 
+    componentDidMount () {
+        axios.get('/api/app/avatars').then (response => {
+            this.setState ({
+                allAvatar: response.data
+            })
+        })
+    }
+
     componentChange = (avatar) => {
         this.setState ({
             currentAvatar: {
@@ -68,7 +76,7 @@ export default class ComponentApp extends Component {
                 shirt: this.state.currentAvatar.shirt,
                 beard: this.state.currentAvatar.beard
             }).then (response => {
-                console.log('from handle submit', response);
+                console.log ('From Handle Submit ', response);
                 this.setState ({
                     currentAvatar: {
                         "avatar_id": this.state.currentAvatar.avatar_id,
@@ -89,7 +97,7 @@ export default class ComponentApp extends Component {
                 shirt: this.state.currentAvatar.shirt,
                 beard: this.state.currentAvatar.beard
             }).then (response => {
-                console.log('from handle submit', response);
+                console.log ('From Handle Submit ', response);
                 this.setState ({
                     currentAvatar: {
                         "avatar_id": this.state.currentAvatar.avatar_id,

@@ -27,10 +27,7 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseTwo1" className="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
                             <div className="card-body">
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair1.png'} onClick={() => this.changeAvatarHair('Hair1')}/></button>
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair2.png'} onClick={() => this.changeAvatarHair('Hair2')}/></button>
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair3.png'} onClick={() => this.changeAvatarHair('Hair3')}/></button>
-                                <button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair4.png'} onClick={() => this.changeAvatarHair('Hair4')}/></button>
+                                {this.createElements ('hair')}
                             </div>
                         </div>
 
@@ -48,10 +45,7 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseTwo21" className="collapse" role="tabpanel" aria-labelledby="headingTwo21" data-parent="#accordionEx1">
                             <div className="card-body">
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt1.png'} onClick={() => this.changeAvatarShirt('Shirt1')}/></button>
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt2.png'} onClick={() => this.changeAvatarShirt('Shirt2')}/></button>
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt3.png'} onClick={() => this.changeAvatarShirt('Shirt3')}/></button>
-                                <button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt4.png'} onClick={() => this.changeAvatarShirt('Shirt4')}/></button>
+                                {this.createElements ('shirt')}
                             </div>
                         </div>
 
@@ -69,10 +63,7 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseThree31" className="collapse" role="tabpanel" aria-labelledby="headingThree31" data-parent="#accordionEx1">
                             <div className="card-body">
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard1.png'} onClick={() => this.changeAvatarBeard('Beard1')}/></button>
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard2.png'} onClick={() => this.changeAvatarBeard('Beard2')}/></button>
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard3.png'} onClick={() => this.changeAvatarBeard('Beard3')}/></button>
-                                <button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard4.png'} onClick={() => this.changeAvatarBeard('Beard4')}/></button>
+                                {this.createElements ('beard')}
                             </div>
                         </div>
 
@@ -81,6 +72,33 @@ export default class AvatarComponents extends Component {
                 </div>
             </>
         );
+    }
+
+    createElements = (type) => {
+        let table = [];
+
+        switch (type) {
+            case ('hair'): {
+                for (let I = 1; I <= 4; I++) {
+                    table.push (<button className="btn btn-outline-primary"><img src={window.location.origin + '/avatar_elements/Hair' + I + '.png'} onClick={() => this.changeAvatarHair('Hair' + I)}/></button>)
+                }
+                return table;
+            }
+            
+            case ('shirt'): {
+                for (let I = 1; I <= 4; I++) {
+                    table.push (<button className="btn btn-outline-danger"><img src={window.location.origin + '/avatar_elements/Shirt' + I + '.png'} onClick={() => this.changeAvatarShirt('Shirt' + I)}/></button>)
+                }
+                return table;
+            }
+
+            case ('beard'): {
+                for (let I = 1; I <= 4; I++) {
+                    table.push (<button className="btn btn-outline-info"><img src={window.location.origin + '/avatar_elements/Beard' + I + '.png'} onClick={() => this.changeAvatarBeard('Beard' + I)}/></button>)
+                }
+                return table;
+            }
+        }
     }
 
     changeAvatarHair (newHair) {
