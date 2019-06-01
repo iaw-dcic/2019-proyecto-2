@@ -66373,6 +66373,14 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+var api_token = document.head.querySelector('meta[name="api-token"]');
+
+if (api_token) {
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+} else {
+  console.error('api-token not found');
+}
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -66697,33 +66705,34 @@ function (_Component) {
       });
     }
   }, {
-    key: "getUser",
-    value: function getUser() {}
-  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
       var token = document.head.querySelector('meta[name="api-token"]');
-      token = token.content;
-      var config = {
-        headers: {
-          'Authorization': "Bearer " + token
-        }
+      token = token.content; //obtengo el api-token del usuario
+      //preparo el mensaje para mandar el token
+
+      /*var config = {
+          headers: {'Authorization': "Bearer " + token}
       };
+      
       var bodyParameters = {
-        key: "value"
-      };
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/' + token, bodyParameters, config).then(function (response) {
+         key: "value"
+      }*/
+      //intento hacer la llamada por axios
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/user/').then(function (response) {
         console.log(response.data);
 
         _this2.setState({
           userID: response.data
         });
-
-        console.log(response);
       })["catch"](function (error) {
         console.log(error);
+      });
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + this.state.userID + '/avatars').then(function (response) {
+        console.log(response.data);
       });
     }
   }]);
@@ -67225,8 +67234,19 @@ function (_Component) {
   _createClass(SideBar, [{
     key: "getRecurso",
     value: function getRecurso() {
+      var _this2 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos/').then(function (response) {
-        response.data.map;
+        response.data.map(function (recurso) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "dropdown-item",
+            href: "#",
+            onClick: _this2.changeSkin
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            name: "Cara1",
+            src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+          }));
+        });
       });
     }
   }, {

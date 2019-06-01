@@ -46,36 +46,37 @@ export default class AvatarView extends Component{
 
     }
 
-    getUser(){
-
-    }
 
     componentDidMount () {
         let token = document.head.querySelector('meta[name="api-token"]');
         token = token.content; //obtengo el api-token del usuario
    
         //preparo el mensaje para mandar el token
-        var config = {
+        /*var config = {
             headers: {'Authorization': "Bearer " + token}
         };
         
         var bodyParameters = {
            key: "value"
-        }
+        }*/
         //intento hacer la llamada por axios
-        axios.post( 
-          'api/user/',
-          bodyParameters,
-          config
+        axios.get( 
+          'api/user/'
         ).then((response) => {
             console.log(response.data)
             this.setState({
                 userID : response.data
             })
-          console.log(response)
         }).catch((error) => {
           console.log(error)
         });
+
+        axios.get(
+            'api/' + this.state.userID + '/avatars'
+            
+        ).then((response) =>{
+            console.log(response.data)
+        })
     }
 
     constructor(props) {

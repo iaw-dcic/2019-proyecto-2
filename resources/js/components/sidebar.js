@@ -43,7 +43,9 @@ export default class SideBar extends Component{
 
   getRecurso(){
     axios.get('api/recursos/').then((response)=>{
-      response.data.map
+      response.data.map(recurso=>(
+        <button className="dropdown-item" href="#" onClick={this.changeSkin}><img name="Cara1" src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/></button>
+      ))
     })
   }
 

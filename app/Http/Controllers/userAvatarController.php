@@ -51,10 +51,8 @@ class userAvatarController extends Controller
 
     public function getUserID(Request $request){
         
-        $user = Auth::guard('api')->user();
-        dd($user);
+        $user = auth('api')->user();
         $ID = $user->id;
-        //$ID = Auth::guard('api')->user();
         return $ID; 
     }
 
