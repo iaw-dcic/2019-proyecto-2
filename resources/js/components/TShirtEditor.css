@@ -24,6 +24,10 @@
     background-blend-mode: multiply;
 }
 
+.save-btn{
+    margin: 10px;
+}
+
 .editor-center{
     padding: 20px;
     margin-top: 120px;

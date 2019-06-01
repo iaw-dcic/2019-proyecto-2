@@ -6,7 +6,7 @@ import './TShirtEditor.css'
 export default class TShirtEditor extends Component {
 
     state = {
-        tshirt_color: localStorage.getItem('tshirt_color') ? localStorage.getItem('tshirt_color') :'#bf4040',
+        tshirt_color: localStorage.getItem('tshirt_color') ? localStorage.getItem('tshirt_color') : '#bf4040',
         image: localStorage.getItem('image') ? localStorage.getItem('image') : null,
         image_type: localStorage.getItem('image_type') ? localStorage.getItem('image_type') : "center",
         tshirt_type: localStorage.getItem('tshirt_type') ? localStorage.getItem('tshirt_type') : "men",
@@ -14,12 +14,12 @@ export default class TShirtEditor extends Component {
 
     makeMenTee = () => {
         localStorage.setItem('tshirt_type', 'men');
-        this.setState({tshirt_type: "men"});
+        this.setState({ tshirt_type: "men" });
     }
 
     makeWomenTee = () => {
         localStorage.setItem('tshirt_type', 'women');
-        this.setState({tshirt_type: "women"});
+        this.setState({ tshirt_type: "women" });
     }
 
     changeColor = (color, event) => {
@@ -30,8 +30,10 @@ export default class TShirtEditor extends Component {
     clickCenterImage = (event) => {
         localStorage.setItem('image_type', 'center');
         localStorage.setItem('image', event.target.src);
-        this.setState({ image: event.target.src,
-            image_type: "center"});
+        this.setState({
+            image: event.target.src,
+            image_type: "center"
+        });
     }
 
     removeCenterImage = () => {
@@ -41,8 +43,10 @@ export default class TShirtEditor extends Component {
     clickPocketImage = (event) => {
         localStorage.setItem('image_type', 'pocket');
         localStorage.setItem('image', event.target.src);
-        this.setState({ image: event.target.src,
-            image_type: "pocket"});
+        this.setState({
+            image: event.target.src,
+            image_type: "pocket"
+        });
     }
 
     removePocketImage = () => {
@@ -56,26 +60,22 @@ export default class TShirtEditor extends Component {
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
-            if (token) {
-                window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-            } else {
-                console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-            }
-            if (api_token) {
-                window.axios.defaults.headers.common['Authorization'] = 'Bearer '+ api_token.content;
-            } else {
-                console.error('api token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-            }
+        if (token)
+            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        if (api_token)
+            window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
-            try {
-                const response = axios.post('/api/tshirts', {
-                    tshirt_color: this.state.tshirt_color,
-                    image: this.state.image,
-                    image_type: this.state.image_type,
-                    tshirt_type: this.state.tshirt_type,});
-            } catch (e) {
-                console.log('axios request failed:', e);
-            }
+        try {
+            const response = axios.post('/api/tshirts', {
+                tshirt_color: this.state.tshirt_color,
+                image: this.state.image,
+                image_type: this.state.image_type,
+                tshirt_type: this.state.tshirt_type,
+            });
+            this.props.save();
+        } catch (e) {
+            console.log('axios request failed:', e);
+        }
 
     }
 
@@ -87,14 +87,14 @@ export default class TShirtEditor extends Component {
                         <div className="container">
                             <div>
                                 <div id="tshirt_image"
-                                    className={"tshirt-contents image "+this.state.tshirt_type+"_image"}
-                                    style={{ backgroundColor: this.state.tshirt_color}}>
+                                    className={"tshirt-contents image " + this.state.tshirt_type + "_image"}
+                                    style={{ backgroundColor: this.state.tshirt_color }}>
                                     {this.state.image != null &&
                                         <img className={'image editor-' + this.state.image_type} alt="image" src={this.state.image} />
                                     }
                                 </div>
                                 <div id="tshirt_foreground"
-                                    className={"tshirt-contents image "+this.state.tshirt_type+"_foreground"}>
+                                    className={"tshirt-contents image " + this.state.tshirt_type + "_foreground"}>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,9 @@ export default class TShirtEditor extends Component {
 
                     <div>
                         {document.querySelector('meta[name="api-token"]') &&
-                            <button className="btn btn-primary btn-sm" onClick={this.submit}>Guardar</button>}
+                            <div className="row justify-content-center save-btn">
+                                <button className="btn btn-primary btn-m" onClick={this.submit}>Save</button>
+                            </div>}
                     </div>
                 </span>
             </div>
