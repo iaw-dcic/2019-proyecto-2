@@ -15,11 +15,14 @@ class CreatePlayoffsTable extends Migration
     {
         Schema::create('playoffs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->string('title');
             $table->unsignedBigInteger('user_id');
-            $table->string('myPronostico')->nullable();
+            $table->unsignedBigInteger('octavos_id');
+            $table->string('name');
+            $table->string('ganador');
             $table->timestamps();
 
+            $table->foreign('octavos_id')->references('id')->on('octavos')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

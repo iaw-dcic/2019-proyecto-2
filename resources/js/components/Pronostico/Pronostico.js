@@ -143,6 +143,7 @@ export default class Pronostico extends Component {
 
         try {
             axios.post('/api/playoffs', {
+                teams: this.state.teams, 
                 cuartos: this.state.cuartos,
                 semifinal: this.state.semifinal,
                 final: this.state.final,
