@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Torneo from './Torneo/Torneo'
+import Pronostico from './Pronostico/Pronostico'
 import Playoff from './Playoff/Playoff'
 
 export default class Example extends Component {
     
     constructor() {
         super()
-        var torneoContent = <Torneo />;
         this.state = {
             content:''
         }
     }
 
-    handleChangeTorneo() {
+    handleChangePronostico() {
         this.setState({
-            content: <Torneo />
+            content: <Pronostico />
         });
     }
 
@@ -33,7 +32,7 @@ export default class Example extends Component {
                         <div className="card">
                             <div className="card-header"><b>Bienvenido al pronostico de la Copa Libertadores!</b></div>
                             <div className="card-body">
-                                <button onClick={(event) => this.handleChangeTorneo()} >Iniciar pronóstico</button>         
+                                <button onClick={(event) => this.handleChangePronostico()} >Iniciar pronóstico</button>         
                             </div>
                             <div className="card-body">
                                  <button onClick={(event) => this.handleChangePlayoff()} >Mis pronósticos</button>

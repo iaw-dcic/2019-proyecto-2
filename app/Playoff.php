@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Playoff extends Model
 {
-    public function teams(){
+   // public function teams(){
 
-        return $this->hasMany(Team::class);
-    }
+     //   return $this->hasMany(Team::class);
+    //}
+    protected $fillable = [
+        'user_id', 'myPronostico',
+    ];
 }

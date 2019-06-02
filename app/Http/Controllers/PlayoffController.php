@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Team;
 use App\Playoff;
+use App\User;
 use Response;
+use DB;
+
 
 class PlayoffController extends Controller {
     /**
@@ -28,7 +31,7 @@ class PlayoffController extends Controller {
         return Response::json($arr);
     }
    
-    public function playoffs()
+    /*public function playoffs()
     {
         $arr = [];
         $playoffs = User::where('user_id',auth()->id())->get()->playoffs()->getResults();
@@ -37,77 +40,56 @@ class PlayoffController extends Controller {
             array_push($arr, $playoffArr);
         }
         return Response::json($arr);
-    }
+    }*/
     
-    /*public function store(Request $request)
+    public function store(Request $request)
     {
-        $request->validate([
-            'teams' => ['required', 'array', 'size:16'],
-            'teams.*' => ['required', 'array', 'size:1'],
-            'teams.*.*' => ['required', 'string', 'max:255', new validarExistenciaTeam()],
-            'cuartos' => ['required', 'array', 'size:8'],
-            'cuartos.*' => ['required', 'string', 'max:255', new validarExistenciaTeam()],
-            'semis' => ['required', 'array', 'size:4'],
-            'semis.*' => ['required', 'string', 'max:255', new validarExistenciaTeam()],
-            'final' => ['required', 'array', 'size:2'],
-            'final.*' => ['required', 'string', 'max:255', new validarExistenciaTeam()],
-            'winner' => ['required', 'string', 'max:255', new validarExistenciaTeam()],
-        ]);
         $data = $request->all();
-        try {
-            DB::beginTransaction();
-            $arbol = [];
-            $nodo = Node::create([
-                'name' => $data['winner'],
-            ]);
-            array_push($arbol, $nodo);
-            foreach ($data['final'] as $final) {
-                $nodo = Node::create([
-                    'name' => $final,
-                ]);
-                array_push($arbol, $nodo);
+        $cuartos = $data['cuartos'];
+        $result = '';
+        for($i=0; $i<8; $i++){
+            if($cuartos[$i]!=null){
+                $result .= $i;
+                $result .= $cuartos[$i];
+                if($i<7)
+                    $result .= '-';
             }
-            foreach ($data['semis'] as $semi) {
-                $nodo = Node::create([
-                    'name' => $semi,
-                ]);
-                array_push($arbol, $nodo);
-            }
-            foreach ($data['cuartos'] as $cuarto) {
-                $nodo = Node::create([
-                    'name' => $cuarto,
-                ]);
-                array_push($arbol, $nodo);
-            }
-            foreach ($data['teams'] as $team) {
-                $nodo = Node::create([
-                    'name' => $team['nombre'],
-                ]);
-                array_push($arbol, $nodo);
-            }
-            $size = count($arbol);
-            for ($i = 1; $i <= $size; $i++) {
-                if ((($i * 2) + 1) <= $size) {
-                    $padre = $arbol[$i - 1];
-                    $hijoIzq = $arbol[($i * 2) - 1];
-                    $hijoDer = $arbol[($i * 2)];
-                    $padre['HI'] = $hijoIzq['id'];
-                    $padre['HD'] = $hijoDer['id'];
-                    $padre->save();
-                }
-            }
-            $raiz = $arbol[0];
-            Playoff::create([
-                'user_id' => '1',
-                'raiz' => $raiz['id'],
-            ]);
-            DB::commit();
-            return response()->json([$arbol]);
-        } catch (\Exception $e) {
-            DB::rollback();
-            abort(500);
         }
+        $result .= '/';
+
+        $semifinal = $data['semifinal'];
+        for($i=0; $i<4; $i++){
+            if($semifinal[$i]!=null){
+                $result .= $i;
+                $result .= $semifinal[$i];
+                if($i<3)
+                    $result .= '-';
+            }
+        }
+        $result .= '/';
+
+        $final = $data['semifinal'];
+        for($i=0; $i<4; $i++){
+            if($final[$i]!=null){
+                $result .= $i;
+                $result .= $final[$i];
+                if($i<1)
+                    $result .= '-';
+            }
+        }
+        $result .= '/';
+
+        $result .= $data['ganador'];
+
+    
+        Playoff::create([
+            'user_id' => 1, 
+            'myPronostico' => $result,
+        ]);
+        return response()->json([$data]);
     }
+
+    /*
     public function delete($id)
     {
         try {

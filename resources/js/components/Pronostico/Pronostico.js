@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
 
-export default class Torneo extends Component {
+export default class Pronostico extends Component {
 
     constructor() {
         super()
@@ -32,7 +32,7 @@ export default class Torneo extends Component {
             this.setState({
                 teams: response.data,
                 cuartos: cuartosAux,
-                semis: semifinalAux,
+                semifinal: semifinalAux,
                 final: finalAux
             })
         })
@@ -40,46 +40,121 @@ export default class Torneo extends Component {
 
     handleChangeOctavos(team, i) {
         var aux = this.state.cuartos;
-        i = Math.trunc(i/2);
-        aux[i] = team;
+        var full = true;
+        for(var j=0; j<8 && full; j++){
+            full = aux[j]!="";
+        }
+        if (!full){
+            i = Math.trunc(i/2);
+            aux[i] = team;
 
-        this.setState({
-            cuartos: aux
-            
-        });
+            this.setState({
+                cuartos: aux
+                
+            });
+        }
     }
 
     handleChangeCuartos(team, i) {
         var aux = this.state.semifinal;
-        i = Math.trunc(i/2);
-        aux[i] = team;
+        var full = true;
+        for(var j=0; j<4 && full; j++){
+            full = aux[j] != ""; 
+        }
+        if(!full){       
+            i = Math.trunc(i/2);
+            aux[i] = team;
 
-        this.setState({
-            semifinal: aux
-            
-        });
+            this.setState({
+                semifinal: aux
+                
+            });
+        }
     }
 
     handleChangeSemifinal(team, i) {
         var aux = this.state.final;
-        i = Math.trunc(i/2);
-        aux[i] = team;
+        var full = true;
+        for(var j=0; j<2 && full; j++){
+            full = aux[j]!="";
+        }
+        if (!full){
+            i = Math.trunc(i/2);
+            aux[i] = team;
 
-        this.setState({
-            final: aux
-            
-        });
+            this.setState({
+                final: aux
+                
+            });
+        }
     }
 
     handleChangeFinal(team) {
-        var aux = this.state.ganador;
-        aux = team;
+        var final = this.state.final;
+        if(final[0]!="" && final[1]!=""){
+            var aux = team;
+            this.setState({
+                ganador: aux
+                
+            });
+        }
+    }
 
+    handleChangeBorrarCuartos() {
+        var aux = this.state.cuartos;
+        for(var j=0; j<8; j++){
+            aux[j]="";
+        }
         this.setState({
-            ganador: aux
-            
+            cuartos: aux
         });
-        console.log(this.state.ganador)
+        this.handleChangeBorrarSemifinal();
+    }
+
+    handleChangeBorrarSemifinal() {
+        var aux = this.state.semifinal;
+        for(var j=0; j<4; j++){
+            aux[j]="";
+        }
+        this.setState({
+            semifinal: aux
+        });
+        this.handleChangeBorrarFinal();
+    }
+
+    handleChangeBorrarFinal() {
+        var aux = this.state.final;
+        for(var j=0; j<2; j++){
+            aux[j]="";
+        }
+        this.setState({
+            final: aux,
+            ganador: ""
+        });
+    }
+
+    handleChangeGuardar(event) {
+        window.axios = require('axios');
+
+        window.axios.defaults.headers.common = {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        };
+
+        try {
+            axios.post('/api/playoffs', {
+                cuartos: this.state.cuartos,
+                semifinal: this.state.semifinal,
+                final: this.state.final,
+                ganador: this.state.ganador
+            }).then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+        }
+        catch(event){
+            console.log('Axios request failed',event);
+        }
     }
 
     render() {
@@ -145,6 +220,7 @@ export default class Torneo extends Component {
                 </table>
 
                 <h2><b> Cuartos de final</b></h2>
+                <button onClick={(event) => this.handleChangeBorrarCuartos()}>Deshacer</button>
                 <table id='tableCuartos'>
                     <tr id='titleTableTorneo'>
                         <th>Local</th>
@@ -174,6 +250,7 @@ export default class Torneo extends Component {
                 </table>
 
                 <h2><b> Semifinal</b></h2>
+                <button onClick={(event) => this.handleChangeBorrarSemifinal()}>Deshacer</button>
                 <table id='tableSemifinal'>
                     <tr id='titleTableTorneo'>
                         <th>Local</th>
@@ -193,6 +270,7 @@ export default class Torneo extends Component {
                 </table>
 
                 <h2><b> FINAL</b></h2>
+                <button onClick={(event) => this.handleChangeBorrarFinal(this.state.final)}>Deshacer</button>
                 <table id='tablefinal'>
                     <tr id='titleTableTorneo'>
                         <th>Local</th>
@@ -205,6 +283,9 @@ export default class Torneo extends Component {
                         <td onClick={(event) => this.handleChangeFinal(this.state.final[1])}>{this.state.final[1]}</td>
                     </tr>
                 </table>
+
+                <h2>Campeón:<b> {this.state.ganador}</b></h2>
+                <button onClick={(event) => this.handleChangeGuardar(event)}>Guardar pronóstico</button>
             </div>
         );
     }

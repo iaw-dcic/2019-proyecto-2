@@ -65756,7 +65756,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Torneo_Torneo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Torneo/Torneo */ "./resources/js/components/Torneo/Torneo.js");
+/* harmony import */ var _Pronostico_Pronostico__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pronostico/Pronostico */ "./resources/js/components/Pronostico/Pronostico.js");
 /* harmony import */ var _Playoff_Playoff__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Playoff/Playoff */ "./resources/js/components/Playoff/Playoff.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -65792,7 +65792,6 @@ function (_Component) {
     _classCallCheck(this, Example);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
-    var torneoContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Torneo_Torneo__WEBPACK_IMPORTED_MODULE_2__["default"], null);
     _this.state = {
       content: ''
     };
@@ -65800,10 +65799,10 @@ function (_Component) {
   }
 
   _createClass(Example, [{
-    key: "handleChangeTorneo",
-    value: function handleChangeTorneo() {
+    key: "handleChangePronostico",
+    value: function handleChangePronostico() {
       this.setState({
-        content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Torneo_Torneo__WEBPACK_IMPORTED_MODULE_2__["default"], null)
+        content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pronostico_Pronostico__WEBPACK_IMPORTED_MODULE_2__["default"], null)
       });
     }
   }, {
@@ -65832,7 +65831,7 @@ function (_Component) {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick(event) {
-          return _this2.handleChangeTorneo();
+          return _this2.handleChangePronostico();
         }
       }, "Iniciar pron\xF3stico")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
@@ -65921,16 +65920,16 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Torneo/Torneo.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/Torneo/Torneo.js ***!
-  \**************************************************/
+/***/ "./resources/js/components/Pronostico/Pronostico.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/Pronostico/Pronostico.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Torneo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Pronostico; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -65959,17 +65958,17 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Torneo =
+var Pronostico =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Torneo, _Component);
+  _inherits(Pronostico, _Component);
 
-  function Torneo() {
+  function Pronostico() {
     var _this;
 
-    _classCallCheck(this, Torneo);
+    _classCallCheck(this, Pronostico);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Torneo).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Pronostico).call(this));
     _this.state = {
       teams: [],
       cuartos: [],
@@ -65980,7 +65979,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Torneo, [{
+  _createClass(Pronostico, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -66005,7 +66004,7 @@ function (_Component) {
         _this2.setState({
           teams: response.data,
           cuartos: cuartosAux,
-          semis: semifinalAux,
+          semifinal: semifinalAux,
           "final": finalAux
         });
       });
@@ -66014,41 +66013,132 @@ function (_Component) {
     key: "handleChangeOctavos",
     value: function handleChangeOctavos(team, i) {
       var aux = this.state.cuartos;
-      i = Math.trunc(i / 2);
-      aux[i] = team;
-      this.setState({
-        cuartos: aux
-      });
+      var full = true;
+
+      for (var j = 0; j < 8 && full; j++) {
+        full = aux[j] != "";
+      }
+
+      if (!full) {
+        i = Math.trunc(i / 2);
+        aux[i] = team;
+        this.setState({
+          cuartos: aux
+        });
+      }
     }
   }, {
     key: "handleChangeCuartos",
     value: function handleChangeCuartos(team, i) {
       var aux = this.state.semifinal;
-      i = Math.trunc(i / 2);
-      aux[i] = team;
-      this.setState({
-        semifinal: aux
-      });
+      var full = true;
+
+      for (var j = 0; j < 4 && full; j++) {
+        full = aux[j] != "";
+      }
+
+      if (!full) {
+        i = Math.trunc(i / 2);
+        aux[i] = team;
+        this.setState({
+          semifinal: aux
+        });
+      }
     }
   }, {
     key: "handleChangeSemifinal",
     value: function handleChangeSemifinal(team, i) {
       var aux = this.state["final"];
-      i = Math.trunc(i / 2);
-      aux[i] = team;
-      this.setState({
-        "final": aux
-      });
+      var full = true;
+
+      for (var j = 0; j < 2 && full; j++) {
+        full = aux[j] != "";
+      }
+
+      if (!full) {
+        i = Math.trunc(i / 2);
+        aux[i] = team;
+        this.setState({
+          "final": aux
+        });
+      }
     }
   }, {
     key: "handleChangeFinal",
     value: function handleChangeFinal(team) {
-      var aux = this.state.ganador;
-      aux = team;
+      var _final = this.state["final"];
+
+      if (_final[0] != "" && _final[1] != "") {
+        var aux = team;
+        this.setState({
+          ganador: aux
+        });
+      }
+    }
+  }, {
+    key: "handleChangeBorrarCuartos",
+    value: function handleChangeBorrarCuartos() {
+      var aux = this.state.cuartos;
+
+      for (var j = 0; j < 8; j++) {
+        aux[j] = "";
+      }
+
       this.setState({
-        ganador: aux
+        cuartos: aux
       });
-      console.log(this.state.ganador);
+      this.handleChangeBorrarSemifinal();
+    }
+  }, {
+    key: "handleChangeBorrarSemifinal",
+    value: function handleChangeBorrarSemifinal() {
+      var aux = this.state.semifinal;
+
+      for (var j = 0; j < 4; j++) {
+        aux[j] = "";
+      }
+
+      this.setState({
+        semifinal: aux
+      });
+      this.handleChangeBorrarFinal();
+    }
+  }, {
+    key: "handleChangeBorrarFinal",
+    value: function handleChangeBorrarFinal() {
+      var aux = this.state["final"];
+
+      for (var j = 0; j < 2; j++) {
+        aux[j] = "";
+      }
+
+      this.setState({
+        "final": aux,
+        ganador: ""
+      });
+    }
+  }, {
+    key: "handleChangeGuardar",
+    value: function handleChangeGuardar(event) {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      window.axios.defaults.headers.common = {
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      };
+
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/playoffs', {
+          cuartos: this.state.cuartos,
+          semifinal: this.state.semifinal,
+          "final": this.state["final"],
+          ganador: this.state.ganador
+        }).then(function (res) {
+          console.log(res);
+          console.log(res.data);
+        });
+      } catch (event) {
+        console.log('Axios request failed', event);
+      }
     }
   }, {
     key: "render",
@@ -66133,7 +66223,11 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeOctavos(octavos[15], 15);
         }
-      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeBorrarCuartos();
+        }
+      }, "Deshacer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableCuartos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66169,7 +66263,11 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(_this3.state.cuartos[7], 7);
         }
-      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeBorrarSemifinal();
+        }
+      }, "Deshacer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableSemifinal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66189,7 +66287,11 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeSemifinal(_this3.state.semifinal[3], 3);
         }
-      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " FINAL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " FINAL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeBorrarFinal(_this3.state["final"]);
+        }
+      }, "Deshacer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tablefinal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66201,11 +66303,15 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeFinal(_this3.state["final"][1]);
         }
-      }, this.state["final"][1]))));
+      }, this.state["final"][1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Campe\xF3n:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeGuardar(event);
+        }
+      }, "Guardar pron\xF3stico"));
     }
   }]);
 
-  return Torneo;
+  return Pronostico;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -66230,8 +66336,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
