@@ -66057,16 +66057,101 @@ function (_Component) {
   _createClass(Torneo, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var oct = [["River", "Boca", POR_JUGAR], ["Hola", "Chau", POR_JUGAR], ["Quehace", "Comoanda", POR_JUGAR], ["Equipo 1", "Equipo 2", POR_JUGAR], ["Equipo 3", "Equipo 4", POR_JUGAR], ["Equipo 5", "Equipo 6", POR_JUGAR], ["Equipo 7", "Equipo 8", POR_JUGAR], ["Equipo 9", "Equipo 10", POR_JUGAR]];
-      var cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]];
-      var semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]];
-      var fin = [EQUIPO_ND, EQUIPO_ND, POR_JUGAR];
       this.setState({
-        octavos: oct,
-        cuartos: cuar,
-        semifinales: semi,
-        "final": fin
+        octavos: this.getOctavos(),
+        cuartos: this.getCuartos(),
+        semifinales: this.getSemis(),
+        "final": this.getFinal(),
+        campeon: this.getCampeon(),
+        etapa: this.getEtapa()
       });
+    }
+  }, {
+    key: "getOctavos",
+    value: function getOctavos() {
+      var oct;
+      if (sessionStorage.octavos) oct = JSON.parse(sessionStorage.octavos);else {
+        oct = [["River", "Boca", POR_JUGAR], ["Hola", "Chau", POR_JUGAR], ["Quehace", "Comoanda", POR_JUGAR], ["Equipo 1", "Equipo 2", POR_JUGAR], ["Equipo 3", "Equipo 4", POR_JUGAR], ["Equipo 5", "Equipo 6", POR_JUGAR], ["Equipo 7", "Equipo 8", POR_JUGAR], ["Equipo 9", "Equipo 10", POR_JUGAR]];
+        sessionStorage.octavos = JSON.stringify(oct);
+      }
+      return oct;
+    }
+  }, {
+    key: "getCuartos",
+    value: function getCuartos() {
+      var cuar;
+      if (sessionStorage.cuartos) cuar = JSON.parse(sessionStorage.cuartos);else {
+        cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]];
+        sessionStorage.cuartos = JSON.stringify(cuar);
+      }
+      return cuar;
+    }
+  }, {
+    key: "getSemis",
+    value: function getSemis() {
+      var semi;
+      if (sessionStorage.semifinales) semi = JSON.parse(sessionStorage.semifinales);else {
+        semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]];
+        sessionStorage.semifinales = JSON.stringify(semi);
+      }
+      return semi;
+    }
+  }, {
+    key: "getFinal",
+    value: function getFinal() {
+      var fin;
+      if (sessionStorage["final"]) fin = JSON.parse(sessionStorage["final"]);else {
+        fin = [EQUIPO_ND, EQUIPO_ND, POR_JUGAR];
+        sessionStorage["final"] = JSON.stringify(fin);
+      }
+      return fin;
+    }
+  }, {
+    key: "getCampeon",
+    value: function getCampeon() {
+      if (sessionStorage.campeon) return sessionStorage.campeon;
+      sessionStorage.campeon = EQUIPO_ND;
+      return EQUIPO_ND;
+    }
+  }, {
+    key: "getEtapa",
+    value: function getEtapa() {
+      if (sessionStorage.etapa) {
+        return parseInt(sessionStorage.etapa, 10);
+      }
+
+      sessionStorage.etapa = OCTAVOS;
+      return OCTAVOS;
+    }
+  }, {
+    key: "saveOctavos",
+    value: function saveOctavos(octavos) {
+      sessionStorage.octavos = JSON.stringify(octavos);
+    }
+  }, {
+    key: "saveCuartos",
+    value: function saveCuartos(cuartos) {
+      sessionStorage.cuartos = JSON.stringify(cuartos);
+    }
+  }, {
+    key: "saveSemis",
+    value: function saveSemis(semifinales) {
+      sessionStorage.semifinales = JSON.stringify(semifinales);
+    }
+  }, {
+    key: "saveFinal",
+    value: function saveFinal(_final) {
+      sessionStorage["final"] = JSON.stringify(_final);
+    }
+  }, {
+    key: "saveCampeon",
+    value: function saveCampeon(campeon) {
+      sessionStorage.campeon = campeon;
+    }
+  }, {
+    key: "saveEtapa",
+    value: function saveEtapa(etapa) {
+      sessionStorage.etapa = etapa;
     }
   }, {
     key: "render",
@@ -66210,6 +66295,9 @@ function (_Component) {
         }
       }
 
+      this.saveOctavos(oct);
+      this.saveCuartos(cuar);
+      this.saveEtapa(nuevaEtapa);
       this.setState({
         octavos: oct,
         cuartos: cuar,
@@ -66255,6 +66343,9 @@ function (_Component) {
         }
       }
 
+      this.saveCuartos(cuar);
+      this.saveSemis(semi);
+      this.saveEtapa(nuevaEtapa);
       this.setState({
         cuartos: cuar,
         semifinales: semi,
@@ -66299,6 +66390,9 @@ function (_Component) {
         }
       }
 
+      this.saveSemis(semi);
+      this.saveFinal(fin);
+      this.saveEtapa(nuevaEtapa);
       this.setState({
         semifinales: semi,
         "final": fin,
@@ -66311,6 +66405,8 @@ function (_Component) {
       var fin = this.state["final"];
       var champion = e.target.innerHTML;
       fin[ESTADO] = JUGADO;
+      this.saveFinal(fin);
+      this.saveCampeon(champion);
       this.setState({
         "final": fin,
         campeon: champion
