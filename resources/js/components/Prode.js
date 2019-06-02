@@ -28,7 +28,6 @@ export default class Prode extends Component {
         return response.json();
       })
       .then(equipos => {
-        // console.log("sarasa")
         this.setState({ idPartido: this.props.match.params.listaId || '', equipos }, () => this.inicializarPartidos(partidosEnLS));
       });
   }
@@ -55,6 +54,7 @@ export default class Prode extends Component {
 
   inicializarPartidosNormal = () => {
     var partidos = { ...this.state.partidos };
+
     axios.get("/partidos/1").then(response => {
       partidos = response["data"];
       this.setState({ partidos });
