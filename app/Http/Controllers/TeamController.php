@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
+    public function getOctavos()
+    {
+        $octavosToRet = [];
+        $octavos = Team::select('name')->get();
+        
+        for ($i = 0; $i < 16; $i++) {
+            $octavosToRet[$i] = $octavos[$i]->name;    
+        }   
+        return response()->json($octavosToRet);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -91,7 +102,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $prode)
+    public function update(Request $request, $id)
     {
         $octavos = implode(',', $request->input('data.octavos'));
         $cuartos = implode(',', $request->input('data.cuartos'));
@@ -99,14 +110,15 @@ class TeamController extends Controller
         $final = implode(',', $request->input('data.final'));
         $champ = $request->input('data.champ');
 
+        $prode = Prode::find($id);
         $prode->octavos = $octavos;
         $prode->cuartos = $cuartos;
         $prode->semis = $semis;
         $prode->final = $final;
         $prode->champ = $champ;
-        $prode->update();
+        $prode->save();
 
-        return response()->json($prode);
+        return response()->json($semis);
     }
 
     /**

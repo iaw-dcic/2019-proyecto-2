@@ -65792,13 +65792,13 @@ function (_Component) {
     key: "render",
     value: function render() {
       var child1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "list-group-item list-group-item-action",
+        className: "list-group-item list-group-item-action myButton",
         id: this.props.id1,
         onClick: this.props.onClick,
         disabled: this.props.disable
       }, this.props.teamA);
       var child2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "list-group-item list-group-item-action",
+        className: "list-group-item list-group-item-action myButton",
         id: this.props.id2,
         onClick: this.props.onClick,
         disabled: this.props.disable
@@ -65893,16 +65893,19 @@ function (_Component) {
   _createClass(Table, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var data = ["River", "Cruzeiro", "San Lorenzo", "Cerro Porteño", "LDU Quito", "Olimpia", "Paranaense", "Boca", "Godoy Cruz", "Palmeiras", "Gremio", "Libertad", "Emelec", "Flamengo", "Nacional", "Internacional"];
-      this.setState({
-        octavos: data
-      });
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/octavos').then(function (response) {
+        self.setState({
+          octavos: response.data
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/teams').then(function (response) {
         self.setState({
           prodes: response.data
@@ -65936,7 +65939,7 @@ function (_Component) {
       }, "limpiar cambios"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "list-group"
+        className: "list-group myDiv"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "list-group-item list-group-item-action active"
       }, "Mis prodes"), this.state.prodes.map(function (prode, i) {
@@ -66057,7 +66060,7 @@ function (_Component) {
   }, {
     key: "createChampion",
     value: function createChampion() {
-      if (this.state.champ != "empty") return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Champion: ", this.state.champ);else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " No champion yet");
+      if (this.state.champ != "empty") return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Campe\xF3n: ", this.state.champ);else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Campe\xF3n no seleccionado");
     }
   }, {
     key: "onClickOctavos",
@@ -66130,9 +66133,7 @@ function (_Component) {
       } else {
         axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('/api/teams/' + this.state.id, {
           data: this.state
-        }).then(function (response) {
-          console.log("guardado");
-        })["catch"](function (error) {
+        }).then(function (response) {})["catch"](function (error) {
           console.log(error);
         });
       }

@@ -27,13 +27,6 @@ export default class Table extends Component {
     }
 
     componentDidMount(){
-        var data = ["River", "Cruzeiro", "San Lorenzo", "Cerro Porteño", "LDU Quito", "Olimpia", "Paranaense", "Boca", 
-                    "Godoy Cruz", "Palmeiras", "Gremio", "Libertad", "Emelec", "Flamengo", "Nacional", "Internacional"];
-        
-        this.setState({
-            octavos: data
-        });
-
         window.axios = require('axios');
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
@@ -41,6 +34,14 @@ export default class Table extends Component {
         window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         var self = this;
+        axios.get('/api/octavos')
+         .then(function (response) {
+            self.setState({octavos: response.data})
+         })
+        .catch(function (error) {
+           console.log(error);
+        });
+
         axios.get('/api/teams')
          .then(function (response) {
             self.setState({prodes: response.data})
@@ -64,7 +65,7 @@ export default class Table extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="list-group">
+                    <div className="list-group myDiv">
                         <a className="list-group-item list-group-item-action active">Mis prodes</a>
                         {this.state.prodes.map((prode, i) =>
                             <button type="button"
@@ -172,8 +173,8 @@ export default class Table extends Component {
 
     createChampion(){
         if (this.state.champ != "empty")
-            return <p>Champion: {this.state.champ}</p>
-        else return <p> No champion yet</p>
+            return <p>Campeón: {this.state.champ}</p>
+        else return <p>Campeón no seleccionado</p>
     }
 
     onClickOctavos(e){
@@ -245,7 +246,6 @@ export default class Table extends Component {
             axios.put('/api/teams/'+this.state.id, {
                 data: this.state
             }).then(function (response) {
-                console.log("guardado");
             }).catch(function (error) {
               console.log(error);
             });
