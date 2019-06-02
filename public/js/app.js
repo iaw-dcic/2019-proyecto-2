@@ -30807,7 +30807,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Index */ "./resources/js/components/Index.js");
-/* harmony import */ var _Pronosticos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pronosticos */ "./resources/js/components/Pronosticos.js");
+/* harmony import */ var _PronosticosComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PronosticosComponent */ "./resources/js/components/PronosticosComponent.js");
 /* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
 /* harmony import */ var _Preloader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Preloader */ "./resources/js/components/Preloader.js");
@@ -30849,8 +30849,13 @@ function (_Component) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
+    _this.user = {
+      id: 1
+    };
     _this.state = {
-      user: null
+      user: {
+        id: 1
+      }
     };
     return _this;
   }
@@ -30858,13 +30863,17 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "inicio",
         className: "intro route bg-image"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Index__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "pronosticos",
         className: "pronosticos route"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pronosticos__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PronosticosComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        user: this.state.user
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "bg-image footer route"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "overlay-mf"
@@ -30873,7 +30882,7 @@ function (_Component) {
         className: "back-to-top"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-chevron-up"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Preloader__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Preloader__WEBPACK_IMPORTED_MODULE_7__["default"], null))));
     }
   }, {
     key: "componentDidMount",
@@ -31072,6 +31081,104 @@ function (_Component) {
   }]);
 
   return Index;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ListaPronosticosComponent.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/ListaPronosticosComponent.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ListaPronosticosComponent; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _PronosticoComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PronosticoComponent */ "./resources/js/components/PronosticoComponent.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ListaPronosticosComponent =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ListaPronosticosComponent, _Component);
+
+  function ListaPronosticosComponent(props) {
+    var _this;
+
+    _classCallCheck(this, ListaPronosticosComponent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListaPronosticosComponent).call(this, props));
+    _this.cerrarProde = _this.cerrarProde.bind(_assertThisInitialized(_this));
+    _this.state = {
+      user: _this.props.user,
+      prodes: _this.props.prodes
+    };
+    return _this;
+  }
+
+  _createClass(ListaPronosticosComponent, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return this.state.prodes.map(function (prode) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "",
+          onClick: function onClick(event) {
+            return _this2.seleccionarProde(event, prode);
+          },
+          key: prode.id,
+          className: "list-group-item list-group-item-action d-flex justify-content-center item-prode"
+        }, "Prode N\xB0", prode.id);
+      });
+    }
+  }, {
+    key: "seleccionarProde",
+    value: function seleccionarProde(event, prode) {
+      event.preventDefault();
+      var viewProde = document.getElementById('viewProde');
+      react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PronosticoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        user: this.state.user,
+        prode: prode,
+        cerrarProde: this.cerrarProde
+      }), viewProde);
+    }
+  }, {
+    key: "cerrarProde",
+    value: function cerrarProde() {
+      var viewProde = document.getElementById('viewProde');
+      react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(viewProde);
+    }
+  }]);
+
+  return ListaPronosticosComponent;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -31297,21 +31404,20 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Pronosticos.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/Pronosticos.js ***!
-  \************************************************/
+/***/ "./resources/js/components/PronosticoComponent.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/PronosticoComponent.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Pronosticos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PronosticoComponent; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _models_Pronostico__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/Pronostico */ "./resources/js/models/Pronostico.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _controllers_PronosticoController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../controllers/PronosticoController */ "./resources/js/controllers/PronosticoController.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31334,35 +31440,182 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Pronosticos =
+var PronosticoComponent =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Pronosticos, _Component);
+  _inherits(PronosticoComponent, _Component);
 
-  function Pronosticos(props) {
+  function PronosticoComponent(props) {
     var _this;
 
-    _classCallCheck(this, Pronosticos);
+    _classCallCheck(this, PronosticoComponent);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Pronosticos).call(this, props));
-    _this.fases = {
-      'octavos': 0,
-      'cuartos': 1,
-      'semis': 2,
-      'final': 3,
-      'tercer_puesto': 3
-    };
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PronosticoComponent).call(this, props));
+    _this.cerrarProde = _this.props.cerrarProde;
+    _this.saveProde = _this.saveProde.bind(_assertThisInitialized(_this));
+    _this.resetProde = _this.resetProde.bind(_assertThisInitialized(_this));
+    _this.cerrarProde = _this.cerrarProde.bind(_assertThisInitialized(_this));
+    _this.deleteProde = _this.deleteProde.bind(_assertThisInitialized(_this));
     _this.state = {
-      id: null,
-      teams: [],
-      results: [[], [], [], []]
+      user: _this.props.user,
+      prode: _this.props.prode
     };
-    _this.guardarProde = _this.guardarProde.bind(_assertThisInitialized(_this));
-    _this.resetearProde = _this.resetearProde.bind(_assertThisInitialized(_this));
+    _this.pronosticoController = new _controllers_PronosticoController__WEBPACK_IMPORTED_MODULE_2__["default"](_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Pronosticos, [{
+  _createClass(PronosticoComponent, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "w-75 d-flex justify-content-end mb-3 boton-volver"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        onClick: function onClick() {
+          return _this2.cerrarProde();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-times"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tablero-pronosticos",
+        className: "mb-5 d-flex justify-content-center align-items-center"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12 d-flex w-100 justify-content-center align-items-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.saveProde,
+        className: "btn btn-success mx-1"
+      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.resetProde,
+        className: "btn btn-danger mx-1"
+      }, "Reset"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.deleteProde,
+        className: "btn btn-danger mx-1"
+      }, "Borrar"))));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.pronosticoController.saveOnLocalStorage(this.state.prode);
+      this.crearTablero();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      this.crearTablero();
+    } //Guarda los datos en el servidor
+
+  }, {
+    key: "saveProde",
+    value: function saveProde(event) {
+      event.preventDefault();
+      this.pronosticoController.saveProde();
+    } //Reestablece los datos
+
+  }, {
+    key: "resetProde",
+    value: function resetProde(event) {
+      event.preventDefault();
+      this.pronosticoController.resetProde();
+    } //Borrar los datos
+
+  }, {
+    key: "deleteProde",
+    value: function deleteProde(event) {
+      event.preventDefault();
+    } //Actualiza el tablero en el div #tablero-pronosticos
+
+  }, {
+    key: "crearTablero",
+    value: function crearTablero() {
+      var _this3 = this;
+
+      $('#tablero-pronosticos').bracket({
+        init: this.state.prode,
+        save: function save(data) {
+          return _this3.pronosticoController.saveOnLocalStorage(data);
+        },
+        centerConnectors: true,
+        disableToolbar: true,
+        disableTeamEdit: true
+      });
+    }
+  }]);
+
+  return PronosticoComponent;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PronosticosComponent.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/PronosticosComponent.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PronosticosComponent; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _controllers_PronosticosController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../controllers/PronosticosController */ "./resources/js/controllers/PronosticosController.js");
+/* harmony import */ var _ListaPronosticosComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ListaPronosticosComponent */ "./resources/js/components/ListaPronosticosComponent.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var PronosticosComponent =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PronosticosComponent, _Component);
+
+  function PronosticosComponent(props) {
+    var _this;
+
+    _classCallCheck(this, PronosticosComponent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PronosticosComponent).call(this, props));
+    _this.state = {
+      user: _this.props.user,
+      prodes: []
+    };
+    _this.pronosticosController = new _controllers_PronosticosController__WEBPACK_IMPORTED_MODULE_3__["default"](_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(PronosticosComponent, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -31379,94 +31632,294 @@ function (_Component) {
         className: "subtitle-a"
       }, "Lorem ipsum, dolor sit amet consectetur adipisicing elit."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "line-mf"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        method: "POST"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "tablero-pronosticos",
-        className: "mb-5 d-flex justify-content-center align-items-center"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "listaProdes",
+        className: "list-group col-4"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 d-flex w-100 justify-content-center align-items-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.guardarProde,
-        className: "btn btn-success mx-1"
-      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.resetearProde,
-        className: "btn btn-danger mx-1"
-      }, "Borrar")))));
+        onClick: this.crearProde,
+        className: "btn btn-success mx-1 mt-4"
+      }, "Crear prode"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "viewProde"
+      }));
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.cargarDatos();
+      this.pronosticosController.loadPronosticos();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
-      this.crearTablero();
+      this.mostrarListaProdes();
     }
   }, {
-    key: "cargarDatos",
-    value: function cargarDatos() {
-      var local = localStorage.getItem('state');
-
-      if (local === null) {
-        this.obtenerProdes();
-      } else {
-        var prode = JSON.parse(local);
-        this.setState(prode);
-      }
-    } //Guarda los datos en el servidor
-
+    key: "mostrarListaProdes",
+    value: function mostrarListaProdes() {
+      var listaProdes = document.getElementById('listaProdes');
+      react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(viewProde);
+      react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ListaPronosticosComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        user: this.state.user,
+        prodes: this.state.prodes
+      }), listaProdes);
+    }
   }, {
-    key: "guardarProde",
-    value: function guardarProde(event) {
+    key: "crearProde",
+    value: function crearProde(event) {
       event.preventDefault();
-      var prode = JSON.parse(localStorage.getItem('state'));
-      var user = 1;
-      this.transformarDatosHaciaServidor(prode);
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/api/user/".concat(user, "/prodes"), prode).then(function (response) {
+    }
+  }]);
+
+  return PronosticosComponent;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/controllers/PronosticoController.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/controllers/PronosticoController.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PronosticoController; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _models_pronosticos_PronosticosModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/pronosticos/PronosticosModel */ "./resources/js/models/pronosticos/PronosticosModel.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var PronosticoController =
+/*#__PURE__*/
+function () {
+  //Paso la vista para actualizar los datos
+  function PronosticoController(view) {
+    _classCallCheck(this, PronosticoController);
+
+    this.view = view;
+    this.state = this.view.state;
+    this.pronosticoModel = new _models_pronosticos_PronosticosModel__WEBPACK_IMPORTED_MODULE_1__["default"](this.state.user);
+  }
+
+  _createClass(PronosticoController, [{
+    key: "init",
+    value: function init() {
+      return this.state.prode;
+    }
+  }, {
+    key: "saveProde",
+    value: function saveProde() {
+      var prode = this.pronosticoModel.getProdeFromLocalStorage(this.state.prode.id);
+      this.pronosticoModel.saveProde(prode);
+    }
+  }, {
+    key: "saveOnLocalStorage",
+    value: function saveOnLocalStorage(data) {
+      this.pronosticoModel.saveProdeOnLocalStorage(data);
+    }
+  }, {
+    key: "resetProde",
+    value: function resetProde() {
+      var prode = this.pronosticoModel.resetPronostico(this.state.prode);
+      this.saveOnLocalStorage(prode);
+      this.view.setState({
+        user: this.state.user,
+        prode: prode
+      });
+    }
+  }]);
+
+  return PronosticoController;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/controllers/PronosticosController.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/controllers/PronosticosController.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PronosticosController; });
+/* harmony import */ var _models_pronosticos_PronosticosModel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/pronosticos/PronosticosModel */ "./resources/js/models/pronosticos/PronosticosModel.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var PronosticosController =
+/*#__PURE__*/
+function () {
+  function PronosticosController(view) {
+    _classCallCheck(this, PronosticosController);
+
+    this.view = view;
+    this.state = this.view.state;
+    this.pronosticosModel = new _models_pronosticos_PronosticosModel__WEBPACK_IMPORTED_MODULE_0__["default"](this.state.user);
+  }
+
+  _createClass(PronosticosController, [{
+    key: "loadPronosticos",
+    value: function loadPronosticos() {
+      var _this = this;
+
+      this.pronosticosModel.loadProdes(function (prodes) {
+        _this.pronosticosModel.saveAllProdesOnLocalStorage(prodes);
+
+        _this.view.setState({
+          user: _this.state.user,
+          prodes: prodes
+        });
+      }, function (error) {
+        return console.log(error);
+      });
+    }
+  }]);
+
+  return PronosticosController;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/models/pronosticos/PronosticosModel.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/models/pronosticos/PronosticosModel.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ListaPronosticos; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var ListaPronosticos =
+/*#__PURE__*/
+function () {
+  function ListaPronosticos(user) {
+    _classCallCheck(this, ListaPronosticos);
+
+    this.user = user;
+    this.fases = {
+      'octavos': 0,
+      'cuartos': 1,
+      'semis': 2,
+      'final': 3,
+      'tercer_puesto': 3
+    };
+  }
+
+  _createClass(ListaPronosticos, [{
+    key: "loadProdes",
+    value: function loadProdes(callback, error) {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/user/".concat(this.user.id, "/prodes")).then(function (response) {
+        var prodes = response.data.map(function (prode) {
+          return _this.transformarDatosDesdeServidor(prode);
+        });
+        callback(prodes);
+      })["catch"](function (e) {
+        return error(e);
+      });
+    }
+  }, {
+    key: "saveProde",
+    value: function saveProde(prode) {
+      var pronostico = this.transformarDatosHaciaServidor(prode);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/user/".concat(this.user.id, "/prodes"), pronostico).then(function (response) {
         return console.log(response.data);
-      })["catch"](function (error) {
-        return console.log(error);
+      })["catch"](function (e) {
+        return console.log(e);
       });
-      this.setState(prode);
-    } //Reestablece los datos
-
+    }
   }, {
-    key: "resetearProde",
-    value: function resetearProde(event) {
-      event.preventDefault();
-      this.resetearDatos();
-    } //Obtiene los datos del servidor
-
+    key: "getProdeFromLocalStorage",
+    value: function getProdeFromLocalStorage(id) {
+      var prodes = JSON.parse(localStorage.getItem('lista_prodes'));
+      var indice = this.getIndice(prodes, id);
+      var prode = prodes[indice];
+      return prode;
+    }
   }, {
-    key: "obtenerProdes",
-    value: function obtenerProdes() {
-      var _this2 = this;
-
-      var user_id = 1;
-      var prode_id = 1;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/user/".concat(user_id, "/prodes/").concat(prode_id, "/matches")).then(function (response) {
-        return _this2.transformarDatosDesdeServidor(response.data, prode_id);
-      })["catch"](function (error) {
-        return console.log(error);
+    key: "saveAllProdesOnLocalStorage",
+    value: function saveAllProdesOnLocalStorage(prodes) {
+      localStorage.setItem('lista_prodes', JSON.stringify(prodes));
+    }
+  }, {
+    key: "saveProdeOnLocalStorage",
+    value: function saveProdeOnLocalStorage(prode) {
+      var prodes = JSON.parse(localStorage.getItem('lista_prodes'));
+      prodes[this.getIndice(prodes, prode.id)] = prode;
+      localStorage.setItem('lista_prodes', JSON.stringify(prodes));
+    }
+  }, {
+    key: "getIndice",
+    value: function getIndice(prodes, id) {
+      var i = -1;
+      prodes.find(function (prode, index) {
+        i = index;
+        return prode.id == id;
       });
-    } //Transforma los datos obtenidos en el servidor
-
+      return i;
+    }
+  }, {
+    key: "resetPronostico",
+    value: function resetPronostico(prode) {
+      var teams = [['Francia', 'Argentina', null], ['Uruguay', 'Portugal', null], ['Brasil', 'Mexico', null], ['Bélgica', 'Japón', null], ['España', 'Rusia', null], ['Croacia', 'Dinamarca', null], ['Suecia', 'Suiza', null], ['Colombia', 'Inglaterra', null]];
+      var results = [[], [], [], []];
+      return {
+        user_id: prode.user_id,
+        id: prode.id,
+        teams: teams,
+        results: results
+      };
+    }
   }, {
     key: "transformarDatosDesdeServidor",
-    value: function transformarDatosDesdeServidor(partidos, prode_id) {
-      var _this3 = this;
+    value: function transformarDatosDesdeServidor(prode) {
+      var _this2 = this;
 
-      var data = {
-        id: prode_id,
-        teams: [],
-        results: [[], [], [], []]
-      };
+      var id = prode.id,
+          partidos = prode.partidos;
+      var newProde = {
+        user_id: this.user.id,
+        id: id,
+        results: [[], [], [], []],
+        teams: []
+      }; //new PronosticoModel(this.user.id, id);
+
       partidos.map(function (partido) {
         var local = partido.local.nombre;
         var local_id = partido.local.id;
@@ -31475,16 +31928,18 @@ function (_Component) {
         var partido_id = partido.id;
         var goles_local = partido.goles_local;
         var goles_visitante = partido.goles_visitante;
-        data.teams.push([local, visitante, local_id, visitante_id]);
+        newProde.teams.push([local, visitante, local_id, visitante_id]);
 
-        data.results[_this3.fases[partido.fase]].push([goles_local, goles_visitante, partido_id]);
+        newProde.results[_this2.fases[partido.fase]].push([goles_local, goles_visitante, partido_id]);
       });
-      this.guardarLocalStorage(data);
-      this.setState(data);
+      newProde.results = [newProde.results];
+      return newProde;
     }
   }, {
     key: "transformarDatosHaciaServidor",
     value: function transformarDatosHaciaServidor(prode) {
+      var _this3 = this;
+
       var teams = prode.teams;
       var results = prode.results.flat(2);
       var prode_nuevo = {
@@ -31501,6 +31956,7 @@ function (_Component) {
         14: 12,
         15: 12
       };
+      console.log(results);
       results.forEach(function (result, indice) {
         var id = result[2];
         var local = null,
@@ -31509,9 +31965,9 @@ function (_Component) {
             visitante_id = null;
         var ganador = null,
             perdedor = null;
+        if (result[0] == null || result[1] == null) return;
         var resultado_local = result[0],
             resultado_visitante = result[1];
-        if (resultado_local == null || resultado_visitante == null) return;
 
         if (teams[indice] != null) {
           //Los octavos los puedo tener directamente
@@ -31575,6 +32031,7 @@ function (_Component) {
 
         prode_nuevo.partidos.push({
           id: id,
+          fase: _this3.getFase(indice),
           local: {
             local_id: local_id,
             local: local
@@ -31591,72 +32048,35 @@ function (_Component) {
           }
         });
       });
-      console.log(prode_nuevo);
-    } //Setea el state y guarda los datos en el local storage
-
+      return prode_nuevo;
+    }
   }, {
-    key: "guardarLocalStorage",
-    value: function guardarLocalStorage(data) {
-      localStorage.setItem('state', JSON.stringify(data));
-    } //Actualiza el tablero en el div #tablero-pronosticos
+    key: "getFase",
+    value: function getFase(indice) {
+      switch (true) {
+        case indice < 8:
+          return 'octavos';
 
-  }, {
-    key: "crearTablero",
-    value: function crearTablero() {
-      var _this4 = this;
+        case indice >= 8 && indice < 12:
+          return 'cuartos';
 
-      $('#tablero-pronosticos').bracket({
-        init: this.state,
-        save: function save(data) {
-          return _this4.guardarLocalStorage(data);
-        },
-        centerConnectors: true,
-        disableToolbar: true,
-        disableTeamEdit: true
-      });
-    } //Sirve para reestablecer el tablero
+        case indice >= 12 && indice < 14:
+          return 'semis';
 
-  }, {
-    key: "resetearDatos",
-    value: function resetearDatos() {
-      var data = {
-        id: null,
-        teams: [['Francia', 'Argentina', null], //El tercer parametro es el ID del partido de la base de datos, si es nulo, es porque no fue creada
-        ['Uruguay', 'Portugal', null], ['España', 'Rusia', null], ['Croacia', 'Dinamarca', null], ['Brasil', 'Mexico', null], ['Bélgica', 'Japón', null], ['Suecia', 'Suiza', null], ['Colombia', 'Inglaterra', null]],
-        results: [[], //Octavos (8)
-        [], //Cuartos (4)
-        [], //Semis (2)
-        []]
-      };
-      this.guardarLocalStorage(data);
-      this.setState(data);
+        case indice == 14:
+          return 'final';
+
+        case indice == 15:
+          return 'tercer_puesto';
+
+        default:
+          break;
+      }
     }
   }]);
 
-  return Pronosticos;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/models/Pronostico.js":
-/*!*******************************************!*\
-  !*** ./resources/js/models/Pronostico.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Pronostico; });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Pronostico = function Pronostico() {
-  _classCallCheck(this, Pronostico);
-
-  console.log('Nuevo pronostico');
-};
+  return ListaPronosticos;
+}();
 
 
 

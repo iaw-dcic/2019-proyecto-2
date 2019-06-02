@@ -4,7 +4,7 @@ use Grambas\FootballData\FootballData;
 
 Auth::routes();
 Route::view('/', 'react');
-//Route::view('/{path?}', 'react');//->middleware('auth');
+Route::view('/{path?}', 'react');//->middleware('auth');
 
 Route::resource('/api/user', 'UsersController')->only([
     'index', 'store', 'show', 'update', 'destroy'

@@ -28,14 +28,16 @@ class ProdeController extends Controller{
 
         $user = User::find($user_id);   //Borrar y reemplazar por el comentario de arriba
         $prodes = $user->getProdes()->get();
+        $prodes_user = [];
         $partidos_prodes = [];
         foreach($prodes as $prode){
             $partidos = $prode->getPartidos()->get();
             foreach($partidos as $partido)
                 $partido = $this->crearPartido($partido);
-            array_push($partidos_prodes, [$prode->id => $partidos]);
+            array_push($partidos_prodes, $partidos);
+            array_push($prodes_user, ['id' => $prode->id, 'partidos' => $partidos_prodes[0]]);
         }
-        return Response()->json($partidos_prodes, 200);
+        return Response()->json($prodes_user, 200);
     }
 
     /**
@@ -44,11 +46,7 @@ class ProdeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $user_id){
-        $prode_id = $request->id;
-        $teams = $request->teams;
-        $results = $request->results;
-
-        return Response()->json(['id' => $prode_id, 'teams' => $teams, 'results' => $results], 200);
+        return $request;
     }
 
     /**
