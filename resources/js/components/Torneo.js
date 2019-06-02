@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import Partido from './Partido';
+import Campeon from './Campeon';
 
 const OCTAVOS       = 0,
       CUARTOS       = 1,
       SEMIFINALES   = 2,
-      FINAL         = 3;
-
-const JUGADO        = 0,
+      FINAL         = 3,
+      EQUIPO1       = 0,
+      EQUIPO2       = 1,
+      ESTADO        = 2,
+      JUGADO        = 0,
       POR_JUGAR     = 1;
+
+export const EQUIPO_ND = "";
 
 export default class Torneo extends Component {
     constructor(props) {
@@ -18,8 +23,14 @@ export default class Torneo extends Component {
             cuartos:        [],
             semifinales:    [],
             final:          [],
+            campeon:        EQUIPO_ND,
             etapa:          OCTAVOS
         }
+
+        this.handleClickOctavos = this.handleClickOctavos.bind(this)
+        this.handleClickCuartos = this.handleClickCuartos.bind(this)
+        this.handleClickSemifis = this.handleClickSemifis.bind(this)
+        this.handleClickFinal   = this.handleClickFinal.bind(this)
     }
 
     componentDidMount() {
@@ -32,15 +43,15 @@ export default class Torneo extends Component {
                     ["Equipo 7", "Equipo 8", POR_JUGAR],
                     ["Equipo 9", "Equipo 10", POR_JUGAR]]
 
-        var cuar = [["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR]]
+        var cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]]
         
-        var semi = [["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR]]
+        var semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]]
         
-        var fin = ["", "", POR_JUGAR]
+        var fin = [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]
 
         this.setState({
             octavos: oct,
@@ -56,6 +67,7 @@ export default class Torneo extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <h1>Torneo</h1>
+                        <Campeon nombre={this.state.campeon}/>
                     </div>
                 </div>
 
@@ -85,10 +97,12 @@ export default class Torneo extends Component {
     renderOctavos() {
         const partidos = this.state.octavos.map((partido, index) => 
             <div>    
-                <Partido equipo1={partido[0]} 
-                         equipo2={partido[1]} 
+                <Partido equipo1={partido[EQUIPO1]} 
+                         equipo2={partido[EQUIPO2]} 
                          key={index} 
-                         habilitado={this.state.etapa == OCTAVOS && partido[2] == POR_JUGAR? "true":"false"}/>
+                         id={index}
+                         handler={this.handleClickOctavos} 
+                         habilitado={this.state.etapa == OCTAVOS && partido[ESTADO] == POR_JUGAR? "true":"false"}/>
                 <br/>
             </div>
         )
@@ -104,10 +118,12 @@ export default class Torneo extends Component {
     renderCuartos() {
         const partidos = this.state.cuartos.map((partido, index) => 
             <div>    
-                <Partido equipo1={partido[0]} 
-                         equipo2={partido[1]} 
-                         key={index} 
-                         habilitado={this.state.etapa == CUARTOS && partido[2] == POR_JUGAR? "true":"false"}/>
+                <Partido equipo1={partido[EQUIPO1]} 
+                         equipo2={partido[EQUIPO2]} 
+                         key={index+8} 
+                         id={index} 
+                         handler={this.handleClickCuartos} 
+                         habilitado={this.state.etapa == CUARTOS && partido[ESTADO] == POR_JUGAR? "true":"false"}/>
                 <br/>
             </div>
         )
@@ -123,10 +139,12 @@ export default class Torneo extends Component {
     renderSemifinales() {
         const partidos = this.state.semifinales.map((partido, index) => 
             <div>    
-                <Partido equipo1={partido[0]} 
-                         equipo2={partido[1]} 
-                         key={index} 
-                         habilitado={this.state.etapa == SEMIFINALES && partido[2] == POR_JUGAR? "true":"false"}/>
+                <Partido equipo1={partido[EQUIPO1]} 
+                         equipo2={partido[EQUIPO2]} 
+                         key={index+12} 
+                         id={index} 
+                         handler={this.handleClickSemifis} 
+                         habilitado={this.state.etapa == SEMIFINALES && partido[ESTADO] == POR_JUGAR? "true":"false"}/>
                 <br/>
             </div>
         )
@@ -143,9 +161,12 @@ export default class Torneo extends Component {
         return (
             <div className="col-md-3">
                 <h4>Final</h4>
-                <Partido equipo1={this.state.final[0]} 
-                         equipo2={this.state.final[1]}  
-                         habilitado={this.state.etapa == FINAL && this.state.final[2] == POR_JUGAR? "true":"false"}/>
+                <Partido equipo1={this.state.final[EQUIPO1]} 
+                         equipo2={this.state.final[EQUIPO2]}  
+                         key={14}
+                         id={0} 
+                         handler={this.handleClickFinal} 
+                         habilitado={this.state.etapa == FINAL && this.state.final[ESTADO] == POR_JUGAR? "true":"false"}/>
                 <br/>
             </div>
         )
@@ -161,5 +182,100 @@ export default class Torneo extends Component {
                 </div>
             </div>
         )
+    }
+
+    handleClickOctavos(e) {
+        var oct = this.state.octavos
+        var cuar = this.state.cuartos
+
+        var equipoGanador = e.target.innerHTML
+        var nroPartido = e.target.id
+        var posEnCuartos = Math.floor(nroPartido/2)
+        
+        cuar[posEnCuartos][EQUIPO1] == EQUIPO_ND? cuar[posEnCuartos][EQUIPO1] = equipoGanador:
+                                                  cuar[posEnCuartos][EQUIPO2] = equipoGanador
+
+        oct[nroPartido][ESTADO] = JUGADO
+
+        var nuevaEtapa = CUARTOS
+        for (const partido of oct) {
+            if (partido[ESTADO] == POR_JUGAR) {
+                nuevaEtapa = OCTAVOS
+                break
+            }
+        }
+
+        this.setState({
+            octavos: oct,
+            cuartos: cuar,
+            etapa: nuevaEtapa
+        })
+    }
+
+    handleClickCuartos(e) {
+        var cuar = this.state.cuartos
+        var semi = this.state.semifinales
+
+        var equipoGanador = e.target.innerHTML
+        var nroPartido = e.target.id
+        var posEnSemis = Math.floor(nroPartido/2)
+        
+        semi[posEnSemis][EQUIPO1] == EQUIPO_ND? semi[posEnSemis][EQUIPO1] = equipoGanador:
+                                                semi[posEnSemis][EQUIPO2] = equipoGanador
+
+        cuar[nroPartido][ESTADO] = JUGADO
+
+        var nuevaEtapa = SEMIFINALES
+        for (const partido of cuar) {
+            if (partido[ESTADO] == POR_JUGAR) {
+                nuevaEtapa = CUARTOS
+                break
+            }
+        }
+
+        this.setState({
+            cuartos: cuar,
+            semifinales: semi,
+            etapa: nuevaEtapa
+        })
+    }
+
+    handleClickSemifis(e) {
+        var semi = this.state.semifinales
+        var fin = this.state.final
+
+        var equipoGanador = e.target.innerHTML
+        var nroPartido = e.target.id
+        
+        fin[EQUIPO1] == EQUIPO_ND? fin[EQUIPO1] = equipoGanador:
+                                   fin[EQUIPO2] = equipoGanador
+
+        semi[nroPartido][ESTADO] = JUGADO
+
+        var nuevaEtapa = FINAL
+        for (const partido of semi) {
+            if (partido[ESTADO] == POR_JUGAR) {
+                nuevaEtapa = SEMIFINALES
+                break
+            }
+        }
+
+        this.setState({
+            semifinales: semi,
+            final: fin,
+            etapa: nuevaEtapa
+        })
+    }
+
+    handleClickFinal(e) {
+        var fin = this.state.final
+        var champion = e.target.innerHTML
+
+        fin[ESTADO] = JUGADO
+
+        this.setState({
+            final: fin,
+            campeon: champion
+        })
     }
 }

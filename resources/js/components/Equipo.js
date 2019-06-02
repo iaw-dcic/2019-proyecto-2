@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { EQUIPO_ND } from './Torneo';
 
 export default class Equipo extends Component {
     constructor(props) {
@@ -6,10 +7,31 @@ export default class Equipo extends Component {
     }
 
     render() {
+        if (this.props.habilitado == "true")
+            return this.renderEnabledButton()
+        else
+            return this.renderDisabledButton()
+    }
+
+    renderEnabledButton() {
         return (
             <button type="button" 
-                    className={this.props.habilitado=="true"?"btn btn-success mr-1":"btn btn-success mr-1 disabled"}>
-                {this.props.nombre==""? "No Definido":this.props.nombre}
+                id={this.props.id}
+                onClick={this.props.handler}
+                className="btn btn-success mr-1">
+                    {this.props.nombre==EQUIPO_ND? "No Definido":this.props.nombre}
+            </button>
+        )
+    }
+
+    renderDisabledButton() {
+        return (
+            <button type="button" 
+                id={this.props.id}
+                onClick={this.props.handler}
+                className="btn btn-success mr-1 disabled"
+                disabled>
+                    {this.props.nombre==EQUIPO_ND? "No Definido":this.props.nombre}
             </button>
         )
     }
