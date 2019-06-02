@@ -11,20 +11,28 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
-        "axios": "^0.18",
-        "bootstrap": "^4.1.0",
+        "axios": "^0.18.0",
+        "bootstrap": "^4.3.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
-        "react": "^16.2.0",
+        "react": "^16.8.6",
         "react-dom": "^16.2.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
-        "react-router-dom": "^5.0.0"
+        "@fortawesome/fontawesome-svg-core": "^1.2.18",
+        "@fortawesome/free-solid-svg-icons": "^5.8.2",
+        "@fortawesome/react-fontawesome": "^0.1.4",
+        "@types/react": "^16.8.18",
+        "local-storage": "^2.0.0",
+        "react-archer": "^1.1.0",
+        "react-bootstrap": "^1.0.0-beta.9",
+        "react-router-dom": "^5.0.0",
+        "react-sticky": "^6.0.3"
     }
 }
