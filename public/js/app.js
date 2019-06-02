@@ -65912,7 +65912,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Campeon).call(this, props));
     _this.state = {
-      color: "#ff0000"
+      color: "black"
     };
     return _this;
   }
@@ -65922,9 +65922,9 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      if (this.props.nombre != _Torneo__WEBPACK_IMPORTED_MODULE_1__["EQUIPO_ND"]) this.timerID = setInterval(function () {
+      this.timerID = setInterval(function () {
         return _this2.tick();
-      }, 20);
+      }, 200);
     }
   }, {
     key: "componentWillUnmount",
@@ -65934,15 +65934,23 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Campeon: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
           color: this.state.color
         }
-      }, "Campeon: ", this.props.nombre == _Torneo__WEBPACK_IMPORTED_MODULE_1__["EQUIPO_ND"] ? "No se sabe" : this.props.nombre);
+      }, this.props.nombre == _Torneo__WEBPACK_IMPORTED_MODULE_1__["EQUIPO_ND"] ? "No se sabe" : this.props.nombre));
     }
   }, {
     key: "tick",
-    value: function tick() {}
+    value: function tick() {
+      if (this.props.nombre != _Torneo__WEBPACK_IMPORTED_MODULE_1__["EQUIPO_ND"]) if (this.state.color == "red") this.setState({
+        color: "green"
+      });else if (this.state.color == "green") this.setState({
+        color: "blue"
+      });else this.setState({
+        color: "red"
+      });
+    }
   }]);
 
   return Campeon;

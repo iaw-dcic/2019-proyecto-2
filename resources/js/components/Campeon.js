@@ -6,16 +6,15 @@ export default class Campeon extends Component {
         super(props)
 
         this.state = {
-            color:  "#ff0000"
+            color:  "black"
         }
     }
 
     componentDidMount() {
-        if (this.props.nombre != EQUIPO_ND) 
-            this.timerID = setInterval(
-                () => this.tick(),
-                20
-            )
+        this.timerID = setInterval (
+            () => this.tick(),
+            200
+        )
     }
 
     componentWillUnmount() {
@@ -24,13 +23,21 @@ export default class Campeon extends Component {
 
     render() {
         return (
-            <h2 style={{color:this.state.color}}>
-                Campeon: {this.props.nombre == EQUIPO_ND? "No se sabe":this.props.nombre}
+            <h2>
+                Campeon: <p style={{color:this.state.color}}>
+                            {this.props.nombre == EQUIPO_ND? "No se sabe":this.props.nombre}
+                        </p>
             </h2>
         )
     }
 
     tick() {
-
+        if (this.props.nombre != EQUIPO_ND)
+            if (this.state.color == "red")
+                this.setState({color: "green"})
+            else if (this.state.color == "green")
+                this.setState({color: "blue"})
+            else
+                this.setState({color: "red"})
     }
 }
