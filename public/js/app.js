@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66186,14 +66186,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Panel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Panel */ "./resources/js/components/Panel.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66239,8 +66231,6 @@ function (_Component) {
       fetch('/equipos').then(function (response) {
         return response.json();
       }).then(function (equipos) {
-        console.log("sarasa");
-
         _this.setState({
           idPartido: _this.props.match.params.listaId || '',
           equipos: equipos
@@ -66277,58 +66267,59 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "inicializarPartidosNormal", function () {
       var partidos = _objectSpread({}, _this.state.partidos);
 
-      partidos = [];
+      axios.get("/partidos/1").then(function (response) {
+        partidos = response["data"];
 
-      var equiposDup = _toConsumableArray(_this.state.equipos);
-
-      var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
-      var arregloDerecha = equiposDup;
-      var partidoCuartos = arregloIzquierda.map(function (equipo) {
-        var cuartos = {
-          numero_partido: equipo.id,
-          etapa: "cuartos",
-          equipo1: equipo.nombre_equipo,
-          equipo2: arregloDerecha[equipo.id].nombre_equipo,
-          boton1: false,
-          boton2: false,
-          resultado1: 0,
-          resultado2: 0
-        };
-        partidos.push(cuartos);
-      }); //console.log("ENTRO");
-      //Agregar semifinales
-
-      var id = 4;
-
-      for (var i = 0; i < 2; i++) {
-        var semifinal = {
-          numero_partido: id++,
-          etapa: "semifinal",
-          equipo1: "N/A",
-          equipo2: "N/A",
-          boton1: false,
-          boton2: false,
-          resultado1: 0,
-          resultado2: 0
-        };
-        partidos.push(semifinal);
-      }
-
-      var _final = {
-        numero_partido: 6,
-        etapa: "final",
-        equipo1: "N/A",
-        equipo2: "N/A",
-        boton1: false,
-        boton2: false,
-        resultado1: 0,
-        resultado2: 0
-      };
-      partidos.push(_final);
-
-      _this.setState({
-        partidos: partidos
-      });
+        _this.setState({
+          partidos: partidos
+        });
+      })["catch"](function (error) {
+        console.log("this is error", error);
+      }); // partidos = [];
+      // var equiposDup = [... this.state.equipos];
+      // var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
+      // var arregloDerecha = equiposDup;
+      // var partidoCuartos = arregloIzquierda.map(equipo => {
+      //   let cuartos = {
+      //     numero_partido: equipo.id,
+      //     etapa: "cuartos",
+      //     equipo1: equipo.nombre_equipo,
+      //     equipo2: arregloDerecha[equipo.id].nombre_equipo,
+      //     boton1: false,
+      //     boton2: false,
+      //     resultado1: 0,
+      //     resultado2: 0,
+      //   }
+      //   partidos.push(cuartos);
+      // })
+      // //console.log("ENTRO");
+      // //Agregar semifinales
+      // var id = 4;
+      // for (var i = 0; i < 2; i++) {
+      //   let semifinal = {
+      //     numero_partido: id++,
+      //     etapa: "semifinal",
+      //     equipo1: "N/A",
+      //     equipo2: "N/A",
+      //     boton1: false,
+      //     boton2: false,
+      //     resultado1: 0,
+      //     resultado2: 0,
+      //   }
+      //   partidos.push(semifinal);
+      // }
+      // let final = {
+      //   numero_partido: 6,
+      //   etapa: "final",
+      //   equipo1: "N/A",
+      //   equipo2: "N/A",
+      //   boton1: false,
+      //   boton2: false,
+      //   resultado1: 0,
+      //   resultado2: 0,
+      // }
+      // partidos.push(final);
+      // this.setState({ partidos });
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarPartidos", function (partido) {
