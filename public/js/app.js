@@ -65742,6 +65742,130 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
+/***/ "./resources/js/components/BrowserStorage.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/BrowserStorage.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BrowserStorage; });
+/* harmony import */ var _Torneo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Torneo */ "./resources/js/components/Torneo.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+
+var BrowserStorage =
+/*#__PURE__*/
+function () {
+  function BrowserStorage() {
+    _classCallCheck(this, BrowserStorage);
+  }
+
+  _createClass(BrowserStorage, [{
+    key: "getOctavos",
+    value: function getOctavos() {
+      var oct;
+      if (sessionStorage.octavos) oct = JSON.parse(sessionStorage.octavos);else {
+        oct = [["River", "Boca", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Hola", "Chau", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Quehace", "Comoanda", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 1", "Equipo 2", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 3", "Equipo 4", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 5", "Equipo 6", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 7", "Equipo 8", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 9", "Equipo 10", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
+        sessionStorage.octavos = JSON.stringify(oct);
+      }
+      return oct;
+    }
+  }, {
+    key: "getCuartos",
+    value: function getCuartos() {
+      var cuar;
+      if (sessionStorage.cuartos) cuar = JSON.parse(sessionStorage.cuartos);else {
+        cuar = [[_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
+        sessionStorage.cuartos = JSON.stringify(cuar);
+      }
+      return cuar;
+    }
+  }, {
+    key: "getSemis",
+    value: function getSemis() {
+      var semi;
+      if (sessionStorage.semifinales) semi = JSON.parse(sessionStorage.semifinales);else {
+        semi = [[_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
+        sessionStorage.semifinales = JSON.stringify(semi);
+      }
+      return semi;
+    }
+  }, {
+    key: "getFinal",
+    value: function getFinal() {
+      var fin;
+      if (sessionStorage["final"]) fin = JSON.parse(sessionStorage["final"]);else {
+        fin = [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]];
+        sessionStorage["final"] = JSON.stringify(fin);
+      }
+      return fin;
+    }
+  }, {
+    key: "getCampeon",
+    value: function getCampeon() {
+      if (sessionStorage.campeon) return sessionStorage.campeon;
+      sessionStorage.campeon = _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
+      return _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
+    }
+  }, {
+    key: "getEtapa",
+    value: function getEtapa() {
+      if (sessionStorage.etapa) {
+        return parseInt(sessionStorage.etapa, 10);
+      }
+
+      sessionStorage.etapa = _Torneo__WEBPACK_IMPORTED_MODULE_0__["OCTAVOS"];
+      return _Torneo__WEBPACK_IMPORTED_MODULE_0__["OCTAVOS"];
+    }
+  }, {
+    key: "saveOctavos",
+    value: function saveOctavos(octavos) {
+      sessionStorage.octavos = JSON.stringify(octavos);
+    }
+  }, {
+    key: "saveCuartos",
+    value: function saveCuartos(cuartos) {
+      sessionStorage.cuartos = JSON.stringify(cuartos);
+    }
+  }, {
+    key: "saveSemis",
+    value: function saveSemis(semifinales) {
+      sessionStorage.semifinales = JSON.stringify(semifinales);
+    }
+  }, {
+    key: "saveFinal",
+    value: function saveFinal(_final) {
+      sessionStorage["final"] = JSON.stringify(_final);
+    }
+  }, {
+    key: "saveCampeon",
+    value: function saveCampeon(campeon) {
+      sessionStorage.campeon = campeon;
+    }
+  }, {
+    key: "saveEtapa",
+    value: function saveEtapa(etapa) {
+      sessionStorage.etapa = etapa;
+    }
+  }]);
+
+  return BrowserStorage;
+}();
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Campeon.js":
 /*!********************************************!*\
   !*** ./resources/js/components/Campeon.js ***!
@@ -65985,17 +66109,28 @@ function (_Component) {
 /*!*******************************************!*\
   !*** ./resources/js/components/Torneo.js ***!
   \*******************************************/
-/*! exports provided: EQUIPO_ND, default */
+/*! exports provided: OCTAVOS, CUARTOS, SEMIFINALES, FINAL, EQUIPO1, EQUIPO2, ESTADO, JUGADO, POR_JUGAR, EQUIPO_ND, storage, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OCTAVOS", function() { return OCTAVOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CUARTOS", function() { return CUARTOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEMIFINALES", function() { return SEMIFINALES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FINAL", function() { return FINAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EQUIPO1", function() { return EQUIPO1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EQUIPO2", function() { return EQUIPO2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ESTADO", function() { return ESTADO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUGADO", function() { return JUGADO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "POR_JUGAR", function() { return POR_JUGAR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EQUIPO_ND", function() { return EQUIPO_ND; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storage", function() { return storage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Torneo; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
 /* harmony import */ var _Campeon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Campeon */ "./resources/js/components/Campeon.js");
+/* harmony import */ var _BrowserStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BrowserStorage */ "./resources/js/components/BrowserStorage.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66017,6 +66152,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var OCTAVOS = 0,
     CUARTOS = 1,
     SEMIFINALES = 2,
@@ -66025,8 +66161,9 @@ var OCTAVOS = 0,
     EQUIPO2 = 1,
     ESTADO = 2,
     JUGADO = 0,
-    POR_JUGAR = 1;
-var EQUIPO_ND = "";
+    POR_JUGAR = 1,
+    EQUIPO_ND = "",
+    storage = new _BrowserStorage__WEBPACK_IMPORTED_MODULE_3__["default"]();
 
 var Torneo =
 /*#__PURE__*/
@@ -66058,100 +66195,13 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
-        octavos: this.getOctavos(),
-        cuartos: this.getCuartos(),
-        semifinales: this.getSemis(),
-        "final": this.getFinal(),
-        campeon: this.getCampeon(),
-        etapa: this.getEtapa()
+        octavos: storage.getOctavos(),
+        cuartos: storage.getCuartos(),
+        semifinales: storage.getSemis(),
+        "final": storage.getFinal(),
+        campeon: storage.getCampeon(),
+        etapa: storage.getEtapa()
       });
-    }
-  }, {
-    key: "getOctavos",
-    value: function getOctavos() {
-      var oct;
-      if (sessionStorage.octavos) oct = JSON.parse(sessionStorage.octavos);else {
-        oct = [["River", "Boca", POR_JUGAR], ["Hola", "Chau", POR_JUGAR], ["Quehace", "Comoanda", POR_JUGAR], ["Equipo 1", "Equipo 2", POR_JUGAR], ["Equipo 3", "Equipo 4", POR_JUGAR], ["Equipo 5", "Equipo 6", POR_JUGAR], ["Equipo 7", "Equipo 8", POR_JUGAR], ["Equipo 9", "Equipo 10", POR_JUGAR]];
-        sessionStorage.octavos = JSON.stringify(oct);
-      }
-      return oct;
-    }
-  }, {
-    key: "getCuartos",
-    value: function getCuartos() {
-      var cuar;
-      if (sessionStorage.cuartos) cuar = JSON.parse(sessionStorage.cuartos);else {
-        cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]];
-        sessionStorage.cuartos = JSON.stringify(cuar);
-      }
-      return cuar;
-    }
-  }, {
-    key: "getSemis",
-    value: function getSemis() {
-      var semi;
-      if (sessionStorage.semifinales) semi = JSON.parse(sessionStorage.semifinales);else {
-        semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR], [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]];
-        sessionStorage.semifinales = JSON.stringify(semi);
-      }
-      return semi;
-    }
-  }, {
-    key: "getFinal",
-    value: function getFinal() {
-      var fin;
-      if (sessionStorage["final"]) fin = JSON.parse(sessionStorage["final"]);else {
-        fin = [EQUIPO_ND, EQUIPO_ND, POR_JUGAR];
-        sessionStorage["final"] = JSON.stringify(fin);
-      }
-      return fin;
-    }
-  }, {
-    key: "getCampeon",
-    value: function getCampeon() {
-      if (sessionStorage.campeon) return sessionStorage.campeon;
-      sessionStorage.campeon = EQUIPO_ND;
-      return EQUIPO_ND;
-    }
-  }, {
-    key: "getEtapa",
-    value: function getEtapa() {
-      if (sessionStorage.etapa) {
-        return parseInt(sessionStorage.etapa, 10);
-      }
-
-      sessionStorage.etapa = OCTAVOS;
-      return OCTAVOS;
-    }
-  }, {
-    key: "saveOctavos",
-    value: function saveOctavos(octavos) {
-      sessionStorage.octavos = JSON.stringify(octavos);
-    }
-  }, {
-    key: "saveCuartos",
-    value: function saveCuartos(cuartos) {
-      sessionStorage.cuartos = JSON.stringify(cuartos);
-    }
-  }, {
-    key: "saveSemis",
-    value: function saveSemis(semifinales) {
-      sessionStorage.semifinales = JSON.stringify(semifinales);
-    }
-  }, {
-    key: "saveFinal",
-    value: function saveFinal(_final) {
-      sessionStorage["final"] = JSON.stringify(_final);
-    }
-  }, {
-    key: "saveCampeon",
-    value: function saveCampeon(campeon) {
-      sessionStorage.campeon = campeon;
-    }
-  }, {
-    key: "saveEtapa",
-    value: function saveEtapa(etapa) {
-      sessionStorage.etapa = etapa;
     }
   }, {
     key: "render",
@@ -66295,9 +66345,9 @@ function (_Component) {
         }
       }
 
-      this.saveOctavos(oct);
-      this.saveCuartos(cuar);
-      this.saveEtapa(nuevaEtapa);
+      storage.saveOctavos(oct);
+      storage.saveCuartos(cuar);
+      storage.saveEtapa(nuevaEtapa);
       this.setState({
         octavos: oct,
         cuartos: cuar,
@@ -66343,9 +66393,9 @@ function (_Component) {
         }
       }
 
-      this.saveCuartos(cuar);
-      this.saveSemis(semi);
-      this.saveEtapa(nuevaEtapa);
+      storage.saveCuartos(cuar);
+      storage.saveSemis(semi);
+      storage.saveEtapa(nuevaEtapa);
       this.setState({
         cuartos: cuar,
         semifinales: semi,
@@ -66390,9 +66440,9 @@ function (_Component) {
         }
       }
 
-      this.saveSemis(semi);
-      this.saveFinal(fin);
-      this.saveEtapa(nuevaEtapa);
+      storage.saveSemis(semi);
+      storage.saveFinal(fin);
+      storage.saveEtapa(nuevaEtapa);
       this.setState({
         semifinales: semi,
         "final": fin,
@@ -66405,8 +66455,8 @@ function (_Component) {
       var fin = this.state["final"];
       var champion = e.target.innerHTML;
       fin[ESTADO] = JUGADO;
-      this.saveFinal(fin);
-      this.saveCampeon(champion);
+      storage.saveFinal(fin);
+      storage.saveCampeon(champion);
       this.setState({
         "final": fin,
         campeon: champion

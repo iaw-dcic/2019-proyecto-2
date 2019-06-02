@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import Partido from './Partido';
 import Campeon from './Campeon';
+import BrowserStorage from './BrowserStorage';
 
-const OCTAVOS       = 0,
-      CUARTOS       = 1,
-      SEMIFINALES   = 2,
-      FINAL         = 3,
-      EQUIPO1       = 0,
-      EQUIPO2       = 1,
-      ESTADO        = 2,
-      JUGADO        = 0,
-      POR_JUGAR     = 1;
-
-export const EQUIPO_ND = "";
+export const OCTAVOS       = 0,
+             CUARTOS       = 1,
+             SEMIFINALES   = 2,
+             FINAL         = 3,
+             EQUIPO1       = 0,
+             EQUIPO2       = 1,
+             ESTADO        = 2,
+             JUGADO        = 0,
+             POR_JUGAR     = 1,
+             EQUIPO_ND     = "",
+             storage       = new BrowserStorage();
 
 export default class Torneo extends Component {
     constructor(props) {
@@ -35,121 +36,13 @@ export default class Torneo extends Component {
 
     componentDidMount() {
         this.setState({
-            octavos:        this.getOctavos(),
-            cuartos:        this.getCuartos(),
-            semifinales:    this.getSemis(),
-            final :         this.getFinal(),
-            campeon :       this.getCampeon(),
-            etapa :         this.getEtapa()
+            octavos:        storage.getOctavos(),
+            cuartos:        storage.getCuartos(),
+            semifinales:    storage.getSemis(),
+            final :         storage.getFinal(),
+            campeon :       storage.getCampeon(),
+            etapa :         storage.getEtapa()
         })
-    }
-
-    getOctavos() {
-        var oct
-
-        if (sessionStorage.octavos)
-            oct = JSON.parse(sessionStorage.octavos)
-        else {
-            oct = [ ["River", "Boca", POR_JUGAR], 
-                    ["Hola", "Chau", POR_JUGAR],
-                    ["Quehace", "Comoanda", POR_JUGAR],
-                    ["Equipo 1", "Equipo 2", POR_JUGAR],
-                    ["Equipo 3", "Equipo 4", POR_JUGAR],
-                    ["Equipo 5", "Equipo 6", POR_JUGAR],
-                    ["Equipo 7", "Equipo 8", POR_JUGAR],
-                    ["Equipo 9", "Equipo 10", POR_JUGAR]]
-
-            sessionStorage.octavos = JSON.stringify(oct)
-        }
-
-        return oct
-    }
-
-    getCuartos() {
-        var cuar
-
-        if (sessionStorage.cuartos)
-            cuar = JSON.parse(sessionStorage.cuartos)
-        else {
-            cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]]
-
-            sessionStorage.cuartos = JSON.stringify(cuar)
-        }
-
-        return cuar
-    }
-
-    getSemis() {
-        var semi
-
-        if (sessionStorage.semifinales)
-            semi = JSON.parse(sessionStorage.semifinales)
-        else {
-            semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]]
-
-            sessionStorage.semifinales = JSON.stringify(semi)
-        }
-
-        return semi
-    }
-
-    getFinal() {
-        var fin
-        
-        if (sessionStorage.final)
-            fin = JSON.parse(sessionStorage.final)
-        else {
-            fin = [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]
-
-            sessionStorage.final = JSON.stringify(fin)
-        }
-
-        return fin
-    }
-
-    getCampeon() {
-        if (sessionStorage.campeon)
-            return sessionStorage.campeon
-
-        sessionStorage.campeon = EQUIPO_ND
-        return EQUIPO_ND
-    }
-
-    getEtapa() {
-        if (sessionStorage.etapa) {
-            return parseInt(sessionStorage.etapa, 10)
-        }
-
-        sessionStorage.etapa = OCTAVOS
-        return OCTAVOS
-    }
-
-    saveOctavos(octavos) {
-        sessionStorage.octavos =  JSON.stringify(octavos)
-    }
-
-    saveCuartos(cuartos) {
-        sessionStorage.cuartos = JSON.stringify(cuartos)
-    }
-
-    saveSemis(semifinales) {
-        sessionStorage.semifinales = JSON.stringify(semifinales)
-    }
-
-    saveFinal(final) {
-        sessionStorage.final = JSON.stringify(final)
-    }
-
-    saveCampeon(campeon) {
-        sessionStorage.campeon = campeon
-    }
-
-    saveEtapa(etapa) {
-        sessionStorage.etapa = etapa
     }
 
     render() {
@@ -296,9 +189,9 @@ export default class Torneo extends Component {
             }
         }
 
-        this.saveOctavos(oct)
-        this.saveCuartos(cuar)
-        this.saveEtapa(nuevaEtapa)
+        storage.saveOctavos(oct)
+        storage.saveCuartos(cuar)
+        storage.saveEtapa(nuevaEtapa)
 
         this.setState({
             octavos: oct,
@@ -328,9 +221,9 @@ export default class Torneo extends Component {
             }
         }
 
-        this.saveCuartos(cuar)
-        this.saveSemis(semi)
-        this.saveEtapa(nuevaEtapa)
+        storage.saveCuartos(cuar)
+        storage.saveSemis(semi)
+        storage.saveEtapa(nuevaEtapa)
 
         this.setState({
             cuartos: cuar,
@@ -359,9 +252,9 @@ export default class Torneo extends Component {
             }
         }
 
-        this.saveSemis(semi)
-        this.saveFinal(fin)
-        this.saveEtapa(nuevaEtapa)
+        storage.saveSemis(semi)
+        storage.saveFinal(fin)
+        storage.saveEtapa(nuevaEtapa)
 
         this.setState({
             semifinales: semi,
@@ -376,8 +269,8 @@ export default class Torneo extends Component {
 
         fin[ESTADO] = JUGADO
 
-        this.saveFinal(fin)
-        this.saveCampeon(champion)
+        storage.saveFinal(fin)
+        storage.saveCampeon(champion)
 
         this.setState({
             final: fin,
