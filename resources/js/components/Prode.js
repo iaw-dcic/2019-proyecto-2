@@ -157,7 +157,7 @@ export default class Prode extends Component {
 
   actualizarCambios = (e) => {
     axios.put("/partidos", this.state).then(response => {
-      //console.log(response);
+      console.log(response);
     }).catch(error => {
       //console.log("this is error", error);
     });

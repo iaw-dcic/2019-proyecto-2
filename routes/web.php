@@ -21,7 +21,7 @@ Route::get("/partidos/{id}", 'ListaPartidoController@getLista');
 Route::get("/partidos", 'ListaPartidoController@getAllPartidos');
 
 Route::view('/{path?}', 'react');//->middleware('auth');
-Route::get("/partidos", 'ListaPartidoController@getAllPartidos')->middleware('auth');
+Route::get("/partidos", 'ListaPartidoController@getAllPartidos');
 
 //redireccionar invalidos 
 Route::any('{query}', 

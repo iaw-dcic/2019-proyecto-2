@@ -66384,7 +66384,8 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarCambios", function (e) {
-      axios.put("/partidos", _this.state).then(function (response) {//console.log(response);
+      axios.put("/partidos", _this.state).then(function (response) {
+        console.log(response);
       })["catch"](function (error) {//console.log("this is error", error);
       });
     });
