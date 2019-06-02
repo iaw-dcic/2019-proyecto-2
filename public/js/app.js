@@ -65793,8 +65793,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
     _this.state = {
-      remera: '/images/remeras/remerablanca.png',
-      talle: "XS",
+      remera: "/images/remeras/remerablanca.png",
+      talle: "",
       tela: "Algodon",
       logo: null,
       telas: [],
@@ -65830,64 +65830,122 @@ function (_Component) {
           logos: response.data
         });
       });
+
+      if (localStorage.hasOwnProperty('remera')) {
+        var remeraAux = localStorage.getItem('remera');
+        var talleAux = localStorage.getItem('talle');
+        var logoAux = localStorage.getItem('logo');
+        var telaAux = localStorage.getItem('tela');
+
+        try {
+          remeraAux = JSON.parse(remeraAux);
+          talleAux = JSON.parse(talleAux);
+          logoAux = JSON.parse(logoAux);
+          telaAux = JSON.parse(telaAux);
+          this.setState({
+            remera: remeraAux,
+            talle: talleAux,
+            logo: logoAux,
+            tela: telaAux
+          });
+        } catch (e) {
+          this.setState({
+            remera: "./images/remeras/remeraBlanca.png",
+            talle: "XS",
+            logo: null,
+            tela: "Algodon"
+          });
+        }
+      }
     }
   }, {
     key: "cambiarColorRemera",
     value: function cambiarColorRemera(e, id) {
+      var remeraAux;
+
       switch (id) {
         case "colorAzul":
-          this.setState({
-            remera: '/images/remeras/remeraazul.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remeraazul.png'
+            });
+            remeraAux = '/images/remeras/remeraazul.png';
+            break;
+          }
 
         case "colorBlanco":
-          this.setState({
-            remera: '/images/remeras/remerablanca.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remerablanca.png'
+            });
+            remeraAux = '/images/remeras/remerablanca.png';
+            break;
+          }
 
         case "colorRosa":
-          this.setState({
-            remera: '/images/remeras/remeraRosa.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remeraRosa.png'
+            });
+            remeraAux = '/images/remeras/remeraRosa.png';
+            break;
+          }
 
         case "colorAmarillo":
-          this.setState({
-            remera: '/images/remeras/remeraAmarilla.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remeraAmarilla.png'
+            });
+            remeraAux = '/images/remeras/remeraAmarilla.png';
+            break;
+          }
 
         case "colorNegro":
-          this.setState({
-            remera: '/images/remeras/remeranegra.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remeranegra.png'
+            });
+            remeraAux = '/images/remeras/remeranegra.png';
+            break;
+          }
 
         case "colorNaranja":
-          this.setState({
-            remera: '/images/remeras/remeranaranja.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remeranaranja.png'
+            });
+            remeraAux = '/images/remeras/remeranaranja.png';
+            break;
+          }
 
         case "colorVioleta":
-          this.setState({
-            remera: '/images/remeras/remeravioleta.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remeravioleta.png'
+            });
+            remeraAux = '/images/remeras/remeravioleta.png';
+            break;
+          }
 
         case "colorCeleste":
-          this.setState({
-            remera: '/images/remeras/remeraceleste.png'
-          });
-          break;
+          {
+            this.setState({
+              remera: '/images/remeras/remeraceleste.png'
+            });
+            remeraAux = '/images/remeras/remeraceleste.png';
+            break;
+          }
 
         default:
-          this.setState({
-            remera: '/images/remeras/remerablanca.png'
-          });
+          {
+            this.setState({
+              remera: '/images/remeras/remerablanca.png'
+            });
+            remeraAux = '/images/remeras/remerablanca.png';
+          }
       }
+
+      localStorage.setItem("remera", JSON.stringify(remeraAux));
     }
   }, {
     key: "cambiarLogo",
@@ -65895,27 +65953,35 @@ function (_Component) {
       this.setState({
         logo: src
       });
+      localStorage.setItem("logo", JSON.stringify(src));
     }
   }, {
     key: "cambiarTalle",
     value: function cambiarTalle(e) {
+      var talleAux = e.target.value;
       this.setState({
         talle: e.target.value
       });
+      localStorage.setItem("talle", JSON.stringify(talleAux));
     }
   }, {
     key: "cambiarTela",
     value: function cambiarTela(e) {
+      var telaAux = e.target.value;
       this.setState({
         tela: e.target.value
       });
+      localStorage.setItem("tela", JSON.stringify(telaAux));
     }
   }, {
     key: "eliminarLogo",
     value: function eliminarLogo(e) {
-      if (this.state.logo != null) this.setState({
-        logo: null
-      });
+      if (this.state.logo != null) {
+        this.setState({
+          logo: null
+        });
+        localStorage.setItem("logo", JSON.stringify(null));
+      }
     }
   }, {
     key: "render",
@@ -65956,7 +66022,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this3.eliminarLogo(e);
         },
-        "class": "btn btn-secondary"
+        className: "btn btn-secondary"
       }, "Eliminar logo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
