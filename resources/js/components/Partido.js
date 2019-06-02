@@ -8,10 +8,10 @@ export default class Partido extends Component {
 
     render() {
         return ( 
-            <div className="container" id={this.props.jugado}>
+            <div className="container">
                 <div className="btn-toolbar">
-                    <Equipo nombre={this.props.equipo1}/>
-                    <Equipo nombre={this.props.equipo2}/>
+                    <Equipo nombre={this.props.equipo1} habilitado={this.props.habilitado}/>
+                    <Equipo nombre={this.props.equipo2} habilitado={this.props.habilitado}/>
                 </div>
             </div>
         )

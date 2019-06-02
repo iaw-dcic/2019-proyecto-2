@@ -65789,10 +65789,9 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: this.props.nombre,
         type: "button",
-        className: "btn btn-success mr-1"
-      }, this.props.nombre);
+        className: this.props.habilitado == "true" ? "btn btn-success mr-1" : "btn btn-success mr-1 disabled"
+      }, this.props.nombre == "" ? "No Definido" : this.props.nombre);
     }
   }]);
 
@@ -65852,14 +65851,15 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container",
-        id: this.props.jugado
+        className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        nombre: this.props.equipo1
+        nombre: this.props.equipo1,
+        habilitado: this.props.habilitado
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        nombre: this.props.equipo2
+        nombre: this.props.equipo2,
+        habilitado: this.props.habilitado
       })));
     }
   }]);
@@ -65935,9 +65935,15 @@ function (_Component) {
   _createClass(Torneo, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var oct = [["River", "Boca", POR_JUGAR], ["Hola", "Chau", POR_JUGAR], ["Quehace", "Comoanda", POR_JUGAR], ["Equipo 1", "Equipo 2", POR_JUGAR]];
+      var oct = [["River", "Boca", POR_JUGAR], ["Hola", "Chau", POR_JUGAR], ["Quehace", "Comoanda", POR_JUGAR], ["Equipo 1", "Equipo 2", POR_JUGAR], ["Equipo 3", "Equipo 4", POR_JUGAR], ["Equipo 5", "Equipo 6", POR_JUGAR], ["Equipo 7", "Equipo 8", POR_JUGAR], ["Equipo 9", "Equipo 10", POR_JUGAR]];
+      var cuar = [["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR]];
+      var semi = [["", "", POR_JUGAR], ["", "", POR_JUGAR]];
+      var fin = ["", "", POR_JUGAR];
       this.setState({
-        octavos: oct
+        octavos: oct,
+        cuartos: cuar,
+        semifinales: semi,
+        "final": fin
       });
     }
   }, {
@@ -65978,23 +65984,47 @@ function (_Component) {
   }, {
     key: "renderCuartos",
     value: function renderCuartos() {
+      var _this3 = this;
+
+      var partidos = this.state.cuartos.map(function (partido, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          equipo1: partido[0],
+          equipo2: partido[1],
+          key: index,
+          habilitado: _this3.state.etapa == CUARTOS && partido[2] == POR_JUGAR ? "true" : "false"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Cuartos de Final"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Cuartos de Final"), partidos);
     }
   }, {
     key: "renderSemifinales",
     value: function renderSemifinales() {
+      var _this4 = this;
+
+      var partidos = this.state.semifinales.map(function (partido, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          equipo1: partido[0],
+          equipo2: partido[1],
+          key: index,
+          habilitado: _this4.state.etapa == SEMIFINALES && partido[2] == POR_JUGAR ? "true" : "false"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Semifinales"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Semifinales"), partidos);
     }
   }, {
     key: "renderFinal",
     value: function renderFinal() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        equipo1: this.state["final"][0],
+        equipo2: this.state["final"][1],
+        habilitado: this.state.etapa == FINAL && this.state["final"][2] == POR_JUGAR ? "true" : "false"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }
   }, {
     key: "renderBotonera",
