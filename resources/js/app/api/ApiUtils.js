@@ -5,7 +5,7 @@ const endpoint = 'http://prode-iaw.herokuapp.com';
 export async function login(email,password) {
     try {
         let res = await axios({
-            url: endpoint+'/api/login',
+            url: endpoint   +'/api/login',
             method: 'post',
             timeout: 8000,
             data: {
