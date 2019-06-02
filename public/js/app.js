@@ -66275,51 +66275,7 @@ function (_Component) {
         });
       })["catch"](function (error) {
         console.log("this is error", error);
-      }); // partidos = [];
-      // var equiposDup = [... this.state.equipos];
-      // var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
-      // var arregloDerecha = equiposDup;
-      // var partidoCuartos = arregloIzquierda.map(equipo => {
-      //   let cuartos = {
-      //     numero_partido: equipo.id,
-      //     etapa: "cuartos",
-      //     equipo1: equipo.nombre_equipo,
-      //     equipo2: arregloDerecha[equipo.id].nombre_equipo,
-      //     boton1: false,
-      //     boton2: false,
-      //     resultado1: 0,
-      //     resultado2: 0,
-      //   }
-      //   partidos.push(cuartos);
-      // })
-      // //console.log("ENTRO");
-      // //Agregar semifinales
-      // var id = 4;
-      // for (var i = 0; i < 2; i++) {
-      //   let semifinal = {
-      //     numero_partido: id++,
-      //     etapa: "semifinal",
-      //     equipo1: "N/A",
-      //     equipo2: "N/A",
-      //     boton1: false,
-      //     boton2: false,
-      //     resultado1: 0,
-      //     resultado2: 0,
-      //   }
-      //   partidos.push(semifinal);
-      // }
-      // let final = {
-      //   numero_partido: 6,
-      //   etapa: "final",
-      //   equipo1: "N/A",
-      //   equipo2: "N/A",
-      //   boton1: false,
-      //   boton2: false,
-      //   resultado1: 0,
-      //   resultado2: 0,
-      // }
-      // partidos.push(final);
-      // this.setState({ partidos });
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "actualizarPartidos", function (partido) {
@@ -66397,11 +66353,7 @@ function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      if (this.state.idPartido) {
-        localStorage.setItem('partidos/' + this.state.idPartido, JSON.stringify(this.state.partidos));
-      } else {
-        localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
-      }
+      localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
     }
   }, {
     key: "componentWillMount",
@@ -66420,7 +66372,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
         etapa: "cuartos",
         siguienteEtapa: this.siguienteEtapa["cuartos"],
         equipos: this.state.equipos,

@@ -61,64 +61,10 @@ export default class Prode extends Component {
     }).catch(error => {
       console.log("this is error", error);
     });
-
-    // partidos = [];
-    // var equiposDup = [... this.state.equipos];
-    // var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
-    // var arregloDerecha = equiposDup;
-    // var partidoCuartos = arregloIzquierda.map(equipo => {
-    //   let cuartos = {
-    //     numero_partido: equipo.id,
-    //     etapa: "cuartos",
-    //     equipo1: equipo.nombre_equipo,
-    //     equipo2: arregloDerecha[equipo.id].nombre_equipo,
-    //     boton1: false,
-    //     boton2: false,
-    //     resultado1: 0,
-    //     resultado2: 0,
-    //   }
-    //   partidos.push(cuartos);
-    // })
-    // //console.log("ENTRO");
-
-    // //Agregar semifinales
-    // var id = 4;
-    // for (var i = 0; i < 2; i++) {
-    //   let semifinal = {
-    //     numero_partido: id++,
-    //     etapa: "semifinal",
-    //     equipo1: "N/A",
-    //     equipo2: "N/A",
-    //     boton1: false,
-    //     boton2: false,
-    //     resultado1: 0,
-    //     resultado2: 0,
-    //   }
-    //   partidos.push(semifinal);
-    // }
-
-    // let final = {
-    //   numero_partido: 6,
-    //   etapa: "final",
-    //   equipo1: "N/A",
-    //   equipo2: "N/A",
-    //   boton1: false,
-    //   boton2: false,
-    //   resultado1: 0,
-    //   resultado2: 0,
-    // }
-    // partidos.push(final);
-
-    // this.setState({ partidos });
   }
 
   componentDidUpdate() {
-    if (this.state.idPartido) {
-      localStorage.setItem('partidos/' + this.state.idPartido, JSON.stringify(this.state.partidos));
-    }
-    else {
-      localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
-    }
+    localStorage.setItem('partidos', JSON.stringify(this.state.partidos));
   }
 
   actualizarPartidos = (partido) => {
@@ -182,7 +128,7 @@ export default class Prode extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Panel etapa="cuartos" siguienteEtapa={this.siguienteEtapa["cuartos"]} equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
         <Panel etapa="semifinal" siguienteEtapa={this.siguienteEtapa["semifinal"]} equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
         <Panel etapa="final" siguienteEtapa="" equipos={this.state.equipos} partidos={this.state.partidos} actualizarPartidos={this.actualizarPartidos} crearGanadoresSiguienteEtapa={this.crearGanadoresSiguienteEtapa} />
@@ -200,7 +146,8 @@ export default class Prode extends Component {
             </button>
             </div>
         }
-      </div>
+      </React.Fragment>
+
     )
   }
 }
