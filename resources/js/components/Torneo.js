@@ -16,29 +16,25 @@ export default class Torneo extends Component {
                 </div>
 
                 <div className="row justify-content-left">
-                    <div className="col-md-8">
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th>Octavos de Final</th>
-                                    <th>Cuartos de Final</th>
-                                    <th>Semifinales</th>
-                                    <th>Final</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <Partido equipo1="River" equipo2="Boca"/>
-                                    <Partido equipo1="Hola" equipo2="Chau"/>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <button type="button" className="btn btn-primary">
-                            Guardar Cambios
-                        </button>
+                    <div className="col-md-3">
+                        <h4>Octavos de Final</h4>
+                        <Partido equipo1="River" equipo2="Boca"/>
+                        <Partido equipo1="Hola" equipo2="Chau"/>
+                    </div>
+                    <div className="col-md-3">
+                        <h4>Cuartos de Final</h4>
+                    </div>
+                    <div className="col-md-3">
+                        <h4>Semifinales</h4>
+                    </div>
+                    <div className="col-md-3">
+                        <h4>Final</h4>
                     </div>
                 </div>
+
+                <button type="button" className="btn btn-primary">
+                    Guardar Cambios
+                </button>
             </div>
         )
     }
