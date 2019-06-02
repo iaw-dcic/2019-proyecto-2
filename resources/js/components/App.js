@@ -49,7 +49,7 @@ class App extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+
                 <Route
                     exact path="/prode/:listaId"
                     component={Prode}>
@@ -59,7 +59,7 @@ class App extends Component {
                     exact path="/prode"
                     render={(props) => <Prode {...props} actualizarPartidosUsuarios={this.actualizarPartidosUsuarios} />}
                 />
-
+                </div>
             </BrowserRouter>
         )
     }

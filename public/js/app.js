@@ -65785,7 +65785,7 @@ function (_Component) {
           key: lista.id,
           value: lista.id
         }, "Prode existente"));
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/prode/:listaId",
         component: _Prode__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -65797,7 +65797,7 @@ function (_Component) {
             actualizarPartidosUsuarios: _this2.actualizarPartidosUsuarios
           }));
         }
-      }));
+      })));
     }
   }]);
 
