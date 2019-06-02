@@ -13,7 +13,7 @@ export default class Campeon extends Component {
     componentDidMount() {
         this.timerID = setInterval (
             () => this.tick(),
-            200
+            500
         )
     }
 

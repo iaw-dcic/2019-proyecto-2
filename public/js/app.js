@@ -65924,7 +65924,7 @@ function (_Component) {
 
       this.timerID = setInterval(function () {
         return _this2.tick();
-      }, 200);
+      }, 500);
     }
   }, {
     key: "componentWillUnmount",
