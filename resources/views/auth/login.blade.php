@@ -6,8 +6,7 @@
         <div class="col-8 col-sm-6 col-md-6 col-lg-6">
             <form class="form-login" action="{{ route('login') }}" method="post">
                 @csrf
-
-
+                
                 <h2>Ingrese sus datos</h2>
                 <div class="col-md-8 col-lg-6 offset-md-2 offset-lg-3 mb-2">
                     <label for="inputEmail" class="sr-only">Correo Electrónico</label>

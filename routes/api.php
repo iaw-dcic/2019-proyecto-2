@@ -13,12 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 
 Route::get('teams', 'PlayoffController@teams');
 Route::get('playoffs', 'PlayoffController@playoffs');
-Route::middleware('auth:api')->post('playoffs', 'PlayoffController@store');
+Route::post('playoffs', 'PlayoffController@store');
 Route::delete('playoffs/delete/{id}', 'PlayoffController@delete');

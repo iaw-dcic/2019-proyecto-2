@@ -12,7 +12,7 @@
                 Esta página fue construida sobre un Template llamado Regna junto con las librerías que contenía, para más información en el pie de página se encuentran el link de procedencia del template con sus respectivos derechos de autor.
                 </p>
                 <p class="text-white">
-                El objetivo de la pagina es cargar resultados de enfrentamientos de --------, seleccionando cuál de los equipos avanza, es posible almacenar los resultados y visualizarlos posteriormente o eliminarlos.
+                El objetivo de la pagina es cargar resultados de Playoffs de la NBA seleccionando cuál de los equipos avanza, es posible almacenar los resultados y visualizarlos posteriormente o eliminarlos.
                 Esta pagina fue creada sobre el Template antes mencionado por Hredil Rodríguez Martin Omar, estudiante de Ingeniera de Sistemas de Información en la Universidad Nacional del Sur, LU 106146
                 </p>
             </div>
