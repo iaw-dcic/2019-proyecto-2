@@ -103,6 +103,7 @@ export default class Prode extends Component {
   guardarCambios = (e) => {
     axios.post("/partidos", this.state.partidos).then(response => {
       this.props.actualizarPartidosUsuarios();
+      alert("Prode creado exitosamente")
     }).catch(error => {
       console.log("this is error", error);
     });
@@ -110,9 +111,10 @@ export default class Prode extends Component {
 
   actualizarCambios = (e) => {
     axios.put("/partidos", this.state).then(response => {
-      console.log(response);
+      alert("Prode actualizado exitosamente")
+      // console.log(response);
     }).catch(error => {
-      //console.log("this is error", error);
+      console.log("this is error", error);
     });
   }
 

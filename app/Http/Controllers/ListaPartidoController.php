@@ -55,7 +55,7 @@ class ListaPartidoController extends Controller
         $idPartido = $request["idPartido"];
         $partidos = $request["partidos"];
         $partidosActualizar = ListaPartido::all()->find($idPartido)->partidos()->get();
-        // if(Auth::user() === ListaPartido::all()->find($idPartido)->user()->get()){  //por si algun ser del mal me cambia el state e intenta modificar algo que no es suyo :)
+        // if(Auth::user() === ListaPartido::all()->find($idPartido)->user()->get()){  //por si se cambia el state e intenta modificar algo que no es suyo 
             foreach ($partidosActualizar as $partido) {
                 $id = $partido->numero_partido;
                 $partido-> etapa = $partidos[$id]["etapa"];

@@ -66325,6 +66325,8 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "guardarCambios", function (e) {
       axios.post("/partidos", _this.state.partidos).then(function (response) {
         _this.props.actualizarPartidosUsuarios();
+
+        alert("Prode creado exitosamente");
       })["catch"](function (error) {
         console.log("this is error", error);
       });
@@ -66332,8 +66334,9 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "actualizarCambios", function (e) {
       axios.put("/partidos", _this.state).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {//console.log("this is error", error);
+        alert("Prode actualizado exitosamente"); // console.log(response);
+      })["catch"](function (error) {
+        console.log("this is error", error);
       });
     });
 
