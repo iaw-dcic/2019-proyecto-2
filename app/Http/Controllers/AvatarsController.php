@@ -9,10 +9,12 @@ use Auth;
 
 class AvatarsController extends Controller {
 
-    public function index () {
-        $avatar = Avatar::select('*')->where('owner', Auth::user()->name)->get();
+    public function __construct () {
+        $this->middleware ('auth:api');
+    }
 
-        return $avatares->toJson ();
+    public function index () {
+        return auth ('api')->user ()->avatars;
     }
     
     public function store (Request $request) {

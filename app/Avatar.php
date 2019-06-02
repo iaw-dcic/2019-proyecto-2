@@ -14,6 +14,6 @@ class Avatar extends Model {
     protected $primaryKey = 'avatar_id';
     
     public function users () {
-        return $this->belongsTo(User::class,'owner');
+        return $this->belongsTo (User::class, 'owner');
     }
 }

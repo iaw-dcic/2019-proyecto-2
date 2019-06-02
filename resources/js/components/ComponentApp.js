@@ -29,7 +29,7 @@ export default class ComponentApp extends Component {
                         <AvatarView avatar={this.state.currentAvatar}/>
                     </div>
                     <div className="col-md-3" id="options">
-                        <AvatarComponents avatar={this.state.currentAvatar}
+                        <AvatarComponents avatar={this.state.currentAvatar} 
                                           componentChange={this.componentChange}/>
                     </div>
                 </div>
@@ -49,11 +49,17 @@ export default class ComponentApp extends Component {
     }
 
     componentDidMount () {
-        axios.get('/api/app/avatars').then (response => {
-            this.setState ({
-                allAvatar: response.data
-            })
-        })
+        try {
+            axios.get ('/api/app/avatars').then (response => {
+                    this.setState({ 
+                        allAvatar: response.data
+                    }
+                );
+            });
+        } 
+        catch (event) {
+            console.log('axios request failed: ', event);
+        }
     }
 
     componentChange = (avatar) => {

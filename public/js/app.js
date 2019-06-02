@@ -66335,6 +66335,14 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+var api_token = document.head.querySelector('meta[name="api-token"]');
+
+if (api_token) {
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+} else {
+  console.error('Api-Token Not Found.');
+}
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -66474,7 +66482,8 @@ function (_Component) {
           {
             var _loop = function _loop(I) {
               table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-                className: "btn btn-outline-primary"
+                className: "btn btn-outline-primary",
+                key: 'Hair' + I
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
                 src: window.location.origin + '/avatar_elements/Hair' + I + '.png',
                 onClick: function onClick() {
@@ -66494,7 +66503,8 @@ function (_Component) {
           {
             var _loop2 = function _loop2(I) {
               table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-                className: "btn btn-outline-danger"
+                className: "btn btn-outline-danger",
+                key: 'Shirt' + I
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
                 src: window.location.origin + '/avatar_elements/Shirt' + I + '.png',
                 onClick: function onClick() {
@@ -66514,7 +66524,8 @@ function (_Component) {
           {
             var _loop3 = function _loop3(I) {
               table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-                className: "btn btn-outline-info"
+                className: "btn btn-outline-info",
+                key: 'Beard' + I
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
                 src: window.location.origin + '/avatar_elements/Beard' + I + '.png',
                 onClick: function onClick() {
@@ -66941,11 +66952,15 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/app/avatars').then(function (response) {
-        _this2.setState({
-          allAvatar: response.data
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/app/avatars').then(function (response) {
+          _this2.setState({
+            allAvatar: response.data
+          });
         });
-      });
+      } catch (event) {
+        console.log('axios request failed: ', event);
+      }
     }
   }]);
 

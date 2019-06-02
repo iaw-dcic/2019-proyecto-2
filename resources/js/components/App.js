@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ComponentApp from './ComponentApp'
 
 class App extends Component {
+
     render () {
         return (
             <BrowserRouter>
@@ -13,6 +14,7 @@ class App extends Component {
             </BrowserRouter>
         )
     }
+
 }
 
 ReactDOM.render (<App/>, document.getElementById ('react-app'))
