@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class ListaPartidoController extends Controller
 {
 
+    public function getInicialPartidos(){
+        return ListaPartido::all()->find(1)->partidos()->get();
+    }
+
     public function getAllPartidos()
     {
         if(!Auth::check()){
