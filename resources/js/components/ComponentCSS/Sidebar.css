@@ -4,3 +4,12 @@
 .dropdown-menu{
     overflow-y: scroll;
 }
+
+.size{
+    width:75px;
+    height:75px;
+}
+
+.avataresPrevios{
+    overflow-x: scroll;
+}

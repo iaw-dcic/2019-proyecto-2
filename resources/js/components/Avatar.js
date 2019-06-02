@@ -40,10 +40,10 @@ export default class Avatar extends Component {
                             
                             <div>
                                 
-                                <div className="hair superponer "><img src={window.location.origin + '/RecursosGraficos/Caras/'+ this.props.face + '.png'}/> </div>
-                                <div className="skin superponer "><img src={window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'}/></div>
-                                <div className="eyes superponer "><img src={window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'}/></div>
-                                <div className="mouth superponer"><img src={window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'}/></div>
+                                <div className="pelo superponer "><img src={window.location.origin + '/RecursosGraficos/Caras/'+ this.props.face + '.png'}/> </div>
+                                <div className="cara superponer "><img src={window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'}/></div>
+                                <div className="ojos superponer "><img src={window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'}/></div>
+                                <div className="boca superponer"><img src={window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'}/></div>
                             </div>
                                     
                             </div>

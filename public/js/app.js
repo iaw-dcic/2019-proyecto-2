@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".config{\r\n    width:75%;\r\n    margin: 0 auto; /* Added */\r\n    float: none; /* Added */\r\n    margin-bottom: 10px; /* Added */\r\n   \r\n}\r\n.cara .ojos .pelo .boca{\r\n    size:50px;\r\n}", ""]);
+exports.push([module.i, ".config{\r\n    width:75%;\r\n    margin: 0 auto; /* Added */\r\n    float: none; /* Added */\r\n    margin-bottom: 10px; /* Added */\r\n   \r\n}\r\n.cara .ojos .pelo .boca{\r\n    width:100px;\r\n    height: 100px;\r\n    \r\n}", ""]);
 
 // exports
 
@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".avataresPrevios{\r\n    overflow-x:scroll;\r\n}\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}", ""]);
+exports.push([module.i, ".avataresPrevios{\r\n    overflow-x:scroll;\r\n}\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:75px;\r\n    height:75px;\r\n}\r\n\r\n.avataresPrevios{\r\n    overflow-x: scroll;\r\n}", ""]);
 
 // exports
 
@@ -66597,19 +66597,19 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card config text-center mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hair superponer "
+        className: "pelo superponer "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Caras/' + this.props.face + '.png'
       }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "skin superponer "
+        className: "cara superponer "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eyes superponer "
+        className: "ojos superponer "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mouth superponer"
+        className: "boca superponer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'
       }))))))));
@@ -66723,16 +66723,20 @@ function (_Component) {
       //intento hacer la llamada por axios
 
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/user/').then(function (response) {
-        console.log(response.data);
-
         _this2.setState({
           userID: response.data
         });
+
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + _this2.state.userID + '/avatars').then(function (response) {
+          _this2.setState({
+            AllAvatars: _this2.state.AllAvatars.push(response.data)
+          });
+
+          console.log(_this2.state.AllAvatars);
+        });
+        return;
       })["catch"](function (error) {
         console.log(error);
-      });
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + this.state.userID + '/avatars').then(function (response) {
-        console.log(response.data);
       });
     }
   }]);
@@ -66750,7 +66754,7 @@ function (_Component) {
       hair: 'Pelo1',
       eyes: 'Ojos1',
       mouth: 'Boca1',
-      AllAvatars: [],
+      AllAvatars: new Array(),
       userID: -1,
       avatarID: -1,
       errors: []
@@ -66760,35 +66764,44 @@ function (_Component) {
     _this.handleFaceChange = _this.handleFaceChange.bind(_assertThisInitialized(_this));
     _this.handleHairChange = _this.handleHairChange.bind(_assertThisInitialized(_this));
     _this.handleEyesChange = _this.handleEyesChange.bind(_assertThisInitialized(_this));
-    _this.handleMouthChange = _this.handleMouthChange.bind(_assertThisInitialized(_this)); //this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
-
+    _this.handleMouthChange = _this.handleMouthChange.bind(_assertThisInitialized(_this));
+    _this.handleCreateNewAvatar = _this.handleCreateNewAvatar.bind(_assertThisInitialized(_this));
     return _this;
   }
-  /*handleCreateNewAvatar(event){
-      event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
-       if(event.target.value ="")
-          alert("No se puede tener un avatar SIN nombre, por favor, ingrese un nombre")
-      else{
-          const avatar = {
-              name = this.state.name
-              face = this.state.face
-              hair = this.state.hair
-              eyes = this.state.eyes
-              mouth = this.state.mouth
-              userID = this.state.userID
-          }
-      }
-      axios.post('api/' + userID + '/avatars', {avatar}).then(res => {
-          console.log(res);
-          this.setState({
-              avatarID : response.data
-          })
-      }) //hago el POST por Axios a la API que yo creé
-      //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
-    }*/
-
 
   _createClass(AvatarView, [{
+    key: "handleCreateNewAvatar",
+    value: function handleCreateNewAvatar(event) {
+      var _this3 = this;
+
+      event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
+
+      if (this.state.name == "") alert("No se puede tener un avatar SIN nombre, por favor, ingrese un nombre");else {
+        var avatar = {
+          name: this.state.name,
+          skin: this.state.face,
+          hair: this.state.hair,
+          eyes: this.state.eyes,
+          mouth: this.state.mouth,
+          userID: this.state.userID,
+          avatarID: this.state.avatarID
+        };
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/' + this.state.userID + '/avatars', avatar).then(function (res) {
+          console.log(res);
+
+          if (_this3.state.avatarID == -1) {
+            _this3.setState({
+              avatarID: res.data,
+              allAvatars: _this3.state.AllAvatars.push(avatar)
+            });
+          }
+        }); //hago el POST por Axios a la API que yo creé
+        //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
+
+        alert("Tu avatar ha sido guardado con exito");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66808,7 +66821,8 @@ function (_Component) {
         handleHairChange: this.handleHairChange,
         handleEyesChange: this.handleEyesChange,
         handleMouthChange: this.handleMouthChange,
-        AllAvatars: this.state.AllAvatars
+        AllAvatars: this.state.AllAvatars,
+        handleCreateNewAvatar: this.handleCreateNewAvatar
       }))));
     }
   }]);
@@ -67165,14 +67179,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Avatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Avatar */ "./resources/js/components/Avatar.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
@@ -67205,9 +67211,13 @@ function (_Component) {
   _createClass(SideBar, [{
     key: "saveAvatar",
     value: function saveAvatar(event) {
-      event.preventDefault(); //guardar el avatar, deberia de buscar los componentes usados a través del estado de Avatar!
-
-      alert('guardé el avatar!'); //axios.post('api/' + userID + '/avatars', {avatar}).then(res => {console.log(res);}) //hago el POST por Axios a la API que yo creé
+      event.preventDefault();
+      this.props.handleCreateNewAvatar(event);
+    }
+  }, {
+    key: "cargarAvatar",
+    value: function cargarAvatar(event) {
+      alert('avatar cargado');
     }
   }, {
     key: "changeSkin",
@@ -67230,24 +67240,121 @@ function (_Component) {
       this.props.handleMouthChange(event);
     }
   }, {
-    key: "getRecursos",
-    value: function getRecursos() {
+    key: "cargarCaras",
+    value: function cargarCaras() {
       var _this2 = this;
 
-      return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
         response.data.map(function (recurso) {
-          return _this2.setState(function (state) {
-            var caras = [].concat(_toConsumableArray(state.caras), [recurso.source]);
-            return {
-              caras: caras
-            };
+          return _this2.setState({
+            caras: _this2.state.caras.concat(recurso.source)
           });
         });
+        console.log(_this2.state.caras);
+        return;
       });
+    }
+  }, {
+    key: "cargarPelos",
+    value: function cargarPelos() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
+        response.data.map(function (recurso) {
+          return _this3.setState({
+            caras: _this3.state.Pelos.concat(recurso.source)
+          });
+        });
+
+        for (var i = 0; i < 4; i++) {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "dropdown-item",
+            name: _this3.state.Pelos[i],
+            onClick: _this3.changeHair
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "size",
+            name: _this3.state.Pelos[i],
+            src: window.location.origin + '/RecursosGraficos/Pelos/' + _this3.state.Pelos[i] + '.png'
+          }));
+        }
+
+        console.log(_this3.state.caras);
+      });
+    }
+  }, {
+    key: "cargarOjos",
+    value: function cargarOjos() {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
+        response.data.map(function (recurso) {
+          return _this4.setState({
+            caras: _this4.state.Ojos.concat(recurso.source)
+          });
+        });
+
+        for (var i = 0; i < 4; i++) {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "dropdown-item",
+            name: _this4.state.Ojos[i],
+            onClick: _this4.changeEyes
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "size",
+            name: _this4.state.Ojos[i],
+            src: window.location.origin + '/RecursosGraficos/Ojos/' + _this4.state.Ojos[i] + '.png'
+          }));
+        }
+
+        console.log(_this4.state.caras);
+      });
+    }
+  }, {
+    key: "cargarBocas",
+    value: function cargarBocas() {
+      var _this5 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
+        response.data.map(function (recurso) {
+          return _this5.setState({
+            caras: _this5.state.Bocas.concat(recurso.source)
+          });
+        });
+
+        for (var i = 0; i < 4; i++) {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "dropdown-item",
+            name: _this5.state.Bocas[i],
+            onClick: _this5.changeMouth
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "size",
+            name: _this5.state.Bocas[i],
+            src: window.location.origin + '/RecursosGraficos/Bocas/' + _this5.state.Bocas[i] + '.png'
+          }));
+        }
+
+        console.log(_this5.state.caras);
+      });
+    }
+    /*componentDidMount(){
+      axios.get('api/recursos').then((response)=>{
+          response.data.map(recurso => 
+          
+          this.setState(state =>{
+            const caras = [... state.caras, recurso.source]
+            return {
+              caras
+            }
+          } )
+        
+      
+      )
+      console.log(this.state.caras) 
+    })
+    console.log(this.state.caras)
       /*  {this.props.caras.map(cara =>(
                   <button className="dropdown-item" href="#" onClick={this.changeSkin}><img name={cara} src={window.location.origin + '/RecursosGraficos/Caras/'+ cara +'.png'}/></button>
-                ))} */
-    }
+                ))} } */
+
   }]);
 
   function SideBar(props) {
@@ -67258,54 +67365,46 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SideBar).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      caras: []
+      caras: [],
+      Pelos: [],
+      Ojos: [],
+      Bocas: []
     });
 
     _this.saveAvatar = _this.saveAvatar.bind(_assertThisInitialized(_this));
+    _this.cargarAvatar = _this.cargarAvatar.bind(_assertThisInitialized(_this));
     _this.changeSkin = _this.changeSkin.bind(_assertThisInitialized(_this));
     _this.changeHair = _this.changeHair.bind(_assertThisInitialized(_this));
     _this.changeEyes = _this.changeEyes.bind(_assertThisInitialized(_this));
     _this.changeMouth = _this.changeMouth.bind(_assertThisInitialized(_this));
-    _this.getRecursos = _this.getRecursos.bind(_assertThisInitialized(_this));
+    _this.cargarCaras = _this.cargarCaras.bind(_assertThisInitialized(_this));
+    _this.cargarPelos = _this.cargarPelos.bind(_assertThisInitialized(_this));
+    _this.cargarOjos = _this.cargarOjos.bind(_assertThisInitialized(_this));
+    _this.cargarBocas = _this.cargarBocas.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SideBar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar fixed-bottom avataresPrevios"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "navbar-brand"
-      }, "Tus Avatares"), this.props.AllAvatars.map(function (avatar) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-8"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "avataresPrevios"
+      }, "holaaaaaa", console.log(this.props.AllAvatars), this.props.AllAvatars.map(function (avatar) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card  text-center"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "hair superponer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/RecursosGraficos/Caras/' + avatar.face + '.png'
-        }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "skin superponer"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "eyes superponer"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "mouth superponer"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: cargarAvatar,
           className: "btn btn-outline-info btn-lg",
           value: "Cargar" + avatar.name
-        })))));
+        })));
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar fixed-bottom  navbar-dark bg-dark"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67318,35 +67417,7 @@ function (_Component) {
         "aria-expanded": "false"
       }, "Piel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Cara1",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Cara2",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara2.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Cara3",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara3.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        name: "Cara4",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara4.png'
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -67358,30 +67429,34 @@ function (_Component) {
         className: "dropdown-menu"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Pelo1",
         onClick: this.changeHair
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Pelo1",
         src: window.location.origin + '/RecursosGraficos/Pelos/Pelo1.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Pelo2",
         onClick: this.changeHair
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Pelo2",
         src: window.location.origin + '/RecursosGraficos/Pelos/Pelo2.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Pelo3",
         onClick: this.changeHair
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Pelo3",
         src: window.location.origin + '/RecursosGraficos/Pelos/Pelo3.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Pelo4",
         onClick: this.changeHair
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Pelo4",
         src: window.location.origin + '/RecursosGraficos/Pelos/Pelo4.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67396,30 +67471,34 @@ function (_Component) {
         className: "dropdown-menu "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Ojos1",
         onClick: this.changeEyes
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Ojos1",
         src: window.location.origin + '/RecursosGraficos/Ojos/Ojos1.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Ojos2",
         onClick: this.changeEyes
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Ojos2",
         src: window.location.origin + '/RecursosGraficos/Ojos/Ojos2.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Ojos3",
         onClick: this.changeEyes
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Ojos3",
         src: window.location.origin + '/RecursosGraficos/Ojos/Ojos3.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Ojos4",
         onClick: this.changeEyes
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Ojos4",
         src: window.location.origin + '/RecursosGraficos/Ojos/Ojos4.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67434,30 +67513,34 @@ function (_Component) {
         className: "dropdown-menu "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Boca1",
         onClick: this.changeMouth
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Boca1",
         src: window.location.origin + '/RecursosGraficos/Bocas/Boca1.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Boca2",
         onClick: this.changeMouth
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Boca2",
         src: window.location.origin + '/RecursosGraficos/Bocas/Boca2.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Boca3",
         onClick: this.changeMouth
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Boca3",
         src: window.location.origin + '/RecursosGraficos/Bocas/Boca3.png'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
-        href: "#",
+        name: "Boca4",
         onClick: this.changeMouth
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
         name: "Boca4",
         src: window.location.origin + '/RecursosGraficos/Bocas/Boca4.png'
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -67494,8 +67577,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

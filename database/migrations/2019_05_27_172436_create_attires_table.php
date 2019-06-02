@@ -18,6 +18,7 @@ class CreateAttiresTable extends Migration
             $table->timestamps();
             $table->string('type');
             $table->string('source');
+            $table->engine = 'InnoDB';
         });
     }
 

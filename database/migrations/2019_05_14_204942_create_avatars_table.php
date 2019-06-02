@@ -21,6 +21,9 @@ class CreateAvatarsTable extends Migration
             $table->string('hair');
             $table->string('eyes');
             $table->string('mouth');
+            $table->unsignedInteger('owner');
+            $table->engine = 'InnoDB';
+            $table->foreign('owner')->references('id')->on('users');
         });
     }
 

@@ -15,15 +15,14 @@ class userAvatarController extends Controller
     }
 
     public function index(){
-        $Avatares = User::findOrFail(auth('api')->user()->id)->avatars;
-        dd($Avatares);
-        return $Avatares->toJson();
+        $Avatares = DB::table('avatars')->where('owner', auth('api')->user()->id)->get();
+        return response()->json($Avatares[0]);
     }
 
     public function store(Request $request){
         $validatedData = $request->validate([
             'name' => 'required',
-            'face' => 'required',
+            'skin' => 'required',
             'hair' => 'required',
             'eyes' => 'required',
             'mouth' => 'required',
@@ -33,16 +32,17 @@ class userAvatarController extends Controller
         if($avatar == null){
           $avatar = avatar::create([
             'name' => $validatedData['name'],
-            'face' => $validatedData['face'],
+            'skin' => $validatedData['skin'],
             'eyes' => $validatedData['eyes'],
             'hair' => $validatedData['hair'],
             'mouth' => $validatedData['mouth'],
+            'owner' => auth('api')->user()->id
           ]);
-        dd($avatar->id);
+
         return response()->json($avatar->id);
         }
         else{
-            update($avatar);
+            $this->update($avatar);
         }
     }
 
@@ -53,8 +53,7 @@ class userAvatarController extends Controller
 
     public function update(avatar $avatar){
         $validatedData = $request->validate([
-            'name' => 'required',
-            'face' => 'required',
+            'skin' => 'required',
             'hair' => 'required',
             'eyes' => 'required',
             'mouth' => 'required',
