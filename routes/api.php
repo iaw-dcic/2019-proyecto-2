@@ -24,6 +24,6 @@ Route::post('insert','PartidosController@store');
 Route::get('partidos/{ronda}', 'PartidosController@getPartidosRonda');
 Route::get('pronostico/{ronda}/{pronostico}', 'PartidosController@getPartidosPronostico');
 Route::get('partidos_dos/{ronda}', 'PartidosController@partidos_de_a_dos');
-Route::get('eliminarpronostico', 'PartidosController@eliminarPronostico');
+Route::post('eliminarpronostico', 'PartidosController@eliminarPronostico');
+Route::post('actualizar', 'PartidosController@actualizar');
  
-  

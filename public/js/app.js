@@ -6532,7 +6532,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n.texto-final > h3{\r\n    text-align:center;\r\n}\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\n \r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }\r\n\r\n.border {\r\n    border: 1px solid lightblue !important;\r\n}\r\n.header{\r\n    border: 2px solid  #3490dc;\r\n    margin-bottom:1rem;\r\n}", ""]);
+exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n.texto-final > h3{\r\n    text-align:center;\r\n}\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\nimg{\r\n    width: 35px;\r\n    height:35px;\r\n}\r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }\r\n\r\n.border {\r\n    border: 1px solid lightblue !important;\r\n}\r\n.header{\r\n    border: 2px solid  #3490dc;\r\n    margin-bottom:1rem;\r\n}", ""]);
 
 // exports
 
@@ -6570,7 +6570,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, " \r\nli{\r\n    color:black;\r\n}", ""]);
+exports.push([module.i, " \r\nli{\r\n    color:black;\r\n}\r\n.navbar-dark .navbar-brand {\r\n    color: #000000;\r\n}\r\na{\r\n    color:#024e8d;\r\n}\r\n\r\n\r\n.nav-link> a{\r\n    color:black;\r\n}\r\n.btn-primary{\r\n    color:black;\r\n}\r\n ", ""]);
 
 // exports
 
@@ -67006,18 +67006,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 
 __webpack_require__(/*! ./components/App */ "./resources/js/components/App.js");
 
@@ -67214,22 +67203,34 @@ function (_Component) {
       var _this2 = this;
 
       var jugador1 = "";
+      var pais2 = "";
+      var pais1 = "";
       var jugadorAbre1 = "";
       var jugadorAbre2 = "";
       var jugador2 = "";
 
-      if (this.props.jugador1 != null) {
+      if (this.props.jugador1.nombre != null) {
         jugador1 = this.props.jugador1.nombre;
         jugadorAbre1 = this.props.jugador1.abrev;
+        pais1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.jugador1.pais + ".png"
+        });
       }
 
-      if (this.props.jugador2 != null) {
+      if (this.props.jugador2.nombre != null) {
         jugador2 = this.props.jugador2.nombre;
         jugadorAbre2 = this.props.jugador2.abrev;
+        pais2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.jugador2.pais + ".png"
+        });
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 jugador"
+      }, pais1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "juno" + this.props.i,
@@ -67237,7 +67238,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
-      }, jugador1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, jugador1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "junoabre" + this.props.i,
         className: "btn btn-light jugadorabre",
@@ -67246,6 +67247,10 @@ function (_Component) {
         }
       }, jugadorAbre1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 jugador"
+      }, pais2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdos" + this.props.i,
@@ -67253,7 +67258,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
         }
-      }, jugador2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, jugador2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdosabre" + this.props.i,
         className: "btn btn-light jugadorabre",
@@ -67347,19 +67352,29 @@ function (_Component) {
 
       var jugador1 = "";
       var jugadorAbre1 = "";
+      var pais = "";
 
-      if (this.props.jugadorFinal != null) {
+      if (this.props.jugadorFinal.nombre != null) {
         jugador1 = this.props.jugadorFinal.nombre;
         jugadorAbre1 = this.props.jugadorFinal.abrev;
+        pais = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.jugadorFinal.pais + ".png"
+        });
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 jugador"
+      }, pais), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10 jugador"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-light jugador",
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugadorFinal, e);
         }
-      }, jugador1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, jugador1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-light jugadorabre",
         onClick: function onClick(e) {
@@ -67787,8 +67802,16 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
+      var pais1 = this.state.jugador_uno.pais + ".png";
+      var pais2 = this.state.jugador_dos.pais + ".png";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 jugador"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: pais1
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "juno" + this.props.i,
@@ -67796,7 +67819,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this3.handleClick(_this3.state.jugador_uno, Number(_this3.props.i), e);
         }
-      }, this.state.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.jugador_uno.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "junoabre" + this.props.i,
         className: "btn btn-light jugadorabre",
@@ -67805,6 +67828,12 @@ function (_Component) {
         }
       }, this.state.jugador_uno.abrev)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 jugador"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: pais2
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdos" + this.props.i,
@@ -67819,7 +67848,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this3.handleClick(_this3.state.jugador_dos, Number(_this3.props.i), e);
         }
-      }, this.state.jugador_dos.abrev)));
+      }, this.state.jugador_dos.abrev))));
     }
   }]);
 
@@ -67840,12 +67869,20 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Perfil; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _perfil_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./perfil.css */ "./resources/js/components/perfil.css");
-/* harmony import */ var _perfil_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_perfil_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Pronostico_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pronostico.js */ "./resources/js/components/Pronostico.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _perfil_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./perfil.css */ "./resources/js/components/perfil.css");
+/* harmony import */ var _perfil_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_perfil_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Pronostico_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pronostico.js */ "./resources/js/components/Pronostico.js");
+
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -67904,9 +67941,8 @@ function (_Component) {
       c3: [],
       s1: [],
       s2: [],
-      j1: [],
-      j2: [],
-      campeon: [],
+      f: [],
+      champion: [],
       pronostico: 0,
       load: "false"
     });
@@ -67918,57 +67954,169 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "cuartos0", function (cuart) {
-      _this.setState({
+      if (localStorage.hasOwnProperty("c0")) {
+        var value = localStorage.getItem("c0");
+        value = JSON.parse(value);
+
+        _this.setState({
+          c0: value
+        });
+      } else _this.setState({
         c0: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "cuartos1", function (cuart) {
-      _this.setState({
+      if (localStorage.hasOwnProperty("c1")) {
+        var value = localStorage.getItem("c1");
+        value = JSON.parse(value);
+
+        _this.setState({
+          c1: value
+        });
+      } else _this.setState({
         c1: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "cuartos2", function (cuart) {
-      _this.setState({
+      if (localStorage.hasOwnProperty("c2")) {
+        var value = localStorage.getItem("c2");
+        value = JSON.parse(value);
+
+        _this.setState({
+          c2: value
+        });
+      } else _this.setState({
         c2: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "cuartos3", function (cuart) {
-      _this.setState({
+      if (localStorage.hasOwnProperty("c3")) {
+        var value = localStorage.getItem("c3");
+        value = JSON.parse(value);
+
+        _this.setState({
+          c3: value
+        });
+      } else _this.setState({
         c3: cuart
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "semis1", function (semi) {
-      _this.setState({
+      if (localStorage.hasOwnProperty("s1")) {
+        var value = localStorage.getItem("s1");
+        value = JSON.parse(value);
+
+        _this.setState({
+          s1: value
+        });
+      } else _this.setState({
         s1: semi
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "semis2", function (semi) {
-      _this.setState({
+      if (localStorage.hasOwnProperty("s2")) {
+        var value = localStorage.getItem("s2");
+        value = JSON.parse(value);
+
+        _this.setState({
+          s2: value
+        });
+      } else _this.setState({
         s2: semi
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "final", function (f) {
-      _this.setState({
-        j1: f.jugador_uno,
-        j2: f.jugador_dos
+    _defineProperty(_assertThisInitialized(_this), "final", function (fi) {
+      if (localStorage.hasOwnProperty("f")) {
+        var value = localStorage.getItem("f");
+        value = JSON.parse(value);
+
+        _this.setState({
+          f: value
+        });
+      } else _this.setState({
+        f: fi
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "champion", function (c) {
-      _this.setState({
-        campeon: c.jugador_uno
+      if (localStorage.hasOwnProperty("champion")) {
+        var value = localStorage.getItem("champion");
+        value = JSON.parse(value);
+
+        _this.setState({
+          champion: value
+        });
+      } else _this.setState({
+        champion: c
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleC0", function (newP, e) {
+    _defineProperty(_assertThisInitialized(_this), "handleS1", function (newP, e) {
       _this.setState(function (_ref) {
-        var s1 = _ref.s1;
+        var f = _ref.f;
+        return {
+          f: _objectSpread({}, f, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+
+      var _final = _this.state.f;
+      _final["jugador_uno"] = newP;
+      localStorage.setItem("f", JSON.stringify(_final));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleS2", function (newP, e) {
+      _this.setState(function (_ref2) {
+        var f = _ref2.f;
+        return {
+          f: _objectSpread({}, f, {
+            jugador_dos: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+
+      var _final2 = _this.state.f;
+      _final2["jugador_dos"] = newP;
+      localStorage.setItem("f", JSON.stringify(_final2));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleCampeon", function (newP, e) {
+      _this.setState(function (_ref3) {
+        var champion = _ref3.champion;
+        return {
+          champion: _objectSpread({}, champion, {
+            jugador_uno: newP
+          })
+        };
+      }, function () {
+        _this.setState({
+          load: true
+        });
+      });
+
+      var _final3 = _this.state.champion;
+      _final3["jugador_uno"] = newP;
+      localStorage.setItem("champion", JSON.stringify(_final3));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleC0", function (newP, e) {
+      _this.setState(function (_ref4) {
+        var s1 = _ref4.s1;
         return {
           s1: _objectSpread({}, s1, {
             jugador_uno: newP
@@ -67979,13 +68127,17 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final4 = _this.state.s1;
+      _final4["jugador_uno"] = newP;
+      localStorage.setItem("s1", JSON.stringify(_final4));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleC1", function (newP, e) {
-      _this.setState(function (_ref2) {
-        var s2 = _ref2.s2;
+      _this.setState(function (_ref5) {
+        var s2 = _ref5.s2;
         return {
-          s1: _objectSpread({}, s2, {
+          s2: _objectSpread({}, s2, {
             jugador_uno: newP
           })
         };
@@ -67994,11 +68146,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final5 = _this.state.s2;
+      _final5["jugador_uno"] = newP;
+      localStorage.setItem("s2", JSON.stringify(_final5));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleC2", function (newP, e) {
-      _this.setState(function (_ref3) {
-        var s1 = _ref3.s1;
+      _this.setState(function (_ref6) {
+        var s1 = _ref6.s1;
         return {
           s1: _objectSpread({}, s1, {
             jugador_dos: newP
@@ -68009,11 +68165,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final6 = _this.state.s1;
+      _final6["jugador_dos"] = newP;
+      localStorage.setItem("s1", JSON.stringify(_final6));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleC3", function (newP, e) {
-      _this.setState(function (_ref4) {
-        var s2 = _ref4.s2;
+      _this.setState(function (_ref7) {
+        var s2 = _ref7.s2;
         return {
           s2: _objectSpread({}, s2, {
             jugador_dos: newP
@@ -68024,11 +68184,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final7 = _this.state.s2;
+      _final7["jugador_dos"] = newP;
+      localStorage.setItem("s2", JSON.stringify(_final7));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc0", function (newP, e) {
-      _this.setState(function (_ref5) {
-        var c0 = _ref5.c0;
+      _this.setState(function (_ref8) {
+        var c0 = _ref8.c0;
         return {
           c0: _objectSpread({}, c0, {
             jugador_uno: newP
@@ -68039,11 +68203,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final8 = _this.state.c0;
+      _final8["jugador_uno"] = newP;
+      localStorage.setItem("c0", JSON.stringify(_final8));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc1", function (newP, e) {
-      _this.setState(function (_ref6) {
-        var c1 = _ref6.c1;
+      _this.setState(function (_ref9) {
+        var c1 = _ref9.c1;
         return {
           c1: _objectSpread({}, c1, {
             jugador_uno: newP
@@ -68054,11 +68222,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final9 = _this.state.c1;
+      _final9["jugador_uno"] = newP;
+      localStorage.setItem("c1", JSON.stringify(_final9));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc2", function (newP, e) {
-      _this.setState(function (_ref7) {
-        var c0 = _ref7.c0;
+      _this.setState(function (_ref10) {
+        var c0 = _ref10.c0;
         return {
           c0: _objectSpread({}, c0, {
             jugador_dos: newP
@@ -68069,11 +68241,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final10 = _this.state.c0;
+      _final10["jugador_dos"] = newP;
+      localStorage.setItem("c0", JSON.stringify(_final10));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc3", function (newP, e) {
-      _this.setState(function (_ref8) {
-        var c1 = _ref8.c1;
+      _this.setState(function (_ref11) {
+        var c1 = _ref11.c1;
         return {
           c1: _objectSpread({}, c1, {
             jugador_dos: newP
@@ -68084,11 +68260,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final11 = _this.state.c1;
+      _final11["jugador_dos"] = newP;
+      localStorage.setItem("c1", JSON.stringify(_final11));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc4", function (newP, e) {
-      _this.setState(function (_ref9) {
-        var c2 = _ref9.c2;
+      _this.setState(function (_ref12) {
+        var c2 = _ref12.c2;
         return {
           c2: _objectSpread({}, c2, {
             jugador_uno: newP
@@ -68099,11 +68279,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final12 = _this.state.c2;
+      _final12["jugador_uno"] = newP;
+      localStorage.setItem("c2", JSON.stringify(_final12));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc5", function (newP, e) {
-      _this.setState(function (_ref10) {
-        var c3 = _ref10.c3;
+      _this.setState(function (_ref13) {
+        var c3 = _ref13.c3;
         return {
           c3: _objectSpread({}, c3, {
             jugador_uno: newP
@@ -68114,11 +68298,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final13 = _this.state.c3;
+      _final13["jugador_uno"] = newP;
+      localStorage.setItem("c3", JSON.stringify(_final13));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc6", function (newP, e) {
-      _this.setState(function (_ref11) {
-        var c2 = _ref11.c2;
+      _this.setState(function (_ref14) {
+        var c2 = _ref14.c2;
         return {
           c2: _objectSpread({}, c2, {
             jugador_dos: newP
@@ -68129,11 +68317,15 @@ function (_Component) {
           load: true
         });
       });
+
+      var _final14 = _this.state.c2;
+      _final14["jugador_dos"] = newP;
+      localStorage.setItem("c2", JSON.stringify(_final14));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOc7", function (newP, e) {
-      _this.setState(function (_ref12) {
-        var c3 = _ref12.c3;
+      _this.setState(function (_ref15) {
+        var c3 = _ref15.c3;
         return {
           c3: _objectSpread({}, c3, {
             jugador_dos: newP
@@ -68143,6 +68335,10 @@ function (_Component) {
         _this.setState({
           load: true
         });
+
+        var _final15 = _this.state.c3;
+        _final15["jugador_dos"] = newP;
+        localStorage.setItem("c3", JSON.stringify(_final15));
       });
     });
 
@@ -68262,23 +68458,20 @@ function (_Component) {
       var f1 = "";
       var f2 = "";
 
-      if (this.state.j1 != null) {
-        f1 = this.state.j1;
-      }
-
-      if (this.state.j2 != null) {
-        f2 = this.state.j2;
+      if (this.state.f != null && this.state.f.jugador_dos != null) {
+        f1 = this.state.f.jugador_uno;
+        f2 = this.state.f.jugador_dos;
       }
 
       var camp = "";
 
-      if (this.state.campeon != null) {
-        camp = this.state.campeon;
+      if (this.state.champion != null && this.state.champion.jugador_uno != null) {
+        camp = this.state.champion.jugador_uno;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         id: "contenedor"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pronostico_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Pronostico_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
         setPronostico: this.setPronostico,
         agregarProno: this.props.agregaProno,
         cuartos0: this.cuartos0,
@@ -68289,189 +68482,366 @@ function (_Component) {
         semis2: this.semis2,
         "final": this["final"],
         campeon: this.champion
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container-fluid"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row table-responsive"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
         className: "table-striped "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Octavos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Octavos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Semi1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Semi1"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Semi2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Semi2"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct01.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc0(oct01, e);
         }
-      }, oct01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct02.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc0(oct02, e);
         }
-      }, oct02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct11.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc1(oct11, e);
         }
-      }, oct11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct12.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc1(oct12, e);
         }
-      }, oct12.nombre))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct12.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC0(cuar01, e);
         }
-      }, cuar01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, cuar01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC0(cuar02, e);
         }
-      }, "  ", cuar02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "  ", cuar02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC1(cuar11, e);
         }
-      }, cuar11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, cuar11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC1(cuar12, e);
         }
-      }, "  ", cuar12.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "  ", cuar12.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct21.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc2(oct21, e);
         }
-      }, oct21.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct21.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct22.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc2(oct22, e);
         }
-      }, oct22.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct22.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct31.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc3(oct31, e);
         }
-      }, oct31.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct31.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct32.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc3(oct32, e);
         }
-      }, oct32.nombre))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
-      }, sem01.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
-      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
-      }, sem11.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
-      }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct32.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleS1(sem01, e);
+        }
+      }, sem01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleS1(sem02, e);
+        }
+      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleS2(sem11, e);
+        }
+      }, sem11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleS2(sem12, e);
+        }
+      }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct41.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc4(oct41, e);
         }
-      }, oct41.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct41.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct42.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc4(oct42, e);
         }
-      }, oct42.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct42.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct51.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc5(oct51, e);
         }
-      }, oct51.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct51.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct52.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc5(oct52, e);
         }
-      }, oct52.nombre))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct52.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC2(cuar21, e);
         }
-      }, cuar21.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, cuar21.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC2(cuar22, e);
         }
-      }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC3(cuar31, e);
         }
-      }, cuar31.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, cuar31.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this3.handleC3(cuar32, e);
         }
-      }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct61.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc6(oct61, e);
         }
-      }, oct61.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct61.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct62.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc6(oct62, e);
         }
-      }, oct62.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct62.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct71.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this3.handleOc7(oct71, e);
         }
-      }, oct71.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, oct71.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: oct72.pais + ".png"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc7(oct71, e);
+          return _this3.handleOc7(oct72, e);
         }
-      }, oct72.nombre)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, oct72.nombre)))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row header texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2  justify-content-center align-items-center minh-100 "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
-      }, " ", f1.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleCampeon(f1, e);
+        }
+      }, " ", f1.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2  justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-light"
-      }, " ", f2.nombre, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light",
+        onClick: function onClick(e) {
+          return _this3.handleCampeon(f2, e);
+        }
+      }, " ", f2.nombre, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row header texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ", camp.nombre, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, " ", camp.nombre, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary"
-      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-primary",
+        onClick: function onClick(e) {
+          return _this3.actualizar(e);
+        }
+      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-primary",
+        onClick: function onClick(e) {
+          return _this3.eliminar(e);
+        }
       }, "Eliminar")));
-    } //se encarga de cambiar el pronostico de la semi
+    }
+  }, {
+    key: "actualizar",
+    value: function () {
+      var _actualizar = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
+        var api_token, token, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("actualizar : ");
+                api_token = document.querySelector('meta[name="api-token"]');
+                token = document.head.querySelector('meta[name="csrf-token"]');
 
+                if (token && api_token) {
+                  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+                  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+                } else {
+                  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+                }
+
+                _context.prev = 4;
+                _context.next = 7;
+                return axios.post('http://localhost/pr2/api/actualizar', {
+                  c0: this.state.c0,
+                  c1: this.state.c1,
+                  c2: this.state.c2,
+                  c3: this.state.c3,
+                  s1: this.state.s1,
+                  s2: this.state.s2,
+                  f: this.state.f,
+                  campeon: this.state.campeon
+                });
+
+              case 7:
+                response = _context.sent;
+                console.log('Returned data:', response);
+                localStorage.clear();
+                _context.next = 15;
+                break;
+
+              case 12:
+                _context.prev = 12;
+                _context.t0 = _context["catch"](4);
+                console.log('axios request failed:', _context.t0);
+
+              case 15:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[4, 12]]);
+      }));
+
+      function actualizar(_x) {
+        return _actualizar.apply(this, arguments);
+      }
+
+      return actualizar;
+    }()
+  }, {
+    key: "eliminar",
+    value: function () {
+      var _eliminar = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
+        var api_token, token, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log("actualizar : ");
+                api_token = document.querySelector('meta[name="api-token"]');
+                token = document.head.querySelector('meta[name="csrf-token"]');
+
+                if (token && api_token) {
+                  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+                  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+                } else {
+                  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+                }
+
+                _context2.prev = 4;
+                _context2.next = 7;
+                return axios.post('http://localhost/pr2/api/eliminarpronostico', {
+                  pronostico: this.state.pronostico,
+                  c0: this.state.c0.id,
+                  c1: this.state.c1.id,
+                  c2: this.state.c2.id,
+                  c3: this.state.c3.id,
+                  s1: this.state.s1.id,
+                  s2: this.state.s2.id,
+                  f: this.state.f.id,
+                  campeon: this.state.campeon.id
+                });
+
+              case 7:
+                response = _context2.sent;
+                console.log('Returned data:', response);
+                _context2.next = 14;
+                break;
+
+              case 11:
+                _context2.prev = 11;
+                _context2.t0 = _context2["catch"](4);
+                console.log('axios request failed:', _context2.t0);
+
+              case 14:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[4, 11]]);
+      }));
+
+      function eliminar(_x2) {
+        return _eliminar.apply(this, arguments);
+      }
+
+      return eliminar;
+    }()
   }]);
 
   return Perfil;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
 
@@ -68568,73 +68938,155 @@ function (_Component) {
       pronost: null
     });
 
-    _defineProperty(_assertThisInitialized(_this), "nombre", function (newnombre) {
-      _this.setState({
-        nombre: newnombre
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "setJugador", function (newjugador, i) {
-      if (i == 0) _this.setState({
-        c0j1: newjugador
-      });
-      if (i == 2) _this.setState({
-        c0j2: newjugador
-      });
-      if (i == 3) _this.setState({
-        c1j2: newjugador
-      });
-      if (i == 1) _this.setState({
-        c1j1: newjugador
-      });
-      if (i == 4) _this.setState({
-        c2j1: newjugador
-      });
-      if (i == 5) _this.setState({
-        c3j1: newjugador
-      });
-      if (i == 6) _this.setState({
-        c2j2: newjugador
-      });
-      if (i == 7) _this.setState({
-        c3j2: newjugador
-      });
+      if (i == 0) {
+        _this.setState({
+          c0j1: newjugador
+        });
+
+        localStorage.setItem("c0j1", JSON.stringify(newjugador));
+      }
+
+      if (i == 2) {
+        _this.setState({
+          c0j2: newjugador
+        });
+
+        localStorage.setItem("c0j2", JSON.stringify(newjugador));
+      }
+
+      if (i == 3) {
+        _this.setState({
+          c1j2: newjugador
+        });
+
+        localStorage.setItem("c1j2", JSON.stringify(newjugador));
+      }
+
+      if (i == 1) {
+        _this.setState({
+          c1j1: newjugador
+        });
+
+        localStorage.setItem("c1j1", JSON.stringify(newjugador));
+      }
+
+      if (i == 4) {
+        _this.setState({
+          c2j1: newjugador
+        });
+
+        localStorage.setItem("c2j1", JSON.stringify(newjugador));
+      }
+
+      if (i == 5) {
+        _this.setState({
+          c3j1: newjugador
+        });
+
+        localStorage.setItem("c3j1", JSON.stringify(newjugador));
+      }
+
+      if (i == 6) {
+        _this.setState({
+          c2j2: newjugador
+        });
+
+        localStorage.setItem("c2j2", JSON.stringify(newjugador));
+      }
+
+      if (i == 7) {
+        _this.setState({
+          c3j2: newjugador
+        });
+
+        localStorage.setItem("c3j2", JSON.stringify(newjugador));
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "setJugadorSemi", function (newjugador, i) {
-      if (i == 0) _this.setState({
-        s1j1: newjugador
-      });
-      if (i == 2) _this.setState({
-        s1j2: newjugador
-      });
-      if (i == 3) _this.setState({
-        s2j2: newjugador
-      });
-      if (i == 1) _this.setState({
-        s2j1: newjugador
-      });
+      if (i == 0) {
+        _this.setState({
+          s1j1: newjugador
+        });
+
+        localStorage.setItem("s1j1", JSON.stringify(newjugador));
+      }
+
+      if (i == 2) {
+        _this.setState({
+          s1j2: newjugador
+        });
+
+        localStorage.setItem("s1j2", JSON.stringify(newjugador));
+      }
+
+      if (i == 3) {
+        _this.setState({
+          s2j2: newjugador
+        });
+
+        localStorage.setItem("s2j2", JSON.stringify(newjugador));
+      }
+
+      if (i == 1) {
+        _this.setState({
+          s2j1: newjugador
+        });
+
+        localStorage.setItem("s2j1", JSON.stringify(newjugador));
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "setJugadorFinal", function (newjugador, i) {
-      if (i == 1) _this.setState({
-        j1: newjugador
-      });
-      if (i == 2) _this.setState({
-        j2: newjugador
-      });
+      if (i == 1) {
+        _this.setState({
+          j1: newjugador
+        });
+
+        localStorage.setItem("j1", JSON.stringify(newjugador));
+      }
+
+      if (i == 2) {
+        _this.setState({
+          j2: newjugador
+        });
+
+        localStorage.setItem("j2", JSON.stringify(newjugador));
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "setCampeon", function (newjugador) {
       _this.setState({
         campeon: newjugador
       });
+
+      localStorage.setItem("campeon", JSON.stringify(newjugador));
     });
 
     return _this;
   }
 
   _createClass(Playoffs, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      for (var key in this.state) {
+        // if the key exists in localStorage
+        if (localStorage.hasOwnProperty(key)) {
+          // get the key's value from localStorage
+          var value = localStorage.getItem(key); // parse the localStorage string and setState
+
+          try {
+            value = JSON.parse(value);
+            this.setState(_defineProperty({}, key, value));
+          } catch (e) {
+            // handle empty string
+            this.setState(_defineProperty({}, key, value));
+          }
+        }
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -68793,29 +69245,25 @@ function (_Component) {
         i: 7,
         setJugador: this.setJugador
       }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row header texto-final justify-content-center align-items-center minh-100"
+        className: "row  texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2  justify-content-center align-items-center minh-100 "
+        className: "col-4  justify-content-center align-items-center minh-100 "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
         jugadorFinal: this.state.j1,
         setJugador: this.setCampeon
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2  justify-content-center align-items-center minh-100"
+        className: "col-4  justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
         jugadorFinal: this.state.j2,
         setJugador: this.setCampeon
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row header texto-final justify-content-center align-items-center minh-100"
+        className: "row  texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, " ", this.state.campeon.nombre, "  ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -68827,7 +69275,12 @@ function (_Component) {
           return _this2.handleCuartos();
         }
       }, "Guardar")));
-    }
+    } // nombre = (newnombre) => {
+    //     this.setState({
+    //         nombre: newnombre
+    //     });
+    // }
+
   }, {
     key: "handleCuartos",
     value: function () {
@@ -68847,7 +69300,7 @@ function (_Component) {
                 pro = this.state.pronost.id;
 
                 if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context.next = 17;
+                  _context.next = 18;
                   break;
                 }
 
@@ -68882,21 +69335,22 @@ function (_Component) {
 
               case 10:
                 response = _context.sent;
+                localStorage.clear();
                 console.log('Returned data:', response);
-                _context.next = 17;
+                _context.next = 18;
                 break;
 
-              case 14:
-                _context.prev = 14;
+              case 15:
+                _context.prev = 15;
                 _context.t0 = _context["catch"](7);
                 console.log('axios request failed:', _context.t0);
 
-              case 17:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[7, 14]]);
+        }, _callee, this, [[7, 15]]);
       }));
 
       function handleCuartos() {
@@ -69262,6 +69716,7 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      console.log("pronostico.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       var token = document.head.querySelector('meta[name="csrf-token"]');
       var miInit = {
@@ -69280,32 +69735,30 @@ function (_Component) {
     }
   }, {
     key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps() {
-      var _this3 = this;
-
-      var api_token = document.querySelector('meta[name="api-token"]');
-      var token = document.head.querySelector('meta[name="csrf-token"]');
-      var miInit = {
-        headers: {
-          'X-CSRF-TOKEN': token.content,
-          'Authorization': 'Bearer ' + api_token.content
-        }
-      };
-      fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
-        return res.json();
-      }).then(function (json) {
-        if (json != null) _this3.setState({
-          items: json.items
-        });
-      });
+    value: function componentWillReceiveProps() {// let api_token = document.querySelector('meta[name="api-token"]');
+      // let token = document.head.querySelector('meta[name="csrf-token"]');
+      // var miInit = {
+      //     headers: {
+      //         'X-CSRF-TOKEN': token.content,
+      //         'Authorization': 'Bearer ' + api_token.content
+      //     }
+      // }
+      // fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
+      //     .then(res => res.json())
+      //     .then(json => {
+      //         if (json != null)
+      //             this.setState({
+      //                 items: json.items,
+      //             })
+      //     });
     }
   }, {
     key: "handlePronosticos",
     value: function () {
       var _handlePronosticos = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
-        var _this4 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this3 = this;
 
         var selectBox, selectedValue;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -69321,22 +69774,22 @@ function (_Component) {
                   fetch('http://localhost/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props.cuartos0(json.items[0]), _this4.props.cuartos1(json.items[1]), _this4.props.cuartos2(json.items[2]), _this4.props.cuartos3(json.items[3]);
+                    _this3.props.cuartos0(json.items[0]), _this3.props.cuartos1(json.items[1]), _this3.props.cuartos2(json.items[2]), _this3.props.cuartos3(json.items[3]);
                   });
                   fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props.semis1(json.items[0]), _this4.props.semis2(json.items[1]);
+                    _this3.props.semis1(json.items[0]), _this3.props.semis2(json.items[1]);
                   });
                   fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props["final"](json.items[0]);
+                    _this3.props["final"](json.items[0]);
                   });
                   fetch('http://localhost/pr2/api/pronostico/0/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props.campeon(json.items[0]);
+                    _this3.props.campeon(json.items[0]);
                   });
                 }
 
@@ -69348,7 +69801,7 @@ function (_Component) {
         }, _callee, this);
       }));
 
-      function handlePronosticos(_x) {
+      function handlePronosticos() {
         return _handlePronosticos.apply(this, arguments);
       }
 
@@ -69357,7 +69810,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       var i = "";
       var items = this.state.items;
@@ -69382,7 +69835,7 @@ function (_Component) {
         className: "form-control",
         id: "selectBox",
         onChange: function onChange(e) {
-          return _this5.handlePronosticos(e);
+          return _this4.handlePronosticos();
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null, " "), i))));
     }
@@ -69566,22 +70019,34 @@ function (_Component) {
       var _this2 = this;
 
       var jugador1Nombre = "";
+      var pais2 = "";
+      var pais1 = "";
       var jugadorAbre1 = "";
       var jugadorAbre2 = "";
       var jugador2Nombre = "";
 
-      if (this.props.jugador1 != null) {
+      if (this.props.jugador1.nombre != null) {
         jugador1Nombre = this.props.jugador1.nombre;
         jugadorAbre1 = this.props.jugador1.abrev;
+        pais1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.jugador1.pais + ".png"
+        });
       }
 
-      if (this.props.jugador2 != null) {
+      if (this.props.jugador2.nombre != null) {
         jugador2Nombre = this.props.jugador2.nombre;
         jugadorAbre2 = this.props.jugador2.abrev;
+        pais2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.jugador2.pais + ".png"
+        });
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 jugador"
+      }, pais1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "juno" + this.props.i,
@@ -69589,7 +70054,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
-      }, jugador1Nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, jugador1Nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "junoabre" + this.props.i,
         className: "btn btn-light jugadorabre",
@@ -69598,6 +70063,10 @@ function (_Component) {
         }
       }, jugadorAbre1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2 jugador"
+      }, pais2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdos" + this.props.i,
@@ -69605,7 +70074,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
         }
-      }, jugador2Nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, jugador2Nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdosabre" + this.props.i,
         className: "btn btn-light jugadorabre",

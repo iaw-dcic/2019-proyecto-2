@@ -29,7 +29,25 @@ export default class Playoffs extends Component {
         pronost: null
     };
 
+    componentWillMount() {
+        for (let key in this.state) {
+            // if the key exists in localStorage
+            if (localStorage.hasOwnProperty(key)) {
+                // get the key's value from localStorage
+                let value = localStorage.getItem(key);
 
+                // parse the localStorage string and setState
+                try {
+                    value = JSON.parse(value);
+                    this.setState({ [key]: value });
+                } catch (e) {
+                    // handle empty string
+                    this.setState({ [key]: value });
+                }
+            }
+
+        }
+    }
 
 
     render() {
@@ -216,26 +234,27 @@ export default class Playoffs extends Component {
                 </div>
 
             </div>
-            <div className="row header texto-final justify-content-center align-items-center minh-100">
+            <div className="row  texto-final justify-content-center align-items-center minh-100">
                 <h3> FINAL MASTER 1000 </h3>
             </div>
             <div className="row justify-content-center align-items-center minh-100">
+
                 <div className="col-2"></div>
-                <div className="col-2"></div>
-                <div className="col-2  justify-content-center align-items-center minh-100 ">
+                <div className="col-4  justify-content-center align-items-center minh-100 ">
                     <Final jugadorFinal={this.state.j1} setJugador={this.setCampeon} />
                 </div>
-                <div className="col-2  justify-content-center align-items-center minh-100">
+                <div className="col-4  justify-content-center align-items-center minh-100">
                     <Final jugadorFinal={this.state.j2} setJugador={this.setCampeon} />
                 </div>
                 <div className="col-2"></div>
-                <div className="col-2"></div>
+
             </div>
 
-            <div className="row header texto-final justify-content-center align-items-center minh-100">
+            <div className="row  texto-final justify-content-center align-items-center minh-100">
                 <h3> CAMPEON </h3>
             </div>
             <div className="row texto-final justify-content-center align-items-center minh-100">
+
                 <h4> {this.state.campeon.nombre}  </h4>
             </div>
 
@@ -249,91 +268,118 @@ export default class Playoffs extends Component {
         </div >
 
     }
-    nombre = (newnombre) => {
-        this.setState({
-            nombre: newnombre
-        });
-    }
+    // nombre = (newnombre) => {
+    //     this.setState({
+    //         nombre: newnombre
+    //     });
+
+    // }
     setJugador = (newjugador, i) => {
 
-        if (i == 0)
+        if (i == 0) {
             this.setState({
                 c0j1: newjugador
             });
-        if (i == 2)
+            localStorage.setItem("c0j1", JSON.stringify(newjugador));
+        }
+        if (i == 2) {
             this.setState({
                 c0j2: newjugador
             });
-        if (i == 3)
+            localStorage.setItem("c0j2", JSON.stringify(newjugador));
+        }
+        if (i == 3) {
             this.setState({
                 c1j2: newjugador
             });
-        if (i == 1)
+            localStorage.setItem("c1j2", JSON.stringify(newjugador));
+        }
+        if (i == 1) {
             this.setState({
                 c1j1: newjugador
             });
-        if (i == 4)
+            localStorage.setItem("c1j1", JSON.stringify(newjugador));
+        }
+        if (i == 4) {
             this.setState({
                 c2j1: newjugador
             });
-        if (i == 5)
+            localStorage.setItem("c2j1", JSON.stringify(newjugador));
+
+        }
+        if (i == 5) {
             this.setState({
                 c3j1: newjugador
             });
-        if (i == 6)
+            localStorage.setItem("c3j1", JSON.stringify(newjugador));
+
+        }
+        if (i == 6) {
             this.setState({
                 c2j2: newjugador
             });
-        if (i == 7)
+            localStorage.setItem("c2j2", JSON.stringify(newjugador));
+        }
+        if (i == 7) {
             this.setState({
                 c3j2: newjugador
             });
+            localStorage.setItem("c3j2", JSON.stringify(newjugador));
+
+        }
     }
     setJugadorSemi = (newjugador, i) => {
 
-        if (i == 0)
+        if (i == 0) {
             this.setState({
                 s1j1: newjugador
             });
-        if (i == 2)
+            localStorage.setItem("s1j1", JSON.stringify(newjugador));
+        }
+        if (i == 2) {
             this.setState({
                 s1j2: newjugador
             });
-        if (i == 3)
+            localStorage.setItem("s1j2", JSON.stringify(newjugador));
+        }
+        if (i == 3) {
             this.setState({
                 s2j2: newjugador
             });
-        if (i == 1)
+            localStorage.setItem("s2j2", JSON.stringify(newjugador));
+        }
+        if (i == 1) {
             this.setState({
                 s2j1: newjugador
             });
-
+            localStorage.setItem("s2j1", JSON.stringify(newjugador));
+        }
     }
     setJugadorFinal = (newjugador, i) => {
 
-        if (i == 1)
+        if (i == 1) {
             this.setState({
                 j1: newjugador
             });
-        if (i == 2)
+            localStorage.setItem("j1", JSON.stringify(newjugador));
+        }
+        if (i == 2) {
             this.setState({
                 j2: newjugador
             });
-
-
+            localStorage.setItem("j2", JSON.stringify(newjugador));
+        }
     }
     setCampeon = (newjugador) => {
 
         this.setState({
             campeon: newjugador
         });
-
+        localStorage.setItem("campeon", JSON.stringify(newjugador));
     }
 
     async handleCuartos() {
         await this.addPronostico();
-
-
 
         console.log("hanle cuartos : " + this.state.pronost.id);
         var pro = this.state.pronost.id;
@@ -372,6 +418,7 @@ export default class Playoffs extends Component {
                     f2: this.state.j2.id,
                     campeon: this.state.campeon.id,
                 });
+                localStorage.clear();
                 console.log('Returned data:', response);
             } catch (e) {
                 console.log('axios request failed:', e);

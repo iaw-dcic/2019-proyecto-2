@@ -7,8 +7,8 @@ export default class Perfil extends Component {
         pOctavos0: [], pOctavos1: [], pOctavos2: [], pOctavos3: [], pOctavos4: [], pOctavos5: [], pOctavos6: [], pOctavos7: [],
         c0: [], c1: [], c2: [], c3: [],
         s1: [], s2: [],
-        j1: [], j2: [],
-        campeon: [],
+        f: [],
+        champion: [],
         pronostico: 0,
         load: "false"
     }
@@ -21,46 +21,86 @@ export default class Perfil extends Component {
     }
     //metodos para que pronostico setee
     cuartos0 = (cuart) => {
-        this.setState({
-            c0: cuart,
+        if (localStorage.hasOwnProperty("c0")) {
+            let value = localStorage.getItem("c0");
+            value = JSON.parse(value);
+            this.setState({ c0: value });
+        } else
+                this.setState({
+                    c0: cuart,
 
-        })
+                })
     }
     cuartos1 = (cuart) => {
-        this.setState({
-            c1: cuart
-        })
+        if (localStorage.hasOwnProperty("c1")) {
+            let value = localStorage.getItem("c1");
+            value = JSON.parse(value);
+            this.setState({ c1: value });
+        } else
+                this.setState({
+                    c1: cuart
+                })
     }
     cuartos2 = (cuart) => {
-        this.setState({
-            c2: cuart
-        })
+        if (localStorage.hasOwnProperty("c2")) {
+            let value = localStorage.getItem("c2");
+            value = JSON.parse(value);
+            this.setState({ c2: value });
+        } else
+                this.setState({
+                    c2: cuart
+                })
     }
     cuartos3 = (cuart) => {
-        this.setState({
-            c3: cuart
-        })
+        if (localStorage.hasOwnProperty("c3")) {
+            let value = localStorage.getItem("c3");
+            value = JSON.parse(value);
+            this.setState({ c3: value });
+        } else
+                this.setState({
+                    c3: cuart
+                })
     }
     semis1 = (semi) => {
-        this.setState({
-            s1: semi
-        })
+        if (localStorage.hasOwnProperty("s1")) {
+            let value = localStorage.getItem("s1");
+            value = JSON.parse(value);
+            this.setState({ s1: value });
+        } else
+            this.setState({
+                s1: semi
+            })
     }
     semis2 = (semi) => {
-        this.setState({
-            s2: semi
-        })
+        if (localStorage.hasOwnProperty("s2")) {
+            let value = localStorage.getItem("s2");
+            value = JSON.parse(value);
+            this.setState({ s2: value });
+        } else
+            this.setState({
+                s2: semi
+            })
     }
-    final = (f) => {
-        this.setState({
-            j1: f.jugador_uno,
-            j2: f.jugador_dos,
-        })
+    final = (fi) => {
+        if (localStorage.hasOwnProperty("f")) {
+            let value = localStorage.getItem("f");
+            value = JSON.parse(value);
+            this.setState({ f: value });
+        } else
+            this.setState({
+                f: fi
+            })
+
     }
     champion = (c) => {
-        this.setState({
-            campeon: c.jugador_uno,
-        })
+        if (localStorage.hasOwnProperty("champion")) {
+            let value = localStorage.getItem("champion");
+            value = JSON.parse(value);
+            this.setState({ champion: value });
+        } else
+            this.setState({
+                champion: c,
+            })
     }
     //cargo los octavos de partidos
     componentWillMount() {
@@ -78,9 +118,11 @@ export default class Perfil extends Component {
                     pOctavos7: json.items[7],
                 })
             });
+
     }
 
     render() {
+
         var oct01 = ""; var oct02 = ""; var oct11 = ""; var oct12 = ""; var oct21 = ""; var oct22 = "";
         var oct31 = ""; var oct32 = ""; var oct31 = ""; var oct32 = ""; var oct41 = ""; var oct42 = "";
         var oct51 = ""; var oct52 = ""; var oct61 = ""; var oct62 = ""; var oct71 = ""; var oct72 = "";
@@ -128,15 +170,13 @@ export default class Perfil extends Component {
             sem12 = this.state.s2.jugador_dos;
         }
         var f1 = ""; var f2 = "";
-        if (this.state.j1 != null) {
-            f1 = this.state.j1;
-        }
-        if (this.state.j2 != null) {
-            f2 = this.state.j2;
+        if (this.state.f != null && this.state.f.jugador_dos != null) {
+            f1 = this.state.f.jugador_uno;
+            f2 = this.state.f.jugador_dos;
         }
         var camp = "";
-        if (this.state.campeon != null) {
-            camp = this.state.campeon;
+        if (this.state.champion != null && this.state.champion.jugador_uno != null) {
+            camp = this.state.champion.jugador_uno;
         }
         return <div id="contenedor">
             <Pronostico setPronostico={this.setPronostico} agregarProno={this.props.agregaProno}
@@ -162,25 +202,28 @@ export default class Perfil extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                                <td >
+                                <td ><img src={oct01.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc0(oct01, e)}>{oct01.nombre}</button>
                                     <br></br>
+                                    <img src={oct02.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc0(oct02, e)}>{oct02.nombre}</button>
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >
+                                <td ><img src={oct11.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc1(oct11, e)}>{oct11.nombre}</button>
                                     <br></br>
+                                    <img src={oct12.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc1(oct12, e)}>{oct12.nombre}</button>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td ></td>
-                                <td><button className="btn btn-light" onClick={(e) => this.handleC0(cuar01, e)} >{cuar01.nombre}</button><br></br>
+                                <td>
+                                    <button className="btn btn-light" onClick={(e) => this.handleC0(cuar01, e)} >{cuar01.nombre}</button><br></br>
                                     <button className="btn btn-light" onClick={(e) => this.handleC0(cuar02, e)}>  {cuar02.nombre}</button>
                                 </td>
                                 <td></td>
@@ -192,37 +235,40 @@ export default class Perfil extends Component {
                             </tr>
 
                             <tr>
-                                <td >
+                                <td ><img src={oct21.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc2(oct21, e)}>{oct21.nombre}</button>
                                     <br></br>
+                                    <img src={oct22.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc2(oct22, e)}>{oct22.nombre}</button>
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >
+                                <td ><img src={oct31.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc3(oct31, e)}>{oct31.nombre}</button>
                                     <br></br>
+                                    <img src={oct32.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc3(oct32, e)}>{oct32.nombre}</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td > </td>
                                 <td></td>
-                                <td><button className="btn btn-light">{sem01.nombre}</button><br></br>
-                                    <button className="btn btn-light">  {sem02.nombre}</button>
+                                <td><button className="btn btn-light" onClick={(e) => this.handleS1(sem01, e)}>{sem01.nombre}</button><br></br>
+                                    <button className="btn btn-light" onClick={(e) => this.handleS1(sem02, e)}>  {sem02.nombre}</button>
                                 </td>
-                                <td><button className="btn btn-light">{sem11.nombre}</button><br></br>
-                                    <button className="btn btn-light">  {sem12.nombre}</button>
+                                <td><button className="btn btn-light" onClick={(e) => this.handleS2(sem11, e)}>{sem11.nombre}</button><br></br>
+                                    <button className="btn btn-light" onClick={(e) => this.handleS2(sem12, e)}>  {sem12.nombre}</button>
                                 </td>
                                 <td></td>
                                 <td>    </td>
                             </tr>
                             <tr>
-                                <td >
+                                <td ><img src={oct41.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc4(oct41, e)}>{oct41.nombre}</button>
                                     <br></br>
+                                    <img src={oct42.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc4(oct42, e)}>{oct42.nombre}</button>
                                 </td>
                                 <td></td>
@@ -230,8 +276,10 @@ export default class Perfil extends Component {
                                 <td></td>
                                 <td></td>
                                 <td >
+                                    <img src={oct51.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc5(oct51, e)}>{oct51.nombre}</button>
                                     <br></br>
+                                    <img src={oct52.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc5(oct52, e)}>{oct52.nombre}</button>
                                 </td>
                             </tr>
@@ -252,19 +300,21 @@ export default class Perfil extends Component {
                             </tr>
 
                             <tr>
-                                <td >
+                                <td ><img src={oct61.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc6(oct61, e)}>{oct61.nombre}</button>
                                     <br></br>
+                                    <img src={oct62.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc6(oct62, e)}>{oct62.nombre}</button>
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >
+                                <td ><img src={oct71.pais + ".png"}></img>
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc7(oct71, e)}>{oct71.nombre}</button>
                                     <br></br>
-                                    <button className="btn btn-light-grey" onClick={(e) => this.handleOc7(oct71, e)}>{oct72.nombre}</button>
+                                    <img src={oct72.pais + ".png"}></img>
+                                    <button className="btn btn-light-grey" onClick={(e) => this.handleOc7(oct72, e)}>{oct72.nombre}</button>
                                 </td>
                             </tr>
 
@@ -279,10 +329,10 @@ export default class Perfil extends Component {
                     <div className="col-2"></div>
                     <div className="col-2"></div>
                     <div className="col-2  justify-content-center align-items-center minh-100 ">
-                        <button className="btn btn-light"> {f1.nombre}</button>
+                        <button className="btn btn-light" onClick={(e) => this.handleCampeon(f1, e)}> {f1.nombre}</button>
                     </div>
                     <div className="col-2  justify-content-center align-items-center minh-100">
-                        <button className="btn btn-light"> {f2.nombre} </button>
+                        <button className="btn btn-light" onClick={(e) => this.handleCampeon(f2, e)}> {f2.nombre} </button>
                     </div>
                     <div className="col-2"></div>
                     <div className="col-2"></div>
@@ -297,14 +347,55 @@ export default class Perfil extends Component {
 
             </div>
             <div className="row">
-                <button className="btn btn-primary">Guardar</button>
-                <button className="btn btn-primary">Eliminar</button>
+                <button className="btn btn-primary" onClick={(e) => this.actualizar(e)}>Guardar</button>
+                <button className="btn btn-primary" onClick={(e) => this.eliminar(e)}>Eliminar</button>
             </div>
 
         </div >
 
     }
-
+    handleS1 = (newP, e) => {
+        this.setState(({ f }) => ({
+            f: {
+                ...f,
+                jugador_uno: newP,
+            }
+        })
+            , () => {
+                this.setState({ load: true })
+            });
+        const final = this.state.f;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("f", JSON.stringify(final));
+    }
+    handleS2 = (newP, e) => {
+        this.setState(({ f }) => ({
+            f: {
+                ...f,
+                jugador_dos: newP,
+            }
+        })
+            , () => {
+                this.setState({ load: true })
+            });
+        const final = this.state.f;
+        final["jugador_dos"] = newP;
+        localStorage.setItem("f", JSON.stringify(final));
+    }
+    handleCampeon = (newP, e) => {
+        this.setState(({ champion }) => ({
+            champion: {
+                ...champion,
+                jugador_uno: newP,
+            }
+        })
+            , () => {
+                this.setState({ load: true })
+            });
+        const final = this.state.champion;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("champion", JSON.stringify(final));
+    }
     //se encarga de cambiar el pronostico de la semi
     handleC0 = (newP, e) => {
         this.setState(({ s1 }) => ({
@@ -316,16 +407,22 @@ export default class Perfil extends Component {
             , () => {
                 this.setState({ load: true })
             });
+        const final = this.state.s1;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("s1", JSON.stringify(final));
     }
     handleC1 = (newP, e) => {
         this.setState(({ s2 }) => ({
-            s1: {
+            s2: {
                 ...s2,
                 jugador_uno: newP,
             }
         }), () => {
             this.setState({ load: true })
         });
+        const final = this.state.s2;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("s2", JSON.stringify(final));
     }
     handleC2 = (newP, e) => {
         this.setState(({ s1 }) => ({
@@ -336,6 +433,9 @@ export default class Perfil extends Component {
         }), () => {
             this.setState({ load: true })
         });
+        const final = this.state.s1;
+        final["jugador_dos"] = newP;
+        localStorage.setItem("s1", JSON.stringify(final));
     }
     handleC3 = (newP, e) => {
         this.setState(({ s2 }) => ({
@@ -346,6 +446,9 @@ export default class Perfil extends Component {
         }), () => {
             this.setState({ load: true })
         });
+        const final = this.state.s2;
+        final["jugador_dos"] = newP;
+        localStorage.setItem("s2", JSON.stringify(final));
     }
     handleOc0 = (newP, e) => {
         this.setState(({ c0 }) => ({
@@ -356,6 +459,9 @@ export default class Perfil extends Component {
         }), () => {
             this.setState({ load: true })
         });
+        const final = this.state.c0;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("c0", JSON.stringify(final));
     }
     handleOc1 = (newP, e) => {
         this.setState(({ c1 }) => ({
@@ -366,6 +472,9 @@ export default class Perfil extends Component {
         }), () => {
             this.setState({ load: true })
         });
+        const final = this.state.c1;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("c1", JSON.stringify(final));
     }
     handleOc2 = (newP, e) => {
         this.setState(({ c0 }) => ({
@@ -376,6 +485,9 @@ export default class Perfil extends Component {
         }), () => {
             this.setState({ load: true })
         });
+        const final = this.state.c0;
+        final["jugador_dos"] = newP;
+        localStorage.setItem("c0", JSON.stringify(final));
     }
     handleOc3 = (newP, e) => {
         this.setState(({ c1 }) => ({
@@ -386,6 +498,9 @@ export default class Perfil extends Component {
         }), () => {
             this.setState({ load: true })
         });
+        const final = this.state.c1;
+        final["jugador_dos"] = newP;
+        localStorage.setItem("c1", JSON.stringify(final));
     }
     handleOc4 = (newP, e) => {
         this.setState(({ c2 }) => ({
@@ -394,8 +509,12 @@ export default class Perfil extends Component {
                 jugador_uno: newP,
             }
         }), () => {
-            this.setState({ load: true })
+            this.setState({ load: true });
+
         });
+        const final = this.state.c2;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("c2", JSON.stringify(final));
     }
     handleOc5 = (newP, e) => {
         this.setState(({ c3 }) => ({
@@ -404,8 +523,12 @@ export default class Perfil extends Component {
                 jugador_uno: newP,
             }
         }), () => {
-            this.setState({ load: true })
+            this.setState({ load: true });
+
         });
+        const final = this.state.c3;
+        final["jugador_uno"] = newP;
+        localStorage.setItem("c3", JSON.stringify(final));
     }
     handleOc6 = (newP, e) => {
         this.setState(({ c2 }) => ({
@@ -414,8 +537,12 @@ export default class Perfil extends Component {
                 jugador_dos: newP,
             }
         }), () => {
-            this.setState({ load: true })
+            this.setState({ load: true });
         });
+        const final = this.state.c2;
+        final["jugador_dos"] = newP;
+        localStorage.setItem("c2", JSON.stringify(final));
+
     }
     handleOc7 = (newP, e) => {
         this.setState(({ c3 }) => ({
@@ -424,8 +551,79 @@ export default class Perfil extends Component {
                 jugador_dos: newP,
             }
         }), () => {
-            this.setState({ load: true })
+            this.setState({ load: true });
+            const final = this.state.c3;
+            final["jugador_dos"] = newP;
+            localStorage.setItem("c3", JSON.stringify(final));
         });
+
+
+    }
+    async actualizar(e) {
+
+        console.log("actualizar : ");
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+
+        if (token && api_token) {
+            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+            window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+        } else {
+            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+        }
+        try {
+            const response = await axios.post('http://localhost/pr2/api/actualizar', {
+                c0: this.state.c0,
+                c1: this.state.c1,
+                c2: this.state.c2,
+                c3: this.state.c3,
+                s1: this.state.s1,
+                s2: this.state.s2,
+                f: this.state.f,
+                campeon: this.state.campeon,
+            });
+            console.log('Returned data:', response);
+            localStorage.clear();
+        } catch (e) {
+            console.log('axios request failed:', e);
+        }
+
+
     }
 
+    async eliminar(e) {
+
+        console.log("actualizar : ");
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+
+        if (token && api_token) {
+            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+            window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+        } else {
+            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+        }
+
+
+        try {
+            const response = await axios.post('http://localhost/pr2/api/eliminarpronostico', {
+                pronostico: this.state.pronostico,
+                c0: this.state.c0.id,
+                c1: this.state.c1.id,
+                c2: this.state.c2.id,
+                c3: this.state.c3.id,
+                s1: this.state.s1.id,
+                s2: this.state.s2.id,
+                f: this.state.f.id,
+                campeon: this.state.campeon.id,
+            });
+            console.log('Returned data:', response);
+        } catch (e) {
+            console.log('axios request failed:', e);
+        }
+
+
+    }
 }

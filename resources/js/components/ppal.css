@@ -2,3 +2,18 @@
 li{
     color:black;
 }
+.navbar-dark .navbar-brand {
+    color: #000000;
+}
+a{
+    color:#024e8d;
+}
+
+
+.nav-link> a{
+    color:black;
+}
+.btn-primary{
+    color:black;
+}
+ 
