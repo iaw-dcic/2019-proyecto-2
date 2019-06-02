@@ -28,7 +28,7 @@ export default class Prode extends Component {
         return response.json();
       })
       .then(equipos => {
-        console.log("sarasa")
+        // console.log("sarasa")
         this.setState({ idPartido: this.props.match.params.listaId || '', equipos }, () => this.inicializarPartidos(partidosEnLS));
       });
   }
@@ -55,54 +55,61 @@ export default class Prode extends Component {
 
   inicializarPartidosNormal = () => {
     var partidos = { ...this.state.partidos };
-    partidos = [];
-    var equiposDup = [... this.state.equipos];
-    var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
-    var arregloDerecha = equiposDup;
-    var partidoCuartos = arregloIzquierda.map(equipo => {
-      let cuartos = {
-        numero_partido: equipo.id,
-        etapa: "cuartos",
-        equipo1: equipo.nombre_equipo,
-        equipo2: arregloDerecha[equipo.id].nombre_equipo,
-        boton1: false,
-        boton2: false,
-        resultado1: 0,
-        resultado2: 0,
-      }
-      partidos.push(cuartos);
-    })
-    //console.log("ENTRO");
+    axios.get("/partidos/1").then(response => {
+      partidos = response["data"];
+      this.setState({ partidos });
+    }).catch(error => {
+      console.log("this is error", error);
+    });
 
-    //Agregar semifinales
-    var id = 4;
-    for (var i = 0; i < 2; i++) {
-      let semifinal = {
-        numero_partido: id++,
-        etapa: "semifinal",
-        equipo1: "N/A",
-        equipo2: "N/A",
-        boton1: false,
-        boton2: false,
-        resultado1: 0,
-        resultado2: 0,
-      }
-      partidos.push(semifinal);
-    }
+    // partidos = [];
+    // var equiposDup = [... this.state.equipos];
+    // var arregloIzquierda = equiposDup.splice(0, Math.floor(equiposDup.length / 2));
+    // var arregloDerecha = equiposDup;
+    // var partidoCuartos = arregloIzquierda.map(equipo => {
+    //   let cuartos = {
+    //     numero_partido: equipo.id,
+    //     etapa: "cuartos",
+    //     equipo1: equipo.nombre_equipo,
+    //     equipo2: arregloDerecha[equipo.id].nombre_equipo,
+    //     boton1: false,
+    //     boton2: false,
+    //     resultado1: 0,
+    //     resultado2: 0,
+    //   }
+    //   partidos.push(cuartos);
+    // })
+    // //console.log("ENTRO");
 
-    let final = {
-      numero_partido: 6,
-      etapa: "final",
-      equipo1: "N/A",
-      equipo2: "N/A",
-      boton1: false,
-      boton2: false,
-      resultado1: 0,
-      resultado2: 0,
-    }
-    partidos.push(final);
+    // //Agregar semifinales
+    // var id = 4;
+    // for (var i = 0; i < 2; i++) {
+    //   let semifinal = {
+    //     numero_partido: id++,
+    //     etapa: "semifinal",
+    //     equipo1: "N/A",
+    //     equipo2: "N/A",
+    //     boton1: false,
+    //     boton2: false,
+    //     resultado1: 0,
+    //     resultado2: 0,
+    //   }
+    //   partidos.push(semifinal);
+    // }
 
-    this.setState({ partidos });
+    // let final = {
+    //   numero_partido: 6,
+    //   etapa: "final",
+    //   equipo1: "N/A",
+    //   equipo2: "N/A",
+    //   boton1: false,
+    //   boton2: false,
+    //   resultado1: 0,
+    //   resultado2: 0,
+    // }
+    // partidos.push(final);
+
+    // this.setState({ partidos });
   }
 
   componentDidUpdate() {
