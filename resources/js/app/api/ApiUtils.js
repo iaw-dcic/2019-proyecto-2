@@ -3,21 +3,21 @@ import axios from "axios";
 const endpoint = 'http://prode-iaw.herokuapp.com';
 
 export async function login(email,password) {
-    try {
-        let res = await axios({
-            url: 'http://prode-iaw.herokuapp.com/api/login',
-            method: 'post',
-            timeout: 8000,
-            data: {
-                email: email,
-                password : password
-            }
-        })
 
-        return res.data
-    }
-    catch (err) {
-        console.log(`Error API , POST de login: ${e}`);
+    try {
+
+        let axiosConfig = {
+            headers: {
+            }
+        };
+
+        let response = await axios.post('http://prode-iaw.herokuapp.com/api/login' , {email: email,
+            password : password } , axiosConfig );
+
+        return response.data;
+
+    } catch (e) {
+        console.log(`Error API , POST de createProde: ${e}`);
     }
 }
 
