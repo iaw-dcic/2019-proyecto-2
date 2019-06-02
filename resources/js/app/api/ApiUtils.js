@@ -11,7 +11,7 @@ export async function login(email,password) {
             }
         };
 
-        let response = await axios.post('http://prode-iaw.herokuapp.com/api/login' , {email: email,
+        let response = await axios.post(endpoint + '/api/login' , {email: email,
             password : password } , axiosConfig );
 
         return response.data;
@@ -53,7 +53,7 @@ export async function getPartidos(prode_id,token){
             }
         };
 
-        let response = await axios.get(endpoint +`//api/prode/partidos/`+prode_id , axiosConfig);
+        let response = await axios.get(endpoint +`/api/prode/partidos/`+prode_id , axiosConfig);
 
         return response.data;
 
@@ -74,7 +74,7 @@ export async function getProdes(token){
             }
         };
 
-        let response = await axios.get(endpoint +`//api/prode/user` , axiosConfig);
+        let response = await axios.get(endpoint +`/api/prode/user` , axiosConfig);
 
         return response.data;
 
