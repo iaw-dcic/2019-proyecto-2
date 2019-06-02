@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const endpoint = 'http://prode-iaw.herokuapp.com';
+
 export async function login(email,password) {
     try {
         let res = await axios({
-            url: 'http://127.0.0.1:8000/api/login',
+            url: endpoint+'/api/login',
             method: 'post',
             timeout: 8000,
             data: {
@@ -30,7 +32,7 @@ export async function logout(token){
             }
         };
 
-        let response = await axios.get(`http://127.0.0.1:8000/api/logout` , axiosConfig);
+        let response = await axios.get( endpoint +`/api/logout` , axiosConfig);
 
         return response.data;
 
@@ -51,7 +53,7 @@ export async function getPartidos(prode_id,token){
             }
         };
 
-        let response = await axios.get(`http://127.0.0.1:8000/api/prode/partidos/`+prode_id , axiosConfig);
+        let response = await axios.get(endpoint +`//api/prode/partidos/`+prode_id , axiosConfig);
 
         return response.data;
 
@@ -72,7 +74,7 @@ export async function getProdes(token){
             }
         };
 
-        let response = await axios.get(`http://127.0.0.1:8000/api/prode/user` , axiosConfig);
+        let response = await axios.get(endpoint +`//api/prode/user` , axiosConfig);
 
         return response.data;
 
@@ -93,7 +95,7 @@ export async function createProde(nombre,token){
             }
         };
 
-        let response = await axios.post('http://127.0.0.1:8000/api/prode/nuevo', {nombre : nombre} , axiosConfig );
+        let response = await axios.post( endpoint +'/api/prode/nuevo', {nombre : nombre} , axiosConfig );
 
         return response.data;
 
@@ -113,7 +115,7 @@ export async function saveProde(id,llaves,token){
             }
         };
 
-        let response = await axios.post('http://127.0.0.1:8000/api/prode/save', {id : id , llaves : llaves} , axiosConfig );
+        let response = await axios.post(endpoint +'/api/prode/save', {id : id , llaves : llaves} , axiosConfig );
 
         return response.data;
 
@@ -134,7 +136,7 @@ export async function deleteProde(id,token){
             }
         };
 
-        let response = await axios.post('http://127.0.0.1:8000/api/prode/delete', {id : id } , axiosConfig );
+        let response = await axios.post(endpoint +'/api/prode/delete', {id : id } , axiosConfig );
 
         return response.status;
 
