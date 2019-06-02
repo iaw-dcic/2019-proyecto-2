@@ -65798,10 +65798,10 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
     _this.state = {
-      remera: "/images/remeras/remerablanca.png",
-      talle: "",
+      remera: "colorBlanco",
+      talle: "XS",
       tela: "Algodon",
-      logo: null,
+      logo: "",
       telas: [],
       talles: [],
       colores: [],
@@ -65815,6 +65815,9 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
         _this2.setState({
           telas: response.data
@@ -65838,27 +65841,60 @@ function (_Component) {
 
       if (localStorage.hasOwnProperty('remera')) {
         var remeraAux = localStorage.getItem('remera');
-        var talleAux = localStorage.getItem('talle');
-        var logoAux = localStorage.getItem('logo');
-        var telaAux = localStorage.getItem('tela');
 
         try {
           remeraAux = JSON.parse(remeraAux);
+          this.setState({
+            remera: remeraAux
+          });
+        } catch (_unused) {
+          this.setState({
+            remera: "colorBlanco"
+          });
+        }
+      }
+
+      if (localStorage.hasOwnProperty('talle')) {
+        var talleAux = localStorage.getItem('talle');
+
+        try {
           talleAux = JSON.parse(talleAux);
+          this.setState({
+            talle: talleAux
+          });
+        } catch (_unused2) {
+          this.setState({
+            talle: ""
+          });
+        }
+      }
+
+      if (localStorage.hasOwnProperty('logo')) {
+        var logoAux = localStorage.getItem('logo');
+
+        try {
           logoAux = JSON.parse(logoAux);
+          this.setState({
+            logo: logoAux
+          });
+        } catch (_unused3) {
+          this.setState({
+            logo: ""
+          });
+        }
+      }
+
+      if (localStorage.hasOwnProperty('tela')) {
+        var telaAux = localStorage.getItem('tela');
+
+        try {
           telaAux = JSON.parse(telaAux);
           this.setState({
-            remera: remeraAux,
-            talle: talleAux,
-            logo: logoAux,
             tela: telaAux
           });
-        } catch (e) {
+        } catch (_unused4) {
           this.setState({
-            remera: "./images/remeras/remeraBlanca.png",
-            talle: "XS",
-            logo: null,
-            tela: "Algodon"
+            tela: ""
           });
         }
       }
@@ -65866,90 +65902,10 @@ function (_Component) {
   }, {
     key: "cambiarColorRemera",
     value: function cambiarColorRemera(e, id) {
-      var remeraAux;
-
-      switch (id) {
-        case "colorAzul":
-          {
-            this.setState({
-              remera: '/images/remeras/remeraazul.png'
-            });
-            remeraAux = '/images/remeras/remeraazul.png';
-            break;
-          }
-
-        case "colorBlanco":
-          {
-            this.setState({
-              remera: '/images/remeras/remerablanca.png'
-            });
-            remeraAux = '/images/remeras/remerablanca.png';
-            break;
-          }
-
-        case "colorRosa":
-          {
-            this.setState({
-              remera: '/images/remeras/remeraRosa.png'
-            });
-            remeraAux = '/images/remeras/remeraRosa.png';
-            break;
-          }
-
-        case "colorAmarillo":
-          {
-            this.setState({
-              remera: '/images/remeras/remeraAmarilla.png'
-            });
-            remeraAux = '/images/remeras/remeraAmarilla.png';
-            break;
-          }
-
-        case "colorNegro":
-          {
-            this.setState({
-              remera: '/images/remeras/remeranegra.png'
-            });
-            remeraAux = '/images/remeras/remeranegra.png';
-            break;
-          }
-
-        case "colorNaranja":
-          {
-            this.setState({
-              remera: '/images/remeras/remeranaranja.png'
-            });
-            remeraAux = '/images/remeras/remeranaranja.png';
-            break;
-          }
-
-        case "colorVioleta":
-          {
-            this.setState({
-              remera: '/images/remeras/remeravioleta.png'
-            });
-            remeraAux = '/images/remeras/remeravioleta.png';
-            break;
-          }
-
-        case "colorCeleste":
-          {
-            this.setState({
-              remera: '/images/remeras/remeraceleste.png'
-            });
-            remeraAux = '/images/remeras/remeraceleste.png';
-            break;
-          }
-
-        default:
-          {
-            this.setState({
-              remera: '/images/remeras/remerablanca.png'
-            });
-            remeraAux = '/images/remeras/remerablanca.png';
-          }
-      }
-
+      var remeraAux = id;
+      this.setState({
+        remera: id
+      });
       localStorage.setItem("remera", JSON.stringify(remeraAux));
     }
   }, {
@@ -65981,12 +65937,24 @@ function (_Component) {
   }, {
     key: "eliminarLogo",
     value: function eliminarLogo(e) {
-      if (this.state.logo != null) {
+      if (this.state.logo != "") {
         this.setState({
-          logo: null
+          logo: ""
         });
-        localStorage.setItem("logo", JSON.stringify(null));
+        localStorage.setItem("logo", JSON.stringify(""));
       }
+    }
+  }, {
+    key: "crearDise\xF1o",
+    value: function crearDiseO(e) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/crearDiseño', {
+        color: this.state.remera,
+        logo: this.state.logo,
+        talle: this.state.talle,
+        tela: this.state.tela
+      }).then(function (response) {
+        console.log(response.data);
+      });
     }
   }, {
     key: "render",
@@ -66017,7 +65985,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           key: item.logo,
           className: "img-thumbnail",
-          src: item.logo,
+          src: "/images/logos/" + item.logo + ".png",
           onClick: function onClick(e) {
             return _this3.cambiarLogo(e, item.logo);
           }
@@ -66040,16 +66008,19 @@ function (_Component) {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         height: "500",
-        src: this.state.remera,
+        src: "/images/remeras/" + this.state.remera + ".png",
         id: "imagenRemera",
         className: "d-block w-100",
         alt: "..."
-      }), this.state.logo != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }), this.state.logo != "" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         height: "100",
-        src: this.state.logo,
+        src: "/images/logos/" + this.state.logo + ".png",
         id: "imagenLogo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-block btn-secondary text-uppercase"
+        className: "btn btn-block btn-secondary text-uppercase",
+        onClick: function onClick(e) {
+          return _this3.crearDiseño(e);
+        }
       }, "Crear dise\xF1o"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66115,15 +66086,7 @@ function (_Component) {
           key: item.nombre,
           value: item.nombre
         }, item.nombre);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "tittle"
-      }, " Mis Dise\xF1os "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "card-title text-muted text-uppercase text-center"
-      }, "Listado de remeras"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-block btn-secondary text-uppercase"
-      }, "Ver")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)))))));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)))))));
     }
   }]);
 

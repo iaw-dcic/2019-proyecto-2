@@ -6,10 +6,10 @@ export default class ShirtImage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            remera: "/images/remeras/remerablanca.png",
-            talle: "",
+            remera: "colorBlanco",
+            talle: "XS",
             tela: "Algodon",
-            logo: null,
+            logo: "",
             telas: [],
             talles: [],
             colores: [],
@@ -18,6 +18,11 @@ export default class ShirtImage extends Component {
     }
 
     componentDidMount() {
+        window.axios = require('axios');
+       
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 
         axios.get('/api/telas').then(response => {
             this.setState({ telas: response.data })
@@ -32,85 +37,73 @@ export default class ShirtImage extends Component {
             this.setState({ logos: response.data })
         })
 
-        if (localStorage.hasOwnProperty('remera')) {
-            let remeraAux = localStorage.getItem('remera');
-            let talleAux = localStorage.getItem('talle');
-            let logoAux = localStorage.getItem('logo');
-            let telaAux = localStorage.getItem('tela');
-
+        if (localStorage.hasOwnProperty('remera')) 
+        {
+            var remeraAux = localStorage.getItem('remera');
             try {
                 remeraAux = JSON.parse(remeraAux);
-                talleAux = JSON.parse(talleAux);
-                logoAux = JSON.parse(logoAux);
-                telaAux = JSON.parse(telaAux);
-
                 this.setState({
                     remera: remeraAux,
-                    talle: talleAux,
-                    logo: logoAux,
-                    tela: telaAux
                 });
             }
-            catch (e) {
+            catch{
                 this.setState({
-                    remera: "./images/remeras/remeraBlanca.png",
-                    talle: "XS",
-                    logo: null,
-                    tela: "Algodon"
+                    remera: "colorBlanco"
+                });
+            }
+        }
+        if (localStorage.hasOwnProperty('talle'))
+        {
+            var talleAux = localStorage.getItem('talle');
+            try{
+                talleAux = JSON.parse(talleAux);
+                this.setState({
+                    talle: talleAux
+                });
+            }
+            catch{
+                this.setState({
+                    talle:""
+                });
+            }
+        }
+            
+        if (localStorage.hasOwnProperty('logo'))
+        {
+            var logoAux = localStorage.getItem('logo');
+            try{
+                logoAux = JSON.parse(logoAux);
+                this.setState({
+                    logo:logoAux
+                });
+            }
+            catch{
+                this.setState({
+                    logo:""
+                });
+            }
+        }
+        if (localStorage.hasOwnProperty('tela'))
+        {
+            var telaAux = localStorage.getItem('tela');
+            try{
+                telaAux = JSON.parse(telaAux);
+                this.setState({
+                    tela:telaAux
+                });
+            }
+            catch{
+                this.setState({
+                    tela:""
                 });
             }
         }
     }
 
-    cambiarColorRemera(e, id) {
-        var remeraAux;
-        switch (id) {
-            case "colorAzul": {
-                this.setState({ remera: '/images/remeras/remeraazul.png' });
-                remeraAux = '/images/remeras/remeraazul.png';
-                break;
-            }
-            case "colorBlanco": {
-                this.setState({ remera: '/images/remeras/remerablanca.png' });
-                remeraAux = '/images/remeras/remerablanca.png';
-                break;
-            }
-            case "colorRosa": {
-                this.setState({ remera: '/images/remeras/remeraRosa.png' });
-                remeraAux = '/images/remeras/remeraRosa.png';
-                break;
-            }
-            case "colorAmarillo": {
-                this.setState({ remera: '/images/remeras/remeraAmarilla.png' });
-                remeraAux = '/images/remeras/remeraAmarilla.png';
-                break;
-            }
-            case "colorNegro": {
-                this.setState({ remera: '/images/remeras/remeranegra.png' });
-                remeraAux = '/images/remeras/remeranegra.png';
-                break;
-            }
-            case "colorNaranja": {
-                this.setState({ remera: '/images/remeras/remeranaranja.png' });
-                remeraAux = '/images/remeras/remeranaranja.png';
-                break;
-            }
-            case "colorVioleta": {
-                this.setState({ remera: '/images/remeras/remeravioleta.png' });
-                remeraAux = '/images/remeras/remeravioleta.png';
-                break;
-            }
-            case "colorCeleste": {
-                this.setState({ remera: '/images/remeras/remeraceleste.png' });
-                remeraAux = '/images/remeras/remeraceleste.png';
-                break;
-            }
-            default: {
-                this.setState({ remera: '/images/remeras/remerablanca.png' });
-                remeraAux = '/images/remeras/remerablanca.png';
 
-            }
-        }
+    cambiarColorRemera(e, id) {
+        var remeraAux= id;
+        this.setState({ remera: id});
         localStorage.setItem("remera", JSON.stringify(remeraAux));
     }
 
@@ -133,13 +126,24 @@ export default class ShirtImage extends Component {
     }
 
     eliminarLogo(e) {
-        if (this.state.logo != null)
-        {
-            this.setState({ logo: null });
-            localStorage.setItem("logo", JSON.stringify(null));
+        if (this.state.logo != "") {
+            this.setState({ logo: "" });
+            localStorage.setItem("logo", JSON.stringify(""));
         }
     }
 
+    crearDiseño(e) {
+        axios.post('/api/crearDiseño', {
+            color: this.state.remera,
+            logo: this.state.logo,
+            talle: this.state.talle,
+            tela: this.state.tela,
+        
+        }).then(response => {
+            console.log(response.data)
+        })
+
+    }
     render() {
         return (
             <section className="pricing py-5">
@@ -147,7 +151,6 @@ export default class ShirtImage extends Component {
                     <div className="row">
                         <div className="col-lg-3">
                             <div className="card mb-5 mb-lg-0">
-
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Logos centrales</h5>
 
@@ -158,15 +161,13 @@ export default class ShirtImage extends Component {
                                         <a className="thumbnail">
                                             {
                                                 this.state.logos.map((item) => (
-                                                    <img key={item.logo} className="img-thumbnail" src={item.logo} onClick={(e) => this.cambiarLogo(e, item.logo)} ></img>
+                                                    <img key={item.logo} className="img-thumbnail" src={"/images/logos/"+item.logo+".png"} onClick={(e) => this.cambiarLogo(e, item.logo)} ></img>
                                                 ))
                                             }
                                         </a>
                                     </div>
                                 </div>
-
                                 <button type="button" onClick={(e) => this.eliminarLogo(e)} className="btn btn-secondary">Eliminar logo</button>
-
                             </div>
                         </div>
 
@@ -174,15 +175,16 @@ export default class ShirtImage extends Component {
                             <div className="card mb-5 mb-lg-0">
                                 <div className="card-body">
                                     <h5 className="card-title text-muted text-uppercase text-center">Remera</h5>
-                                    <hr width="100%"></hr>
-                                    <div>
-                                        <img height="500" src={this.state.remera} id="imagenRemera" className="d-block w-100" alt="..."></img>
-                                        {
-                                            this.state.logo != null &&
-                                            <img height="100" src={this.state.logo} id="imagenLogo"></img>
-                                        }
 
-                                        <a className="btn btn-block btn-secondary text-uppercase">Crear diseño</a>
+                                    <hr width="100%"></hr>
+
+                                    <div>
+                                        <img height="500" src={"/images/remeras/"+this.state.remera+".png"} id="imagenRemera" className="d-block w-100" alt="..."></img>
+                                        {
+                                            this.state.logo != "" &&
+                                            <img height="100" src={"/images/logos/"+this.state.logo+".png"} id="imagenLogo"></img>
+                                        }
+                                        <a className="btn btn-block btn-secondary text-uppercase" onClick={(e) => this.crearDiseño(e)} >Crear diseño</a>
                                     </div>
                                 </div>
                             </div>
@@ -232,12 +234,6 @@ export default class ShirtImage extends Component {
 
                                             }
                                         </select>
-
-                                        <hr width="100%"></hr>
-
-                                        <h2 id="tittle"> Mis Diseños </h2>
-                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de remeras</h5>
-                                        <a className="btn btn-block btn-secondary text-uppercase">Ver</a>
 
                                     </div>
                                     <hr></hr>

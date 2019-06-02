@@ -5,18 +5,18 @@ import ShirtImage from './ShirtImage';
 
 
 class App extends Component {
+
     componentDidMount() {
         localStorage.clear();
     }
-    
-    
+
     render() {
         return (
             <BrowserRouter>
                 <Switch>
-                  
+
                     <Route path="/home" component={ShirtImage} />
-                   
+
                 </Switch>
             </BrowserRouter>
         )

@@ -17,10 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Listado de telas
-Route::get('/telas','VistaDiseñarController@listadoTelas')->name('listadoTelas');
+Route::get('/telas','VistaDiseñarController@listadoTelas');
 //Listado de talles
-Route::get('/talles','VistaDiseñarController@listadoTalles')->name('listadoTalles');
+Route::get('/talles','VistaDiseñarController@listadoTalles');
 //Listado de colores
-Route::get('/colores','VistaDiseñarController@listadoColores')->name('listadoColores');
+Route::get('/colores','VistaDiseñarController@listadoColores');
 //Listado de logos
-Route::get('/logos','VistaDiseñarController@listadoLogos')->name('listadoLogos');
+Route::get('/logos','VistaDiseñarController@listadoLogos');
+//Guardar Remera
+Route::post('/crearDiseño','RemeraController@store');
