@@ -65789,6 +65789,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: this.props.nombre,
         type: "button",
         className: "btn btn-success mr-1"
       }, this.props.nombre);
@@ -65851,7 +65852,8 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "container",
+        id: this.props.jugado
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -65902,6 +65904,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var OCTAVOS = 0,
+    CUARTOS = 1,
+    SEMIFINALES = 2,
+    FINAL = 3;
+var JUGADO = 0,
+    POR_JUGAR = 1;
 
 var Torneo =
 /*#__PURE__*/
@@ -65909,12 +65917,30 @@ function (_Component) {
   _inherits(Torneo, _Component);
 
   function Torneo(props) {
+    var _this;
+
     _classCallCheck(this, Torneo);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Torneo).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Torneo).call(this, props));
+    _this.state = {
+      octavos: [],
+      cuartos: [],
+      semifinales: [],
+      "final": [],
+      etapa: OCTAVOS
+    };
+    return _this;
   }
 
   _createClass(Torneo, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var oct = [["River", "Boca", POR_JUGAR], ["Hola", "Chau", POR_JUGAR], ["Quehace", "Comoanda", POR_JUGAR], ["Equipo 1", "Equipo 2", POR_JUGAR]];
+      this.setState({
+        octavos: oct
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65923,30 +65949,64 @@ function (_Component) {
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Torneo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Torneo"))), this.renderPartidos(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderBotonera());
+    }
+  }, {
+    key: "renderPartidos",
+    value: function renderPartidos() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.renderOctavos(), this.renderCuartos(), this.renderSemifinales(), this.renderFinal());
+    }
+  }, {
+    key: "renderOctavos",
+    value: function renderOctavos() {
+      var _this2 = this;
+
+      var partidos = this.state.octavos.map(function (partido, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          equipo1: partido[0],
+          equipo2: partido[1],
+          key: index,
+          habilitado: _this2.state.etapa == OCTAVOS && partido[2] == POR_JUGAR ? "true" : "false"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Octavos de Final"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        equipo1: "River",
-        equipo2: "Boca"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        equipo1: "Hola",
-        equipo2: "Chau"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Octavos de Final"), partidos);
+    }
+  }, {
+    key: "renderCuartos",
+    value: function renderCuartos() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Cuartos de Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Cuartos de Final"));
+    }
+  }, {
+    key: "renderSemifinales",
+    value: function renderSemifinales() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Semifinales")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Semifinales"));
+    }
+  }, {
+    key: "renderFinal",
+    value: function renderFinal() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final"));
+    }
+  }, {
+    key: "renderBotonera",
+    value: function renderBotonera() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-primary mr-1"
-      }, "Guardar Cambios"))));
+      }, "Guardar Cambios")));
     }
   }]);
 
