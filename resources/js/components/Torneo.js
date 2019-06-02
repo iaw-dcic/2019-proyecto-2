@@ -19,6 +19,7 @@ export default class Torneo extends Component {
                     <div className="col-md-3">
                         <h4>Octavos de Final</h4>
                         <Partido equipo1="River" equipo2="Boca"/>
+                        <br/>
                         <Partido equipo1="Hola" equipo2="Chau"/>
                     </div>
                     <div className="col-md-3">
@@ -31,10 +32,16 @@ export default class Torneo extends Component {
                         <h4>Final</h4>
                     </div>
                 </div>
+                
+                <br/>
 
-                <button type="button" className="btn btn-primary">
-                    Guardar Cambios
-                </button>
+                <div className="row justify-content-left">
+                    <div className="col-md-8">
+                        <button type="button" className="btn btn-primary mr-1">
+                            Guardar Cambios
+                        </button>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -9,11 +9,9 @@ export default class Partido extends Component {
     render() {
         return ( 
             <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <Equipo nombre={this.props.equipo1}/>
-                        <Equipo nombre={this.props.equipo2}/>
-                    </div>
+                <div className="btn-toolbar">
+                    <Equipo nombre={this.props.equipo1}/>
+                    <Equipo nombre={this.props.equipo2}/>
                 </div>
             </div>
         )

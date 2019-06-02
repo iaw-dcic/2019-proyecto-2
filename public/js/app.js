@@ -65790,7 +65790,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-success"
+        className: "btn btn-success mr-1"
       }, this.props.nombre);
     }
   }]);
@@ -65853,14 +65853,12 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
+        className: "btn-toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_1__["default"], {
         nombre: this.props.equipo1
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_1__["default"], {
         nombre: this.props.equipo2
-      }))));
+      })));
     }
   }]);
 
@@ -65932,7 +65930,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Octavos de Final"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
         equipo1: "River",
         equipo2: "Boca"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
         equipo1: "Hola",
         equipo2: "Chau"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65941,10 +65939,14 @@ function (_Component) {
         className: "col-md-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Semifinales")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-primary"
-      }, "Guardar Cambios"));
+        className: "btn btn-primary mr-1"
+      }, "Guardar Cambios"))));
     }
   }]);
 
