@@ -20,7 +20,6 @@ class AvatarsController extends Controller {
     public function store (Request $request) {
         $attributes = array (
             'avatar_name' => 'required',
-            'owner' => 'required',
             'hair' => 'required',
             'shirt' => 'required',
             'beard' => 'required'
@@ -34,7 +33,7 @@ class AvatarsController extends Controller {
         else {
             $avatar = new Avatar;
             $avatar->avatar_name = $request->avatar_name;
-            $album->owner = Auth::user ()->name;
+            $avatar->owner = auth ('api')->user ()->name;
             $avatar->hair = $request->hair;
             $avatar->shirt = $request->shirt;
             $avatar->beard = $request->beard;

@@ -58,7 +58,7 @@ export default class ComponentApp extends Component {
             });
         } 
         catch (event) {
-            console.log('axios request failed: ', event);
+            console.log('Axios Request Failed: ', event);
         }
     }
 
@@ -75,54 +75,63 @@ export default class ComponentApp extends Component {
     }
 
     saveChanges = (name) => {
-        if (this.state.currentAvatar.avatar_id == null) {
-            axios.post ('api/app/avatars', {
-                avatar_name: this.state.currentAvatar.avatar_name,
-                hair: this.state.currentAvatar.hair,
-                shirt: this.state.currentAvatar.shirt,
-                beard: this.state.currentAvatar.beard
-            }).then (response => {
-                console.log ('From Handle Submit ', response);
-                this.setState ({
-                    currentAvatar: {
-                        "avatar_id": this.state.currentAvatar.avatar_id,
-                        "avatar_name": name,
-                        "hair": this.state.currentAvatar.hair,
-                        "shirt": this.state.currentAvatar.shirt,
-                        "beard": this.state.currentAvatar.beard
-                    },
-                    allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
-                });
-            });
+        if (name == null || name == "") {
+            console.log ("Error: Name field is empty.");
         }
         else {
-            axios.put ('api/app/avatars/{this.state.currentAvatar.avatar_id}', {
-                avatar_id: this.state.currentAvatar.avatar_id,
-                avatar_name: this.state.currentAvatar.avatar_name,
-                hair: this.state.currentAvatar.hair,
-                shirt: this.state.currentAvatar.shirt,
-                beard: this.state.currentAvatar.beard
-            }).then (response => {
-                console.log ('From Handle Submit ', response);
-                this.setState ({
-                    currentAvatar: {
-                        "avatar_id": this.state.currentAvatar.avatar_id,
-                        "avatar_name": name,
-                        "hair": this.state.currentAvatar.hair,
-                        "shirt": this.state.currentAvatar.shirt,
-                        "beard": this.state.currentAvatar.beard
-                    },
-                    allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
-                });
-            });
+            try {
+                if (this.state.currentAvatar.avatar_id == null) {
+                    axios.post ('api/app/avatars', {
+                        avatar_name: name,
+                        hair: this.state.currentAvatar.hair,
+                        shirt: this.state.currentAvatar.shirt,
+                        beard: this.state.currentAvatar.beard
+                    }).then (response => {
+                        console.log ('From Handle Submit ', response);
+                        this.setState ({
+                            currentAvatar: {
+                                "avatar_name": name,
+                                "hair": this.state.currentAvatar.hair,
+                                "shirt": this.state.currentAvatar.shirt,
+                                "beard": this.state.currentAvatar.beard
+                            },
+                            allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+                        });
+                    });
+                }
+                else {
+                    axios.put (('api/app/avatars/' + this.state.currentAvatar.avatar_id), {
+                        avatar_id: this.state.currentAvatar.avatar_id,
+                        avatar_name: this.state.currentAvatar.avatar_name,
+                        hair: this.state.currentAvatar.hair,
+                        shirt: this.state.currentAvatar.shirt,
+                        beard: this.state.currentAvatar.beard
+                    }).then (response => {
+                        console.log ('From Handle Submit ', response);
+                        this.setState ({
+                            currentAvatar: {
+                                "avatar_id": this.state.currentAvatar.avatar_id,
+                                "avatar_name": name,
+                                "hair": this.state.currentAvatar.hair,
+                                "shirt": this.state.currentAvatar.shirt,
+                                "beard": this.state.currentAvatar.beard
+                            },
+                            allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+                        });
+                    });
+                }
+            }
+            catch (event) {
+                console.log('Axios Request Failed: ', event);
+            }
         }
     }
 
     returnToDefault = () => {
         this.setState ({
             currentAvatar: {
-                "avatar_id": -1,
-                "avatar_name": this.state.currentAvatar.avatar_name,
+                "avatar_id": null,
+                "avatar_name": "",
                 "hair": "Hair1",
                 "shirt": "Shirt1",
                 "beard": "Beard1"

@@ -3,9 +3,10 @@
 }
 
 .savedCard {
-    height: 125px;
+    height: 135px;
     width: 125px;
-    margin-right: 90px;
+    margin-right: 10px;
+    padding-right: 140px;
 }
 
 .savedBase, .savedHair, .savedShirt, .savedBeard {
@@ -20,5 +21,6 @@
 }
 
 .selectButton {
+    margin-top: 3%;
     position: absolute;
 }

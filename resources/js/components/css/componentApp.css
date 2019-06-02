@@ -6,16 +6,22 @@
     height: 350px;
 }
 
-#previous {
-    height: 175px;
-    width: 50%;
-    overflow-x: scroll;
-}
-
 #editor, #previous {
     text-align: center;
-    top: 50%;
     height: 200px;
+}
+
+#editor {
+    top: 20%;
+}
+
+#previous {
+    height: 220px;
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 2%;
+    top: 50%;
+    overflow-x: auto;
 }
 
 #buttons {

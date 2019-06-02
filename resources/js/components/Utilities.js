@@ -13,7 +13,7 @@ export default class Utilities extends Component {
         return (
             <>
                 <div className="d-flex justify-content-center" id="textFlex">
-                    <input type="text" className="form-control" id="avatarName" placeholder="Avatar Name" defaultValue={this.state.currentName} onChange={this.updateName}>
+                    <input type="text" className="form-control" id="avatarName" placeholder="Avatar Name" defaultValue={this.props.name} onChange={this.updateName}>
                     </input>
                 </div>
                 <div className="d-flex justify-content-center" id="buttonsFlex">

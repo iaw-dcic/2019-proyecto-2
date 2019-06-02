@@ -6539,7 +6539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#previous {\r\n    height: 175px;\r\n    width: 50%;\r\n    overflow-x: scroll;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    top: 50%;\r\n    height: 200px;\r\n}\r\n\r\n#buttons {\r\n    margin-top: 5%;\r\n}", ""]);
+exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    height: 200px;\r\n}\r\n\r\n#editor {\r\n    top: 20%;\r\n}\r\n\r\n#previous {\r\n    height: 220px;\r\n    width: 50%;\r\n    margin-top: 2%;\r\n    margin-left: 2%;\r\n    top: 50%;\r\n    overflow-x: auto;\r\n}\r\n\r\n#buttons {\r\n    margin-top: 5%;\r\n}", ""]);
 
 // exports
 
@@ -6558,7 +6558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.savedCard {\r\n    height: 125px;\r\n    width: 125px;\r\n    margin-right: 90px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n.selectButtonContainer {\r\n    text-align: center;\r\n}\r\n\r\n.selectButton {\r\n    position: absolute;\r\n}", ""]);
+exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.savedCard {\r\n    height: 135px;\r\n    width: 125px;\r\n    margin-right: 10px;\r\n    padding-right: 140px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n.selectButtonContainer {\r\n    text-align: center;\r\n}\r\n\r\n.selectButton {\r\n    margin-top: 3%;\r\n    position: absolute;\r\n}", ""]);
 
 // exports
 
@@ -66496,7 +66496,7 @@ function (_Component) {
               _loop(I);
             }
 
-            return table;
+            break;
           }
 
         case 'shirt':
@@ -66517,7 +66517,7 @@ function (_Component) {
               _loop2(I);
             }
 
-            return table;
+            break;
           }
 
         case 'beard':
@@ -66538,9 +66538,11 @@ function (_Component) {
               _loop3(I);
             }
 
-            return table;
+            break;
           }
       }
+
+      return table;
     });
 
     return _this;
@@ -66841,55 +66843,62 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "saveChanges", function (name) {
-      if (_this.state.currentAvatar.avatar_id == null) {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/app/avatars', {
-          avatar_name: _this.state.currentAvatar.avatar_name,
-          hair: _this.state.currentAvatar.hair,
-          shirt: _this.state.currentAvatar.shirt,
-          beard: _this.state.currentAvatar.beard
-        }).then(function (response) {
-          console.log('From Handle Submit ', response);
-
-          _this.setState({
-            currentAvatar: {
-              "avatar_id": _this.state.currentAvatar.avatar_id,
-              "avatar_name": name,
-              "hair": _this.state.currentAvatar.hair,
-              "shirt": _this.state.currentAvatar.shirt,
-              "beard": _this.state.currentAvatar.beard
-            },
-            allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
-          });
-        });
+      if (name == null || name == "") {
+        console.log("Error: Name field is empty.");
       } else {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('api/app/avatars/{this.state.currentAvatar.avatar_id}', {
-          avatar_id: _this.state.currentAvatar.avatar_id,
-          avatar_name: _this.state.currentAvatar.avatar_name,
-          hair: _this.state.currentAvatar.hair,
-          shirt: _this.state.currentAvatar.shirt,
-          beard: _this.state.currentAvatar.beard
-        }).then(function (response) {
-          console.log('From Handle Submit ', response);
+        try {
+          if (_this.state.currentAvatar.avatar_id == null) {
+            axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/app/avatars', {
+              avatar_name: name,
+              hair: _this.state.currentAvatar.hair,
+              shirt: _this.state.currentAvatar.shirt,
+              beard: _this.state.currentAvatar.beard
+            }).then(function (response) {
+              console.log('From Handle Submit ', response);
 
-          _this.setState({
-            currentAvatar: {
-              "avatar_id": _this.state.currentAvatar.avatar_id,
-              "avatar_name": name,
-              "hair": _this.state.currentAvatar.hair,
-              "shirt": _this.state.currentAvatar.shirt,
-              "beard": _this.state.currentAvatar.beard
-            },
-            allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
-          });
-        });
+              _this.setState({
+                currentAvatar: {
+                  "avatar_name": name,
+                  "hair": _this.state.currentAvatar.hair,
+                  "shirt": _this.state.currentAvatar.shirt,
+                  "beard": _this.state.currentAvatar.beard
+                },
+                allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
+              });
+            });
+          } else {
+            axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('api/app/avatars/' + _this.state.currentAvatar.avatar_id, {
+              avatar_id: _this.state.currentAvatar.avatar_id,
+              avatar_name: _this.state.currentAvatar.avatar_name,
+              hair: _this.state.currentAvatar.hair,
+              shirt: _this.state.currentAvatar.shirt,
+              beard: _this.state.currentAvatar.beard
+            }).then(function (response) {
+              console.log('From Handle Submit ', response);
+
+              _this.setState({
+                currentAvatar: {
+                  "avatar_id": _this.state.currentAvatar.avatar_id,
+                  "avatar_name": name,
+                  "hair": _this.state.currentAvatar.hair,
+                  "shirt": _this.state.currentAvatar.shirt,
+                  "beard": _this.state.currentAvatar.beard
+                },
+                allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
+              });
+            });
+          }
+        } catch (event) {
+          console.log('Axios Request Failed: ', event);
+        }
       }
     });
 
     _defineProperty(_assertThisInitialized(_this), "returnToDefault", function () {
       _this.setState({
         currentAvatar: {
-          "avatar_id": -1,
-          "avatar_name": _this.state.currentAvatar.avatar_name,
+          "avatar_id": null,
+          "avatar_name": "",
           "hair": "Hair1",
           "shirt": "Shirt1",
           "beard": "Beard1"
@@ -66959,7 +66968,7 @@ function (_Component) {
           });
         });
       } catch (event) {
-        console.log('axios request failed: ', event);
+        console.log('Axios Request Failed: ', event);
       }
     }
   }]);
@@ -67155,7 +67164,7 @@ function (_Component) {
         className: "form-control",
         id: "avatarName",
         placeholder: "Avatar Name",
-        defaultValue: this.state.currentName,
+        defaultValue: this.props.name,
         onChange: this.updateName
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center",

@@ -82,23 +82,25 @@ export default class AvatarComponents extends Component {
                 for (let I = 1; I <= 4; I++) {
                     table.push (<button className="btn btn-outline-primary" key={'Hair' + I}><img src={window.location.origin + '/avatar_elements/Hair' + I + '.png'} onClick={() => this.changeAvatarHair('Hair' + I)}/></button>)
                 }
-                return table;
+                break;
             }
             
             case ('shirt'): {
                 for (let I = 1; I <= 4; I++) {
                     table.push (<button className="btn btn-outline-danger" key={'Shirt' + I}><img src={window.location.origin + '/avatar_elements/Shirt' + I + '.png'} onClick={() => this.changeAvatarShirt('Shirt' + I)}/></button>)
                 }
-                return table;
+                break;
             }
 
             case ('beard'): {
                 for (let I = 1; I <= 4; I++) {
                     table.push (<button className="btn btn-outline-info" key={'Beard' + I}><img src={window.location.origin + '/avatar_elements/Beard' + I + '.png'} onClick={() => this.changeAvatarBeard('Beard' + I)}/></button>)
                 }
-                return table;
+                break;
             }
         }
+
+        return table;
     }
 
     changeAvatarHair (newHair) {
