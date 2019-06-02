@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import Torneo from './Torneo'
 
 class App extends Component {
     render () {
     return (
         <BrowserRouter>
         <div>
-            <Example />
+            <Torneo/>
         </div>
         </BrowserRouter>
     )
