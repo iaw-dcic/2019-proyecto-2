@@ -17,11 +17,11 @@ class CreateAvatarsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name')->nullable();
-            $table->unsignedInteger('body_id')->default(1);
-            $table->unsignedInteger('head_id')->default(1);
-            $table->unsignedInteger('upperbody_id')->default(1);
-            $table->unsignedInteger('lowerbody_id')->default(1);
-            $table->unsignedInteger('extra_id')->default(1);
+            $table->unsignedSmallInteger('body_id')->default(1);
+            $table->unsignedSmallInteger('head_id')->default(1);
+            $table->unsignedSmallInteger('upperbody_id')->default(1);
+            $table->unsignedSmallInteger('lowerbody_id')->default(1);
+            $table->unsignedSmallInteger('extra_id')->default(1);
             $table->timestamps();
         });
 

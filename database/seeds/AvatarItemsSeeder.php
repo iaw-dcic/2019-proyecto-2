@@ -17,32 +17,42 @@ class AvatarItemsSeeder extends Seeder
      */
     public function run()
     {
-        // Creo 5 items de cada parte del avatar
-        for ($i = 1; $i <= 5; $i++) {            
-            // Body items
+        // Creo los items de avatares
+        for ($i = 0; $i < 7; $i++) {            
+            // 7 body items
             BodyItem::create([
-                'resource' => ('bodyitem_'.$i.'.png')
-            ]);
-    
-            // Head items
-            HeadItem::create([
-                'resource' => ('headitem_'.$i.'.png')
-            ]);
-    
-            // Extra items
-            ExtraItem::create([
-                'resource' => ('extraitem_'.$i.'.png')
-            ]);
-    
-            // UpperBody items
-            UpperBodyItem::create([
-                'resource' => ('upperbodyitem_'.$i.'.png')
-            ]);
-    
-            // LowerBody items
-            LowerBodyItem::create([
-                'resource' => ('lowerbodyitem_'.$i.'.png')
+                'resource' => ('/avatars/body/bodyitem_'.$i.'.png')
             ]);
         }
+
+        for ($i = 0; $i < 7; $i++) {            
+            // 7 head items
+            HeadItem::create([
+                'resource' => ('/avatars/head/headitem_'.$i.'.png')
+            ]);
+        }
+
+        for ($i = 0; $i < 5; $i++) {            
+            // 5 upperbody items
+            UpperBodyItem::create([
+                'resource' => ('/avatars/upperbody/upperbodyitem_'.$i.'.png')
+            ]);
+        }
+
+        for ($i = 0; $i < 4; $i++) {            
+            // 4 lowerbody items
+            LowerBodyItem::create([
+                'resource' => ('/avatars/lowerbody/lowerbodyitem_'.$i.'.png')
+            ]);
+        }
+
+        for ($i = 0; $i < 5; $i++) {            
+            // 5 extra items
+            ExtraItem::create([
+                'resource' => ('/avatars/extra/extraitem_'.$i.'.png')
+            ]);
+        }
+    
     }
 }
+

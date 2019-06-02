@@ -14,7 +14,7 @@ class CreateUpperbodyItemsTable extends Migration
     public function up()
     {
         Schema::create('upper_body_items', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
             $table->string('resource');
             $table->timestamps();
         });

@@ -12,7 +12,7 @@ class Avatar extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'name','body_id','head_id','upperbody_id','lowerbody_id','extra_id'
     ];
 
 

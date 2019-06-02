@@ -1,7 +1,6 @@
 import React , { Component } from 'react'
 
 import UserAvatars from './UserAvatars'
-import AvatarEditor from '.Avatars/AvatarEditor'
 
 class UserHome extends Component {
 
@@ -13,8 +12,6 @@ class UserHome extends Component {
             isLoaded: false,
             error: false,
         }
-        console.log("USERHOME: constructor");
-        console.log(super(props));
     }
 
     fetchUser(){
@@ -29,13 +26,12 @@ class UserHome extends Component {
         })
         .then( 
             (response) => {
-                console.log("USERHOME: obtuve respuesta");
                 return response.json();
             }
         )
         .then(
             (result) => {
-                console.log("USERHOME: finalizo fetching user");
+                console.log("USERHOME: Fetching user finished");
                 if (result.message){
                     this.setState({
                         isLoaded: true,
@@ -72,15 +68,10 @@ class UserHome extends Component {
             else{
                 return(
                     <div className="row justify-content-center">    
-                        <div className="col-md-4 testing">
+                        <div className="col-md-10 testing">
                             <UserAvatars 
                                 api_token={this.props.api_token}
                                 user={this.state.user}
-                            />
-                        </div>
-                        <div className="col-md-8 testing">
-                            <AvatarEditor
-
                             />
                         </div>                                            
                     </div>
