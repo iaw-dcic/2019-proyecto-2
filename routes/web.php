@@ -13,4 +13,8 @@
 
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+Route::view('/{path?}', 'react')->middleware('auth');
+Route::get('api/v1/color','colorController@index');
+Route::get('api/v1/size','sizeController@index');
+Route::get('api/v1/modelo','modeloController@index');
+Route::resource('api/v1/notebook','notebookController', ['only' => ['index', 'show','update','store','destroy']]);
