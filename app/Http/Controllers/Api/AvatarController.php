@@ -75,7 +75,7 @@ class AvatarController extends Controller
             // Coinciden los tokens
             // Valido la entrada
             $datos = $request->validate([
-                'nombre' => 'string|max:64',
+                'nombre' => 'string|max:32',
             ]);
 
             // Creo nuevo avatar
@@ -84,13 +84,15 @@ class AvatarController extends Controller
             
             // Guardo avatar
             $user->avatars()->save($avatar);
-             
+            
+            
+            
             $json = [
                 'status' => 'success',
                 'data' => [
-                    'avatar' => $avatar,
-                ]
-            ];
+                    'avatar' => ($avatar->getAttributes()),
+                    ]
+                ];
             return response()->json($json, 200);
          }
     }

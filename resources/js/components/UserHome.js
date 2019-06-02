@@ -1,6 +1,7 @@
 import React , { Component } from 'react'
 
 import UserAvatars from './UserAvatars'
+import Errors from './Errors'
 
 class UserHome extends Component {
 
@@ -9,7 +10,7 @@ class UserHome extends Component {
         this.state={
             user: null,
             status: null,
-            isLoaded: false,
+            isLoaded: true,
             error: false,
         }
     }
@@ -50,7 +51,8 @@ class UserHome extends Component {
     }
 
     componentDidMount(){
-        this.fetchUser();
+        // Es necesario obtener los datos del usuario?
+        //this.fetchUser();
     }
 
     renderApp(){
@@ -60,7 +62,10 @@ class UserHome extends Component {
                 return(
                     <div className="row justify-content-center">
                         <div className="col-md-4">
-                            Error: {this.state.status}
+                            <Errors 
+                                error={this.state.error}
+                                message={this.state.status}
+                            />
                         </div>
                     </div>
                 );
@@ -71,6 +76,7 @@ class UserHome extends Component {
                         <div className="col-md-10 testing">
                             <UserAvatars 
                                 api_token={this.props.api_token}
+                                items={this.props.items}
                                 user={this.state.user}
                             />
                         </div>                                            

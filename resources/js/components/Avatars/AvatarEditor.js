@@ -1,106 +1,294 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+
+import AvatarShower from './AvatarShower'
+import Errors from '../Errors'
 
 class AvatarEditor extends Component{
 
     constructor(props){
-        super(props);
-        // Espero que me pasen un avatar
+        super(props);       
         this.state={
-            isLoaded: false,
-            error: null,
-            items: [],
-            a_body: 0,
-            a_head: 0,
-            a_extra: 0,
-            a_upperbody: 0,
-            a_lowerbody: 0,
+            currentItem: 'body',
+            max_items: this.props.items.bodyitems.length,
+
+            name: this.props.avatar.name,
+            body: this.props.avatar.body_id,
+            head: this.props.avatar.head_id,
+            upperbody: this.props.avatar.upperbody_id,
+            lowerbody: this.props.avatar.lowerbody_id,
+            extra: this.props.avatar.extra_id,
+
+            error: false,
+            status: null,
         }
     }
 
-    fetchResources(){
-        // Obtengo recursos de avatares
-        console.log("AVATAREDITOR: fetching resources");
-        fetch('/api/resources')
-        .then( (response) => {
-          return response.json();
+
+    fetchNuevoAvatar(data){
+        const bearer = 'Bearer ' + this.props.api_token
+        fetch('/api/avatars', { 
+            method: 'POST',
+            headers: {
+                'Authorization': bearer, 
+                'Accept': 'application/json'  
+            },
+            body: data
         })
-        .then(
-          (result) => {
-            console.log("AVATAREDITOR: fetching resources finished");
-            this.setState({
-              isLoaded: true,
-              items: result.items,              
-            });
-          },
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error: error,            
-            });
-          }
+        .then( 
+            (response) => {                        
+                return response.json();
+            }
         )
-      }
-
-    setAvatarIndices(avatar){
-      // obtengo los id de los items del avatar
-      const { body_id,head_id,extra_id,upperbody_id,lowerbody_id}=avatar;  
-      
-      // Mapeo del id del recurso de la base de datos
-      // al indice del arreglo json que recibi
-      // Los id de la base de datos son: 01, 11, 21, 31, 41, etc
-      // (division entera por 10)
-      this.setState({
-        a_body: parseInt(body_id/10),
-        a_head: parseInt(head_id/10),
-        a_upperbody: parseInt(upperbody_id/10),
-        a_lowerbody: parseInt(lowerbody_id/10),
-        a_extra: parseInt(extra_id/10),
-      })   
+        .then(
+            (result) => {
+                if (result.errors){
+                    this.setState({
+                        error: true,
+                        status: result.errors.nombre[0],
+                    })                  
+                }
+                else if (result.status == 'success'){
+                    this.setState({
+                        status: result.status,
+                    });
+                }
+            }
+        );
     }
 
-
-    componentDidMount(){
-        // hago fetch de todos los recursos
-        this.fetchResources();
-
-        // seteo los indices de los recursos 
-        const avatar=this.props.avatar;
-        if (avatar){
-          this.setAvatarIndices(avatar);
-        }
+    handleNameChange = (e) => {
+        this.setState({ name: e.target.value });
     }
 
-    renderApp(){
-        const { isLoaded, items } = this.state;        
-        if (isLoaded){
-          return(
-              <div className="avatar-frame testing">
-                  <img className="img-avatar avatar-body" 
-                  src={items.bodyitems[this.state.a_body].resource}></img>
-                  <img className="img-avatar avatar-head" 
-                  src={items.headitems[this.state.a_head].resource}></img>
-                  <img className="img-avatar avatar-upperbody" 
-                  src={items.upperbodyitems[this.state.a_upperbody].resource}></img>
-                  <img className="img-avatar avatar-lowerbody" 
-                  src={items.lowerbodyitems[this.state.a_lowerbody].resource}></img>
-                  <img className="img-avatar avatar-extra" 
-                  src={items.extraitems[this.state.a_extra].resource}></img>
-              </div>
-          );
+    handleNewAvatar = (e) =>{
+        e.preventDefault();
+        // Obtengo lo ingresado en el campo
+        let name = this.state.name;
+        if(name.length>32){
+            this.setState({
+                error: true,
+                status: 'El nombre no debe ser mayor que 32 caracteres',
+                name: ''
+            })
+            return;
         }
-        else{
-          return(
-            <div className="avatar-frame testing">
-              Obteniendo recursos de avatares 
-              <i className="fa fa-spinner fa-spin loading"></i>
+        this.setState({ name: ''});        
+        let data = new FormData();
+        data.append("nombre", name);
+
+        console.log("aca deberia hacer post de nuevo avatar");
+        
+        //this.fetchNuevoAvatar(data);
+        //this.props.agregarAvatar();      
+    }
+
+    handleButtonBody = (e) =>{
+        this.setState({
+            currentItem: 'body',
+            max_items: this.props.items.bodyitems.length,
+        });
+    }
+
+    handleButtonExtra = (e) =>{
+        this.setState({
+            currentItem: 'extra',
+            max_items: this.props.items.extraitems.length,
+        });
+    }
+
+    handleButtonHead = (e) =>{
+        this.setState({
+            currentItem: 'head',
+            max_items: this.props.items.headitems.length,
+        });
+    }
+
+    handleButtonUpperbody = (e) =>{
+        this.setState({
+            currentItem: 'upperbody',
+            max_items: this.props.items.upperbodyitems.length,
+        });
+    }
+
+    handleButtonLowerbody = (e) =>{
+        this.setState({
+            currentItem: 'lowerbody',
+            max_items: this.props.items.lowerbodyitems.length,
+        });
+    }
+
+    handleButtonPrev = (e) =>{
+        let index;
+        let max = (this.state.max_items-1);
+        switch(this.state.currentItem){
+            case 'body':
+                index=this.state.body;
+                if (index==0)
+                    index=max;
+                else
+                    index=index-1;
+                this.setState({
+                    body: index,
+                });
+                break;
+            case 'head':
+                index=this.state.head;
+                if (index==0)
+                    index=max;
+                else
+                    index=index-1;
+                this.setState({
+                    head: index,
+                });
+                break;
+            case 'upperbody':
+                index=this.state.upperbody;
+                if (index==0)
+                    index=max;
+                else
+                    index=index-1;
+                this.setState({
+                    upperbody: index,
+                });
+                break;
+            case 'lowerbody':
+                index=this.state.lowerbody;
+                if (index==0)
+                    index=max;
+                else
+                    index=index-1;
+                this.setState({
+                    lowerbody: index,
+                });
+                break;
+            case 'extra':
+                index=this.state.extra;
+                if (index==0)
+                    index=max;
+                else
+                    index=index-1;
+                this.setState({
+                    extra: index,
+                });
+                break;
+        }
+        console.log("AVATAREDITOR: handleButtonPrev()");        
+        console.log(this.state.currentItem+": "+index);           
+    }
+
+    handleButtonNext = (e) =>{
+        let index;
+        let total = this.state.max_items;
+        switch(this.state.currentItem){
+            case 'body':
+                index=this.state.body;
+                index=(index+1)%total;
+                this.setState({
+                    body: index,
+                });
+                break;
+            case 'head':
+                index=this.state.head;
+                index=(index+1)%total;
+                this.setState({
+                    head: index,
+                });
+                break;
+            case 'upperbody':
+                index=this.state.upperbody;
+                index=(index+1)%total;
+                this.setState({
+                    upperbody: index,
+                });
+                break;
+            case 'lowerbody':
+                index=this.state.lowerbody;
+                index=(index+1)%total;
+                this.setState({
+                    lowerbody: index,
+                });
+                break;
+            case 'extra':
+                index=this.state.extra;
+                index=(index+1)%total;
+                this.setState({
+                    extra: index,
+                });
+                break;
+        }
+        console.log("AVATAREDITOR: handleButtonNext()");        
+        console.log(this.state.currentItem+": "+index);        
+    }
+   
+    buttonsAvatarItems(){
+        return(
+            <div className="btn-group" role="group" aria-label="Avatar items">
+            <button type="button" className="btn btn-secondary"
+                onClick={this.handleButtonBody}>Body</button>
+            <button type="button" className="btn btn-secondary"
+                onClick={this.handleButtonHead}>Head</button>
+            <button type="button" className="btn btn-secondary"
+                onClick={this.handleButtonUpperbody}>Upperbody</button>
+            <button type="button" className="btn btn-secondary"
+                onClick={this.handleButtonLowerbody}>Lowerbody</button>
+            <button type="button" className="btn btn-secondary"
+                onClick={this.handleButtonExtra}>Extra</button>
             </div>
-          );
-        }
-
+        );
     }
+
+    buttonsChangeItems(){
+        return(
+            <div className="btn-group" role="group" aria-label="Avatar items changers">
+                <button type="button" className="btn btn-secondary"
+                    onClick={this.handleButtonPrev}>←</button>
+                <button type="button" className="btn btn-secondary"
+                    onClick={this.handleButtonNext}>→</button>
+            </div>
+        );
+    }
+
+    formNewAvatar(){
+        return(
+            <form onSubmit={this.handleNewAvatar}>
+                <input
+                    id= "avatar_name"
+                    placeholder= "Nombre"
+                    onChange={this.handleNameChange}
+                    value={this.state.name}
+                />
+            <button type="button" className="btn btn-primary">
+                Crear avatar!
+            </button>
+        </form>)
+    }
+
+    getAvatar(){
+        let avatar = {
+            'body_id': this.state.body,
+            'head_id':this.state.head,
+            'upperbody_id':this.state.upperbody,
+            'lowerbody_id':this.state.lowerbody,
+            'extra_id':this.state.extra,
+        };
+        //console.log("AVATAREDITOR: getAvatar()");
+        //console.log(avatar);        
+        return avatar;
+    }
+
 
     render(){
-      return(this.renderApp());
+        return(
+            <div>
+                {this.formNewAvatar()}
+                {this.buttonsChangeItems()}
+                {this.buttonsAvatarItems()}
+                <AvatarShower 
+                    avatar={this.getAvatar()}
+                    items={this.props.items}                    
+                />
+            </div>
+        )
     }
 
 }

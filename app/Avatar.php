@@ -16,6 +16,20 @@ class Avatar extends Model
     ];
 
 
+    /**
+     * Default attributes
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'body_id' => 1,
+        'head_id' => 1,
+        'upperbody_id' => 1,
+        'lowerbody_id' => 1,
+        'extra_id' => 1,
+    ];
+
+
 
     public function user()
     {

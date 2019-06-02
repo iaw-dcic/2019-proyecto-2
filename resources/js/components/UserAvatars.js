@@ -1,49 +1,24 @@
 import React, { Component } from 'react'
 
 import AvatarEditor from './Avatars/AvatarEditor'
+import Errors from './Errors'
 
 class UserAvatars extends Component{
 
     constructor(props){
         super(props);
         this.state= {
-            nombre_avatar: '',
-            status_nuevo: null,
-    
             status: null,
             error: false,
             isLoaded: false,
+
             avatars: [],
             selectedAvatar: null,
+            
+            nombre_avatar: '',
         }
+        this.fetchAvatars();
     }
-
-    fetchNuevoAvatar(data){
-        const bearer = 'Bearer ' + this.props.api_token
-        fetch('/api/avatars', { 
-            method: 'POST',
-            headers: {
-                'Authorization': bearer, 
-                'Accept': 'application/json'  
-            },
-            body: data
-        })
-        .then( 
-            (response) => {                        
-                return response.json();
-            }
-        )
-        .then(
-            (result) => {
-                if (result.status == 'success'){
-                    this.setState(state => ({
-                        avatars: state.avatars.concat(result.data.avatar),                        
-                    }));
-                }
-            }
-        );
-    }
-
 
     fetchAvatars(){
         const bearer = 'Bearer ' + this.props.api_token
@@ -63,8 +38,7 @@ class UserAvatars extends Component{
         .then(
             (result) => {
                 if (result.message){
-                    this.setState(
-                        {
+                    this.setState({
                             status: result.message,
                             error: true,
                             isLoaded: true,
@@ -72,13 +46,19 @@ class UserAvatars extends Component{
                     );
                 }
                 else{
-                    this.setState(
-                        {
+                    if(result.data.avatars.length>0){
+                        this.setState({
+                            selectedAvatar: result.data.avatars[0],
+                        })
+                    }
+                    this.setState({
                             status: result.status,
                             isLoaded: true,
                             avatars: result.data.avatars,
                         }
                     );
+                    
+                    console.log("USERAVATARS fetching: luego de setear selectedAvatar");
                 }
                 console.log("USERAVATARS: Fetching user avatars finished");
             },
@@ -86,103 +66,66 @@ class UserAvatars extends Component{
     }   
 
     componentDidMount(){
-        this.fetchAvatars();
-    }
-
-    handleChange = (e) => {
-        this.setState({ nombre_avatar: e.target.value });
+        // Obtengo avatares de usuario
+        //this.fetchAvatars();
     }
 
     handleAvatarClick = (e) =>{
         e.preventDefault();
-        const id=parseInt(e.target.id/10);
-        const avatar= this.state.avatars[id];
+        //const id=parseInt(e.target.id/10);
+        const indice= e.target.id
+        const avatar= this.state.avatars[indice];        
         this.setState({
             selectedAvatar: avatar,
         });
     }
 
-    nuevoAvatar = (e) =>{
-        e.preventDefault();
-
-        const nombre = this.state.nombre_avatar;
-        this.setState({ nombre_avatar: ''});
-        
-        let data = new FormData();
-        data.append("nombre", nombre);
-
-        this.fetchNuevoAvatar(data);        
-    }
+    
 
     renderApp(){
-        const { error, isLoaded, } = this.state;
-        if (error){         
-            return (
-                <span>
-                    Error: {this.state.status}
-                </span>
-            )
-        }
-        else if (isLoaded){            
-            const av= this.state.selectedAvatar;            
+        if (this.state.isLoaded){
+            console.log("USERAVATARS: renderApp() Loaded!");             
             if(this.state.avatars.length>0){
+                console.log("USERAVATARS: renderApp() lenght>0");
+                console.log("USERAVATARS: state");
+                console.log(this.state);                
                 return(
                     <div>
                         Tus avatares: 
                         <ul>
-                        {this.state.avatars.map(item => 
+                        {this.state.avatars.map((item,index) => 
                             <li key={item.id}>
-                               <a href="#" id={item.id} onClick={this.handleAvatarClick}>{item.name}</a>
+                               <a href="#" id={index} onClick={this.handleAvatarClick}>{item.name}</a>
                             </li>
                         )}
                         </ul>
-                        <form onSubmit={this.nuevoAvatar}>
-                            <label htmlFor="nombre_avatar">
-                                Nombre: 
-                            </label>
-                            <input
-                                id="nombre_avatar"
-                                onChange={this.handleChange}
-                                value={this.state.nombre_avatar}
-                            />
-                            <button>
-                                Nuevo
-                            </button>
-                        </form>                        
-                        <AvatarEditor 
+                        <Errors 
+                            error={this.state.error}
+                            message={this.state.status}
+                        />                      
+                        <AvatarEditor
                             api_token={this.props.api_token}
-                            avatar={av}
-                            setAvatar={this.setAvatar}
-                        />
+                            avatar={this.state.selectedAvatar}
+                            items={this.props.items}
+                        />                        
                     </div>
                 );
             }
             else{
+                console.log("USERAVATARS: renderApp() lenght=0");
                 return(
                     <div>
-                        Aún no tienes un avatar :( 
-                        <form onSubmit={this.nuevoAvatar}>
-                            <label htmlFor="nombre_avatar">
-                                Nombre: 
-                            </label>
-                            <input
-                                id="nombre_avatar"
-                                onChange={this.handleChange}
-                                value={this.state.nombre_avatar}
-                            />
-                            <button>
-                                Crear avatar!
-                            </button>
-                        </form>
-                        <AvatarEditor 
+                        Aún no tienes un avatar :(
+                        <AvatarEditor
                             api_token={this.props.api_token}
-                            avatar={av}
-                            setAvatar={this.setAvatar}
+                            avatar={this.state.selectedAvatar}
+                            items={this.props.items}
                         />
                     </div>
                 );
             }
         }else{
+            console.log("USERAVATARS: renderApp() not loaded");
             return(
                 <span>
                     Cargando avatares de usuario 
