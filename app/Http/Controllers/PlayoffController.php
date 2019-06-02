@@ -116,7 +116,7 @@ class PlayoffController extends Controller
                 'raiz' => $raiz['id'],
             ]);
             DB::commit();
-            return response()->json([$data]);
+            return response()->json($data,201);
         } catch (\Exception $e) {
             DB::rollback();
             abort(500);
@@ -145,7 +145,7 @@ class PlayoffController extends Controller
             }
 
             DB::commit();
-            return response()->json([$id]);
+            return response()->json('OK',200);
         } catch (\Exception $e) {
             DB::rollback();
             abort(500);
