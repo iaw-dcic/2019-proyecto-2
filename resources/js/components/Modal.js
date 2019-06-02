@@ -1,10 +1,12 @@
 import '../../../public/css/modal.css';
 import React from 'react';
 const Modal = props => {
-     
+
      const divStyle = { 
           display: props.displayModal ? 'block' : 'none'
      };
+
+
      function closeModal(e) {
         e.stopPropagation()
         props.closeModal()

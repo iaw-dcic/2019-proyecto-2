@@ -7,6 +7,7 @@ import Images from './Images';
 import Save from './Save';
 import ImageService from './ImageService';
 import Modal from './Modal'
+import Axios from 'axios';
 
 export default class MainSection extends Component {
     constructor(){
@@ -27,6 +28,7 @@ export default class MainSection extends Component {
       this.setCaseColor=this.setCaseColor.bind(this)
       this.setEstampa=this.setEstampa.bind(this)
       this.selectModal=this.selectModal.bind(this)
+      this.addNewProduct=this.addNewProduct.bind(this)
     }
 
     // componentWillMount() {
@@ -51,23 +53,17 @@ export default class MainSection extends Component {
       this.setState({modal: !this.state.modal}) // true/false toggle
     }
 
-    handleAddProduct() {
+    addNewProduct() {
       const product={
-        'id_user':12,
-
-      }
-      fetch( 'api/products/', {
-          method:'post',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-           
-          body: JSON.stringify()
-      })
+        'id_user':1,
+        'id_color': this.state.colorIndex,
+        'id_case':this.state.caseIndex,
+        'id_image':this.state.estampaIndex
+      };
+      Axios.post('api/products',product)
       .then(response => {
-          return response.json();
-      })
+          alert("Funda creada correctamente");
+      });
       
       }
     
@@ -81,7 +77,6 @@ export default class MainSection extends Component {
     // }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
         return (
                 <div className="features-inner">
                   <div className="features-image">
@@ -110,9 +105,9 @@ export default class MainSection extends Component {
                       <Images onClick={this.setEstampa}/>
                     </li>
                     <li className="save-changes">
-                      <button type="submit" className="btn btn-primary">Guardar</button>
-                      <button type="button" className="btn btn-primary" onClick={ this.selectModal }>Mis fundas</button>      
-                      <Modal 
+                      <button type="submit" onClick={this.addNewProduct} className="btn-changes btn btn-primary">Guardar</button>
+                      <button type="button" className="btn-changes btn btn-primary" onClick={ this.selectModal }>Mis fundas</button>      
+                      <Modal
                         displayModal={this.state.modal}
                         closeModal={this.selectModal}
                       />

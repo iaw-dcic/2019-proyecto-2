@@ -16,8 +16,7 @@ class Product extends Model
      */
     protected $fillable = [
         'id_user',
-        'id_case',
-        'id_color',
+        'id_case_color',
         'id_image',
     ];
 

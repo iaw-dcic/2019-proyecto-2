@@ -105,6 +105,11 @@ body {
   margin-top: 20px;
 }
 
+.btn-changes {
+  margin: 5px;
+  cursor: pointer;
+}
+
 @media (min-width: 900px) {
   .list-1 {
     text-align: right;

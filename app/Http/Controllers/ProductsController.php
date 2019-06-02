@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
 use App\Product;
+use App\ColorCase;
  
 class ProductsController extends Controller
 {
@@ -24,17 +25,23 @@ class ProductsController extends Controller
  
     public function store()
     {
-        $user=Auth::user();
+        //$user=Auth::user();
 
         $data=request()->all();
 
-        $product = Product::create([
-            'id_user'=>$user->id,
-            'id_case'=>$data['id_case'],
-            'id_color'=>$data['id_color'],
-            'id_image'=>$data['id_image'],
-        ]);
- 
+        $colorCase = ColorCase::where([
+            ['id_color', '=', $data['id_color']],
+            ['id_case', '=', $data['id_case']],
+        ])->get();
+
+        $product=new Product();
+
+        $product->id_user=$data['id_user'];
+        $product->id_case_color=$colorCase[0]['id'];
+        $product->id_image=$data['id_image'];
+
+        $product->save();
+
         return response()->json($product, 201);
     }
  
