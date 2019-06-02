@@ -1,6 +1,8 @@
 const donuts = {
     donut1: {
-     sabor: 0
+     sabor: "Vacia",
+     glaseado: "VacioGlaseado",
+     decoracion: "VacioDecoracion"
     },
   
 }

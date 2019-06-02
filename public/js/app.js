@@ -65693,14 +65693,397 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Donuts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Donuts */ "./resources/js/components/Donuts.js");
-/* harmony import */ var _Donut__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Donut */ "./resources/js/components/Donut.js");
-/* harmony import */ var _donutscargadas__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./donutscargadas */ "./resources/js/components/donutscargadas.js");
+/* harmony import */ var _Donut__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Donut */ "./resources/js/components/Donut.js");
+/* harmony import */ var _Sabores__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Sabores */ "./resources/js/components/Sabores.js");
+/* harmony import */ var _Glaseados__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Glaseados */ "./resources/js/components/Glaseados.js");
+/* harmony import */ var _Decoraciones__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Decoraciones */ "./resources/js/components/Decoraciones.js");
+/* harmony import */ var _donutscargadas__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./donutscargadas */ "./resources/js/components/donutscargadas.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+var App =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(App, _Component);
+
+  function App() {
+    var _this;
+
+    _classCallCheck(this, App);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
+
+    _defineProperty(_assertThisInitialized(_this), "actualizarDonuts", function (clave, donut) {
+      _this.setState(function (state) {
+        var donuts = _objectSpread({}, state.donuts);
+
+        donuts[clave] = donut;
+        return {
+          donuts: donuts
+        };
+      });
+    });
+
+    _this.state = {
+      donuts: {}
+    };
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        donuts: _donutscargadas__WEBPACK_IMPORTED_MODULE_7__["default"]
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col fondo",
+        id: "box"
+      }, Object.keys(this.state.donuts).map(function (key) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donut__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: key,
+          clave: key,
+          donut: _this2.state.donuts[key]
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col fondo",
+        id: "box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "font-weight-light mb-0"
+      }, "Sabor "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sabores__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        donut: this.props.donuts,
+        actualizarDonuts: this.actualizarDonuts
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "font-weight-light mb-0"
+      }, "Glaseado "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Glaseados__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        donut: this.props.donuts,
+        actualizarDonuts: this.actualizarDonuts
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "font-weight-light mb-0"
+      }, "Decoraci\xF3n "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Decoraciones__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        donut: this.props.donuts,
+        actualizarDonuts: this.actualizarDonuts
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
+    }
+  }]);
+
+  return App;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('react-app'));
+
+/***/ }),
+
+/***/ "./resources/js/components/BotonDecoracion.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/BotonDecoracion.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var BotonDecoracion =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BotonDecoracion, _React$Component);
+
+  function BotonDecoracion(props) {
+    var _this;
+
+    _classCallCheck(this, BotonDecoracion);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BotonDecoracion).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+      console.log(e.currentTarget.value);
+      console.log();
+
+      var donut = _objectSpread({}, _this.props.donut);
+
+      donut[e.currentTarget.name] = e.currentTarget.value;
+
+      _this.props.actualizarDonuts(_this.props.clave, donut);
+    });
+
+    return _this;
+  }
+
+  _createClass(BotonDecoracion, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        name: "decoracion",
+        value: this.props.decoracion.nombre,
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasbotones",
+        src: this.props.decoracion.url
+      }));
+    }
+  }]);
+
+  return BotonDecoracion;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BotonDecoracion);
+
+/***/ }),
+
+/***/ "./resources/js/components/BotonGlaseado.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/BotonGlaseado.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var BotonGlaseado =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BotonGlaseado, _React$Component);
+
+  function BotonGlaseado(props) {
+    var _this;
+
+    _classCallCheck(this, BotonGlaseado);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BotonGlaseado).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+      console.log(e.currentTarget.value);
+      console.log();
+
+      var donut = _objectSpread({}, _this.props.donut);
+
+      donut[e.currentTarget.name] = e.currentTarget.value;
+
+      _this.props.actualizarDonuts(_this.props.clave, donut);
+    });
+
+    return _this;
+  }
+
+  _createClass(BotonGlaseado, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        name: "glaseado",
+        value: this.props.glaseado.nombre,
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasbotones",
+        src: this.props.glaseado.url
+      }));
+    }
+  }]);
+
+  return BotonGlaseado;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BotonGlaseado);
+
+/***/ }),
+
+/***/ "./resources/js/components/BotonSabor.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/BotonSabor.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var BotonSabor =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BotonSabor, _React$Component);
+
+  function BotonSabor(props) {
+    var _this;
+
+    _classCallCheck(this, BotonSabor);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BotonSabor).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+      console.log(e.currentTarget.value);
+      console.log();
+
+      var donut = _objectSpread({}, _this.props.donut);
+
+      donut[e.currentTarget.name] = e.currentTarget.value;
+
+      _this.props.actualizarDonuts(_this.props.clave, donut);
+    });
+
+    return _this;
+  }
+
+  _createClass(BotonSabor, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        name: "sabor",
+        value: this.props.sabor.nombre,
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasbotones",
+        src: this.props.sabor.url
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.sabor.nombre);
+    }
+  }]);
+
+  return BotonSabor;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BotonSabor);
+
+/***/ }),
+
+/***/ "./resources/js/components/Decoraciones.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Decoraciones.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BotonDecoracion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BotonDecoracion */ "./resources/js/components/BotonDecoracion.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -65721,82 +66104,59 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-
-
-
-var App =
+var Decoraciones =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(App, _Component);
+function (_React$Component) {
+  _inherits(Decoraciones, _React$Component);
 
-  function App() {
+  function Decoraciones() {
     var _this;
 
-    _classCallCheck(this, App);
+    _classCallCheck(this, Decoraciones);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Decoraciones).call(this));
     _this.state = {
-      donuts: {}
+      decoraciones: []
     };
     return _this;
   }
 
-  _createClass(App, [{
-    key: "actualizarDonuts",
-    value: function actualizarDonuts(clave, donut) {
-      this.setState(function (state) {
-        var donuts = _objectSpread({}, state.donuts);
-
-        donuts[clave] = donut;
-        return {
-          donuts: donuts
-        };
-      });
-    } // agregarDonut (donut) {
-    //   this.setState((state) => {
-    //     const donuts = { ...state.donuts };
-    //     donuts[`donut${Date.now()}`] = donut;
-    //     return ({ donuts });
-    //   })
-    // }
-
+  _createClass(Decoraciones, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.loadDecoracion();
+    }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.setState({
-        donuts: _donutscargadas__WEBPACK_IMPORTED_MODULE_5__["default"]
+    key: "loadDecoracion",
+    value: function loadDecoracion() {
+      var _this2 = this;
+
+      fetch('/api/decoraciones').then(function (response) {
+        return response.json();
+      }).then(function (decoraciones) {
+        _this2.setState({
+          decoraciones: decoraciones
+        });
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col fondo"
-      }, Object.keys(this.state.donuts).map(function (key) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donut__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          key: key,
-          clave: key,
-          donut: _this2.state.donuts[key]
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.decoraciones.map(function (decoracion) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BotonDecoracion__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          decoracion: decoracion,
+          actualizarDonuts: _this3.props.actualizarDonuts
         });
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col fondo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Donuts__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        donuts: this.state.donuts // agregarDonut={this.agregarDonut}
-        ,
-        actualizarDonuts: this.actualizarDonuts
-      }))));
+      }));
     }
   }]);
 
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+  return Decoraciones;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('react-app'));
+/* harmony default export */ __webpack_exports__["default"] = (Decoraciones);
 
 /***/ }),
 
@@ -65846,13 +66206,112 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var sabor = this.props.donut.sabor;
-      if (sabor == 1) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/Donas/donaVainilla.png",
-        className: "medio"
-      });else if (sabor == 2) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/Donas/donaChocolate.png",
-        className: "medio"
-      });else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      var glaseado = this.props.donut.glaseado;
+      var decoracion = this.props.donut.decoracion;
+
+      switch (glaseado) {
+        case 'Blanco':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseadoBlanco.png",
+            className: "medio"
+          });
+
+        case 'Chocolate':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseadoChocolate.png",
+            className: "medio"
+          });
+
+        case 'Celeste':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseadoCeleste.png",
+            className: "medio"
+          });
+
+        case 'Rosa':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseadoRosa.png",
+            className: "medio"
+          });
+
+        case 'Naranja':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseadoNaranja.png",
+            className: "medio"
+          });
+
+        case 'VacioGlaseado':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseadoVacio2.png",
+            className: "medio"
+          });
+      }
+
+      switch (sabor) {
+        case 'Vainilla':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/donaVainilla.png",
+            className: "medio"
+          });
+
+        case 'Chocolate':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/donaChocolate.png",
+            className: "medio"
+          });
+
+        case 'Mixta':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/donaMixta.png",
+            className: "medio"
+          });
+
+        case 'Vacia':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/dona.png",
+            className: "medio"
+          });
+      }
+
+      switch (decoracion) {
+        case 'Chispas1':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/chispas1.png",
+            className: "medio"
+          });
+
+        case 'Chispas2':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/chispas2.png",
+            className: "medio"
+          });
+
+        case 'Chispas3':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/chispas3.png",
+            className: "medio"
+          });
+
+        case 'Glaseado1':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseado1.png",
+            className: "medio"
+          });
+
+        case 'Glaseado2':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/glaseado2.png",
+            className: "medio"
+          });
+
+        case 'VacioDecoracion':
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: "img/Donas/decoracionVacio.png",
+            className: "medio"
+          });
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "img/Donas/dona.png",
         className: "medio"
       });
@@ -65866,10 +66325,10 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Donuts.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Donuts.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/Glaseados.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Glaseados.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65877,7 +66336,7 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _EditarDonuts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarDonuts */ "./resources/js/components/EditarDonuts.js");
+/* harmony import */ var _BotonGlaseado__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BotonGlaseado */ "./resources/js/components/BotonGlaseado.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65897,46 +66356,68 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // import AgregarDonut from './AgregarDonut';
 
-var Donuts =
+
+var Glaseados =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Donuts, _React$Component);
+  _inherits(Glaseados, _React$Component);
 
-  function Donuts() {
-    _classCallCheck(this, Donuts);
+  function Glaseados() {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Donuts).apply(this, arguments));
+    _classCallCheck(this, Glaseados);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Glaseados).call(this));
+    _this.state = {
+      glaseados: []
+    };
+    return _this;
   }
 
-  _createClass(Donuts, [{
+  _createClass(Glaseados, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.loadGlaseado();
+    }
+  }, {
+    key: "loadGlaseado",
+    value: function loadGlaseado() {
+      var _this2 = this;
+
+      fetch('/api/glaseados').then(function (response) {
+        return response.json();
+      }).then(function (glaseados) {
+        _this2.setState({
+          glaseados: glaseados
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object.keys(this.props.donuts).map(function (clave) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditarDonuts__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: clave,
-          clave: clave,
-          donut: _this.props.donuts[clave],
-          actualizarDonuts: _this.props.actualizarDonuts
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.glaseados.map(function (glaseado) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BotonGlaseado__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          glaseado: glaseado,
+          actualizarDonuts: _this3.props.actualizarDonuts
         });
       }));
     }
   }]);
 
-  return Donuts;
+  return Glaseados;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Donuts);
+/* harmony default export */ __webpack_exports__["default"] = (Glaseados);
 
 /***/ }),
 
-/***/ "./resources/js/components/EditarDonuts.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/EditarDonuts.js ***!
-  \*************************************************/
+/***/ "./resources/js/components/Sabores.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Sabores.js ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65944,11 +66425,8 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BotonSabor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BotonSabor */ "./resources/js/components/BotonSabor.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -65968,82 +66446,60 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var EditarDonuts =
+
+var Sabores =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(EditarDonuts, _React$Component);
+  _inherits(Sabores, _React$Component);
 
-  function EditarDonuts() {
-    _classCallCheck(this, EditarDonuts);
+  function Sabores() {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EditarDonuts).apply(this, arguments));
+    _classCallCheck(this, Sabores);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Sabores).call(this));
+    _this.state = {
+      sabores: []
+    };
+    return _this;
   }
 
-  _createClass(EditarDonuts, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      console.log(e.currentTarget.value);
+  _createClass(Sabores, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.loadSabor();
+    }
+  }, {
+    key: "loadSabor",
+    value: function loadSabor() {
+      var _this2 = this;
 
-      var donut = _objectSpread({}, this.props.donut);
-
-      donut[e.currentTarget.name] = e.currentTarget.value;
-      this.props.actualizarDonuts(this.props.clave, donut);
+      fetch('/api/sabores').then(function (response) {
+        return response.json();
+      }).then(function (sabores) {
+        _this2.setState({
+          sabores: sabores
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "font-weight-light mb-0"
-      }, "Sabor "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        name: "sabor",
-        value: "1",
-        onClick: this.handleClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "donasbotones",
-        src: "img/Donas/donaVainilla.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Vainilla "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        name: "sabor",
-        value: "2",
-        onClick: this.handleClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "donasbotones",
-        src: "img/Donas/donaChocolate.png"
-      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " Chocolate "));
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.sabores.map(function (sabor) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BotonSabor__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          sabor: sabor,
+          actualizarDonuts: _this3.props.actualizarDonuts
+        });
+      }));
     }
   }]);
 
-  return EditarDonuts;
+  return Sabores;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (EditarDonuts); // 
-//       <button type="button" className="btn"
-//         value={this.props.donut.sabor}
-//         onClick={this.handleClick}
-//         name='sabor'
-//         type='text'
-//       >
-//       <img className="donasbotones" src="img/Donas/donaMixta.png" /><br> Mixta </button>
-//       <br><br>
-//       <h4 className="font-weight-light mb-0">Glaseado </h4>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoBlanco.png" /> <br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoChocolate.png" /> <br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoRosa.png" /><br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoCeleste.png" /><br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoNaranja.png" /><br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseadoVacio.png" /><br> </button>
-//       <br><br>
-//       <h4 className="font-weight-light mb-0">Decoración </h4>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/chispas1.png" /> <br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/chispas2.png" /> <br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/chispas3.png" /><br> </button>
-//       <br>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseado1.png" /> <br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/glaseado2.png" /><br> </button>
-//       <button type="button" className="btn"><img className="donasbotones" src="img/Donas/sin.png" /><br> </button>
+/* harmony default export */ __webpack_exports__["default"] = (Sabores);
 
 /***/ }),
 
@@ -66058,7 +66514,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 var donuts = {
   donut1: {
-    sabor: 0
+    sabor: "Vacia",
+    glaseado: "VacioGlaseado",
+    decoracion: "VacioDecoracion"
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (donuts);

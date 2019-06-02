@@ -1,67 +1,66 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Donuts from './Donuts';
 import Donut from './Donut';
+import Sabores from './Sabores';
+import Glaseados from './Glaseados';
+import Decoraciones from './Decoraciones';
 import donuts from './donutscargadas';
 
 class App extends Component {
-  constructor() {
-    super();
+	constructor() {
+		super();
 
-    this.state = {
-      donuts: {}
-    }
-    
-  }
+		this.state = {
+			donuts: {}
+		};
+	}
 
-  actualizarDonuts (clave, donut) {
-    this.setState((state) => {
-      const donuts = { ...state.donuts };
-      donuts[clave] = donut;
-      return ({ donuts });
-    })
-  }
+	actualizarDonuts = (clave, donut) => {
+		this.setState((state) => {
+			const donuts = { ...state.donuts };
+			donuts[clave] = donut;
+			return { donuts };
+		});
+	};
 
-  // agregarDonut (donut) {
-  //   this.setState((state) => {
-  //     const donuts = { ...state.donuts };
-  //     donuts[`donut${Date.now()}`] = donut;
-  //     return ({ donuts });
-  //   })
-  // }
-
-  componentDidMount() {
-    this.setState({donuts});
-  }
+	componentDidMount() {
+		this.setState({ donuts });
+	}
 
 	render() {
 		return (
-      <BrowserRouter> 
-      <div className="row"> 
-      <div className="col fondo">     
-        {
-            Object.keys(this.state.donuts).map((key) => (
-              <Donut 
-                key={key} 
-                clave={key}
-                donut={this.state.donuts[key]}>
-              </Donut>
+			<BrowserRouter>
+				<div className="row">
+					<div className="col fondo" id="box">
+						{Object.keys(this.state.donuts).map((key) => (
+							<Donut key={key} clave={key} donut={this.state.donuts[key]} />
+						))}
+					</div>
 
-            ))
-          }
-      </div>
+					<div className="col fondo" id="box">
+						<br />
+						<h4 className="font-weight-light mb-0">Sabor </h4>
 
-      <div className="col fondo">
-        <Donuts 
-          donuts={this.state.donuts}
-         // agregarDonut={this.agregarDonut}
-          actualizarDonuts={this.actualizarDonuts}
-        ></Donuts> 
-      </div>
+						<Sabores donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} />
 
-</div>
-    </BrowserRouter>
+						<br />
+						<br />
+
+						<h4 className="font-weight-light mb-0">Glaseado </h4>
+
+						<Glaseados donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} />
+
+						<br />
+						<br />
+						<h4 className="font-weight-light mb-0">Decoración </h4>
+
+						<Decoraciones donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} />
+
+						<br />
+					</div>
+				</div>
+			</BrowserRouter>
 		);
 	}
 }

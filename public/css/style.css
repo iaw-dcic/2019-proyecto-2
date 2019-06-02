@@ -5,8 +5,13 @@
   }
 
   img.medio{
+    position:absolute;
     width: 550px;
     height: 550px;
+  }
+
+  #box {
+    position: relative;
   }
 
   img.donasbotones{
