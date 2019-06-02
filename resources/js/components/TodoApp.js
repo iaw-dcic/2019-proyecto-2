@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import TodoList from './TodoList'
 import TodoAdd from './TodoAdd'
 import Navbar from './Navbar'
-import Card from './Card';
+import Pronostico from './Pronostico'
 
 export default class TodoApp extends Component {
 
     state = { 
-        items: []
+        idPronostico: 0
     };
+
+    constructor(props){
+        super(props);
+    }
 
     render() {
       return (
@@ -17,15 +21,37 @@ export default class TodoApp extends Component {
             <Navbar />
             
             <div className="container">
-                <Card />
-                <h3>TODO</h3>
-                <TodoList items={this.state.items} />
-                <TodoAdd addItem={this.addItem}/>
+                <button type="button" className="btn btn-outline-primary btn-block" onClick={this.handleClick} >Crear Nuevo Pronostico</button>
+                if(idPronostico!=0){
+                    <Pronostico id={this.state.idPronostico}/>
+                } 
             </div>
         </div>
       );
     }
 
+    handelClick = (e) => {
+        event.preventDefault();
+        fetch('http://127.0.0.1:8000/api/newPronostico')
+            .then(response => response.json())
+            .then(json => {
+                this.setState({
+                   idPronostico: json.idPronostico
+                })
+            });
+        
+    }
+/*
+    componentWillMount() {
+        fetch('http://127.0.0.1:8000/api/selecciones')
+            .then(response => response.json())
+            .then(json => {
+                this.setState({
+                    items: json.items
+                })
+            });
+        }
+*/
     addItem = (newItem) => {
       this.setState(state => ({
         items: state.items.concat(newItem)

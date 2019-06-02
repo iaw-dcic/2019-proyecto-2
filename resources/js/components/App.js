@@ -5,16 +5,6 @@ import TodoApp from './TodoApp'
 
 class App extends Component {
 
-    state = {
-        userName: ''
-    }
-
-    constructor(props){
-        super(props);
-        this.state.userName = props.userName;
-        console.log(this.state.userName);
-        console.log("estoy aca");
-    }
     render () {
         return (
             <BrowserRouter>

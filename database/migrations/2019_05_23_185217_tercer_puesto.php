@@ -16,6 +16,7 @@ class TercerPuesto extends Migration
         Schema::create('tpuesto', function (Blueprint $table) {
             $table->unsignedBigInteger('id_partido');
             $table->foreign('id_partido')->references('id')->on('partidos');
+            $table->timestamps();
         });
     }
 

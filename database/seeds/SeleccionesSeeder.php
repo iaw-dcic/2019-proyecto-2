@@ -11,51 +11,51 @@ class SeleccionesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'BRA',
             'name' => 'Brasil'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'BOL',
             'name' => 'Bolivia'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'VEN',
             'name' => 'Venezuela'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'PER',
             'name' => 'Perú'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'ARG',
             'name' => 'Argentina'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'COL',
             'name' => 'Colombia'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'PAR',
             'name' => 'Paraguay'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'QAT',
             'name' => 'Qatar'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'URU',
             'name' => 'Uruguay'
             ]); 
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'ECU',
             'name' => 'Ecuador'
             ]); 
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'JPN',
             'name' => 'Japón'
             ]);
-        DB::table('selecciones')->insert([
+        DB::table('seleccions')->insert([
             'codigo' => 'CHI',
             'name' => 'Chile'
             ]);

@@ -28,7 +28,7 @@ export default class Navbar extends Component {
 
                                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a className="dropdown-item" href="/login"
-                                        onclick={this.handelClick}>
+                                        onClick={this.handelClick}>
                                             Logout
                                         </a>
 

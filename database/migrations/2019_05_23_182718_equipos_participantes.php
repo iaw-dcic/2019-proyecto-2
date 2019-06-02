@@ -13,9 +13,10 @@ class EquiposParticipantes extends Migration
      */
     public function up()
     {
-        Schema::create('selecciones', function (Blueprint $table) {
+        Schema::create('seleccions', function (Blueprint $table) {
             $table->string('codigo')->unique();
             $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class EquiposParticipantes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('selecciones');
+        Schema::dropIfExists('seleccions');
     }
 }

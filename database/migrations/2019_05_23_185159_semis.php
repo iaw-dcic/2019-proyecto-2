@@ -16,6 +16,7 @@ class Semis extends Migration
         Schema::create('semis', function (Blueprint $table) {
             $table->unsignedBigInteger('id_partido');
             $table->foreign('id_partido')->references('id')->on('partidos');
+            $table->timestamps();
         });
     }
 

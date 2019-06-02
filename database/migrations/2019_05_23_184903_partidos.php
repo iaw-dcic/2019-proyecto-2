@@ -17,12 +17,13 @@ class Partidos extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('pronostico_id');
             $table->string('codigo_sel_A')->nullable();
-            $table->foreign('codigo_sel_A')->references('codigo')->on('selecciones');
+            $table->foreign('codigo_sel_A')->references('codigo')->on('seleccions');
             $table->string('codigo_sel_B')->nullable();
-            $table->foreign('codigo_sel_B')->references('codigo')->on('selecciones');
+            $table->foreign('codigo_sel_B')->references('codigo')->on('seleccions');
             $table->integer('goles_B')->nullable();
             $table->integer('goles_A')->nullable();
             $table->boolean('ingreso_goles');
+            $table->timestamps();
         });
     }
 
