@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-  //  return $request->user();
-//});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::get('products','ProductsController@index');
 
@@ -32,3 +32,5 @@ Route::get('colors', 'ColorsController@index');
 Route::get('images', 'ImagesController@index');
 
 Route::get('fundas', 'FundasController@index');
+
+Route::get('colorcase/{id_case}/{id_color}', 'ColorCasesController@show');

@@ -9,9 +9,9 @@ class Funda extends Model
 
     public $table = "cases";
 
-    public function product(){
+    public function colorCase(){
         
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(ColorCase::class);
     }
 
 }

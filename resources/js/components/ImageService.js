@@ -1,20 +1,5 @@
 export default class ImageService{
 
-    /*getCaseImage(id){
-
-        let image;
-
-        switch(id){
-            case 1: {image=require('./images/iPhone7-8/iPhone7-8.png'); break;}
-            case 2: {image=require('./images/IphoneX.png'); break;}
-            case 3: {image=require('./images/iPhoneXR.png'); break;}
-            case 4: {image=require('./images/SamsungS8.png'); break;}
-            case 5: {image=require('./images/samsungS9plus.png'); break;}
-            case 6: {image=require('./images/iPhone7-8-coral.png'); break;}
-        }
-
-        return image;
-    }*/
 
     getColorCase(caseId, colorId){
 
@@ -90,6 +75,19 @@ export default class ImageService{
         
         return image;
     }
+
+    // getCaseColor(caseId, colorId){
+    //   return  fetch(`/api/colorcase/${caseId}/${colorId}`).then(
+    //         response =>{
+    //             return response.json();
+    //         }   
+    //     )
+    //     .then(image => {
+    //         return this.getColorCase(caseId, colorId)
+    //     });
+
+  
+    // }
 
     getEstampa(estampaId){
         let image;

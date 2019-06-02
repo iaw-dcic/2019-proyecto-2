@@ -6584,6 +6584,25 @@ exports.push([module.i, "body {\r\n  font-family: Montserrat, sans-serif;\r\n}\r
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./public/css/modal.css":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./public/css/modal.css ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".modal {\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Overlay effect: translucent background: black w/ partial opacity */\r\n    z-index: 1; /* Overlay effect: positioned over other containers */\r\n    width: 100%; /* Full width */\r\n    height: 100%; /* Full height */\r\n    position: fixed; /* Fix position on the top-left corner*/\r\n    top: 0;\r\n    left: 0;\r\n    overflow: auto; /* Enable scroll if needed */\r\n    padding-top: 80px; /* Location of the content container */\r\n}\r\n/* Modal content */\r\n.modal-content {\r\n    background-color: white;\r\n    width: 70%; /* Width in proportion to its parent container*/\r\n    max-width: 640px; /* Max width where it stops expanding */\r\n    height: 70%; /* Height in proportion to its parent container */\r\n    margin: auto; /* Auto margin according to the element width */\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 20px; /* Optional. Rounds container corners */\r\n}\r\n/* Close button */\r\n.close {\r\n   color: #aaaaaa;\r\n   float: right; /* Positioned to the right of the parent container whichever size it is */\r\n   font-size: 25px;\r\n   font-weight: bold;\r\n}\r\n.close:hover, \r\n.close:focus {\r\n    color: #000;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -60886,7 +60905,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66389,6 +66408,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./public/css/modal.css":
+/*!******************************!*\
+  !*** ./public/css/modal.css ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../node_modules/postcss-loader/src??ref--6-2!./modal.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./public/css/modal.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -66608,24 +66657,24 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/CaseOptions.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/CaseOptions.js ***!
-  \************************************************/
+/***/ "./resources/js/components/CaseButton.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/CaseButton.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CaseOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CaseButton; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/layout.css */ "./public/css/layout.css");
-/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/css/caseOptions.css */ "./public/css/caseOptions.css");
-/* harmony import */ var _public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/caseOptions.css */ "./public/css/caseOptions.css");
+/* harmony import */ var _public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/css/layout.css */ "./public/css/layout.css");
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66649,18 +66698,18 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var CaseOptions =
+var CaseButton =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(CaseOptions, _Component);
+  _inherits(CaseButton, _Component);
 
-  function CaseOptions() {
-    _classCallCheck(this, CaseOptions);
+  function CaseButton() {
+    _classCallCheck(this, CaseButton);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CaseOptions).call(this));
+    return _possibleConstructorReturn(this, _getPrototypeOf(CaseButton).call(this));
   }
 
-  _createClass(CaseOptions, [{
+  _createClass(CaseButton, [{
     key: "buttonClick",
     value: function buttonClick(id) {
       this.props.onClick(id);
@@ -66670,34 +66719,115 @@ function (_Component) {
     value: function render() {
       var _this = this;
 
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this.buttonClick(_this.props.funda.id);
+        },
+        className: "btn btn-style"
+      }, this.props.funda.name);
+    }
+  }]);
+
+  return CaseButton;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/CaseOptions.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/CaseOptions.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CaseOptions; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/layout.css */ "./public/css/layout.css");
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/css/caseOptions.css */ "./public/css/caseOptions.css");
+/* harmony import */ var _public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_css_caseOptions_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _CaseButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CaseButton */ "./resources/js/components/CaseButton.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var CaseOptions =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CaseOptions, _Component);
+
+  function CaseOptions() {
+    var _this;
+
+    _classCallCheck(this, CaseOptions);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CaseOptions).call(this));
+    _this.state = {
+      fundas: []
+    };
+    return _this;
+  }
+
+  _createClass(CaseOptions, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.loadFundas();
+    }
+  }, {
+    key: "loadFundas",
+    value: function loadFundas() {
+      var _this2 = this;
+
+      fetch('/api/fundas').then(function (response) {
+        return response.json();
+      }).then(function (fundas) {
+        _this2.setState({
+          fundas: fundas
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "hover-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(1);
-        },
-        className: "btn btn-style"
-      }, "iPhone 7/8"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(2);
-        },
-        className: "btn btn-style"
-      }, "iPhone X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(3);
-        },
-        className: "btn btn-style"
-      }, "iPhone XR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(4);
-        },
-        className: "btn btn-style"
-      }, "Samsung S8"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(5);
-        },
-        className: "btn btn-style"
-      }, "Xiaomi F1"));
+      }, this.state.fundas.map(function (funda) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CaseButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          funda: funda,
+          onClick: function onClick() {
+            return _this3.props.onClick(funda.id);
+          }
+        });
+      }));
     }
   }]);
 
@@ -66708,16 +66838,16 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Colors.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Colors.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/ColorButton.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/ColorButton.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Colors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ColorButton; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -66749,18 +66879,18 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Colors =
+var ColorButton =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Colors, _Component);
+  _inherits(ColorButton, _Component);
 
-  function Colors() {
-    _classCallCheck(this, Colors);
+  function ColorButton(props) {
+    _classCallCheck(this, ColorButton);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Colors).call(this));
+    return _possibleConstructorReturn(this, _getPrototypeOf(ColorButton).call(this, props));
   }
 
-  _createClass(Colors, [{
+  _createClass(ColorButton, [{
     key: "buttonClick",
     value: function buttonClick(id) {
       this.props.onClick(id);
@@ -66770,84 +66900,119 @@ function (_Component) {
     value: function render() {
       var _this = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "orange"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: this.props.color.name
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onClick: function onClick() {
-          return _this.buttonClick(1);
+          return _this.buttonClick(_this.props.color.id);
         },
         type: "radio",
         name: "color",
-        value: "orange"
+        value: this.props.color.name
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "amber"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onClick: function onClick() {
-          return _this.buttonClick(2);
-        },
-        type: "radio",
-        name: "color",
-        value: "amber"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "lime"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onClick: function onClick() {
-          return _this.buttonClick(3);
-        },
-        type: "radio",
-        name: "color",
-        value: "lime"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "teal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onClick: function onClick() {
-          return _this.buttonClick(4);
-        },
-        type: "radio",
-        name: "color",
-        value: "teal"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "blue"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onClick: function onClick() {
-          return _this.buttonClick(5);
-        },
-        type: "radio",
-        name: "color",
-        value: "blue"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "indigo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onClick: function onClick() {
-          return _this.buttonClick(6);
-        },
-        type: "radio",
-        name: "color",
-        value: "indigo"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "white"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onClick: function onClick() {
-          return _this.buttonClick(0);
-        },
-        type: "radio",
-        name: "color",
-        value: "white"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null)));
+    }
+  }]);
+
+  return ColorButton;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Colors.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Colors.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Colors; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _public_css_colors_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/colors.css */ "./public/css/colors.css");
+/* harmony import */ var _public_css_colors_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_css_colors_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/css/layout.css */ "./public/css/layout.css");
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ColorButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ColorButton */ "./resources/js/components/ColorButton.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var Colors =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Colors, _Component);
+
+  function Colors() {
+    var _this;
+
+    _classCallCheck(this, Colors);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Colors).call(this));
+    _this.state = {
+      colors: []
+    };
+    return _this;
+  }
+
+  _createClass(Colors, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.loadColors();
+    }
+  }, {
+    key: "loadColors",
+    value: function loadColors() {
+      var _this2 = this;
+
+      fetch('/api/colors').then(function (response) {
+        return response.json();
+      }).then(function (colors) {
+        _this2.setState({
+          colors: colors
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.colors.map(function (color) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ColorButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          color: color,
+          onClick: function onClick() {
+            return _this3.props.onClick(color.id);
+          }
+        });
+      }));
     }
   }]);
 
@@ -66954,19 +67119,6 @@ function () {
 
   _createClass(ImageService, [{
     key: "getColorCase",
-
-    /*getCaseImage(id){
-          let image;
-          switch(id){
-            case 1: {image=require('./images/iPhone7-8/iPhone7-8.png'); break;}
-            case 2: {image=require('./images/IphoneX.png'); break;}
-            case 3: {image=require('./images/iPhoneXR.png'); break;}
-            case 4: {image=require('./images/SamsungS8.png'); break;}
-            case 5: {image=require('./images/samsungS9plus.png'); break;}
-            case 6: {image=require('./images/iPhone7-8-coral.png'); break;}
-        }
-          return image;
-    }*/
     value: function getColorCase(caseId, colorId) {
       var image;
 
@@ -67230,7 +67382,17 @@ function () {
       }
 
       return image;
-    }
+    } // getCaseColor(caseId, colorId){
+    //   return  fetch(`/api/colorcase/${caseId}/${colorId}`).then(
+    //         response =>{
+    //             return response.json();
+    //         }   
+    //     )
+    //     .then(image => {
+    //         return this.getColorCase(caseId, colorId)
+    //     });
+    // }
+
   }, {
     key: "getEstampa",
     value: function getEstampa(estampaId) {
@@ -67485,6 +67647,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Images__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Images */ "./resources/js/components/Images.js");
 /* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Save */ "./resources/js/components/Save.js");
 /* harmony import */ var _ImageService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ImageService */ "./resources/js/components/ImageService.js");
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Modal */ "./resources/js/components/Modal.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67512,6 +67675,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var MainSection =
 /*#__PURE__*/
 function (_Component) {
@@ -67527,27 +67691,33 @@ function (_Component) {
     _this.state = {
       caseIndex: 1,
       colorIndex: 0,
-      estampaIndex: 0
+      estampaIndex: 0,
+      //casePath:""
+      modal: false
     };
     _this.setCaseImage = _this.setCaseImage.bind(_assertThisInitialized(_this));
     _this.setCaseColor = _this.setCaseColor.bind(_assertThisInitialized(_this));
     _this.setEstampa = _this.setEstampa.bind(_assertThisInitialized(_this));
+    _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // componentWillMount() {
+  //   this.getCaseImage();
+  // }
+
 
   _createClass(MainSection, [{
     key: "setCaseImage",
     value: function setCaseImage(caseId) {
       this.setState({
         caseIndex: caseId
-      });
+      }); // this.getCaseImage()
     }
   }, {
     key: "setCaseColor",
     value: function setCaseColor(colorId) {
       this.setState({
         colorIndex: colorId
-      });
+      }); //this.getCaseImage()
     }
   }, {
     key: "setEstampa",
@@ -67557,8 +67727,47 @@ function (_Component) {
       });
     }
   }, {
+    key: "selectModal",
+    value: function selectModal(info) {
+      this.setState({
+        modal: !this.state.modal
+      }); // true/false toggle
+    }
+  }, {
+    key: "handleAddProduct",
+    value: function handleAddProduct() {
+      var product = {
+        'id_user': 12
+      };
+      fetch('api/products/', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
+      }).then(function (response) {
+        return response.json();
+      });
+    } // getCaseImage(){
+    //   this.imageService.getCaseColor(this.state.caseIndex,this.state.colorIndex).then(
+    //     path => {
+    //       this.setState({casePath:path})
+    //     }
+    //   );
+    // }
+
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var modalClose = function modalClose() {
+        return _this2.setState({
+          modalShow: false
+        });
+      };
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "features-inner"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67598,7 +67807,17 @@ function (_Component) {
         onClick: this.setEstampa
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "save-changes"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Save__WEBPACK_IMPORTED_MODULE_6__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary"
+      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary",
+        onClick: this.selectModal
+      }, "Mis fundas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        displayModal: this.state.modal,
+        closeModal: this.selectModal
+      }))));
     }
   }]);
 
@@ -67606,6 +67825,51 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/Modal.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Modal.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _public_css_modal_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../public/css/modal.css */ "./public/css/modal.css");
+/* harmony import */ var _public_css_modal_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_public_css_modal_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var Modal = function Modal(props) {
+  var divStyle = {
+    display: props.displayModal ? 'block' : 'none'
+  };
+
+  function closeModal(e) {
+    e.stopPropagation();
+    props.closeModal();
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "modal",
+    onClick: closeModal,
+    style: divStyle
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "modal-content",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+    className: "close",
+    onClick: closeModal
+  }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", null, "Boton 1"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", null, "Boton 2")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Modal);
 
 /***/ }),
 
@@ -67750,7 +68014,7 @@ function (_Component) {
   function Save() {
     _classCallCheck(this, Save);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Save).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Save).call(this));
   }
 
   _createClass(Save, [{
@@ -67759,10 +68023,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-primary"
-      }, "Guardar cambios"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-primary"
-      }, "Mis fundas"));
+      }, "Guardar cambios"));
     }
   }]);
 

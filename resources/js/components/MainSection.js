@@ -6,7 +6,7 @@ import CaseOptions from './CaseOptions';
 import Images from './Images';
 import Save from './Save';
 import ImageService from './ImageService';
-
+import Modal from './Modal'
 
 export default class MainSection extends Component {
     constructor(){
@@ -18,27 +18,70 @@ export default class MainSection extends Component {
       this.state={
         caseIndex:1,
         colorIndex:0,
-        estampaIndex:0
+        estampaIndex:0,
+        //casePath:""
+        modal: false
       }
 
       this.setCaseImage=this.setCaseImage.bind(this)
       this.setCaseColor=this.setCaseColor.bind(this)
       this.setEstampa=this.setEstampa.bind(this)
+      this.selectModal=this.selectModal.bind(this)
     }
+
+    // componentWillMount() {
+    //   this.getCaseImage();
+    // }
 
     setCaseImage(caseId){
         this.setState({caseIndex:caseId})
+        // this.getCaseImage()
     }
 
     setCaseColor(colorId){
       this.setState({colorIndex:colorId})
+       //this.getCaseImage()
     }
 
     setEstampa(estampaId){
       this.setState({estampaIndex:estampaId})
     }
 
+    selectModal(info){
+      this.setState({modal: !this.state.modal}) // true/false toggle
+    }
+
+    handleAddProduct() {
+      const product={
+        'id_user':12,
+
+      }
+      fetch( 'api/products/', {
+          method:'post',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+           
+          body: JSON.stringify()
+      })
+      .then(response => {
+          return response.json();
+      })
+      
+      }
+    
+
+    // getCaseImage(){
+    //   this.imageService.getCaseColor(this.state.caseIndex,this.state.colorIndex).then(
+    //     path => {
+    //       this.setState({casePath:path})
+    //     }
+    //   );
+    // }
+
     render() {
+        let modalClose = () => this.setState({ modalShow: false });
         return (
                 <div className="features-inner">
                   <div className="features-image">
@@ -67,7 +110,12 @@ export default class MainSection extends Component {
                       <Images onClick={this.setEstampa}/>
                     </li>
                     <li className="save-changes">
-                      <Save />
+                      <button type="submit" className="btn btn-primary">Guardar</button>
+                      <button type="button" className="btn btn-primary" onClick={ this.selectModal }>Mis fundas</button>      
+                      <Modal 
+                        displayModal={this.state.modal}
+                        closeModal={this.selectModal}
+                      />
                     </li>
                   </ul>
                 </div>

@@ -2,21 +2,38 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import '../../../public/css/colors.css'
 import '../../../public/css/layout.css'
+import ColorButton from './ColorButton';
 
 
 export default class Colors extends Component {
     constructor(){
         super()
+
+        this.state={colors:[]}
     }
-    
-    buttonClick(id){
-        this.props.onClick(id)
+
+    componentWillMount(){
+        this.loadColors();
+    }
+
+    loadColors(){
+        fetch('/api/colors').then(
+            (response)=>{
+                return response.json();
+            }   )
+        .then(colors => {
+            this.setState({ colors: colors });
+        });
     }
 
     render() {
         return (
             <div>
-                <label className="orange">
+                {
+                    this.state.colors.map(color => <ColorButton color={color} onClick={() => this.props.onClick(color.id)}/>)
+                }
+                {/* <ColorButton color={}/> */}
+                {/* <label className="orange">
                     <input onClick={() =>this.buttonClick(1)} type="radio" name="color" value="orange"/>
                     <div className="button"><span></span></div>
                 </label>
@@ -43,7 +60,7 @@ export default class Colors extends Component {
                 <label className="white">
                     <input onClick={() =>this.buttonClick(0)} type="radio" name="color" value="white"/>
                     <div className="button"><span></span></div>
-                </label>
+                </label> */}
             </div>
         );
     }

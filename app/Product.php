@@ -27,16 +27,12 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function funda(){
-        return $this->hasOne(Funda::class);
-    }
-
     public function image(){
         return $this->hasOne(Image::class);
     }
 
-    public function color(){
-        return $this->hasOne(Color::class);
+    public function colorCase(){
+        return $this->hasOne(ColorCase::class);
     }
 
 

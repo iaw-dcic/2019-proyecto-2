@@ -9,9 +9,9 @@ class Color extends Model
 
     public $table = "colors";
 
-    public function product(){
+    public function colorCase(){
         
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(ColorCase::class);
     }
 
 }

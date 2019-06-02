@@ -2,24 +2,36 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import '../../../public/css/layout.css';
 import '../../../public/css/caseOptions.css';
+import CaseButton from './CaseButton'
 
 export default class CaseOptions extends Component {
     constructor(){
         super()
+
+        this.state={fundas:[]}
     }
-    
-    buttonClick(id){
-        this.props.onClick(id)
+
+    componentWillMount(){
+        this.loadFundas();
+    }
+
+    loadFundas(){
+        fetch('/api/fundas').then(
+            (response)=>{
+                return response.json();
+            }   )
+        .then(fundas => {
+            this.setState({ fundas: fundas });
+        });
     }
 
     render() {
         return (
             <div className="hover-btn">
-                <button onClick={() =>this.buttonClick(1)} className="btn btn-style">iPhone 7/8</button>
-                <button onClick={() =>this.buttonClick(2)} className="btn btn-style">iPhone X</button>
-                <button onClick={() =>this.buttonClick(3)} className="btn btn-style">iPhone XR</button>
-                <button onClick={() =>this.buttonClick(4)} className="btn btn-style">Samsung S8</button>
-                <button onClick={() =>this.buttonClick(5)} className="btn btn-style">Xiaomi F1</button>
+                           
+                {
+                   this.state.fundas.map(funda => <CaseButton funda={funda} onClick={() => this.props.onClick(funda.id)}/>)
+                }
             </div>
         );
     }

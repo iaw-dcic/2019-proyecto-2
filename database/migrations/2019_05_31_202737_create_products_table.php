@@ -18,10 +18,8 @@ class CreateProductsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
-            $table->unsignedBigInteger('id_case');
-            $table->foreign('id_case')->references('id')->on('cases');
-            $table->unsignedBigInteger('id_color');
-            $table->foreign('id_color')->references('id')->on('colors');
+            $table->unsignedBigInteger('id_case_color');
+            $table->foreign('id_case_color')->references('id')->on('cases_color');
             $table->unsignedBigInteger('id_image');
             $table->foreign('id_image')->references('id')->on('images');
         });
