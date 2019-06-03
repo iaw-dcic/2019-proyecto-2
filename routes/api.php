@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+Route::get('teams', 'TeamController@index'); //muestra el listado de equipos que juegan los playoffs
+
+Route::get('matches/{ronda}', 'MatchController@index'); //muestra el listado de equipos que juegan los playoffs
