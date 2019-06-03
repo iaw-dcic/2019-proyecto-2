@@ -11,17 +11,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('colors')->insert([
-          'color' => 'black',
+      DB::table('users')->insert([
+        'name' => 'Joaquin Montero',
+        'email' => 'joaco@joaco.com',
+        'password' => 'password',
         ]);
         DB::table('colors')->insert([
-          'color' => 'red',
+          'color' => '#4286f4',
         ]);
         DB::table('colors')->insert([
-          'color' => 'green',
+          'color' => '#000000',
         ]);
         DB::table('colors')->insert([
-          'color' => 'pink',
+          'color' => '#ff91fd',
         ]);
 
         DB::table('sizes')->insert([
@@ -47,5 +49,118 @@ class DatabaseSeeder extends Seeder
           'colorid' => '1',
           'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
         ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '1',
+          'colorid' => '1',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '2',
+          'colorid' => '1',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '2',
+          'colorid' => '1',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '3',
+          'colorid' => '1',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '3',
+          'colorid' => '1',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        //color2
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '1',
+          'colorid' => '2',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '1',
+          'colorid' => '2',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '2',
+          'colorid' => '2',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '2',
+          'colorid' => '2',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '3',
+          'colorid' => '2',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '3',
+          'colorid' => '2',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+
+        //color3
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '1',
+          'colorid' => '3',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '1',
+          'colorid' => '3',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '2',
+          'colorid' => '3',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '2',
+          'colorid' => '3',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '1',
+          'modelid' => '3',
+          'colorid' => '3',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+        DB::table('notebooks')->insert([
+          'sizeid' => '2',
+          'modelid' => '3',
+          'colorid' => '3',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+
+        DB::table('notebookusers')->insert([
+          'notebookid' => '3',
+          'userid' => '1',
+          'stickerurl' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.jpg',
+        ]);
+
+
     }
 }

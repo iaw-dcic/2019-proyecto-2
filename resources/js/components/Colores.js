@@ -25,11 +25,11 @@ export default class Colores extends Component{
     }
   render(){
     return(
-      <div>
+      <div ClassName="container">
 
         <h3>Color</h3>
         {
-          this.state.col.map(color => <ColorBtn colo={color} />)
+          this.state.col.map(color => <ColorBtn valor={color} handler={this.props.handler}/>)
         }
 
       </div>
