@@ -6,20 +6,41 @@ import Errors from '../Errors'
 class AvatarEditor extends Component{
 
     constructor(props){
-        super(props);       
-        this.state={
-            currentItem: 'body',
-            max_items: this.props.items.bodyitems.length,
+        super(props);
+        if (this.props.hasAvatars){
+            this.state={
+                currentItem: 'body',
+                max_items: this.props.items.bodyitems.length,
 
-            name: this.props.avatar.name,
-            body: this.props.avatar.body_id,
-            head: this.props.avatar.head_id,
-            upperbody: this.props.avatar.upperbody_id,
-            lowerbody: this.props.avatar.lowerbody_id,
-            extra: this.props.avatar.extra_id,
+                field_name: '',
 
-            error: false,
-            status: null,
+                name: this.props.avatar.name,
+                body: parseInt(this.props.avatar.body_id/10),
+                head: parseInt(this.props.avatar.head_id/10),
+                upperbody: parseInt(this.props.avatar.upperbody_id/10),
+                lowerbody: parseInt(this.props.avatar.lowerbody_id/10),
+                extra: parseInt(this.props.avatar.extra_id/10),
+
+                error: false,
+                status: null,
+            }        
+        }else{
+            this.state={
+                currentItem: 'body',
+                max_items: this.props.items.bodyitems.length,
+
+                field_name: '',
+
+                name: '',
+                body: 0,
+                head: 0,
+                upperbody: 0,
+                lowerbody: 0,
+                extra: 0,
+
+                error: false,
+                status: null,
+            }
         }
     }
 
@@ -56,30 +77,55 @@ class AvatarEditor extends Component{
         );
     }
 
-    handleNameChange = (e) => {
-        this.setState({ name: e.target.value });
+    getAvatar(){
+        let avatar = {
+            'name': this.state.name,
+            'body_id': this.state.body,
+            'head_id':this.state.head,
+            'upperbody_id':this.state.upperbody,
+            'lowerbody_id':this.state.lowerbody,
+            'extra_id':this.state.extra,
+        };
+        //console.log("AVATAREDITOR: getAvatar()");
+        //console.log(avatar);        
+        return avatar;
+    }
+
+    handleFieldNameChange = (e) => {
+        this.setState({ field_name: e.target.value });
+    }
+
+    setAvatarDefaults(name){
+        // setea nombre de avatar al recibido
+        // setea items de avatar a default
+        this.setState({
+            name: name,            
+            body: 0,
+            head: 0,
+            upperbody: 0,
+            lowerbody: 0,
+            extra: 0,
+        })
     }
 
     handleNewAvatar = (e) =>{
         e.preventDefault();
         // Obtengo lo ingresado en el campo
-        let name = this.state.name;
+        let name = this.state.field_name;
         if(name.length>32){
             this.setState({
                 error: true,
                 status: 'El nombre no debe ser mayor que 32 caracteres',
-                name: ''
+                field_name: ''
             })
             return;
         }
-        this.setState({ name: ''});        
-        let data = new FormData();
-        data.append("nombre", name);
+        this.setState({ field_name: ''}); 
 
-        console.log("aca deberia hacer post de nuevo avatar");
-        
-        //this.fetchNuevoAvatar(data);
-        //this.props.agregarAvatar();      
+        // Seteo defaults de avatar con nombre ingresado
+        this.setAvatarDefaults(name);
+
+        this.props.addAvatar(this.getAvatar());
     }
 
     handleButtonBody = (e) =>{
@@ -172,7 +218,7 @@ class AvatarEditor extends Component{
                 });
                 break;
         }
-        console.log("AVATAREDITOR: handleButtonPrev()");        
+        //console.log("AVATAREDITOR: handleButtonPrev()");        
         console.log(this.state.currentItem+": "+index);           
     }
 
@@ -216,7 +262,7 @@ class AvatarEditor extends Component{
                 });
                 break;
         }
-        console.log("AVATAREDITOR: handleButtonNext()");        
+        //console.log("AVATAREDITOR: handleButtonNext()");        
         console.log(this.state.currentItem+": "+index);        
     }
    
@@ -248,47 +294,52 @@ class AvatarEditor extends Component{
         );
     }
 
-    formNewAvatar(){
+    formNewSaveDeleteAvatar(){
         return(
-            <form onSubmit={this.handleNewAvatar}>
-                <input
-                    id= "avatar_name"
-                    placeholder= "Nombre"
-                    onChange={this.handleNameChange}
-                    value={this.state.name}
-                />
-            <button type="button" className="btn btn-primary">
-                Crear avatar!
-            </button>
-        </form>)
+            <div className="form-group">
+                <form onSubmit={this.handleNewAvatar}>
+                    <input
+                        placeholder= "Nombre"
+                        onChange={this.handleFieldNameChange}
+                        value={this.state.field_name}
+                    />
+                    <button type="button" className="btn btn-primary">
+                        Nuevo
+                    </button>            
+                </form>
+                <form onSubmit={this.handleSaveAvatar}>
+                    <button type="button" className="btn btn-primary">
+                        Guardar
+                    </button>
+                </form>
+                <form onSubmit={this.handleDeleteAvatar}>
+                    <button type="button" className="btn btn-primary">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        )
     }
-
-    getAvatar(){
-        let avatar = {
-            'body_id': this.state.body,
-            'head_id':this.state.head,
-            'upperbody_id':this.state.upperbody,
-            'lowerbody_id':this.state.lowerbody,
-            'extra_id':this.state.extra,
-        };
-        //console.log("AVATAREDITOR: getAvatar()");
-        //console.log(avatar);        
-        return avatar;
-    }
-
-
-    render(){
+    renderApp(){
+        //console.log("AVATAREDITOR: renderApp(). this.props.avatar=");
+        //console.log(this.props.avatar);        
         return(
             <div>
-                {this.formNewAvatar()}
+                {this.formNewSaveDeleteAvatar()}
                 {this.buttonsChangeItems()}
                 {this.buttonsAvatarItems()}
                 <AvatarShower 
                     avatar={this.getAvatar()}
-                    items={this.props.items}                    
+                    items={this.props.items}                  
                 />
             </div>
-        )
+        );
+    }
+
+    render(){
+        return(
+            this.renderApp()
+        );
     }
 
 }

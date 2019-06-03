@@ -15,6 +15,7 @@ class AvatarShower extends Component{
         if (avatar){
           return(
               <div className="avatar-frame testing">
+                  <p className="avatar-name">{avatar.name}</p>
                   <img className="img-avatar avatar-body" 
                   src={items.bodyitems[avatar.body_id].resource}></img>
                   <img className="img-avatar avatar-head" 

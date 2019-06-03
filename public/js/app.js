@@ -65795,35 +65795,35 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AvatarEditor).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleNameChange", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleFieldNameChange", function (e) {
       _this.setState({
-        name: e.target.value
+        field_name: e.target.value
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleNewAvatar", function (e) {
       e.preventDefault(); // Obtengo lo ingresado en el campo
 
-      var name = _this.state.name;
+      var name = _this.state.field_name;
 
       if (name.length > 32) {
         _this.setState({
           error: true,
           status: 'El nombre no debe ser mayor que 32 caracteres',
-          name: ''
+          field_name: ''
         });
 
         return;
       }
 
       _this.setState({
-        name: ''
-      });
+        field_name: ''
+      }); // Seteo defaults de avatar con nombre ingresado
 
-      var data = new FormData();
-      data.append("nombre", name);
-      console.log("aca deberia hacer post de nuevo avatar"); //this.fetchNuevoAvatar(data);
-      //this.props.agregarAvatar();      
+
+      _this.setAvatarDefaults(name);
+
+      _this.props.addAvatar(_this.getAvatar());
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleButtonBody", function (e) {
@@ -65915,9 +65915,9 @@ function (_Component) {
           });
 
           break;
-      }
+      } //console.log("AVATAREDITOR: handleButtonPrev()");        
 
-      console.log("AVATAREDITOR: handleButtonPrev()");
+
       console.log(_this.state.currentItem + ": " + index);
     });
 
@@ -65975,24 +65975,42 @@ function (_Component) {
           });
 
           break;
-      }
+      } //console.log("AVATAREDITOR: handleButtonNext()");        
 
-      console.log("AVATAREDITOR: handleButtonNext()");
+
       console.log(_this.state.currentItem + ": " + index);
     });
 
-    _this.state = {
-      currentItem: 'body',
-      max_items: _this.props.items.bodyitems.length,
-      name: _this.props.avatar.name,
-      body: _this.props.avatar.body_id,
-      head: _this.props.avatar.head_id,
-      upperbody: _this.props.avatar.upperbody_id,
-      lowerbody: _this.props.avatar.lowerbody_id,
-      extra: _this.props.avatar.extra_id,
-      error: false,
-      status: null
-    };
+    if (_this.props.hasAvatars) {
+      _this.state = {
+        currentItem: 'body',
+        max_items: _this.props.items.bodyitems.length,
+        field_name: '',
+        name: _this.props.avatar.name,
+        body: parseInt(_this.props.avatar.body_id / 10),
+        head: parseInt(_this.props.avatar.head_id / 10),
+        upperbody: parseInt(_this.props.avatar.upperbody_id / 10),
+        lowerbody: parseInt(_this.props.avatar.lowerbody_id / 10),
+        extra: parseInt(_this.props.avatar.extra_id / 10),
+        error: false,
+        status: null
+      };
+    } else {
+      _this.state = {
+        currentItem: 'body',
+        max_items: _this.props.items.bodyitems.length,
+        field_name: '',
+        name: '',
+        body: 0,
+        head: 0,
+        upperbody: 0,
+        lowerbody: 0,
+        extra: 0,
+        error: false,
+        status: null
+      };
+    }
+
     return _this;
   }
 
@@ -66022,6 +66040,35 @@ function (_Component) {
             status: result.status
           });
         }
+      });
+    }
+  }, {
+    key: "getAvatar",
+    value: function getAvatar() {
+      var avatar = {
+        'name': this.state.name,
+        'body_id': this.state.body,
+        'head_id': this.state.head,
+        'upperbody_id': this.state.upperbody,
+        'lowerbody_id': this.state.lowerbody,
+        'extra_id': this.state.extra
+      }; //console.log("AVATAREDITOR: getAvatar()");
+      //console.log(avatar);        
+
+      return avatar;
+    }
+  }, {
+    key: "setAvatarDefaults",
+    value: function setAvatarDefaults(name) {
+      // setea nombre de avatar al recibido
+      // setea items de avatar a default
+      this.setState({
+        name: name,
+        body: 0,
+        head: 0,
+        upperbody: 0,
+        lowerbody: 0,
+        extra: 0
       });
     }
   }, {
@@ -66071,41 +66118,45 @@ function (_Component) {
       }, "\u2192"));
     }
   }, {
-    key: "formNewAvatar",
-    value: function formNewAvatar() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    key: "formNewSaveDeleteAvatar",
+    value: function formNewSaveDeleteAvatar() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleNewAvatar
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "avatar_name",
         placeholder: "Nombre",
-        onChange: this.handleNameChange,
-        value: this.state.name
+        onChange: this.handleFieldNameChange,
+        value: this.state.field_name
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-primary"
-      }, "Crear avatar!"));
+      }, "Nuevo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSaveAvatar
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary"
+      }, "Guardar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleDeleteAvatar
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary"
+      }, "Eliminar")));
     }
   }, {
-    key: "getAvatar",
-    value: function getAvatar() {
-      var avatar = {
-        'body_id': this.state.body,
-        'head_id': this.state.head,
-        'upperbody_id': this.state.upperbody,
-        'lowerbody_id': this.state.lowerbody,
-        'extra_id': this.state.extra
-      }; //console.log("AVATAREDITOR: getAvatar()");
-      //console.log(avatar);        
-
-      return avatar;
+    key: "renderApp",
+    value: function renderApp() {
+      //console.log("AVATAREDITOR: renderApp(). this.props.avatar=");
+      //console.log(this.props.avatar);        
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.formNewSaveDeleteAvatar(), this.buttonsChangeItems(), this.buttonsAvatarItems(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        avatar: this.getAvatar(),
+        items: this.props.items
+      }));
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.formNewAvatar(), this.buttonsChangeItems(), this.buttonsAvatarItems(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        avatar: this.getAvatar(),
-        items: this.props.items
-      }));
+      return this.renderApp();
     }
   }]);
 
@@ -66168,7 +66219,9 @@ function (_Component) {
       if (avatar) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "avatar-frame testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "avatar-name"
+        }, avatar.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "img-avatar avatar-body",
           src: items.bodyitems[avatar.body_id].resource
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -66435,6 +66488,14 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "addAvatar", function (newAvatar) {
+      _this.setState(function (state) {
+        return {
+          avatars: state.avatars.concat(newAvatar)
+        };
+      });
+    });
+
     _this.state = {
       status: null,
       error: false,
@@ -66472,12 +66533,6 @@ function (_Component) {
             isLoaded: true
           });
         } else {
-          if (result.data.avatars.length > 0) {
-            _this2.setState({
-              selectedAvatar: result.data.avatars[0]
-            });
-          }
-
           _this2.setState({
             status: result.status,
             isLoaded: true,
@@ -66505,8 +66560,8 @@ function (_Component) {
 
         if (this.state.avatars.length > 0) {
           console.log("USERAVATARS: renderApp() lenght>0");
-          console.log("USERAVATARS: state");
-          console.log(this.state);
+          console.log("USERAVATARS: selectedAvatar");
+          console.log(this.state.selectedAvatar);
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Tus avatares:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.avatars.map(function (item, index) {
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
               key: item.id
@@ -66520,7 +66575,9 @@ function (_Component) {
             message: this.state.status
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
             api_token: this.props.api_token,
-            avatar: this.state.selectedAvatar,
+            avatar: this.state.avatars[0],
+            hasAvatars: true,
+            addAvatar: this.addAvatar,
             items: this.props.items
           }));
         } else {
@@ -66528,6 +66585,7 @@ function (_Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "A\xFAn no tienes un avatar :(", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
             api_token: this.props.api_token,
             avatar: this.state.selectedAvatar,
+            hasAvatars: false,
             items: this.props.items
           }));
         }

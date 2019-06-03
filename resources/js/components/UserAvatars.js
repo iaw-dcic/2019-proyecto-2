@@ -46,11 +46,6 @@ class UserAvatars extends Component{
                     );
                 }
                 else{
-                    if(result.data.avatars.length>0){
-                        this.setState({
-                            selectedAvatar: result.data.avatars[0],
-                        })
-                    }
                     this.setState({
                             status: result.status,
                             isLoaded: true,
@@ -80,6 +75,11 @@ class UserAvatars extends Component{
         });
     }
 
+    addAvatar = (newAvatar) => {
+        this.setState(state => ({
+            avatars : state.avatars.concat(newAvatar)
+        }));
+    }
     
 
     renderApp(){
@@ -87,8 +87,8 @@ class UserAvatars extends Component{
             console.log("USERAVATARS: renderApp() Loaded!");             
             if(this.state.avatars.length>0){
                 console.log("USERAVATARS: renderApp() lenght>0");
-                console.log("USERAVATARS: state");
-                console.log(this.state);                
+                console.log("USERAVATARS: selectedAvatar");
+                console.log(this.state.selectedAvatar);                
                 return(
                     <div>
                         Tus avatares: 
@@ -105,7 +105,9 @@ class UserAvatars extends Component{
                         />                      
                         <AvatarEditor
                             api_token={this.props.api_token}
-                            avatar={this.state.selectedAvatar}
+                            avatar={this.state.avatars[0]}
+                            hasAvatars={true}
+                            addAvatar= {this.addAvatar}
                             items={this.props.items}
                         />                        
                     </div>
@@ -119,6 +121,7 @@ class UserAvatars extends Component{
                         <AvatarEditor
                             api_token={this.props.api_token}
                             avatar={this.state.selectedAvatar}
+                            hasAvatars={false}
                             items={this.props.items}
                         />
                     </div>
