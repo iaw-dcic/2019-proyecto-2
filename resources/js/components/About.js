@@ -7,7 +7,7 @@ export default class About extends Component {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">
-                        <div className="card-header">Información personal</div>
+                        <div className="card-header text-white bg-dark">Información personal</div>
                         <div className="card-body">
                             <ul >
                                 <li>Alumno: Rodríguez Joaquín</li>
@@ -18,7 +18,7 @@ export default class About extends Component {
                         </div>
                     </div>
                     <div className="card">
-                        <div className="card-header">Herramientas</div>
+                        <div className="card-header text-white bg-dark">Herramientas</div>
                         <div className="card-body">
                             <ul >
                                 <li>Laravel</li>
