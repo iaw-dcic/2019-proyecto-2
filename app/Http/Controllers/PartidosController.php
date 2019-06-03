@@ -15,7 +15,7 @@ class PartidosController extends Controller
             DB::beginTransaction();
              $partidos= Partido::where('ronda','=',$ronda)->get();
              $arreglo=array();
-            $i=0;
+             $i=0;
              foreach($partidos as $partido){
                 $arreglo["items"][$i++]= array(
                     'id' => $partido->id,
@@ -50,50 +50,39 @@ class PartidosController extends Controller
         //     return abort(404);
     }
     
-    public function partidos_de_a_dos($ronda){
-        $partidos= Partido::where('ronda','=',$ronda)->get();
-        $arreglo=array();
-        $i=0; $count=0;
-        for($i; $i<$partidos->count()-1; $i++){
-            $j= $i++;
-            $arreglo["items"][$count]= array(
-               'id_primer' => $partidos[$j]->id,
-                   'jug_uno_primer' => array(
-                    'id' =>$partidos[$j]->nombreJugadorUno->id,
-                    'nombre'=> $partidos[$j]->nombreJugadorUno->nombre,
-                    'abrev' => $partidos[$j]->nombreJugadorUno->abreviado),
-                   
-                    'resultado_primer'=>  $partidos[$j]->resultado,
-                   
-                    'jug_dos_primer' => array(
-                        'id' =>$partidos[$j]->nombreJugadorDos->id,
-                         'nombre'=> $partidos[$j]->nombreJugadorDos->nombre,
-                          'abrev' => $partidos[$j]->nombreJugadorDos->abreviado,
-                    ),
-               
-               
-                    'id_segundo' => $partidos[$i]->id,
-                  
-                    'jug_uno_seg' => array(
-                     'id' =>$partidos[$i]->nombreJugadorUno->id,
-                     'nombre'=> $partidos[$i]->nombreJugadorUno->nombre,
-                     'abrev' => $partidos[$i]->nombreJugadorUno->abreviado),
-                    
-                     'resultado_primer'=>  $partidos[$i]->resultado,
-                    
-                     'jug_dos_seg' => array(
-                         'id' =>$partidos[$i]->nombreJugadorDos->id,
-                          'nombre'=> $partidos[$i]->nombreJugadorDos->nombre,
-                           'abrev' => $partidos[$i]->nombreJugadorDos->abreviado,
-                     ),
+    public function octavos($i){
+        try {
+            DB::beginTransaction();
+             $partidos= Partido::where('ronda','=',8)->get();
+             $arreglo=array();
+             $i=0;
+         $partido=$partidos[$i];
+                $arreglo["items"][$i++]= array(
+                    'id' => $partido->id,
+                     'jugador_uno' =>  array(
+                         'id' =>$partido->nombreJugadorUno->id,
+                         'nombre'=> $partido->nombreJugadorUno->nombre,
+                         'pais'=>$partido->nombreJugadorUno->pais,
+                          'abrev' => $partido->nombreJugadorUno->abreviado),
+                          
+                    'jugador_dos' =>  array(
+                        'id' =>$partido->nombreJugadorDos->id,
+                        'nombre'=> $partido->nombreJugadorDos->nombre,
+                        'pais'=>$partido->nombreJugadorDos->pais,
+                        'abrev' => $partido->nombreJugadorDos->abreviado)
+                        ,
+                     'resultado'=> $partido->resultado,
+                    'junonombre'=>$partido->nombreJugadorUno->nombre,
+                'jdosnombre'=>$partido->nombreJugadorDos->nombre
             );
-           $count++; 
-         
-        }
-        if($arreglo != null)
-             return response()->json($arreglo, 200);
-        else
-        return abort(404);
+        
+           DB::commit();
+        return response()->json($arreglo,200);
+    } catch (\Exception $e) {
+
+        DB::rollback();
+        abort(500);
+    }
     }
 
     
@@ -221,9 +210,7 @@ public  function store(Request $request){
 
 public function eliminarPronostico(Request $request){
     try {
-        DB::beginTransaction();
-       
-
+        DB::beginTransaction();     
    Partido::where('id','=',$request->get('c0'))->delete();
    Partido::where('id','=',$request->get('c1'))->delete();
    Partido::where('id','=',$request->get('c2'))->delete();
@@ -235,10 +222,10 @@ public function eliminarPronostico(Request $request){
    Pronostico::where('id','=',$request->get('pronostico'))->delete();
    DB::commit();
    return response()->json('Ok',200);
-} catch (\Exception $e) {
+}   catch (\Exception $e) {
 
-   DB::rollback();
-   abort(500);
+      DB::rollback();
+     abort(500);
 }
 }
 

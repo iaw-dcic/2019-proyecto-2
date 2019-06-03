@@ -13,6 +13,9 @@
 
  
 Auth::routes();
+Route::get('/readme',function () {
+    return view('readme');
+})->name('readme');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::view('/home', 'react')->middleware('auth');
 

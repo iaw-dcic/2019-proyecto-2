@@ -67480,7 +67480,9 @@ function (_Component) {
         className: "list-footer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "/home"
-      }, "Volver a Inicio")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Volver a Inicio")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/readme"
+      }, "Readme")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-copyright text-center py-3"
       }, "\xA9 2019:Copyright", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/LuArceredillo",
@@ -67620,13 +67622,6 @@ function (_Component) {
         className: "collapse navbar-collapse",
         id: "navbarSupportedContent"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "navbar-nav mr-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item active"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
-        href: "#"
-      }, "\xBFC\xF3mo jugar?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "navbar-nav",
         "ml-auto": ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67942,18 +67937,18 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdos" + this.props.i,
-        className: "btn btn-light jugador ",
+        className: "btn btn-light jugador",
         onClick: function onClick(e) {
           return _this3.handleClick(_this3.state.jugador_dos, Number(_this3.props.i), e);
         }
-      }, this.state.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.jugador_dos.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdosabre" + this.props.i,
         className: "btn btn-light jugadorabre",
         onClick: function onClick(e) {
           return _this3.handleClick(_this3.state.jugador_dos, Number(_this3.props.i), e);
         }
-      }, this.state.jugador_dos.abrev))));
+      }, this.state.jugador_dos.abrev)));
     }
   }]);
 
@@ -68031,195 +68026,173 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "octavos0", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos0")) {
-        var value = localStorage.getItem("pOctavos0");
-        value = JSON.parse(value);
-
+    _defineProperty(_assertThisInitialized(_this), "octavos", function (oct, i) {
+      if (i == 0) {
         _this.setState({
-          pOctavos0: value
+          pOctavos0: oct
         });
-      } else _this.setState({
-        pOctavos0: oct
-      });
+      }
+
+      if (i == 1) {
+        _this.setState({
+          pOctavos1: oct
+        });
+      }
+
+      if (i == 2) {
+        _this.setState({
+          pOctavos2: oct
+        });
+      }
+
+      if (i == 3) {
+        if (localStorage.hasOwnProperty("pOctavos3")) {
+          var value = localStorage.getItem("pOctavos3");
+          value = JSON.parse(value);
+
+          _this.setState({
+            pOctavos3: value
+          });
+        } else _this.setState({
+          pOctavos3: oct
+        });
+      }
+
+      if (i == 4) {
+        _this.setState({
+          pOctavos4: oct
+        });
+      }
+
+      if (i == 5) {
+        _this.setState({
+          pOctavos5: oct
+        });
+      }
+
+      if (i == 6) {
+        _this.setState({
+          pOctavos6: oct
+        });
+      }
+
+      if (i == 7) {
+        _this.setState({
+          pOctavos7: oct
+        });
+      }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "octavos1", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos1")) {
-        var value = localStorage.getItem("pOctavos1");
-        value = JSON.parse(value);
+    _defineProperty(_assertThisInitialized(_this), "cuartos", function (cuart, i) {
+      if (i == 0) {
+        if (localStorage.hasOwnProperty("c0")) {
+          var value = JSON.parse(localStorage.getItem("c0"));
 
-        _this.setState({
-          pOctavos1: value
+          if (value.pronostico == localStorage.getItem("pronostico")) {
+            _this.setState({
+              c0: value
+            });
+          } else _this.setState({
+            c0: cuart
+          });
+        } else _this.setState({
+          c0: cuart
         });
-      } else _this.setState({
-        pOctavos1: oct
-      });
+      }
+
+      if (i == 1) {
+        if (localStorage.hasOwnProperty("c1")) {
+          var _value = JSON.parse(localStorage.getItem("c1"));
+
+          if (_value.pronostico == localStorage.getItem("pronostico")) {
+            _this.setState({
+              c1: _value
+            });
+          } else _this.setState({
+            c1: cuart
+          });
+        } else _this.setState({
+          c1: cuart
+        });
+      }
+
+      if (i == 2) {
+        if (localStorage.hasOwnProperty("c2")) {
+          var _value2 = JSON.parse(localStorage.getItem("c2"));
+
+          if (_value2.pronostico == localStorage.getItem("pronostico")) {
+            _this.setState({
+              c2: _value2
+            });
+          } else _this.setState({
+            c2: cuart
+          });
+        } else _this.setState({
+          c2: cuart
+        });
+      }
+
+      if (i == 3) {
+        if (localStorage.hasOwnProperty("c3")) {
+          var _value3 = JSON.parse(localStorage.getItem("c3"));
+
+          if (_value3.pronostico == localStorage.getItem("pronostico")) {
+            _this.setState({
+              c3: _value3
+            });
+          } else _this.setState({
+            c3: cuart
+          });
+        } else _this.setState({
+          c3: cuart
+        });
+      }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "octavos2", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos2")) {
-        var value = localStorage.getItem("pOctavos2");
-        value = JSON.parse(value);
+    _defineProperty(_assertThisInitialized(_this), "semis", function (semi, i) {
+      if (i == 0) {
+        if (localStorage.hasOwnProperty("s1")) {
+          var value = JSON.parse(localStorage.getItem("s1"));
 
-        _this.setState({
-          pOctavos2: value
+          if (value.pronostico == localStorage.getItem("pronostico")) {
+            _this.setState({
+              s1: value
+            });
+          } else _this.setState({
+            s1: semi
+          });
+        } else _this.setState({
+          s1: semi
         });
-      } else _this.setState({
-        pOctavos2: oct
-      });
-    });
+      }
 
-    _defineProperty(_assertThisInitialized(_this), "octavos3", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos3")) {
-        var value = localStorage.getItem("pOctavos3");
-        value = JSON.parse(value);
+      if (i == 1) {
+        if (localStorage.hasOwnProperty("s2")) {
+          var _value4 = JSON.parse(localStorage.getItem("s2"));
 
-        _this.setState({
-          pOctavos3: value
+          if (_value4.pronostico == localStorage.getItem("pronostico")) {
+            _this.setState({
+              s2: _value4
+            });
+          } else _this.setState({
+            s2: semi
+          });
+        } else _this.setState({
+          s2: semi
         });
-      } else _this.setState({
-        pOctavos3: oct
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "octavos4", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos4")) {
-        var value = localStorage.getItem("pOctavos4");
-        value = JSON.parse(value);
-
-        _this.setState({
-          pOctavos4: value
-        });
-      } else _this.setState({
-        pOctavos4: oct
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "octavos5", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos5")) {
-        var value = localStorage.getItem("pOctavos5");
-        value = JSON.parse(value);
-
-        _this.setState({
-          pOctavos5: value
-        });
-      } else _this.setState({
-        pOctavos5: oct
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "octavos6", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos6")) {
-        var value = localStorage.getItem("pOctavos6");
-        value = JSON.parse(value);
-
-        _this.setState({
-          pOctavos6: value
-        });
-      } else _this.setState({
-        pOctavos6: oct
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "octavos7", function (oct) {
-      if (localStorage.hasOwnProperty("pOctavos7")) {
-        var value = localStorage.getItem("pOctavos7");
-        value = JSON.parse(value);
-
-        _this.setState({
-          pOctavos7: value
-        });
-      } else _this.setState({
-        pOctavos7: oct
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "cuartos0", function (cuart) {
-      if (localStorage.hasOwnProperty("c0")) {
-        var value = localStorage.getItem("c0");
-        value = JSON.parse(value);
-
-        _this.setState({
-          c0: value
-        });
-      } else _this.setState({
-        c0: cuart
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "cuartos1", function (cuart) {
-      if (localStorage.hasOwnProperty("c1")) {
-        var value = localStorage.getItem("c1");
-        value = JSON.parse(value);
-
-        _this.setState({
-          c1: value
-        });
-      } else _this.setState({
-        c1: cuart
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "cuartos2", function (cuart) {
-      if (localStorage.hasOwnProperty("c2")) {
-        var value = localStorage.getItem("c2");
-        value = JSON.parse(value);
-
-        _this.setState({
-          c2: value
-        });
-      } else _this.setState({
-        c2: cuart
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "cuartos3", function (cuart) {
-      if (localStorage.hasOwnProperty("c3")) {
-        var value = localStorage.getItem("c3");
-        value = JSON.parse(value);
-
-        _this.setState({
-          c3: value
-        });
-      } else _this.setState({
-        c3: cuart
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "semis1", function (semi) {
-      if (localStorage.hasOwnProperty("s1")) {
-        var value = localStorage.getItem("s1");
-        value = JSON.parse(value);
-
-        _this.setState({
-          s1: value
-        });
-      } else _this.setState({
-        s1: semi
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "semis2", function (semi) {
-      if (localStorage.hasOwnProperty("s2")) {
-        var value = localStorage.getItem("s2");
-        value = JSON.parse(value);
-
-        _this.setState({
-          s2: value
-        });
-      } else _this.setState({
-        s2: semi
-      });
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "final", function (fi) {
       if (localStorage.hasOwnProperty("f")) {
-        var value = localStorage.getItem("f");
-        value = JSON.parse(value);
+        var value = JSON.parse(localStorage.getItem("f"));
 
-        _this.setState({
-          f: value
+        if (value.pronostico == localStorage.getItem("pronostico")) {
+          _this.setState({
+            f: value
+          });
+        } else _this.setState({
+          f: fi
         });
       } else _this.setState({
         f: fi
@@ -68228,11 +68201,14 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "champion", function (c) {
       if (localStorage.hasOwnProperty("champion")) {
-        var value = localStorage.getItem("champion");
-        value = JSON.parse(value);
+        var value = JSON.parse(localStorage.getItem("champion"));
 
-        _this.setState({
-          champion: value
+        if (value.pronostico == localStorage.getItem("pronostico")) {
+          _this.setState({
+            champion: value
+          });
+        } else _this.setState({
+          champion: c
         });
       } else _this.setState({
         champion: c
@@ -68255,6 +68231,7 @@ function (_Component) {
 
       var _final = _this.state.f;
       _final["jugador_uno"] = newP;
+      _final["pronostico"] = _this.state.pronostico;
       localStorage.setItem("f", JSON.stringify(_final));
     });
 
@@ -68274,6 +68251,7 @@ function (_Component) {
 
       var _final2 = _this.state.f;
       _final2["jugador_dos"] = newP;
+      _final2["pronostico"] = _this.state.pronostico;
       localStorage.setItem("f", JSON.stringify(_final2));
     });
 
@@ -68293,6 +68271,7 @@ function (_Component) {
 
       var _final3 = _this.state.champion;
       _final3["jugador_uno"] = newP;
+      _final3["pronostico"] = _this.state.pronostico;
       localStorage.setItem("champion", JSON.stringify(_final3));
     });
 
@@ -68312,6 +68291,7 @@ function (_Component) {
 
       var _final4 = _this.state.s1;
       _final4["jugador_uno"] = newP;
+      _final4["pronostico"] = _this.state.pronostico;
       localStorage.setItem("s1", JSON.stringify(_final4));
     });
 
@@ -68331,6 +68311,7 @@ function (_Component) {
 
       var _final5 = _this.state.s2;
       _final5["jugador_uno"] = newP;
+      _final5["pronostico"] = _this.state.pronostico;
       localStorage.setItem("s2", JSON.stringify(_final5));
     });
 
@@ -68350,6 +68331,7 @@ function (_Component) {
 
       var _final6 = _this.state.s1;
       _final6["jugador_dos"] = newP;
+      _final6["pronostico"] = _this.state.pronostico;
       localStorage.setItem("s1", JSON.stringify(_final6));
     });
 
@@ -68369,6 +68351,7 @@ function (_Component) {
 
       var _final7 = _this.state.s2;
       _final7["jugador_dos"] = newP;
+      _final7["pronostico"] = _this.state.pronostico;
       localStorage.setItem("s2", JSON.stringify(_final7));
     });
 
@@ -68388,6 +68371,7 @@ function (_Component) {
 
       var _final8 = _this.state.c0;
       _final8["jugador_uno"] = newP;
+      _final8["pronostico"] = _this.state.pronostico;
       localStorage.setItem("c0", JSON.stringify(_final8));
     });
 
@@ -68407,6 +68391,7 @@ function (_Component) {
 
       var _final9 = _this.state.c1;
       _final9["jugador_uno"] = newP;
+      _final9["pronostico"] = _this.state.pronostico;
       localStorage.setItem("c1", JSON.stringify(_final9));
     });
 
@@ -68426,6 +68411,7 @@ function (_Component) {
 
       var _final10 = _this.state.c0;
       _final10["jugador_dos"] = newP;
+      _final10["pronostico"] = _this.state.pronostico;
       localStorage.setItem("c0", JSON.stringify(_final10));
     });
 
@@ -68445,6 +68431,7 @@ function (_Component) {
 
       var _final11 = _this.state.c1;
       _final11["jugador_dos"] = newP;
+      _final11["pronostico"] = _this.state.pronostico;
       localStorage.setItem("c1", JSON.stringify(_final11));
     });
 
@@ -68464,6 +68451,7 @@ function (_Component) {
 
       var _final12 = _this.state.c2;
       _final12["jugador_uno"] = newP;
+      _final12["pronostico"] = _this.state.pronostico;
       localStorage.setItem("c2", JSON.stringify(_final12));
     });
 
@@ -68483,6 +68471,7 @@ function (_Component) {
 
       var _final13 = _this.state.c3;
       _final13["jugador_uno"] = newP;
+      _final13["pronostico"] = _this.state.pronostico;
       localStorage.setItem("c3", JSON.stringify(_final13));
     });
 
@@ -68502,6 +68491,7 @@ function (_Component) {
 
       var _final14 = _this.state.c2;
       _final14["jugador_dos"] = newP;
+      _final14["pronostico"] = _this.state.pronostico;
       localStorage.setItem("c2", JSON.stringify(_final14));
     });
 
@@ -68520,6 +68510,7 @@ function (_Component) {
 
         var _final15 = _this.state.c3;
         _final15["jugador_dos"] = newP;
+        _final15["pronostico"] = _this.state.pronostico;
         localStorage.setItem("c3", JSON.stringify(_final15));
       });
     });
@@ -68789,20 +68780,9 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Pronostico_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
         setPronostico: this.setPronostico,
         agregarProno: this.props.agregaProno,
-        octavos0: this.octavos0,
-        octavos1: this.octavos1,
-        octavos2: this.octavos2,
-        octavos3: this.octavos3,
-        octavos4: this.octavos4,
-        octavos5: this.octavos5,
-        octavos6: this.octavos6,
-        octavos7: this.octavos7,
-        cuartos0: this.cuartos0,
-        cuartos1: this.cuartos1,
-        cuartos2: this.cuartos2,
-        cuartos3: this.cuartos3,
-        semis1: this.semis1,
-        semis2: this.semis2,
+        octavos: this.octavos,
+        cuartos: this.cuartos,
+        semis: this.semis,
         "final": this["final"],
         campeon: this.champion
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -68883,7 +68863,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleC0(cuar02, e);
         }
-      }, "  ", cuar02.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc11, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", cuar02.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc11, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light jugador",
         onClick: function onClick(e) {
           return _this2.handleC1(cuar11, e);
@@ -68903,7 +68883,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleC1(cuar12, e);
         }
-      }, "  ", cuar12.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso21, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", cuar12.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso21, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey jugador",
         onClick: function onClick(e) {
           return _this2.handleOc2(oct21, e);
@@ -68919,11 +68899,11 @@ function (_Component) {
           return _this2.handleOc2(oct22, e);
         }
       }, oct22.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabrev",
+        className: "btn btn-light-grey jugadorabre",
         onClick: function onClick(e) {
           return _this2.handleOc2(oct22, e);
         }
-      }, oct22.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso31, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct22.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso31, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this2.handleOc3(oct31, e);
@@ -68943,7 +68923,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleS1(sem02, e);
         }
-      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiss21, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiss21, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this2.handleS2(sem11, e);
@@ -68953,7 +68933,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleS2(sem12, e);
         }
-      }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso41, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso41, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this2.handleOc4(oct41, e);
@@ -68963,7 +68943,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleOc4(oct42, e);
         }
-      }, oct42.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso51, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct42.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso51, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this2.handleOc5(oct51, e);
@@ -68983,7 +68963,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleC2(cuar22, e);
         }
-      }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc31, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc31, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
           return _this2.handleC3(cuar31, e);
@@ -68993,7 +68973,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleC3(cuar32, e);
         }
-      }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso61, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso61, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this2.handleOc6(oct61, e);
@@ -69003,7 +68983,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleOc6(oct62, e);
         }
-      }, oct62.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso71, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct62.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso71, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
           return _this2.handleOc7(oct71, e);
@@ -69199,22 +69179,23 @@ function (_Component) {
                 }
 
                 this.setState(this.baseState);
+                localStorage.setItem("use", "false");
                 alert("Se elimino correctamente");
-                _context2.next = 17;
+                _context2.next = 18;
                 break;
 
-              case 13:
-                _context2.prev = 13;
+              case 14:
+                _context2.prev = 14;
                 _context2.t0 = _context2["catch"](4);
                 alert("Hubo problema no se pudo eliminar,intente nuevamente");
                 console.log('axios request failed:', _context2.t0);
 
-              case 17:
+              case 18:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[4, 13]]);
+        }, _callee2, this, [[4, 14]]);
       }));
 
       function eliminar(_x2) {
@@ -69679,7 +69660,7 @@ function (_Component) {
                 pro = this.state.pronost.id;
 
                 if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context.next = 20;
+                  _context.next = 21;
                   break;
                 }
 
@@ -69721,22 +69702,23 @@ function (_Component) {
                 }
 
                 this.setState(this.baseState);
+                localStorage.setItem("use", "false");
                 alert("Su pronostico se guardo correctamente");
                 console.log('Returned data:', response);
-                _context.next = 20;
+                _context.next = 21;
                 break;
 
-              case 17:
-                _context.prev = 17;
+              case 18:
+                _context.prev = 18;
                 _context.t0 = _context["catch"](7);
                 console.log('axios request failed:', _context.t0);
 
-              case 20:
+              case 21:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[7, 17]]);
+        }, _callee, this, [[7, 18]]);
       }));
 
       function handleCuartos() {
@@ -70097,6 +70079,28 @@ function (_Component) {
       items: []
     });
 
+    _defineProperty(_assertThisInitialized(_this), "llenar", function (e) {
+      if (localStorage.getItem("use") == "false") {
+        var api_token = document.querySelector('meta[name="api-token"]');
+        var token = document.head.querySelector('meta[name="csrf-token"]');
+        var miInit = {
+          headers: {
+            'X-CSRF-TOKEN': token.content,
+            'Authorization': 'Bearer ' + api_token.content
+          }
+        };
+        fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
+          return res.json();
+        }).then(function (json) {
+          if (json != null) _this.setState({
+            items: json.items
+          });
+        });
+      }
+
+      localStorage.setItem("use", "true");
+    });
+
     return _this;
   }
 
@@ -70105,7 +70109,6 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log("pronostico.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       var token = document.head.querySelector('meta[name="csrf-token"]');
       var miInit = {
@@ -70121,27 +70124,7 @@ function (_Component) {
           items: json.items
         });
       });
-    }
-  }, {
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps() {
-      var _this3 = this;
-
-      var api_token = document.querySelector('meta[name="api-token"]');
-      var token = document.head.querySelector('meta[name="csrf-token"]');
-      var miInit = {
-        headers: {
-          'X-CSRF-TOKEN': token.content,
-          'Authorization': 'Bearer ' + api_token.content
-        }
-      };
-      fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
-        return res.json();
-      }).then(function (json) {
-        if (json != null) _this3.setState({
-          items: json.items
-        });
-      });
+      localStorage.setItem("use", "false");
     }
   }, {
     key: "handlePronosticos",
@@ -70149,7 +70132,7 @@ function (_Component) {
       var _handlePronosticos = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this4 = this;
+        var _this3 = this;
 
         var selectBox, selectedValue;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -70158,6 +70141,7 @@ function (_Component) {
               case 0:
                 selectBox = document.getElementById("selectBox");
                 selectedValue = selectBox.options[selectBox.selectedIndex].value;
+                localStorage.setItem("pronostico", selectedValue);
                 this.props.setPronostico(selectedValue);
                 console.log(this.state.pronostico);
 
@@ -70165,31 +70149,31 @@ function (_Component) {
                   fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props.octavos0(json.items[0]), _this4.props.octavos1(json.items[1]), _this4.props.octavos2(json.items[2]), _this4.props.octavos3(json.items[3]), _this4.props.octavos4(json.items[4]), _this4.props.octavos5(json.items[5]), _this4.props.octavos6(json.items[6]), _this4.props.octavos7(json.items[7]);
+                    _this3.props.octavos(json.items[0], 0), _this3.props.octavos(json.items[1], 1), _this3.props.octavos(json.items[2], 2), _this3.props.octavos(json.items[3], 3), _this3.props.octavos(json.items[4], 4), _this3.props.octavos(json.items[5], 5), _this3.props.octavos(json.items[6], 6), _this3.props.octavos(json.items[7], 7);
                   });
                   fetch('http://localhost/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props.cuartos0(json.items[0]), _this4.props.cuartos1(json.items[1]), _this4.props.cuartos2(json.items[2]), _this4.props.cuartos3(json.items[3]);
+                    _this3.props.cuartos(json.items[0], 0), _this3.props.cuartos(json.items[1], 1), _this3.props.cuartos(json.items[2], 2), _this3.props.cuartos(json.items[3], 3);
                   });
                   fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props.semis1(json.items[0]), _this4.props.semis2(json.items[1]);
+                    _this3.props.semis(json.items[0], 0), _this3.props.semis(json.items[1], 1);
                   });
                   fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props["final"](json.items[0]);
+                    _this3.props["final"](json.items[0]);
                   });
                   fetch('http://localhost/pr2/api/pronostico/0/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this4.props.campeon(json.items[0]);
+                    _this3.props.campeon(json.items[0]);
                   });
-                } else alert("No tiene pronosticos para ver");
+                }
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -70206,7 +70190,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       var i = "";
       var items = this.state.items;
@@ -70230,8 +70214,11 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", null, "Bienvenido Usuario")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", null, "Selecciona el pron\xF3stico a ver:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
         className: "form-control",
         id: "selectBox",
+        onClick: function onClick(e) {
+          return _this4.llenar();
+        },
         onChange: function onChange(e) {
-          return _this5.handlePronosticos();
+          return _this4.handlePronosticos();
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null, " "), i))));
     }

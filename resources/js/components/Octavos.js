@@ -54,14 +54,14 @@ export default class Octavos extends Component {
                     <img src={pais2}></img>
                 </div>
                 <div className="col-10 jugador">
-                    <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador "
+                    <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador"
                         onClick={(e) => this.handleClick(this.state.jugador_dos, (Number(this.props.i)), e)}>
                         {this.state.jugador_dos.nombre}</button>
-                    <button type="button" id={"jdosabre" + this.props.i} className="btn btn-light jugadorabre"
-                        onClick={(e) => this.handleClick(this.state.jugador_dos, (Number(this.props.i)), e)}>
-                        {this.state.jugador_dos.abrev}</button>
-                </div>
 
+                </div>
+                <button type="button" id={"jdosabre" + this.props.i} className="btn btn-light jugadorabre"
+                    onClick={(e) => this.handleClick(this.state.jugador_dos, (Number(this.props.i)), e)}>
+                    {this.state.jugador_dos.abrev}</button>
             </div>
         </div >
 

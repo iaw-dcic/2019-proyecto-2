@@ -427,6 +427,7 @@ export default class Playoffs extends Component {
 
                 }
                 this.setState(this.baseState);
+                localStorage.setItem("use", "false");
                 alert("Su pronostico se guardo correctamente");
                 console.log('Returned data:', response);
             } catch (e) {

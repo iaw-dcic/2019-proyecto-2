@@ -18,7 +18,9 @@ export default class Footer extends Component {
                             <li>
                                 <a href="/home">Volver a Inicio</a>
                             </li>
-
+                            <li>
+                                <a href="/readme">Readme</a>
+                            </li>
 
                         </ul>
 

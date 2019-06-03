@@ -22,6 +22,7 @@ Route::get('ultimopronostico' , 'UserController@ultimoPronostico');
 Route::get('cantidadpronosticos','UserController@cantidadPronosticos');
 Route::post('insert','PartidosController@store');
 Route::get('partidos/{ronda}', 'PartidosController@getPartidosRonda');
+Route::get('octavos/{i}', 'PartidosController@octavos');
 Route::get('pronostico/{ronda}/{pronostico}', 'PartidosController@getPartidosPronostico');
 Route::get('partidos_dos/{ronda}', 'PartidosController@partidos_de_a_dos');
 Route::post('eliminarpronostico', 'PartidosController@eliminarPronostico');

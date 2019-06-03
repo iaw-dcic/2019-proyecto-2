@@ -23,134 +23,153 @@ export default class Perfil extends Component {
 
     }
     //metodos para que pronostico setee
-    octavos0 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos0")) {
-            let value = localStorage.getItem("pOctavos0");
-            value = JSON.parse(value);
-            this.setState({ pOctavos0: value });
-        } else
+    octavos = (oct, i) => {
+        if (i == 0) {
+
             this.setState({ pOctavos0: oct })
-    }
-    octavos1 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos1")) {
-            let value = localStorage.getItem("pOctavos1");
-            value = JSON.parse(value);
-            this.setState({ pOctavos1: value });
-        } else
+        }
+        if (i == 1) {
+
             this.setState({ pOctavos1: oct })
-    }
-    octavos2 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos2")) {
-            let value = localStorage.getItem("pOctavos2");
-            value = JSON.parse(value);
-            this.setState({ pOctavos2: value });
-        } else
+        }
+        if (i == 2) {
+
             this.setState({ pOctavos2: oct })
-    }
-    octavos3 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos3")) {
-            let value = localStorage.getItem("pOctavos3");
-            value = JSON.parse(value);
-            this.setState({ pOctavos3: value });
-        } else
-            this.setState({ pOctavos3: oct })
-    }
-    octavos4 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos4")) {
-            let value = localStorage.getItem("pOctavos4");
-            value = JSON.parse(value);
-            this.setState({ pOctavos4: value });
-        } else
+        }
+        if (i == 3) {
+            if (localStorage.hasOwnProperty("pOctavos3")) {
+                let value = localStorage.getItem("pOctavos3");
+                value = JSON.parse(value);
+                this.setState({ pOctavos3: value });
+            } else
+                this.setState({ pOctavos3: oct })
+        }
+        if (i == 4) {
+
             this.setState({ pOctavos4: oct })
-    }
-    octavos5 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos5")) {
-            let value = localStorage.getItem("pOctavos5");
-            value = JSON.parse(value);
-            this.setState({ pOctavos5: value });
-        } else
+        }
+        if (i == 5) {
+
             this.setState({ pOctavos5: oct })
-    }
-    octavos6 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos6")) {
-            let value = localStorage.getItem("pOctavos6");
-            value = JSON.parse(value);
-            this.setState({ pOctavos6: value });
-        } else
+        }
+        if (i == 6) {
+
             this.setState({ pOctavos6: oct })
-    }
-    octavos7 = (oct) => {
-        if (localStorage.hasOwnProperty("pOctavos7")) {
-            let value = localStorage.getItem("pOctavos7");
-            value = JSON.parse(value);
-            this.setState({ pOctavos7: value });
-        } else
+        }
+        if (i == 7) {
+
             this.setState({ pOctavos7: oct })
+        }
+
     }
-    cuartos0 = (cuart) => {
-        if (localStorage.hasOwnProperty("c0")) {
-            let value = localStorage.getItem("c0");
-            value = JSON.parse(value);
-            this.setState({ c0: value });
-        } else
-            this.setState({ c0: cuart, })
+
+
+    cuartos = (cuart, i) => {
+        if (i == 0) {
+            if (localStorage.hasOwnProperty("c0")) {
+                let value = JSON.parse(localStorage.getItem("c0"));
+                if (value.pronostico == localStorage.getItem("pronostico")) {
+
+                    this.setState({ c0: value });
+                } else
+                    this.setState({ c0: cuart, })
+            }
+            else
+                this.setState({ c0: cuart, })
+        }
+        if (i == 1) {
+            if (localStorage.hasOwnProperty("c1")) {
+                let value = JSON.parse(localStorage.getItem("c1"));
+                if (value.pronostico == localStorage.getItem("pronostico")) {
+
+                    this.setState({ c1: value });
+                } else
+                    this.setState({
+                        c1: cuart
+                    })
+            }
+            else
+                this.setState({
+                    c1: cuart
+                })
+        }
+        if (i == 2) {
+            if (localStorage.hasOwnProperty("c2")) {
+                let value = JSON.parse(localStorage.getItem("c2"));
+                if (value.pronostico == localStorage.getItem("pronostico")) {
+
+                    this.setState({ c2: value });
+                } else
+                    this.setState({
+                        c2: cuart
+                    })
+            } else
+                this.setState({
+                    c2: cuart
+                })
+        }
+
+        if (i == 3) {
+            if (localStorage.hasOwnProperty("c3")) {
+                let value = JSON.parse(localStorage.getItem("c3"));
+                if (value.pronostico == localStorage.getItem("pronostico")) {
+                    this.setState({ c3: value });
+                } else
+                    this.setState({
+                        c3: cuart
+                    })
+            } else
+                this.setState({
+                    c3: cuart
+                })
+        }
+
     }
-    cuartos1 = (cuart) => {
-        if (localStorage.hasOwnProperty("c1")) {
-            let value = localStorage.getItem("c1");
-            value = JSON.parse(value);
-            this.setState({ c1: value });
-        } else
-            this.setState({
-                c1: cuart
-            })
+    semis = (semi, i) => {
+        if (i == 0) {
+            if (localStorage.hasOwnProperty("s1")) {
+                let value = JSON.parse(localStorage.getItem("s1"));
+                if (value.pronostico == localStorage.getItem("pronostico")) {
+                    this.setState({ s1: value });
+                }
+                else
+                    this.setState({
+                        s1: semi
+                    })
+            } else
+                this.setState({
+                    s1: semi
+                })
+        }
+        if (i == 1) {
+            if (localStorage.hasOwnProperty("s2")) {
+                let value = JSON.parse(localStorage.getItem("s2"));
+                if (value.pronostico == localStorage.getItem("pronostico")) {
+                    this.setState({ s2: value });
+                }
+                else
+                    this.setState({
+                        s2: semi
+                    })
+            } else
+                this.setState({
+                    s2: semi
+                })
+        }
     }
-    cuartos2 = (cuart) => {
-        if (localStorage.hasOwnProperty("c2")) {
-            let value = localStorage.getItem("c2");
-            value = JSON.parse(value);
-            this.setState({ c2: value });
-        } else
-            this.setState({
-                c2: cuart
-            })
-    }
-    cuartos3 = (cuart) => {
-        if (localStorage.hasOwnProperty("c3")) {
-            let value = localStorage.getItem("c3");
-            value = JSON.parse(value);
-            this.setState({ c3: value });
-        } else
-            this.setState({
-                c3: cuart
-            })
-    }
-    semis1 = (semi) => {
-        if (localStorage.hasOwnProperty("s1")) {
-            let value = localStorage.getItem("s1");
-            value = JSON.parse(value);
-            this.setState({ s1: value });
-        } else
-            this.setState({
-                s1: semi
-            })
-    }
-    semis2 = (semi) => {
-        if (localStorage.hasOwnProperty("s2")) {
-            let value = localStorage.getItem("s2");
-            value = JSON.parse(value);
-            this.setState({ s2: value });
-        } else
-            this.setState({
-                s2: semi
-            })
-    }
+
     final = (fi) => {
         if (localStorage.hasOwnProperty("f")) {
-            let value = localStorage.getItem("f");
-            value = JSON.parse(value);
-            this.setState({ f: value });
-        } else
+            let value = JSON.parse(localStorage.getItem("f"));
+            if (value.pronostico == localStorage.getItem("pronostico")) {
+                this.setState({ f: value });
+            }
+            else
+                this.setState({
+                    f: fi
+                })
+        }
+        else
             this.setState({
                 f: fi
             })
@@ -158,14 +177,21 @@ export default class Perfil extends Component {
     }
     champion = (c) => {
         if (localStorage.hasOwnProperty("champion")) {
-            let value = localStorage.getItem("champion");
-            value = JSON.parse(value);
-            this.setState({ champion: value });
-        } else
+            let value = JSON.parse(localStorage.getItem("champion"));
+            if (value.pronostico == localStorage.getItem("pronostico")) {
+                this.setState({ champion: value });
+            }
+            else
+                this.setState({
+                    champion: c,
+                })
+        }
+        else
             this.setState({
                 champion: c,
             })
     }
+
 
     render() {
         var oct01 = ""; var oct02 = ""; var oct11 = ""; var oct12 = ""; var oct21 = ""; var oct22 = "";
@@ -259,10 +285,9 @@ export default class Perfil extends Component {
         }
         return <div id="contenedor">
             <Pronostico setPronostico={this.setPronostico} agregarProno={this.props.agregaProno}
-                octavos0={this.octavos0} octavos1={this.octavos1} octavos2={this.octavos2} octavos3={this.octavos3}
-                octavos4={this.octavos4} octavos5={this.octavos5} octavos6={this.octavos6} octavos7={this.octavos7}
-                cuartos0={this.cuartos0} cuartos1={this.cuartos1} cuartos2={this.cuartos2} cuartos3={this.cuartos3}
-                semis1={this.semis1} semis2={this.semis2}
+                octavos={this.octavos}
+                cuartos={this.cuartos}
+                semis={this.semis}
                 final={this.final} campeon={this.champion}
             />
 
@@ -313,7 +338,7 @@ export default class Perfil extends Component {
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC0(cuar02, e)}>  {cuar02.nombre}</button>
                                     <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC0(cuar02, e)}>  {cuar02.abrev}</button>
                                 </td>
-                                <td></td>
+                                <td> </td>
                                 <td></td>
                                 <td>{paisc11}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC1(cuar11, e)}>{cuar11.nombre}</button>
@@ -323,8 +348,8 @@ export default class Perfil extends Component {
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC1(cuar12, e)}>  {cuar12.nombre}</button>
                                     <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC1(cuar12, e)}>  {cuar12.abrev}</button>
                                 </td>
-                                <td></td>
-                            </tr>
+                                <td> </td>
+                            </tr >
 
                             <tr>
                                 <td >{paiso21}
@@ -333,9 +358,9 @@ export default class Perfil extends Component {
                                     <br></br>
                                     {paiso22}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc2(oct22, e)}>{oct22.nombre}</button>
-                                    <button className="btn btn-light-grey jugadorabrev" onClick={(e) => this.handleOc2(oct22, e)}>{oct22.abrev}</button>
+                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc2(oct22, e)}>{oct22.abrev}</button>
                                 </td>
-                                <td></td>
+                                <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -345,7 +370,7 @@ export default class Perfil extends Component {
                                     {paiso32}
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc3(oct32, e)}>{oct32.nombre}</button>
                                 </td>
-                            </tr>
+                            </tr >
                             <tr>
                                 <td > </td>
                                 <td></td>
@@ -354,14 +379,14 @@ export default class Perfil extends Component {
                                     {paiss12}
                                     <button className="btn btn-light" onClick={(e) => this.handleS1(sem02, e)}>  {sem02.nombre}</button>
                                 </td>
-                                <td>{paiss21}
+                                <td> {paiss21}
                                     <button className="btn btn-light" onClick={(e) => this.handleS2(sem11, e)}>{sem11.nombre}</button><br></br>
                                     {paiss22}
                                     <button className="btn btn-light" onClick={(e) => this.handleS2(sem12, e)}>  {sem12.nombre}</button>
                                 </td>
-                                <td></td>
+                                <td> </td>
                                 <td>    </td>
-                            </tr>
+                            </tr >
                             <tr>
                                 <td > {paiso41}
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc4(oct41, e)}>{oct41.nombre}</button>
@@ -369,7 +394,7 @@ export default class Perfil extends Component {
                                     {paiso42}
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc4(oct42, e)}>{oct42.nombre}</button>
                                 </td>
-                                <td></td>
+                                <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -380,7 +405,7 @@ export default class Perfil extends Component {
                                     {paiso52}
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc5(oct52, e)}>{oct52.nombre}</button>
                                 </td>
-                            </tr>
+                            </tr >
 
 
 
@@ -391,15 +416,15 @@ export default class Perfil extends Component {
                                     {paisc22}
                                     <button className="btn btn-light" onClick={(e) => this.handleC2(cuar22, e)}>  {cuar22.nombre}</button>
                                 </td>
-                                <td></td>
+                                <td> </td>
                                 <td></td>
                                 <td>{paisc31}
                                     <button className="btn btn-light" onClick={(e) => this.handleC3(cuar31, e)}>{cuar31.nombre}</button><br></br>
                                     {paisc32}
                                     <button className="btn btn-light" onClick={(e) => this.handleC3(cuar32, e)}>  {cuar32.nombre}</button>
                                 </td>
-                                <td></td>
-                            </tr>
+                                <td> </td>
+                            </tr >
 
                             <tr>
                                 <td >{paiso61}
@@ -408,7 +433,7 @@ export default class Perfil extends Component {
                                     {paiso62}
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc6(oct62, e)}>{oct62.nombre}</button>
                                 </td>
-                                <td></td>
+                                <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -418,7 +443,7 @@ export default class Perfil extends Component {
                                     {paiso72}
                                     <button className="btn btn-light-grey" onClick={(e) => this.handleOc7(oct72, e)}>{oct72.nombre}</button>
                                 </td>
-                            </tr>
+                            </tr >
 
 
                         </tbody>
@@ -453,7 +478,7 @@ export default class Perfil extends Component {
             <div className="row">
                 {btn1}
                 {btn2}
-            </div>
+            </div >
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -485,6 +510,7 @@ export default class Perfil extends Component {
             });
         const final = this.state.f;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("f", JSON.stringify(final));
     }
     handleS2 = (newP, e) => {
@@ -499,6 +525,7 @@ export default class Perfil extends Component {
             });
         const final = this.state.f;
         final["jugador_dos"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("f", JSON.stringify(final));
     }
     handleCampeon = (newP, e) => {
@@ -513,6 +540,7 @@ export default class Perfil extends Component {
             });
         const final = this.state.champion;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("champion", JSON.stringify(final));
     }
     //se encarga de cambiar el pronostico de la semi
@@ -528,6 +556,7 @@ export default class Perfil extends Component {
             });
         const final = this.state.s1;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("s1", JSON.stringify(final));
     }
     handleC1 = (newP, e) => {
@@ -541,6 +570,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.s2;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("s2", JSON.stringify(final));
     }
     handleC2 = (newP, e) => {
@@ -554,6 +584,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.s1;
         final["jugador_dos"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("s1", JSON.stringify(final));
     }
     handleC3 = (newP, e) => {
@@ -567,6 +598,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.s2;
         final["jugador_dos"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("s2", JSON.stringify(final));
     }
     handleOc0 = (newP, e) => {
@@ -580,6 +612,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.c0;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("c0", JSON.stringify(final));
     }
     handleOc1 = (newP, e) => {
@@ -593,6 +626,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.c1;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("c1", JSON.stringify(final));
     }
     handleOc2 = (newP, e) => {
@@ -606,6 +640,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.c0;
         final["jugador_dos"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("c0", JSON.stringify(final));
     }
     handleOc3 = (newP, e) => {
@@ -619,6 +654,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.c1;
         final["jugador_dos"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("c1", JSON.stringify(final));
     }
     handleOc4 = (newP, e) => {
@@ -633,6 +669,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.c2;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("c2", JSON.stringify(final));
     }
     handleOc5 = (newP, e) => {
@@ -647,6 +684,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.c3;
         final["jugador_uno"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("c3", JSON.stringify(final));
     }
     handleOc6 = (newP, e) => {
@@ -660,6 +698,7 @@ export default class Perfil extends Component {
         });
         const final = this.state.c2;
         final["jugador_dos"] = newP;
+        final["pronostico"] = this.state.pronostico;
         localStorage.setItem("c2", JSON.stringify(final));
 
     }
@@ -673,6 +712,7 @@ export default class Perfil extends Component {
             this.setState({ load: true });
             const final = this.state.c3;
             final["jugador_dos"] = newP;
+            final["pronostico"] = this.state.pronostico;
             localStorage.setItem("c3", JSON.stringify(final));
         });
 
@@ -750,6 +790,7 @@ export default class Perfil extends Component {
                     localStorage.removeItem(key);
             }
             this.setState(this.baseState);
+            localStorage.setItem("use", "false");
             alert("Se elimino correctamente");
         } catch (e) {
             alert("Hubo problema no se pudo eliminar,intente nuevamente");
