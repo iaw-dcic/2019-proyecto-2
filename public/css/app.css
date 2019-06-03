@@ -10732,12 +10732,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .bm-item {
   display: inline-block;
+  text-decoration: none !important;
 }
 
 /* Styling of overlay */
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-image: url(/images/background.png?ecff1f6997479c3d75ad9e6adfc6a4f4);
 }
 
 .react-layout-components--box {

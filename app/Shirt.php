@@ -15,15 +15,18 @@ class Shirt extends Model
         'color', 'type', 'user_id', 'design_name'
     ];
 
-    public function decorations() {
-        return $this->hasMany(Decoration::class);
+    public function decorations()
+    {
+        return $this->hasOne(Decoration::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function addDecoration($Decoration) {
+    public function addDecoration($Decoration)
+    {
         $this->decorations()->create($Decoration);
     }
 }

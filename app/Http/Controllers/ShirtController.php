@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use File;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use App\Shirt;
 use App\User;
@@ -18,11 +17,11 @@ class ShirtController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        $shirts = Shirt::all();
-
-        return ShirtResource::collection($shirts);
+        //$shirts = $user->shirts;
+        //return $shirts;
+        return ShirtResource::collection($user->shirts);
     }
 
     /**
@@ -36,8 +35,9 @@ class ShirtController extends Controller
         //abort_if(auth()->id() !== $user->id, 403); //en caso de que el cliente modifique el POST manualmente
         $shirt = $user->addShirt([
             "user_id" => $user->id,
-            "color" => "white",
-            "type" => "shortsleeve",
+            "color" => "FFFFFF",
+            "type" => "tshirt",
+            "design_name" => "Your design"
         ]);
         return new ShirtResource($shirt);
     }

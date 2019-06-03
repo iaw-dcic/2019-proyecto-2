@@ -9,6 +9,10 @@
 
 @import 'burger-menu';
 
+body {
+  background-image: url("../img/background.png");
+}
+
 .react-layout-components--box {
   display: -webkit-box;
   display: -moz-box;

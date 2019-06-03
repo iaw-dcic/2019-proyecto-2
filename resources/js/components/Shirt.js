@@ -17,7 +17,7 @@ export default class Shirt extends Component {
 
 
     componentDidMount() {
-        axios.get(`http://localhost:8000/api/static/images/shirts/` + this.state.type + `/` + this.state.color)
+        axios.get(`http://localhost:8000/api/static/images/shirts/` + this.props.type + `/` + this.props.color)
             .then(res => {
                 const shirt = res.data.content;
                 this.setState({ shirt });
@@ -25,15 +25,17 @@ export default class Shirt extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        axios.get(`http://localhost:8000/api/static/images/shirts/` + nextProps.type + `/` + nextProps.color)
-            .then(res => {
-                const newShirt = res.data.content;
-                this.setState({
-                    type: nextProps.type,
-                    color: nextProps.color,
-                    shirt: newShirt
-                });
-            })
+        if (nextProps.type != '') {
+            axios.get(`http://localhost:8000/api/static/images/shirts/` + nextProps.type + `/` + nextProps.color)
+                .then(res => {
+                    const newShirt = res.data.content;
+                    this.setState({
+                        type: nextProps.type,
+                        color: nextProps.color,
+                        shirt: newShirt
+                    });
+                })
+        }
     }
 
     render() {

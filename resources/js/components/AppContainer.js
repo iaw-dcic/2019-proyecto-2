@@ -1,114 +1,117 @@
 import React, { Component } from 'react'
 import AppNavbar from './AppNavbar'
-import { slide as Menu } from 'react-burger-menu'
-import { Tabs, Tab, Container, Row, Col, Form, Button, Modal } from 'react-bootstrap'
+import ShirtMenu from './ShirtMenu'
+import { Tabs, Tab, Container, Row, Col, Form } from 'react-bootstrap'
 import { CirclePicker } from 'react-color'
-import axios from 'axios';
+import axios from 'axios'
 import Shirt from './Shirt'
-
+import Modals from './Modals'
+import LoadingScreen from 'react-loading-screen';
+import Logo from './img/logo.png'
 import ReactDOM from 'react-dom'
-
 
 export default class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoggedIn: true,
             shirt: {
                 id: 1,
                 type: "tshirt",
                 color: "FFFFFF",
-                design_name: "Design 1"
+                design_name: "Your design"
             },
-            showSaveModal: false,
-            design_name_form_value: 'Design 1',
-
+            shirts: [],
+            received_shirts_info: false,
         };
     }
 
     render() {
         return (
             <React.Fragment>
-                <AppNavbar />
+                <AppNavbar user_info={this.props.user_info} />
                 {this.showContent()}
             </React.Fragment>
         );
     }
 
-    showContent() {
-        if (this.state.isLoggedIn) {
-            return (
-                <React.Fragment>
-                    <Menu>
-                        <p>Your designs</p>
-                        <a id="home" className="menu-item" href="#">Design-1</a>
-                        <a id="about" className="menu-item" href="#">Design-2</a>
-                        <a id="contact" className="menu-item" href="#">Design-n</a>
-                    </Menu>
-                    <Container>
-                        <Row>
-                            <Col>
-                                <div className="well">
-                                    <Shirt type={this.state.shirt.type} color={this.state.shirt.color} />
-                                </div>
-                            </Col>
-                            <Col>
-                            <h3>{this.state.shirt.design_name}</h3>
-                                <Tabs className="padtop">
-                                    <Tab eventKey="typeAndColor" title="Type and color">
-                                        <div className="well">
-                                            <Form.Label>Type</Form.Label>
-                                            <Form.Control as="select"
-                                                onChange={this.handleTypeChange}>
-                                                <option value="tshirt">Short sleeve</option>
-                                                <option value="longsleeve">Long sleeve</option>
-                                            </Form.Control>
-                                            <br />
-                                        </div>
-                                        <div className="well">
-                                            <p>Color</p>
-                                            <CirclePicker 
-                                                color={'#'+this.state.shirt.color} 
-                                                colors={['#1B998B', '#ED217C', '#55DDFF','#FFFFFF','#FF9B71']} 
-                                                onChange= {this.handleColorChange}
-                                            />
-                                        </div>
-                                        <Button variant="success" onClick={this.handleShowSaveModal}>Save shirt</Button>
-                                    </Tab>
-                                    <Tab eventKey="Images" title="Decoration">
-                                        <div className="well">
-                                            <p>images</p>
-                                        </div>
-                                    </Tab>
-                                </Tabs>
-                            </Col>
-                        </Row>
-                    </Container>;
-
-                <Modal show={this.state.showSaveModal} onHide={this.handleCloseSaveModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Save design</Modal.Title>
-                    </Modal.Header>
-                <Modal.Body>
-                    <Form.Label>Enter a design name</Form.Label>
-                    <Form.Control type="text" value={this.design_name_form_value} onChange={this.handleChange}/>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleCloseSaveModal}>
-                        Close
-                    </Button>
-                    <Button variant="success" onClick={this.handleSaveDesign}>
-                        Save
-                    </Button>
-                </Modal.Footer>
-                </Modal>
-
-            </React.Fragment>
-            );
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.received_user_info) {
+            axios.get("http://localhost:8000/api/" + nextProps.user_info.id + "/shirts").then(resp => {
+                let shirts = resp.data;
+                this.setState({ shirts, received_shirts_info: true });
+                if (shirts.length > 0) {
+                    let shirt = shirts[0];
+                    this.setState({ shirt });
+                }
+            });
         }
+    }
 
-        return (
+    showContent() {
+        if (this.props.user_info.isLoggedIn && !this.state.received_shirts_info) {
+            return this.showLoadingScreen();
+        }
+        else if (this.state.received_shirts_info) {
+            if (this.state.shirts.length > 0) {
+                return (
+                    <React.Fragment>
+                        <ShirtMenu shirts={this.state.shirts} onSelectShirt={this.handleShirtSelect} onCreateShirt={this.handleCreateShirt} />
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <div className="well">
+                                        <Shirt type={this.state.shirt.type} color={this.state.shirt.color} received_shirts_info={this.state.received_shirts_info} />
+                                    </div>
+                                </Col>
+                                <Col>
+                                    <h3>{this.state.shirt.design_name}</h3>
+                                    <Tabs className="padtop">
+                                        <Tab eventKey="typeAndColor" title="Type and color">
+                                            <div className="well">
+                                                <Form.Label>Type</Form.Label>
+                                                <Form.Control as="select"
+                                                    onChange={this.handleTypeChange}
+                                                    value={this.state.shirt.type}>
+                                                    <option value="tshirt">Short sleeve</option>
+                                                    <option value="longsleeve">Long sleeve</option>
+                                                </Form.Control>
+                                                <br />
+                                            </div>
+                                            <div className="well">
+                                                <p>Color</p>
+                                                <CirclePicker
+                                                    color={'#' + this.state.shirt.color}
+                                                    colors={['#1B998B', '#ED217C', '#55DDFF', '#FFFFFF', '#FF9B71']}
+                                                    onChange={this.handleColorChange}
+                                                />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="Images" title="Decoration">
+                                            <div className="well">
+                                                <p>images</p>
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                    <Modals design_name={this.state.shirt.design_name} onSelectSave={this.handleSaveShirt} onSelectDelete={this.handleDeleteShirt} />
+                                </Col>
+                            </Row>
+                        </Container>;
+                </React.Fragment>
+                );
+            }
+            else {
+                return (
+                    <React.Fragment>
+                        {/* TODO */}
+                        <ShirtMenu shirts={this.state.shirts} onSelectShirt={this.handleShirtSelect} onCreateShirt={this.handleCreateShirt} />
+                        <p>empty shirts yo</p>
+                    </React.Fragment>
+                );
+            }
+        }
+        else return (
             <React.Fragment>
+                {/* TODO */}
                 <p>you're a guest,please login</p>
             </React.Fragment>
         );
@@ -117,38 +120,78 @@ export default class AppContainer extends Component {
     handleTypeChange = (e) => {
         let shirt = { ...this.state.shirt };
         shirt.type = e.target.value;
-        this.setState({
-            shirt
-        });
+        this.setState({ shirt });
     }
 
-    handleColorChange = (color,event) => {
+    handleColorChange = (color, event) => {
         let shirt = { ...this.state.shirt };
         shirt.color = color.hex.substr(1);
-        this.setState({
-            shirt
-        });
+        this.setState({ shirt });
     }
 
-    handleChange = (event) => {
-        this.setState({design_name_form_value: event.target.value});
+    handleShirtSelect = (shirt) => {
+        this.setState({ shirt });
     }
 
     handleShowSaveModal = () => {
-        this.setState({ showSaveModal: true})
+        this.setState({ showSaveModal: true })
     }
 
     handleCloseSaveModal = () => {
-        this.setState({ showSaveModal: false})
+        this.setState({ showSaveModal: false })
     }
 
-    handleSaveDesign = () => {
+    handleSaveShirt = (name) => {
         let shirt = { ...this.state.shirt };
-        shirt.design_name = this.state.design_name_form_value;
-        this.setState({shirt, showSaveModal: false});
-        axios.patch(`http://localhost:8000/api/shirts/`+shirt.id, shirt)
+        shirt.design_name = name;
+        this.setState({ shirt, showSaveModal: false });
+        axios.patch(`http://localhost:8000/api/shirts/` + shirt.id, shirt)
             .then(res => {
-            //console.log('res',res);
-      })
+                let shirts = this.state.shirts;
+                let affectedShirt = [res.data];
+                let updatedShirts = shirts.map(obj => affectedShirt.find(o => o.id === obj.id) || obj);
+                this.setState({ shirts: updatedShirts });
+            });
+    }
+
+    handleDeleteShirt = () => {
+        axios.delete('http://localhost:8000/api/shirts/' + this.state.shirt.id)
+            .then(res => {
+                const shirts = this.state.shirts.filter(shirt => shirt.id !== res.data.id);
+                let shirtToShowNext;
+                if (shirts.length > 0) {
+                    shirtToShowNext = shirts[0];
+                }
+                else {
+                    shirtToShowNext = [];
+                }
+                this.setState({ shirts, shirt: shirtToShowNext })
+            });
+    }
+
+    handleCreateShirt = () => {
+        axios.post(`http://localhost:8000/api/shirts/store/` + this.props.user_info.id)
+            .then(res => {
+                let shirt = res.data;
+                let shirts = this.state.shirts;
+                shirts.push(shirt);
+                this.setState({ shirt, shirts });
+            });
+    }
+
+    showLoadingScreen = () => {
+        return (
+            <React.Fragment>
+                <LoadingScreen
+                    loading={true}
+                    bgColor='#f1f1f1'
+                    spinnerColor='#9ee5f8'
+                    textColor='#676767'
+                    logoSrc={Logo}
+                    text='Loading, please hold'
+                    children=''
+                />
+            </React.Fragment>
+        );
     }
 }

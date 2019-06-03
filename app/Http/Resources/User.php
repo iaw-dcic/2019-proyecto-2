@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Shirt extends JsonResource
+class User extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,10 @@ class Shirt extends JsonResource
     {
         return [
             'id' => $this->id,
-            'color' => $this->color,
-            'type' => $this->type,
-            'design_name' => $this->design_name,
-            'user_id' => $this->user_id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'api_token' => $this->api_token,
+            'isLoggedIn' => true,
         ];
     }
 }
