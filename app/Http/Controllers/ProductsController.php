@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\ColorCase;
+use App\User;
  
 class ProductsController extends Controller
 {
@@ -25,8 +27,8 @@ class ProductsController extends Controller
  
     public function store()
     {
-        //$user=Auth::user();
-
+        $user=Auth::user();
+                
         $data=request()->all();
 
         $colorCase = ColorCase::where([
@@ -36,7 +38,7 @@ class ProductsController extends Controller
 
         $product=new Product();
 
-        $product->id_user=$data['id_user'];
+        $product->id_user=$user->id;
         $product->id_case_color=$colorCase[0]['id'];
         $product->id_image=$data['id_image'];
 

@@ -14,7 +14,7 @@ export default class Nav extends Component {
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav ml-md-auto d-md-flex">
                             <li className="nav-item">
-                                <label className="nav-link" title="Username"> Bienvenido/a ! </label>
+                                <label className="nav-link" title="Username"> Bienvenido/a !</label>
                             </li>
                             <li>
                                 <a className="nav-link" href="" title="Salir"

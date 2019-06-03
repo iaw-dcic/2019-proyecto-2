@@ -55,13 +55,13 @@ export default class MainSection extends Component {
 
     addNewProduct() {
       const product={
-        'id_user':1,
         'id_color': this.state.colorIndex,
         'id_case':this.state.caseIndex,
         'id_image':this.state.estampaIndex
       };
-      Axios.post('api/products',product)
+      Axios.post('/products',product)
       .then(response => {
+        console.log(response)
           alert("Funda creada correctamente");
       });
       

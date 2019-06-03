@@ -11,6 +11,8 @@ const Modal = props => {
         e.stopPropagation()
         props.closeModal()
      }
+
+   
      return (
        <div 
          className="modal"

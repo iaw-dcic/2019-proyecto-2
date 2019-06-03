@@ -67075,7 +67075,10 @@ function (_Component) {
   _createClass(Head, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("head", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("head", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+        name: "csrf-token",
+        content: "{{ csrf_token() }}"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
         href: "//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css",
         rel: "stylesheet",
         id: "bootstrap-css"
@@ -67741,12 +67744,12 @@ function (_Component) {
     key: "addNewProduct",
     value: function addNewProduct() {
       var product = {
-        'id_user': 1,
         'id_color': this.state.colorIndex,
         'id_case': this.state.caseIndex,
         'id_image': this.state.estampaIndex
       };
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post('api/products', product).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post('/products', product).then(function (response) {
+        console.log(response);
         alert("Funda creada correctamente");
       });
     } // getCaseImage(){
@@ -67943,7 +67946,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "nav-link",
         title: "Username"
-      }, " Bienvenido/a ! ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, " Bienvenido/a !")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-link",
         href: "",
         title: "Salir",
