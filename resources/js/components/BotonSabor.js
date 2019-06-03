@@ -20,7 +20,7 @@ class BotonSabor extends React.Component {
 	                type="button"
 	                className="btn"
 	                name="sabor"
-	                value={this.props.sabor.nombre}
+	                value={this.props.sabor.url}
 	                onClick={this.handleClick}
                 >
 	            <img className="donasbotones" src={this.props.sabor.url} />

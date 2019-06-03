@@ -20,7 +20,7 @@ class BotonDecoracion extends React.Component{
 	                type="button"
 	                className="btn"
 	                name="decoracion"
-	                value={this.props.decoracion.nombre}
+	                value={this.props.decoracion.url}
 	                onClick={this.handleClick}
                 >
 	            <img className="donasbotones" src={this.props.decoracion.url} />

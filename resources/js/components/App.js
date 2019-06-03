@@ -31,8 +31,9 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
+			
 				<div className="row">
-					<div className="col fondo" id="box">
+					<div  className="col fondo" id="box">
 						{Object.keys(this.state.donuts).map((key) => (
 							<Donut key={key} clave={key} donut={this.state.donuts[key]} />
 						))}
@@ -41,20 +42,12 @@ class App extends Component {
 					<div className="col fondo" id="box">
 						<br />
 						<h4 className="font-weight-light mb-0">Sabor </h4>
-
 						<Sabores donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} />
 
-						<br />
-						<br />
-
 						<h4 className="font-weight-light mb-0">Glaseado </h4>
-
 						<Glaseados donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} />
 
-						<br />
-						<br />
 						<h4 className="font-weight-light mb-0">Decoración </h4>
-
 						<Decoraciones donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} />
 
 						<br />

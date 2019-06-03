@@ -20,7 +20,7 @@ class BotonGlaseado extends React.Component{
 	                type="button"
 	                className="btn"
 	                name="glaseado"
-	                value={this.props.glaseado.nombre}
+	                value={this.props.glaseado.url}
 	                onClick={this.handleClick}
                 >
 	            <img className="donasbotones" src={this.props.glaseado.url} />

@@ -65789,12 +65789,12 @@ function (_Component) {
       }, "Sabor "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sabores__WEBPACK_IMPORTED_MODULE_4__["default"], {
         donut: this.props.donuts,
         actualizarDonuts: this.actualizarDonuts
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "font-weight-light mb-0"
       }, "Glaseado "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Glaseados__WEBPACK_IMPORTED_MODULE_5__["default"], {
         donut: this.props.donuts,
         actualizarDonuts: this.actualizarDonuts
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "font-weight-light mb-0"
       }, "Decoraci\xF3n "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Decoraciones__WEBPACK_IMPORTED_MODULE_6__["default"], {
         donut: this.props.donuts,
@@ -65881,7 +65881,7 @@ function (_React$Component) {
         type: "button",
         className: "btn",
         name: "decoracion",
-        value: this.props.decoracion.nombre,
+        value: this.props.decoracion.url,
         onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "donasbotones",
@@ -65968,7 +65968,7 @@ function (_React$Component) {
         type: "button",
         className: "btn",
         name: "glaseado",
-        value: this.props.glaseado.nombre,
+        value: this.props.glaseado.url,
         onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "donasbotones",
@@ -66055,7 +66055,7 @@ function (_React$Component) {
         type: "button",
         className: "btn",
         name: "sabor",
-        value: this.props.sabor.nombre,
+        value: this.props.sabor.url,
         onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "donasbotones",
@@ -66208,120 +66208,46 @@ function (_React$Component) {
       var sabor = this.props.donut.sabor;
       var glaseado = this.props.donut.glaseado;
       var decoracion = this.props.donut.decoracion;
-
-      switch (glaseado) {
-        case 'Blanco':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseadoBlanco.png",
-            className: "medio"
-          });
-
-        case 'Chocolate':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseadoChocolate.png",
-            className: "medio"
-          });
-
-        case 'Celeste':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseadoCeleste.png",
-            className: "medio"
-          });
-
-        case 'Rosa':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseadoRosa.png",
-            className: "medio"
-          });
-
-        case 'Naranja':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseadoNaranja.png",
-            className: "medio"
-          });
-
-        case 'VacioGlaseado':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseadoVacio2.png",
-            className: "medio"
-          });
-      }
-
-      switch (sabor) {
-        case 'Vainilla':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/donaVainilla.png",
-            className: "medio"
-          });
-
-        case 'Chocolate':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/donaChocolate.png",
-            className: "medio"
-          });
-
-        case 'Mixta':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/donaMixta.png",
-            className: "medio"
-          });
-
-        case 'Vacia':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/dona.png",
-            className: "medio"
-          });
-      }
-
-      switch (decoracion) {
-        case 'Chispas1':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/chispas1.png",
-            className: "medio"
-          });
-
-        case 'Chispas2':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/chispas2.png",
-            className: "medio"
-          });
-
-        case 'Chispas3':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/chispas3.png",
-            className: "medio"
-          });
-
-        case 'Glaseado1':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseado1.png",
-            className: "medio"
-          });
-
-        case 'Glaseado2':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/glaseado2.png",
-            className: "medio"
-          });
-
-        case 'VacioDecoracion':
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "img/Donas/decoracionVacio.png",
-            className: "medio"
-          });
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/Donas/dona.png",
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col fondo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: sabor,
         className: "medio"
-      });
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: glaseado,
+        className: "medio"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: decoracion,
+        className: "medio"
+      }));
     }
   }]);
 
   return Donut;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Donut);
+/* harmony default export */ __webpack_exports__["default"] = (Donut); // switch (sabor){
+//     case 'Vainilla': return (  <img src="img/Donas/donaVainilla.png" className="medio" /> );
+//     case 'Chocolate':  return (  <img src="img/Donas/donaChocolate.png" className="medio" /> );
+//     case 'Mixta':  return (  <img src="img/Donas/donaMixta.png" className="medio" /> );
+//     case 'Vacia':  return (  <img src="img/Donas/dona.png" className="medio" /> );
+// }
+// switch (glaseado){
+//     case 'Blanco': return (  <img src="img/Donas/glaseadoBlanco.png" className="medio" /> );
+//     case 'Chocolate': return (  <img src="img/Donas/glaseadoChocolate.png" className="medio" /> );
+//     case 'Celeste': return (  <img src="img/Donas/glaseadoCeleste.png" className="medio" /> );
+//     case 'Rosa': return (  <img src="img/Donas/glaseadoRosa.png" className="medio" /> );
+//     case 'Naranja': return (  <img src="img/Donas/glaseadoNaranja.png" className="medio" /> );
+//     case 'VacioGlaseado':  return (  <img src="img/Donas/glaseadoVacio2.png" className="medio" /> );
+// }
+// switch (decoracion){
+//     case 'Chispas1':return (  <img src="img/Donas/chispas1.png" className="medio" /> );
+//     case 'Chispas2': return (  <img src="img/Donas/chispas2.png" className="medio" /> );
+//     case 'Chispas3': return (  <img src="img/Donas/chispas3.png" className="medio" /> );
+//     case 'Glaseado1': return (  <img src="img/Donas/glaseado1.png" className="medio" /> );
+//     case 'Glaseado2': return (  <img src="img/Donas/glaseado2.png" className="medio" /> );
+//     case 'VacioDecoracion':  return (  <img src="img/Donas/decoracionVacio.png" className="medio" /> );
+// }
 
 /***/ }),
 
@@ -66514,9 +66440,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 var donuts = {
   donut1: {
-    sabor: "Vacia",
-    glaseado: "VacioGlaseado",
-    decoracion: "VacioDecoracion"
+    sabor: "img/Donas/dona.png",
+    glaseado: "img/Donas/glaseadoVacio2.png",
+    decoracion: "img/Donas/decoracionVacio.png"
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (donuts);
