@@ -85,8 +85,8 @@ export default class Playoffs extends Component {
             axios.delete('api/playoffs/delete/' + $toDelete)
                 .then(res => {
                     console.log(res);
+                    this.limpiar();
                 })
-            this.limpiar();
         }
         catch (e) {
             console.log('Axios request failed', e);

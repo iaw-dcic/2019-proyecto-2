@@ -65990,13 +65990,16 @@ function (_Component) {
   }, {
     key: "handleDeleteClick",
     value: function handleDeleteClick() {
+      var _this3 = this;
+
       var $toDelete = this.state.selectedId;
 
       try {
         axios["delete"]('api/playoffs/delete/' + $toDelete).then(function (res) {
           console.log(res);
+
+          _this3.limpiar();
         });
-        this.limpiar();
       } catch (e) {
         console.log('Axios request failed', e);
       }
@@ -66004,10 +66007,10 @@ function (_Component) {
   }, {
     key: "limpiar",
     value: function limpiar() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/api/playoffs').then(function (response) {
-        _this3.setState({
+        _this4.setState({
           playoffs: response.data,
           selected: '',
           selectedId: '',
@@ -66022,7 +66025,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var i = 0;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -66030,7 +66033,7 @@ function (_Component) {
         id: "playoff",
         name: "playoff",
         onChange: function onChange(e) {
-          return _this4.handleChange(e);
+          return _this5.handleChange(e);
         },
         value: this.state.selected
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -66044,7 +66047,7 @@ function (_Component) {
         type: "button",
         className: "btn btn-danger btn-sm mt-4",
         onClick: function onClick(e) {
-          return _this4.handleDeleteClick();
+          return _this5.handleDeleteClick();
         }
       }, "Eliminar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "split split-one"
