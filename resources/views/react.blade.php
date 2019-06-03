@@ -20,6 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="react-app"></div>
+    <div class="py-4">
+        <div id="react-app"></div>
+    </div>
 </body>
 </html>

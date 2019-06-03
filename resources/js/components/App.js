@@ -2,13 +2,18 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Example from './Example'
+import AvatarForm from './avatarForm';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Example />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 offset-2">
+              <AvatarForm />
+            </div>
+          </div>
         </div>
       </BrowserRouter>
     )
