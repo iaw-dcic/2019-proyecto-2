@@ -16,6 +16,8 @@ class CreateProdesTable extends Migration
         Schema::create('prodes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
+            $table->string('name');
+            $table->integer('prode_completo')->default(0);
             $table->timestamps();
         });
     }

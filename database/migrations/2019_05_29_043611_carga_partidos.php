@@ -13,134 +13,139 @@ class CargaPartidos extends Migration
      */
     public function up()
     {
+        App\Prode::create([
+            'user_id'=>'-1',
+            'name'=>'prode_base'
+        ]);
+
         //Equipos
         App\Equipo::create([
             'nombre'=>'Royal Pari',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/royalpari.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Macara(E)',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/macarae.png'
         ]);
         App\Equipo::create([
             'nombre'=>'La Equidad',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/laequidad.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Deportivo Santaní',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/depsantani.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Sol de América(P)',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/solamericap.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Botafogo',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/botafogo.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Union La Calera',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/lacalera.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Atletico Mineiro',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/atlmineiro.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Zulia',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/zulia.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Palestino',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/palestino.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Unión Española',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/unionespanola.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Sporting Cristal',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/spcristal.png'
         ]);
         App\Equipo::create([
             'nombre'=>'River Plate(U)',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/riverplateu.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Colón',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/colon.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Argentinos Juniors',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/argentinos.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Deportes Tolima',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/deptolima.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Liverpool(U)',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/liverpoolu.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Caracas',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/caracas.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Independiente del Valle',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/inddelvalle.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Universidad Católica',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/ucatolica.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Rionegro Águilas',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/rionegroa.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Independiente',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/inddelvalle.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Universidad Catolica(E)',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/ucatolica.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Melgar',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/melgar.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Deportivo Cali',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/depcali.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Peñarol',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/penarol.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Fluminense',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/fluminense.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Atlético Nacional',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/atlnacional.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Corinthians',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/corinthians.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Deportivo Lara',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/deplara.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Montevideo Wanderers(U)',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/wanderersu.png'
         ]);
         App\Equipo::create([
             'nombre'=>'Cerro(U)',
-            'escudo'=>'escudo.jpg'
+            'escudo'=>'http://www.promiedos.com.ar/images/s64/cerrou.png'
         ]);
 
         //Partidos 

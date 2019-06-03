@@ -20,6 +20,7 @@ class CreatePartidosTable extends Migration
             $table->integer('equipo_2_id')->nullable();
             $table->integer('equipo_1_goles')->default(0);
             $table->integer('equipo_2_goles')->default(0);
+            $table->integer('partido_completo')->default(0);
             $table->timestamps();
         });
     }
