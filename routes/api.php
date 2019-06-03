@@ -26,4 +26,6 @@ Route::get('/colores','VistaDiseñarController@listadoColores');
 Route::get('/logos','VistaDiseñarController@listadoLogos');
 //Guardar Remera
 Route::post('/crearDiseño','RemeraController@store');
+//Mostrar mis remeras
+Route::get('/misDiseños/{id}','RemeraController@MisDiseños');
 

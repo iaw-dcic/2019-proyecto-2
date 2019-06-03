@@ -31,6 +31,19 @@ class RemeraController extends Controller
         return response()->json([$request->all()]);
     }
 
+    public function misDiseños()
+    {
+        $remeras = Shirt::where('user_id',1)->get();
+        $arreglo = [];
 
+        foreach($remeras as $remera){
+            $arreglo[] = ['id' => $remera->id, 'color'=> $remera->color, 'logo'=> $remera->logo,'tela' => $remera->tela, 'talle' => $remera->talle];
+        }
+
+        if ($arreglo != null)
+            return response()->json($arreglo, 200);
+        else
+            return abort(404);
+    }
 
 }

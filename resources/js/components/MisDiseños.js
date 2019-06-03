@@ -4,12 +4,26 @@ import ReactDOM from 'react-dom';
 
 export default class MisDiseños extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            misDiseños: []
+
+        }
+    }
+    componentDidMount() {
+        axios.get('/api/misDiseños/{1}').then(response => {
+            this.setState({
+                misDiseños: response.data
+            })
+        });
+    }
     render() {
         return (
             <section className="pricing py-5">
                 <div className="container">
                     <div className="row">
-                        
+
                         <div className="col-lg-12">
                             <div className="card mb-5 mb-lg-0">
                                 <div className="card-body">
@@ -17,22 +31,35 @@ export default class MisDiseños extends Component {
 
                                     <hr width="100%"></hr>
 
-                                    <div>
-                                        <img height="500" src="" id="" className="d-block w-100" alt="..."></img>
-                                       
-                                        <a className="btn btn-block btn-secondary text-uppercase"  >Crear diseño</a>
+                                    <div className="container-MisDiseñosRemeras">
+                                        {
+                                            this.state.misDiseños.map((item) => (
+                                                <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                                    <div className="card h-100">
+                                                        <img className="card-img-top" src={"/images/remeras/" + item.color + ".png"}></img>
+                                                       { item.logo != "" &&
+                                                            <img height="100" src={"/images/logos/" + item.logo + ".png"} id="imagenLogo2"></img>
+                                                         }
+                                                        <div className="card-body">
+                                                            <h4 className="card-title">
+                                                                <a href="#">Diseño: {item.id}</a>
+                                                            </h4>
+                                                            <p className="card-text">Talle: {item.talle}</p>
+                                                            <p className="card-text">Tela: {item.tela}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                       
-
                     </div>
                 </div>
             </section>
-           
-         );
+
+        );
     }
 }
 

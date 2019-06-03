@@ -65763,6 +65763,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MisDise_os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MisDiseños */ "./resources/js/components/MisDiseños.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65780,6 +65782,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65892,12 +65895,29 @@ function (_Component) {
   _inherits(MisDiseños, _Component);
 
   function MisDiseños() {
+    var _this;
+
     _classCallCheck(this, MisDiseños);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MisDiseños).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MisDiseños).call(this));
+    _this.state = {
+      misDiseños: []
+    };
+    return _this;
   }
 
   _createClass(MisDiseños, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios.get('/api/misDiseños/{1}').then(function (response) {
+        _this2.setState({
+          misDiseños: response.data
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -65916,15 +65936,32 @@ function (_Component) {
         className: "card-title text-muted text-uppercase text-center"
       }, "Listado de remeras"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        height: "500",
-        src: "",
-        id: "",
-        className: "d-block w-100",
-        alt: "..."
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-block btn-secondary text-uppercase"
-      }, "Crear dise\xF1o"))))))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-MisDise\xF1osRemeras"
+      }, this.state.misDiseños.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-lg-3 col-md-4 col-sm-6 mb-4"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card h-100"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "card-img-top",
+          src: "/images/remeras/" + item.color + ".png"
+        }), item.logo != "" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          height: "100",
+          src: "/images/logos/" + item.logo + ".png",
+          id: "imagenLogo2"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-body"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+          className: "card-title"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#"
+        }, "Dise\xF1o: ", item.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "card-text"
+        }, "Talle: ", item.talle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "card-text"
+        }, "Tela: ", item.tela))));
+      }))))))));
     }
   }]);
 
