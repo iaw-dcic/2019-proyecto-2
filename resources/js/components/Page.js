@@ -48,7 +48,8 @@ export default class Page extends Component {
              return response.json();
          }   )
      .then(estado => {
-        this.notebookPanelElement.current.changeurl(estado.url);
+        this.notebookPanelElement.current.changeurl(estado[0].url);
+
      });
 
   }

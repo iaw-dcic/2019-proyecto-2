@@ -67112,7 +67112,7 @@ function (_Component) {
       fetch(s).then(function (response) {
         return response.json();
       }).then(function (estado) {
-        _this2.notebookPanelElement.current.changeurl(estado.url);
+        _this2.notebookPanelElement.current.changeurl(estado[0].url);
       });
     }
   }, {
