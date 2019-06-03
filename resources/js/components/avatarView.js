@@ -11,7 +11,7 @@ export default class AvatarView extends Component{
         hair : 'Pelo1',
         eyes : 'Ojos1',
         mouth : 'Boca1',
-        AllAvatars : new Array(),
+        AllAvatars : [],
         userID : -1,
         avatarID : -1,
         errors : []
@@ -47,6 +47,25 @@ export default class AvatarView extends Component{
 
     }
 
+    loadAvatar(event){
+        console.log(event.target)
+        console.log(this.state.userID)
+        let ID = event.target.name
+        axios.get('/api/' + this.state.userID + '/avatars/'+ ID).then((response) =>{
+            this.setState({
+                name : response.data.name,
+                face : response.data.skin,
+                hair : response.data.hair,
+                eyes : response.data.eyes,
+                mouth : response.data.mouth,
+                avatarID : response.data.id
+            })
+        }).catch((error)=>{
+            alert(error)
+        })
+
+    }
+
 
     componentDidMount () {
         let token = document.head.querySelector('meta[name="api-token"]');
@@ -73,17 +92,17 @@ export default class AvatarView extends Component{
                 'api/' + this.state.userID + '/avatars'
                 
             ).then((response) =>{
-               
-                this.setState({
-                    AllAvatars : this.state.AllAvatars.push(response.data)
-                })
-                console.log(this.state.AllAvatars);
+                if(response.data.length != 0){
+                    this.setState({
+                        AllAvatars : response.data
+                        
+                    })
+                }
+                
             })
-            return
         }).catch((error) => {
           console.log(error)
         });
-
     }
 
     constructor(props) {
@@ -94,6 +113,7 @@ export default class AvatarView extends Component{
         this.handleEyesChange = this.handleEyesChange.bind(this);
         this.handleMouthChange = this.handleMouthChange.bind(this);
         this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
+        this.loadAvatar = this.loadAvatar.bind(this);
     }
     
   
@@ -114,20 +134,31 @@ export default class AvatarView extends Component{
                 avatarID : this.state.avatarID 
             }
          
-
-            axios.post('api/' + this.state.userID + '/avatars', avatar).then(res => {
-                console.log(res);
-                if(this.state.avatarID == -1){
+            if(this.state.avatarID == -1){
+                //hago el POST por Axios a la API que yo creé, el avatar es uno nuevo que debo crear y guardar en la BD
+                axios.post('api/' + this.state.userID + '/avatars', avatar).then(res => {
+                        this.setState({
+                            avatarID : res.data,
+                            AllAvatars : this.state.AllAvatars.push(avatar) 
+                        })  
+                        alert("Tu avatar ha sido guardado con exito");
+                })
+            }
+            else{//asumo que avatarID != -1
+                this.setState({
+                    AllAvatars : AllAvatars.filter(avatarnew => avatarnew.avatarID != avatar.avatarID)
+                })
+                //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
+                axios.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(res =>{
                     this.setState({
-                        avatarID : res.data,
-                        allAvatars : this.state.AllAvatars.push(avatar) 
+                        AllAvatars : this.state.AllAvatars.push(avatar)
                     })
+                    alert("tu avatar ha sido modificado con exito")
+                })
 
-
-                }
-            }) //hago el POST por Axios a la API que yo creé
+            } 
             //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
-            alert("Tu avatar ha sido guardado con exito");
+           
         }
      
 
@@ -158,6 +189,7 @@ export default class AvatarView extends Component{
                             handleMouthChange={this.handleMouthChange}
                             AllAvatars={this.state.AllAvatars}
                             handleCreateNewAvatar = {this.handleCreateNewAvatar}
+                            loadAvatar = {this.loadAvatar}
                         />
                     </div>
                 </div>

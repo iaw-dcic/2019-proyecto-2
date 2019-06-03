@@ -18,7 +18,10 @@ export default class SideBar extends Component{
   }
 
   cargarAvatar(event){
-    alert('avatar cargado');
+    event.preventDefault()
+    
+    this.props.loadAvatar(event)
+    
   }
 
   changeSkin(event){
@@ -39,79 +42,63 @@ export default class SideBar extends Component{
   }
 
   
-  cargarCaras(){
-    axios.get('api/recursos').then((response)=>{
+  cargarRecurso(tipo){
+    axios.get('api/recursos', tipo).then((response)=>{
 
-      response.data.map(recurso => 
+    switch(tipo){
+      case "skin":
+          response.data.map(recurso => 
         
-        this.setState({
-          caras : this.state.caras.concat(recurso.source)
-        })
+            this.setState({
+              caras : this.state.caras.concat(recurso.source)
+            })
+          
+        
+        )
+      break;
+
+      case "eyes":
+        response.data.map(recurso => 
       
-    
-    )
-   
-    console.log(this.state.caras) 
-    return 
+          this.setState({
+            caras : this.state.Ojos.concat(recurso.source)
+          })
+        
+      
+        )
+      break;
+
+      case "hair":
+        response.data.map(recurso => 
+      
+          this.setState({
+            caras : this.state.Pelos.concat(recurso.source)
+          })
+        
+      
+        )
+      break;
+
+      case "mouth":
+          response.data.map(recurso => 
+        
+            this.setState({
+              caras : this.state.Bocas.concat(recurso.source)
+            })
+          
+        
+        )
+        /*for(let i = 0; i < 4; i++){
+          <button className="dropdown-item" name={this.state.Bocas[i]} onClick={this.changeMouth}><img className="size" name={this.state.Bocas[i]} src={window.location.origin + '/RecursosGraficos/Bocas/' + this.state.Bocas[i] + '.png'}/></button>
+        }*/
+      break;
+    }
+      
   })
 
   }
   
-
-  cargarPelos(){
-    axios.get('api/recursos').then((response)=>{
-
-      response.data.map(recurso => 
-        
-        this.setState({
-          caras : this.state.Pelos.concat(recurso.source)
-        })
-      
-    
-    )
-    for(let i = 0; i < 4; i++){
-      <button className="dropdown-item" name={this.state.Pelos[i]} onClick={this.changeHair}><img className="size" name={this.state.Pelos[i]} src={window.location.origin + '/RecursosGraficos/Pelos/' + this.state.Pelos[i] + '.png'}/></button>
-    }
-    console.log(this.state.caras) 
-  })
-  }
-
-  cargarOjos(){
-    axios.get('api/recursos').then((response)=>{
-
-      response.data.map(recurso => 
-        
-        this.setState({
-          caras : this.state.Ojos.concat(recurso.source)
-        })
-      
-    
-    )
-    for(let i = 0; i < 4; i++){
-     
-      <button className="dropdown-item" name={this.state.Ojos[i]} onClick={this.changeEyes}><img className="size" name={this.state.Ojos[i]} src={window.location.origin + '/RecursosGraficos/Ojos/' + this.state.Ojos[i] + '.png'}/></button>
-    }
-    console.log(this.state.caras) 
-  })
-  }
-
-  cargarBocas(){
-    axios.get('api/recursos').then((response)=>{
-
-      response.data.map(recurso => 
-        
-        this.setState({
-          caras : this.state.Bocas.concat(recurso.source)
-        })
-      
-    
-    )
-    for(let i = 0; i < 4; i++){
-      <button className="dropdown-item" name={this.state.Bocas[i]} onClick={this.changeMouth}><img className="size" name={this.state.Bocas[i]} src={window.location.origin + '/RecursosGraficos/Bocas/' + this.state.Bocas[i] + '.png'}/></button>
-    }
-    console.log(this.state.caras) 
-  })
-  }
+ 
 
   /*componentDidMount(){
     axios.get('api/recursos').then((response)=>{
@@ -143,32 +130,28 @@ export default class SideBar extends Component{
     this.changeHair = this.changeHair.bind(this);
     this.changeEyes = this.changeEyes.bind(this);
     this.changeMouth = this.changeMouth.bind(this);
-    this.cargarCaras = this.cargarCaras.bind(this);
-    this.cargarPelos = this.cargarPelos.bind(this);
-    this.cargarOjos = this.cargarOjos.bind(this);
-    this.cargarBocas = this.cargarBocas.bind(this);
+    this.cargarRecurso = this.cargarRecurso.bind(this);
+  
   }
 
   render(){
         return (
           <>
-            <div className="avataresPrevios">
-            holaaaaaa
-            {console.log(this.props.AllAvatars)}
-            {this.props.AllAvatars.map(avatar=>( 
-              <>
-              <div className="card  text-center">
-                  <img src={window.location.origin + '/RecursosGraficos/Caras/' + avatar.face + '.png'}/> 
-                  <img src={window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'}/>
-                  <img src={window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'}/>
-                  <img src={window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'}/>
+            <div className="superponer" >
+              has clic en tus avatares previos para editarlos!
+       
+
+            {this.props.AllAvatars.map((avatar,index) =>(
+                <div key={avatar.name+"-"+index} onClick={this.cargarAvatar} name={avatar.avatarID}  className="card  text-center">
+                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'}/> 
+                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'}/>
+                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'}/>
+                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'}/>
+                    <button></button>              
+                </div>
                 
-              </div>
-              <div>
-                <button onClick={cargarAvatar} className="btn btn-outline-info btn-lg" value={"Cargar" + avatar.name}/>
-              </div>
-              </>
-              ) ) }
+            ))}
+
             </div>
       
             <nav className="navbar fixed-bottom  navbar-dark bg-dark">
@@ -177,7 +160,10 @@ export default class SideBar extends Component{
                 Piel
               </button>
               <div className="dropdown-menu">
-
+                <button className="dropdown-item" name="Cara1" href="#" onClick={this.changeSkin}><img className="size" name="Cara1" src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/></button>
+                <button className="dropdown-item" name="Cara2" href="#" onClick={this.changeSkin}><img className="size" name="Cara2" src={window.location.origin + '/RecursosGraficos/Caras/Cara2.png'}/></button>
+                <button className="dropdown-item" name="Cara3" href="#" onClick={this.changeSkin}><img className="size" name="Cara3" src={window.location.origin + '/RecursosGraficos/Caras/Cara3.png'}/></button>
+                <button className="dropdown-item" name="Cara4" href="#" onClick={this.changeSkin}><img className="size" name="Cara4" src={window.location.origin + '/RecursosGraficos/Caras/Cara4.png'}/></button>
                 
               </div>
             </div>

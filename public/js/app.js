@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".avataresPrevios{\r\n    overflow-x:scroll;\r\n}\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:75px;\r\n    height:75px;\r\n}\r\n\r\n.avataresPrevios{\r\n    overflow-x: scroll;\r\n}", ""]);
+exports.push([module.i, "\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:50px;\r\n    height:50px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -66705,9 +66705,30 @@ function (_Component) {
       });
     }
   }, {
+    key: "loadAvatar",
+    value: function loadAvatar(event) {
+      var _this2 = this;
+
+      console.log(event.target);
+      console.log(this.state.userID);
+      var ID = event.target.name;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/' + this.state.userID + '/avatars/' + ID).then(function (response) {
+        _this2.setState({
+          name: response.data.name,
+          face: response.data.skin,
+          hair: response.data.hair,
+          eyes: response.data.eyes,
+          mouth: response.data.mouth,
+          avatarID: response.data.id
+        });
+      })["catch"](function (error) {
+        alert(error);
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      var _this3 = this;
 
       var token = document.head.querySelector('meta[name="api-token"]');
       token = token.content; //obtengo el api-token del usuario
@@ -66723,18 +66744,17 @@ function (_Component) {
       //intento hacer la llamada por axios
 
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/user/').then(function (response) {
-        _this2.setState({
+        _this3.setState({
           userID: response.data
         });
 
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + _this2.state.userID + '/avatars').then(function (response) {
-          _this2.setState({
-            AllAvatars: _this2.state.AllAvatars.push(response.data)
-          });
-
-          console.log(_this2.state.AllAvatars);
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + _this3.state.userID + '/avatars').then(function (response) {
+          if (response.data.length != 0) {
+            _this3.setState({
+              AllAvatars: response.data
+            });
+          }
         });
-        return;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -66754,7 +66774,7 @@ function (_Component) {
       hair: 'Pelo1',
       eyes: 'Ojos1',
       mouth: 'Boca1',
-      AllAvatars: new Array(),
+      AllAvatars: [],
       userID: -1,
       avatarID: -1,
       errors: []
@@ -66766,13 +66786,14 @@ function (_Component) {
     _this.handleEyesChange = _this.handleEyesChange.bind(_assertThisInitialized(_this));
     _this.handleMouthChange = _this.handleMouthChange.bind(_assertThisInitialized(_this));
     _this.handleCreateNewAvatar = _this.handleCreateNewAvatar.bind(_assertThisInitialized(_this));
+    _this.loadAvatar = _this.loadAvatar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AvatarView, [{
     key: "handleCreateNewAvatar",
     value: function handleCreateNewAvatar(event) {
-      var _this3 = this;
+      var _this4 = this;
 
       event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
 
@@ -66786,19 +66807,34 @@ function (_Component) {
           userID: this.state.userID,
           avatarID: this.state.avatarID
         };
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/' + this.state.userID + '/avatars', avatar).then(function (res) {
-          console.log(res);
 
-          if (_this3.state.avatarID == -1) {
-            _this3.setState({
+        if (this.state.avatarID == -1) {
+          //hago el POST por Axios a la API que yo creé, el avatar es uno nuevo que debo crear y guardar en la BD
+          axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/' + this.state.userID + '/avatars', avatar).then(function (res) {
+            _this4.setState({
               avatarID: res.data,
-              allAvatars: _this3.state.AllAvatars.push(avatar)
+              AllAvatars: _this4.state.AllAvatars.push(avatar)
             });
-          }
-        }); //hago el POST por Axios a la API que yo creé
-        //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
 
-        alert("Tu avatar ha sido guardado con exito");
+            alert("Tu avatar ha sido guardado con exito");
+          });
+        } else {
+          //asumo que avatarID != -1
+          this.setState({
+            AllAvatars: AllAvatars.filter(function (avatarnew) {
+              return avatarnew.avatarID != avatar.avatarID;
+            })
+          }); //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
+
+          axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(function (res) {
+            _this4.setState({
+              AllAvatars: _this4.state.AllAvatars.push(avatar)
+            });
+
+            alert("tu avatar ha sido modificado con exito");
+          });
+        } //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
+
       }
     }
   }, {
@@ -66822,7 +66858,8 @@ function (_Component) {
         handleEyesChange: this.handleEyesChange,
         handleMouthChange: this.handleMouthChange,
         AllAvatars: this.state.AllAvatars,
-        handleCreateNewAvatar: this.handleCreateNewAvatar
+        handleCreateNewAvatar: this.handleCreateNewAvatar,
+        loadAvatar: this.loadAvatar
       }))));
     }
   }]);
@@ -67217,7 +67254,8 @@ function (_Component) {
   }, {
     key: "cargarAvatar",
     value: function cargarAvatar(event) {
-      alert('avatar cargado');
+      event.preventDefault();
+      this.props.loadAvatar(event);
     }
   }, {
     key: "changeSkin",
@@ -67240,99 +67278,48 @@ function (_Component) {
       this.props.handleMouthChange(event);
     }
   }, {
-    key: "cargarCaras",
-    value: function cargarCaras() {
+    key: "cargarRecurso",
+    value: function cargarRecurso(tipo) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
-        response.data.map(function (recurso) {
-          return _this2.setState({
-            caras: _this2.state.caras.concat(recurso.source)
-          });
-        });
-        console.log(_this2.state.caras);
-        return;
-      });
-    }
-  }, {
-    key: "cargarPelos",
-    value: function cargarPelos() {
-      var _this3 = this;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos', tipo).then(function (response) {
+        switch (tipo) {
+          case "skin":
+            response.data.map(function (recurso) {
+              return _this2.setState({
+                caras: _this2.state.caras.concat(recurso.source)
+              });
+            });
+            break;
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
-        response.data.map(function (recurso) {
-          return _this3.setState({
-            caras: _this3.state.Pelos.concat(recurso.source)
-          });
-        });
+          case "eyes":
+            response.data.map(function (recurso) {
+              return _this2.setState({
+                caras: _this2.state.Ojos.concat(recurso.source)
+              });
+            });
+            break;
 
-        for (var i = 0; i < 4; i++) {
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "dropdown-item",
-            name: _this3.state.Pelos[i],
-            onClick: _this3.changeHair
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "size",
-            name: _this3.state.Pelos[i],
-            src: window.location.origin + '/RecursosGraficos/Pelos/' + _this3.state.Pelos[i] + '.png'
-          }));
+          case "hair":
+            response.data.map(function (recurso) {
+              return _this2.setState({
+                caras: _this2.state.Pelos.concat(recurso.source)
+              });
+            });
+            break;
+
+          case "mouth":
+            response.data.map(function (recurso) {
+              return _this2.setState({
+                caras: _this2.state.Bocas.concat(recurso.source)
+              });
+            });
+            /*for(let i = 0; i < 4; i++){
+              <button className="dropdown-item" name={this.state.Bocas[i]} onClick={this.changeMouth}><img className="size" name={this.state.Bocas[i]} src={window.location.origin + '/RecursosGraficos/Bocas/' + this.state.Bocas[i] + '.png'}/></button>
+            }*/
+
+            break;
         }
-
-        console.log(_this3.state.caras);
-      });
-    }
-  }, {
-    key: "cargarOjos",
-    value: function cargarOjos() {
-      var _this4 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
-        response.data.map(function (recurso) {
-          return _this4.setState({
-            caras: _this4.state.Ojos.concat(recurso.source)
-          });
-        });
-
-        for (var i = 0; i < 4; i++) {
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "dropdown-item",
-            name: _this4.state.Ojos[i],
-            onClick: _this4.changeEyes
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "size",
-            name: _this4.state.Ojos[i],
-            src: window.location.origin + '/RecursosGraficos/Ojos/' + _this4.state.Ojos[i] + '.png'
-          }));
-        }
-
-        console.log(_this4.state.caras);
-      });
-    }
-  }, {
-    key: "cargarBocas",
-    value: function cargarBocas() {
-      var _this5 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos').then(function (response) {
-        response.data.map(function (recurso) {
-          return _this5.setState({
-            caras: _this5.state.Bocas.concat(recurso.source)
-          });
-        });
-
-        for (var i = 0; i < 4; i++) {
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "dropdown-item",
-            name: _this5.state.Bocas[i],
-            onClick: _this5.changeMouth
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "size",
-            name: _this5.state.Bocas[i],
-            src: window.location.origin + '/RecursosGraficos/Bocas/' + _this5.state.Bocas[i] + '.png'
-          }));
-        }
-
-        console.log(_this5.state.caras);
       });
     }
     /*componentDidMount(){
@@ -67377,34 +67364,40 @@ function (_Component) {
     _this.changeHair = _this.changeHair.bind(_assertThisInitialized(_this));
     _this.changeEyes = _this.changeEyes.bind(_assertThisInitialized(_this));
     _this.changeMouth = _this.changeMouth.bind(_assertThisInitialized(_this));
-    _this.cargarCaras = _this.cargarCaras.bind(_assertThisInitialized(_this));
-    _this.cargarPelos = _this.cargarPelos.bind(_assertThisInitialized(_this));
-    _this.cargarOjos = _this.cargarOjos.bind(_assertThisInitialized(_this));
-    _this.cargarBocas = _this.cargarBocas.bind(_assertThisInitialized(_this));
+    _this.cargarRecurso = _this.cargarRecurso.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SideBar, [{
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "avataresPrevios"
-      }, "holaaaaaa", console.log(this.props.AllAvatars), this.props.AllAvatars.map(function (avatar) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "superponer"
+      }, "has clic en tus avatares previos para editarlos!", this.props.AllAvatars.map(function (avatar, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: avatar.name + "-" + index,
+          onClick: _this3.cargarAvatar,
+          name: avatar.avatarID,
           className: "card  text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.location.origin + '/RecursosGraficos/Caras/' + avatar.face + '.png'
+          name: avatar.avatarID,
+          className: "superponer",
+          src: window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          name: avatar.avatarID,
+          className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          name: avatar.avatarID,
+          className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          name: avatar.avatarID,
+          className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: cargarAvatar,
-          className: "btn btn-outline-info btn-lg",
-          value: "Cargar" + avatar.name
-        })));
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null));
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar fixed-bottom  navbar-dark bg-dark"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67417,7 +67410,43 @@ function (_Component) {
         "aria-expanded": "false"
       }, "Piel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-menu"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        name: "Cara1",
+        href: "#",
+        onClick: this.changeSkin
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
+        name: "Cara1",
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        name: "Cara2",
+        href: "#",
+        onClick: this.changeSkin
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
+        name: "Cara2",
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara2.png'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        name: "Cara3",
+        href: "#",
+        onClick: this.changeSkin
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
+        name: "Cara3",
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara3.png'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "dropdown-item",
+        name: "Cara4",
+        href: "#",
+        onClick: this.changeSkin
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "size",
+        name: "Cara4",
+        src: window.location.origin + '/RecursosGraficos/Caras/Cara4.png'
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",

@@ -16,7 +16,11 @@ class userAvatarController extends Controller
 
     public function index(){
         $Avatares = DB::table('avatars')->where('owner', auth('api')->user()->id)->get();
-        return response()->json($Avatares[0]);
+        $ret = array();
+        for($i = 0; $i < $Avatares->count(); $i++){
+            $ret[$i] = $Avatares[$i];
+        }
+        return response()->json($ret);
     }
 
     public function store(Request $request){
@@ -41,13 +45,14 @@ class userAvatarController extends Controller
 
         return response()->json($avatar->id);
         }
-        else{
-            $this->update($avatar);
-        }
+        
     }
 
     public function show($id){
         $avatar = avatar::findOrFail($id);
+        $owner = $avatar->owner;
+        abort_if($owner != auth('api')->id(), 403,'se ha intentado acceder a un avatar que NO es del usuario logueado');
+        return response()->json($avatar);
     }
 
 
@@ -69,8 +74,9 @@ class userAvatarController extends Controller
         return $ID; 
     }
 
-    public function getResources(){
-        $recursos = DB::table('attires')->where('type',"skin")->get();
+    public function getResources(String $tipo){
+        $recursos = DB::table('attires')->where('type',$tipo)->get();
+        $recursos = $recursos[0];
         return $recursos->toJson();
     }
 
