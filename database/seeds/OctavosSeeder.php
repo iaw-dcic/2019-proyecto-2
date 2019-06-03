@@ -43,7 +43,7 @@ class OctavosSeeder extends Seeder
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '27', //struf
+            'jugador_uno_id' => '37', //struf
             'jugador_dos_id'=> '6',  //nishikori
             'ronda'=>'8',
         ]);

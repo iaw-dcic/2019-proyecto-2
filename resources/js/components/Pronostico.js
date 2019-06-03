@@ -30,27 +30,28 @@ export default class Pronostico extends Component {
 
     componentWillReceiveProps() {
 
-        // let api_token = document.querySelector('meta[name="api-token"]');
-        // let token = document.head.querySelector('meta[name="csrf-token"]');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
 
-        // var miInit = {
-        //     headers: {
-        //         'X-CSRF-TOKEN': token.content,
-        //         'Authorization': 'Bearer ' + api_token.content
-        //     }
-        // }
+        var miInit = {
+            headers: {
+                'X-CSRF-TOKEN': token.content,
+                'Authorization': 'Bearer ' + api_token.content
+            }
+        }
 
-        // fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         if (json != null)
-        //             this.setState({
-        //                 items: json.items,
-        //             })
-        //     });
+        fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
+            .then(res => res.json())
+            .then(json => {
+                if (json != null)
+                    this.setState({
+                        items: json.items,
+                    })
+            });
+
+
 
     }
-
     async  handlePronosticos() {
         var selectBox = document.getElementById("selectBox");
         var selectedValue = selectBox.options[selectBox.selectedIndex].value;
@@ -59,8 +60,22 @@ export default class Pronostico extends Component {
         this.props.setPronostico(selectedValue);
 
         console.log(this.state.pronostico);
-        if (this.state.pronostico != -1) {
+        if (this.state.pronostico != -1 && selectedValue != '') {
 
+            fetch('http://localhost/pr2/api/partidos/8')
+                .then(res => res.json())
+                .then(json => {
+
+                    this.props.octavos0(json.items[0]),
+                        this.props.octavos1(json.items[1]),
+                        this.props.octavos2(json.items[2]),
+                        this.props.octavos3(json.items[3]),
+                        this.props.octavos4(json.items[4]),
+                        this.props.octavos5(json.items[5]),
+                        this.props.octavos6(json.items[6]),
+                        this.props.octavos7(json.items[7])
+
+                });
             fetch('http://localhost/pr2/api/pronostico/4/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
@@ -92,6 +107,8 @@ export default class Pronostico extends Component {
 
                 });
         }
+        else
+            alert("No tiene pronosticos para ver");
     }
 
 

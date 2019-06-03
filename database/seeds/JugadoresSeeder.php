@@ -56,7 +56,7 @@ class JugadoresSeeder extends Seeder
             'abreviado'=>'NIS',
         ]);
         DB::table('jugadores')->insert([
-            'nombre' => 'Juan Martin del Potro',
+            'nombre' => 'J Martin del Potro',
             'ranking'=> '7',
             'edad'=>'30',
             'pais'=>'Argentina' ,
@@ -208,7 +208,7 @@ class JugadoresSeeder extends Seeder
             'abreviado'=>'DJE',
         ]);
         DB::table('jugadores')->insert([
-            'nombre' => 'Fernando Verdasco',
+            'nombre' => 'F. Verdasco',
             'pais'=>'España',
             'abreviado'=>'VER',
         ]);
@@ -228,7 +228,7 @@ class JugadoresSeeder extends Seeder
             'abreviado'=>'DIM',
         ]);
         DB::table('jugadores')->insert([
-            'nombre' => 'Jan-Lennard Struff',
+            'nombre' => 'J-Lennard Struff',
             'pais'=>'Alemania',
             'abreviado'=>'STR',
         ]);
@@ -253,7 +253,7 @@ class JugadoresSeeder extends Seeder
             'abreviado'=>'SOU',
         ]);
         DB::table('jugadores')->insert([
-            'nombre' => 'Diego Schwartzman',
+            'nombre' => 'D. Schwartzman',
             'pais'=>'Argentina',
             'abreviado'=>'SCH',
         ]);
@@ -313,7 +313,7 @@ class JugadoresSeeder extends Seeder
             'abreviado'=>'SIM',
         ]);
         DB::table('jugadores')->insert([
-            'nombre' => 'Philipp Kohlschreiber',
+            'nombre' => 'P. Kohlschreiber',
             'pais'=>'Alemania',
             'abreviado'=>'KOH',
         ]);

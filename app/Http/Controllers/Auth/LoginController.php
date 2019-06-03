@@ -42,6 +42,7 @@ class LoginController extends Controller
     }
     public function logout(Request $request) {
         Auth::logout();
+        "<script > localStorage.clear();</script>";
         return redirect('/login');
       }
 

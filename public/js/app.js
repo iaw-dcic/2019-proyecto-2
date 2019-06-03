@@ -6520,6 +6520,25 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/footer.css":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/footer.css ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "footer{\r\n    background-color: cornflowerblue;\r\n    margin-top: 2rem;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/partidos.css":
 /*!******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/partidos.css ***!
@@ -67391,6 +67410,92 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Footer.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Footer.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Footer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _footer_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.css */ "./resources/js/components/footer.css");
+/* harmony import */ var _footer_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_footer_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Footer =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Footer, _Component);
+
+  function Footer() {
+    _classCallCheck(this, Footer);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Footer).apply(this, arguments));
+  }
+
+  _createClass(Footer, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+        className: "page-footer font-small blue pt-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-fluid text-center text-md-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mt-md-0 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        id: "footer-h",
+        className: "text-uppercase"
+      }, "Footer "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        id: "footer-p"
+      }, "Esta p\xE1gina fue hecha como proyecto de IAW para la Universidad Nacional del Sur.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "clearfix w-100 d-md-none pb-3"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 mb-md-0 mb-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "list-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/home"
+      }, "Volver a Inicio")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-copyright text-center py-3"
+      }, "\xA9 2019:Copyright", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/LuArceredillo",
+        id: "github"
+      }, "https://github.com/LuArceredillo ")));
+    }
+  }]);
+
+  return Footer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Header.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Header.js ***!
@@ -67913,43 +68018,120 @@ var Perfil =
 function (_Component) {
   _inherits(Perfil, _Component);
 
-  function Perfil() {
-    var _getPrototypeOf2;
-
+  function Perfil(props) {
     var _this;
 
     _classCallCheck(this, Perfil);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Perfil)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      pOctavos0: [],
-      pOctavos1: [],
-      pOctavos2: [],
-      pOctavos3: [],
-      pOctavos4: [],
-      pOctavos5: [],
-      pOctavos6: [],
-      pOctavos7: [],
-      c0: [],
-      c1: [],
-      c2: [],
-      c3: [],
-      s1: [],
-      s2: [],
-      f: [],
-      champion: [],
-      pronostico: 0,
-      load: "false"
-    });
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Perfil).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "setPronostico", function (newP) {
       _this.setState({
         pronostico: newP
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos0", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos0")) {
+        var value = localStorage.getItem("pOctavos0");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos0: value
+        });
+      } else _this.setState({
+        pOctavos0: oct
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos1", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos1")) {
+        var value = localStorage.getItem("pOctavos1");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos1: value
+        });
+      } else _this.setState({
+        pOctavos1: oct
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos2", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos2")) {
+        var value = localStorage.getItem("pOctavos2");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos2: value
+        });
+      } else _this.setState({
+        pOctavos2: oct
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos3", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos3")) {
+        var value = localStorage.getItem("pOctavos3");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos3: value
+        });
+      } else _this.setState({
+        pOctavos3: oct
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos4", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos4")) {
+        var value = localStorage.getItem("pOctavos4");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos4: value
+        });
+      } else _this.setState({
+        pOctavos4: oct
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos5", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos5")) {
+        var value = localStorage.getItem("pOctavos5");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos5: value
+        });
+      } else _this.setState({
+        pOctavos5: oct
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos6", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos6")) {
+        var value = localStorage.getItem("pOctavos6");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos6: value
+        });
+      } else _this.setState({
+        pOctavos6: oct
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "octavos7", function (oct) {
+      if (localStorage.hasOwnProperty("pOctavos7")) {
+        var value = localStorage.getItem("pOctavos7");
+        value = JSON.parse(value);
+
+        _this.setState({
+          pOctavos7: value
+        });
+      } else _this.setState({
+        pOctavos7: oct
       });
     });
 
@@ -68342,34 +68524,34 @@ function (_Component) {
       });
     });
 
+    _this.state = {
+      pOctavos0: [],
+      pOctavos1: [],
+      pOctavos2: [],
+      pOctavos3: [],
+      pOctavos4: [],
+      pOctavos5: [],
+      pOctavos6: [],
+      pOctavos7: [],
+      c0: [],
+      c1: [],
+      c2: [],
+      c3: [],
+      s1: [],
+      s2: [],
+      f: [],
+      champion: [],
+      pronostico: null,
+      load: "false"
+    };
+    _this.baseState = _this.state;
     return _this;
   }
 
   _createClass(Perfil, [{
-    key: "componentWillMount",
-    //cargo los octavos de partidos
-    value: function componentWillMount() {
-      var _this2 = this;
-
-      fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
-        return res.json();
-      }).then(function (json) {
-        _this2.setState({
-          pOctavos0: json.items[0],
-          pOctavos1: json.items[1],
-          pOctavos2: json.items[2],
-          pOctavos3: json.items[3],
-          pOctavos4: json.items[4],
-          pOctavos5: json.items[5],
-          pOctavos6: json.items[6],
-          pOctavos7: json.items[7]
-        });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var oct01 = "";
       var oct02 = "";
@@ -68388,9 +68570,27 @@ function (_Component) {
       var oct61 = "";
       var oct62 = "";
       var oct71 = "";
-      var oct72 = ""; //si ya cargaron los partidos de octavos los seteo
+      var oct72 = "";
+      var paiso01 = "";
+      var paiso02 = "";
+      var paiso11 = "";
+      var paiso12 = "";
+      var paiso21 = "";
+      var paiso22 = "";
+      var paiso31 = "";
+      var paiso32 = "";
+      var paiso41 = "";
+      var paiso42 = "";
+      var paiso51 = "";
+      var paiso52 = "";
+      var paiso61 = "";
+      var paiso62 = "";
+      var paiso71 = "";
+      var paiso72 = "";
+      var btn1 = "";
+      var btn2 = ""; //si ya cargaron los partidos de octavos los seteo
 
-      if (this.state.pOctavos0.jugador_uno != null) {
+      if (this.state.pOctavos7.jugador_uno != null) {
         oct01 = this.state.pOctavos0.jugador_uno;
         oct11 = this.state.pOctavos1.jugador_uno;
         oct02 = this.state.pOctavos0.jugador_dos;
@@ -68407,6 +68607,54 @@ function (_Component) {
         oct71 = this.state.pOctavos7.jugador_uno;
         oct62 = this.state.pOctavos6.jugador_dos;
         oct72 = this.state.pOctavos7.jugador_dos;
+        paiso01 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct01.pais + ".png"
+        });
+        paiso02 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct02.pais + ".png"
+        });
+        paiso11 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct11.pais + ".png"
+        });
+        paiso12 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct12.pais + ".png"
+        });
+        paiso21 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct21.pais + ".png"
+        });
+        paiso22 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct22.pais + ".png"
+        });
+        paiso31 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct31.pais + ".png"
+        });
+        paiso32 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct32.pais + ".png"
+        });
+        paiso41 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct41.pais + ".png"
+        });
+        paiso42 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct42.pais + ".png"
+        });
+        paiso51 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct51.pais + ".png"
+        });
+        paiso52 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct52.pais + ".png"
+        });
+        paiso61 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct61.pais + ".png"
+        });
+        paiso62 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct62.pais + ".png"
+        });
+        paiso71 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct71.pais + ".png"
+        });
+        paiso72 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: oct72.pais + ".png"
+        });
       } //si ya cargaron los partidos de cuartos los seteo
 
 
@@ -68418,25 +68666,68 @@ function (_Component) {
       var cuar12 = "";
       var cuar21 = "";
       var cuar22 = "";
+      var paisc01 = "";
+      var paisc02 = "";
+      var paisc11 = "";
+      var paisc12 = "";
+      var paisc21 = "";
+      var paisc22 = "";
+      var paisc31 = "";
+      var paisc32 = "";
 
       if (this.state.c0 != null && this.state.c0.jugador_uno != null) {
         cuar01 = this.state.c0.jugador_uno;
         cuar02 = this.state.c0.jugador_dos;
+        paisc01 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar01.pais + ".png"
+        });
+        paisc02 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar02.pais + ".png"
+        });
+        btn1 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+          className: "btn btn-primary",
+          onClick: function onClick(e) {
+            return _this2.actualizar(e);
+          }
+        }, "Guardar");
+        btn2 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+          className: "btn btn-primary",
+          "data-toggle": "modal",
+          "data-target": "#exampleModal"
+        }, "Eliminar");
       }
 
       if (this.state.c1 != null && this.state.c1.jugador_uno != null) {
         cuar11 = this.state.c1.jugador_uno;
         cuar12 = this.state.c1.jugador_dos;
+        paisc11 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar11.pais + ".png"
+        });
+        paisc12 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar12.pais + ".png"
+        });
       }
 
       if (this.state.c2 != null && this.state.c2.jugador_uno != null) {
         cuar21 = this.state.c2.jugador_uno;
         cuar22 = this.state.c2.jugador_dos;
+        paisc21 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar21.pais + ".png"
+        });
+        paisc22 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar22.pais + ".png"
+        });
       }
 
       if (this.state.c3 != null && this.state.c3.jugador_uno != null) {
         cuar31 = this.state.c3.jugador_uno;
         cuar32 = this.state.c3.jugador_dos;
+        paisc31 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar31.pais + ".png"
+        });
+        paisc32 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: cuar32.pais + ".png"
+        });
       } //si ya cargaron los partidos de semis los seteo
 
 
@@ -68444,23 +68735,47 @@ function (_Component) {
       var sem02 = "";
       var sem11 = "";
       var sem12 = "";
+      var paiss11 = "";
+      var paiss12 = "";
+      var paiss21 = "";
+      var paiss22 = "";
 
       if (this.state.s1 != null && this.state.s1.jugador_uno != null) {
         sem01 = this.state.s1.jugador_uno;
         sem02 = this.state.s1.jugador_dos;
+        paiss11 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: sem01.pais + ".png"
+        });
+        paiss12 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: sem02.pais + ".png"
+        });
       }
 
       if (this.state.s2 != null && this.state.s2.jugador_uno != null) {
         sem11 = this.state.s2.jugador_uno;
         sem12 = this.state.s2.jugador_dos;
+        paiss21 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: sem11.pais + ".png"
+        });
+        paiss22 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: sem12.pais + ".png"
+        });
       }
 
       var f1 = "";
       var f2 = "";
+      var paisf1 = "";
+      var paisf2 = "";
 
       if (this.state.f != null && this.state.f.jugador_dos != null) {
         f1 = this.state.f.jugador_uno;
         f2 = this.state.f.jugador_dos;
+        paisf1 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: f1.pais + ".png"
+        });
+        paisf2 = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: f2.pais + ".png"
+        });
       }
 
       var camp = "";
@@ -68474,6 +68789,14 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Pronostico_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
         setPronostico: this.setPronostico,
         agregarProno: this.props.agregaProno,
+        octavos0: this.octavos0,
+        octavos1: this.octavos1,
+        octavos2: this.octavos2,
+        octavos3: this.octavos3,
+        octavos4: this.octavos4,
+        octavos5: this.octavos5,
+        octavos6: this.octavos6,
+        octavos7: this.octavos7,
         cuartos0: this.cuartos0,
         cuartos1: this.cuartos1,
         cuartos2: this.cuartos2,
@@ -68500,177 +68823,195 @@ function (_Component) {
         scope: "col"
       }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct01.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso01, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugador",
+        onClick: function onClick(e) {
+          return _this2.handleOc0(oct01, e);
+        }
+      }, oct01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleOc0(oct01, e);
+        }
+      }, oct01.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso02, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugador",
+        onClick: function onClick(e) {
+          return _this2.handleOc0(oct02, e);
+        }
+      }, oct02.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleOc0(oct02, e);
+        }
+      }, oct02.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso11, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugador",
+        onClick: function onClick(e) {
+          return _this2.handleOc1(oct11, e);
+        }
+      }, oct11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleOc1(oct11, e);
+        }
+      }, oct11.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso12, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugador",
+        onClick: function onClick(e) {
+          return _this2.handleOc1(oct12, e);
+        }
+      }, oct12.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleOc1(oct12, e);
+        }
+      }, oct12.abrev))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc01, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugador",
+        onClick: function onClick(e) {
+          return _this2.handleC0(cuar01, e);
+        }
+      }, cuar01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleC0(cuar01, e);
+        }
+      }, cuar01.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paisc02, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugador",
+        onClick: function onClick(e) {
+          return _this2.handleC0(cuar02, e);
+        }
+      }, "  ", cuar02.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleC0(cuar02, e);
+        }
+      }, "  ", cuar02.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc11, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugador",
+        onClick: function onClick(e) {
+          return _this2.handleC1(cuar11, e);
+        }
+      }, cuar11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleC1(cuar11, e);
+        }
+      }, cuar11.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paisc12, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugador",
+        onClick: function onClick(e) {
+          return _this2.handleC1(cuar12, e);
+        }
+      }, "  ", cuar12.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleC1(cuar12, e);
+        }
+      }, "  ", cuar12.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso21, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugador",
+        onClick: function onClick(e) {
+          return _this2.handleOc2(oct21, e);
+        }
+      }, oct21.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light jugadorabre",
+        onClick: function onClick(e) {
+          return _this2.handleC1(oct21, e);
+        }
+      }, "  ", oct21.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso22, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugador",
+        onClick: function onClick(e) {
+          return _this2.handleOc2(oct22, e);
+        }
+      }, oct22.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-light-grey jugadorabrev",
+        onClick: function onClick(e) {
+          return _this2.handleOc2(oct22, e);
+        }
+      }, oct22.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso31, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc0(oct01, e);
+          return _this2.handleOc3(oct31, e);
         }
-      }, oct01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct02.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct31.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso32, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc0(oct02, e);
+          return _this2.handleOc3(oct32, e);
         }
-      }, oct02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct11.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey",
-        onClick: function onClick(e) {
-          return _this3.handleOc1(oct11, e);
-        }
-      }, oct11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct12.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey",
-        onClick: function onClick(e) {
-          return _this3.handleOc1(oct12, e);
-        }
-      }, oct12.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct32.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiss11, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleC0(cuar01, e);
+          return _this2.handleS1(sem01, e);
         }
-      }, cuar01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, sem01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiss12, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleC0(cuar02, e);
+          return _this2.handleS1(sem02, e);
         }
-      }, "  ", cuar02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiss21, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleC1(cuar11, e);
+          return _this2.handleS2(sem11, e);
         }
-      }, cuar11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, sem11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiss22, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleC1(cuar12, e);
+          return _this2.handleS2(sem12, e);
         }
-      }, "  ", cuar12.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct21.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso41, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc2(oct21, e);
+          return _this2.handleOc4(oct41, e);
         }
-      }, oct21.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct22.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct41.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso42, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc2(oct22, e);
+          return _this2.handleOc4(oct42, e);
         }
-      }, oct22.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct31.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct42.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso51, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc3(oct31, e);
+          return _this2.handleOc5(oct51, e);
         }
-      }, oct31.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct32.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct51.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso52, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc3(oct32, e);
+          return _this2.handleOc5(oct52, e);
         }
-      }, oct32.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct52.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc21, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleS1(sem01, e);
+          return _this2.handleC2(cuar21, e);
         }
-      }, sem01.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, cuar21.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paisc22, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleS1(sem02, e);
+          return _this2.handleC2(cuar22, e);
         }
-      }, "  ", sem02.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paisc31, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleS2(sem11, e);
+          return _this2.handleC3(cuar31, e);
         }
-      }, sem11.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, cuar31.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paisc32, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleS2(sem12, e);
+          return _this2.handleC3(cuar32, e);
         }
-      }, "  ", sem12.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "    ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct41.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, paiso61, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc4(oct41, e);
+          return _this2.handleOc6(oct61, e);
         }
-      }, oct41.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct42.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct61.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso62, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc4(oct42, e);
+          return _this2.handleOc6(oct62, e);
         }
-      }, oct42.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct51.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct62.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", paiso71, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc5(oct51, e);
+          return _this2.handleOc7(oct71, e);
         }
-      }, oct51.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct52.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, oct71.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), paiso72, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light-grey",
         onClick: function onClick(e) {
-          return _this3.handleOc5(oct52, e);
-        }
-      }, oct52.nombre))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
-        onClick: function onClick(e) {
-          return _this3.handleC2(cuar21, e);
-        }
-      }, cuar21.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
-        onClick: function onClick(e) {
-          return _this3.handleC2(cuar22, e);
-        }
-      }, "  ", cuar22.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
-        onClick: function onClick(e) {
-          return _this3.handleC3(cuar31, e);
-        }
-      }, cuar31.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
-        onClick: function onClick(e) {
-          return _this3.handleC3(cuar32, e);
-        }
-      }, "  ", cuar32.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct61.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey",
-        onClick: function onClick(e) {
-          return _this3.handleOc6(oct61, e);
-        }
-      }, oct61.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct62.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey",
-        onClick: function onClick(e) {
-          return _this3.handleOc6(oct62, e);
-        }
-      }, oct62.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct71.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey",
-        onClick: function onClick(e) {
-          return _this3.handleOc7(oct71, e);
-        }
-      }, oct71.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: oct72.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey",
-        onClick: function onClick(e) {
-          return _this3.handleOc7(oct72, e);
+          return _this2.handleOc7(oct72, e);
         }
       }, oct72.nombre)))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row header texto-final justify-content-center align-items-center minh-100"
@@ -68682,17 +69023,17 @@ function (_Component) {
         className: "col-2"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2  justify-content-center align-items-center minh-100 "
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, paisf1, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleCampeon(f1, e);
+          return _this2.handleCampeon(f1, e);
         }
       }, " ", f1.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2  justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, paisf2, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-light",
         onClick: function onClick(e) {
-          return _this3.handleCampeon(f2, e);
+          return _this2.handleCampeon(f2, e);
         }
       }, " ", f2.nombre, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
@@ -68704,17 +69045,47 @@ function (_Component) {
         className: "row texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, " ", camp.nombre, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row"
+      }, btn1, btn2), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal fade",
+        id: "exampleModal",
+        tabIndex: "-1",
+        role: "dialog",
+        "aria-labelledby": "exampleModalLabel",
+        "aria-hidden": "true"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-dialog",
+        role: "document"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-content"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-header"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
+        className: "modal-title",
+        id: "exampleModalLabel"
+      }, "Eliminar"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        type: "button",
+        className: "close",
+        "data-dismiss": "modal",
+        "aria-label": "Close"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+        "aria-hidden": "true"
+      }, "\xD7"), " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-body"
+      }, " \xBFEstas seguro que quieres eliminar el pronostico? "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-footer"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-secondary",
+        "data-dismiss": "modal"
+      }, "NO"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        href: "#delete",
+        id: "delete",
         className: "btn btn-primary",
         onClick: function onClick(e) {
-          return _this3.actualizar(e);
-        }
-      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-primary",
-        onClick: function onClick(e) {
-          return _this3.eliminar(e);
-        }
-      }, "Eliminar")));
+          return _this2.eliminar(e);
+        },
+        "data-dismiss": "modal"
+      }, "Si"), " ")))));
     }
   }, {
     key: "actualizar",
@@ -68722,7 +69093,7 @@ function (_Component) {
       var _actualizar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
-        var api_token, token, response;
+        var api_token, token, response, key;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -68753,22 +69124,28 @@ function (_Component) {
 
               case 7:
                 response = _context.sent;
-                console.log('Returned data:', response);
-                localStorage.clear();
-                _context.next = 15;
+
+                for (key in this.state) {
+                  // if the key exists in localStorage
+                  if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
+                }
+
+                this.setState(this.baseState);
+                alert("Su pronostico se guardo correctamente");
+                _context.next = 16;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 13:
+                _context.prev = 13;
                 _context.t0 = _context["catch"](4);
                 console.log('axios request failed:', _context.t0);
 
-              case 15:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[4, 12]]);
+        }, _callee, this, [[4, 13]]);
       }));
 
       function actualizar(_x) {
@@ -68783,12 +69160,12 @@ function (_Component) {
       var _eliminar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
-        var api_token, token, response;
+        var api_token, token, response, key;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log("actualizar : ");
+                console.log("eliminar : ");
                 api_token = document.querySelector('meta[name="api-token"]');
                 token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -68810,26 +69187,34 @@ function (_Component) {
                   s1: this.state.s1.id,
                   s2: this.state.s2.id,
                   f: this.state.f.id,
-                  campeon: this.state.campeon.id
+                  campeon: this.state.champion.id
                 });
 
               case 7:
                 response = _context2.sent;
-                console.log('Returned data:', response);
-                _context2.next = 14;
+
+                for (key in this.state) {
+                  console.log([key]);
+                  if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
+                }
+
+                this.setState(this.baseState);
+                alert("Se elimino correctamente");
+                _context2.next = 17;
                 break;
 
-              case 11:
-                _context2.prev = 11;
+              case 13:
+                _context2.prev = 13;
                 _context2.t0 = _context2["catch"](4);
+                alert("Hubo problema no se pudo eliminar,intente nuevamente");
                 console.log('axios request failed:', _context2.t0);
 
-              case 14:
+              case 17:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[4, 11]]);
+        }, _callee2, this, [[4, 13]]);
       }));
 
       function eliminar(_x2) {
@@ -68905,38 +69290,12 @@ var Playoffs =
 function (_Component) {
   _inherits(Playoffs, _Component);
 
-  function Playoffs() {
-    var _getPrototypeOf2;
-
+  function Playoffs(props) {
     var _this;
 
     _classCallCheck(this, Playoffs);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Playoffs)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      c0j1: [],
-      c0j2: [],
-      c1j1: [],
-      c1j2: [],
-      c2j1: [],
-      c2j2: [],
-      c3j1: [],
-      c3j2: [],
-      s1j1: [],
-      s1j2: [],
-      s2j1: [],
-      s2j2: [],
-      j1: [],
-      j2: [],
-      campeon: [],
-      user: [],
-      pronost: null
-    });
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Playoffs).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "setJugador", function (newjugador, i) {
       if (i == 0) {
@@ -69064,6 +69423,26 @@ function (_Component) {
       localStorage.setItem("campeon", JSON.stringify(newjugador));
     });
 
+    _this.state = {
+      c0j1: [],
+      c0j2: [],
+      c1j1: [],
+      c1j2: [],
+      c2j1: [],
+      c2j2: [],
+      c3j1: [],
+      c3j2: [],
+      s1j1: [],
+      s1j2: [],
+      s2j1: [],
+      s2j2: [],
+      j1: [],
+      j2: [],
+      campeon: [],
+      user: [],
+      pronost: null
+    };
+    _this.baseState = _this.state;
     return _this;
   }
 
@@ -69287,7 +69666,7 @@ function (_Component) {
       var _handleCuartos = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var pro, token, response;
+        var pro, token, response, key;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -69300,7 +69679,7 @@ function (_Component) {
                 pro = this.state.pronost.id;
 
                 if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context.next = 18;
+                  _context.next = 20;
                   break;
                 }
 
@@ -69335,22 +69714,29 @@ function (_Component) {
 
               case 10:
                 response = _context.sent;
-                localStorage.clear();
+
+                for (key in this.state) {
+                  // if the key exists in localStorage
+                  if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
+                }
+
+                this.setState(this.baseState);
+                alert("Su pronostico se guardo correctamente");
                 console.log('Returned data:', response);
-                _context.next = 18;
+                _context.next = 20;
                 break;
 
-              case 15:
-                _context.prev = 15;
+              case 17:
+                _context.prev = 17;
                 _context.t0 = _context["catch"](7);
                 console.log('axios request failed:', _context.t0);
 
-              case 18:
+              case 20:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[7, 15]]);
+        }, _callee, this, [[7, 17]]);
       }));
 
       function handleCuartos() {
@@ -69411,8 +69797,9 @@ function (_Component) {
 
               case 19:
                 this.props.agregarPronostico(this.state.pronost);
+                localStorage.setItem("pronost", JSON.stringify(this.state.pronost));
 
-              case 20:
+              case 21:
               case "end":
                 return _context2.stop();
             }
@@ -69499,8 +69886,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Ppal; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _NavIzq__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavIzq */ "./resources/js/components/NavIzq.js");
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
+/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
+/* harmony import */ var _NavIzq__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavIzq */ "./resources/js/components/NavIzq.js");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69523,6 +69911,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Ppal =
 /*#__PURE__*/
 function (_Component) {
@@ -69537,7 +69926,7 @@ function (_Component) {
   _createClass(Ppal, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavIzq__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavIzq__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -69735,22 +70124,24 @@ function (_Component) {
     }
   }, {
     key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps() {// let api_token = document.querySelector('meta[name="api-token"]');
-      // let token = document.head.querySelector('meta[name="csrf-token"]');
-      // var miInit = {
-      //     headers: {
-      //         'X-CSRF-TOKEN': token.content,
-      //         'Authorization': 'Bearer ' + api_token.content
-      //     }
-      // }
-      // fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
-      //     .then(res => res.json())
-      //     .then(json => {
-      //         if (json != null)
-      //             this.setState({
-      //                 items: json.items,
-      //             })
-      //     });
+    value: function componentWillReceiveProps() {
+      var _this3 = this;
+
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      var miInit = {
+        headers: {
+          'X-CSRF-TOKEN': token.content,
+          'Authorization': 'Bearer ' + api_token.content
+        }
+      };
+      fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json != null) _this3.setState({
+          items: json.items
+        });
+      });
     }
   }, {
     key: "handlePronosticos",
@@ -69758,7 +70149,7 @@ function (_Component) {
       var _handlePronosticos = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this3 = this;
+        var _this4 = this;
 
         var selectBox, selectedValue;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -69770,28 +70161,33 @@ function (_Component) {
                 this.props.setPronostico(selectedValue);
                 console.log(this.state.pronostico);
 
-                if (this.state.pronostico != -1) {
+                if (this.state.pronostico != -1 && selectedValue != '') {
+                  fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
+                    return res.json();
+                  }).then(function (json) {
+                    _this4.props.octavos0(json.items[0]), _this4.props.octavos1(json.items[1]), _this4.props.octavos2(json.items[2]), _this4.props.octavos3(json.items[3]), _this4.props.octavos4(json.items[4]), _this4.props.octavos5(json.items[5]), _this4.props.octavos6(json.items[6]), _this4.props.octavos7(json.items[7]);
+                  });
                   fetch('http://localhost/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this3.props.cuartos0(json.items[0]), _this3.props.cuartos1(json.items[1]), _this3.props.cuartos2(json.items[2]), _this3.props.cuartos3(json.items[3]);
+                    _this4.props.cuartos0(json.items[0]), _this4.props.cuartos1(json.items[1]), _this4.props.cuartos2(json.items[2]), _this4.props.cuartos3(json.items[3]);
                   });
                   fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this3.props.semis1(json.items[0]), _this3.props.semis2(json.items[1]);
+                    _this4.props.semis1(json.items[0]), _this4.props.semis2(json.items[1]);
                   });
                   fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this3.props["final"](json.items[0]);
+                    _this4.props["final"](json.items[0]);
                   });
                   fetch('http://localhost/pr2/api/pronostico/0/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this3.props.campeon(json.items[0]);
+                    _this4.props.campeon(json.items[0]);
                   });
-                }
+                } else alert("No tiene pronosticos para ver");
 
               case 5:
               case "end":
@@ -69810,7 +70206,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var i = "";
       var items = this.state.items;
@@ -69835,7 +70231,7 @@ function (_Component) {
         className: "form-control",
         id: "selectBox",
         onChange: function onChange(e) {
-          return _this4.handlePronosticos();
+          return _this5.handlePronosticos();
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null, " "), i))));
     }
@@ -70089,6 +70485,36 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/footer.css":
+/*!********************************************!*\
+  !*** ./resources/js/components/footer.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./footer.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/footer.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 

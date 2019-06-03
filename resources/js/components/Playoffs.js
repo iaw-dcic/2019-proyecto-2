@@ -5,29 +5,31 @@ import Semis from './Semis';
 import Final from './Final';
 import './partidos.css'
 export default class Playoffs extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            c0j1: [],
+            c0j2: [],
+            c1j1: [],
+            c1j2: [],
 
-    state = {
+            c2j1: [],
+            c2j2: [],
+            c3j1: [],
+            c3j2: [],
 
-        c0j1: [],
-        c0j2: [],
-        c1j1: [],
-        c1j2: [],
+            s1j1: [],
+            s1j2: [],
+            s2j1: [],
+            s2j2: [],
 
-        c2j1: [],
-        c2j2: [],
-        c3j1: [],
-        c3j2: [],
-
-        s1j1: [],
-        s1j2: [],
-        s2j1: [],
-        s2j2: [],
-
-        j1: [], j2: [],
-        campeon: [],
-        user: [],
-        pronost: null
-    };
+            j1: [], j2: [],
+            campeon: [],
+            user: [],
+            pronost: null
+        }
+        this.baseState = this.state;
+    }
 
     componentWillMount() {
         for (let key in this.state) {
@@ -418,7 +420,14 @@ export default class Playoffs extends Component {
                     f2: this.state.j2.id,
                     campeon: this.state.campeon.id,
                 });
-                localStorage.clear();
+                for (let key in this.state) {
+                    // if the key exists in localStorage
+                    if (localStorage.hasOwnProperty(key))
+                        localStorage.removeItem(key);
+
+                }
+                this.setState(this.baseState);
+                alert("Su pronostico se guardo correctamente");
                 console.log('Returned data:', response);
             } catch (e) {
                 console.log('axios request failed:', e);
@@ -442,9 +451,6 @@ export default class Playoffs extends Component {
         }
         else {
             let api_token = document.querySelector('meta[name="api-token"]');
-
-
-
             let token = document.head.querySelector('meta[name="csrf-token"]');
 
             if (token && api_token) {
@@ -464,6 +470,7 @@ export default class Playoffs extends Component {
         }
         await this.getUltimo();
         this.props.agregarPronostico(this.state.pronost);
+        localStorage.setItem("pronost", JSON.stringify(this.state.pronost));
     }
     async  getUltimo() {
 

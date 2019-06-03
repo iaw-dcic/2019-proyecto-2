@@ -49,7 +49,7 @@ class SegundaRondaSeeder extends Seeder
         ]);
         DB::table('partidos')->insert([
             'jugador_uno_id' => '9', //cilic
-            'jugador_dos_id'=> '27',  //struff
+            'jugador_dos_id'=> '37',  //struff
             'resultado'=>'2',
             'ronda'=>'16',
         ]);

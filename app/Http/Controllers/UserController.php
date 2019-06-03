@@ -80,7 +80,7 @@ class UserController extends Controller
          return response()->json($arreglo, 200);
     else{
         $arreglo["items"][0]=array(
-            'pronostico' => '0',
+            'pronostico' => '',
          );
          return response()->json($arreglo, 201);
     }
