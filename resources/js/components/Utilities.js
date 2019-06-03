@@ -5,10 +5,6 @@ import "./css/utilities.css";
 
 export default class Utilities extends Component {
 
-    state = {
-        currentName: this.props.name
-    }
-
     render () {
         return (
             <>
@@ -29,11 +25,11 @@ export default class Utilities extends Component {
     }
 
     updateName = (event) => {
-        this.setState ({currentName: event.target.value});
+        this.props.updateName (event.target.value);
     }
 
     saveAvatar = () => {
-        this.props.saveChanges (this.state.currentName)
+        this.props.saveChanges ();
     }
 
 }

@@ -41,7 +41,8 @@ export default class ComponentApp extends Component {
                     <div className="col-md-3" id="buttons">
                         <Utilities name={this.state.currentAvatar.avatar_name} 
                                    returnToDefault={this.returnToDefault} 
-                                   saveChanges={this.saveChanges}/>
+                                   saveChanges={this.saveChanges}
+                                   updateName={this.updateName}/>
                     </div>
                 </div>
             </>
@@ -74,27 +75,21 @@ export default class ComponentApp extends Component {
         });
     }
 
-    saveChanges = (name) => {
-        if (name == null || name == "") {
+    saveChanges = () => {
+        if (this.state.currentAvatar.avatar_name == "") {
             console.log ("Error: Name field is empty.");
         }
         else {
             try {
                 if (this.state.currentAvatar.avatar_id == null) {
                     axios.post ('api/app/avatars', {
-                        avatar_name: name,
+                        avatar_name: this.state.currentAvatar.avatar_name,
                         hair: this.state.currentAvatar.hair,
                         shirt: this.state.currentAvatar.shirt,
                         beard: this.state.currentAvatar.beard
                     }).then (response => {
                         console.log ('From Handle Submit ', response);
                         this.setState ({
-                            currentAvatar: {
-                                "avatar_name": name,
-                                "hair": this.state.currentAvatar.hair,
-                                "shirt": this.state.currentAvatar.shirt,
-                                "beard": this.state.currentAvatar.beard
-                            },
                             allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
                         });
                     });
@@ -108,15 +103,11 @@ export default class ComponentApp extends Component {
                         beard: this.state.currentAvatar.beard
                     }).then (response => {
                         console.log ('From Handle Submit ', response);
+                        const firstHalf = this.state.allAvatar.slice (0, this.state.currentAvatar.avatar_id - 1);
+                        const secondHalf = this.state.allAvatar.slice (this.state.currentAvatar.avatar_id, this.state.allAvatar.length);
+                        const firstPlusNewAvatar = firstHalf.concat (this.state.currentAvatar);
                         this.setState ({
-                            currentAvatar: {
-                                "avatar_id": this.state.currentAvatar.avatar_id,
-                                "avatar_name": name,
-                                "hair": this.state.currentAvatar.hair,
-                                "shirt": this.state.currentAvatar.shirt,
-                                "beard": this.state.currentAvatar.beard
-                            },
-                            allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+                            allAvatar: firstPlusNewAvatar.concat (secondHalf)
                         });
                     });
                 }
@@ -147,6 +138,18 @@ export default class ComponentApp extends Component {
                 "hair": avatar.hair,
                 "shirt": avatar.shirt,
                 "beard": avatar.beard
+            }
+        });
+    }
+
+    updateName = (newName) => {
+        this.setState ({
+            currentAvatar: {
+                "avatar_id": this.state.currentAvatar.avatar_id,
+                "avatar_name": newName,
+                "hair": this.state.currentAvatar.hair,
+                "shirt": this.state.currentAvatar.shirt,
+                "beard": this.state.currentAvatar.beard
             }
         });
     }

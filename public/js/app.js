@@ -66842,14 +66842,14 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "saveChanges", function (name) {
-      if (name == null || name == "") {
+    _defineProperty(_assertThisInitialized(_this), "saveChanges", function () {
+      if (_this.state.currentAvatar.avatar_name == "") {
         console.log("Error: Name field is empty.");
       } else {
         try {
           if (_this.state.currentAvatar.avatar_id == null) {
             axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/app/avatars', {
-              avatar_name: name,
+              avatar_name: _this.state.currentAvatar.avatar_name,
               hair: _this.state.currentAvatar.hair,
               shirt: _this.state.currentAvatar.shirt,
               beard: _this.state.currentAvatar.beard
@@ -66857,12 +66857,6 @@ function (_Component) {
               console.log('From Handle Submit ', response);
 
               _this.setState({
-                currentAvatar: {
-                  "avatar_name": name,
-                  "hair": _this.state.currentAvatar.hair,
-                  "shirt": _this.state.currentAvatar.shirt,
-                  "beard": _this.state.currentAvatar.beard
-                },
                 allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
               });
             });
@@ -66876,15 +66870,14 @@ function (_Component) {
             }).then(function (response) {
               console.log('From Handle Submit ', response);
 
+              var firstHalf = _this.state.allAvatar.slice(0, _this.state.currentAvatar.avatar_id - 1);
+
+              var secondHalf = _this.state.allAvatar.slice(_this.state.currentAvatar.avatar_id, _this.state.allAvatar.length);
+
+              var firstPlusNewAvatar = firstHalf.concat(_this.state.currentAvatar);
+
               _this.setState({
-                currentAvatar: {
-                  "avatar_id": _this.state.currentAvatar.avatar_id,
-                  "avatar_name": name,
-                  "hair": _this.state.currentAvatar.hair,
-                  "shirt": _this.state.currentAvatar.shirt,
-                  "beard": _this.state.currentAvatar.beard
-                },
-                allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
+                allAvatar: firstPlusNewAvatar.concat(secondHalf)
               });
             });
           }
@@ -66914,6 +66907,18 @@ function (_Component) {
           "hair": avatar.hair,
           "shirt": avatar.shirt,
           "beard": avatar.beard
+        }
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateName", function (newName) {
+      _this.setState({
+        currentAvatar: {
+          "avatar_id": _this.state.currentAvatar.avatar_id,
+          "avatar_name": newName,
+          "hair": _this.state.currentAvatar.hair,
+          "shirt": _this.state.currentAvatar.shirt,
+          "beard": _this.state.currentAvatar.beard
         }
       });
     });
@@ -66953,7 +66958,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Utilities__WEBPACK_IMPORTED_MODULE_6__["default"], {
         name: this.state.currentAvatar.avatar_name,
         returnToDefault: this.returnToDefault,
-        saveChanges: this.saveChanges
+        saveChanges: this.saveChanges,
+        updateName: this.updateName
       }))));
     }
   }, {
@@ -67136,18 +67142,12 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Utilities)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      currentName: _this.props.name
-    });
-
     _defineProperty(_assertThisInitialized(_this), "updateName", function (event) {
-      _this.setState({
-        currentName: event.target.value
-      });
+      _this.props.updateName(event.target.value);
     });
 
     _defineProperty(_assertThisInitialized(_this), "saveAvatar", function () {
-      _this.props.saveChanges(_this.state.currentName);
+      _this.props.saveChanges();
     });
 
     return _this;
