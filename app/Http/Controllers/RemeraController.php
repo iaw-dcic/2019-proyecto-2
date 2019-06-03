@@ -7,6 +7,11 @@ use App\Shirt;
 
 class RemeraController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function store(Request $request)
     {
         $data = $request->all();
@@ -16,7 +21,7 @@ class RemeraController extends Controller
             'talle' => ['required', 'string', 'exists:talles', 'max:255'],
             'color' => ['required', 'string', 'exists:colours', 'max:255'],
             'logo' => [ 'nullable', 'string', 'exists:logos', 'max:255'],
-        ]);
+         ]);
         
         //Crear Remera
         $nuevaRemera = new Shirt;
@@ -24,7 +29,7 @@ class RemeraController extends Controller
         $nuevaRemera->talle = $data['talle'];
         $nuevaRemera->tela = $data['tela'];
         $nuevaRemera->logo = $data['logo'];
-        $nuevaRemera->user_id= 1;
+        $nuevaRemera->user_id=auth('api')->user()->id;    
 
         $nuevaRemera->save();
           

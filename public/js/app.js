@@ -66043,8 +66043,10 @@ function (_Component) {
       var _this2 = this;
 
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
         _this2.setState({
           telas: response.data

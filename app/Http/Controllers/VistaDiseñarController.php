@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 class VistaDiseñarController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**View del Listado de Colores */
     public function listadoColores()
     {

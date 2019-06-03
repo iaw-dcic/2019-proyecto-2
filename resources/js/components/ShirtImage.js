@@ -19,10 +19,11 @@ export default class ShirtImage extends Component {
 
     componentDidMount() {
         window.axios = require('axios');
-       
+        let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         axios.get('/api/telas').then(response => {
             this.setState({ telas: response.data })
