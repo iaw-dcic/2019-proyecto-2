@@ -9,8 +9,21 @@ table {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
+    cursor: pointer;
   }
   
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+
+  .card-body {
+    text-align: center;
+  }
+
+  .card-header {
+    text-align: center;
+  }
+
+  .buttonsSelectPlayoff {
+    overflow-x:auto;
   }

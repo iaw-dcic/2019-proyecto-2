@@ -65833,9 +65833,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this2.handleChangePronostico();
         }
-      }, "Iniciar pron\xF3stico")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Iniciar pron\xF3stico"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick(event) {
           return _this2.handleChangePlayoff();
         }
@@ -65926,10 +65924,11 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      /*window.axios = require('axios');
-      
-      let token = document.head.querySelector('meta[name="csrf-token"]');
-        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content; */
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/playoffs').then(function (response) {
         _this2.setState({
           playoffs: response.data
@@ -65948,44 +65947,49 @@ function (_Component) {
 
       if (event == 0 || event != '') {
         var playoff = this.state.playoffs[event];
-        id_playoffAux = event;
+        id_playoffAux = playoff['id'];
         octavosAux = playoff[0];
         cuartosAux = playoff[1];
         semifinalAux = playoff[2];
         finalAux = playoff[3];
         ganadorAux = playoff['ganador'];
+        this.setState({
+          id_playoff: id_playoffAux,
+          octavos: octavosAux,
+          cuartos: cuartosAux,
+          semifinal: semifinalAux,
+          "final": finalAux,
+          ganador: ganadorAux
+        });
+        localStorage.setItem('playoffSelected', event);
       }
-
-      this.setState({
-        id_playoff: id_playoffAux,
-        octavos: octavosAux,
-        cuartos: cuartosAux,
-        semifinal: semifinalAux,
-        "final": finalAux,
-        ganador: ganadorAux
-      });
     }
   }, {
     key: "handleDelete",
     value: function handleDelete() {
+      var _this3 = this;
+
       var $id = this.state.id_playoff;
 
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('api/playoffs/delete/' + $id).then(function (res) {
-          console.log(res);
-        });
-        this.limpiar();
-      } catch (event) {
-        console.log('Axios request failed', event);
+      if ($id != '') {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('api/playoffs/delete/' + $id).then(function (res) {
+            console.log(res);
+
+            _this3.limpiar();
+          });
+        } catch (event) {
+          console.log('Axios request failed', event);
+        }
       }
     }
   }, {
     key: "limpiar",
     value: function limpiar() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/playoffs').then(function (response) {
-        _this3.setState({
+        _this4.setState({
           playoffs: response.data,
           id_playoff: '',
           octavos: [],
@@ -65999,39 +66003,57 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Mis pron\xF3sticos"), this.state.playoffs.map(function (name, id) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "mt-3 mb-3"
+      }, "Mis pron\xF3sticos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex flex-row buttonsSelectPlayoff"
+      }, this.state.playoffs.map(function (name, id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "mr-2",
+          key: id,
           onClick: function onClick(event) {
-            return _this4.handleChange(id);
+            return _this5.handleChange(id);
           }
         }, " Playoff ", id + 1);
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Copa Libertadores"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick(event) {
-          return _this4.handleDelete();
+          return _this5.handleDelete();
         }
-      }, "Eliminar playoff")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        id: "tableOctavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname4'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname5']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname6'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname7']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname8'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname9']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname10'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname11']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname12'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname13']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname14'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname15']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname16']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        id: "tableCuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname4'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname5']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname6'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname7']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname8']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        id: "tableSemifinal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname4']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, "Eliminar playoff")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, "Campe\xF3n:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableFinal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname2']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Campe\xF3n:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname2']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableSemifinal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        id: "titleTableTorneo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname4']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableCuartos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        id: "titleTableTorneo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname4'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname5']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname6'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname7']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname8']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableOctavos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        id: "titleTableTorneo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname4'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname5']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname6'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname7']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname8'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname9']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname10'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname11']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname12'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname13']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname14'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname15']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname16'])))));
     }
   }]);
 
@@ -66106,28 +66128,36 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       var cuartosAux = [];
       var semifinalAux = [];
       var finalAux = [];
+      var ganadorAux = "";
 
       for (var i = 0; i < 8; i++) {
-        cuartosAux[i] = "";
+        if (localStorage.hasOwnProperty('cuartos' + i)) cuartosAux[i] = localStorage.getItem('cuartos' + i);else cuartosAux[i] = "";
       }
 
       for (var j = 0; j < 4; j++) {
-        semifinalAux[j] = "";
+        if (localStorage.hasOwnProperty('semifinal' + j)) semifinalAux[j] = localStorage.getItem('semifinal' + j);else semifinalAux[j] = "";
       }
 
       for (var i = 0; i < 2; i++) {
-        finalAux[i] = "";
+        if (localStorage.hasOwnProperty('final' + i)) finalAux[i] = localStorage.getItem('final' + i);else finalAux[i] = "";
       }
 
+      if (localStorage.hasOwnProperty('ganador')) ganadorAux = localStorage.getItem('ganador');
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/teams').then(function (response) {
         _this2.setState({
           teams: response.data,
           cuartos: cuartosAux,
           semifinal: semifinalAux,
-          "final": finalAux
+          "final": finalAux,
+          ganador: ganadorAux
         });
       });
     }
@@ -66147,6 +66177,7 @@ function (_Component) {
         this.setState({
           cuartos: aux
         });
+        localStorage.setItem('cuartos' + i, team);
       }
     }
   }, {
@@ -66165,6 +66196,7 @@ function (_Component) {
         this.setState({
           semifinal: aux
         });
+        localStorage.setItem('semifinal' + i, team);
       }
     }
   }, {
@@ -66183,6 +66215,7 @@ function (_Component) {
         this.setState({
           "final": aux
         });
+        localStorage.setItem('final' + i, team);
       }
     }
   }, {
@@ -66195,6 +66228,7 @@ function (_Component) {
         this.setState({
           ganador: aux
         });
+        localStorage.setItem('ganador', team);
       }
     }
   }, {
@@ -66204,6 +66238,7 @@ function (_Component) {
 
       for (var j = 0; j < 8; j++) {
         aux[j] = "";
+        localStorage.setItem('cuartos' + j, "");
       }
 
       this.setState({
@@ -66218,6 +66253,7 @@ function (_Component) {
 
       for (var j = 0; j < 4; j++) {
         aux[j] = "";
+        localStorage.setItem('semifinal' + j, "");
       }
 
       this.setState({
@@ -66232,6 +66268,8 @@ function (_Component) {
 
       for (var j = 0; j < 2; j++) {
         aux[j] = "";
+        localStorage.setItem('final' + j, "");
+        localStorage.setItem('ganador', "");
       }
 
       this.setState({
@@ -66242,12 +66280,6 @@ function (_Component) {
   }, {
     key: "handleChangeGuardar",
     value: function handleChangeGuardar(event) {
-      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-      window.axios.defaults.headers.common = {
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      };
-
       try {
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/playoffs', {
           teams: this.state.teams,
@@ -66277,8 +66309,10 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Copa Libertadores")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "card-header mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Copa Libertadores")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableOctavos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66346,7 +66380,9 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeOctavos(octavos[15], 15);
         }
-      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick(event) {
           return _this3.handleChangeBorrarCuartos();
         }
@@ -66386,7 +66422,9 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(_this3.state.cuartos[7], 7);
         }
-      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick(event) {
           return _this3.handleChangeBorrarSemifinal();
         }
@@ -66410,7 +66448,9 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeSemifinal(_this3.state.semifinal[3], 3);
         }
-      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " FINAL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " FINAL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick(event) {
           return _this3.handleChangeBorrarFinal(_this3.state["final"]);
         }
@@ -66426,7 +66466,9 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeFinal(_this3.state["final"][1]);
         }
-      }, this.state["final"][1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Campe\xF3n:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state["final"][1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "mt-3"
+      }, "Campe\xF3n:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick(event) {
           return _this3.handleChangeGuardar(event);
         }
@@ -66459,8 +66501,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

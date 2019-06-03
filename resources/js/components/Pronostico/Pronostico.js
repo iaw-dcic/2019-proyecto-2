@@ -16,24 +16,47 @@ export default class Pronostico extends Component {
     }
 
     componentDidMount() {
+
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
         var cuartosAux = [];
         var semifinalAux = [];
         var finalAux = [];
+        var ganadorAux = "";
         for (var i = 0; i < 8; i++) {
-            cuartosAux[i] = "";
+            if(localStorage.hasOwnProperty('cuartos'+i))
+                 cuartosAux[i] = localStorage.getItem('cuartos'+i);
+            else
+                cuartosAux[i] = "";
         }
         for (var j = 0; j < 4; j++) {
-            semifinalAux[j] = "";
+            if(localStorage.hasOwnProperty('semifinal'+j))
+                 semifinalAux[j] = localStorage.getItem('semifinal'+j);
+            else
+                 semifinalAux[j] = "";
         }
         for (var i = 0; i < 2; i++) {
-            finalAux[i] = "";
+            if(localStorage.hasOwnProperty('final'+i))
+                 finalAux[i] = localStorage.getItem('final'+i);
+            else
+                finalAux[i] = "";
         }
+
+        if(localStorage.hasOwnProperty('ganador'))
+            ganadorAux = localStorage.getItem('ganador');
+
         axios.get('/api/teams').then(response => {
             this.setState({
                 teams: response.data,
                 cuartos: cuartosAux,
                 semifinal: semifinalAux,
-                final: finalAux
+                final: finalAux,
+                ganador: ganadorAux
             })
         })
     }
@@ -49,9 +72,9 @@ export default class Pronostico extends Component {
             aux[i] = team;
 
             this.setState({
-                cuartos: aux
-                
+                cuartos: aux               
             });
+            localStorage.setItem('cuartos'+i,team);
         }
     }
 
@@ -69,6 +92,7 @@ export default class Pronostico extends Component {
                 semifinal: aux
                 
             });
+            localStorage.setItem('semifinal'+i,team);
         }
     }
 
@@ -86,6 +110,7 @@ export default class Pronostico extends Component {
                 final: aux
                 
             });
+            localStorage.setItem('final'+i,team);
         }
     }
 
@@ -94,9 +119,9 @@ export default class Pronostico extends Component {
         if(final[0]!="" && final[1]!=""){
             var aux = team;
             this.setState({
-                ganador: aux
-                
+                ganador: aux               
             });
+            localStorage.setItem('ganador',team);
         }
     }
 
@@ -104,6 +129,7 @@ export default class Pronostico extends Component {
         var aux = this.state.cuartos;
         for(var j=0; j<8; j++){
             aux[j]="";
+            localStorage.setItem('cuartos'+j,"");
         }
         this.setState({
             cuartos: aux
@@ -115,6 +141,7 @@ export default class Pronostico extends Component {
         var aux = this.state.semifinal;
         for(var j=0; j<4; j++){
             aux[j]="";
+            localStorage.setItem('semifinal'+j,"");
         }
         this.setState({
             semifinal: aux
@@ -126,6 +153,8 @@ export default class Pronostico extends Component {
         var aux = this.state.final;
         for(var j=0; j<2; j++){
             aux[j]="";
+            localStorage.setItem('final'+j,"");
+            localStorage.setItem('ganador',"");
         }
         this.setState({
             final: aux,
@@ -134,13 +163,6 @@ export default class Pronostico extends Component {
     }
 
     handleChangeGuardar(event) {
-        window.axios = require('axios');
-
-        window.axios.defaults.headers.common = {
-            'X-Requested-With': 'XMLHttpRequest',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        };
-
         try {
             axios.post('/api/playoffs', {
                 teams: this.state.teams, 
@@ -168,10 +190,10 @@ export default class Pronostico extends Component {
 
         return (
             <div className="container">
-                <div className="card-header">
+                <div className="card-header mt-3">
                     <h1>Copa Libertadores</h1>
                 </div>
-                <h2><b> Octavos de final</b></h2>
+                <h2 className="mt-3"><b> Octavos de final</b></h2>
                 <table id='tableOctavos'>
                     <tr id='titleTableTorneo'>
                         <th>Local</th>
@@ -220,7 +242,7 @@ export default class Pronostico extends Component {
                     </tr>
                 </table>
 
-                <h2><b> Cuartos de final</b></h2>
+                <h2 className="mt-3"><b> Cuartos de final</b></h2>
                 <button onClick={(event) => this.handleChangeBorrarCuartos()}>Deshacer</button>
                 <table id='tableCuartos'>
                     <tr id='titleTableTorneo'>
@@ -250,7 +272,7 @@ export default class Pronostico extends Component {
                     </tr>
                 </table>
 
-                <h2><b> Semifinal</b></h2>
+                <h2 className="mt-3"><b> Semifinal</b></h2>
                 <button onClick={(event) => this.handleChangeBorrarSemifinal()}>Deshacer</button>
                 <table id='tableSemifinal'>
                     <tr id='titleTableTorneo'>
@@ -270,7 +292,7 @@ export default class Pronostico extends Component {
                     </tr>
                 </table>
 
-                <h2><b> FINAL</b></h2>
+                <h2 className="mt-3"><b> FINAL</b></h2>
                 <button onClick={(event) => this.handleChangeBorrarFinal(this.state.final)}>Deshacer</button>
                 <table id='tablefinal'>
                     <tr id='titleTableTorneo'>
@@ -285,7 +307,7 @@ export default class Pronostico extends Component {
                     </tr>
                 </table>
 
-                <h2>Campeón:<b> {this.state.ganador}</b></h2>
+                <h2 className="mt-3">Campeón:<b> {this.state.ganador}</b></h2>
                 <button onClick={(event) => this.handleChangeGuardar(event)}>Guardar pronóstico</button>
             </div>
         );

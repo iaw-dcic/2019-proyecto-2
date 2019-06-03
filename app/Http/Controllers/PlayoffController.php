@@ -14,7 +14,8 @@ use Response;
 use DB;
 
 
-class PlayoffController extends Controller {
+class PlayoffController extends Controller
+{
     /**
      * Create a new controller instance.
      *
@@ -22,11 +23,12 @@ class PlayoffController extends Controller {
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth:api');
     }
-    
-    public function teams() {
-        
+
+    public function teams()
+    {
+
         $teams = Team::all();
         $arr = [];
         foreach ($teams as $team) {
@@ -34,38 +36,39 @@ class PlayoffController extends Controller {
         }
         return Response::json($arr);
     }
-   
+
     public function playoffs()
     {
         $arr = [];
-        $playoffs = User::where('id',1)->first()->playoffs()->getResults();
+        $playoffs = User::where('id', auth('api')->user()->id)->first()->playoffs()->getResults();
         foreach ($playoffs as $playoff) {
-            $playoffArr = ['id' => $playoff->id, 
-                           'name' => $playoff->name,
-                           'ganador' => $playoff->ganador,  
-                           ];
+            $playoffArr = [
+                'id' => $playoff->id,
+                'name' => $playoff->name,
+                'ganador' => $playoff->ganador,
+            ];
             $id_octavos = $playoff->octavos_id;
-            $octavo = Octavo::where('id',$id_octavos)->first();
-           
+            $octavo = Octavo::where('id', $id_octavos)->first();
+
             $id_cuartos = $octavo->cuartos_id;
-            $cuarto = Cuarto::where('id',$id_cuartos)->first();
-            
+            $cuarto = Cuarto::where('id', $id_cuartos)->first();
+
             $id_semifinal = $cuarto->semifinal_id;
-            $semifinal = Semifinal::where('id',$id_semifinal)->first();
+            $semifinal = Semifinal::where('id', $id_semifinal)->first();
 
             $id_final = $semifinal->final_id;
-            $final = Objfinal::where('id',$id_final)->first();
+            $final = Objfinal::where('id', $id_final)->first();
 
-            array_push($playoffArr,$octavo);
-            array_push($playoffArr,$cuarto);
-            array_push($playoffArr,$semifinal);
-            array_push($playoffArr,$final);
+            array_push($playoffArr, $octavo);
+            array_push($playoffArr, $cuarto);
+            array_push($playoffArr, $semifinal);
+            array_push($playoffArr, $final);
             array_push($arr, $playoffArr);
         }
 
         return Response::json($arr);
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -82,12 +85,12 @@ class PlayoffController extends Controller {
         ]);
 
         $data = $request->all();
-        $teams = $data['teams']; 
+        $teams = $data['teams'];
         $cuartos = $data['cuartos'];
         $semifinals = $data['semifinal'];
         $finals = $data['final'];
-        $ganador= $data['ganador'];
-        
+        $ganador = $data['ganador'];
+
         try {
             DB::beginTransaction();
             $final = Objfinal::create([
@@ -134,9 +137,9 @@ class PlayoffController extends Controller {
                 'teamname15' => $teams[14]['name'],
                 'teamname16' => $teams[15]['name'],
             ]);
-        
+
             Playoff::create([
-                'user_id' => 1, 
+                'user_id' => auth('api')->user()->id,
                 'name' => 'nombrePlayoff',
                 'octavos_id' => $octavo['id'],
                 'ganador' => $ganador,
@@ -153,30 +156,36 @@ class PlayoffController extends Controller {
 
     public function delete($id)
     {
+        
         try {
-            DB::beginTransaction();
-            $playoff = Playoff::where('id',$id)->first();
             
-            $id_octavos = $playoff->octavos_id;
-            $octavo = Octavo::where('id',1)->first();
-           
-            $id_cuartos = $octavo->cuartos_id;
-            $cuarto = Cuarto::where('id',1)->first();
-            
-            $id_semifinal = $cuarto->semifinal_id;
-            $semifinal = Semifinal::where('id',1)->first();
+            $playoff = Playoff::where('id', $id)->first();
+            $user_id = $playoff['user_id'];
+            if($user_id == auth('api')->user()->id){
 
-            $id_final = $semifinal->final_id;
-            $final = Objfinal::where('id',1)->first();
-            
-            $final->delete();
-            $semifinal->delete();
-            $cuarto->delete();
-            $octavo->delete();
-            $playoff->delete();
+                DB::beginTransaction();
+                $id_octavos = $playoff['octavos_id'];
+                $octavo = Octavo::where('id', $id_octavos)->first();
 
-            DB::commit();
-            return response()->json($id);
+                $id_cuartos = $octavo['cuartos_id'];
+                $cuarto = Cuarto::where('id', $id_cuartos)->first();
+
+                $id_semifinal = $cuarto['semifinal_id'];
+                $semifinal = Semifinal::where('id', $id_semifinal)->first();
+
+                $id_final = $semifinal['final_id'];
+                $final = Objfinal::where('id', $id_final)->first();
+
+                $final->delete();
+                $semifinal->delete();
+                $cuarto->delete();
+                $octavo->delete();
+                $playoff->delete();
+
+                DB::commit();
+                
+            }
+        return response()->json($id);
         } catch (\Exception $e) {
             DB::rollback();
             abort(500);
