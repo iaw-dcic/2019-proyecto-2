@@ -57,14 +57,8 @@ class userAvatarController extends Controller
 
 
     public function update(avatar $avatar){
-        $validatedData = $request->validate([
-            'skin' => 'required',
-            'hair' => 'required',
-            'eyes' => 'required',
-            'mouth' => 'required',
-        ]);
         $avatar->update();
-        return response()->toJson('avatar actualizado!');
+        return response()->json('avatar actualizado!');
     }
 
     public function getUserID(Request $request){
@@ -77,7 +71,12 @@ class userAvatarController extends Controller
     public function getResources(String $tipo){
         $recursos = DB::table('attires')->where('type',$tipo)->get();
         $recursos = $recursos[0];
-        return $recursos->toJson();
+        dd($recursos);
+        $ret = array();
+        for($i = 0; $i < $recursos->count(); $i++){
+            $ret[$i] = $recursos[$i];
+        }
+        return response()->json($ret);
     }
 
 }

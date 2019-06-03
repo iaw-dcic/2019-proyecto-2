@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SideBar from './SideBar.js'
 import Avatar from './Avatar.js'
 import axios from 'axios';
+import './ComponentCSS/viewAvatar.css'
 
 
 export default class AvatarView extends Component{
@@ -51,7 +52,10 @@ export default class AvatarView extends Component{
         console.log(event.target)
         console.log(this.state.userID)
         let ID = event.target.name
+        console.log(ID)
+        ID = 2;
         axios.get('/api/' + this.state.userID + '/avatars/'+ ID).then((response) =>{
+            console.log(response.data)
             this.setState({
                 name : response.data.name,
                 face : response.data.skin,
@@ -139,19 +143,19 @@ export default class AvatarView extends Component{
                 axios.post('api/' + this.state.userID + '/avatars', avatar).then(res => {
                         this.setState({
                             avatarID : res.data,
-                            AllAvatars : this.state.AllAvatars.push(avatar) 
+                            AllAvatars : this.state.AllAvatars.concat(avatar) 
                         })  
                         alert("Tu avatar ha sido guardado con exito");
                 })
             }
             else{//asumo que avatarID != -1
                 this.setState({
-                    AllAvatars : AllAvatars.filter(avatarnew => avatarnew.avatarID != avatar.avatarID)
+                    AllAvatars : this.state.AllAvatars.filter(avatarnew => avatarnew.avatarID != avatar.avatarID)
                 })
                 //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
                 axios.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(res =>{
                     this.setState({
-                        AllAvatars : this.state.AllAvatars.push(avatar)
+                        AllAvatars : this.state.AllAvatars.concat(avatar)
                     })
                     alert("tu avatar ha sido modificado con exito")
                 })
@@ -167,8 +171,8 @@ export default class AvatarView extends Component{
     render(){
         return (
             <>
-                <div className="d-flex">
-                    <div className="col-md-9">
+                <div className="side">
+                    <div className="col-md-12 text-center side">
                         <Avatar 
                             handleNameChange={this.handleNameChange}
                             face={this.state.face}
@@ -181,7 +185,7 @@ export default class AvatarView extends Component{
                             
 
 
-                    <div className="col-md-3">
+                    <div className="col-md-3 ">
                         <SideBar
                             handleFaceChange={this.handleFaceChange}
                             handleHairChange={this.handleHairChange}

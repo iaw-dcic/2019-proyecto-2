@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './ComponentCSS/CardStyle.css'
+import './ComponentCSS/viewAvatar.css'
 import './ComponentCSS/superponer.css'
 
 export default class Avatar extends Component {
@@ -20,36 +21,21 @@ export default class Avatar extends Component {
     render() {
         return (
             <>
-                <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card config text-center mx-auto">
-                            <div className="card-body">
+           
+                        <div className="card config mx-auto side">
+                            <div className="card-body mx-auto">
                                 <input type="text" className="card-title text-center"  value={this.state.nameValue} onChange={this.handleChange}/>
                             </div>
+                            <div className="divAv">
+                                
+                                <img className="pelo superponer-edicion " src={window.location.origin + '/RecursosGraficos/Caras/'+ this.props.face + '.png'}/>
+                                <img className="cara superponer-edicion " src={window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'}/>
+                                <img className="ojos superponer-edicion " src={window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'}/>
+                                <img className="boca superponer-edicion " src={window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'}/>
+                            </div>
                                 
                         </div>
-                    </div>
-                </div>
-            </div>
-
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-md-8">
-                            <div className="card config text-center mx-auto">
-                            
-                            <div>
-                                
-                                <div className="pelo superponer "><img src={window.location.origin + '/RecursosGraficos/Caras/'+ this.props.face + '.png'}/> </div>
-                                <div className="cara superponer "><img src={window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'}/></div>
-                                <div className="ojos superponer "><img src={window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'}/></div>
-                                <div className="boca superponer"><img src={window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'}/></div>
-                            </div>
-                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             
             </>
         );
     }

@@ -1,8 +1,10 @@
 .config{
     width:75%;
-    margin: 0 auto; /* Added */
+    margin: auto; /* Added */
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
+    background-position: center;
+    
    
 }
 .cara .ojos .pelo .boca{

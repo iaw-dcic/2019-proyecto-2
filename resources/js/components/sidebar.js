@@ -137,17 +137,18 @@ export default class SideBar extends Component{
   render(){
         return (
           <>
-            <div className="superponer" >
-              has clic en tus avatares previos para editarlos!
+            <div className="previos">
+              <p className="text-center side">haz clic en tus avatares previos para editarlos!</p>
        
 
             {this.props.AllAvatars.map((avatar,index) =>(
-                <div key={avatar.name+"-"+index} onClick={this.cargarAvatar} name={avatar.avatarID}  className="card  text-center">
-                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'}/> 
-                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'}/>
-                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'}/>
-                    <img name={avatar.avatarID} className="superponer" src={window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'}/>
-                    <button></button>              
+                <div key={avatar.name+"-"+index} name={avatar.avatarID}  className="card  mx-auto text-center size-prev">
+                    <img className="superponer" src={window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'}/> 
+                    <img className="superponer" src={window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'}/>
+                    <img className="superponer" src={window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'}/>
+                    <img className="superponer" src={window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'}/> 
+                    
+                 <button className="btn btn-info btn-lg boton" name={avatar.avatarID} onClick={this.cargarAvatar}>Cargar {avatar.name}</button>     
                 </div>
                 
             ))}

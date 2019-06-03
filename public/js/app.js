@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".config{\r\n    width:75%;\r\n    margin: 0 auto; /* Added */\r\n    float: none; /* Added */\r\n    margin-bottom: 10px; /* Added */\r\n   \r\n}\r\n.cara .ojos .pelo .boca{\r\n    width:100px;\r\n    height: 100px;\r\n    \r\n}", ""]);
+exports.push([module.i, ".config{\r\n    width:75%;\r\n    margin: auto; /* Added */\r\n    float: none; /* Added */\r\n    margin-bottom: 10px; /* Added */\r\n    background-position: center;\r\n    \r\n   \r\n}\r\n.cara .ojos .pelo .boca{\r\n    width:100px;\r\n    height: 100px;\r\n    \r\n}", ""]);
 
 // exports
 
@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:50px;\r\n    height:50px;\r\n}\r\n", ""]);
+exports.push([module.i, "\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:150px;\r\n    height:150px;\r\n    padding-bottom: 5%;\r\n    \r\n   \r\n}\r\n.boton{\r\n    padding-bottom: 5%;   \r\n}\r\n.side{\r\n    font-weight: bolder;\r\n    font-size: 30px;\r\n}\r\n.previos{\r\n    \r\n    background: rgb(238,174,202);\r\n    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);\r\n    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#94bbe9\",GradientType=1);\r\n    \r\n}\r\n.size-prev{\r\n    width:300px;\r\n    height:300px;\r\n    padding-bottom: 5%;\r\n    \r\n}\r\n", ""]);
 
 // exports
 
@@ -6615,7 +6615,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".superponer{\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 0px;\r\n    right: 0px;\r\n    bottom: 0px;\r\n\r\n}", ""]);
+exports.push([module.i, ".superponer{\r\n    position: absolute;\r\n    background-position: center;\r\n    padding-top: 20%;\r\n    padding-left: 10%;\r\n\r\n\r\n}\r\n.superponer-edicion{\r\n    position: absolute;\r\n    background-position: center;\r\n    width:750px;\r\n    height: 750px;\r\n}\r\n.divAv{\r\n    padding-right: 50%;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/viewAvatar.css":
+/*!*********************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/ComponentCSS/viewAvatar.css ***!
+  \*********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\r\n.avatar{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#94bbe9\",GradientType=1);\r\n}\r\n\r\n.body{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(235,167,144,1) 52%, rgba(232,139,63,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#e88b3f\",GradientType=1);\r\n}\r\n.side{\r\n    background: rgb(131,58,180);\r\nbackground: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#833ab4\",endColorstr=\"#fcb045\",GradientType=1);\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -66517,8 +66536,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ComponentCSS/CardStyle.css */ "./resources/js/components/ComponentCSS/CardStyle.css");
 /* harmony import */ var _ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_CardStyle_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ComponentCSS/superponer.css */ "./resources/js/components/ComponentCSS/superponer.css");
-/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _ComponentCSS_viewAvatar_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ComponentCSS/viewAvatar.css */ "./resources/js/components/ComponentCSS/viewAvatar.css");
+/* harmony import */ var _ComponentCSS_viewAvatar_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_viewAvatar_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ComponentCSS/superponer.css */ "./resources/js/components/ComponentCSS/superponer.css");
+/* harmony import */ var _ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_superponer_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66536,6 +66557,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66574,45 +66596,29 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "card config mx-auto side"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card config text-center mx-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
+        className: "card-body mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "card-title text-center",
         value: this.state.nameValue,
         onChange: this.handleChange
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card config text-center mx-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pelo superponer "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "divAv"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "pelo superponer-edicion ",
         src: window.location.origin + '/RecursosGraficos/Caras/' + this.props.face + '.png'
-      }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "cara superponer "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "cara superponer-edicion ",
         src: window.location.origin + '/RecursosGraficos/Ojos/' + this.props.eyes + '.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ojos superponer "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "ojos superponer-edicion ",
         src: window.location.origin + '/RecursosGraficos/Pelos/' + this.props.hair + '.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "boca superponer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "boca superponer-edicion ",
         src: window.location.origin + '/RecursosGraficos/Bocas/' + this.props.mouth + '.png'
-      }))))))));
+      }))));
     }
   }]);
 
@@ -66639,6 +66645,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Avatar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Avatar.js */ "./resources/js/components/Avatar.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ComponentCSS_viewAvatar_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ComponentCSS/viewAvatar.css */ "./resources/js/components/ComponentCSS/viewAvatar.css");
+/* harmony import */ var _ComponentCSS_viewAvatar_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_viewAvatar_css__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66658,6 +66666,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -66712,7 +66721,11 @@ function (_Component) {
       console.log(event.target);
       console.log(this.state.userID);
       var ID = event.target.name;
+      console.log(ID);
+      ID = 2;
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/' + this.state.userID + '/avatars/' + ID).then(function (response) {
+        console.log(response.data);
+
         _this2.setState({
           name: response.data.name,
           face: response.data.skin,
@@ -66813,7 +66826,7 @@ function (_Component) {
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/' + this.state.userID + '/avatars', avatar).then(function (res) {
             _this4.setState({
               avatarID: res.data,
-              AllAvatars: _this4.state.AllAvatars.push(avatar)
+              AllAvatars: _this4.state.AllAvatars.concat(avatar)
             });
 
             alert("Tu avatar ha sido guardado con exito");
@@ -66821,14 +66834,14 @@ function (_Component) {
         } else {
           //asumo que avatarID != -1
           this.setState({
-            AllAvatars: AllAvatars.filter(function (avatarnew) {
+            AllAvatars: this.state.AllAvatars.filter(function (avatarnew) {
               return avatarnew.avatarID != avatar.avatarID;
             })
           }); //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
 
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(function (res) {
             _this4.setState({
-              AllAvatars: _this4.state.AllAvatars.push(avatar)
+              AllAvatars: _this4.state.AllAvatars.concat(avatar)
             });
 
             alert("tu avatar ha sido modificado con exito");
@@ -66841,9 +66854,9 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex"
+        className: "side"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-9"
+        className: "col-md-12 text-center side"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatar_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
         handleNameChange: this.handleNameChange,
         face: this.state.face,
@@ -66851,7 +66864,7 @@ function (_Component) {
         eyes: this.state.eyes,
         mouth: this.state.mouth
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-3"
+        className: "col-md-3 "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleFaceChange: this.handleFaceChange,
         handleHairChange: this.handleHairChange,
@@ -67030,6 +67043,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./superponer.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/superponer.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/components/ComponentCSS/viewAvatar.css":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/ComponentCSS/viewAvatar.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./viewAvatar.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/ComponentCSS/viewAvatar.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -67374,30 +67417,31 @@ function (_Component) {
       var _this3 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "superponer"
-      }, "has clic en tus avatares previos para editarlos!", this.props.AllAvatars.map(function (avatar, index) {
+        className: "previos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-center side"
+      }, "haz clic en tus avatares previos para editarlos!"), this.props.AllAvatars.map(function (avatar, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: avatar.name + "-" + index,
-          onClick: _this3.cargarAvatar,
           name: avatar.avatarID,
-          className: "card  text-center"
+          className: "card  mx-auto text-center size-prev"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          name: avatar.avatarID,
           className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          name: avatar.avatarID,
           className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          name: avatar.avatarID,
           className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          name: avatar.avatarID,
           className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null));
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-info btn-lg boton",
+          name: avatar.avatarID,
+          onClick: _this3.cargarAvatar
+        }, "Cargar ", avatar.name));
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar fixed-bottom  navbar-dark bg-dark"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

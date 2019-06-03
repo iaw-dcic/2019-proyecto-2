@@ -4,6 +4,31 @@
 }
 
 .size{
-    width:50px;
-    height:50px;
+    width:150px;
+    height:150px;
+    padding-bottom: 5%;
+    
+   
+}
+.boton{
+    padding-bottom: 5%;   
+}
+.side{
+    font-weight: bolder;
+    font-size: 30px;
+}
+.previos{
+    
+    background: rgb(238,174,202);
+    background: -moz-radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca",endColorstr="#94bbe9",GradientType=1);
+    
+}
+.size-prev{
+    width:300px;
+    height:300px;
+    padding-bottom: 5%;
+    
 }
