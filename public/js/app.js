@@ -89335,7 +89335,7 @@ function (_Component) {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         href: "/password/reset",
-        className: "stretched-link"
+        className: ""
       }, "Olvid\xF3 su contrase\xF1a?"))));
     }
   }]);

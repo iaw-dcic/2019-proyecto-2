@@ -99,7 +99,7 @@ export default class Login extends Component {
                     }
 
                     <div className="text-center">
-                        <a href='/password/reset' className="stretched-link">Olvidó su contraseña?</a>
+                        <a href='/password/reset' className="">Olvidó su contraseña?</a>
                     </div>
 
                 </form>
