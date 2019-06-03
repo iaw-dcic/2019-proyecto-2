@@ -37,15 +37,17 @@ export default class MisDiseños extends Component {
                                                 <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
                                                     <div className="card h-100">
                                                         <img className="card-img-top" src={"/images/remeras/" + item.color + ".png"}></img>
-                                                       { item.logo != "" &&
+                                                        {item.logo != "" &&
                                                             <img height="100" src={"/images/logos/" + item.logo + ".png"} id="imagenLogo2"></img>
-                                                         }
+                                                        }
                                                         <div className="card-body">
                                                             <h4 className="card-title">
                                                                 <a href="#">Diseño: {item.id}</a>
                                                             </h4>
-                                                            <p className="card-text">Talle: {item.talle}</p>
+                                                            <p className="card-text">Talle: {item.talle} </p>
                                                             <p className="card-text">Tela: {item.tela}</p>
+                                                            <button type="button" className="btn btn-outline-success">Editar</button>
+                                                            <button type="button" className="btn btn-outline-danger">Borrar</button>
                                                         </div>
                                                     </div>
                                                 </div>

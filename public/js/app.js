@@ -65958,9 +65958,15 @@ function (_Component) {
           href: "#"
         }, "Dise\xF1o: ", item.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "card-text"
-        }, "Talle: ", item.talle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, "Talle: ", item.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "card-text"
-        }, "Tela: ", item.tela))));
+        }, "Tela: ", item.tela), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-outline-success"
+        }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-outline-danger"
+        }, "Borrar"))));
       }))))))));
     }
   }]);
