@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:400,400i,700);", ""]);
 
 // module
-exports.push([module.i, "body {\r\n  font-family: Montserrat, sans-serif;\r\n}\r\n\r\n#features {\r\n    background: #bdc3c7;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n    padding: 3rem 0;\r\n}\r\n\r\n.features-inner {\r\n  padding: 2rem;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-inner {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    grid-row-gap: 0;\r\n  }\r\n}\r\n@media (min-width: 800px) {\r\n  .features-inner {\r\n    grid-template-columns: 1fr 2fr;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-inner {\r\n    grid-template-columns: repeat(3, 1fr);\r\n    max-width: 1000px;\r\n    margin: 0 auto;\r\n  }\r\n}\r\n\r\n.features-image {\r\n  text-align: center;\r\n  margin-bottom: 2rem;\r\n  position: relative;\r\n}\r\n\r\n.estampa-style {\r\n  position: absolute;\r\n  bottom: 90px;\r\n  left: 100px;\r\n  width: 120px;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-image {\r\n    grid-row: 1/span 2;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-image {\r\n    grid-column: 2;\r\n  }\r\n}\r\n.features-image img {\r\n  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n          filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n}\r\n\r\n.features-list {\r\n  list-style: none;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.features-item {\r\n  transition: opacity 200ms ease;\r\n}\r\n.features-item:hover {\r\n  opacity: 0.7;\r\n  cursor: pointer;\r\n}\r\n\r\n.features-item-header,\r\n.features-item-text {\r\n  color: white;\r\n}\r\n\r\n.features-item-header {\r\n  margin-bottom: 0;\r\n  margin-top: 30px;\r\n  font-size: 1.4rem;\r\n}\r\n\r\n.features-item-text {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.case-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.colors{\r\n  margin-top: 20px;\r\n}\r\n\r\n.images-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.save-changes{\r\n  margin-top: 20px;\r\n}\r\n\r\n.btn-changes {\r\n  margin: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n  .list-1 {\r\n    text-align: right;\r\n  }\r\n}\r\n@media (min-width: 600px) {\r\n  .list-2 {\r\n    grid-column: 2;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 0;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .list-2 {\r\n    grid-column: 3;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 1.45rem;\r\n  }\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n  font-family: Montserrat, sans-serif;\r\n}\r\n\r\n#features {\r\n  background: #ECE9E6;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n  padding: 3rem 0;\r\n}\r\n\r\n.features-inner {\r\n  padding: 2rem;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-inner {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    grid-row-gap: 0;\r\n  }\r\n}\r\n@media (min-width: 800px) {\r\n  .features-inner {\r\n    grid-template-columns: 1fr 2fr;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-inner {\r\n    grid-template-columns: repeat(3, 1fr);\r\n    max-width: 1000px;\r\n    margin: 0 auto;\r\n  }\r\n}\r\n\r\n.features-image {\r\n  text-align: center;\r\n  margin-bottom: 2rem;\r\n  position: relative;\r\n}\r\n\r\n.estampa-style {\r\n  position: absolute;\r\n  bottom: 90px;\r\n  left: 100px;\r\n  width: 120px;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-image {\r\n    grid-row: 1/span 2;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-image {\r\n    grid-column: 2;\r\n  }\r\n}\r\n.features-image img {\r\n  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n          filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n}\r\n\r\n.features-list {\r\n  list-style: none;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.features-item {\r\n  transition: opacity 200ms ease;\r\n}\r\n.features-item:hover {\r\n  opacity: 0.7;\r\n  cursor: pointer;\r\n}\r\n\r\n.features-item-header,\r\n.features-item-text {\r\n  color: black;\r\n}\r\n\r\n.features-item-header {\r\n  margin-bottom: 0;\r\n  margin-top: 30px;\r\n  font-size: 1.4rem;\r\n}\r\n\r\n.features-item-text {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.case-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.colors{\r\n  margin-top: 20px;\r\n}\r\n\r\n.images-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.save-changes{\r\n  margin-top: 20px;\r\n}\r\n\r\n.btn-changes {\r\n  margin: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n  .list-1 {\r\n    text-align: right;\r\n  }\r\n}\r\n@media (min-width: 600px) {\r\n  .list-2 {\r\n    grid-column: 2;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 0;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .list-2 {\r\n    grid-column: 3;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 1.45rem;\r\n  }\r\n}\r\n", ""]);
 
 // exports
 
@@ -66538,7 +66538,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _Head__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Head */ "./resources/js/components/Head.js");
 /* harmony import */ var _Body__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Body */ "./resources/js/components/Body.js");
-/* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Nav */ "./resources/js/components/Nav.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66564,7 +66563,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var App =
 /*#__PURE__*/
 function (_Component) {
@@ -66579,7 +66577,7 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Head__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Head__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Body__WEBPACK_IMPORTED_MODULE_5__["default"], null));
     }
   }]);
 
@@ -67697,7 +67695,7 @@ function (_Component) {
     _this.state = {
       caseIndex: 1,
       colorIndex: 0,
-      estampaIndex: 0,
+      estampaIndex: 1,
       //casePath:""
       modal: false
     };
@@ -67717,7 +67715,7 @@ function (_Component) {
     value: function setCaseImage(caseId) {
       this.setState({
         caseIndex: caseId
-      }); // this.getCaseImage()
+      }); // this.getCaseImage()w
     }
   }, {
     key: "setCaseColor",
@@ -67866,101 +67864,6 @@ var Modal = function Modal(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Modal);
-
-/***/ }),
-
-/***/ "./resources/js/components/Nav.js":
-/*!****************************************!*\
-  !*** ./resources/js/components/Nav.js ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Nav; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/layout.css */ "./public/css/layout.css");
-/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var Nav =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Nav, _Component);
-
-  function Nav() {
-    _classCallCheck(this, Nav);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Nav).apply(this, arguments));
-  }
-
-  _createClass(Nav, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "wrapper",
-        className: "animate"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "navbar-toggler",
-        type: "button",
-        "data-toggle": "collapse",
-        "data-target": "#navbarText",
-        "aria-controls": "navbarText",
-        "aria-expanded": "false",
-        "aria-label": "Toggle navigation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "navbar-toggler-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "collapse navbar-collapse",
-        id: "navbarText"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "navbar-nav ml-md-auto d-md-flex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "nav-link",
-        title: "Username"
-      }, " Bienvenido/a !")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
-        href: "",
-        title: "Salir",
-        onClick: "event.preventDefault();\r document.getElementById('logout-form').submit();"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-power-off"
-      }), "Cerrar sesi\xF3n"))))));
-    }
-  }]);
-
-  return Nav;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
 
 /***/ }),
 

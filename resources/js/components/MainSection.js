@@ -19,7 +19,7 @@ export default class MainSection extends Component {
       this.state={
         caseIndex:1,
         colorIndex:0,
-        estampaIndex:0,
+        estampaIndex:1,
         //casePath:""
         modal: false
       }
@@ -35,9 +35,11 @@ export default class MainSection extends Component {
     //   this.getCaseImage();
     // }
 
+    
+
     setCaseImage(caseId){
         this.setState({caseIndex:caseId})
-        // this.getCaseImage()
+        // this.getCaseImage()w
     }
 
     setCaseColor(colorId){
