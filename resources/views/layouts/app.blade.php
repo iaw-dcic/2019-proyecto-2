@@ -36,9 +36,9 @@
                     <!-- Left Side Of Navbar-->
                     <ul class="navbar-nav mr-auto">
                         @guest
-                        <a class="navbar-brand" href="{{ url('/') }}">{{ __('Inicio') }}</a>
+                        <a class="navbar-brand" href="{{ url('/') }}">{{ __('Diseñar') }}</a>
                         @else
-                        <a class="navbar-brand" href="{{ url('/home') }}">{{ __('Inicio') }}</a>
+                        <a class="navbar-brand" href="{{ url('/home') }}">{{ __('Diseñar') }}</a>
                         @endguest
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -72,7 +72,7 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
+                               
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>

@@ -27,7 +27,10 @@ class RemeraController extends Controller
         $nuevaRemera->user_id= 1;
 
         $nuevaRemera->save();
-
+          
         return response()->json([$request->all()]);
     }
+
+
+
 }

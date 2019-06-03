@@ -142,8 +142,9 @@ export default class ShirtImage extends Component {
         }).then(response => {
             console.log(response.data)
         })
-
     }
+
+  
     render() {
         return (
             <section className="pricing py-5">
@@ -234,7 +235,9 @@ export default class ShirtImage extends Component {
 
                                             }
                                         </select>
+                                        <hr width="100%"></hr>
 
+                                       
                                     </div>
                                     <hr></hr>
                                 </div>
