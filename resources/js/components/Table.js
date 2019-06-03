@@ -14,7 +14,8 @@ export default class Table extends Component {
             prodes: [],
             champ: 'empty',
             id: 0,
-            name: 'Nuevo prode'
+            name: 'Nuevo prode',
+            mount: 0
         }
         this.onClickOctavos = this.onClickOctavos.bind(this);
         this.onClickCuartos = this.onClickCuartos.bind(this);
@@ -34,13 +35,6 @@ export default class Table extends Component {
         window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         var self = this;
-        axios.get('/api/octavos')
-         .then(function (response) {
-            self.setState({octavos: response.data})
-         })
-        .catch(function (error) {
-           console.log(error);
-        });
 
         axios.get('/api/teams')
          .then(function (response) {
@@ -49,9 +43,40 @@ export default class Table extends Component {
         .catch(function (error) {
            console.log(error);
         });
+
+        if(localStorage.length == 0){
+            axios.get('/api/octavos')
+             .then(function (response) {
+                self.setState({octavos: response.data})
+             })
+            .catch(function (error) {
+               console.log(error);
+            });
+            self.setState({mount: 1});
+        } else {
+            self.setState({
+                octavos: localStorage.getItem('octavos').split(','),
+                cuartos: localStorage.getItem('cuartos').split(','),
+                semis: localStorage.getItem('semis').split(','),
+                final: localStorage.getItem('final').split(','),
+                champ: localStorage.getItem('champ'),
+                mount: 1
+            });
+        }
     }
 
     render() {
+        if (this.state.mount != 0){
+            if (this.state.id != 0){
+                localStorage.clear();
+            } else {
+                localStorage.setItem('octavos', this.state.octavos);
+                localStorage.setItem('cuartos', this.state.cuartos);
+                localStorage.setItem('semis', this.state.semis);
+                localStorage.setItem('final', this.state.final);
+                localStorage.setItem('champ', this.state.champ);
+            }
+        }
         return (
             <div className="container">
                 <div className="row">    
@@ -65,16 +90,18 @@ export default class Table extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="list-group myDiv">
-                        <a className="list-group-item list-group-item-action active">Mis prodes</a>
-                        {this.state.prodes.map((prode, i) =>
-                            <button type="button"
-                            id = {prode.id} 
-                            className="list-group-item list-group-item-action" 
-                            onClick={this.search}>
-                                {prode.created_at}
-                            </button>
-                        )}
+                    <div className="col-sm myDiv Content border border-primary">
+                        <div className="list-group">
+                            <a className="list-group-item list-group-item-action active">Mis prodes</a>
+                            {this.state.prodes.map((prode, i) =>
+                                <button type="button"
+                                id = {prode.id} 
+                                className="list-group-item list-group-item-action" 
+                                onClick={this.search}>
+                                    {prode.created_at}
+                                </button>
+                            )}
+                        </div>
                     </div>
                     {this.createTableOctavos()}
                     {this.createTableCuartos()}
@@ -91,6 +118,8 @@ export default class Table extends Component {
         let i = 0;
         let children = [];
         let disabled = "";
+
+        children.push(<h1 className="myTitle">octavos de final</h1>)
 
         while (i < 16) {
             if (this.state.cuartos[Math.floor(i/2)] != "")
@@ -113,6 +142,9 @@ export default class Table extends Component {
         let i = 0;
         let children = [];
         let disabled;
+
+        children.push(<h1 className="myTitle cuartos">cuartos de final</h1>)
+
         while (i < 8) {
 
             if (this.state.cuartos[i] == "" || this.state.cuartos[i+1] == "" ||
@@ -136,6 +168,9 @@ export default class Table extends Component {
         let i = 0;
         let children = [];
         let disabled;
+
+        children.push(<h1 className="myTitle semis">semifinales</h1>)
+
         while (i < 4) {
             if (this.state.semis[i] == "" || this.state.semis[i+1] == "" ||
                 this.state.final[Math.floor(i/2)] != "")
@@ -157,6 +192,8 @@ export default class Table extends Component {
         let children = [];
         let disabled;
 
+        children.push(<h1 className="myTitle final">final</h1>)
+
         if (this.state.final[i] == "" || this.state.final[i+1] == "")
             disabled = "disabled";
         else disabled = "";
@@ -173,8 +210,8 @@ export default class Table extends Component {
 
     createChampion(){
         if (this.state.champ != "empty")
-            return <p>Campeón: {this.state.champ}</p>
-        else return <p>Campeón no seleccionado</p>
+            return <div className="myDiv">Campeón: {this.state.champ}</div>
+        else return <div className="myDiv">Campeón no seleccionado</div>
     }
 
     onClickOctavos(e){
