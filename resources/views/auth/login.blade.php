@@ -10,7 +10,7 @@
         <div class="col-lg-10 col-xl-9 mx-auto">
             <div class="card card-signin flex-row my-5">
                 <div class="card-img-left d-none d-md-flex">
-                    <img src="/images/inicio/inicio.jpg" class="d-block w-100" alt="...">
+                    <img src="/images/inicio/principal.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title text-center">Iniciar Sesión</h5>

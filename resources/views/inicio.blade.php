@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-6 col-lg-6 bg-image">
-       <img src="./images/inicio/principal.jpg">
+      <img src="./images/inicio/principal.png">
     </div>
     <div class="col-md-6 col-lg-6">
       <div class="login d-flex align-items-center py-5">
@@ -16,8 +16,11 @@
           <div class="row">
             <!-- Texto de bienvenida -->
             <div class="col-md-9 col-lg-8 mx-auto">
-            <h1 class="login-heading mb-4">Bienvenido</h1>
-             </div>
+              <div class="fondoBienvenida">
+                <h1>Bienvenido</h1>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
