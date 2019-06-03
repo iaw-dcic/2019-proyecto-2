@@ -13,9 +13,7 @@ class AvatarEditor extends Component{
                 currentItem: 'body',
                 max_items: this.props.items.bodyitems.length,
 
-                field_name: '',
-
-                name: this.props.avatar.name,
+                field_name: this.props.avatar.name,
                 body: parseInt(this.props.avatar.body_id/10),
                 head: parseInt(this.props.avatar.head_id/10),
                 upperbody: parseInt(this.props.avatar.upperbody_id/10),
@@ -24,6 +22,7 @@ class AvatarEditor extends Component{
 
                 error: false,
                 status: null,
+                isSaving: false,
             }        
         }else{
             this.state={
@@ -31,8 +30,6 @@ class AvatarEditor extends Component{
                 max_items: this.props.items.bodyitems.length,
 
                 field_name: '',
-
-                name: '',
                 body: 0,
                 head: 0,
                 upperbody: 0,
@@ -41,15 +38,19 @@ class AvatarEditor extends Component{
 
                 error: false,
                 status: null,
+                isSaving: false,
             }
         }
     }
 
 
-    fetchNuevoAvatar(data){
+    fetchAvatar(method,url,data){
         const bearer = 'Bearer ' + this.props.api_token
-        fetch('/api/avatars', { 
-            method: 'POST',
+        console.log("AVATAREDITOR: fetchAvatar(). data=");
+        console.log(data);        
+        console.log("url="+url+" method="+method);
+        fetch(url, { 
+            method: method,
             headers: {
                 'Authorization': bearer, 
                 'Accept': 'application/json'  
@@ -66,74 +67,77 @@ class AvatarEditor extends Component{
                 if (result.errors){
                     this.setState({
                         error: true,
-                        status: result.errors.nombre[0],
+                        status: result.errors,
                     })                  
                 }
                 else if (result.status == 'success'){
+                    console.log("AVATAREDITOR: fetchAvatar() terminado exitosamente");                    
                     this.setState({
                         status: result.status,
                     });
+                    // Uso funcion de padre para resetear el modo
+                    this.props.resetMode();
                 }
             }
         );
     }
 
-    getAvatar(){
-        let avatar = {
-            'name': this.state.name,
-            'body_id': this.state.body,
-            'head_id': this.state.head,
-            'upperbody_id': this.state.upperbody,
-            'lowerbody_id': this.state.lowerbody,
-            'extra_id': this.state.extra,
-        };
-        //console.log("AVATAREDITOR: getAvatar()");
-        //console.log(avatar);        
-        return avatar;
-    }
-
     handleFieldNameChange = (e) => {
         this.setState({ field_name: e.target.value });
-    }   
+    }
+
+    getIDfromIndex(index){
+        // Dado el indice del arreglo
+        // Retorno el ID de la base de datos
+        // Los id son de la forma: 1, 11, 21, 31, 41
+        // Los indices son de la forma: 0 , 1 , 2 , 3, 4
+        if(index == 0){
+            return 1;
+        }
+        else{
+            let id=(index*10)+1;
+            console.log("AVATAREDITOR: getIDfromIndex(). index= "+index+" id="+id);            
+            return id
+        }
+    }
 
     handleSaveAvatar = (e) =>{
         e.preventDefault();
+        console.log("AVATAREDITOR: handleSaveAvatar(). mode="+this.props.mode);
 
-        console.log("AVATAREDITOR: handleSaveAvatar()");
-    }
-
-    handleDeleteAvatar = (e) =>{
-        e.preventDefault();
-
-        console.log("AVATAREDITOR: handleDeleteAvatar()");
-    }
-
-    handleNewAvatar = (e) =>{
-        e.preventDefault();
-        console.log("AVATAREDITOR: handleNewAvatar()");
-        // Obtengo lo ingresado en el campo
-        let new_name = this.state.field_name;     
+        // Validacion de input
+        let name=this.state.field_name;
         if(name.length>32){
             this.setState({
                 error: true,
-                status: 'El nombre no debe ser mayor que 32 caracteres',
+                status: 'El nombre no debe ser contener mas de 32 caracteres',
                 field_name: ''
             })
             return;
         }
-        // Limpio campo nombre
-        this.setState({field_name: ''});
-        // Creo avatar nuevo
-        let newAvatar = {
-            'name': new_name,
-            'body_id': 0,
-            'head_id': 0,
-            'upperbody_id': 0,
-            'lowerbody_id': 0,
-            'extra_id': 0,
-        };
-        // Uso funcion recibida de padre para agregar avatar a la lista
-        this.props.addAvatar(newAvatar);        
+        this.setState({
+            field_name:'',
+            isSaving: true,
+        });
+        
+        let data= new FormData()
+        data.append('name',name);
+        data.append('body_id',this.getIDfromIndex(this.state.body));
+        data.append('head_id',this.getIDfromIndex(this.state.head));
+        data.append('upperbody_id',this.getIDfromIndex(this.state.upperbody));
+        data.append('lowerbody_id',this.getIDfromIndex(this.state.lowerbody));
+        data.append('extra_id',this.getIDfromIndex(this.state.extra))
+
+        console.log("AVATAREDITOR: handleSaveAvatar(). data=");
+        console.log(data);        
+        
+        if(this.props.mode == 'edit'){
+            let url='api/avatars/'+this.props.avatar.id;
+            this.fetchAvatar('PATCH',url,data);
+        }
+        else{
+            this.fetchAvatar('POST','api/avatars',data);
+        }
     }
 
     handleButtonBody = (e) =>{
@@ -276,7 +280,7 @@ class AvatarEditor extends Component{
    
     buttonsAvatarItems(){
         return(
-            <div className="btn-group" role="group" aria-label="Avatar items">
+            <div className="btn-group" role="group" aria-label="avatar items">
             <button type="button" className="btn btn-secondary"
                 onClick={this.handleButtonBody}>Body</button>
             <button type="button" className="btn btn-secondary"
@@ -291,9 +295,9 @@ class AvatarEditor extends Component{
         );
     }
 
-    buttonsChangeItems(){
+    buttonsPrevNextItems(){
         return(
-            <div className="btn-group" role="group" aria-label="Avatar items changers">
+            <div className="btn-group" role="group" aria-label="avatar items prev next">
                 <button type="button" className="btn btn-secondary"
                     onClick={this.handleButtonPrev}>←</button>
                 <button type="button" className="btn btn-secondary"
@@ -302,42 +306,68 @@ class AvatarEditor extends Component{
         );
     }
 
-    formNewSaveDeleteAvatar(){
+    formSaveAvatar(){
         return(
-            <div className="form-group">
-                <form onSubmit={this.handleNewAvatar} >
+            <form onSubmit={this.handleSaveAvatar}>
+                <div className="form-group">
                     <input
-                        placeholder= "Nombre"
+                        type="text"
+                        placeholder="Nombre"
                         onChange={this.handleFieldNameChange}
                         value={this.state.field_name}
                     />
-                    <button type="submit" className="btn btn-primary">
-                        Nuevo
-                    </button>            
-                </form>
-                <button onClick={this.handleSaveAvatar} 
-                    type="button" className="btn btn-primary">
-                    Guardar
+                </div>                
+                <button type="submit" className="btn btn-primary">
+                   Guardar
                 </button>
-                <button onClick={this.handleDeleteAvatar}
-                    type="button" className="btn btn-primary">
-                    Eliminar
-                </button>
-            </div>
+                <Errors 
+                    error={this.error}
+                    message={this.status}
+                />
+            </form>
         )
     }
+
+    getAvatar(){
+        let avatar = {
+            'name': this.state.field_name,
+            'body_id': this.state.body,
+            'head_id': this.state.head,
+            'upperbody_id': this.state.upperbody,
+            'lowerbody_id': this.state.lowerbody,
+            'extra_id': this.state.extra,
+        };     
+        return avatar;
+    }
+
     renderApp(){
-        return(
-            <div>
-                {this.formNewSaveDeleteAvatar()}
-                {this.buttonsChangeItems()}
-                {this.buttonsAvatarItems()}
-                <AvatarShower 
-                    avatar={this.getAvatar()}
-                    items={this.props.items}                  
-                />
-            </div>
-        );
+        if(!this.state.isSaving){
+            return(
+                <div className="row justify-content-center testing">
+                    <div className="col-md-8 testing">
+                        {this.formSaveAvatar()}
+                        <AvatarShower 
+                            avatar={this.getAvatar()}
+                            items={this.props.items}                
+                            renderName={true}
+                            useIDs={false}                    
+                        />
+                        {this.buttonsPrevNextItems()}
+                        {this.buttonsAvatarItems()}                
+                    </div>
+                </div>
+            );
+        }
+        else{
+            // Guardando
+            return(
+                <div className="row justify-content-center testing">                
+                    <div className="col-md-1 testing">
+                        <i className="fa fa-spinner fa-spin loading"/>
+                    </div>
+                </div>
+            );
+        }
     }
 
     render(){

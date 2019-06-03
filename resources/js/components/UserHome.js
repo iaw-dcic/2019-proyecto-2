@@ -84,9 +84,7 @@ class UserHome extends Component {
             return(
                 <div className="row justify-content-center testing">                
                     <div className="col-md-1 testing">
-                        <span>
-                            <i className="fa fa-spinner fa-spin loading"/>
-                        </span>
+                        <i className="fa fa-spinner fa-spin loading"/>
                     </div>
                 </div>
             );

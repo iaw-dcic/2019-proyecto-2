@@ -65803,46 +65803,42 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleSaveAvatar", function (e) {
       e.preventDefault();
-      console.log("AVATAREDITOR: handleSaveAvatar()");
-    });
+      console.log("AVATAREDITOR: handleSaveAvatar(). mode=" + _this.props.mode); // Validacion de input
 
-    _defineProperty(_assertThisInitialized(_this), "handleDeleteAvatar", function (e) {
-      e.preventDefault();
-      console.log("AVATAREDITOR: handleDeleteAvatar()");
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleNewAvatar", function (e) {
-      e.preventDefault();
-      console.log("AVATAREDITOR: handleNewAvatar()"); // Obtengo lo ingresado en el campo
-
-      var new_name = _this.state.field_name;
+      var name = _this.state.field_name;
 
       if (name.length > 32) {
         _this.setState({
           error: true,
-          status: 'El nombre no debe ser mayor que 32 caracteres',
+          status: 'El nombre no debe ser contener mas de 32 caracteres',
           field_name: ''
         });
 
         return;
-      } // Limpio campo nombre
-
+      }
 
       _this.setState({
-        field_name: ''
-      }); // Creo avatar nuevo
+        field_name: '',
+        isSaving: true
+      });
 
+      var data = new FormData();
+      data.append('name', name);
+      data.append('body_id', _this.getIDfromIndex(_this.state.body));
+      data.append('head_id', _this.getIDfromIndex(_this.state.head));
+      data.append('upperbody_id', _this.getIDfromIndex(_this.state.upperbody));
+      data.append('lowerbody_id', _this.getIDfromIndex(_this.state.lowerbody));
+      data.append('extra_id', _this.getIDfromIndex(_this.state.extra));
+      console.log("AVATAREDITOR: handleSaveAvatar(). data=");
+      console.log(data);
 
-      var newAvatar = {
-        'name': new_name,
-        'body_id': 0,
-        'head_id': 0,
-        'upperbody_id': 0,
-        'lowerbody_id': 0,
-        'extra_id': 0
-      }; // Uso funcion recibida de padre para agregar avatar a la lista
+      if (_this.props.mode == 'edit') {
+        var url = 'api/avatars/' + _this.props.avatar.id;
 
-      _this.props.addAvatar(newAvatar);
+        _this.fetchAvatar('PATCH', url, data);
+      } else {
+        _this.fetchAvatar('POST', 'api/avatars', data);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleButtonBody", function (e) {
@@ -66004,29 +66000,29 @@ function (_Component) {
       _this.state = {
         currentItem: 'body',
         max_items: _this.props.items.bodyitems.length,
-        field_name: '',
-        name: _this.props.avatar.name,
+        field_name: _this.props.avatar.name,
         body: parseInt(_this.props.avatar.body_id / 10),
         head: parseInt(_this.props.avatar.head_id / 10),
         upperbody: parseInt(_this.props.avatar.upperbody_id / 10),
         lowerbody: parseInt(_this.props.avatar.lowerbody_id / 10),
         extra: parseInt(_this.props.avatar.extra_id / 10),
         error: false,
-        status: null
+        status: null,
+        isSaving: false
       };
     } else {
       _this.state = {
         currentItem: 'body',
         max_items: _this.props.items.bodyitems.length,
         field_name: '',
-        name: '',
         body: 0,
         head: 0,
         upperbody: 0,
         lowerbody: 0,
         extra: 0,
         error: false,
-        status: null
+        status: null,
+        isSaving: false
       };
     }
 
@@ -66034,13 +66030,16 @@ function (_Component) {
   }
 
   _createClass(AvatarEditor, [{
-    key: "fetchNuevoAvatar",
-    value: function fetchNuevoAvatar(data) {
+    key: "fetchAvatar",
+    value: function fetchAvatar(method, url, data) {
       var _this2 = this;
 
       var bearer = 'Bearer ' + this.props.api_token;
-      fetch('/api/avatars', {
-        method: 'POST',
+      console.log("AVATAREDITOR: fetchAvatar(). data=");
+      console.log(data);
+      console.log("url=" + url + " method=" + method);
+      fetch(url, {
+        method: method,
         headers: {
           'Authorization': bearer,
           'Accept': 'application/json'
@@ -66052,29 +66051,34 @@ function (_Component) {
         if (result.errors) {
           _this2.setState({
             error: true,
-            status: result.errors.nombre[0]
+            status: result.errors
           });
         } else if (result.status == 'success') {
+          console.log("AVATAREDITOR: fetchAvatar() terminado exitosamente");
+
           _this2.setState({
             status: result.status
-          });
+          }); // Uso funcion de padre para resetear el modo
+
+
+          _this2.props.resetMode();
         }
       });
     }
   }, {
-    key: "getAvatar",
-    value: function getAvatar() {
-      var avatar = {
-        'name': this.state.name,
-        'body_id': this.state.body,
-        'head_id': this.state.head,
-        'upperbody_id': this.state.upperbody,
-        'lowerbody_id': this.state.lowerbody,
-        'extra_id': this.state.extra
-      }; //console.log("AVATAREDITOR: getAvatar()");
-      //console.log(avatar);        
-
-      return avatar;
+    key: "getIDfromIndex",
+    value: function getIDfromIndex(index) {
+      // Dado el indice del arreglo
+      // Retorno el ID de la base de datos
+      // Los id son de la forma: 1, 11, 21, 31, 41
+      // Los indices son de la forma: 0 , 1 , 2 , 3, 4
+      if (index == 0) {
+        return 1;
+      } else {
+        var id = index * 10 + 1;
+        console.log("AVATAREDITOR: getIDfromIndex(). index= " + index + " id=" + id);
+        return id;
+      }
     }
   }, {
     key: "buttonsAvatarItems",
@@ -66082,7 +66086,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group",
         role: "group",
-        "aria-label": "Avatar items"
+        "aria-label": "avatar items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-secondary",
@@ -66106,12 +66110,12 @@ function (_Component) {
       }, "Extra"));
     }
   }, {
-    key: "buttonsChangeItems",
-    value: function buttonsChangeItems() {
+    key: "buttonsPrevNextItems",
+    value: function buttonsPrevNextItems() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group",
         role: "group",
-        "aria-label": "Avatar items changers"
+        "aria-label": "avatar items prev next"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-secondary",
@@ -66123,36 +66127,62 @@ function (_Component) {
       }, "\u2192"));
     }
   }, {
-    key: "formNewSaveDeleteAvatar",
-    value: function formNewSaveDeleteAvatar() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    key: "formSaveAvatar",
+    value: function formSaveAvatar() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSaveAvatar
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleNewAvatar
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
         placeholder: "Nombre",
         onChange: this.handleFieldNameChange,
         value: this.state.field_name
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "Nuevo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleSaveAvatar,
-        type: "button",
-        className: "btn btn-primary"
-      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleDeleteAvatar,
-        type: "button",
-        className: "btn btn-primary"
-      }, "Eliminar"));
+      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        error: this.error,
+        message: this.status
+      }));
+    }
+  }, {
+    key: "getAvatar",
+    value: function getAvatar() {
+      var avatar = {
+        'name': this.state.field_name,
+        'body_id': this.state.body,
+        'head_id': this.state.head,
+        'upperbody_id': this.state.upperbody,
+        'lowerbody_id': this.state.lowerbody,
+        'extra_id': this.state.extra
+      };
+      return avatar;
     }
   }, {
     key: "renderApp",
     value: function renderApp() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.formNewSaveDeleteAvatar(), this.buttonsChangeItems(), this.buttonsAvatarItems(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        avatar: this.getAvatar(),
-        items: this.props.items
-      }));
+      if (!this.state.isSaving) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row justify-content-center testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-8 testing"
+        }, this.formSaveAvatar(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          avatar: this.getAvatar(),
+          items: this.props.items,
+          renderName: true,
+          useIDs: false
+        }), this.buttonsPrevNextItems(), this.buttonsAvatarItems()));
+      } else {
+        // Guardando
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row justify-content-center testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-1 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-spinner fa-spin loading"
+        })));
+      }
     }
   }, {
     key: "render",
@@ -66549,6 +66579,15 @@ function (_Component) {
       e.preventDefault(); // TODO
     });
 
+    _defineProperty(_assertThisInitialized(_this), "resetMode", function () {
+      _this.setState(function (state) {
+        return {
+          isCreating: false,
+          isEditing: false
+        };
+      });
+    });
+
     _this.state = {
       status: null,
       error: false,
@@ -66678,14 +66717,16 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
           items: this.props.items,
           api_token: this.props.api_token,
-          mode: 'create'
+          mode: 'create',
+          resetMode: this.resetMode
         });
       } else if (this.state.isEditing) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
           items: this.props.items,
           api_token: this.props.api_token,
           avatar: this.state.selectedAvatar,
-          mode: 'edit'
+          mode: 'edit',
+          resetMode: this.resetMode
         });
       } else {
         return (// No esta editando ni creando
@@ -66855,9 +66896,9 @@ function (_Component) {
           className: "row justify-content-center testing"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-md-1 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fa fa-spinner fa-spin loading"
-        }))));
+        })));
       }
     }
   }, {

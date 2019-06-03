@@ -148,6 +148,13 @@ class UserAvatars extends Component{
         // TODO
     }
 
+    resetMode = () => {
+        this.setState(state => ({
+          isCreating: false,
+          isEditing: false,
+        }));
+      }
+
     renderButtonDeleteAvatar(){
         return(
             <button onClick={this.handleButtonDeleteAvatar} 
@@ -179,7 +186,8 @@ class UserAvatars extends Component{
                 <AvatarEditor 
                     items={this.props.items}
                     api_token={this.props.api_token}
-                    mode={'create'}                                        
+                    mode={'create'}
+                    resetMode={this.resetMode}
                 />
             );
         }
@@ -189,7 +197,8 @@ class UserAvatars extends Component{
                     items={this.props.items}
                     api_token={this.props.api_token}
                     avatar={this.state.selectedAvatar}
-                    mode={'edit'}                                        
+                    mode={'edit'}
+                    resetMode={this.resetMode}
                 />
             );
         }
