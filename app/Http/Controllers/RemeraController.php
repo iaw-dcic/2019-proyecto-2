@@ -38,7 +38,8 @@ class RemeraController extends Controller
 
     public function misDiseños()
     {
-        $remeras = Shirt::where('user_id',1)->get();
+        $userId = auth('api')->user()->id;
+        $remeras = Shirt::where('user_id',$userId)->get();
         $arreglo = [];
 
         foreach($remeras as $remera){
@@ -50,5 +51,16 @@ class RemeraController extends Controller
         else
             return abort(404);
     }
-
+ 
+    public function delete($id)
+    {
+        $userId = auth('api')->user()->id;
+        $remera = Shirt::where('user_id',$userId)->where('id',$id)->get()->first();
+        if ($remera==null){
+            abort(403,'No esta autorizado');
+        }
+       
+        $remera->delete();
+        return response()->json('OK',200);
+    }
 }

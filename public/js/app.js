@@ -65911,8 +65911,31 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios.get('/api/misDiseños/{1}').then(function (response) {
+      axios.get('/api/misDiseños').then(function (response) {
         _this2.setState({
+          misDiseños: response.data
+        });
+      });
+    }
+  }, {
+    key: "borrarRemera",
+    value: function borrarRemera(e, idRemera) {
+      try {
+        axios["delete"]('/api/borrarRemera/' + idRemera).then(function (response) {
+          console.log(response);
+        });
+        this.recargar();
+      } catch (e) {
+        console.log('Error Axios', e);
+      }
+    }
+  }, {
+    key: "recargar",
+    value: function recargar() {
+      var _this3 = this;
+
+      axios.get('/api/misDiseños').then(function (response) {
+        _this3.setState({
           misDiseños: response.data
         });
       });
@@ -65920,6 +65943,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pricing py-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65938,7 +65963,7 @@ function (_Component) {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-MisDise\xF1osRemeras"
-      }, this.state.misDiseños.map(function (item) {
+      }, this.state.misDiseños.map(function (item, id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-lg-3 col-md-4 col-sm-6 mb-4"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65956,7 +65981,7 @@ function (_Component) {
           className: "card-title"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "#"
-        }, "Dise\xF1o: ", item.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, "Dise\xF1o: ", id + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "card-text"
         }, "Talle: ", item.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "card-text"
@@ -65965,6 +65990,9 @@ function (_Component) {
           className: "btn btn-outline-success"
         }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
+          onClick: function onClick(e) {
+            return _this4.borrarRemera(e, item.id);
+          },
           className: "btn btn-outline-danger"
         }, "Borrar"))));
       }))))))));

@@ -12,7 +12,28 @@ export default class MisDiseños extends Component {
         }
     }
     componentDidMount() {
-        axios.get('/api/misDiseños/{1}').then(response => {
+        axios.get('/api/misDiseños').then(response => {
+            this.setState({
+                misDiseños: response.data
+            })
+        });
+    }
+
+    borrarRemera(e, idRemera) {
+        try {
+            axios.delete('/api/borrarRemera/' + idRemera)
+                .then(response => {
+                    console.log(response)
+                });
+            this.recargar();
+        }
+        catch (e) { 
+            console.log('Error Axios',e);
+        }
+    }
+
+    recargar(){
+        axios.get('/api/misDiseños').then(response => {
             this.setState({
                 misDiseños: response.data
             })
@@ -33,7 +54,7 @@ export default class MisDiseños extends Component {
 
                                     <div className="container-MisDiseñosRemeras">
                                         {
-                                            this.state.misDiseños.map((item) => (
+                                            this.state.misDiseños.map((item, id) => (
                                                 <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
                                                     <div className="card h-100">
                                                         <img className="card-img-top" src={"/images/remeras/" + item.color + ".png"}></img>
@@ -42,12 +63,12 @@ export default class MisDiseños extends Component {
                                                         }
                                                         <div className="card-body">
                                                             <h4 className="card-title">
-                                                                <a href="#">Diseño: {item.id}</a>
+                                                                <a href="#">Diseño: {id + 1}</a>
                                                             </h4>
                                                             <p className="card-text">Talle: {item.talle} </p>
                                                             <p className="card-text">Tela: {item.tela}</p>
                                                             <button type="button" className="btn btn-outline-success">Editar</button>
-                                                            <button type="button" className="btn btn-outline-danger">Borrar</button>
+                                                            <button type="button" onClick={(e) => this.borrarRemera(e, item.id)} className="btn btn-outline-danger">Borrar</button>
                                                         </div>
                                                     </div>
                                                 </div>
