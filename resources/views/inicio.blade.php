@@ -16,7 +16,7 @@
           <div class="row">
             <!-- Texto de bienvenida -->
             <div class="col-md-9 col-lg-8 mx-auto">
-              <h1 class="login-heading mb-4">Diseña tu remera</h1>
+              <h1 >Diseña tu remera</h1>
              </div>
           </div>
         </div>
