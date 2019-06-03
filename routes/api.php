@@ -28,6 +28,6 @@ Route::get('/logos','VistaDiseñarController@listadoLogos');
 Route::post('/crearDiseño','RemeraController@store');
 //Mostrar mis remeras
 Route::get('/misDiseños','RemeraController@MisDiseños');
-
+//Borrar remera 
 Route::delete('/borrarRemera/{id}','RemeraController@delete');
 

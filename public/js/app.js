@@ -65965,6 +65965,7 @@ function (_Component) {
         className: "container-MisDise\xF1osRemeras"
       }, this.state.misDiseños.map(function (item, id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: item.id,
           className: "col-lg-3 col-md-4 col-sm-6 mb-4"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card h-100"

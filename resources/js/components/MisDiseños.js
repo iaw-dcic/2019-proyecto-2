@@ -55,11 +55,11 @@ export default class MisDiseños extends Component {
                                     <div className="container-MisDiseñosRemeras">
                                         {
                                             this.state.misDiseños.map((item, id) => (
-                                                <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                                <div key={item.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
                                                     <div className="card h-100">
-                                                        <img className="card-img-top" src={"/images/remeras/" + item.color + ".png"}></img>
+                                                        <img  className="card-img-top" src={"/images/remeras/" + item.color + ".png"}></img>
                                                         {item.logo != "" &&
-                                                            <img height="100" src={"/images/logos/" + item.logo + ".png"} id="imagenLogo2"></img>
+                                                            <img  height="100" src={"/images/logos/" + item.logo + ".png"} id="imagenLogo2"></img>
                                                         }
                                                         <div className="card-body">
                                                             <h4 className="card-title">
