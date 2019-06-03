@@ -10,6 +10,18 @@
     height: 550px;
   }
 
+  img.medioSabor{
+    position: absolute;;
+    width: 550px;
+    height: 550px;
+  }
+
+  img.chico{
+    position:absolute;
+    width: 350px;
+    height: 350px;
+  }
+
   #box {
     position: relative;
   }

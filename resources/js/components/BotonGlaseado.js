@@ -1,36 +1,44 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import EditarDonut from './EditarDonut'
 
-class BotonGlaseado extends React.Component{
-    constructor(props){
-        super(props)
-    }
-   
-    handleClick = (e) => {
-        console.log(e.currentTarget.value);
-        console.log();
-        const donut = { ...this.props.donut };
-        donut[e.currentTarget.name] = e.currentTarget.value;
-        this.props.actualizarDonuts(this.props.clave, donut);
-    };    
+class BotonGlaseado extends React.Component {
 
-    render() {
-        return (            
-                <button
-	                type="button"
-	                className="btn"
-	                name="glaseado"
-	                value={this.props.glaseado.url}
-	                onClick={this.handleClick}
-                >
-	            <img className="donasbotones" src={this.props.glaseado.url} />
-	            
-                </button>
-    
-            
-        );
+constructor(){
+    super()
+
+    this.state={
+        glaseados:[]
     }
 }
 
-export default BotonGlaseado;
+componentWillMount(){
+    this.loadGlaseado();
+}
 
+loadGlaseado(){
+    fetch('/api/glaseados').then(
+        (response)=>{
+            return response.json();
+        }   )
+    .then(glaseados => {
+        this.setState({ glaseados : glaseados });
+    });
+}
+
+render() {
+    return (
+        <div>
+            {
+                this.state.glaseados.map(glaseado => 
+                    <EditarDonut
+                        donut = {glaseado}
+                        name = "glaseado"
+                        onClick={() => this.props.onClick(glaseado.id, glaseado.url)}
+                    />
+                    )
+            }
+        </div>
+    );
+}
+}
+export default BotonGlaseado;

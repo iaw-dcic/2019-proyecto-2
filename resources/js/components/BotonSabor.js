@@ -1,36 +1,44 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import EditarDonut from './EditarDonut'
 
-class BotonSabor extends React.Component {
-    constructor(props){
-        super(props)
-    }
-   
-    handleClick = (e) => {
-        console.log(e.currentTarget.value);
-        console.log();
-        const donut = { ...this.props.donut };
-        donut[e.currentTarget.name] = e.currentTarget.value;
-        this.props.actualizarDonuts(this.props.clave, donut);
-    };    
+class BotonSabor extends  React.Component {
 
-    render() {
-        return (            
-                <button
-	                type="button"
-	                className="btn"
-	                name="sabor"
-	                value={this.props.sabor.url}
-	                onClick={this.handleClick}
-                >
-	            <img className="donasbotones" src={this.props.sabor.url} />
-	            <br />{this.props.sabor.nombre}
-                </button>
-    
-            
-        );
+constructor(){
+    super()
+
+    this.state={
+        sabores:[]
     }
 }
 
+componentWillMount(){
+    this.loadSabor();
+}
 
+loadSabor(){
+    fetch('/api/sabores').then(
+        (response)=>{
+            return response.json();
+        }   )
+    .then(sabores => {
+        this.setState({ sabores : sabores });
+    });
+}
+
+render() {
+    return (
+        <div>
+            {
+                this.state.sabores.map(sabor => 
+                    <EditarDonut
+                        donut = {sabor}
+                        name = "sabor"
+                        onClick={() => this.props.onClick(sabor.id, sabor.url)}
+                    />
+                    )
+            }
+        </div>
+    );
+}
+}
 export default BotonSabor;

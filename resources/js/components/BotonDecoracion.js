@@ -1,35 +1,44 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import EditarDonut from './EditarDonut'
 
-class BotonDecoracion extends React.Component{
-    constructor(props){
-        super(props)
-    }
-   
-    handleClick = (e) => {
-        console.log(e.currentTarget.value);
-        console.log();
-        const donut = { ...this.props.donut };
-        donut[e.currentTarget.name] = e.currentTarget.value;
-        this.props.actualizarDonuts(this.props.clave, donut);
-    };    
+class BotonDecoracion extends React.Component {
 
-    render() {
-        return (            
-                <button
-	                type="button"
-	                className="btn"
-	                name="decoracion"
-	                value={this.props.decoracion.url}
-	                onClick={this.handleClick}
-                >
-	            <img className="donasbotones" src={this.props.decoracion.url} />
-	            
-                </button>
-    
-            
-        );
+constructor(){
+    super()
+
+    this.state={
+        decoraciones:[]
     }
 }
 
+componentWillMount(){
+    this.loadDecoracion();
+}
+
+loadDecoracion(){
+    fetch('/api/decoraciones').then(
+        (response)=>{
+            return response.json();
+        }   )
+    .then(decoraciones => {
+        this.setState({ decoraciones : decoraciones });
+    });
+}
+
+render() {
+    return (
+        <div>
+            {
+                this.state.decoraciones.map(decoracion => 
+                <EditarDonut
+                    donut = {decoracion}
+                    name = "decoracion"
+                    onClick={() => this.props.onClick(decoracion.id,decoracion.url)}
+                />
+                )
+            }
+        </div>
+    );
+}
+}
 export default BotonDecoracion;
