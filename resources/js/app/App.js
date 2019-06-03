@@ -217,7 +217,6 @@ export default class App extends Component {
                         </>
                 }
 
-
                 <Container className="container pt-5 text-center">
                     <h1>Copa Libertadores</h1><hr/>
                 </Container>

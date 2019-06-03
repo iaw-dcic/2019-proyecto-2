@@ -88177,9 +88177,10 @@ function _login() {
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
-            console.log("Error API , POST de createProde: ".concat(_context.t0));
+            console.log("Error API , POST de login: ".concat(_context.t0));
+            return _context.abrupt("return", 401);
 
-          case 11:
+          case 12:
           case "end":
             return _context.stop();
         }
@@ -89232,7 +89233,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
     _this.state = {
       email: "",
-      password: ""
+      password: "",
+      showingAlert: false
     };
     _this.validateForm = _this.validateForm.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -89267,13 +89269,13 @@ function (_Component) {
 
               case 3:
                 response = _context.sent;
-                token = response.token;
 
-                if (!(token != null)) {
+                if (!(response !== 401)) {
                   _context.next = 11;
                   break;
                 }
 
+                token = response.token;
                 _context.next = 8;
                 return local_storage__WEBPACK_IMPORTED_MODULE_5___default.a.set('userToken', token);
 
@@ -89283,7 +89285,9 @@ function (_Component) {
                 break;
 
               case 11:
-                console.log("Error al Iniciar Sesion");
+                this.setState({
+                  showingAlert: true
+                });
 
               case 12:
               case "end":
@@ -89325,7 +89329,14 @@ function (_Component) {
         block: true,
         disabled: !this.validateForm(),
         type: "submit"
-      }, "Login")));
+      }, "Login"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.showingAlert ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "alert alert-danger text-center ".concat(this.state.showingAlert ? 'alert-hidden' : 'alert-hidden')
+      }, "Usuario o contrase\xF1a incorrecta") : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        href: "/password/reset",
+        className: "stretched-link"
+      }, "Olvid\xF3 su contrase\xF1a?"))));
     }
   }]);
 

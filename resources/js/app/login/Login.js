@@ -12,7 +12,8 @@ export default class Login extends Component {
 
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            showingAlert: false,
         };
 
         this.validateForm=this.validateForm.bind(this);
@@ -36,16 +37,18 @@ export default class Login extends Component {
 
         const response = await login(this.state.email,this.state.password);
 
-        const token = response.token;
+        if(response !== 401){
 
-        if(token!= null){
+            const token = response.token;
 
             await localStorage.set('userToken',token);
             this.props.authenticate();
 
         }
         else
-            console.log("Error al Iniciar Sesion");
+            this.setState({ showingAlert : true })
+
+
     }
 
     render() {
@@ -82,7 +85,25 @@ export default class Login extends Component {
                     >
                         Login
                     </Button>
+
+                    <br/>
+
+                    {
+                        this.state.showingAlert ?
+                            <div className={`alert alert-danger text-center ${this.state.showingAlert ? 'alert-hidden' : 'alert-hidden'}`}>
+                                 Usuario o contraseña incorrecta
+                            </div>
+                            :
+                            <>
+                            </>
+                    }
+
+                    <div className="text-center">
+                        <a href='/password/reset' className="stretched-link">Olvidó su contraseña?</a>
+                    </div>
+
                 </form>
+
             </div>
         );
     }

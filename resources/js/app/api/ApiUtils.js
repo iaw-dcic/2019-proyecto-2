@@ -17,7 +17,8 @@ export async function login(email,password) {
         return response.data;
 
     } catch (e) {
-        console.log(`Error API , POST de createProde: ${e}`);
+        console.log(`Error API , POST de login: ${e}`);
+        return 401;
     }
 }
 
