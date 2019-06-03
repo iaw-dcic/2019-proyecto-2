@@ -75,17 +75,20 @@ class AvatarController extends Controller
             // Coinciden los tokens
             // Valido la entrada
             $datos = $request->validate([
-                'nombre' => 'string|max:32',
+                'name' => 'string|max:32',
             ]);
 
             // Creo nuevo avatar
             $avatar = new Avatar;
-            $avatar->name = $datos['nombre'];
+            $avatar->name = $datos['name'];
+            $avatar->body_id= $request->get('body_id');
+            $avatar->head_id= $request->get('head_id');
+            $avatar->upperbody_id= $request->get('upperbody_id');
+            $avatar->lowerbody_id= $request->get('lowerbody_id');
+            $avatar->extra_id= $request->get('extra_id');
             
             // Guardo avatar
             $user->avatars()->save($avatar);
-            
-            
             
             $json = [
                 'status' => 'success',
@@ -103,15 +106,13 @@ class AvatarController extends Controller
      * RESTFULL: GET 1
      * 
      * @param  int  $id
-     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $user)
+    public function show($id, Request $request)
     {
         return response()->json([
-            'user' => User::find($user),
-            'item' => User::find($user)->avatars()->find($id), //puede acortarse
             'status' => 'success',
+            'data' => User::find($user)->avatars()->find($id)->getAttributes(),
         ],200);
     }
 
@@ -122,13 +123,54 @@ class AvatarController extends Controller
      * RESTFULL: PATCH
      * 
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function update($user, $id, Request $request)
+    public function update($id,Request $request)
     {
-        //
+        // Obtengo el bearer token que envie en el header
+        $api_token = $request->bearerToken();
+
+        // Obtengo el user
+        $user = auth()->user();        
+
+        // Comparo si coinciden los tokens
+        if($api_token != $user->api_token){
+            // Si no coinciden los tokens
+            $json = [
+                'status' => 'failed',
+            ];
+            return response()->json($datos, 401);
+        }
+        else{
+           // Coinciden los tokens
+           // Valido la entrada
+           
+           $datos = $request->validate([
+               'name' => 'string|max:32',
+           ]);
+
+           // TODO: Deberia checkear que los id coinciden? 
+
+           // Obtengo avatar y edito
+           $avatar=$user->avatars()->find($id);
+           $avatar->name = $datos['name'];
+           $avatar->body_id= $request->get('body_id');
+           $avatar->head_id= $request->get('head_id');
+           $avatar->upperbody_id= $request->get('upperbody_id');
+           $avatar->lowerbody_id= $request->get('lowerbody_id');
+           $avatar->extra_id= $request->get('extra_id');
+           
+           // Guardo avatar
+           $user->avatars()->save($avatar);
+           
+           $json = [
+               'status' => 'success',
+               'data' => [
+                   'avatar' => ($avatar->getAttributes()),
+                   ]
+               ];
+           return response()->json($json, 200);
+        }
     }
 
     /**
@@ -140,8 +182,35 @@ class AvatarController extends Controller
      * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user, $id)
+    public function destroy($id, Request $request)
     {
-        //
+        // Obtengo el bearer token que envie en el header
+        $api_token = $request->bearerToken();
+
+        // Obtengo el user
+        $user = auth()->user();        
+
+        // Comparo si coinciden los tokens
+        if($api_token != $user->api_token){
+            // Si no coinciden los tokens
+            $json = [
+                'status' => 'failed',
+            ];
+            return response()->json($datos, 401);
+        }
+        else{
+           // Coinciden los tokens
+
+           // Obtengo avatar
+           $avatar=$user->avatars()->find($id);
+
+           // Elimino
+           $avatar->delete();
+           
+           $json = [
+               'status' => 'success',
+               ];
+           return response()->json($json, 200);
+        }
     }
 }

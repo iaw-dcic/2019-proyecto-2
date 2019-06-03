@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import AvatarEditor from './Avatars/AvatarEditor'
 import AvatarShower from './Avatars/AvatarShower'
+import Errors from './Errors'
 
 class UserAvatars extends Component{
 
@@ -14,15 +15,53 @@ class UserAvatars extends Component{
 
             avatars: [],
             selectedAvatar: null,
+            selectedAvatarIndex: 0,
             isCreating: false,
             isEditing: false,
         }
         this.fetchAvatars();
     }
 
+    fetchDeleteAvatar(url){
+        const bearer = 'Bearer ' + this.props.api_token
+        console.log("USERAVATARS: deleting avatar");
+        fetch(url, { 
+            method: 'DELETE',
+            headers: {
+                'Authorization': bearer, 
+                'Accept': 'application/json'  
+            }
+        })
+        .then( 
+            (response) => { 
+                return response.json();
+            }
+        )
+        .then(
+            (result) => {
+                if (result.message){
+                    this.setState({
+                            status: result.message,
+                            error: true,
+                            didDelete: false,
+                        }
+                    );
+                }
+                else{
+                    this.setState({
+                            status: result.status,
+                            didDelete: true,
+                        }
+                    );
+                }
+                console.log("USERAVATARS: deleting avatar finished");
+            },
+        ); 
+    }
+
     fetchAvatars(){
         const bearer = 'Bearer ' + this.props.api_token
-        console.log("USERAVATARS: Fetching user avatars");        
+        console.log("USERAVATARS: fetching user avatars");        
         fetch('/api/avatars', { 
             method: 'GET',
             headers: {
@@ -54,11 +93,10 @@ class UserAvatars extends Component{
                         }
                     );
                 }
-                console.log("USERAVATARS: Fetching user avatars finished");
+                console.log("USERAVATARS: fetching user avatars finished");
             },
         );        
-    }   
-
+    }
 
     handleAvatarClick = (e) =>{
         e.preventDefault();
@@ -66,48 +104,8 @@ class UserAvatars extends Component{
         const avatar= this.state.avatars[indice];        
         this.setState({
             selectedAvatar: avatar,
+            selectedAvatarIndex: indice,
         });
-    }
-
-    addAvatar = (newAvatar) => {        
-        this.setState(state => ({
-            avatars : state.avatars.concat(newAvatar),
-            selectedAvatar: newAvatar,
-        }));
-    }
-    
-
-    renderAvatarList(){
-        if(this.state.avatars.length>0){
-            return(
-                <div className="col-md-4 testing">
-                    <h5>Tus avatares: </h5>
-                    <ul>
-                        {this.state.avatars.map((item,index) => 
-                        <li key={index}>
-                            <a href="#" id={index} onClick={this.handleAvatarClick}>{item.name}</a>
-                        </li>
-                        )}
-                    </ul>
-                    {this.renderButtonNewAvatar('Nuevo','btn btn-primary')}
-                </div>
-            );
-        }
-        else{
-            // User no tiene avatares
-            return(
-                <div className="col-md-4 testing">
-                    <div className="jumbotron testing">
-                        <h1 className="display-4">:(</h1>
-                        <p className="lead">Aún no tienes avatares.</p>
-                        <p className="lead">Por qué no creas uno?.</p>
-                        <p className="lead">
-                            {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg')}
-                        </p>
-                    </div>                    
-                </div>
-            );
-        }
     }
 
     handleButtonNewAvatar = (e) =>{
@@ -145,15 +143,76 @@ class UserAvatars extends Component{
 
     handleButtonDeleteAvatar = (e) =>{
         e.preventDefault();
-        // TODO
+
+        let url= 'api/avatars/'+this.state.selectedAvatar.id;
+        let index=this.state.selectedAvatarIndex
+        let newAvatars= [...this.state.avatars];
+        newAvatars.splice(index, 1);
+        this.fetchDeleteAvatar(url);
+        this.setState( (prevState) =>({
+            avatars: newAvatars,
+            selectedAvatar: null,
+        }))
+
+
     }
 
-    resetMode = () => {
-        this.setState(state => ({
-          isCreating: false,
-          isEditing: false,
-        }));
-      }
+    resetMode = (avatar) => {
+        if(this.state.isCreating){
+            this.setState(state => ({
+                isCreating: false,
+                isEditing: false,
+                avatars: state.avatars.concat(avatar),
+            }));
+        }
+        else{
+            let newAvatars = this.state.avatars;
+            newAvatars[this.state.selectedAvatarIndex] = avatar;            
+            this.setState( state => ({
+                    isCreating: false,
+                    isEditing: false,
+                    avatars: newAvatars,
+                    selectedAvatar: avatar,
+            }));
+        }
+    }
+
+    renderAvatarList(){
+        if(this.state.avatars.length>0){
+            return(
+                <div className="col-md-4 testing">
+                    <h5>Tus avatares: </h5>
+                    <ul>
+                        {this.state.avatars.map((item,index) => 
+                        <li key={index}>
+                            <a href="#" id={index} onClick={this.handleAvatarClick}>{item.name}</a>
+                        </li>
+                        )}
+                    </ul>
+                    {this.renderButtonNewAvatar('Nuevo','btn btn-primary')}
+                    <Errors 
+                        error={this.state.error}
+                        message={this.state.status}
+                    />
+                </div>
+            );
+        }
+        else{
+            // User no tiene avatares
+            return(
+                <div className="col-md-4 testing">
+                    <div className="jumbotron testing">
+                        <h1 className="display-4">:(</h1>
+                        <p className="lead">Aún no tienes avatares.</p>
+                        <p className="lead">Por qué no creas uno?.</p>
+                        <p className="lead">
+                            {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg')}
+                        </p>
+                    </div>                    
+                </div>
+            );
+        }
+    }
 
     renderButtonDeleteAvatar(){
         return(
@@ -207,6 +266,7 @@ class UserAvatars extends Component{
                 // No esta editando ni creando
                 <div className="row justify-content-center testing">
                         {this.renderAvatarList()}
+                        
                         {this.renderAvatarShower()}
                 </div>
             )

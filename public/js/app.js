@@ -65802,8 +65802,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSaveAvatar", function (e) {
-      e.preventDefault();
-      console.log("AVATAREDITOR: handleSaveAvatar(). mode=" + _this.props.mode); // Validacion de input
+      e.preventDefault(); // Validacion de input
 
       var name = _this.state.field_name;
 
@@ -65829,13 +65828,12 @@ function (_Component) {
       data.append('upperbody_id', _this.getIDfromIndex(_this.state.upperbody));
       data.append('lowerbody_id', _this.getIDfromIndex(_this.state.lowerbody));
       data.append('extra_id', _this.getIDfromIndex(_this.state.extra));
-      console.log("AVATAREDITOR: handleSaveAvatar(). data=");
-      console.log(data);
 
       if (_this.props.mode == 'edit') {
+        data.append("_method", 'PATCH');
         var url = 'api/avatars/' + _this.props.avatar.id;
 
-        _this.fetchAvatar('PATCH', url, data);
+        _this.fetchAvatar('POST', url, data);
       } else {
         _this.fetchAvatar('POST', 'api/avatars', data);
       }
@@ -65931,9 +65929,8 @@ function (_Component) {
 
           break;
       } //console.log("AVATAREDITOR: handleButtonPrev()");        
+      //console.log(this.state.currentItem+": "+index);           
 
-
-      console.log(_this.state.currentItem + ": " + index);
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleButtonNext", function (e) {
@@ -65991,9 +65988,8 @@ function (_Component) {
 
           break;
       } //console.log("AVATAREDITOR: handleButtonNext()");        
+      //console.log(this.state.currentItem+": "+index);        
 
-
-      console.log(_this.state.currentItem + ": " + index);
     });
 
     if (_this.props.mode == 'edit') {
@@ -66035,9 +66031,7 @@ function (_Component) {
       var _this2 = this;
 
       var bearer = 'Bearer ' + this.props.api_token;
-      console.log("AVATAREDITOR: fetchAvatar(). data=");
-      console.log(data);
-      console.log("url=" + url + " method=" + method);
+      console.log("AVATAREDITOR: posting avatar");
       fetch(url, {
         method: method,
         headers: {
@@ -66054,14 +66048,14 @@ function (_Component) {
             status: result.errors
           });
         } else if (result.status == 'success') {
-          console.log("AVATAREDITOR: fetchAvatar() terminado exitosamente");
+          console.log("AVATAREDITOR: posting avatar finished");
 
           _this2.setState({
             status: result.status
           }); // Uso funcion de padre para resetear el modo
 
 
-          _this2.props.resetMode();
+          _this2.props.resetMode(result.data.avatar);
         }
       });
     }
@@ -66076,7 +66070,6 @@ function (_Component) {
         return 1;
       } else {
         var id = index * 10 + 1;
-        console.log("AVATAREDITOR: getIDfromIndex(). index= " + index + " id=" + id);
         return id;
       }
     }
@@ -66502,7 +66495,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Avatars/AvatarEditor */ "./resources/js/components/Avatars/AvatarEditor.js");
 /* harmony import */ var _Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Avatars/AvatarShower */ "./resources/js/components/Avatars/AvatarShower.js");
+/* harmony import */ var _Errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Errors */ "./resources/js/components/Errors.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -66526,6 +66528,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var UserAvatars =
 /*#__PURE__*/
 function (_Component) {
@@ -66544,16 +66547,8 @@ function (_Component) {
       var avatar = _this.state.avatars[indice];
 
       _this.setState({
-        selectedAvatar: avatar
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "addAvatar", function (newAvatar) {
-      _this.setState(function (state) {
-        return {
-          avatars: state.avatars.concat(newAvatar),
-          selectedAvatar: newAvatar
-        };
+        selectedAvatar: avatar,
+        selectedAvatarIndex: indice
       });
     });
 
@@ -66576,16 +66571,46 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleButtonDeleteAvatar", function (e) {
-      e.preventDefault(); // TODO
-    });
+      e.preventDefault();
+      var url = 'api/avatars/' + _this.state.selectedAvatar.id;
+      var index = _this.state.selectedAvatarIndex;
 
-    _defineProperty(_assertThisInitialized(_this), "resetMode", function () {
-      _this.setState(function (state) {
+      var newAvatars = _toConsumableArray(_this.state.avatars);
+
+      newAvatars.splice(index, 1);
+
+      _this.fetchDeleteAvatar(url);
+
+      _this.setState(function (prevState) {
         return {
-          isCreating: false,
-          isEditing: false
+          avatars: newAvatars,
+          selectedAvatar: null
         };
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "resetMode", function (avatar) {
+      if (_this.state.isCreating) {
+        _this.setState(function (state) {
+          return {
+            isCreating: false,
+            isEditing: false,
+            avatars: state.avatars.concat(avatar)
+          };
+        });
+      } else {
+        var newAvatars = _this.state.avatars;
+        newAvatars[_this.state.selectedAvatarIndex] = avatar;
+
+        _this.setState(function (state) {
+          return {
+            isCreating: false,
+            isEditing: false,
+            avatars: newAvatars,
+            selectedAvatar: avatar
+          };
+        });
+      }
     });
 
     _this.state = {
@@ -66594,6 +66619,7 @@ function (_Component) {
       isLoaded: false,
       avatars: [],
       selectedAvatar: null,
+      selectedAvatarIndex: 0,
       isCreating: false,
       isEditing: false
     };
@@ -66604,14 +66630,14 @@ function (_Component) {
   }
 
   _createClass(UserAvatars, [{
-    key: "fetchAvatars",
-    value: function fetchAvatars() {
+    key: "fetchDeleteAvatar",
+    value: function fetchDeleteAvatar(url) {
       var _this2 = this;
 
       var bearer = 'Bearer ' + this.props.api_token;
-      console.log("USERAVATARS: Fetching user avatars");
-      fetch('/api/avatars', {
-        method: 'GET',
+      console.log("USERAVATARS: deleting avatar");
+      fetch(url, {
+        method: 'DELETE',
         headers: {
           'Authorization': bearer,
           'Accept': 'application/json'
@@ -66623,10 +66649,42 @@ function (_Component) {
           _this2.setState({
             status: result.message,
             error: true,
-            isLoaded: true
+            didDelete: false
           });
         } else {
           _this2.setState({
+            status: result.status,
+            didDelete: true
+          });
+        }
+
+        console.log("USERAVATARS: deleting avatar finished");
+      });
+    }
+  }, {
+    key: "fetchAvatars",
+    value: function fetchAvatars() {
+      var _this3 = this;
+
+      var bearer = 'Bearer ' + this.props.api_token;
+      console.log("USERAVATARS: fetching user avatars");
+      fetch('/api/avatars', {
+        method: 'GET',
+        headers: {
+          'Authorization': bearer,
+          'Accept': 'application/json'
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        if (result.message) {
+          _this3.setState({
+            status: result.message,
+            error: true,
+            isLoaded: true
+          });
+        } else {
+          _this3.setState({
             status: result.status,
             isLoaded: true,
             avatars: result.data.avatars,
@@ -66634,42 +66692,8 @@ function (_Component) {
           });
         }
 
-        console.log("USERAVATARS: Fetching user avatars finished");
+        console.log("USERAVATARS: fetching user avatars finished");
       });
-    }
-  }, {
-    key: "renderAvatarList",
-    value: function renderAvatarList() {
-      var _this3 = this;
-
-      if (this.state.avatars.length > 0) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-4 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Tus avatares: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.avatars.map(function (item, index) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            key: index
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-            href: "#",
-            id: index,
-            onClick: _this3.handleAvatarClick
-          }, item.name));
-        })), this.renderButtonNewAvatar('Nuevo', 'btn btn-primary'));
-      } else {
-        // User no tiene avatares
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-4 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "jumbotron testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "display-4"
-        }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, "A\xFAn no tienes avatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, "Por qu\xE9 no creas uno?."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg'))));
-      }
     }
   }, {
     key: "renderButtonNewAvatar",
@@ -66688,6 +66712,43 @@ function (_Component) {
         type: "button",
         className: "btn btn-secondary"
       }, "Editar");
+    }
+  }, {
+    key: "renderAvatarList",
+    value: function renderAvatarList() {
+      var _this4 = this;
+
+      if (this.state.avatars.length > 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-4 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Tus avatares: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.avatars.map(function (item, index) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: index
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: "#",
+            id: index,
+            onClick: _this4.handleAvatarClick
+          }, item.name));
+        })), this.renderButtonNewAvatar('Nuevo', 'btn btn-primary'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          error: this.state.error,
+          message: this.state.status
+        }));
+      } else {
+        // User no tiene avatares
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-4 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "jumbotron testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "display-4"
+        }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, "A\xFAn no tienes avatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, "Por qu\xE9 no creas uno?."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg'))));
+      }
     }
   }, {
     key: "renderButtonDeleteAvatar",

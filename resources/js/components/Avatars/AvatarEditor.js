@@ -46,9 +46,7 @@ class AvatarEditor extends Component{
 
     fetchAvatar(method,url,data){
         const bearer = 'Bearer ' + this.props.api_token
-        console.log("AVATAREDITOR: fetchAvatar(). data=");
-        console.log(data);        
-        console.log("url="+url+" method="+method);
+        console.log("AVATAREDITOR: posting avatar");
         fetch(url, { 
             method: method,
             headers: {
@@ -71,12 +69,12 @@ class AvatarEditor extends Component{
                     })                  
                 }
                 else if (result.status == 'success'){
-                    console.log("AVATAREDITOR: fetchAvatar() terminado exitosamente");                    
+                    console.log("AVATAREDITOR: posting avatar finished");                    
                     this.setState({
                         status: result.status,
                     });
                     // Uso funcion de padre para resetear el modo
-                    this.props.resetMode();
+                    this.props.resetMode(result.data.avatar);
                 }
             }
         );
@@ -95,16 +93,13 @@ class AvatarEditor extends Component{
             return 1;
         }
         else{
-            let id=(index*10)+1;
-            console.log("AVATAREDITOR: getIDfromIndex(). index= "+index+" id="+id);            
+            let id=(index*10)+1;          
             return id
         }
     }
 
     handleSaveAvatar = (e) =>{
         e.preventDefault();
-        console.log("AVATAREDITOR: handleSaveAvatar(). mode="+this.props.mode);
-
         // Validacion de input
         let name=this.state.field_name;
         if(name.length>32){
@@ -128,12 +123,10 @@ class AvatarEditor extends Component{
         data.append('lowerbody_id',this.getIDfromIndex(this.state.lowerbody));
         data.append('extra_id',this.getIDfromIndex(this.state.extra))
 
-        console.log("AVATAREDITOR: handleSaveAvatar(). data=");
-        console.log(data);        
-        
         if(this.props.mode == 'edit'){
+            data.append("_method", 'PATCH');
             let url='api/avatars/'+this.props.avatar.id;
-            this.fetchAvatar('PATCH',url,data);
+            this.fetchAvatar('POST',url,data);
         }
         else{
             this.fetchAvatar('POST','api/avatars',data);
@@ -231,7 +224,7 @@ class AvatarEditor extends Component{
                 break;
         }
         //console.log("AVATAREDITOR: handleButtonPrev()");        
-        console.log(this.state.currentItem+": "+index);           
+        //console.log(this.state.currentItem+": "+index);           
     }
 
     handleButtonNext = (e) =>{
@@ -275,7 +268,7 @@ class AvatarEditor extends Component{
                 break;
         }
         //console.log("AVATAREDITOR: handleButtonNext()");        
-        console.log(this.state.currentItem+": "+index);        
+        //console.log(this.state.currentItem+": "+index);        
     }
    
     buttonsAvatarItems(){
