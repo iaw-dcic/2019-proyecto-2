@@ -1,26 +1,21 @@
 import Axios from 'axios';
 
-export default class ListaPronosticos{
+export default class PronosticoModel{
 
     constructor(user){
         this.user = user;
         this.fases = {'octavos': 0, 'cuartos': 1, 'semis': 2, 'final': 3, 'tercer_puesto': 3};
     }
 
-    loadProdes(callback, error){
-        Axios.get(`/api/user/${this.user.id}/prodes`)
-            .then((response) => {
-                let prodes = response.data.map(prode => this.transformarDatosDesdeServidor(prode));
-                callback(prodes);
-            })
-            .catch((e) => error(e));
+    async loadProdes(){
+        let response = await Axios.get(`/api/user/${this.user.id}/prodes`)
+        return response.data.map(prode => this.transformarDatosDesdeServidor(prode));
     }
 
-    saveProde(prode, callback, error){
+    async saveProde(prode){
         let pronostico = this.transformarDatosHaciaServidor(prode);
-        Axios.post(`/api/user/${this.user.id}/prodes`, pronostico)
-            .then((response) => console.log(response.data))//callback(response.data))
-            .catch((e) => error(e));
+        let response = Axios.post(`/api/user/${this.user.id}/prodes`, pronostico)
+        return response.data;
     }
 
     getProdeFromLocalStorage(id){
@@ -41,7 +36,7 @@ export default class ListaPronosticos{
     }
 
     getIndice(prodes, id){
-        let i = -1;
+        let i = 0;
         prodes.find((prode, index) => {
             i = index;
             return prode.id == id;
@@ -71,7 +66,20 @@ export default class ListaPronosticos{
     }
 
     crearNuevoProde(user_id){
+        let id = this.getMaxIndice();
+        console.log(id);
         return this.resetPronostico({ user_id, id: null, teams: null, results: null });
+    }    
+
+    getMaxIndice(){
+        let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
+        if(prodes == [])
+            return -1;
+        else{
+            let indices = prodes.map(prode => prode.id);
+            let max = Math.max(indices);
+            return max;
+        }
     }
 
     transformarDatosDesdeServidor(prode){
@@ -93,6 +101,7 @@ export default class ListaPronosticos{
     }
 
     transformarDatosHaciaServidor(prode){
+        console.log(prode);
         let teams = prode.teams;
         let results = prode.results.flat(2);
 

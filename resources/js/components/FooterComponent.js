@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 
-export default class Template extends Component {
+export default class FooterComponent extends Component {
     render() {
         return (
             <footer>

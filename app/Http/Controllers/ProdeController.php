@@ -166,4 +166,9 @@ class ProdeController extends Controller{
         array_pull($partido, 'pivot');
         return $partido;
     }
+
+    public function getNewId(){
+        $id = Prode::all()->max()->id;
+        return Response()->json(['id' => $id+1]);
+    }
 }

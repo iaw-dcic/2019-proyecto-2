@@ -13,7 +13,8 @@
         "grambas/football-data": "dev-master",
         "jrm2k6/cloudder": "^0.6.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "tymon/jwt-auth": "^0.5.12"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

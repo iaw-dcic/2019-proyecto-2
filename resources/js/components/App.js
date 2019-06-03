@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Index from './Index';
+import IndexComponent from './IndexComponent';
 import PronosticosComponent from './PronosticosComponent';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import Preloader from './Preloader';
+import NavbarComponent from './NavbarComponent';
+import FooterComponent from './FooterComponent';
+import PreloaderComponent from './PreloaderComponent';
 
 export default class App extends Component{
 
     constructor(){
         super();
-        this.user = {id: 1};
-        this.state = {
-            user: {
-                id: 1
-            }
-        }
+
+        let user = JSON.parse(localStorage.getItem('user'));
+        if(user != null)
+            this.state = { isLoggedIn: true, user };
+        else
+            this.state = { isLoggedIn: false, user: null };
     }
 
     render(){
@@ -24,20 +24,18 @@ export default class App extends Component{
             <BrowserRouter>
                 <Switch>
                     <Route path="/">
-                        <Navbar />
+                        <NavbarComponent user={this.state.user} />
                         <div id="inicio" className="intro route bg-image">
-                            <Index/>
+                            <IndexComponent/>
                         </div>
-                        <section id="pronosticos" className="pronosticos route">
-                            <PronosticosComponent user={this.state.user}/>
-                        </section>
+                        {this.getPronosticos()}
                         <section className="bg-image footer route">
                             <div className="overlay-mf"></div>
-                            <Footer/>
+                            <FooterComponent/>
                         </section>
 
                         <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
-                        <Preloader/>
+                        <PreloaderComponent/>
                     </Route>
                 </Switch>
             </BrowserRouter>
@@ -46,6 +44,16 @@ export default class App extends Component{
 
     componentDidMount(){
         this.scroll();
+    }
+
+    getPronosticos(){
+        if(this.state.isLoggedIn){
+            return (
+                <section id="pronosticos" className="pronosticos route mb-4">
+                    <PronosticosComponent user={this.state.user}/>
+                </section>
+            );
+        }
     }
 
     scroll(){

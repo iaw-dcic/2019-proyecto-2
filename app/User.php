@@ -15,7 +15,7 @@ class User extends Authenticatable{
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'username', 'email', 'password', 'auth_token'
     ];
 
     /**
@@ -38,5 +38,12 @@ class User extends Authenticatable{
 
     public function getProdes(){
         return $this->belongsToMany('App\Prode')->using('App\ProdeUser');
+    }
+
+    public function getJWTIdentifier(){
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims(){
+        return [];
     }
 }

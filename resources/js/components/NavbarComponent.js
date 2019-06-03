@@ -1,34 +1,81 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import Axios from 'axios';
 
-export default class Template extends Component {
+export default class NavbarComponent extends Component {
+
+    constructor(props){
+        super(props);
+        this.user = this.props.user;
+        this.logout = this.logout.bind(this);
+    }
+
     render() {
         return (
             <nav className="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
                 <div className="container">
-                    <Link className="navbar-brand js-scroll" to="#page-top">Protonóstico</Link>
+                    <Link className="navbar-brand js-scroll" to="#inicio">Protonóstico</Link>
                     <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
                         <span></span>
                         <span></span>
                     </button>
                     <div className="navbar-collapse collapse justify-content-end" id="navbarDefault">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link js-scroll" to="#inicio">Inicio</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link js-scroll" to="#pronosticos">Pronósticos</Link>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link js-scroll" href="/login">Ingresar</a>
-                            </li>
-                        </ul>
+                        {this.mostrarBotones()}
                     </div>
                 </div>
             </nav>
         );
+    }
+
+    mostrarBotones(){
+        if(this.user == null){
+            return(
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <Link className="nav-link js-scroll" to="#inicio">Inicio</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link js-scroll" to="#pronosticos">Pronósticos</Link>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link js-scroll" href="/login">Ingresar</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link js-scroll" href="/register">Registrar</a>
+                    </li>
+                </ul>
+            );
+        }else{
+            return (
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <Link className="nav-link js-scroll" to="#inicio">Inicio</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link js-scroll" to="#pronosticos">Pronósticos</Link>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link js-scroll"  onClick={this.logout} >Salir</a>
+                    </li>
+                </ul>
+            )
+        }
+    }
+
+    logout(){
+        Axios.post('/api/user/logout', {'auth_token': this.user.auth_token})
+            .then(response => {
+                console.log(response);
+                if(response.data.success){
+                    localStorage.clear();
+                    window.location.replace("/");
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     componentDidMount(){

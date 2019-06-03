@@ -56,8 +56,8 @@ export default class PronosticoComponent extends Component {
     saveProde(event) {
         event.preventDefault();
         this.pronosticoController.saveProde(this.refreshProde);
-        this.cerrarProde();
         this.actualizarProdes();
+        //this.cerrarProde();
     }
 
     refreshProde(prode){
@@ -77,8 +77,8 @@ export default class PronosticoComponent extends Component {
     //Borrar los datos
     deleteProde(event){
         event.preventDefault();
-        this.cerrarProde();
         this.actualizarProdes();
+        //this.cerrarProde();
     }
 
     //Actualiza el tablero en el div #tablero-pronosticos
