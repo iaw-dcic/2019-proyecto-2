@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SliderPicker } from 'react-color';
 import './TShirtEditor.css'
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 
 export default class TShirtEditor extends Component {
@@ -10,6 +11,21 @@ export default class TShirtEditor extends Component {
         image: localStorage.getItem('image') ? localStorage.getItem('image') : null,
         image_type: localStorage.getItem('image_type') ? localStorage.getItem('image_type') : "center",
         tshirt_type: localStorage.getItem('tshirt_type') ? localStorage.getItem('tshirt_type') : "men",
+        images: [],
+        tshirt_images: [],
+    }
+
+    componentDidMount = () => {
+        window.axios = require('axios');
+        try {
+            const response = axios.get('/api/images')
+                .then(res => {
+                    this.setState({ images: res.data }
+                    );
+                });
+        } catch (e) {
+            console.log('axios request failed:', e);
+        }
     }
 
     makeMenTee = () => {
@@ -27,31 +43,28 @@ export default class TShirtEditor extends Component {
         this.setState({ tshirt_color: color.hex });
     }
 
-    clickCenterImage = (event) => {
+    clickCenterImage = key => {
+        const image = document.getElementById(key);
         localStorage.setItem('image_type', 'center');
-        localStorage.setItem('image', event.target.src);
+        localStorage.setItem('image', image.src);
         this.setState({
-            image: event.target.src,
+            image: image.src,
             image_type: "center"
         });
     }
 
-    removeCenterImage = () => {
+    removeImage = () => {
         localStorage.setItem('image', null);
         this.setState({ image: null });
     }
-    clickPocketImage = (event) => {
+    clickPocketImage = key => {
+        const image = document.getElementById(key);
         localStorage.setItem('image_type', 'pocket');
-        localStorage.setItem('image', event.target.src);
+        localStorage.setItem('image', image.src);
         this.setState({
-            image: event.target.src,
+            image: image.src,
             image_type: "pocket"
         });
-    }
-
-    removePocketImage = () => {
-        localStorage.setItem('image', null);
-        this.setState({ image: null });
     }
 
     submit = event => {
@@ -105,36 +118,64 @@ export default class TShirtEditor extends Component {
                 </span>
                 <span>
                     <div>
-                        <div className="option_label">Center image</div>
-                        <div className="options">
-                            <img className="image_button" alt="none" src="/storage/uploads/none.png" onClick={this.removeCenterImage} />
-                            <img className="image_button" alt="star" src="/storage/uploads/note.png" onClick={this.clickCenterImage.bind(this)} />
-                            <img className="image_button" alt="lightbulb" src="/storage/uploads/lightbulb.png" onClick={this.clickCenterImage.bind(this)} />
-                            <img className="image_button" alt="star" src="/storage/uploads/pin.png" onClick={this.clickCenterImage.bind(this)} />
-                            <img className="image_button" alt="star" src="/storage/uploads/lis_flower.png" onClick={this.clickCenterImage.bind(this)} />
+                        <div className="option_label">No image</div>
+                        <div className="row justify-content-center">
+                            <img className="image_button" alt="none" src="/storage/uploads/none.png" onClick={this.removeImage} />
                         </div>
                     </div>
                     <div>
-                        <div className="option_label">Pocket image</div>
+                        <div className="option_label">Center image</div>
                         <div className="options">
-                            <img className="image_button" alt="none" src="/storage/uploads/none.png" onClick={this.removePocketImage} />
-                            <img className="image_button" alt="star" src="/storage/uploads/note.png" onClick={this.clickPocketImage.bind(this)} />
-                            <img className="image_button" alt="lightbulb" src="/storage/uploads/lightbulb.png" onClick={this.clickPocketImage.bind(this)} />
-                            <img className="image_button" alt="star" src="/storage/uploads/pin.png" onClick={this.clickPocketImage.bind(this)} />
-                            <img className="image_button" alt="star" src="/storage/uploads/lis_flower.png" onClick={this.clickPocketImage.bind(this)} />
+                            <ScrollMenu
+                                data={
+                                    this.state.images.map((image, key) =>
+                                        <img key={key} id={key} className="image_button"
+                                            alt={key}
+                                            src={image.src}
+                                        />)
+                                }
+                                arrowLeft={<div className="arrow left"></div>}
+                                arrowRight={<div className="arrow right"></div>}
+                                onSelect={this.clickCenterImage.bind(this)}
+                            />
                         </div>
-                    </div>
 
-                    <div className="type_options">
-                        <div>
-                            <div className="option_label">Men</div>
-                            <img className="large_image_button" alt="none" src="/storage/uploads/basic_tee.png" onClick={this.makeMenTee} />
-                        </div>
-                        <div>
-                            <div className="option_label">Women</div>
-                            <img className="large_image_button" alt="none" src="/storage/uploads/women_tee.png" onClick={this.makeWomenTee} />
+                    </div>
+                    <div>
+                        <div className="option_label">Pocket image</div>
+
+                        <div className="options">
+                            <ScrollMenu
+                                data={
+                                    this.state.images.map((image, key) =>
+                                        <img key={key} id={key} className="image_button"
+                                            alt={key}
+                                            src={image.src}
+                                        />)
+                                }
+                                arrowLeft={<div className="arrow left"></div>}
+                                arrowRight={<div className="arrow right"></div>}
+                                onSelect={this.clickPocketImage.bind(this)}
+                            />
                         </div>
                     </div>
+                    <ScrollMenu
+                        data={
+                            <div className="type_options">
+                                <div>
+                                    <div className="option_label">Men</div>
+                                    <img className="large_image_button" alt="none" src="/storage/uploads/basic_tee.png" onClick={this.makeMenTee} />
+                                </div>
+                                <div>
+                                    <div className="option_label">Women</div>
+                                    <img className="large_image_button" alt="none" src="/storage/uploads/women_tee.png" onClick={this.makeWomenTee} />
+                                </div>
+                            </div>
+                        }
+                        arrowLeft={<div className="arrow left"></div>}
+                        arrowRight={<div className="arrow right"></div>}
+                        onSelect={this.onSelect}
+                    />
 
                     <div>
                         {document.querySelector('meta[name="api-token"]') &&

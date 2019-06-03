@@ -45,8 +45,22 @@
 }
 
 .options{
-    overflow: auto;
-    display: inline;
+    height: 100px;
+    width: 300px;
+}
+
+.arrow{
+    width: 30px;
+    height:60px;
+    margin: 5px;
+    background-size: cover;
+}
+
+.left{
+    background-image: url('/storage/left-arrow.png')
+}
+.right{
+    background-image: url('/storage/right-arrow.png')
 }
 
 .type_options{

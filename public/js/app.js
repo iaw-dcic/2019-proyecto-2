@@ -6637,7 +6637,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#tshirt-container{\n    align-items: center;\n    width: 143px;\n    height: 147px;\n    position: relative;\n}\n\n.center{\n    padding: 6px;\n    margin-top: 40px;\n    margin-left: 40px;\n    width: 64px;\n    height: 64px;\n}\n\n.pocket{\n    padding: 7px;\n    margin-top: 33px;\n    margin-left: 73px;\n    width: 33px;\n    height: 33px;\n}\n", ""]);
+exports.push([module.i, "#tshirt-container{\n    align-items: center;\n    width: 143px;\n    height: 147px;\n    position: relative;\n}\n\n.center{\n    padding: 6px;\n    margin-top: 40px;\n    margin-left: 40px;\n    width: 64px;\n    height: 64px;\n}\n\n.pocket{\n    padding: 7px;\n    margin-top: 33px;\n    margin-left: 73px;\n    width: 33px;\n    height: 33px;\n}\n\n.delete_button{\n    background-image: url(\"/storage/delete.png\");\n    background-size: cover;\n    width: 15px;\n    height: 15px;\n    right: 5px;\n    top: 5px;\n    position: absolute;\n}\n", ""]);
 
 // exports
 
@@ -6656,7 +6656,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#tshirt-editor-container{\n    align-items: center;\n    width: 443px;\n    height: 467px;\n    position: relative;\n}\n\n#color_picker{\n    align-items: center;\n    padding: 20px;\n    width: 443px;\n    position: relative;\n}\n\n.tshirt-contents{\n    position: absolute;\n    left: 0px;\n    right: 0px;\n    top: 0px;\n    bottom: 0px;\n}\n.image{\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.save-btn{\n    margin: 10px;\n}\n\n.editor-center{\n    padding: 20px;\n    margin-top: 120px;\n    margin-left: 125px;\n    width: 193px;\n    height: 193px;\n}\n\n.editor-pocket{\n    padding: 20px;\n    margin-top: 100px;\n    margin-left: 225px;\n    width: 100px;\n    height: 100px;\n}\n\n.options{\n    overflow: auto;\n    display: inline;\n}\n\n.type_options{\n    display: flex;\n    flex-direction: row;\n}\n\n.image_button{\n    width: 50px;\n    height: 50px;\n    margin:10px;\n}\n\n.large_image_button{\n    width: 143px;\n    height: 147px;\n    margin:10px;\n}\n\n.option_label{\n    text-align: center;\n}\n\n#content{\n    display: flex;\n    flex-direction: row;\n}\n\n.men_image{\n    background-image: url('/storage/uploads/basic_tee.png')\n}\n.men_foreground{\n    background-image: url('/storage/uploads/basic_tee_foreground.png')\n}\n\n.women_image{\n    background-image: url('/storage/uploads/women_tee.png')\n}\n.women_foreground{\n    background-image: url('/storage/uploads/women_tee_foreground.png')\n}\n", ""]);
+exports.push([module.i, "#tshirt-editor-container{\n    align-items: center;\n    width: 443px;\n    height: 467px;\n    position: relative;\n}\n\n#color_picker{\n    align-items: center;\n    padding: 20px;\n    width: 443px;\n    position: relative;\n}\n\n.tshirt-contents{\n    position: absolute;\n    left: 0px;\n    right: 0px;\n    top: 0px;\n    bottom: 0px;\n}\n.image{\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.save-btn{\n    margin: 10px;\n}\n\n.editor-center{\n    padding: 20px;\n    margin-top: 120px;\n    margin-left: 125px;\n    width: 193px;\n    height: 193px;\n}\n\n.editor-pocket{\n    padding: 20px;\n    margin-top: 100px;\n    margin-left: 225px;\n    width: 100px;\n    height: 100px;\n}\n\n.options{\n    height: 100px;\n    width: 300px;\n}\n\n.arrow{\n    width: 30px;\n    height:60px;\n    margin: 5px;\n    background-size: cover;\n}\n\n.left{\n    background-image: url('/storage/left-arrow.png')\n}\n.right{\n    background-image: url('/storage/right-arrow.png')\n}\n\n.type_options{\n    display: flex;\n    flex-direction: row;\n}\n\n.image_button{\n    width: 50px;\n    height: 50px;\n    margin:10px;\n}\n\n.large_image_button{\n    width: 143px;\n    height: 147px;\n    margin:10px;\n}\n\n.option_label{\n    text-align: center;\n}\n\n#content{\n    display: flex;\n    flex-direction: row;\n}\n\n.men_image{\n    background-image: url('/storage/uploads/basic_tee.png')\n}\n.men_foreground{\n    background-image: url('/storage/uploads/basic_tee_foreground.png')\n}\n\n.women_image{\n    background-image: url('/storage/uploads/women_tee.png')\n}\n.women_foreground{\n    background-image: url('/storage/uploads/women_tee_foreground.png')\n}\n", ""]);
 
 // exports
 
@@ -74229,7 +74229,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81502,6 +81502,8 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TShirtEditor__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -81514,10 +81516,12 @@ function (_Component) {
         data: this.state.my_tshirts.map(function (tshirt, key) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TShirt__WEBPACK_IMPORTED_MODULE_5__["default"], {
             key: key,
+            id: tshirt.id,
             tshirt_type: tshirt.tshirt_type,
             image_type: tshirt.image_type,
             image: tshirt.image,
-            tshirt_color: tshirt.color
+            tshirt_color: tshirt.color,
+            "delete": _this2.componentDidMount
           });
         }),
         arrowLeft: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -81623,6 +81627,43 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TShirt)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      delete_button: null
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onMouseOver", function () {
+      _this.setState({
+        delete_button: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "delete_button",
+          onClick: _this["delete"]
+        })
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onMouseLeave", function () {
+      _this.setState({
+        delete_button: null
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "delete", function (event) {
+      event.preventDefault();
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+
+      if (token && api_token) {
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
+        try {
+          var response = axios["delete"]('/api/tshirts/' + _this.props.id).then(_this.props["delete"]());
+        } catch (e) {
+          console.log('axios request failed:', e);
+        }
+      }
+    });
+
     _defineProperty(_assertThisInitialized(_this), "getColor", function () {
       return _this.props.tshirt_color ? _this.props.tshirt_color : '#ffffff';
     });
@@ -81650,7 +81691,10 @@ function (_Component) {
         className: "row justify-content-center large_image_button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onMouseEnter: this.onMouseOver,
+        onMouseLeave: this.onMouseLeave
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tshirt_image",
         className: "tshirt-contents image " + this.getType() + "_image",
         style: {
@@ -81663,7 +81707,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tshirt_foreground",
         className: "tshirt-contents image " + this.getType() + "_foreground"
-      }))));
+      }), this.state.delete_button)));
     }
   }]);
 
@@ -81720,6 +81764,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_color__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _TShirtEditor_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TShirtEditor.css */ "./resources/js/components/TShirtEditor.css");
 /* harmony import */ var _TShirtEditor_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_TShirtEditor_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-horizontal-scrolling-menu */ "./node_modules/react-horizontal-scrolling-menu/build/index.js");
+/* harmony import */ var react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -81739,6 +81785,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -81766,7 +81813,23 @@ function (_Component) {
       tshirt_color: localStorage.getItem('tshirt_color') ? localStorage.getItem('tshirt_color') : '#bf4040',
       image: localStorage.getItem('image') ? localStorage.getItem('image') : null,
       image_type: localStorage.getItem('image_type') ? localStorage.getItem('image_type') : "center",
-      tshirt_type: localStorage.getItem('tshirt_type') ? localStorage.getItem('tshirt_type') : "men"
+      tshirt_type: localStorage.getItem('tshirt_type') ? localStorage.getItem('tshirt_type') : "men",
+      images: [],
+      tshirt_images: []
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+      try {
+        var response = axios.get('/api/images').then(function (res) {
+          _this.setState({
+            images: res.data
+          });
+        });
+      } catch (e) {
+        console.log('axios request failed:', e);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "makeMenTee", function () {
@@ -81793,17 +81856,18 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "clickCenterImage", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "clickCenterImage", function (key) {
+      var image = document.getElementById(key);
       localStorage.setItem('image_type', 'center');
-      localStorage.setItem('image', event.target.src);
+      localStorage.setItem('image', image.src);
 
       _this.setState({
-        image: event.target.src,
+        image: image.src,
         image_type: "center"
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "removeCenterImage", function () {
+    _defineProperty(_assertThisInitialized(_this), "removeImage", function () {
       localStorage.setItem('image', null);
 
       _this.setState({
@@ -81811,21 +81875,14 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "clickPocketImage", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "clickPocketImage", function (key) {
+      var image = document.getElementById(key);
       localStorage.setItem('image_type', 'pocket');
-      localStorage.setItem('image', event.target.src);
+      localStorage.setItem('image', image.src);
 
       _this.setState({
-        image: event.target.src,
+        image: image.src,
         image_type: "pocket"
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "removePocketImage", function () {
-      localStorage.setItem('image', null);
-
-      _this.setState({
-        image: null
       });
     });
 
@@ -81884,79 +81941,81 @@ function (_Component) {
         onChange: this.changeColor
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "option_label"
-      }, "Center image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "options"
+      }, "No image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "image_button",
         alt: "none",
         src: "/storage/uploads/none.png",
-        onClick: this.removeCenterImage
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "star",
-        src: "/storage/uploads/note.png",
-        onClick: this.clickCenterImage.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "lightbulb",
-        src: "/storage/uploads/lightbulb.png",
-        onClick: this.clickCenterImage.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "star",
-        src: "/storage/uploads/pin.png",
-        onClick: this.clickCenterImage.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "star",
-        src: "/storage/uploads/lis_flower.png",
-        onClick: this.clickCenterImage.bind(this)
+        onClick: this.removeImage
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "option_label"
+      }, "Center image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "options"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        data: this.state.images.map(function (image, key) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: key,
+            id: key,
+            className: "image_button",
+            alt: key,
+            src: image.src
+          });
+        }),
+        arrowLeft: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow left"
+        }),
+        arrowRight: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow right"
+        }),
+        onSelect: this.clickCenterImage.bind(this)
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "option_label"
       }, "Pocket image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "options"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "none",
-        src: "/storage/uploads/none.png",
-        onClick: this.removePocketImage
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "star",
-        src: "/storage/uploads/note.png",
-        onClick: this.clickPocketImage.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "lightbulb",
-        src: "/storage/uploads/lightbulb.png",
-        onClick: this.clickPocketImage.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "star",
-        src: "/storage/uploads/pin.png",
-        onClick: this.clickPocketImage.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image_button",
-        alt: "star",
-        src: "/storage/uploads/lis_flower.png",
-        onClick: this.clickPocketImage.bind(this)
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "type_options"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "option_label"
-      }, "Men"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "large_image_button",
-        alt: "none",
-        src: "/storage/uploads/basic_tee.png",
-        onClick: this.makeMenTee
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "option_label"
-      }, "Women"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "large_image_button",
-        alt: "none",
-        src: "/storage/uploads/women_tee.png",
-        onClick: this.makeWomenTee
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, document.querySelector('meta[name="api-token"]') && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        data: this.state.images.map(function (image, key) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: key,
+            id: key,
+            className: "image_button",
+            alt: key,
+            src: image.src
+          });
+        }),
+        arrowLeft: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow left"
+        }),
+        arrowRight: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow right"
+        }),
+        onSelect: this.clickPocketImage.bind(this)
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        data: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "type_options"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "option_label"
+        }, "Men"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "large_image_button",
+          alt: "none",
+          src: "/storage/uploads/basic_tee.png",
+          onClick: this.makeMenTee
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "option_label"
+        }, "Women"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "large_image_button",
+          alt: "none",
+          src: "/storage/uploads/women_tee.png",
+          onClick: this.makeWomenTee
+        }))),
+        arrowLeft: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow left"
+        }),
+        arrowRight: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow right"
+        }),
+        onSelect: this.onSelect
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, document.querySelector('meta[name="api-token"]') && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center save-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-m",

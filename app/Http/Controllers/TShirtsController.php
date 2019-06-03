@@ -22,4 +22,13 @@ class TShirtsController extends Controller{
         ]);
         return;
     }
+
+    public function destroy($id){
+        $tshirt = TShirt::findOrFail($id);
+        if(auth('api')->user()->id == $tshirt->user_id){
+            $tshirt->delete();
+            return response()->json(['result' => 'success']);
+        }
+        return response()->json(['result' => 'fail']);
+    }
 }

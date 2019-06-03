@@ -50,10 +50,13 @@ class App extends Component {
                         <div id="myTshirts">
                             <ScrollMenu
                                 data={this.state.my_tshirts.map((tshirt, key) =>
-                                    <TShirt key={key} tshirt_type={tshirt.tshirt_type}
+                                    <TShirt key={key}
+                                        id={tshirt.id}
+                                        tshirt_type={tshirt.tshirt_type}
                                         image_type={tshirt.image_type}
                                         image={tshirt.image}
-                                        tshirt_color={tshirt.color} />)
+                                        tshirt_color={tshirt.color}
+                                        delete={this.componentDidMount}/>)
                                 }
                                 arrowLeft={<div className="arrow left"></div>}
                                 arrowRight={<div className="arrow right"></div>}
