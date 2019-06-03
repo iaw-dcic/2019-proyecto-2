@@ -22,7 +22,7 @@ class notebookuserController extends Controller
       $n=null;
       $user=Auth::user();
       if($user==null)
-        return "MERCA";
+        return "USERNULO";
       else{
         $datos = request()->all();
         $notebook=notebook::where([

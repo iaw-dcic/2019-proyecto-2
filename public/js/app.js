@@ -67074,8 +67074,7 @@ function (_Component) {
       userid: null,
       modelid: 1,
       sizeid: 1,
-      colorid: 1,
-      url: "https://demo.nopcommerce.com/images/thumbs/0000024_apple-macbook-pro-13-inch_550.jpeg"
+      colorid: 1
     };
     _this.colorhandler = _this.colorhandler.bind(_assertThisInitialized(_this));
     _this.modelohandler = _this.modelohandler.bind(_assertThisInitialized(_this));
@@ -67088,9 +67087,33 @@ function (_Component) {
   }
 
   _createClass(Page, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      if (localStorage.hasOwnProperty('colorid')) {
+        this.setState({
+          colorid: localStorage.getItem('colorid'),
+          modelid: localStorage.getItem('modelid'),
+          sizeid: localStorage.getItem('sizeid')
+        });
+      } else {
+        this.setState({
+          colorid: 1,
+          modelid: 1,
+          sizeid: 1
+        });
+      }
+    }
+  }, {
     key: "updatepanel",
     value: function updatepanel() {
-      this.notebookPanelElement.current.changeurl(this.state.url);
+      var _this2 = this;
+
+      var s = "/api/v1/notebook/get/" + this.state.colorid + "/" + this.state.modelid + "/" + this.state.sizeid;
+      fetch(s).then(function (response) {
+        return response.json();
+      }).then(function (estado) {
+        _this2.notebookPanelElement.current.changeurl(estado.url);
+      });
     }
   }, {
     key: "guardarnotebookpersonalizada",
@@ -67112,6 +67135,9 @@ function (_Component) {
       this.setState({
         colorid: someValue
       });
+      localStorage.setItem('colorid', someValue);
+      localStorage.setItem('modelid', this.state.modelid);
+      localStorage.setItem('sizeid', this.state.sizeid);
       this.updatepanel();
     }
   }, {
@@ -67120,6 +67146,10 @@ function (_Component) {
       this.setState({
         modelid: someValue
       });
+      localStorage.setItem('modelid', someValue);
+      localStorage.setItem('colorid', this.state.colorid);
+      localStorage.setItem('sizeid', this.state.sizeid);
+      this.updatepanel();
     }
   }, {
     key: "sizehandler",
@@ -67127,6 +67157,10 @@ function (_Component) {
       this.setState({
         sizeid: someValue
       });
+      localStorage.setItem('sizeid', someValue);
+      localStorage.setItem('colorid', this.state.colorid);
+      localStorage.setItem('modelid', this.state.modelid);
+      this.updatepanel();
     }
   }, {
     key: "test",

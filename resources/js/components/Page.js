@@ -15,7 +15,6 @@ export default class Page extends Component {
       modelid:1,
       sizeid:1,
       colorid:1,
-      url:"https://demo.nopcommerce.com/images/thumbs/0000024_apple-macbook-pro-13-inch_550.jpeg",
     }
     this.colorhandler = this.colorhandler.bind(this)
     this.modelohandler = this.modelohandler.bind(this)
@@ -25,9 +24,33 @@ export default class Page extends Component {
     this.guardarnotebookpersonalizada = this.guardarnotebookpersonalizada.bind(this)
     this.notebookPanelElement = React.createRef()
   }
-  updatepanel(){
+  componentWillMount(){
+    if(localStorage.hasOwnProperty('colorid')){
+      this.setState({
+        colorid: localStorage.getItem('colorid'),
+        modelid: localStorage.getItem('modelid'),
+        sizeid: localStorage.getItem('sizeid'),
+      })
+    }else{
+      this.setState({
+        colorid: 1,
+        modelid: 1,
+        sizeid: 1,
+      })
+    }
 
-    this.notebookPanelElement.current.changeurl(this.state.url)
+  }
+  updatepanel(){
+    const s="/api/v1/notebook/get/"+this.state.colorid+"/"+this.state.modelid+"/"+this.state.sizeid;
+
+    fetch(s).then(
+         (response)=>{
+             return response.json();
+         }   )
+     .then(estado => {
+        this.notebookPanelElement.current.changeurl(estado.url);
+     });
+
   }
   guardarnotebookpersonalizada(){
     console.log('pewpew');
@@ -47,18 +70,33 @@ export default class Page extends Component {
     this.setState({
       colorid: someValue
     })
+
+    localStorage.setItem('colorid',someValue)
+    localStorage.setItem('modelid',this.state.modelid)
+    localStorage.setItem('sizeid',this.state.sizeid)
     this.updatepanel()
+
 
   }
   modelohandler(someValue) {
     this.setState({
       modelid: someValue
     })
+    localStorage.setItem('modelid',someValue)
+    localStorage.setItem('colorid',this.state.colorid)
+    localStorage.setItem('sizeid',this.state.sizeid)
+    this.updatepanel()
+
   }
   sizehandler(someValue) {
     this.setState({
       sizeid: someValue
     })
+    localStorage.setItem('sizeid',someValue)
+    localStorage.setItem('colorid',this.state.colorid)
+    localStorage.setItem('modelid',this.state.modelid)
+    this.updatepanel()
+
   }
   test(){
     alert('holu')

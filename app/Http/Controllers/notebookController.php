@@ -17,6 +17,14 @@ class notebookController extends Controller
        $n=notebook::find($id);
        return response()->json($n);
    }
+   public function getNotebook($colorid,$modelid,$sizeid){
+     $notebook=notebook::where([
+       ['modelid','=',$modelid],
+       ['sizeid','=',$sizeid],
+       ['colorid','=',$colorid],
+     ])->get();
+     return $notebook;
+   }
    public function store(){
 
        $datos = request()->all();
