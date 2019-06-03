@@ -9,7 +9,7 @@
   }
   
   .bg-image {
-    background-image: url('/images/inicio/principal.jpg');
+    background-image: url('../images/inicio/principal.jpg');
     background-size: cover;
     background-position: center;
   }
