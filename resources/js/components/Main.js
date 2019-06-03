@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import UserHome from './UserHome'
+import Loading from './Loading'
 
 
 export default class Main extends Component {
@@ -49,12 +50,8 @@ export default class Main extends Component {
     }
     else{
       return(
-        <div className="container testing">
-          <div className="row justify-content-center">
-            <div className="col-md-1">
-              <i className="fa fa-spinner fa-spin loading"/>
-            </div>
-          </div>
+        <div className="container">
+          <Loading/>
         </div>
       );
     }

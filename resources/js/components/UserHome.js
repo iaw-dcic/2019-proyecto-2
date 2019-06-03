@@ -2,6 +2,7 @@ import React , { Component } from 'react'
 
 import UserAvatars from './UserAvatars'
 import Errors from './Errors'
+import Loading from './Loading'
 
 class UserHome extends Component {
 
@@ -82,11 +83,7 @@ class UserHome extends Component {
         }
         else {
             return(
-                <div className="row justify-content-center testing">                
-                    <div className="col-md-1 testing">
-                        <i className="fa fa-spinner fa-spin loading"/>
-                    </div>
-                </div>
+                <Loading/>
             );
         }
 
@@ -94,7 +91,7 @@ class UserHome extends Component {
 
     render(){
         return(
-            <div className="container testing">                
+            <div className="container ">                
                 {this.renderApp()}
             </div>
         );

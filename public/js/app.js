@@ -65759,6 +65759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AvatarShower__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AvatarShower */ "./resources/js/components/Avatars/AvatarShower.js");
 /* harmony import */ var _Errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Errors */ "./resources/js/components/Errors.js");
+/* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Loading */ "./resources/js/components/Loading.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65778,6 +65779,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -65809,8 +65811,17 @@ function (_Component) {
       if (name.length > 32) {
         _this.setState({
           error: true,
-          status: 'El nombre no debe ser contener mas de 32 caracteres',
+          status: 'El nombre no debe ser de mas de 32 caracteres',
           field_name: ''
+        });
+
+        return;
+      }
+
+      if (name.length < 1) {
+        _this.setState({
+          error: true,
+          status: 'El nombre debe tener al menos un caracter'
         });
 
         return;
@@ -66045,7 +66056,8 @@ function (_Component) {
         if (result.errors) {
           _this2.setState({
             error: true,
-            status: result.errors
+            status: result.errors.name,
+            isSaving: false
           });
         } else if (result.status == 'success') {
           console.log("AVATAREDITOR: posting avatar finished");
@@ -66133,10 +66145,10 @@ function (_Component) {
         value: this.state.field_name
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-primary"
+        className: "btn btn-primary btn-block"
       }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        error: this.error,
-        message: this.status
+        error: this.state.error,
+        message: this.state.status
       }));
     }
   }, {
@@ -66159,22 +66171,26 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row justify-content-center testing"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-4 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row testing"
+        }, this.formSaveAvatar()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row testing"
+        }, this.buttonsAvatarItems())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-md-8 testing"
-        }, this.formSaveAvatar(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row testing"
+        }, this.buttonsPrevNextItems()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
           avatar: this.getAvatar(),
           items: this.props.items,
           renderName: true,
           useIDs: false
-        }), this.buttonsPrevNextItems(), this.buttonsAvatarItems()));
+        }))));
       } else {
         // Guardando
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-1 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-spinner fa-spin loading"
-        })));
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       }
     }
   }, {
@@ -66362,7 +66378,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "alert alert-danger",
           role: "alert"
-        }, "Error: ", this.props.message);
+        }, this.props.message);
       } else {
         return null;
       }
@@ -66376,19 +66392,18 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Main.js":
-/*!*****************************************!*\
-  !*** ./resources/js/components/Main.js ***!
-  \*****************************************/
+/***/ "./resources/js/components/Loading.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Loading.js ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Loading; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UserHome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserHome */ "./resources/js/components/UserHome.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66406,6 +66421,72 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Loading =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Loading, _Component);
+
+  function Loading() {
+    _classCallCheck(this, Loading);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Loading).apply(this, arguments));
+  }
+
+  _createClass(Loading, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-spinner fa-spin loading"
+      })));
+    }
+  }]);
+
+  return Loading;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Main.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Main.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UserHome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserHome */ "./resources/js/components/UserHome.js");
+/* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loading */ "./resources/js/components/Loading.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66463,14 +66544,8 @@ function (_Component) {
         });
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-spinner fa-spin loading"
-        }))));
+          className: "container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading__WEBPACK_IMPORTED_MODULE_2__["default"], null));
       }
     }
   }]);
@@ -66496,6 +66571,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Avatars/AvatarEditor */ "./resources/js/components/Avatars/AvatarEditor.js");
 /* harmony import */ var _Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Avatars/AvatarShower */ "./resources/js/components/Avatars/AvatarShower.js");
 /* harmony import */ var _Errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Errors */ "./resources/js/components/Errors.js");
+/* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Loading */ "./resources/js/components/Loading.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -66523,6 +66599,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -66587,7 +66664,8 @@ function (_Component) {
       _this.setState(function (prevState) {
         return {
           avatars: newAvatars,
-          selectedAvatar: null
+          selectedAvatar: null,
+          selectedAvatarIndex: -1
         };
       });
     });
@@ -66710,69 +66788,94 @@ function (_Component) {
   }, {
     key: "renderButtonEditAvatar",
     value: function renderButtonEditAvatar() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleButtonEditAvatar,
-        type: "button",
-        className: "btn btn-secondary"
-      }, "Editar");
+      if (this.state.selectedAvatar) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.handleButtonEditAvatar,
+          type: "button",
+          className: "btn btn-secondary"
+        }, "Editar");
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "getActive",
+    value: function getActive(index) {
+      if (index == this.state.selectedAvatarIndex) {
+        return " active";
+      } else {
+        return " ";
+      }
     }
   }, {
     key: "renderAvatarList",
     value: function renderAvatarList() {
       var _this4 = this;
 
-      if (this.state.avatars.length > 0) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-4 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Tus avatares: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.avatars.map(function (item, index) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            key: index
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-            href: "#",
-            id: index,
-            onClick: _this4.handleAvatarClick
-          }, item.name));
-        })), this.renderButtonNewAvatar('Nuevo', 'btn btn-primary'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          error: this.state.error,
-          message: this.state.status
-        }));
-      } else {
-        // User no tiene avatares
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-4 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "jumbotron testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "display-4"
-        }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, "A\xFAn no tienes avatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, "Por qu\xE9 no creas uno?."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg'))));
-      }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lista-avatares titulo text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Tus snoovatares "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lista-avatares lista"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "list-group list-group-flush"
+      }, this.state.avatars.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          className: "list-group-item list-group-item-info list-group-item-action" + _this4.getActive(index),
+          href: "#",
+          id: index,
+          onClick: _this4.handleAvatarClick
+        }, item.name);
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lista-avatares boton-nuevo"
+      }, this.renderButtonNewAvatar('Nuevo', 'btn btn-primary btn-block'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lista-avatares errores"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        error: this.state.error,
+        message: this.state.status
+      }))));
     }
   }, {
     key: "renderButtonDeleteAvatar",
     value: function renderButtonDeleteAvatar() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleButtonDeleteAvatar,
-        type: "button",
-        className: "btn btn-danger"
-      }, "Eliminar");
+      if (this.state.selectedAvatar) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.handleButtonDeleteAvatar,
+          type: "button",
+          className: "btn btn-danger"
+        }, "Eliminar");
+      } else {
+        return null;
+      }
     }
   }, {
     key: "renderAvatarShower",
     value: function renderAvatarShower() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8 justify-content-center testing"
-      }, this.renderButtonEditAvatar(), this.renderButtonDeleteAvatar(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "col-md-8 testing"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center testing"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "btn-group testing avatar-botones",
+        role: "group",
+        "aria-label": "Botones editar y eliminar"
+      }, this.renderButtonEditAvatar(), this.renderButtonDeleteAvatar())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center testing"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__["default"], {
         items: this.props.items,
         avatar: this.state.selectedAvatar,
         renderName: false,
         useIDs: true
-      }));
+      })));
     }
   }, {
     key: "renderAvatars",
@@ -66781,25 +66884,34 @@ function (_Component) {
       if (this.state.avatars.length > 0) {
         // Tiene avatares
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center testing"
+          className: "row justify-content-center"
         }, this.renderAvatarList(), this.renderAvatarShower());
       } else {
         // No tiene avatars
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center testing"
+          className: "row justify-content-center "
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-4 testing"
+          className: "col-md-6 "
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "jumbotron testing"
+          className: "jumbotron"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "display-4"
-        }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, "A\xFAn no tienes avatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, "Por qu\xE9 no creas uno?."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "lead"
-        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg')))));
+        }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-6"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead "
+        }, "A\xFAn no tienes snoovatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead "
+        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg '))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-2 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "jumbo-avatar testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "sad-avatar ",
+          src: "/avatars/sad.png"
+        })))))));
       }
     }
   }, {
@@ -66834,13 +66946,7 @@ function (_Component) {
         return this.renderMode();
       } else {
         // Avatares no cargados
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-1 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-spinner fa-spin loading"
-        })));
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading__WEBPACK_IMPORTED_MODULE_4__["default"], null);
       }
     }
   }, {
@@ -66870,6 +66976,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _UserAvatars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserAvatars */ "./resources/js/components/UserAvatars.js");
 /* harmony import */ var _Errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Errors */ "./resources/js/components/Errors.js");
+/* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Loading */ "./resources/js/components/Loading.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66887,6 +66994,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66974,20 +67082,14 @@ function (_Component) {
           });
         }
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-1 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-spinner fa-spin loading"
-        })));
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       }
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container testing"
+        className: "container "
       }, this.renderApp());
     }
   }]);

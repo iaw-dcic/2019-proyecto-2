@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import AvatarShower from './AvatarShower'
 import Errors from '../Errors'
+import Loading from '../Loading'
 
 class AvatarEditor extends Component{
 
@@ -65,7 +66,8 @@ class AvatarEditor extends Component{
                 if (result.errors){
                     this.setState({
                         error: true,
-                        status: result.errors,
+                        status: result.errors.name,
+                        isSaving: false,
                     })                  
                 }
                 else if (result.status == 'success'){
@@ -105,8 +107,15 @@ class AvatarEditor extends Component{
         if(name.length>32){
             this.setState({
                 error: true,
-                status: 'El nombre no debe ser contener mas de 32 caracteres',
+                status: 'El nombre no debe ser de mas de 32 caracteres',
                 field_name: ''
+            })
+            return;
+        }
+        if(name.length<1){
+            this.setState({
+                error: true,
+                status: 'El nombre debe tener al menos un caracter',
             })
             return;
         }
@@ -301,6 +310,7 @@ class AvatarEditor extends Component{
 
     formSaveAvatar(){
         return(
+
             <form onSubmit={this.handleSaveAvatar}>
                 <div className="form-group">
                     <input
@@ -309,13 +319,13 @@ class AvatarEditor extends Component{
                         onChange={this.handleFieldNameChange}
                         value={this.state.field_name}
                     />
-                </div>                
-                <button type="submit" className="btn btn-primary">
+                </div>
+                <button type="submit" className="btn btn-primary btn-block">
                    Guardar
                 </button>
                 <Errors 
-                    error={this.error}
-                    message={this.status}
+                    error={this.state.error}
+                    message={this.state.status}
                 />
             </form>
         )
@@ -337,16 +347,26 @@ class AvatarEditor extends Component{
         if(!this.state.isSaving){
             return(
                 <div className="row justify-content-center testing">
+                    <div className="col-md-4 testing">
+                        <div className="row testing">
+                            {this.formSaveAvatar()}
+                        </div>
+                        <div className="row testing">
+                            {this.buttonsAvatarItems()}
+                        </div>
+                    </div>
                     <div className="col-md-8 testing">
-                        {this.formSaveAvatar()}
+                        <div className="row testing">
+                            {this.buttonsPrevNextItems()}
+                        </div>
+                        <div className="row testing">
                         <AvatarShower 
                             avatar={this.getAvatar()}
                             items={this.props.items}                
                             renderName={true}
                             useIDs={false}                    
                         />
-                        {this.buttonsPrevNextItems()}
-                        {this.buttonsAvatarItems()}                
+                        </div>
                     </div>
                 </div>
             );
@@ -354,11 +374,7 @@ class AvatarEditor extends Component{
         else{
             // Guardando
             return(
-                <div className="row justify-content-center testing">                
-                    <div className="col-md-1 testing">
-                        <i className="fa fa-spinner fa-spin loading"/>
-                    </div>
-                </div>
+                <Loading/>
             );
         }
     }

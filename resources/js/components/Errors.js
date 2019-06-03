@@ -10,7 +10,7 @@ class Errors extends Component{
         if(this.props.error){
             return(
                 <div className="alert alert-danger" role="alert">
-                    Error: {this.props.message}
+                    {this.props.message}
                 </div>
             );
         }

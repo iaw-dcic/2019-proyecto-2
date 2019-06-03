@@ -1,5 +1,5 @@
 body{
-    padding-top: 60px;
+    padding-top: 70px;
 }
 
 .about-title {
@@ -41,7 +41,7 @@ body{
 
 .avatar-frame{  
     position: relative;
-    left: 50%;
+    left: 0%;
     width: 288px;
     height: 400px;
     padding: 4px;
@@ -53,6 +53,20 @@ body{
     top: 0%;
     left: 0%;   
 }
+
+.avatar-botones{
+    width: 300px;
+    padding: 5px 0px 5px 0px;
+}
+
+.jumbotron{
+    margin-top: +5px;
+}
+
+.sad-avatar {
+    opacity: 0.60;
+}
+
 
 .avatar-body{    
     z-index: 1;
@@ -74,6 +88,27 @@ body{
     z-index: 14;
 }
 
+.lista-avatares{
+    margin-bottom: 5px;
+}
+
+.lista-avatares.titulo{
+    margin-top: 5px;
+}
+
+.lista-avatares.lista{
+    padding: 2px;
+}
+
+.lista-avatares.errores{
+    margin: 5px 2px 5px 2px;
+    padding: 2px;
+}
+
+.boton-nuevo{
+    margin: 5px;
+    padding: 0px 5px 0px 5px;
+}
 
 html,
 body {

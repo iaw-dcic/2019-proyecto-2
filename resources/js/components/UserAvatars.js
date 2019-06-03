@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import AvatarEditor from './Avatars/AvatarEditor'
 import AvatarShower from './Avatars/AvatarShower'
 import Errors from './Errors'
+import Loading from './Loading'
 
 class UserAvatars extends Component{
 
@@ -136,12 +137,17 @@ class UserAvatars extends Component{
     }
 
     renderButtonEditAvatar(){
-        return(
-            <button onClick={this.handleButtonEditAvatar} 
-                type="button" className="btn btn-secondary">
-                Editar
-            </button>
-        );
+        if (this.state.selectedAvatar){
+            return(            
+                <button onClick={this.handleButtonEditAvatar} 
+                    type="button" className="btn btn-secondary">
+                    Editar
+                </button>
+            );
+        }
+        else{
+            return null;
+        }
     }
 
     handleButtonDeleteAvatar = (e) =>{
@@ -155,6 +161,7 @@ class UserAvatars extends Component{
         this.setState( (prevState) =>({
             avatars: newAvatars,
             selectedAvatar: null,
+            selectedAvatarIndex: -1,
         }))
 
 
@@ -180,63 +187,83 @@ class UserAvatars extends Component{
         }
     }
 
-    renderAvatarList(){
-        if(this.state.avatars.length>0){
-            return(
-                <div className="col-md-4 testing">
-                    <h5>Tus avatares: </h5>
-                    <ul>
-                        {this.state.avatars.map((item,index) => 
-                        <li key={index}>
-                            <a href="#" id={index} onClick={this.handleAvatarClick}>{item.name}</a>
-                        </li>
-                        )}
-                    </ul>
-                    {this.renderButtonNewAvatar('Nuevo','btn btn-primary')}
-                    <Errors 
-                        error={this.state.error}
-                        message={this.state.status}
-                    />
-                </div>
-            );
+    getActive(index){
+        if (index==this.state.selectedAvatarIndex){
+            return " active";
         }
         else{
-            // User no tiene avatares
-            return(
-                <div className="col-md-4 testing">
-                    <div className="jumbotron testing">
-                        <h1 className="display-4">:(</h1>
-                        <p className="lead">Aún no tienes avatares.</p>
-                        <p className="lead">Por qué no creas uno?.</p>
-                        <p className="lead">
-                            {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg')}
-                        </p>
-                    </div>                    
-                </div>
-            );
+            return " ";
         }
     }
 
-    renderButtonDeleteAvatar(){
+    renderAvatarList(){
         return(
-            <button onClick={this.handleButtonDeleteAvatar} 
-                type="button" className="btn btn-danger">
-                Eliminar
-            </button>
-        );
+            <div className="col-md-4">
+                <div className="row-fluid">
+                    <div className="lista-avatares titulo text-center">
+                        <h5>Tus snoovatares </h5>
+                    </div>
+                </div>
+                <div className="row-fluid">
+                    <div className="lista-avatares lista">
+                        <div className="list-group list-group-flush">
+                            {this.state.avatars.map((item,index) => 
+                            <a className={"list-group-item list-group-item-info list-group-item-action"+this.getActive(index)}
+                            href="#" id={index} onClick={this.handleAvatarClick}>{item.name}</a>
+                            )}
+                        </div>
+                    </div>
+                </div>                
+                <div className="row-fluid">
+                    <div className="lista-avatares boton-nuevo">
+                        {this.renderButtonNewAvatar('Nuevo','btn btn-primary btn-block')}
+                    </div>        
+                </div>
+                
+                <div className="row-fluid">
+                    <div className="lista-avatares errores">
+                        <Errors 
+                            error={this.state.error}
+                            message={this.state.status}
+                        />  
+                    </div>
+                </div>
+                
+            </div>
+        );        
+    }
+
+    renderButtonDeleteAvatar(){
+        if (this.state.selectedAvatar){
+            return(
+                <button onClick={this.handleButtonDeleteAvatar} 
+                    type="button" className="btn btn-danger">
+                    Eliminar
+                </button>
+            );
+        }
+        else{
+            return null;
+        }
     }
 
     renderAvatarShower(){
         return(
-            <div className="col-md-8 justify-content-center testing">
-                {this.renderButtonEditAvatar()}
-                {this.renderButtonDeleteAvatar()}
+            <div className="col-md-8 testing">
+                <div className="row justify-content-center testing">
+                    <div className="btn-group testing avatar-botones" role="group" aria-label="Botones editar y eliminar">
+                        {this.renderButtonEditAvatar()}
+                        {this.renderButtonDeleteAvatar()}
+                    </div>
+                </div>
+                <div className="row justify-content-center testing">
                 <AvatarShower 
                     items={this.props.items}
                     avatar={this.state.selectedAvatar}
                     renderName={false}
                     useIDs={true}
                 />
+                </div>
             </div>
         );
     }
@@ -247,7 +274,7 @@ class UserAvatars extends Component{
             // Tiene avatares
             return(
                 
-                <div className="row justify-content-center testing">
+                <div className="row justify-content-center">
                     {this.renderAvatarList()}                        
                     {this.renderAvatarShower()}
                 </div>
@@ -256,15 +283,23 @@ class UserAvatars extends Component{
         else{
             // No tiene avatars
             return(
-                <div className="row justify-content-center testing">
-                    <div className="col-md-4 testing">
-                        <div className="jumbotron testing">
+                <div className="row justify-content-center ">
+                    <div className="col-md-6 ">
+                        <div className="jumbotron">
                             <h1 className="display-4">:(</h1>
-                            <p className="lead">Aún no tienes avatares.</p>
-                            <p className="lead">Por qué no creas uno?.</p>
-                            <p className="lead">
-                                {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg')}
-                            </p>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <p className="lead ">Aún no tienes snoovatares.</p>
+                                    <p className="lead ">
+                                        {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg ')}
+                                    </p>
+                                </div>
+                                <div className="col-md-2 testing">
+                                    <div className="jumbo-avatar testing">
+                                        <img className="sad-avatar " src="/avatars/sad.png"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>                    
                     </div>
                 </div>
@@ -312,11 +347,7 @@ class UserAvatars extends Component{
         else{
             // Avatares no cargados
             return(
-                <div className="row justify-content-center testing">
-                    <div className="col-md-1 testing">
-                        <i className="fa fa-spinner fa-spin loading"/>
-                    </div>
-                </div>
+                <Loading/>
             );
         }
     }
