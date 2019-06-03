@@ -31136,6 +31136,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ListaPronosticosComponent).call(this, props));
     _this.cerrarProde = _this.cerrarProde.bind(_assertThisInitialized(_this));
+    _this.actualizarProdes = _this.props.actualizarProdes;
     _this.state = {
       user: _this.props.user,
       prodes: _this.props.prodes
@@ -31148,11 +31149,25 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.cargarLista(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12 d-flex w-100 justify-content-center align-items-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick(event) {
+          return _this2.seleccionarProde(event, null);
+        },
+        className: "btn btn-success mx-1 mt-4"
+      }, "Crear prode")));
+    }
+  }, {
+    key: "cargarLista",
+    value: function cargarLista() {
+      var _this3 = this;
+
       return this.state.prodes.map(function (prode) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "",
           onClick: function onClick(event) {
-            return _this2.seleccionarProde(event, prode);
+            return _this3.seleccionarProde(event, prode);
           },
           key: prode.id,
           className: "list-group-item list-group-item-action d-flex justify-content-center item-prode"
@@ -31163,11 +31178,13 @@ function (_Component) {
     key: "seleccionarProde",
     value: function seleccionarProde(event, prode) {
       event.preventDefault();
+      this.cerrarProde();
       var viewProde = document.getElementById('viewProde');
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PronosticoComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
         user: this.state.user,
         prode: prode,
-        cerrarProde: this.cerrarProde
+        cerrarProde: this.cerrarProde,
+        actualizarProdes: this.actualizarProdes
       }), viewProde);
     }
   }, {
@@ -31175,6 +31192,7 @@ function (_Component) {
     value: function cerrarProde() {
       var viewProde = document.getElementById('viewProde');
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(viewProde);
+      this.actualizarProdes();
     }
   }]);
 
@@ -31451,11 +31469,12 @@ function (_Component) {
     _classCallCheck(this, PronosticoComponent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PronosticoComponent).call(this, props));
-    _this.cerrarProde = _this.props.cerrarProde;
     _this.saveProde = _this.saveProde.bind(_assertThisInitialized(_this));
     _this.resetProde = _this.resetProde.bind(_assertThisInitialized(_this));
-    _this.cerrarProde = _this.cerrarProde.bind(_assertThisInitialized(_this));
     _this.deleteProde = _this.deleteProde.bind(_assertThisInitialized(_this));
+    _this.refreshProde = _this.refreshProde.bind(_assertThisInitialized(_this));
+    _this.cerrarProde = _this.props.cerrarProde;
+    _this.actualizarProdes = _this.props.actualizarProdes;
     _this.state = {
       user: _this.props.user,
       prode: _this.props.prode
@@ -31515,7 +31534,18 @@ function (_Component) {
     key: "saveProde",
     value: function saveProde(event) {
       event.preventDefault();
-      this.pronosticoController.saveProde();
+      this.pronosticoController.saveProde(this.refreshProde);
+      this.cerrarProde();
+      this.actualizarProdes();
+    }
+  }, {
+    key: "refreshProde",
+    value: function refreshProde(prode) {
+      this.setState({
+        user: this.state.user,
+        prode: prode
+      });
+      this.pronosticoController.saveOnLocalStorage(this.state.prode);
     } //Reestablece los datos
 
   }, {
@@ -31529,6 +31559,8 @@ function (_Component) {
     key: "deleteProde",
     value: function deleteProde(event) {
       event.preventDefault();
+      this.cerrarProde();
+      this.actualizarProdes();
     } //Actualiza el tablero en el div #tablero-pronosticos
 
   }, {
@@ -31607,6 +31639,7 @@ function (_Component) {
     _classCallCheck(this, PronosticosComponent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PronosticosComponent).call(this, props));
+    _this.actualizarProdes = _this.actualizarProdes.bind(_assertThisInitialized(_this));
     _this.state = {
       user: _this.props.user,
       prodes: []
@@ -31637,12 +31670,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "listaProdes",
         className: "list-group col-4"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-12 d-flex w-100 justify-content-center align-items-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.crearProde,
-        className: "btn btn-success mx-1 mt-4"
-      }, "Crear prode"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "viewProde"
       }));
     }
@@ -31657,19 +31685,20 @@ function (_Component) {
       this.mostrarListaProdes();
     }
   }, {
+    key: "actualizarProdes",
+    value: function actualizarProdes() {
+      this.pronosticosController.loadPronosticos();
+      react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(viewProde);
+    }
+  }, {
     key: "mostrarListaProdes",
     value: function mostrarListaProdes() {
       var listaProdes = document.getElementById('listaProdes');
-      react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(viewProde);
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ListaPronosticosComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
         user: this.state.user,
-        prodes: this.state.prodes
+        prodes: this.state.prodes,
+        actualizarProdes: this.actualizarProdes
       }), listaProdes);
-    }
-  }, {
-    key: "crearProde",
-    value: function crearProde(event) {
-      event.preventDefault();
     }
   }]);
 
@@ -31712,6 +31741,7 @@ function () {
     this.view = view;
     this.state = this.view.state;
     this.pronosticoModel = new _models_pronosticos_PronosticosModel__WEBPACK_IMPORTED_MODULE_1__["default"](this.state.user);
+    if (this.state.prode == null) this.state.prode = this.pronosticoModel.crearNuevoProde(this.state.user.id);
   }
 
   _createClass(PronosticoController, [{
@@ -31721,9 +31751,15 @@ function () {
     }
   }, {
     key: "saveProde",
-    value: function saveProde() {
+    value: function saveProde(refreshProde) {
+      var _this = this;
+
       var prode = this.pronosticoModel.getProdeFromLocalStorage(this.state.prode.id);
-      this.pronosticoModel.saveProde(prode);
+      this.pronosticoModel.saveProde(prode, function (prode) {
+        return refreshProde(_this.pronosticoModel.transformarDatosDesdeServidor(prode));
+      }, function (error) {
+        return console.log(error);
+      });
     }
   }, {
     key: "saveOnLocalStorage",
@@ -31856,12 +31892,13 @@ function () {
     }
   }, {
     key: "saveProde",
-    value: function saveProde(prode) {
+    value: function saveProde(prode, callback, error) {
       var pronostico = this.transformarDatosHaciaServidor(prode);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/user/".concat(this.user.id, "/prodes"), pronostico).then(function (response) {
         return console.log(response.data);
-      })["catch"](function (e) {
-        return console.log(e);
+      }) //callback(response.data))
+      ["catch"](function (e) {
+        return error(e);
       });
     }
   }, {
@@ -31897,14 +31934,38 @@ function () {
   }, {
     key: "resetPronostico",
     value: function resetPronostico(prode) {
-      var teams = [['Francia', 'Argentina', null], ['Uruguay', 'Portugal', null], ['Brasil', 'Mexico', null], ['Bélgica', 'Japón', null], ['España', 'Rusia', null], ['Croacia', 'Dinamarca', null], ['Suecia', 'Suiza', null], ['Colombia', 'Inglaterra', null]];
-      var results = [[], [], [], []];
+      var teams = prode.teams != null ? prode.teams : this.getEquipos();
+      var results = prode.results != null ? this.resetResults(prode.results) : [[[], [], [], []]];
       return {
         user_id: prode.user_id,
         id: prode.id,
         teams: teams,
         results: results
       };
+    }
+  }, {
+    key: "resetResults",
+    value: function resetResults(results) {
+      return [results[0].map(function (result) {
+        return result.map(function (match) {
+          return [null, null, match[2]];
+        });
+      })];
+    }
+  }, {
+    key: "getEquipos",
+    value: function getEquipos() {
+      return [['Francia', 'Argentina', 1, 2], ['Uruguay', 'Portugal', 3, 4], ['Brasil', 'Mexico', 5, 6], ['Bélgica', 'Japon', 7, 8], ['España', 'Rusia', 9, 10], ['Croacia', 'Dinamarca', 11, 12], ['Suecia', 'Suiza', 13, 14], ['Colombia', 'Inglaterra', 15, 16]];
+    }
+  }, {
+    key: "crearNuevoProde",
+    value: function crearNuevoProde(user_id) {
+      return this.resetPronostico({
+        user_id: user_id,
+        id: null,
+        teams: null,
+        results: null
+      });
     }
   }, {
     key: "transformarDatosDesdeServidor",
@@ -31918,9 +31979,8 @@ function () {
         id: id,
         results: [[], [], [], []],
         teams: []
-      }; //new PronosticoModel(this.user.id, id);
-
-      partidos.map(function (partido) {
+      };
+      partidos.map(function (partido, i) {
         var local = partido.local.nombre;
         var local_id = partido.local.id;
         var visitante = partido.visitante.nombre;
@@ -31928,7 +31988,7 @@ function () {
         var partido_id = partido.id;
         var goles_local = partido.goles_local;
         var goles_visitante = partido.goles_visitante;
-        newProde.teams.push([local, visitante, local_id, visitante_id]);
+        if (i < 8) newProde.teams.push([local, visitante, local_id, visitante_id]); // el indice menor a 8 para obtener solo los primeros 16 equipos
 
         newProde.results[_this2.fases[partido.fase]].push([goles_local, goles_visitante, partido_id]);
       });
@@ -31956,7 +32016,6 @@ function () {
         14: 12,
         15: 12
       };
-      console.log(results);
       results.forEach(function (result, indice) {
         var id = result[2];
         var local = null,
@@ -32030,7 +32089,7 @@ function () {
         }
 
         prode_nuevo.partidos.push({
-          id: id,
+          id: id ? id : null,
           fase: _this3.getFase(indice),
           local: {
             local_id: local_id,

@@ -7,11 +7,13 @@ export default class PronosticoComponent extends Component {
     constructor(props){
         super(props);
 
-        this.cerrarProde = this.props.cerrarProde;
         this.saveProde = this.saveProde.bind(this);
         this.resetProde = this.resetProde.bind(this); 
-        this.cerrarProde = this.cerrarProde.bind(this); 
         this.deleteProde = this.deleteProde.bind(this);
+        this.refreshProde = this.refreshProde.bind(this);
+
+        this.cerrarProde = this.props.cerrarProde;
+        this.actualizarProdes = this.props.actualizarProdes;
 
         this.state = {user: this.props.user, prode: this.props.prode};
 
@@ -53,7 +55,17 @@ export default class PronosticoComponent extends Component {
     //Guarda los datos en el servidor
     saveProde(event) {
         event.preventDefault();
-        this.pronosticoController.saveProde();
+        this.pronosticoController.saveProde(this.refreshProde);
+        this.cerrarProde();
+        this.actualizarProdes();
+    }
+
+    refreshProde(prode){
+        this.setState({
+            user: this.state.user,
+            prode
+        });
+        this.pronosticoController.saveOnLocalStorage(this.state.prode);
     }
 
     //Reestablece los datos
@@ -65,6 +77,8 @@ export default class PronosticoComponent extends Component {
     //Borrar los datos
     deleteProde(event){
         event.preventDefault();
+        this.cerrarProde();
+        this.actualizarProdes();
     }
 
     //Actualiza el tablero en el div #tablero-pronosticos

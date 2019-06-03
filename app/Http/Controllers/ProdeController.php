@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use App\Partido;
 use App\Equipo;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class ProdeController extends Controller{
 
@@ -25,17 +26,17 @@ class ProdeController extends Controller{
             return Response()->json(['error' => '401 Unauthorized'], 401);
         $user = Auth::user();
         */
-
         $user = User::find($user_id);   //Borrar y reemplazar por el comentario de arriba
         $prodes = $user->getProdes()->get();
         $prodes_user = [];
         $partidos_prodes = [];
+        $i = 0;
         foreach($prodes as $prode){
             $partidos = $prode->getPartidos()->get();
             foreach($partidos as $partido)
                 $partido = $this->crearPartido($partido);
             array_push($partidos_prodes, $partidos);
-            array_push($prodes_user, ['id' => $prode->id, 'partidos' => $partidos_prodes[0]]);
+            array_push($prodes_user, ['id' => $prode->id, 'partidos' => $partidos_prodes[$i++]]);
         }
         return Response()->json($prodes_user, 200);
     }
@@ -46,7 +47,54 @@ class ProdeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $user_id){
-        return $request;
+        /*
+        if(Auth::user()->id != $user_id)
+            return Response()->json(['error' => '401 Unauthorized'], 401);
+        $user = Auth::user();
+        */
+
+        DB::beginTransaction();
+        try{
+            $user = User::find($user_id);
+            $partidos = $request->partidos;
+            
+            $partidosDB = [];
+
+            foreach($partidos as $partido){
+                $partidoDB = Partido::find($partido['id']) ?: new Partido();
+                $partidoDB->local_id = $partido['local']['local_id'];
+                $partidoDB->visitante_id = $partido['visitante']['visitante_id'];
+                $partidoDB->fase = $partido['fase'];
+                $partidoDB->goles_local = $partido['resultado']['resultado_local'];
+                $partidoDB->goles_visitante = $partido['resultado']['resultado_visitante'];
+                $partidoDB->save();
+                array_push($partidosDB, $partidoDB);
+            }
+
+            if($request->id != null)
+                $prode = Prode::find($request->id);
+            else{
+                $prode = new Prode();
+                $prode->save();
+                $user->getProdes()->attach($prode->id);
+            }
+
+            foreach($partidosDB as $partidoDB){
+                if($partidoDB->getProdes()->find($prode->id) == null)
+                    $partidoDB->getProdes()->attach($prode->id);
+                $partidoDB = $this->crearPartido($partidoDB);
+            }
+            DB::commit();
+            return Response()->json(['id' => $prode->id, 'partidos' => $partidosDB], 200);
+        }catch(\Exception $ex){
+            DB::rollback();
+            return Response()->json('500 Internal Server Error', 500);
+        }
+    }
+
+    private function crearPartidos($partidos){
+        
+        return $partidosDB;
     }
 
     /**

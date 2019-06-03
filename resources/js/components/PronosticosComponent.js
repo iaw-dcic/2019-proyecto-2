@@ -8,6 +8,7 @@ export default class PronosticosComponent extends Component {
 
     constructor(props){
         super(props);
+        this.actualizarProdes = this.actualizarProdes.bind(this);
         this.state = { user: this.props.user, prodes: [] };
 
         this.pronosticosController = new PronosticosController(this);
@@ -30,10 +31,6 @@ export default class PronosticosComponent extends Component {
                     <div id="listaProdes" className="list-group col-4">
 
                     </div>
-                    
-                    <div className="col-12 d-flex w-100 justify-content-center align-items-center">
-                        <button onClick={this.crearProde} className="btn btn-success mx-1 mt-4">Crear prode</button>
-                    </div>
                 </div>
 
                 <div id="viewProde">
@@ -50,13 +47,13 @@ export default class PronosticosComponent extends Component {
         this.mostrarListaProdes();
     }
 
-    mostrarListaProdes(){
-        let listaProdes = document.getElementById('listaProdes');
+    actualizarProdes(){
+        this.pronosticosController.loadPronosticos();
         ReactDOM.unmountComponentAtNode(viewProde);
-        ReactDOM.render(<ListaPronosticosComponent user={this.state.user} prodes={this.state.prodes} />, listaProdes);
     }
 
-    crearProde(event){
-        event.preventDefault();
+    mostrarListaProdes(){
+        let listaProdes = document.getElementById('listaProdes');
+        ReactDOM.render(<ListaPronosticosComponent user={this.state.user} prodes={this.state.prodes} actualizarProdes={this.actualizarProdes} />, listaProdes);
     }
 }

@@ -8,15 +8,21 @@ export default class PronosticoController{
         this.view = view;
         this.state = this.view.state;
         this.pronosticoModel = new PronosticosModel(this.state.user);
+
+        if(this.state.prode == null)
+            this.state.prode = this.pronosticoModel.crearNuevoProde(this.state.user.id);
     }
 
     init(){
         return this.state.prode;
     }
 
-    saveProde(){
+    saveProde(refreshProde){
         let prode = this.pronosticoModel.getProdeFromLocalStorage(this.state.prode.id);
-        this.pronosticoModel.saveProde(prode);
+        this.pronosticoModel.saveProde(prode, 
+            (prode) => refreshProde(this.pronosticoModel.transformarDatosDesdeServidor(prode)),
+            (error) => console.log(error)
+        );
     }
 
     saveOnLocalStorage(data){

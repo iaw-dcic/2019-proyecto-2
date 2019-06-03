@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder{
             ]);
         }
 
-        factory(\App\Prode::class, 1)->create()->each(function (Prode $prode){
+        factory(\App\Prode::class, 2)->create()->each(function (Prode $prode){
             $prode->getUsers()->attach(1);
         });
 
@@ -60,6 +60,18 @@ class DatabaseSeeder extends Seeder{
                 'fase' => 'octavos'
             ])->each(function (Partido $partido){
                 $partido->getProdes()->attach(1);
+            });
+        }
+
+        for($i=1; $i<=16; $i+=2){
+            factory(\App\Partido::class, 1)->create([
+                'local_id' => $i,
+                'visitante_id' => $i+1,
+                'goles_local' => null,
+                'goles_visitante' => null,
+                'fase' => 'octavos'
+            ])->each(function (Partido $partido){
+                $partido->getProdes()->attach(2);
             });
         }
     }

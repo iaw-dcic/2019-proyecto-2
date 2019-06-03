@@ -16,11 +16,11 @@ export default class ListaPronosticos{
             .catch((e) => error(e));
     }
 
-    saveProde(prode){
+    saveProde(prode, callback, error){
         let pronostico = this.transformarDatosHaciaServidor(prode);
         Axios.post(`/api/user/${this.user.id}/prodes`, pronostico)
-            .then((response) => console.log(response.data))
-            .catch((e) => console.log(e));
+            .then((response) => console.log(response.data))//callback(response.data))
+            .catch((e) => error(e));
     }
 
     getProdeFromLocalStorage(id){
@@ -50,17 +50,34 @@ export default class ListaPronosticos{
     }
 
     resetPronostico(prode){
-        let teams = [['Francia', 'Argentina', null], ['Uruguay', 'Portugal', null], ['Brasil', 'Mexico', null], ['Bélgica', 'Japón', null],
-                        ['España', 'Rusia', null], ['Croacia', 'Dinamarca', null], ['Suecia', 'Suiza', null], ['Colombia', 'Inglaterra', null]];
-        let results = [ [], [], [], [] ];
+        let teams = prode.teams != null ? prode.teams : this.getEquipos();
+        let results = prode.results != null ? this.resetResults(prode.results) : [[[],[],[],[]]];
         return {user_id: prode.user_id, id: prode.id, teams, results};
+    }
+
+    resetResults(results){
+        return [results[0].map((result) => {
+            return result.map((match) => {
+                return [null, null, match[2]];
+            });
+        })];
+    }
+
+    getEquipos(){
+        return [
+            ['Francia', 'Argentina',1,2],['Uruguay', 'Portugal',3,4],['Brasil', 'Mexico',5,6],['Bélgica', 'Japon',7,8],
+            ['España', 'Rusia',9,10],['Croacia', 'Dinamarca',11,12],['Suecia', 'Suiza',13,14],['Colombia', 'Inglaterra',15,16]
+        ]
+    }
+
+    crearNuevoProde(user_id){
+        return this.resetPronostico({ user_id, id: null, teams: null, results: null });
     }
 
     transformarDatosDesdeServidor(prode){
         let { id, partidos } = prode;
         let newProde = {user_id: this.user.id, id, results: [[],[],[],[]], teams: []};
-        //new PronosticoModel(this.user.id, id);
-        partidos.map((partido) => {
+        partidos.map((partido, i) => {
             let local = partido.local.nombre;
             let local_id = partido.local.id;
             let visitante = partido.visitante.nombre;
@@ -68,7 +85,7 @@ export default class ListaPronosticos{
             let partido_id = partido.id;
             let goles_local = partido.goles_local;
             let goles_visitante = partido.goles_visitante;
-            newProde.teams.push([local, visitante, local_id, visitante_id]);
+            if(i < 8) newProde.teams.push([local, visitante, local_id, visitante_id]); // el indice menor a 8 para obtener solo los primeros 16 equipos
             newProde.results[this.fases[partido.fase]].push([goles_local, goles_visitante, partido_id]);
         });
         newProde.results = [newProde.results];
@@ -81,8 +98,6 @@ export default class ListaPronosticos{
 
         let prode_nuevo = {id: prode.id, partidos: []};
         let posiciones = {8: 0, 9: 2, 10: 4, 11: 6, 12: 8, 13: 10, 14: 12, 15: 12};
-
-        console.log(results);
 
         results.forEach((result, indice) => {
             let id = result[2];
@@ -139,14 +154,13 @@ export default class ListaPronosticos{
             }
 
             prode_nuevo.partidos.push({
-                id,
+                id: id ? id : null,
                 fase: this.getFase(indice),
                 local: { local_id, local },
                 visitante: { visitante_id, visitante },
                 resultado: { ganador, perdedor, resultado_local, resultado_visitante }
             });
         });
-
         return prode_nuevo;
     }
 
