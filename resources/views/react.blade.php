@@ -10,7 +10,7 @@
       <img class="img-fluid mb-5 d-block mx-auto grande" src="img/Logo/devilDonuts2.png" alt="">
       <h1 class="text-uppercase mb-0">Donuts maker </h1>
       <br>
-      <h2 class="font-weight-light mb-0">... hechas a la antigua ...</h2>
+      <h2 class="font-weight-light mb-0">... estas rosquillas fueron hechas a la antigua ...</h2>
       <h4 class="font-weight-light mb-0">                                    - Mr. Burns</h4>
       <hr class="">
     </div>

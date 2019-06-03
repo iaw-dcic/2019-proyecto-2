@@ -11,13 +11,12 @@
 |
 */
 
-//Usuario registrado
 Auth::routes();
 //Route::get('/home','Controller@index')->middleware('auth');
-Route::view('/{path?}', 'home')->middleware('auth');
+//Route::view('/{path?}', 'home')->middleware('auth');
 
-//Usuario no registrado
-//Route::get('/','NotRegisterController@index');
+Route::view('/home', 'home')->middleware('auth');
+Route::view('/{path?}', 'react');
 
 Route::get('donuts','DonutsController@index');
 Route::post('donuts','DonutsController@store')->middleware('auth');
@@ -27,4 +26,4 @@ Route::delete('donuts/{id}','DonutsController@delete');
 
 Route::get('sabores', 'SaborController@index');
 Route::get('glaseados', 'GlaseadoController@index');
-Route::get('decoraciones', 'DecoracionController@index'); 
+Route::get('decoraciones', 'DecoracionController@index');

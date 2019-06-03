@@ -12,19 +12,19 @@ class SeccionEditar extends Component {
         }
     }
     
-    componentWillMount(){
-        this.loadDonut();
-    }
+    // componentWillMount(){
+    //     this.loadDonut();
+    // }
     
-    loadDonut(){
-        fetch('/api/donuts').then(
-            (response)=>{
-                return response.json();
-            }   )
-        .then(donuts => {
-            this.setState({ donuts : donuts });
-        });
-    }
+    // loadDonut(){
+    //     fetch('/api/donuts').then(
+    //         (response)=>{
+    //             return response.json();
+    //         }   )
+    //     .then(donuts => {
+    //         this.setState({ donuts : donuts });
+    //     });
+    // }
 
 	render() {
 		return (

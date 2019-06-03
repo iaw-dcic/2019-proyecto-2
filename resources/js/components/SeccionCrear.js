@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Donut from './Donut';
 import BotonSabor from './BotonSabor';
 import BotonGlaseado from './BotonGlaseado';
 import BotonDecoracion from './BotonDecoracion';
@@ -12,7 +11,6 @@ class SeccionCrear extends Component {
 		super();
 
 		this.state = {
-			//donuts: {},
 			sabor: 4,
 			glaseado: 6,
 			decoracion: 6,
@@ -84,18 +82,6 @@ class SeccionCrear extends Component {
 				
 		}
 
-	// actualizarDonuts = (clave, donut) => {
-	// 	this.setState((state) => {
-	// 		const donuts = { ...state.donuts };
-	// 		donuts[clave] = donut;
-	// 		return { donuts };
-	// 	});
-	// };
-
-	// componentDidMount() {
-	// 	this.setState({ donuts });
-	// }
-
 	render() {
 		return (			
 				<div className="row">
@@ -108,15 +94,12 @@ class SeccionCrear extends Component {
 					<div className="col fondo" id="box">
 						<br />
 						<h4 className="font-weight-light mb-0">Sabor </h4>
-						{/* <BotonSabor donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} /> */}
 						<BotonSabor onClick={this.setSabor} />
 
 						<h4 className="font-weight-light mb-0">Glaseado </h4>
-						{/* <BotonGlaseado donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} /> */}
 						<BotonGlaseado onClick={this.setGlaseado} />
 
 						<h4 className="font-weight-light mb-0">Decoración </h4>
-						{/* <BotonDecoracion donut={this.props.donuts} actualizarDonuts={this.actualizarDonuts} /> */}
 						<BotonDecoracion onClick={this.setDecoracion} />
 
 						<br />

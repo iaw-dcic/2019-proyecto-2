@@ -25,19 +25,18 @@ class DonutController extends Controller
  
     public function store()
     {
-       // $user = Auth::user();
+        $user = Auth::user();
         
         $data = request()->all();
 
-        return $data;
-        // $donut = new Donut();
-        // $donut->user_id = $user->id;
-        // $donut->sabor_id = $data['sabor_id'];
-        // $donut->glaseado_id = $data['glaseado_id'];
-        // $donut->decorado_id = $data['decorado_id'];
-        // $donut->save();
+        $donut = new Donut();
+        $donut->user_id = $user->id;
+        $donut->sabor_id = $data['sabor_id'];
+        $donut->glaseado_id = $data['glaseado_id'];
+        $donut->decorado_id = $data['decorado_id'];
+        $donut->save();
 
-        // return response()->json($donut, 201);   
+        return response()->json($donut, 201);   
     }
  
     public function update($id)
