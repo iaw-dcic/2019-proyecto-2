@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-6 col-lg-6 bg-image">
-       <!-- Imagen -->
+       <img src="./images/inicio/principal.jpg">
     </div>
     <div class="col-md-6 col-lg-6">
       <div class="login d-flex align-items-center py-5">
