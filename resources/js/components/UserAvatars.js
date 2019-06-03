@@ -114,6 +114,9 @@ class UserAvatars extends Component{
             isCreating: true,
             isEditing: false,
         });
+        console.log("boton nuevo");        
+        console.log(this.state);
+        
     }
 
     renderButtonNewAvatar(label,classN){
@@ -238,17 +241,47 @@ class UserAvatars extends Component{
         );
     }
 
-
+    renderAvatars(){
+        // No esta editando ni creando
+        if (this.state.avatars.length>0){
+            // Tiene avatares
+            return(
+                
+                <div className="row justify-content-center testing">
+                    {this.renderAvatarList()}                        
+                    {this.renderAvatarShower()}
+                </div>
+            )
+        }
+        else{
+            // No tiene avatars
+            return(
+                <div className="row justify-content-center testing">
+                    <div className="col-md-4 testing">
+                        <div className="jumbotron testing">
+                            <h1 className="display-4">:(</h1>
+                            <p className="lead">Aún no tienes avatares.</p>
+                            <p className="lead">Por qué no creas uno?.</p>
+                            <p className="lead">
+                                {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg')}
+                            </p>
+                        </div>                    
+                    </div>
+                </div>
+            );
+        }
+    }
+    
     renderMode(){
         if(this.state.isCreating){        
-            return(
-                <AvatarEditor 
-                    items={this.props.items}
-                    api_token={this.props.api_token}
-                    mode={'create'}
-                    resetMode={this.resetMode}
-                />
-            );
+                return(
+                    <AvatarEditor 
+                        items={this.props.items}
+                        api_token={this.props.api_token}
+                        mode={'create'}
+                        resetMode={this.resetMode}
+                    />
+                );
         }
         else if(this.state.isEditing){
             return(
@@ -264,33 +297,17 @@ class UserAvatars extends Component{
         else{
             return(
                 // No esta editando ni creando
-                <div className="row justify-content-center testing">
-                        {this.renderAvatarList()}
-                        
-                        {this.renderAvatarShower()}
-                </div>
+                this.renderAvatars()
             )
         }
     }
 
-
     renderApp(){
         if (this.state.isLoaded){
             // Avatares cargados
-            if(this.state.avatars.length>0){
-                // Tiene avatares
-                return(
-                    this.renderMode()
-                );
-            }
-            else{
-                // No tiene avatares
-                return(
-                    <div className="row justify-content-center testing">
-                        {this.renderAvatarList()}
-                    </div>
-                );
-            }
+            return(
+                this.renderMode()
+            );
         }
         else{
             // Avatares no cargados

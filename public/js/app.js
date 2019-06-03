@@ -66559,6 +66559,9 @@ function (_Component) {
         isCreating: true,
         isEditing: false
       });
+
+      console.log("boton nuevo");
+      console.log(_this.state);
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleButtonEditAvatar", function (e) {
@@ -66772,6 +66775,34 @@ function (_Component) {
       }));
     }
   }, {
+    key: "renderAvatars",
+    value: function renderAvatars() {
+      // No esta editando ni creando
+      if (this.state.avatars.length > 0) {
+        // Tiene avatares
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row justify-content-center testing"
+        }, this.renderAvatarList(), this.renderAvatarShower());
+      } else {
+        // No tiene avatars
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row justify-content-center testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-4 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "jumbotron testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "display-4"
+        }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, "A\xFAn no tienes avatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, "Por qu\xE9 no creas uno?."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg')))));
+      }
+    }
+  }, {
     key: "renderMode",
     value: function renderMode() {
       if (this.state.isCreating) {
@@ -66791,9 +66822,7 @@ function (_Component) {
         });
       } else {
         return (// No esta editando ni creando
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row justify-content-center testing"
-          }, this.renderAvatarList(), this.renderAvatarShower())
+          this.renderAvatars()
         );
       }
     }
@@ -66802,15 +66831,7 @@ function (_Component) {
     value: function renderApp() {
       if (this.state.isLoaded) {
         // Avatares cargados
-        if (this.state.avatars.length > 0) {
-          // Tiene avatares
-          return this.renderMode();
-        } else {
-          // No tiene avatares
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row justify-content-center testing"
-          }, this.renderAvatarList());
-        }
+        return this.renderMode();
       } else {
         // Avatares no cargados
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
