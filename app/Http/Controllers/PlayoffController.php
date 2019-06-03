@@ -40,7 +40,26 @@ class PlayoffController extends Controller {
         $arr = [];
         $playoffs = User::where('id',1)->first()->playoffs()->getResults();
         foreach ($playoffs as $playoff) {
-            $playoffArr = ['id' => $playoff->id, 'name' => $playoff->name, 'octavos' => $playoff->octavos_id, 'ganador' => $playoff->ganador];
+            $playoffArr = ['id' => $playoff->id, 
+                           'name' => $playoff->name,
+                           'ganador' => $playoff->ganador,  
+                           ];
+            $id_octavos = $playoff->octavos_id;
+            $octavo = Octavo::where('id',$id_octavos)->first();
+           
+            $id_cuartos = $octavo->cuartos_id;
+            $cuarto = Cuarto::where('id',$id_cuartos)->first();
+            
+            $id_semifinal = $cuarto->semifinal_id;
+            $semifinal = Semifinal::where('id',$id_semifinal)->first();
+
+            $id_final = $semifinal->final_id;
+            $final = Objfinal::where('id',$id_final)->first();
+
+            array_push($playoffArr,$octavo);
+            array_push($playoffArr,$cuarto);
+            array_push($playoffArr,$semifinal);
+            array_push($playoffArr,$final);
             array_push($arr, $playoffArr);
         }
 
@@ -132,23 +151,35 @@ class PlayoffController extends Controller {
         }
     }
 
-    /*
     public function delete($id)
     {
         try {
             DB::beginTransaction();
             $playoff = Playoff::where('id',$id)->first();
-            $raiz = Node::where('id',$playoff->raiz)->first();
-            $arbol = $raiz->getArbolEnArreglo();
+            
+            $id_octavos = $playoff->octavos_id;
+            $octavo = Octavo::where('id',1)->first();
+           
+            $id_cuartos = $octavo->cuartos_id;
+            $cuarto = Cuarto::where('id',1)->first();
+            
+            $id_semifinal = $cuarto->semifinal_id;
+            $semifinal = Semifinal::where('id',1)->first();
+
+            $id_final = $semifinal->final_id;
+            $final = Objfinal::where('id',1)->first();
+            
+            $final->delete();
+            $semifinal->delete();
+            $cuarto->delete();
+            $octavo->delete();
             $playoff->delete();
-            foreach($arbol as $nodo){
-                $nodo->delete();
-            }
+
             DB::commit();
-            return response()->json([$id]);
+            return response()->json($id);
         } catch (\Exception $e) {
             DB::rollback();
             abort(500);
         }
-    }*/
+    }
 }

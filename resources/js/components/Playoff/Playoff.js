@@ -7,14 +7,13 @@ export default class Playoff extends Component {
     constructor() {
         super()
         this.state = {
+            id_playoff: "",
             playoffs: [],
-            selected: '',
-            selectedId: '',
             octavos: ['','','','','','','','','','','','','','','',''],
             cuartos: [],
             semifinal: [],
             final: [],
-            ganador: ""
+            ganador: "",
         }
     }
 
@@ -30,71 +29,47 @@ export default class Playoff extends Component {
                 playoffs: response.data,
             })
         })
-        console.log(this.state.playoffs);
     }
 
     handleChange(event) {
+        var id_playoffAux = '';
         var finalAux = [];
         var semifinalAux = [];
         var cuartosAux = [];
         var octavosAux = [];
         var ganadorAux = '';
-        var selectedIdAux = '';
-        var selectedAux = '';
 
-        /*if (event.target.value != '') {
-            var playoff = this.state.playoffs[event.target.value];
-            var octavos = playoff['octavos'];
-
-            var i = 0;
-            for (i = 0; i < 16; i++) {
-                octavosAux[i] = partidos[k];
-                k++;
-            }
-
-            /*var i = 0;
-            ganadorAux = partidos[1];
-            selectedIdAux = playoff['id'];
-            selectedAux = event.target.value;
-            var k = 2;
-
-            for (i = 0; i < 2; i++) {
-                finalAux[i] = partidos[k];
-                k++;
-            }
-            for (i = 0; i < 4; i++) {
-                semisAux[i] = partidos[k];
-                k++;
-            }
-            for (i = 0; i < 8; i++) {
-                cuartosAux[i] = partidos[k];
-                k++;
-            }
-            
+        if (event==0 || event != '') {
+            var playoff = this.state.playoffs[event];
+            id_playoffAux = event;
+            octavosAux = playoff[0]; 
+            cuartosAux = playoff[1];
+            semifinalAux = playoff[2];
+            finalAux = playoff[3];
+            ganadorAux = playoff['ganador'];  
         }
 
         this.setState({
-            selectedId: selectedIdAux,
-            selected: selectedAux,
+            id_playoff: id_playoffAux,
             octavos: octavosAux,
             cuartos: cuartosAux,
-            semis: semisAux,
-            final: finalAux,
-            winner: winnerAux
-        })*/
+            semifinal: semifinalAux,
+            final: finalAux,      
+            ganador: ganadorAux, 
+        })
     }
 
-    /*handleDeleteClick() {
-        var $toDelete = this.state.selectedId;
+    handleDelete() {
+        var $id = this.state.id_playoff;
         try {
-            axios.delete('api/playoffs/delete/' + $toDelete)
+            axios.delete('api/playoffs/delete/' + $id)
                 .then(res => {
                     console.log(res);
                 })
             this.limpiar();
         }
-        catch (e) {
-            console.log('Axios request failed', e);
+        catch (event) {
+            console.log('Axios request failed', event);
         }
     }
 
@@ -102,24 +77,27 @@ export default class Playoff extends Component {
         axios.get('/api/playoffs').then(response => {
             this.setState({
                 playoffs: response.data,
-                selected: '',
-                selectedId: '',
+                id_playoff: '',
                 octavos: [],
                 cuartos: [],
-                semis: [],
+                semifinal: [],
                 final: [],
-                winner: '',
+                ganador: '',
             })
         });
-    }*/
+    }
 
     render() {
+
         return ( 
         <>
             <h1>Mis pronósticos</h1>
+            { this.state.playoffs.map((name,id) => (
+            <button onClick={(event) => this.handleChange(id)}> Playoff {id+1}</button> ))}
             <div className="container">
                 <div className="card-header">
-                    <h1>Copa Libertadores</h1>
+                    <h1>Copa Libertadores</h1>                   
+                    <button onClick={(event) => this.handleDelete()}>Eliminar playoff</button>                  
                 </div>
                 <h2><b> Octavos de final</b></h2>
                 <table id='tableOctavos'>
@@ -129,48 +107,110 @@ export default class Playoff extends Component {
                         <th>Visitante </th>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[0]}</td>
+                        <td>{this.state.octavos['teamname1']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[1]}</td>
+                        <td>{this.state.octavos['teamname2']}</td>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[2]}</td>
+                        <td>{this.state.octavos['teamname3']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[3]}</td>
+                        <td>{this.state.octavos['teamname4']}</td>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[4]}</td>
+                        <td>{this.state.octavos['teamname5']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[5]}</td>
+                        <td>{this.state.octavos['teamname6']}</td>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[6]}</td>
+                        <td>{this.state.octavos['teamname7']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[7]}</td>
+                        <td>{this.state.octavos['teamname8']}</td>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[8]}</td>
+                        <td>{this.state.octavos['teamname9']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[9]}</td>
+                        <td>{this.state.octavos['teamname10']}</td>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[10]}</td>
+                        <td>{this.state.octavos['teamname11']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[11]}</td>
+                        <td>{this.state.octavos['teamname12']}</td>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[12]}</td>
+                        <td>{this.state.octavos['teamname13']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[13]}</td>
+                        <td>{this.state.octavos['teamname14']}</td>
                     </tr>
                     <tr>
-                        <td>{this.state.octavos[14]}</td>
+                        <td>{this.state.octavos['teamname15']}</td>
                         <td>-</td>
-                        <td>{this.state.octavos[15]}</td>
-                    </tr>
-                    
-                    
+                        <td>{this.state.octavos['teamname16']}</td>
+                    </tr>                   
                 </table>
+
+                <h2><b> Cuartos de final</b></h2>
+                <table id='tableCuartos'>
+                    <tr id='titleTableTorneo'>
+                        <th>Local</th>
+                        <th>vs.</th>
+                        <th>Visitante </th>
+                    </tr>
+                    <tr>
+                        <td>{this.state.cuartos['teamname1']}</td>
+                        <td>-</td>
+                        <td>{this.state.cuartos['teamname2']}</td>
+                    </tr>
+                    <tr>
+                        <td>{this.state.cuartos['teamname3']}</td>
+                        <td>-</td>
+                        <td>{this.state.cuartos['teamname4']}</td>
+                    </tr>
+                    <tr>
+                        <td>{this.state.cuartos['teamname5']}</td>
+                        <td>-</td>
+                        <td>{this.state.cuartos['teamname6']}</td>
+                    </tr>
+                    <tr>
+                        <td>{this.state.cuartos['teamname7']}</td>
+                        <td>-</td>
+                        <td>{this.state.cuartos['teamname8']}</td>
+                    </tr>
+                </table>
+
+                <h2><b> Semifinal</b></h2>
+                <table id='tableSemifinal'>
+                    <tr id='titleTableTorneo'>
+                        <th>Local</th>
+                        <th>vs.</th>
+                        <th>Visitante </th>
+                    </tr>
+                    <tr>
+                        <td>{this.state.semifinal['teamname1']}</td>
+                        <td>-</td>
+                        <td>{this.state.semifinal['teamname2']}</td>
+                    </tr>
+                    <tr>
+                        <td>{this.state.semifinal['teamname3']}</td>
+                        <td>-</td>
+                        <td>{this.state.semifinal['teamname4']}</td>
+                    </tr>
+                </table>
+
+                <h2><b> Final</b></h2>
+                <table id='tableFinal'>
+                    <tr id='titleTableTorneo'>
+                        <th>Local</th>
+                        <th>vs.</th>
+                        <th>Visitante </th>
+                    </tr>
+                    <tr>
+                        <td>{this.state.final['teamname1']}</td>
+                        <td>-</td>
+                        <td>{this.state.final['teamname2']}</td>
+                    </tr>
+                </table>
+
+                <h2>Campeón:<b> {this.state.ganador}</b></h2>
             </div>
         </>
         );
