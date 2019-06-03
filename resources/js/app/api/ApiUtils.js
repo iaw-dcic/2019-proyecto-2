@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const endpoint = 'http://prode-iaw.herokuapp.com';
+const endpoint = 'https://prode-iaw.herokuapp.com';
 
 export async function login(email,password) {
 
