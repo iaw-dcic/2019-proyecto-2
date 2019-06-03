@@ -7,18 +7,22 @@ import axios from 'axios'
 import Shirt from './Shirt'
 import Modals from './Modals'
 import LoadingScreen from 'react-loading-screen';
+import DecorationList from './DecorationList';
+import { decorations } from './img/decorations/decorations';
 import Logo from './img/logo.png'
 import ReactDOM from 'react-dom'
+
 
 export default class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             shirt: {
-                id: 1,
-                type: "tshirt",
-                color: "FFFFFF",
-                design_name: "Your design"
+                id: 0,
+                type: "",
+                color: "",
+                design_name: "",
+                decoration: "",
             },
             shirts: [],
             received_shirts_info: false,
@@ -39,7 +43,7 @@ export default class AppContainer extends Component {
             axios.get("http://localhost:8000/api/" + nextProps.user_info.id + "/shirts").then(resp => {
                 let shirts = resp.data;
                 this.setState({ shirts, received_shirts_info: true });
-                if (shirts.length > 0) {
+                if (shirts.length > 0 && this.state.shirt.id == 0) {
                     let shirt = shirts[0];
                     this.setState({ shirt });
                 }
@@ -88,7 +92,10 @@ export default class AppContainer extends Component {
                                         </Tab>
                                         <Tab eventKey="Images" title="Decoration">
                                             <div className="well">
-                                                <p>images</p>
+                                                <DecorationList
+                                                    data={decorations}
+                                                    onSelectShirt={this.handleSelectDecoration}
+                                                />
                                             </div>
                                         </Tab>
                                     </Tabs>
@@ -131,6 +138,13 @@ export default class AppContainer extends Component {
 
     handleShirtSelect = (shirt) => {
         this.setState({ shirt });
+    }
+
+    handleSelectDecoration = (imgElement) => {
+        let shirt = this.state.shirt;
+        shirt.decoration = imgElement;
+        this.setState({ shirt });
+        console.log(shirt);
     }
 
     handleShowSaveModal = () => {

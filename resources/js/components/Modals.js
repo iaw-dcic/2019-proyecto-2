@@ -21,8 +21,8 @@ export default class Modals extends Component {
         return (
             <React.Fragment>
                 {this.loadModals()}
-                <Button variant="success" onClick={this.handleShowSaveModal}>Save shirt</Button>
-                <Button variant="danger" className="ml-3" onClick={this.handleShowDeleteModal}>Delete shirt</Button>
+                <Button variant="success" onClick={this.handleShowSaveModal}>Save design</Button>
+                <Button variant="danger" className="ml-3" onClick={this.handleShowDeleteModal}>Delete design</Button>
             </React.Fragment>
         );
     }
@@ -35,13 +35,15 @@ export default class Modals extends Component {
                         <Modal.Title>Save design</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form.Label>Enter a design name</Form.Label>
-                        <Form.Control type="text" value={this.state.design_name_form_value} onChange={this.handleTextInputChange} />
+                        <Form.Group>
+                            <Form.Label>Enter a design name</Form.Label>
+                            <Form.Control type="text" value={this.state.design_name_form_value} onChange={this.handleTextInputChange} maxLength="25" minLength="3" />
+                        </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleCloseSaveModal}>
                             Close
-                            </Button>
+                        </Button>
                         <Button variant="success" onClick={this.handleSelectedSave}>
                             Save
                         </Button>
@@ -50,15 +52,15 @@ export default class Modals extends Component {
 
                 <Modal show={this.state.showDeleteModal} onHide={this.handleCloseDeleteModal}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Are you sure you want to delete the shirt?</Modal.Title>
+                        <Modal.Title>Delete shirt</Modal.Title>
                     </Modal.Header>
-                    {/* <Modal.Body>
-                        
-                    </Modal.Body> */}
+                    <Modal.Body>
+                        <p>Are you sure you want to delete the shirt?</p>
+                    </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleCloseDeleteModal}>
                             Close
-                            </Button>
+                        </Button>
                         <Button variant="danger" onClick={this.handleSelectedDelete}>
                             Delete
                         </Button>
@@ -69,8 +71,10 @@ export default class Modals extends Component {
     }
 
     handleSelectedSave = () => {
-        this.handleCloseSaveModal();
-        this.props.onSelectSave(this.state.design_name_form_value);
+        if (this.state.design_name_form_value.length > 3) {
+            this.handleCloseSaveModal();
+            this.props.onSelectSave(this.state.design_name_form_value);
+        }
     }
 
     handleSelectedDelete = () => {

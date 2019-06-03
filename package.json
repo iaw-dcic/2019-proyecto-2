@@ -26,12 +26,14 @@
     },
     "dependencies": {
         "axios": "^0.18.0",
-        "react-bootstrap": "^1.0.0-beta.8",
+        "fabric": "^3.1.0",
+        "react-bootstrap": "^1.0.0-beta.9",
         "react-burger-menu": "^2.6.10",
         "react-color": "^2.17.3",
         "react-layout-components": "^3.0.6",
         "react-loading-screen": "0.0.17",
         "react-native": "^0.59.8",
-        "react-router-dom": "^5.0.0"
+        "react-router-dom": "^5.0.0",
+        "react-visibility-sensor": "^5.0.2"
     }
 }
