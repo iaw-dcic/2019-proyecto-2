@@ -1,4 +1,4 @@
-@extends('layouts.react')
+@extends('layouts.app')
 <title>Mi Perfil</title>
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Usuario') }}</div>
+                <div class="card-header text-white bg-dark">{{ __('Usuario') }}</div>
 
                 <div class="card-body">
                         <div class="form-group row">
@@ -28,7 +28,7 @@
 
                         <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <a class="btn btn-primary" href="{{ url('/users/'.Auth::user()->id.'/edit') }}">
+                            <a class="btn btn-dark" href="{{ url('/users/'.Auth::user()->id.'/edit') }}">
                                 {{ __('Editar') }}
                             </a>
                         </div>

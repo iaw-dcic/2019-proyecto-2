@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<title>Mi Perfil</title>
+<title>Editor de Perfil</title>
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <link href="{{ asset('css/stylecss.css') }}" rel="stylesheet">
@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Editor') }}</div>
+                <div class="card-header text-white bg-dark">{{ __('Editor') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.update',Auth::user()->id) }}">
@@ -57,7 +57,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('Aplicar') }}
                                 </button>
                             </div>

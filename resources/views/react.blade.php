@@ -15,15 +15,19 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="http://www.promiedos.com.ar/images/copas/copasudamericana.png" width="15" height="30" >
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilo2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/promiedosCSS.css') }}" type="text/css" rel="stylesheet" /> 
 </head>
 <body>
     <div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/#') }}">
+                    <img src="http://www.promiedos.com.ar/images/copas/copasudamericana.png" width="15" height="30" class="d-inline-block align-top" alt="">
                     {{ __('Sudamericana Prode') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -54,14 +58,11 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('users/'.Auth::user()->id) }}">
+                                <div class="dropdown-menu dropdown-menu-right text-white bg-dark" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-white bg-dark" href="{{ url('users/'.Auth::user()->id) }}">
                                         {{ __('Mi Perfil') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ url('/About') }}">
-                                        {{ __('About') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item text-white bg-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
