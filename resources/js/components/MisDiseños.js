@@ -23,9 +23,9 @@ export default class MisDiseños extends Component {
         try {
             axios.delete('/api/borrarRemera/' + idRemera)
                 .then(response => {
-                    console.log(response)
+                    console.log(response);
+                    this.recargar();
                 });
-            this.recargar();
         }
         catch (e) { 
             console.log('Error Axios',e);
@@ -58,7 +58,7 @@ export default class MisDiseños extends Component {
                                                 <div key={item.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
                                                     <div className="card h-100">
                                                         <img  className="card-img-top" src={"/images/remeras/" + item.color + ".png"}></img>
-                                                        {item.logo != "" &&
+                                                        {item.logo != null &&
                                                             <img  height="100" src={"/images/logos/" + item.logo + ".png"} id="imagenLogo2"></img>
                                                         }
                                                         <div className="card-body">

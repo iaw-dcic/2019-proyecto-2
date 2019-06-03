@@ -21,7 +21,7 @@ class CreateShirtsTable extends Migration
             $table->string('talle');
             $table->unsignedBigInteger('user_id');
             $table->string('color');
-            $table->string('logo');
+            $table->string('logo')->nullable();
           
             /**Llave a otras tablas */
             $table->foreign('tela')->references('tela')->on('telas');

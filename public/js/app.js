@@ -65920,11 +65920,14 @@ function (_Component) {
   }, {
     key: "borrarRemera",
     value: function borrarRemera(e, idRemera) {
+      var _this3 = this;
+
       try {
         axios["delete"]('/api/borrarRemera/' + idRemera).then(function (response) {
           console.log(response);
+
+          _this3.recargar();
         });
-        this.recargar();
       } catch (e) {
         console.log('Error Axios', e);
       }
@@ -65932,10 +65935,10 @@ function (_Component) {
   }, {
     key: "recargar",
     value: function recargar() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/api/misDiseños').then(function (response) {
-        _this3.setState({
+        _this4.setState({
           misDiseños: response.data
         });
       });
@@ -65943,7 +65946,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pricing py-5"
@@ -65972,7 +65975,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "card-img-top",
           src: "/images/remeras/" + item.color + ".png"
-        }), item.logo != "" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }), item.logo != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           height: "100",
           src: "/images/logos/" + item.logo + ".png",
           id: "imagenLogo2"
@@ -65992,7 +65995,7 @@ function (_Component) {
         }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick(e) {
-            return _this4.borrarRemera(e, item.id);
+            return _this5.borrarRemera(e, item.id);
           },
           className: "btn btn-outline-danger"
         }, "Borrar"))));
