@@ -44,7 +44,7 @@ export default class Main extends Component {
         <UserHome 
           api_token={this.state.api_token}
           items={this.state.items}
-          />
+        />
       );
     }
     else{
@@ -52,7 +52,7 @@ export default class Main extends Component {
         <div className="container testing">
           <div className="row justify-content-center">
             <div className="col-md-1">
-              <i className="fa fa-spinner fa-spin loading"></i>
+              <i className="fa fa-spinner fa-spin loading"/>
             </div>
           </div>
         </div>

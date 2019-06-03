@@ -9,24 +9,58 @@ class AvatarShower extends Component{
         // Espero que me pasen un avatar
     }
 
-    renderApp(){
-        const items = this.props.items
-        const avatar = this.props.avatar;
-        if (avatar){
+    renderAvatar(){
+      let body,head,ubody,lbody,extra;      
+      const items = this.props.items
+
+      body=this.props.avatar.body_id;
+      head=this.props.avatar.head_id;
+      ubody=this.props.avatar.upperbody_id;
+      lbody=this.props.avatar.lowerbody_id;
+      extra=this.props.avatar.extra_id;
+
+      if(this.props.useIDs){
+        // Si uso ids entonces tengo que calcular los indices de los arreglos
+        body=parseInt(body/10);
+        head=parseInt(head/10);
+        ubody=parseInt(ubody/10);
+        lbody=parseInt(lbody/10);
+        extra=parseInt(extra/10);
+      }
+      return(
+        <div className="avatar-frame testing">                  
+          {this.renderName()}
+          <img className="img-avatar avatar-body" 
+            src={items.bodyitems[body].resource}></img>
+          <img className="img-avatar avatar-head" 
+            src={items.headitems[head].resource}></img>
+          <img className="img-avatar avatar-upperbody" 
+            src={items.upperbodyitems[ubody].resource}></img>
+          <img className="img-avatar avatar-lowerbody" 
+            src={items.lowerbodyitems[lbody].resource}></img>
+          <img className="img-avatar avatar-extra" 
+            src={items.extraitems[extra].resource}></img>        
+        </div>
+      );
+    }
+
+    renderName(){
+      const avatar = this.props.avatar;
+      if(this.props.renderName){
+        return(
+          <p className="avatar-name">{avatar.name}</p>
+        )
+      }
+      else{
+        return null;
+      }
+    }
+
+
+    renderApp(){        
+        if (this.props.avatar){
           return(
-              <div className="avatar-frame testing">
-                  <p className="avatar-name">{avatar.name}</p>
-                  <img className="img-avatar avatar-body" 
-                  src={items.bodyitems[avatar.body_id].resource}></img>
-                  <img className="img-avatar avatar-head" 
-                  src={items.headitems[avatar.head_id].resource}></img>
-                  <img className="img-avatar avatar-upperbody" 
-                  src={items.upperbodyitems[avatar.upperbody_id].resource}></img>
-                  <img className="img-avatar avatar-lowerbody" 
-                  src={items.lowerbodyitems[avatar.lowerbody_id].resource}></img>
-                  <img className="img-avatar avatar-extra" 
-                  src={items.extraitems[avatar.extra_id].resource}></img>
-              </div>
+            this.renderAvatar()
           );
         }
         else{

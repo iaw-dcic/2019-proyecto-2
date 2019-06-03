@@ -65793,7 +65793,7 @@ function (_Component) {
 
     _classCallCheck(this, AvatarEditor);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AvatarEditor).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AvatarEditor).call(this, props)); //Si estoy editando seteo los valores iniciales al avatar que me pasaron
 
     _defineProperty(_assertThisInitialized(_this), "handleFieldNameChange", function (e) {
       _this.setState({
@@ -65801,10 +65801,21 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleNewAvatar", function (e) {
-      e.preventDefault(); // Obtengo lo ingresado en el campo
+    _defineProperty(_assertThisInitialized(_this), "handleSaveAvatar", function (e) {
+      e.preventDefault();
+      console.log("AVATAREDITOR: handleSaveAvatar()");
+    });
 
-      var name = _this.state.field_name;
+    _defineProperty(_assertThisInitialized(_this), "handleDeleteAvatar", function (e) {
+      e.preventDefault();
+      console.log("AVATAREDITOR: handleDeleteAvatar()");
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleNewAvatar", function (e) {
+      e.preventDefault();
+      console.log("AVATAREDITOR: handleNewAvatar()"); // Obtengo lo ingresado en el campo
+
+      var new_name = _this.state.field_name;
 
       if (name.length > 32) {
         _this.setState({
@@ -65814,16 +65825,24 @@ function (_Component) {
         });
 
         return;
-      }
+      } // Limpio campo nombre
+
 
       _this.setState({
         field_name: ''
-      }); // Seteo defaults de avatar con nombre ingresado
+      }); // Creo avatar nuevo
 
 
-      _this.setAvatarDefaults(name);
+      var newAvatar = {
+        'name': new_name,
+        'body_id': 0,
+        'head_id': 0,
+        'upperbody_id': 0,
+        'lowerbody_id': 0,
+        'extra_id': 0
+      }; // Uso funcion recibida de padre para agregar avatar a la lista
 
-      _this.props.addAvatar(_this.getAvatar());
+      _this.props.addAvatar(newAvatar);
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleButtonBody", function (e) {
@@ -65981,7 +66000,7 @@ function (_Component) {
       console.log(_this.state.currentItem + ": " + index);
     });
 
-    if (_this.props.hasAvatars) {
+    if (_this.props.mode == 'edit') {
       _this.state = {
         currentItem: 'body',
         max_items: _this.props.items.bodyitems.length,
@@ -66058,20 +66077,6 @@ function (_Component) {
       return avatar;
     }
   }, {
-    key: "setAvatarDefaults",
-    value: function setAvatarDefaults(name) {
-      // setea nombre de avatar al recibido
-      // setea items de avatar a default
-      this.setState({
-        name: name,
-        body: 0,
-        head: 0,
-        upperbody: 0,
-        lowerbody: 0,
-        extra: 0
-      });
-    }
-  }, {
     key: "buttonsAvatarItems",
     value: function buttonsAvatarItems() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66129,25 +66134,21 @@ function (_Component) {
         onChange: this.handleFieldNameChange,
         value: this.state.field_name
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary"
+      }, "Nuevo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSaveAvatar,
         type: "button",
         className: "btn btn-primary"
-      }, "Nuevo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSaveAvatar
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDeleteAvatar,
         type: "button",
         className: "btn btn-primary"
-      }, "Guardar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleDeleteAvatar
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-primary"
-      }, "Eliminar")));
+      }, "Eliminar"));
     }
   }, {
     key: "renderApp",
     value: function renderApp() {
-      //console.log("AVATAREDITOR: renderApp(). this.props.avatar=");
-      //console.log(this.props.avatar);        
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.formNewSaveDeleteAvatar(), this.buttonsChangeItems(), this.buttonsAvatarItems(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
         avatar: this.getAvatar(),
         items: this.props.items
@@ -66211,32 +66212,62 @@ function (_Component) {
   }
 
   _createClass(AvatarShower, [{
-    key: "renderApp",
-    value: function renderApp() {
+    key: "renderAvatar",
+    value: function renderAvatar() {
+      var body, head, ubody, lbody, extra;
       var items = this.props.items;
+      body = this.props.avatar.body_id;
+      head = this.props.avatar.head_id;
+      ubody = this.props.avatar.upperbody_id;
+      lbody = this.props.avatar.lowerbody_id;
+      extra = this.props.avatar.extra_id;
+
+      if (this.props.useIDs) {
+        // Si uso ids entonces tengo que calcular los indices de los arreglos
+        body = parseInt(body / 10);
+        head = parseInt(head / 10);
+        ubody = parseInt(ubody / 10);
+        lbody = parseInt(lbody / 10);
+        extra = parseInt(extra / 10);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "avatar-frame testing"
+      }, this.renderName(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-avatar avatar-body",
+        src: items.bodyitems[body].resource
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-avatar avatar-head",
+        src: items.headitems[head].resource
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-avatar avatar-upperbody",
+        src: items.upperbodyitems[ubody].resource
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-avatar avatar-lowerbody",
+        src: items.lowerbodyitems[lbody].resource
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-avatar avatar-extra",
+        src: items.extraitems[extra].resource
+      }));
+    }
+  }, {
+    key: "renderName",
+    value: function renderName() {
       var avatar = this.props.avatar;
 
-      if (avatar) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "avatar-frame testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      if (this.props.renderName) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "avatar-name"
-        }, avatar.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "img-avatar avatar-body",
-          src: items.bodyitems[avatar.body_id].resource
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "img-avatar avatar-head",
-          src: items.headitems[avatar.head_id].resource
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "img-avatar avatar-upperbody",
-          src: items.upperbodyitems[avatar.upperbody_id].resource
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "img-avatar avatar-lowerbody",
-          src: items.lowerbodyitems[avatar.lowerbody_id].resource
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "img-avatar avatar-extra",
-          src: items.extraitems[avatar.extra_id].resource
-        }));
+        }, avatar.name);
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "renderApp",
+    value: function renderApp() {
+      if (this.props.avatar) {
+        return this.renderAvatar();
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "avatar-frame testing"
@@ -66440,7 +66471,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Avatars/AvatarEditor */ "./resources/js/components/Avatars/AvatarEditor.js");
-/* harmony import */ var _Errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Errors */ "./resources/js/components/Errors.js");
+/* harmony import */ var _Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Avatars/AvatarShower */ "./resources/js/components/Avatars/AvatarShower.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66478,8 +66509,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserAvatars).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "handleAvatarClick", function (e) {
-      e.preventDefault(); //const id=parseInt(e.target.id/10);
-
+      e.preventDefault();
       var indice = e.target.id;
       var avatar = _this.state.avatars[indice];
 
@@ -66491,9 +66521,32 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "addAvatar", function (newAvatar) {
       _this.setState(function (state) {
         return {
-          avatars: state.avatars.concat(newAvatar)
+          avatars: state.avatars.concat(newAvatar),
+          selectedAvatar: newAvatar
         };
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleButtonNewAvatar", function (e) {
+      e.preventDefault();
+
+      _this.setState({
+        isCreating: true,
+        isEditing: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleButtonEditAvatar", function (e) {
+      e.preventDefault();
+
+      _this.setState({
+        isEditing: true,
+        isCreating: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleButtonDeleteAvatar", function (e) {
+      e.preventDefault(); // TODO
     });
 
     _this.state = {
@@ -66502,7 +66555,8 @@ function (_Component) {
       isLoaded: false,
       avatars: [],
       selectedAvatar: null,
-      nombre_avatar: ''
+      isCreating: false,
+      isEditing: false
     };
 
     _this.fetchAvatars();
@@ -66536,64 +66590,134 @@ function (_Component) {
           _this2.setState({
             status: result.status,
             isLoaded: true,
-            avatars: result.data.avatars
+            avatars: result.data.avatars,
+            selectedAvatar: result.data.avatars[0]
           });
-
-          console.log("USERAVATARS fetching: luego de setear selectedAvatar");
         }
 
         console.log("USERAVATARS: Fetching user avatars finished");
       });
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {// Obtengo avatares de usuario
-      //this.fetchAvatars();
+    key: "renderAvatarList",
+    value: function renderAvatarList() {
+      var _this3 = this;
+
+      if (this.state.avatars.length > 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-4 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Tus avatares: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.avatars.map(function (item, index) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: index
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: "#",
+            id: index,
+            onClick: _this3.handleAvatarClick
+          }, item.name));
+        })), this.renderButtonNewAvatar('Nuevo', 'btn btn-primary'));
+      } else {
+        // User no tiene avatares
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-4 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "jumbotron testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "display-4"
+        }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, "A\xFAn no tienes avatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, "Por qu\xE9 no creas uno?."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "lead"
+        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg'))));
+      }
+    }
+  }, {
+    key: "renderButtonNewAvatar",
+    value: function renderButtonNewAvatar(label, classN) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleButtonNewAvatar,
+        type: "button",
+        className: classN
+      }, label);
+    }
+  }, {
+    key: "renderButtonEditAvatar",
+    value: function renderButtonEditAvatar() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleButtonEditAvatar,
+        type: "button",
+        className: "btn btn-secondary"
+      }, "Editar");
+    }
+  }, {
+    key: "renderButtonDeleteAvatar",
+    value: function renderButtonDeleteAvatar() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleButtonDeleteAvatar,
+        type: "button",
+        className: "btn btn-danger"
+      }, "Eliminar");
+    }
+  }, {
+    key: "renderAvatarShower",
+    value: function renderAvatarShower() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8 justify-content-center testing"
+      }, this.renderButtonEditAvatar(), this.renderButtonDeleteAvatar(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        items: this.props.items,
+        avatar: this.state.selectedAvatar,
+        renderName: false,
+        useIDs: true
+      }));
+    }
+  }, {
+    key: "renderMode",
+    value: function renderMode() {
+      if (this.state.isCreating) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          items: this.props.items,
+          api_token: this.props.api_token,
+          mode: 'create'
+        });
+      } else if (this.state.isEditing) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          items: this.props.items,
+          api_token: this.props.api_token,
+          avatar: this.state.selectedAvatar,
+          mode: 'edit'
+        });
+      } else {
+        return (// No esta editando ni creando
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row justify-content-center testing"
+          }, this.renderAvatarList(), this.renderAvatarShower())
+        );
+      }
     }
   }, {
     key: "renderApp",
     value: function renderApp() {
-      var _this3 = this;
-
       if (this.state.isLoaded) {
-        console.log("USERAVATARS: renderApp() Loaded!");
-
+        // Avatares cargados
         if (this.state.avatars.length > 0) {
-          console.log("USERAVATARS: renderApp() lenght>0");
-          console.log("USERAVATARS: selectedAvatar");
-          console.log(this.state.selectedAvatar);
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Tus avatares:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.avatars.map(function (item, index) {
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-              key: item.id
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-              href: "#",
-              id: index,
-              onClick: _this3.handleAvatarClick
-            }, item.name));
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            error: this.state.error,
-            message: this.state.status
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            api_token: this.props.api_token,
-            avatar: this.state.avatars[0],
-            hasAvatars: true,
-            addAvatar: this.addAvatar,
-            items: this.props.items
-          }));
+          // Tiene avatares
+          return this.renderMode();
         } else {
-          console.log("USERAVATARS: renderApp() lenght=0");
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "A\xFAn no tienes un avatar :(", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            api_token: this.props.api_token,
-            avatar: this.state.selectedAvatar,
-            hasAvatars: false,
-            items: this.props.items
-          }));
+          // No tiene avatares
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row justify-content-center testing"
+          }, this.renderAvatarList());
         }
       } else {
-        console.log("USERAVATARS: renderApp() not loaded");
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Cargando avatares de usuario", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        // Avatares no cargados
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row justify-content-center testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-1 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fa fa-spinner fa-spin loading"
-        }));
+        })));
       }
     }
   }, {
@@ -66720,26 +66844,20 @@ function (_Component) {
             message: this.state.status
           })));
         } else {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row justify-content-center"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "col-md-10 testing"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserAvatars__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserAvatars__WEBPACK_IMPORTED_MODULE_1__["default"], {
             api_token: this.props.api_token,
             items: this.props.items,
             user: this.state.user
-          })));
+          });
         }
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center"
+          className: "row justify-content-center testing"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-3 testing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Cargando datos de usuario", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "col-md-1 testing"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fa fa-spinner fa-spin loading"
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-9 testing"
-        }));
+        }))));
       }
     }
   }, {

@@ -72,28 +72,21 @@ class UserHome extends Component {
             }
             else{
                 return(
-                    <div className="row justify-content-center">    
-                        <div className="col-md-10 testing">
-                            <UserAvatars 
-                                api_token={this.props.api_token}
-                                items={this.props.items}
-                                user={this.state.user}
-                            />
-                        </div>                                            
-                    </div>
+                    <UserAvatars 
+                        api_token={this.props.api_token}
+                        items={this.props.items}
+                        user={this.state.user}
+                    />
                 );
             }            
         }
         else {
             return(
-                <div className="row justify-content-center">                
-                    <div className="col-md-3 testing">
+                <div className="row justify-content-center testing">                
+                    <div className="col-md-1 testing">
                         <span>
-                            Cargando datos de usuario 
-                            <i className="fa fa-spinner fa-spin loading"></i>
+                            <i className="fa fa-spinner fa-spin loading"/>
                         </span>
-                    </div>
-                    <div className="col-md-9 testing">
                     </div>
                 </div>
             );

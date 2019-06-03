@@ -7,7 +7,8 @@ class AvatarEditor extends Component{
 
     constructor(props){
         super(props);
-        if (this.props.hasAvatars){
+        //Si estoy editando seteo los valores iniciales al avatar que me pasaron
+        if(this.props.mode=='edit'){
             this.state={
                 currentItem: 'body',
                 max_items: this.props.items.bodyitems.length,
@@ -81,10 +82,10 @@ class AvatarEditor extends Component{
         let avatar = {
             'name': this.state.name,
             'body_id': this.state.body,
-            'head_id':this.state.head,
-            'upperbody_id':this.state.upperbody,
-            'lowerbody_id':this.state.lowerbody,
-            'extra_id':this.state.extra,
+            'head_id': this.state.head,
+            'upperbody_id': this.state.upperbody,
+            'lowerbody_id': this.state.lowerbody,
+            'extra_id': this.state.extra,
         };
         //console.log("AVATAREDITOR: getAvatar()");
         //console.log(avatar);        
@@ -93,25 +94,25 @@ class AvatarEditor extends Component{
 
     handleFieldNameChange = (e) => {
         this.setState({ field_name: e.target.value });
+    }   
+
+    handleSaveAvatar = (e) =>{
+        e.preventDefault();
+
+        console.log("AVATAREDITOR: handleSaveAvatar()");
     }
 
-    setAvatarDefaults(name){
-        // setea nombre de avatar al recibido
-        // setea items de avatar a default
-        this.setState({
-            name: name,            
-            body: 0,
-            head: 0,
-            upperbody: 0,
-            lowerbody: 0,
-            extra: 0,
-        })
+    handleDeleteAvatar = (e) =>{
+        e.preventDefault();
+
+        console.log("AVATAREDITOR: handleDeleteAvatar()");
     }
 
     handleNewAvatar = (e) =>{
         e.preventDefault();
+        console.log("AVATAREDITOR: handleNewAvatar()");
         // Obtengo lo ingresado en el campo
-        let name = this.state.field_name;
+        let new_name = this.state.field_name;     
         if(name.length>32){
             this.setState({
                 error: true,
@@ -120,12 +121,19 @@ class AvatarEditor extends Component{
             })
             return;
         }
-        this.setState({ field_name: ''}); 
-
-        // Seteo defaults de avatar con nombre ingresado
-        this.setAvatarDefaults(name);
-
-        this.props.addAvatar(this.getAvatar());
+        // Limpio campo nombre
+        this.setState({field_name: ''});
+        // Creo avatar nuevo
+        let newAvatar = {
+            'name': new_name,
+            'body_id': 0,
+            'head_id': 0,
+            'upperbody_id': 0,
+            'lowerbody_id': 0,
+            'extra_id': 0,
+        };
+        // Uso funcion recibida de padre para agregar avatar a la lista
+        this.props.addAvatar(newAvatar);        
     }
 
     handleButtonBody = (e) =>{
@@ -297,32 +305,28 @@ class AvatarEditor extends Component{
     formNewSaveDeleteAvatar(){
         return(
             <div className="form-group">
-                <form onSubmit={this.handleNewAvatar}>
+                <form onSubmit={this.handleNewAvatar} >
                     <input
                         placeholder= "Nombre"
                         onChange={this.handleFieldNameChange}
                         value={this.state.field_name}
                     />
-                    <button type="button" className="btn btn-primary">
+                    <button type="submit" className="btn btn-primary">
                         Nuevo
                     </button>            
                 </form>
-                <form onSubmit={this.handleSaveAvatar}>
-                    <button type="button" className="btn btn-primary">
-                        Guardar
-                    </button>
-                </form>
-                <form onSubmit={this.handleDeleteAvatar}>
-                    <button type="button" className="btn btn-primary">
-                        Eliminar
-                    </button>
-                </form>
+                <button onClick={this.handleSaveAvatar} 
+                    type="button" className="btn btn-primary">
+                    Guardar
+                </button>
+                <button onClick={this.handleDeleteAvatar}
+                    type="button" className="btn btn-primary">
+                    Eliminar
+                </button>
             </div>
         )
     }
     renderApp(){
-        //console.log("AVATAREDITOR: renderApp(). this.props.avatar=");
-        //console.log(this.props.avatar);        
         return(
             <div>
                 {this.formNewSaveDeleteAvatar()}
