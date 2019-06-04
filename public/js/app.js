@@ -77382,7 +77382,7 @@ function (_Component) {
     </div>
     </div>*/
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Dise\xF1a tu propia remera "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PanelSupremo__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PanelSupremo__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -77451,6 +77451,8 @@ function (_Component) {
     state = {
         currentStampa: localStorage.getItem('image') ? localStorage.getItem('image') : null,
         //currentColur: localStorage.getItem('currentColour') ? localStorage.getItem('currentColour') :null,
+        //colores: [],
+        //stampas: [],
     }*/
 
     /*
@@ -77480,7 +77482,7 @@ function (_Component) {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_3__["default"], {
         colorURL: "images/negra.jpg",
-        stampaURL: "images/design3.png"
+        stampaURL: "images/design2.png"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {

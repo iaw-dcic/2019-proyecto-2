@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 export default class Remera extends Component {
 
-    
-
     render() {
         return (
             <div className="container">

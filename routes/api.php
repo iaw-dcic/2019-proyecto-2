@@ -22,4 +22,4 @@ Route::post('/PanelSupremo', 'RemeraController@guardar')->middleware('auth:api')
 Route::delete('/PanelSupremo/{remera_id}', 'RemeraController@eliminar')->middleware('auth:api');
 
 //Este es para mostrar las remeras guardadas del usuario.
-Route::get('/PanelSupremo', 'RemeraController@index')->middleware('auth:api');
+//Route::get('/PanelSupremo', 'RemeraController@getRemeras')->middleware('auth:api');

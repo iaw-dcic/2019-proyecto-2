@@ -5,11 +5,14 @@ import Remera from './Remera';
 
 export default class PanelSupremo extends Component {
 
+
     //TENGO que guardar la estampa en el state de la remera.
     /*
     state = {
         currentStampa: localStorage.getItem('image') ? localStorage.getItem('image') : null,
         //currentColur: localStorage.getItem('currentColour') ? localStorage.getItem('currentColour') :null,
+        //colores: [],
+        //stampas: [],
     }*/
     /*
    componentDidMount = () =>{
@@ -44,7 +47,7 @@ export default class PanelSupremo extends Component {
                     <div className="col-md-8">
                         <Remera 
                             colorURL = "images/negra.jpg"
-                            stampaURL = "images/design3.png"
+                            stampaURL = "images/design2.png"
                         />
                     </div>
 

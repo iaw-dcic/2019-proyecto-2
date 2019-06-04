@@ -19,10 +19,7 @@ class App extends Component {
     render () {
         return (
             <BrowserRouter>
-            <h3> Diseña tu propia remera </h3>
-
                 <PanelSupremo/>
-           
             </BrowserRouter>  
         );
     }
