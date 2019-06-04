@@ -81813,10 +81813,10 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TShirtEditor)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      tshirt_color: localStorage.getItem('tshirt_color') ? localStorage.getItem('tshirt_color') : '#bf4040',
-      image: localStorage.getItem('image') ? localStorage.getItem('image') : null,
-      image_type: localStorage.getItem('image_type') ? localStorage.getItem('image_type') : "center",
-      tshirt_type: localStorage.getItem('tshirt_type') ? localStorage.getItem('tshirt_type') : "men",
+      tshirt_color: localStorage.getItem('tshirt_color' + username) ? localStorage.getItem('tshirt_color' + username) : '#bf4040',
+      image: localStorage.getItem('image' + username) ? localStorage.getItem('image' + username) : null,
+      image_type: localStorage.getItem('image_type' + username) ? localStorage.getItem('image_type' + username) : "center",
+      tshirt_type: localStorage.getItem('tshirt_type' + username) ? localStorage.getItem('tshirt_type' + username) : "men",
       images: [],
       tshirt_images: []
     });

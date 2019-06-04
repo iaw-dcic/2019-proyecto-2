@@ -9,10 +9,10 @@ let username = document.querySelector('meta[name="username"]');
 export default class TShirtEditor extends Component {
 
     state = {
-        tshirt_color: localStorage.getItem('tshirt_color') ? localStorage.getItem('tshirt_color') : '#bf4040',
-        image: localStorage.getItem('image') ? localStorage.getItem('image') : null,
-        image_type: localStorage.getItem('image_type') ? localStorage.getItem('image_type') : "center",
-        tshirt_type: localStorage.getItem('tshirt_type') ? localStorage.getItem('tshirt_type') : "men",
+        tshirt_color: localStorage.getItem('tshirt_color'+username) ? localStorage.getItem('tshirt_color'+username) : '#bf4040',
+        image: localStorage.getItem('image'+username) ? localStorage.getItem('image'+username) : null,
+        image_type: localStorage.getItem('image_type'+username) ? localStorage.getItem('image_type'+username) : "center",
+        tshirt_type: localStorage.getItem('tshirt_type'+username) ? localStorage.getItem('tshirt_type'+username) : "men",
         images: [],
         tshirt_images: [],
     }
