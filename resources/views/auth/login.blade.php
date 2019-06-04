@@ -72,13 +72,7 @@
             </div>
         </div>
         </div>
-         
-        <!-- <div class="or-seperator"><b>o</b></div>  
-      
-        <p class="hint-text text-center">Inicia sesión con tus redes sociales</p>
-		<div class="social-btn text-center">
-			<a href="{{ route('social.auth', 'facebook') }}" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
-            @csrf  </div> -->
+ 
     
     </div>
 </div>
