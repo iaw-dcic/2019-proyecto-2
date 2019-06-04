@@ -11,14 +11,13 @@ class AvatarController extends Controller
 {
 
     public function getCaracteristicas(){
-        //
         $features = AvatarFeature::all('feature');
         return json_encode($features);
     }
 
+    // Retorna un JSON con el siguiente formato
+    // { {'feature': '', options: ['','','',...]}, {...}, {...}, ... }
     public function caracteristicasConOpciones(){
-        // Retorna un JSON con el siguiente formato
-        // { {'feature': '', options: ['','','',...]}, {...}, {...}, ... }
         $ret = []; // arreglo de entrys
         $features = AvatarFeature::all();
         foreach ($features as $feature) {
@@ -38,30 +37,26 @@ class AvatarController extends Controller
         return json_encode($ret);
     }
 
+    // Segun la query string que se reciba retorna un loading.gif, la imagen de un avatar o una imagen not found.
     public function foto(Request $request){
-        // Segun la query string que se reciba retorna un loading.gif, la imagen de un avatar o una imagen not found.
         $loading = $request->query('wait');
         if($loading){
             return redirect(url("/img/loading.gif"));
         }
-        $queries = $request->query();
-        // return $queries;
-        $fileName = '';
-        foreach ($queries as $key => $value) {
-            if($value != null){
-                $fileName = $fileName.$value;
-            }
-        }
+        $Piel = $request->query('Piel');
+        $Pelo = $request->query('Pelo');
+        $Color_del_pelo = $request->query('Color_del_pelo');
+        $Ropa = $request->query('Ropa');
+        $Color_de_la_ropa = $request->query('Color_de_la_ropa');
+        $fileName = $Piel.$Pelo.$Color_del_pelo.$Ropa.$Color_de_la_ropa;
+        // foreach ($queries as $key => $value) {
+        //     if($value != null){
+        //         $fileName = $fileName.$value;
+        //     }
+        // }
         $path = "/img/".$fileName.".png";
-        // if(file_exists(url($path))){
-            $path = url($path);
-        // }
-        // else{
-        //     // $path = url("/img/imgNotFound.png");
-        // }
+        $path = url($path);
         return redirect($path);
-        // return $path;
-        // return '<img src="'.$path.'">';
     }
 
     /**

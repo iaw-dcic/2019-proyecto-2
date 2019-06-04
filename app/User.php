@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'avatar' => '{
+            "Piel":"Clara",
+            "Pelo":"Corto",
+            "Color del pelo":"Rubio",
+            "Ropa":"Buzo",
+            "Color de la ropa":"Negro"
+        }'
+    ];
 }

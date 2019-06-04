@@ -29,7 +29,7 @@ class AvatarFeaturesTableSeeder extends Seeder
         $af->save();
 
         $af = new AvatarFeature();
-        $af->feature_name = "Color de la Ropa";
+        $af->feature_name = "Color de la ropa";
         $af->save();
     }
 }

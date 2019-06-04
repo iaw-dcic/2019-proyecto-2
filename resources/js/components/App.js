@@ -9,11 +9,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="container">
-          <div className="row">
-            <div className="col-md-8 offset-2">
-              <AvatarForm />
-            </div>
-          </div>
+          <AvatarForm />
         </div>
       </BrowserRouter>
     )

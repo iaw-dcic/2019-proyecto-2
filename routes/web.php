@@ -16,21 +16,22 @@ use App\Avatar;
 
 Auth::routes();
 
-
+// --------------------------------- API ------------------------------------------
 // Todas las caracteristicas
 Route::get('/avatar/caracteristicas', 'AvatarController@getCaracteristicas');
 // Opciones de una caracteristica
 Route::get('/avatar/caracteristicas/{caracteristica}', 'AvatarController@opciones');
 // Todas las caracteristicas con sus respectivas opciones
 Route::get('/avatar/caracteristicas-con-opciones', 'AvatarController@caracteristicasConOpciones');
-// Foto del avatar
+// Imagen del avatar
 Route::get('/avatar', 'AvatarController@foto');
+// User
+Route::get('/user/avatar', 'UserController@getAvatar');
+Route::put('/user/avatar', 'UserController@updateAvatar');
 
 
-Route::get('/user/avatar', 'UserController@show');
-Route::put('/user/avatar', 'UserController@update');
+Route::view('/{path?}', 'welcome')->name('welcome')->middleware('auth');
+// Route::view('/user/{path?}', 'home')->name('home');//->middleware('auth');
 
-
-Route::view('/{path?}', 'welcome');//->middleware('auth');
 
 

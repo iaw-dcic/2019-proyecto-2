@@ -55,12 +55,12 @@ class AvatarFeatureOptionsTableSeeder extends Seeder
 
         $afo = new AvatarFeatureOption();
         $afo->option_name = "Negro";
-        $afo->avatar_feature = "Color de la Ropa";
+        $afo->avatar_feature = "Color de la ropa";
         $afo->save();
 
         $afo = new AvatarFeatureOption();
         $afo->option_name = "Azul";
-        $afo->avatar_feature = "Color de la Ropa";
+        $afo->avatar_feature = "Color de la ropa";
         $afo->save();
     }
 }
