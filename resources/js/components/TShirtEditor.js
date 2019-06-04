@@ -97,7 +97,7 @@ export default class TShirtEditor extends Component {
     render() {
         return (
             <div className="row justify-content-center">
-                    <div className="col-md-6 my-right">
+                    <div className="col-md-6 my-center">
                         <div id="tshirt-editor-container" className="my-center">
                             <div>
                                 <div>
