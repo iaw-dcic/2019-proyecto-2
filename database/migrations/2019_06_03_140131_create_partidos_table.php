@@ -22,8 +22,12 @@ class CreatePartidosTable extends Migration
                     ->on('torneos')
                     ->onDelete('cascade');
 
-            $table->string('equipo1');
-            $table->string('equipo2');
+            $table->string('equipo1')
+                    ->nullable();
+            $table->string('equipo2')
+                    ->nullable();
+                    
+            $table->unsignedInteger('posicion_en_tablero');
             $table->boolean('jugado');
             $table->unsignedInteger('estado');
             

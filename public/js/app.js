@@ -65781,12 +65781,49 @@ function () {
     }
   }, {
     key: "getOctavos",
-    value: function getOctavos(octavos) {
+    value: function getOctavos(response) {
       var oct;
       if (sessionStorage.octavos) oct = JSON.parse(sessionStorage.octavos);else {
-        oct = octavos;
-        sessionStorage.octavos = JSON.stringify(octavos);
+        oct = this.getOctavosFromDB(response);
+        sessionStorage.octavos = JSON.stringify(oct);
       }
+      return oct;
+    }
+  }, {
+    key: "getOctavosFromDB",
+    value: function getOctavosFromDB(response) {
+      var oct = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
+      var i = 0,
+          j = 0;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = response.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var equipo = _step.value;
+          oct[i][j] = equipo.name;
+
+          if (j == 1) {
+            j = 0;
+            i++;
+          } else j++;
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
       return oct;
     }
   }, {
@@ -65865,6 +65902,11 @@ function () {
     key: "saveEtapa",
     value: function saveEtapa(etapa) {
       sessionStorage.etapa = etapa;
+    }
+  }, {
+    key: "borrarMemoria",
+    value: function borrarMemoria() {
+      sessionStorage.clear();
     }
   }]);
 
@@ -66126,7 +66168,7 @@ function (_Component) {
 /*!*******************************************!*\
   !*** ./resources/js/components/Torneo.js ***!
   \*******************************************/
-/*! exports provided: OCTAVOS, CUARTOS, SEMIFINALES, FINAL, EQUIPO1, EQUIPO2, ESTADO, JUGADO, POR_JUGAR, EQUIPO_ND, storage, default */
+/*! exports provided: OCTAVOS, CUARTOS, SEMIFINALES, FINAL, EQUIPO1, EQUIPO2, ESTADO, JUGADO, POR_JUGAR, EQUIPO_ND, NO_ID, storage, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66141,6 +66183,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUGADO", function() { return JUGADO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "POR_JUGAR", function() { return POR_JUGAR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EQUIPO_ND", function() { return EQUIPO_ND; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NO_ID", function() { return NO_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storage", function() { return storage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Torneo; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -66183,6 +66226,7 @@ var OCTAVOS = 0,
     JUGADO = 0,
     POR_JUGAR = 1,
     EQUIPO_ND = "",
+    NO_ID = -1,
     storage = new _BrowserStorage__WEBPACK_IMPORTED_MODULE_3__["default"]();
 
 var Torneo =
@@ -66197,6 +66241,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Torneo).call(this, props));
     _this.state = {
+      id: NO_ID,
       octavos: [],
       cuartos: [],
       semifinales: [],
@@ -66209,48 +66254,23 @@ function (_Component) {
     _this.handleClickSemifis = _this.handleClickSemifis.bind(_assertThisInitialized(_this));
     _this.handleClickFinal = _this.handleClickFinal.bind(_assertThisInitialized(_this));
     _this.handleClickGuardar = _this.handleClickGuardar.bind(_assertThisInitialized(_this));
+    _this.handleClickCargar = _this.handleClickCargar.bind(_assertThisInitialized(_this));
+    _this.handleClickBorrar = _this.handleClickBorrar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Torneo, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      if (api_token != null) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       var thisss = this;
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/api/torneoPred').then(function (response) {
-        var oct = [["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR]];
-        var i = 0,
-            j = 0;
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = response.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var equipo = _step.value;
-            oct[i][j] = equipo.name;
-
-            if (j == 1) {
-              j = 0;
-              i++;
-            } else j++;
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-              _iterator["return"]();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
-        }
-
         thisss.setState({
-          octavos: storage.getOctavos(oct),
+          octavos: storage.getOctavos(response),
           cuartos: storage.getCuartos(),
           semifinales: storage.getSemis(),
           "final": storage.getFinal(),
@@ -66285,10 +66305,11 @@ function (_Component) {
       var _this2 = this;
 
       var partidos = this.state.octavos.map(function (partido, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: index
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           equipo1: partido[EQUIPO1],
           equipo2: partido[EQUIPO2],
-          key: index,
           id: index,
           handler: _this2.handleClickOctavos,
           habilitado: _this2.state.etapa == OCTAVOS && partido[ESTADO] == POR_JUGAR ? "true" : "false"
@@ -66304,10 +66325,11 @@ function (_Component) {
       var _this3 = this;
 
       var partidos = this.state.cuartos.map(function (partido, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: index + 8
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           equipo1: partido[EQUIPO1],
           equipo2: partido[EQUIPO2],
-          key: index + 8,
           id: index,
           handler: _this3.handleClickCuartos,
           habilitado: _this3.state.etapa == CUARTOS && partido[ESTADO] == POR_JUGAR ? "true" : "false"
@@ -66323,10 +66345,11 @@ function (_Component) {
       var _this4 = this;
 
       var partidos = this.state.semifinales.map(function (partido, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: index + 12
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           equipo1: partido[EQUIPO1],
           equipo2: partido[EQUIPO2],
-          key: index + 12,
           id: index,
           handler: _this4.handleClickSemifis,
           habilitado: _this4.state.etapa == SEMIFINALES && partido[ESTADO] == POR_JUGAR ? "true" : "false"
@@ -66344,7 +66367,6 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
         equipo1: this.state["final"][EQUIPO1],
         equipo2: this.state["final"][EQUIPO2],
-        key: 14,
         id: 0,
         handler: this.handleClickFinal,
         habilitado: this.state.etapa == FINAL && this.state["final"][ESTADO] == POR_JUGAR ? "true" : "false"
@@ -66363,8 +66385,13 @@ function (_Component) {
         className: "btn btn-primary mr-1"
       }, "Guardar Cambios"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
+        onClick: this.handleClickCargar,
         className: "btn btn-primary mr-1"
-      }, "Cargar Prode")));
+      }, "Cargar Prode"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.handleClickBorrar,
+        className: "btn btn-default mr-1"
+      }, "Deshacer Cambios")));
     }
   }, {
     key: "handleClickOctavos",
@@ -66377,13 +66404,13 @@ function (_Component) {
       cuar[posEnCuartos][EQUIPO1] == EQUIPO_ND ? cuar[posEnCuartos][EQUIPO1] = equipoGanador : cuar[posEnCuartos][EQUIPO2] = equipoGanador;
       oct[nroPartido][ESTADO] = JUGADO;
       var nuevaEtapa = CUARTOS;
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
       try {
-        for (var _iterator2 = oct[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var partido = _step2.value;
+        for (var _iterator = oct[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var partido = _step.value;
 
           if (partido[ESTADO] == POR_JUGAR) {
             nuevaEtapa = OCTAVOS;
@@ -66391,16 +66418,16 @@ function (_Component) {
           }
         }
       } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
+        _didIteratorError = true;
+        _iteratorError = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
-            _iterator2["return"]();
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
           }
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          if (_didIteratorError) {
+            throw _iteratorError;
           }
         }
       }
@@ -66425,13 +66452,13 @@ function (_Component) {
       semi[posEnSemis][EQUIPO1] == EQUIPO_ND ? semi[posEnSemis][EQUIPO1] = equipoGanador : semi[posEnSemis][EQUIPO2] = equipoGanador;
       cuar[nroPartido][ESTADO] = JUGADO;
       var nuevaEtapa = SEMIFINALES;
-      var _iteratorNormalCompletion3 = true;
-      var _didIteratorError3 = false;
-      var _iteratorError3 = undefined;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
       try {
-        for (var _iterator3 = cuar[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var partido = _step3.value;
+        for (var _iterator2 = cuar[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var partido = _step2.value;
 
           if (partido[ESTADO] == POR_JUGAR) {
             nuevaEtapa = CUARTOS;
@@ -66439,16 +66466,16 @@ function (_Component) {
           }
         }
       } catch (err) {
-        _didIteratorError3 = true;
-        _iteratorError3 = err;
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
-            _iterator3["return"]();
+          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+            _iterator2["return"]();
           }
         } finally {
-          if (_didIteratorError3) {
-            throw _iteratorError3;
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
       }
@@ -66472,13 +66499,13 @@ function (_Component) {
       fin[EQUIPO1] == EQUIPO_ND ? fin[EQUIPO1] = equipoGanador : fin[EQUIPO2] = equipoGanador;
       semi[nroPartido][ESTADO] = JUGADO;
       var nuevaEtapa = FINAL;
-      var _iteratorNormalCompletion4 = true;
-      var _didIteratorError4 = false;
-      var _iteratorError4 = undefined;
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator4 = semi[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-          var partido = _step4.value;
+        for (var _iterator3 = semi[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var partido = _step3.value;
 
           if (partido[ESTADO] == POR_JUGAR) {
             nuevaEtapa = SEMIFINALES;
@@ -66486,16 +66513,16 @@ function (_Component) {
           }
         }
       } catch (err) {
-        _didIteratorError4 = true;
-        _iteratorError4 = err;
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
-            _iterator4["return"]();
+          if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+            _iterator3["return"]();
           }
         } finally {
-          if (_didIteratorError4) {
-            throw _iteratorError4;
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
@@ -66524,7 +66551,39 @@ function (_Component) {
     }
   }, {
     key: "handleClickGuardar",
-    value: function handleClickGuardar(e) {}
+    value: function handleClickGuardar() {
+      var thisss = this;
+      if (this.state.id == NO_ID) axios__WEBPACK_IMPORTED_MODULE_4___default.a.post('/api/torneos', {
+        data: this.state
+      }).then(function (response) {
+        thisss.setState({
+          id: response.data
+        });
+      });
+    }
+  }, {
+    key: "handleClickCargar",
+    value: function handleClickCargar(e) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/api/torneos').then(function (response) {
+        console.log(response);
+      });
+    }
+  }, {
+    key: "handleClickBorrar",
+    value: function handleClickBorrar() {
+      storage.borrarMemoria();
+      var thisss = this;
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/api/torneoPred').then(function (response) {
+        thisss.setState({
+          octavos: storage.getOctavos(response),
+          cuartos: storage.getCuartos(),
+          semifinales: storage.getSemis(),
+          "final": storage.getFinal(),
+          campeon: storage.getCampeon(),
+          etapa: storage.getEtapa()
+        });
+      });
+    }
   }]);
 
   return Torneo;

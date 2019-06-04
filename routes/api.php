@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/torneoPred', 'TorneosController@pred');
 Route::get('/torneos', 'TorneosController@show')->middleware('auth:api');
+Route::post('/torneos', 'TorneosController@save')->middleware('auth:api');

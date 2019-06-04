@@ -8,14 +8,37 @@ export default class BrowserStorage {
     construct() {
         this.octavos = this.getOctavosFromDB()
     }
-    getOctavos(octavos) {
+    getOctavos(response) {
         var oct
         
         if (sessionStorage.octavos)
             oct = JSON.parse(sessionStorage.octavos)
         else {
-            oct = octavos
-            sessionStorage.octavos = JSON.stringify(octavos)
+            oct = this.getOctavosFromDB(response)
+            sessionStorage.octavos = JSON.stringify(oct)
+        }
+
+        return oct
+    }
+
+    getOctavosFromDB(response) {
+        var oct = [ ["", "", POR_JUGAR], 
+                    ["", "", POR_JUGAR],
+                    ["", "", POR_JUGAR],
+                    ["", "", POR_JUGAR],
+                    ["", "", POR_JUGAR],
+                    ["", "", POR_JUGAR],
+                    ["", "", POR_JUGAR],
+                    ["", "", POR_JUGAR],] 
+
+        var i = 0, j = 0
+        for (var equipo of response.data) {
+            oct[i][j] = equipo.name
+            if (j==1) {
+                j=0
+                i++
+            } else
+                j++
         }
 
         return oct
@@ -106,5 +129,9 @@ export default class BrowserStorage {
 
     saveEtapa(etapa) {
         sessionStorage.etapa = etapa
+    }
+
+    borrarMemoria() {
+        sessionStorage.clear()
     }
 }
