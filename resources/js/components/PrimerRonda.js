@@ -25,6 +25,7 @@ export default class PrimerRonda extends Component {
                 <thead >
                     <tr>
                         <th scope="col">Jugador 1 </th>
+                        <th> vs </th>
                         <th scope="col" >Jugador 2 </th>
                     </tr>
                 </thead>
@@ -33,6 +34,7 @@ export default class PrimerRonda extends Component {
 
                         <tr key={item.id}>
                             <td> {item.junonombre} </td>
+                            <td> vs </td>
                             <td>{item.jdosnombre}</td>
                         </tr>
 

@@ -19,6 +19,4 @@ Route::get('/readme',function () {
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::view('/', 'react')->middleware('auth');
 
- Route::get('auth/{provider}', 'UserController@redirectToProvider')->name('social.auth');
-Route::get('auth/{provider}/callback', 'UserController@handleProviderCallback');
  

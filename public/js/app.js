@@ -60898,7 +60898,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68751,7 +68751,7 @@ function (_Component) {
       }, this.state.s1.jugador_dos && this.state.s1.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.s2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         src: "banderas/" + this.state.s2.jugador_uno.pais + ".png"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
+        className: "btn btn-light jugador",
         onClick: function onClick(e) {
           return _this2.handleS2(_this2.state.s2.jugador_uno, e);
         }
@@ -68763,7 +68763,7 @@ function (_Component) {
       }, this.state.s2.jugador_uno && this.state.s2.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.s2.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         src: "banderas/" + this.state.s2.jugador_dos.pais + ".png"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
+        className: "btn btn-light jugador",
         onClick: function onClick(e) {
           return _this2.handleS2(_this2.state.s2.jugador_dos, e);
         }
@@ -69938,12 +69938,12 @@ function (_Component) {
         className: "table-striped "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Jugador 1 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Jugador 1 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " vs "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Jugador 2 "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, items.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: item.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", item.junonombre, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.jdosnombre));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", item.junonombre, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " vs "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.jdosnombre));
       }))));
     }
   }]);
@@ -70257,12 +70257,12 @@ function (_Component) {
         className: "table-striped "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Jugador 1 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "Jugador 1 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " vs "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Jugador 2 "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, items.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: item.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", item.junonombre, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.jdosnombre));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", item.junonombre, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " vs "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.jdosnombre));
       }))));
     }
   }]);

@@ -360,7 +360,7 @@ export default class Perfil extends Component {
                                     </button>
                                 </td>
                                 <td> {this.state.s2.jugador_uno && <img src={"banderas/" + this.state.s2.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light" onClick={(e) => this.handleS2(this.state.s2.jugador_uno, e)}>
+                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS2(this.state.s2.jugador_uno, e)}>
                                         {this.state.s2.jugador_uno && this.state.s2.jugador_uno.nombre}
                                     </button>
                                     <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS2(this.state.s2.jugador_uno, e)}>
@@ -369,7 +369,7 @@ export default class Perfil extends Component {
 
                                     <br></br>
                                     {this.state.s2.jugador_dos && <img src={"banderas/" + this.state.s2.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light" onClick={(e) => this.handleS2(this.state.s2.jugador_dos, e)}>
+                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS2(this.state.s2.jugador_dos, e)}>
                                         {this.state.s2.jugador_dos && this.state.s2.jugador_dos.nombre}
                                     </button>
                                     <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS2(this.state.s2.jugador_dos, e)}>
