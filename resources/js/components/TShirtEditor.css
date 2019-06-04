@@ -1,0 +1,103 @@
+#tshirt-editor-container{
+    align-items: center;
+    width: 443px;
+    height: 467px;
+    position: relative;
+}
+
+#color_picker{
+    align-items: center;
+    padding: 20px;
+    width: 443px;
+    position: relative;
+}
+
+.tshirt-contents{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+.image{
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.save-btn{
+    margin: 10px;
+}
+
+.editor-center{
+    padding: 20px;
+    margin-top: 120px;
+    margin-left: 125px;
+    width: 193px;
+    height: 193px;
+}
+
+.editor-pocket{
+    padding: 20px;
+    margin-top: 100px;
+    margin-left: 225px;
+    width: 100px;
+    height: 100px;
+}
+
+.options{
+    height: 100px;
+    width: 300px;
+}
+
+.arrow{
+    width: 30px;
+    height:60px;
+    margin: 5px;
+    background-size: cover;
+}
+
+.left{
+    background-image: url('/storage/left-arrow.png')
+}
+.right{
+    background-image: url('/storage/right-arrow.png')
+}
+
+.type_options{
+    display: flex;
+    flex-direction: row;
+}
+
+.image_button{
+    width: 50px;
+    height: 50px;
+    margin:10px;
+}
+
+.large_image_button{
+    width: 143px;
+    height: 147px;
+    margin:10px;
+}
+
+.option_label{
+    text-align: center;
+}
+
+.men_image{
+    background-image: url('/storage/uploads/basic_tee.png')
+}
+.men_foreground{
+    background-image: url('/storage/uploads/basic_tee_foreground.png')
+}
+
+.women_image{
+    background-image: url('/storage/uploads/women_tee.png')
+}
+.women_foreground{
+    background-image: url('/storage/uploads/women_tee_foreground.png')
+}
+
+.my-center{
+    text-align: center;
+}

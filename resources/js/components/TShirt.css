@@ -1,0 +1,32 @@
+#tshirt-container{
+    align-items: center;
+    width: 143px;
+    height: 147px;
+    position: relative;
+}
+
+.center{
+    padding: 6px;
+    margin-top: 40px;
+    margin-left: 40px;
+    width: 64px;
+    height: 64px;
+}
+
+.pocket{
+    padding: 7px;
+    margin-top: 33px;
+    margin-left: 73px;
+    width: 33px;
+    height: 33px;
+}
+
+.delete_button{
+    background-image: url("/storage/delete.png");
+    background-size: cover;
+    width: 15px;
+    height: 15px;
+    right: 5px;
+    top: 5px;
+    position: absolute;
+}

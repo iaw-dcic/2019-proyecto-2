@@ -1,0 +1,22 @@
+#content{
+    align-items: center
+}
+
+#myTshirts {
+    height: 200px;
+    width: 70%;
+}
+
+.arrow{
+    width: 40px;
+    height:80px;
+    margin: 5px;
+    background-size: cover;
+}
+
+.left{
+    background-image: url('/storage/left-arrow.png')
+}
+.right{
+    background-image: url('/storage/right-arrow.png')
+}
