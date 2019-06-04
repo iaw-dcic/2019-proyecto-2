@@ -34747,11 +34747,6 @@ function (_Component) {
           to: "#inicio"
         }, "Inicio")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "nav-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          className: "nav-link js-scroll",
-          to: "#pronosticos"
-        }, "Pron\xF3sticos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "nav-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "nav-link js-scroll",
           href: "/login"
@@ -35648,11 +35643,12 @@ function () {
 
               case 2:
                 response = _context.sent;
+                console.log(response.data);
                 return _context.abrupt("return", response.data.map(function (prode) {
                   return _this.transformarDatosDesdeServidor(prode);
                 }));
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }

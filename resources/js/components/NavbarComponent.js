@@ -36,9 +36,6 @@ export default class NavbarComponent extends Component {
                         <Link className="nav-link js-scroll" to="#inicio">Inicio</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link js-scroll" to="#pronosticos">Pronósticos</Link>
-                    </li>
-                    <li className="nav-item">
                         <a className="nav-link js-scroll" href="/login">Ingresar</a>
                     </li>
                     <li className="nav-item">

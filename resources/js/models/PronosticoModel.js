@@ -9,6 +9,7 @@ export default class PronosticoModel{
 
     async loadProdes(){
         let response = await Axios.get(`/api/user/${this.user.id}/prodes`);
+        console.log(response.data);
         return response.data.map(prode => this.transformarDatosDesdeServidor(prode));
     }
 
