@@ -44,6 +44,8 @@
                     <p class="text-justify">La aplicación consiste de un prode para realizar pronósticos deportivos sobre la fase final de la Copa Libertadores 2019.</p>
                     <p class="font-weight-normal">El usuario puede crear sus propios pronósticos y luego guardarlos.
                     A su vez también puede eliminar pronósticos creados anteriormente.</p>
+                    
+                    <p class="font-weight-normal">Nota: Los estilos presentes en la aplicación fueron basados en el siguiente repositorio: codepen.io/efy/pen/RRRyJW.</p>
                 </div>
             </div>
         </div>

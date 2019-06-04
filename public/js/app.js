@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65810,24 +65810,20 @@ function (_Component) {
     key: "handleBrackets",
     value: function handleBrackets(index, item, statex, state_name) {
       var tsize;
-
-      switch (state_name) {
-        case 'team':
-          tsize = 16;
-          break;
-
-        case 'quarters':
-          tsize = 8;
-          break;
-
-        case 'semis':
-          tsize = 4;
-          break;
-
-        case 'finals':
-          tsize = 2;
-          break;
-      }
+      /* switch(state_name) {
+           case 'team':
+               tsize= 16;
+               break;
+           case 'quarters':
+               tsize= 8;
+               break;
+           case 'semis':
+               tsize= 4;
+               break;
+           case 'finals':
+               tsize= 2;
+               break;
+       }*/
 
       var arr = statex;
       var new_index = index % 2 == 0 ? index : index - 1; //if(arr.length<tsize) {
@@ -65855,7 +65851,7 @@ function (_Component) {
     value: function render() {
       var vm = this;
       var round16 = this.state.team.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "team-item",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.quarters, 'quarters');
@@ -65864,7 +65860,7 @@ function (_Component) {
         }, item.name);
       });
       var quarters = this.state.quarters.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "team-item",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.semis, 'semis');
@@ -65873,7 +65869,7 @@ function (_Component) {
         }, item.name);
       });
       var semis = this.state.semis.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "team-item",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.finals, 'finals');
@@ -65882,7 +65878,7 @@ function (_Component) {
         }, item.name);
       });
       var finals = this.state.finals.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "team-item",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.champion, 'champion');
@@ -65891,7 +65887,7 @@ function (_Component) {
         }, item.name);
       });
       var champion = this.state.champion.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "team-item",
           key: index
         }, item.name);
@@ -65902,15 +65898,15 @@ function (_Component) {
         className: "tournament-brackets"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "bracket bracket-1"
-      }, round16), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Octavos de Final")), round16), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "bracket bracket-2"
-      }, quarters), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Cuartos de Final")), quarters), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         "class": "bracket bracket-3"
-      }, semis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Semifinales")), semis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "bracket bracket-4"
-      }, finals), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Final")), finals), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "bracket bracket-5"
-      }, champion)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Campe\xF3n")), champion)));
     }
   }, {
     key: "componentDidMount",
