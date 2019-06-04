@@ -108,7 +108,7 @@ table {
 
   .fondo { 
     background-image: url('../fondo.jpg');
-    background-color: rgb(19, 18, 18)
+    background-color: rgb(19, 18, 18);
     
     background-repeat: no-repeat;
     background-position: top center;
