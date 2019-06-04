@@ -6,6 +6,8 @@ import Modal from "../../components/UI/Modal/CustomModal";
 import BurgerSummary from "../../components/Burger/BurgerSummary/BurgerSummary";
 import { Alert } from 'reactstrap';
 import { UncontrolledAlert } from 'reactstrap';
+import localStorage from 'local-storage'
+
 
 
 class BurgerBuilder extends Component {
@@ -15,20 +17,37 @@ class BurgerBuilder extends Component {
         canSaveBurger: false,
         savingBurger: false,        
     };
-   
+
     componentDidMount() {
-        axios.get("/api/ingredients").then(response => {
-            let ingredientsToAssign = [];
-            const data = response.data;
-            data.map(ingredient => {
-                //ingredientsToAssign[ingredient.ingredient + " " + ingredient.type] = 0;
-                ingredientsToAssign[ingredient.type] = 0;
+        let token= localStorage.get('userToken');
+        let axiosConfig = {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer '+ token
+            }
+        };
+
+        let ingredients = localStorage.get('ingredients') || null;    
+            axios.get("/api/ingredients",axiosConfig).then(response => {
+                let ingredientsToAssign = [];
+                const data = response.data;
+                data.map(ingredient => {
+                    ingredientsToAssign[ingredient.type] = 0;
+                });
+                this.setState({
+                    separatedIngredients: data
+                });
+                if (ingredients === null) { //No esta en local storage
+                    this.setState({
+                        ingredients: ingredientsToAssign,
+                    })
+                } else { //Esta en local storage
+                    this.setState({
+                        ingredients: ingredients,              
+                    });
+                }
             });
-            this.setState({
-                ingredients: ingredientsToAssign,
-                separatedIngredients: data
-            });
-        });
+             
     }
 
     updateCanSaveBurgerState(ingredients) {
@@ -51,6 +70,7 @@ class BurgerBuilder extends Component {
         updatedIngredients[type] = updatedCount;
         this.setState({ ingredients: updatedIngredients });
         this.updateCanSaveBurgerState(updatedIngredients);
+        localStorage.set('ingredients',updatedIngredients);
     };
 
     removeIngredientHandler = type => {
@@ -65,9 +85,11 @@ class BurgerBuilder extends Component {
         updatedIngredients[type] = updatedCount;
         this.setState({ ingredients: updatedIngredients });
         this.updateCanSaveBurgerState(updatedIngredients);
+        localStorage.set('ingredients',updatedIngredients);
     };
 
     saveBurgerHandler = () => {
+
         this.setState({ savingBurger: true });
 
         let arrayIngredients = [];
@@ -83,14 +105,21 @@ class BurgerBuilder extends Component {
             }, []);
 
         const burger = {
-            user_id: 99,
             ingredients: arrayIngredients
         };
 
-        axios.post("/api/burgers", burger)
+        let token= localStorage.get('userToken');
+        let axiosConfig = {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer '+ token
+            }
+        };
+
+        axios.post("/api/burgers", burger,axiosConfig)
             .then(response => {
-                alert("Hamburguesa guardada");
-              });
+                //alert("Hamburguesa guardada");
+            });
     };
 
     /*savingCancelHandler = () => {

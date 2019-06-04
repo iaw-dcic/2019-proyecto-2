@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Logo from '../../Logo/Logo';
-import NavigationItems from '../NavigationItems/NavigationItems';
+//import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Aux from '../../../hoc/AuxDiv';
 
@@ -17,9 +17,7 @@ const sideDrawer = ( props ) => {
                 <div className="LogoSideDrawer">
                     <Logo />
                 </div>
-                <nav>
-                    <NavigationItems />
-                </nav>
+               
             </div>
         </Aux>
     );

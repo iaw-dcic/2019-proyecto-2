@@ -18,31 +18,25 @@ class BurgerController extends Controller
      */
     public function index()
     { 
-        //$user_id = auth()->id();
-        //$burgers= Burger::all()->where('user_id',$user_id);
-        $burgers= Burger::all()->where('user_id',22);
+        $user_id = auth()->id();
+        $burgers= Burger::all()->where('user_id',$user_id);
 
-        $response= array();
-
-        $ingredientsArray= array();
-
+        $burgersArray= array();
 
         foreach ($burgers as $burger){
             $burgerIngredients= $burger->ingredients()->get();
 
             foreach ($burgerIngredients as $ingredient) {
-                array_push($ingredientsArray,$ingredient->type);
-            }
+                $tempArray=array(
+                    //"ingredient"=> $ingredient->ingredient,
+                    "type"=> $ingredient->type
+                );
 
-            $burgersJSON = array(
-                "id"=> $burger->id,
-                "ingredients"=>$ingredientsArray
-            );
-            $response[]=$burgersJSON;
-            $ingredientsArray= array();
+                array_push($burgersArray,$tempArray);
+            }
         }
 
-        return json_encode($response);
+        return json_encode($burgersArray);
     }
 
      /**
@@ -54,7 +48,7 @@ class BurgerController extends Controller
     public function store(Request $request)
     {
         $burger = new Burger;
-        $burger->user_id= $request->user_id;
+        $burger->user_id= auth()->id();
         $burger->save();
 
         $ingredientsArray= [];

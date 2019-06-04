@@ -143,11 +143,28 @@
     border-radius: 15px;
 }
 
+
+.Chicken {
+    width: 80%;
+    height: 8%;
+    background: linear-gradient(#dba17c, #d87f48);
+    margin: 2% auto;
+    border-radius: 15px;
+}
+
 .Cheese {
     width: 90%;
     height: 4.5%;
     margin: 2% auto;
     background: linear-gradient(#f4d004, #d6bb22);
+    border-radius: 20px;
+}
+
+.Bacon {
+    width: 90%;
+    height: 4.5%;
+    margin: 2% auto;
+    background: linear-gradient(#bf3813, #c45e38);
     border-radius: 20px;
 }
 
@@ -159,12 +176,14 @@
     border-radius: 20px;
 }
 
-.Bacon {
-    width: 80%;
-    height: 3%;
-    background: linear-gradient(#bf3813, #c45e38);
+.Tomato {
+    width: 85%;
+    height: 7%;
     margin: 2% auto;
+    background: linear-gradient(red, rgb(240, 124, 124));
+    border-radius: 20px;
 }
+
 
 //Build Controls
 .BuildControls {
@@ -175,6 +194,7 @@
     align-items: center;
     box-shadow: 0 2px 1px #ccc;
     margin: auto;
+    margin-top:10px;
     padding: 10px 0;
 }
 
@@ -530,3 +550,12 @@
     margin: 10px auto;
     box-sizing: border-box;
 }
+
+//IngredientImage
+.IngredientImage {
+    padding: 8px;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
