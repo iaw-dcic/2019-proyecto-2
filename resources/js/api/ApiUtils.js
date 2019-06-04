@@ -3,20 +3,20 @@ import axios from "axios";
 const endpoint = 'https://iaw-burger.herokuapp.com';
 
 export async function login(email,password) {
-    try {
-        let res = await axios({
-            url: endpoint+'/api/login',
-            method: 'post',
-            timeout: 8000,
-            data: {
-                email: email,
-                password : password
-            }
-        })
 
-        return res.data
-    }
-    catch (err) {
+    try {
+
+        let axiosConfig = {
+            headers: {
+            }
+        };
+
+        let response = await axios.post(endpoint + '/api/login' , {email: email,
+            password : password } , axiosConfig );
+
+        return response.data;
+
+    } catch (e) {
         console.log(`Error API , POST de login: ${e}`);
         return 401;
     }
