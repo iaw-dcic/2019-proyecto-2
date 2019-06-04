@@ -3,6 +3,7 @@ import axios from 'axios'
 import Spinner from 'react-bootstrap/Spinner'
 import ReactDOM from 'react-dom'
 
+
 export default class Shirt extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +42,7 @@ export default class Shirt extends Component {
                 <React.Fragment>
                     <div className="parent">
                         <img className="shirt" src={`data:image/png;base64,${this.state.shirtImage}`} />
-                        {this.props.shirt.decoration !== null && <img className="decoration" src={`data:image/png;base64,${this.state.decorationImage}`} />}
+                        {this.props.shirt.decoration !== null && this.props.shirt.decoration !== "" && <img className="decoration" src={`data:image/png;base64,${this.state.decorationImage}`} />}
                     </div>
                 </React.Fragment>);
         }
@@ -70,7 +71,7 @@ export default class Shirt extends Component {
     }
 
     loadDecorationImage = (propState) => {
-        if (propState.shirt.decoration !== null) {
+        if (propState.shirt.decoration !== null && propState.shirt.decoration !== "") {
             for (let key in this.props.decorations) {
                 if (propState.shirt.decoration == this.props.decorations[key].id) {
                     this.setState({ decorationImage: this.props.decorations[key].content });

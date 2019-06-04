@@ -14,6 +14,7 @@ import Logo from './img/logo.png'
 import { Hero } from 'react-landing-page'
 import ReactDOM from 'react-dom'
 
+
 export default class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -103,8 +104,8 @@ export default class AppContainer extends Component {
                             <div className="well">
                                 <Shirt shirt={this.state.shirt}
                                     received_shirts_info={this.state.received_shirts_info}
-                                    shirtsImages={this.state.shirtsImages} 
-                                    decorations={this.state.decorations}/>
+                                    shirtsImages={this.state.shirtsImages}
+                                    decorations={this.state.decorations} />
                             </div>
                         </Col>
                         <Col className="pt-2">
@@ -139,7 +140,12 @@ export default class AppContainer extends Component {
                                     </div>
                                 </Tab>
                             </Tabs>
-                            <Modals design_name={this.state.shirt.design_name} onSelectSave={this.handleSaveShirt} onSelectDelete={this.handleDeleteShirt} />
+                            <Modals
+                                design_name={this.state.shirt.design_name}
+                                onSelectSave={this.handleSaveShirt}
+                                onSelectDelete={this.handleDeleteShirt}
+                                onSelectReset={this.handleResetShirt}
+                            />
                         </Col>
                     </Row>
                 </Container>;
@@ -198,11 +204,19 @@ export default class AppContainer extends Component {
     }
 
     handleShowSaveModal = () => {
-        this.setState({ showSaveModal: true })
+        this.setState({ showSaveModal: true });
     }
 
     handleCloseSaveModal = () => {
-        this.setState({ showSaveModal: false })
+        this.setState({ showSaveModal: false });
+    }
+
+    handleResetShirt = () => {
+        let shirt = this.state.shirt;
+        shirt.type = "tshirt";
+        shirt.color = "FFFFFF";
+        shirt.decoration = "";
+        this.setState({ shirt });
     }
 
     handleSaveShirt = (name) => {

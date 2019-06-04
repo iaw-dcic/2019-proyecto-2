@@ -23,6 +23,7 @@ export default class Modals extends Component {
                 {this.loadModals()}
                 <Button variant="success" onClick={this.handleShowSaveModal}>Save design</Button>
                 <Button variant="danger" className="ml-3" onClick={this.handleShowDeleteModal}>Delete design</Button>
+                <Button variant="secondary" className="ml-3" onClick={this.handleSelectedReset}>Reset design</Button>
             </React.Fragment>
         );
     }
@@ -80,6 +81,10 @@ export default class Modals extends Component {
     handleSelectedDelete = () => {
         this.handleCloseDeleteModal();
         this.props.onSelectDelete();
+    }
+
+    handleSelectedReset = () => {
+        this.props.onSelectReset();
     }
 
     handleShowSaveModal = () => {
