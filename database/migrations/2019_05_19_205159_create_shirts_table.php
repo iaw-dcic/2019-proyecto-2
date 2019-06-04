@@ -17,6 +17,7 @@ class CreateShirtsTable extends Migration
             $table->bigIncrements('id');
             $table->string('color')->default('FFFFFF');
             $table->string('type')->default('tshirt');
+            $table->string('decoration')->nullable();
             $table->string('design_name');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

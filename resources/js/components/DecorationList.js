@@ -4,16 +4,16 @@ import DecorationListItem from './DecorationListItem';
 export default class DecorationList extends React.Component {
 
     render() {
-
-        const results = this.props.data;
-        let templates = results.map(item =>
+        const decorations = this.props.decorations;
+        let templates = decorations.map(decoration =>
 
             <DecorationListItem
-                url={item}
-                onSelectShirt={this.props.onSelectShirt}
-                key={item}
-            />
+                image={decoration.content}
+                onSelectDecoration={this.props.onSelectDecoration}
+                key={decoration.id}
+                id={decoration.id}
 
+            />
         );
 
         return (

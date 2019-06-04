@@ -4,9 +4,8 @@ import { Col } from 'react-bootstrap';
 export default class DecorationListItem extends React.Component {
 
 
-    handleSelectDecoration = (e) => {
-        e.preventDefault();
-        this.props.onSelectShirt(e.target);
+    handleSelectDecoration = () => {
+        this.props.onSelectDecoration(this.props.id,this.props.image);
     }
 
     render() {
@@ -15,7 +14,7 @@ export default class DecorationListItem extends React.Component {
 
             <Col xs={6} md={4} >
                 <a href="#" className="thumbnail" onClick={this.handleSelectDecoration}>
-                    <img alt="" src={this.props.url} />
+                    <img src={`data:image/png;base64,${this.props.image}`} />
                 </a>
             </Col>
         );

@@ -8,8 +8,10 @@ import Shirt from './Shirt'
 import Modals from './Modals'
 import LoadingScreen from 'react-loading-screen';
 import DecorationList from './DecorationList';
-import { decorations } from './img/decorations/decorations';
+import LandingImage from './img/landing-page.jpg'
+import { Heading, Text } from 'rebass'
 import Logo from './img/logo.png'
+import { Hero } from 'react-landing-page'
 import ReactDOM from 'react-dom'
 
 
@@ -38,6 +40,15 @@ export default class AppContainer extends Component {
         );
     }
 
+    componentDidMount() {
+        if (this.props.user_info.isLoggedIn) {
+            axios.get(`http://localhost:8000/api/static/images/decorations`)
+                .then(res => {
+                    this.setState({ decorations: res.data });
+                });
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.received_user_info) {
             axios.get("http://localhost:8000/api/" + nextProps.user_info.id + "/shirts").then(resp => {
@@ -56,70 +67,106 @@ export default class AppContainer extends Component {
             return this.showLoadingScreen();
         }
         else if (this.state.received_shirts_info) {
-            if (this.state.shirts.length > 0) {
-                return (
-                    <React.Fragment>
-                        <ShirtMenu shirts={this.state.shirts} onSelectShirt={this.handleShirtSelect} onCreateShirt={this.handleCreateShirt} />
-                        <Container>
-                            <Row>
-                                <Col>
-                                    <div className="well">
-                                        <Shirt type={this.state.shirt.type} color={this.state.shirt.color} received_shirts_info={this.state.received_shirts_info} />
-                                    </div>
-                                </Col>
-                                <Col>
-                                    <h3>{this.state.shirt.design_name}</h3>
-                                    <Tabs className="padtop">
-                                        <Tab eventKey="typeAndColor" title="Type and color">
-                                            <div className="well">
-                                                <Form.Label>Type</Form.Label>
-                                                <Form.Control as="select"
-                                                    onChange={this.handleTypeChange}
-                                                    value={this.state.shirt.type}>
-                                                    <option value="tshirt">Short sleeve</option>
-                                                    <option value="longsleeve">Long sleeve</option>
-                                                </Form.Control>
-                                                <br />
-                                            </div>
-                                            <div className="well">
-                                                <p>Color</p>
-                                                <CirclePicker
-                                                    color={'#' + this.state.shirt.color}
-                                                    colors={['#1B998B', '#ED217C', '#55DDFF', '#FFFFFF', '#FF9B71']}
-                                                    onChange={this.handleColorChange}
-                                                />
-                                            </div>
-                                        </Tab>
-                                        <Tab eventKey="Images" title="Decoration">
-                                            <div className="well">
-                                                <DecorationList
-                                                    data={decorations}
-                                                    onSelectShirt={this.handleSelectDecoration}
-                                                />
-                                            </div>
-                                        </Tab>
-                                    </Tabs>
-                                    <Modals design_name={this.state.shirt.design_name} onSelectSave={this.handleSaveShirt} onSelectDelete={this.handleDeleteShirt} />
-                                </Col>
-                            </Row>
-                        </Container>;
-                </React.Fragment>
-                );
-            }
-            else {
-                return (
-                    <React.Fragment>
-                        {/* TODO */}
-                        <ShirtMenu shirts={this.state.shirts} onSelectShirt={this.handleShirtSelect} onCreateShirt={this.handleCreateShirt} />
-                        <p>empty shirts yo</p>
-                    </React.Fragment>
-                );
-            }
+            if (this.state.shirts.length > 0)
+                return this.showEditingScreen();
+            else
+                return this.showEmptyDesignsScreen();
         }
-        else return (
+        else
+            return this.showGuestScreen();
+    }
+
+    showLoadingScreen = () => {
+        return (
             <React.Fragment>
-                {/* TODO */}
-                <p>you're a guest,please login</p>
+                <LoadingScreen
+                    loading={true}
+                    bgColor='#f1f1f1'
+                    spinnerColor='#9ee5f8'
+                    textColor='#676767'
+                    logoSrc={Logo}
+                    text='Loading, please hold'
+                    children=''
+                />
+            </React.Fragment>
+        );
+    }
+
+    showEditingScreen = () => {
+        return (
+            <React.Fragment>
+                <ShirtMenu shirts={this.state.shirts} onSelectShirt={this.handleShirtSelect} onCreateShirt={this.handleCreateShirt} />
+                <Container>
+                    <Row className="pt-3">
+                        <Col>
+                            <div className="well">
+                                <Shirt shirt={this.state.shirt} received_shirts_info={this.state.received_shirts_info} selected_decoration_image={this.state.selected_decoration_image} />
+                            </div>
+                        </Col>
+                        <Col className="pt-2">
+                            <Heading fontSize={[34]}>{this.state.shirt.design_name}</Heading>
+                            <Tabs className="padtop">
+                                <Tab eventKey="typeAndColor" title="Type and color">
+                                    <div className="well">
+                                        <Form.Label>Type</Form.Label>
+                                        <Form.Control as="select"
+                                            onChange={this.handleTypeChange}
+                                            value={this.state.shirt.type}>
+                                            <option value="tshirt">Short sleeve</option>
+                                            <option value="longsleeve">Long sleeve</option>
+                                        </Form.Control>
+                                        <br />
+                                    </div>
+                                    <div className="well">
+                                        <p>Color</p>
+                                        <CirclePicker
+                                            color={'#' + this.state.shirt.color}
+                                            colors={['#1B998B', '#ED217C', '#55DDFF', '#FFFFFF', '#FF9B71']}
+                                            onChange={this.handleColorChange}
+                                        />
+                                    </div>
+                                </Tab>
+                                <Tab eventKey="Images" title="Decoration">
+                                    <div className="well">
+                                        <DecorationList
+                                            decorations={this.state.decorations}
+                                            onSelectDecoration={this.handleSelectDecoration}
+                                        />
+                                    </div>
+                                </Tab>
+                            </Tabs>
+                            <Modals design_name={this.state.shirt.design_name} onSelectSave={this.handleSaveShirt} onSelectDelete={this.handleDeleteShirt} />
+                        </Col>
+                    </Row>
+                </Container>;
+                </React.Fragment>
+        );
+    }
+
+    showGuestScreen = () => {
+        return (
+            <React.Fragment>
+                <Hero
+                    color="black"
+                    bg="white"
+                    backgroundImage={LandingImage}
+                >
+                    <Heading fontSize={[64]} className="xoverflow">ShirtDesigner</Heading>
+                    <Text fontSize={[20]}><a href="/login">Login</a> to start designing</Text>
+                </Hero>
+
+            </React.Fragment>
+        );
+    }
+
+    showEmptyDesignsScreen = () => {
+        return (
+            <React.Fragment>
+                <ShirtMenu shirts={this.state.shirts} onSelectShirt={this.handleShirtSelect} onCreateShirt={this.handleCreateShirt} />
+                <Hero>
+                    <Heading fontSize={[42]}>You don't have any designs</Heading>
+                    <Text fontSize={[20]}><a href="#" onClick={this.handleCreateShirt}>Create</a> one!</Text>
+                </Hero>
             </React.Fragment>
         );
     }
@@ -140,11 +187,10 @@ export default class AppContainer extends Component {
         this.setState({ shirt });
     }
 
-    handleSelectDecoration = (imgElement) => {
+    handleSelectDecoration = (id, image) => {
         let shirt = this.state.shirt;
-        shirt.decoration = imgElement;
-        this.setState({ shirt });
-        console.log(shirt);
+        shirt.decoration = id;
+        this.setState({ shirt, selected_decoration_image: image });
     }
 
     handleShowSaveModal = () => {
@@ -193,19 +239,4 @@ export default class AppContainer extends Component {
             });
     }
 
-    showLoadingScreen = () => {
-        return (
-            <React.Fragment>
-                <LoadingScreen
-                    loading={true}
-                    bgColor='#f1f1f1'
-                    spinnerColor='#9ee5f8'
-                    textColor='#676767'
-                    logoSrc={Logo}
-                    text='Loading, please hold'
-                    children=''
-                />
-            </React.Fragment>
-        );
-    }
 }

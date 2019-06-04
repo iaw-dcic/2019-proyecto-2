@@ -10743,6 +10743,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 body {
   background-image: url(/images/background.png?ecff1f6997479c3d75ad9e6adfc6a4f4);
+  overflow-x: hidden;
 }
 
 .react-layout-components--box {
@@ -10769,16 +10770,34 @@ body {
   border-radius: 6px;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .well-small {
   padding: 9px;
   border-radius: 3px;
 }
 
-.well padtop {
-  margin-top: 30px;
-}
-
 .padtop {
   padding-top: 30px;
+}
+
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.shirt {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.decoration {
+  position: absolute;
+  top: 130px;
+  left: 255px;
 }
 

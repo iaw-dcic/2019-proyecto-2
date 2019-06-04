@@ -12,21 +12,11 @@ class Shirt extends Model
      * @var array
      */
     protected $fillable = [
-        'color', 'type', 'user_id', 'design_name'
+        'color', 'type', 'user_id', 'design_name', 'decoration'
     ];
-
-    public function decorations()
-    {
-        return $this->hasOne(Decoration::class);
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function addDecoration($Decoration)
-    {
-        $this->decorations()->create($Decoration);
     }
 }

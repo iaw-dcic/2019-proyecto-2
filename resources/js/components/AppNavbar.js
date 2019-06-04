@@ -20,7 +20,7 @@ export default class AppNavbar extends Component {
         return (
             <Navbar bg="dark" variant="dark">
                 <img src={Logo} />
-                <Navbar.Brand href="/">&nbsp; Shirt designer</Navbar.Brand>
+                <Navbar.Brand href="/">&nbsp; ShirtDesigner</Navbar.Brand>
                 <Nav className="mr-auto">
 
                 </Nav>

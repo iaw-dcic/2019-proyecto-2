@@ -28,13 +28,16 @@ export default class ShirtMenu extends Component {
         return (
             <React.Fragment>
                 <Menu disableAutoFocus isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)}>
-                    <h2 className="bm-item">
-                        <span>Your Designs</span>
-                    </h2>
+                    <div className="d-flex justify-content-between">
+                        <h3 className="bm-item">
+                            <span>Your Designs</span>
+                        </h3>
+                        <div>
+                            <Button variant="success" onClick={this.handleCreateShirt}>+</Button>
+                        </div>
+                    </div>
                     {this.state.shirts.map(shirt =>
                         <a href="#" key={shirt.id} id={shirt.id} className="bm-item" onClick={this.handleSelectedShirt(shirt)}>{shirt.design_name}</a>)}
-                    <Button variant="success" onClick={this.handleCreateShirt}>New shirt</Button>
-
                 </Menu>
             </React.Fragment>
         );

@@ -20,6 +20,7 @@ class Shirt extends JsonResource
             'type' => $this->type,
             'design_name' => $this->design_name,
             'user_id' => $this->user_id,
+            'decoration' => $this->decoration,
         ];
     }
 }

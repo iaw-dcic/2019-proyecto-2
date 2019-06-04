@@ -19,8 +19,6 @@ class ShirtController extends Controller
      */
     public function index(User $user)
     {
-        //$shirts = $user->shirts;
-        //return $shirts;
         return ShirtResource::collection($user->shirts);
     }
 
@@ -32,12 +30,12 @@ class ShirtController extends Controller
      */
     public function store(User $user)
     {
-        //abort_if(auth()->id() !== $user->id, 403); //en caso de que el cliente modifique el POST manualmente
         $shirt = $user->addShirt([
             "user_id" => $user->id,
             "color" => "FFFFFF",
             "type" => "tshirt",
-            "design_name" => "Your design"
+            "design_name" => "Your design",
+            "decoration" => null,
         ]);
         return new ShirtResource($shirt);
     }
@@ -67,6 +65,7 @@ class ShirtController extends Controller
             'design_name' => $request['design_name'],
             'color' => $request['color'],
             'type' => $request['type'],
+            'decoration' => $request['decoration'],
         ]);
         return new ShirtResource($shirt);
     }
@@ -83,13 +82,33 @@ class ShirtController extends Controller
         return new ShirtResource($shirt);
     }
 
-    public function getStaticImage($type, $color)
+    public function getShirtImage($type, $color)
     {
         $filepath = public_path() . '/img/shirts/' . $type . '/' . $color . '.png';
         if (file_exists($filepath)) {
             return Response::json(array(
-                'content' => base64_encode(File::get($filepath))
+                'content' => base64_encode(File::get($filepath)),
+            ));
+        }
+    }
 
+    public function getAllDecorations()
+    {
+        $filepath = public_path() . '/img/decorations';
+        $count = sizeof(File::files($filepath));
+        $decorations = [];
+        for ($i = 0; $i < $count; $i++) {
+            array_push($decorations, ['id' => $i, 'content' => base64_encode(File::get($filepath . '/' . $i . '.png'))]);
+        }
+        return Response::json($decorations);
+    }
+
+    public function getDecorationImage($id)
+    {
+        $filepath = public_path() . '/img/decorations/' . $id . '.png';
+        if (file_exists($filepath)) {
+            return Response::json(array(
+                'decoration' => base64_encode(File::get($filepath)),
             ));
         }
     }
