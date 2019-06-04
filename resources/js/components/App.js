@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AppContainer from './AppContainer'
+import Readme from './readme';
 
 class App extends Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class App extends Component {
                 <div id="app">
                     <Switch>
                         <Route exact path="/" render={(props) => <AppContainer {...props} user_info={this.state.user_info} received_user_info={this.state.received_user_info} />} />
+                        <Route path="/readme" component={Readme} />
                     </Switch>
                 </div>
             </BrowserRouter>

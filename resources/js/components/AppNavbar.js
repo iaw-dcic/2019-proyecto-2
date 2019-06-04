@@ -22,7 +22,7 @@ export default class AppNavbar extends Component {
                 <img src={Logo} />
                 <Navbar.Brand href="/">&nbsp; ShirtDesigner</Navbar.Brand>
                 <Nav className="mr-auto">
-
+                    <Nav.Link href="/readme">ReadMe</Nav.Link>
                 </Nav>
                 {navbarOptions}
             </Navbar>

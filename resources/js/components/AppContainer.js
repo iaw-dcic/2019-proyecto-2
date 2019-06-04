@@ -42,7 +42,7 @@ export default class AppContainer extends Component {
 
     componentDidMount() {
         if (this.props.user_info.isLoggedIn) {
-            axios.get(`http://localhost:8000/api/static/images/decorations`)
+            axios.get(`/api/static/images/decorations`)
                 .then(res => {
                     this.setState({ decorations: res.data });
                 });
@@ -51,7 +51,7 @@ export default class AppContainer extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.received_user_info) {
-            axios.get("http://localhost:8000/api/" + nextProps.user_info.id + "/shirts").then(resp => {
+            axios.get("/api/" + nextProps.user_info.id + "/shirts").then(resp => {
                 let shirts = resp.data;
                 this.setState({ shirts, received_shirts_info: true });
                 if (shirts.length > 0 && this.state.shirt.id == 0) {
@@ -205,7 +205,7 @@ export default class AppContainer extends Component {
         let shirt = { ...this.state.shirt };
         shirt.design_name = name;
         this.setState({ shirt, showSaveModal: false });
-        axios.patch(`http://localhost:8000/api/shirts/` + shirt.id, shirt)
+        axios.patch(`/api/shirts/` + shirt.id, shirt)
             .then(res => {
                 let shirts = this.state.shirts;
                 let affectedShirt = [res.data];
@@ -215,7 +215,7 @@ export default class AppContainer extends Component {
     }
 
     handleDeleteShirt = () => {
-        axios.delete('http://localhost:8000/api/shirts/' + this.state.shirt.id)
+        axios.delete('/api/shirts/' + this.state.shirt.id)
             .then(res => {
                 const shirts = this.state.shirts.filter(shirt => shirt.id !== res.data.id);
                 let shirtToShowNext;
@@ -230,7 +230,7 @@ export default class AppContainer extends Component {
     }
 
     handleCreateShirt = () => {
-        axios.post(`http://localhost:8000/api/shirts/store/` + this.props.user_info.id)
+        axios.post(`/api/shirts/store/` + this.props.user_info.id)
             .then(res => {
                 let shirt = res.data;
                 let shirts = this.state.shirts;
