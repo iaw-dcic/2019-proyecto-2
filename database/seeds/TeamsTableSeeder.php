@@ -24,14 +24,14 @@ class TeamsTableSeeder extends Seeder
         ]);
 
         DB::table('teams')->insert([
-            'name' => 'Godoy Cruz',
+            'name' => 'San Lorenzo',
             'country' => 'Argentina',
             'flag' => 'null',
         ]);
-        
+
         DB::table('teams')->insert([
-            'name' => 'Palmeiras',
-            'country' => 'Brasil',
+            'name' => 'Cerro Porteño',
+            'country' => 'Paraguay',
             'flag' => 'null',
         ]);
 
@@ -48,26 +48,38 @@ class TeamsTableSeeder extends Seeder
         ]);
 
         DB::table('teams')->insert([
-            'name' => 'San Lorenzo',
+            'name' => 'Athletico Paranaense',
+            'country' => 'Brasil',
+            'flag' => 'null',
+        ]);
+
+        DB::table('teams')->insert([
+            'name' => 'Boca Juniors',
             'country' => 'Argentina',
             'flag' => 'null',
         ]);
 
         DB::table('teams')->insert([
-            'name' => 'Cerro Porteño',
-            'country' => 'Paraguay',
+            'name' => 'Godoy Cruz',
+            'country' => 'Argentina',
             'flag' => 'null',
         ]);
-
+        
         DB::table('teams')->insert([
-            'name' => 'Nacional',
-            'country' => 'Uruguay',
-            'flag' => 'null',
-        ]);
-
-        DB::table('teams')->insert([
-            'name' => 'Internacional',
+            'name' => 'Palmeiras',
             'country' => 'Brasil',
+            'flag' => 'null',
+        ]);
+
+        DB::table('teams')->insert([
+            'name' => 'Gremio',
+            'country' => 'Brasil',
+            'flag' => 'null',
+        ]);
+
+        DB::table('teams')->insert([
+            'name' => 'Libertad',
+            'country' => 'Ecuador',
             'flag' => 'null',
         ]);
 
@@ -84,27 +96,15 @@ class TeamsTableSeeder extends Seeder
         ]);
 
         DB::table('teams')->insert([
-            'name' => 'Athletico Paranaense',
+            'name' => 'Nacional',
+            'country' => 'Uruguay',
+            'flag' => 'null',
+        ]);
+
+        DB::table('teams')->insert([
+            'name' => 'Internacional',
             'country' => 'Brasil',
             'flag' => 'null',
-        ]);
-
-        DB::table('teams')->insert([
-            'name' => 'Boca Juniors',
-            'country' => 'Argentina',
-            'flag' => 'null',
-        ]);
-
-        DB::table('teams')->insert([
-            'name' => 'Gremio',
-            'country' => 'Brasil',
-            'flag' => 'null',
-        ]);
-
-        DB::table('teams')->insert([
-            'name' => 'Libertad',
-            'country' => 'Ecuador',
-            'flag' => 'null',
-        ]);
+        ]);        
     }
 }

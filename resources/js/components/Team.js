@@ -25,7 +25,7 @@ componentDidMount(){
 
 render(){
     return (
-        <div class="col-6">
+        <div>
             {this.state.team.name}
         </div>
             

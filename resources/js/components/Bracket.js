@@ -3,238 +3,124 @@ import ReactDOM from 'react-dom';
 import Team from './Team'
 
 export default class Example extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            team: localStorage.getItem('team') ? JSON.parse(localStorage.getItem('team')) : [],
+            quarters: localStorage.getItem('quarters') ? JSON.parse(localStorage.getItem('quarters')) : [],
+            semis: localStorage.getItem('semis') ? JSON.parse(localStorage.getItem('semis')) : [],
+            finals: localStorage.getItem('finals') ? JSON.parse(localStorage.getItem('finals')) : [],
+            champion: localStorage.getItem('champion') ? JSON.parse(localStorage.getItem('champion')) : []
+        };
+        this.handleBrackets = this.handleBrackets.bind(this);
+    }
+
+    handleBrackets(index, item, statex, state_name) {
+        let tsize;
+        switch(state_name) {
+            case 'team':
+                tsize= 16;
+                break;
+            case 'quarters':
+                tsize= 8;
+                break;
+            case 'semis':
+                tsize= 4;
+                break;
+            case 'finals':
+                tsize= 2;
+                break;
+        }
+
+        
+        var arr = statex;
+        const new_index = index % 2 == 0 ? index : index-1
+
+        if(arr.length<tsize) {
+
+            if(typeof arr[new_index/2] === 'undefined') {
+                arr[Math.floor(new_index/2)] = {name: item.name}
+                this.setState({
+                    [state_name]: arr
+                });
+                this.saveToStorage()
+            }
+        }
+        
+        
+    }
+
+    saveToStorage() {
+
+        localStorage.setItem('team', JSON.stringify(this.state.team));
+        localStorage.setItem('quarters', JSON.stringify(this.state.quarters));
+        localStorage.setItem('semis', JSON.stringify(this.state.semis));
+        localStorage.setItem('finals', JSON.stringify(this.state.finals));
+        localStorage.setItem('champion', JSON.stringify(this.state.champion));
+
+    }
+   
     render() {
+        const vm = this
+        const round16 =  this.state.team.map(function(item, index)  {
+            return <li className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.quarters, 'quarters') }} key={index}>{item.name}</li>
+        })
+
+        const quarters =  this.state.quarters.map(function(item, index) {
+            return  <li className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.semis, 'semis')} } key={index}>{item.name}</li>
+        })
+
+        const semis =  this.state.semis.map(function(item, index) {
+            return  <li className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.finals, 'finals')} } key={index}>{item.name}</li>
+        })
+
+        const finals =  this.state.finals.map(function(item, index) {
+            return  <li className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.champion, 'champion')} } key={index}>{item.name}</li>
+        })
+
+        const champion =  this.state.champion.map(function(item, index) {
+            return  <li className="team-item"  key={index}>{item.name}</li>
+        })
+
         return (
             <section id="bracket">
-                <div class="container">
-                    <div class="split split-one">
-                        <div class="round round-one current">
-                            <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
+                <div className="tournament-brackets">
+                    <ul className="bracket bracket-1">
+                        {round16}
+                    </ul>  
+                    <ul className="bracket bracket-2">
+                        {quarters}
+                    </ul>  
+                    <ul class="bracket bracket-3">
+                        {semis}
+                    </ul>  
+                    <ul className="bracket bracket-4">
+                        {finals}
+                    </ul>  
 
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="1"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="2"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="3"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="4"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="5"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="6"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="7"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="8"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                    <ul className="bracket bracket-5">
+                        {champion}
+                    </ul>  
+                </div>
 
-                        </div>
-
-                        <div class="round round-two">
-                            <div class="round-details">Round 2<br/><span class="date">March 18</span></div>			
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                    <Team id=""/>
-                                    <input type="number" class="score"/>
-                                </li>
-                                <li class="team team-bottom">
-                                    <Team id=""/>
-                                    <input type="number" class="score"/>
-                                </li>
-                            </ul>	
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                    <Team id=""/>
-                                    <input type="number" class="score"/>
-                                </li>
-                                <li class="team team-bottom">
-                                    <Team id=""/>
-                                    <input type="number" class="score"/>
-                                </li>
-                            </ul>	
-                        </div>
-                        
-                        <div class="round round-three">
-                            <div class="round-details">Round 3<br/><span class="date">March 22</span></div>			
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                    <Team id=""/>
-                                    <input type="number" class="score"/>
-                                </li>
-                                <li class="team team-bottom">
-                                    <Team id=""/>
-                                    <input type="number" class="score"/>
-                                </li>
-                            </ul>
-                        </div>		
-                    </div> 
-
-                    <div class="champion">
-                        <div class="final">
-                            <i class="fa fa-trophy"></i>
-                            <div class="round-details">championship <br/><span class="date">March 30 - Apr. 1</span></div>		
-                            <ul class ="matchup championship">
-                                <li class="team team-top">&nbsp;<input type="number" class="score"/></li>
-                                <li class="team team-bottom">&nbsp;<input type="number" class="score"/></li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                    <div class="split split-two">
-                        <div class="round round-three">
-                            <div class="round-details">Round 3<br/><span class="date">March 22</span></div>						
-                            <ul class="matchup">
-                                <li class="team team-top">&nbsp;<input type="number" class="score"/></li>
-                                <li class="team team-bottom">&nbsp;<input type="number" class="score"/></li>
-                            </ul>	
-                        </div>
-
-                        <div class="round round-two">
-                            <div class="round-details">Round 2<br/><span class="date">March 18</span></div>						
-                            <ul class="matchup">
-                                <li class="team team-top">&nbsp;<input type="number" class="score"/></li>
-                                <li class="team team-bottom">&nbsp;<input type="number" class="score"/></li>
-                            </ul>	
-                            <ul class="matchup">
-                                <li class="team team-top">&nbsp;<input type="number" class="score"/></li>
-                                <li class="team team-bottom">&nbsp;<input type="number" class="score"/></li>
-                            </ul>	
-                        </div>
-                        <div class="round round-one current">
-                            <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="9"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="10"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="11"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="12"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="13"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="14"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="matchup">
-                                <li class="team team-top">
-                                <div class="row">
-                                        <Team id="15"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="team team-bottom">
-                                    <div class="row">
-                                        <Team id="16"/>
-                                        <div class="col-6">
-                                            <input type="number" class="score" class="w-100"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>			
-                        </div>				
-                    </div>
-            </div>
-        </section>
+            </section>
         );
     }
+
+    componentDidMount(){
+        var vm = this
+        axios.get('/api/team')
+        .then(function (response) {
+            vm.setState({
+               team: response.data
+              });
+              console.log(response.data)
+    
+        }).catch(function (error){
+            console.log(error.response)
+        })
+    }
+
+    
+        
 }

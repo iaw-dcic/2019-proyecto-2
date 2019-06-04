@@ -12,9 +12,9 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        return Team::where('id', $id)->first();
+        return Team::all();
     }
 
     /**

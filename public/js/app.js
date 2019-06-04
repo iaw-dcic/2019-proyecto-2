@@ -65772,9 +65772,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -65789,358 +65789,142 @@ var Example =
 function (_Component) {
   _inherits(Example, _Component);
 
-  function Example() {
+  function Example(props) {
+    var _this;
+
     _classCallCheck(this, Example);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Example).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this, props));
+    _this.state = {
+      team: localStorage.getItem('team') ? JSON.parse(localStorage.getItem('team')) : [],
+      quarters: localStorage.getItem('quarters') ? JSON.parse(localStorage.getItem('quarters')) : [],
+      semis: localStorage.getItem('semis') ? JSON.parse(localStorage.getItem('semis')) : [],
+      finals: localStorage.getItem('finals') ? JSON.parse(localStorage.getItem('finals')) : [],
+      champion: localStorage.getItem('champion') ? JSON.parse(localStorage.getItem('champion')) : []
+    };
+    _this.handleBrackets = _this.handleBrackets.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Example, [{
+    key: "handleBrackets",
+    value: function handleBrackets(index, item, statex, state_name) {
+      var tsize;
+
+      switch (state_name) {
+        case 'team':
+          tsize = 16;
+          break;
+
+        case 'quarters':
+          tsize = 8;
+          break;
+
+        case 'semis':
+          tsize = 4;
+          break;
+
+        case 'finals':
+          tsize = 2;
+          break;
+      }
+
+      var arr = statex;
+      var new_index = index % 2 == 0 ? index : index - 1;
+
+      if (arr.length < tsize) {
+        if (typeof arr[new_index / 2] === 'undefined') {
+          arr[Math.floor(new_index / 2)] = {
+            name: item.name
+          };
+          this.setState(_defineProperty({}, state_name, arr));
+          this.saveToStorage();
+        }
+      }
+    }
+  }, {
+    key: "saveToStorage",
+    value: function saveToStorage() {
+      localStorage.setItem('team', JSON.stringify(this.state.team));
+      localStorage.setItem('quarters', JSON.stringify(this.state.quarters));
+      localStorage.setItem('semis', JSON.stringify(this.state.semis));
+      localStorage.setItem('finals', JSON.stringify(this.state.finals));
+      localStorage.setItem('champion', JSON.stringify(this.state.champion));
+    }
+  }, {
     key: "render",
     value: function render() {
+      var vm = this;
+      var round16 = this.state.team.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team-item",
+          onClick: function onClick() {
+            vm.handleBrackets(index, item, vm.state.quarters, 'quarters');
+          },
+          key: index
+        }, item.name);
+      });
+      var quarters = this.state.quarters.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team-item",
+          onClick: function onClick() {
+            vm.handleBrackets(index, item, vm.state.semis, 'semis');
+          },
+          key: index
+        }, item.name);
+      });
+      var semis = this.state.semis.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team-item",
+          onClick: function onClick() {
+            vm.handleBrackets(index, item, vm.state.finals, 'finals');
+          },
+          key: index
+        }, item.name);
+      });
+      var finals = this.state.finals.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team-item",
+          onClick: function onClick() {
+            vm.handleBrackets(index, item, vm.state.champion, 'champion');
+          },
+          key: index
+        }, item.name);
+      });
+      var champion = this.state.champion.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team-item",
+          key: index
+        }, item.name);
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "bracket"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "split split-one"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round round-one current"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round-details"
-      }, "Round 1", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "date"
-      }, "March 16")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "1"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "2"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "3"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "4"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "5"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "6"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "7"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "8"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round round-two"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round-details"
-      }, "Round 2", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "date"
-      }, "March 18")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round round-three"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round-details"
-      }, "Round 3", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "date"
-      }, "March 22")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "champion"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "final"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-trophy"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round-details"
-      }, "championship ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "date"
-      }, "March 30 - Apr. 1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup championship"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "split split-two"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round round-three"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round-details"
-      }, "Round 3", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "date"
-      }, "March 22")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round round-two"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round-details"
-      }, "Round 2", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "date"
-      }, "March 18")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        "class": "score"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round round-one current"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "round-details"
-      }, "Round 1", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "date"
-      }, "March 16")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "9"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "10"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "11"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "12"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "13"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "14"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "15"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Team__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "16"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
-        type: "number",
-        "class": "score"
-      }, "class", "w-100"))))))))));
+        className: "tournament-brackets"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "bracket bracket-1"
+      }, round16), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "bracket bracket-2"
+      }, quarters), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        "class": "bracket bracket-3"
+      }, semis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "bracket bracket-4"
+      }, finals), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "bracket bracket-5"
+      }, champion)));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var vm = this;
+      axios.get('/api/team').then(function (response) {
+        vm.setState({
+          team: response.data
+        });
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     }
   }]);
 
@@ -66291,9 +66075,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-6"
-      }, this.state.team.name);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.team.name);
     }
   }]);
 

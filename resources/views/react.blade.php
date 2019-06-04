@@ -1,3 +1,5 @@
+
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -19,7 +21,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body> 
+    @section('content')
     <div id="react-app"></div>
+    @endsection
 </body>
 </html>
