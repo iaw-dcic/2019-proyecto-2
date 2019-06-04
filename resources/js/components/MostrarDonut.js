@@ -16,7 +16,6 @@ class MostrarDonut extends React.Component {
 					<img className="donasboton" src={this.img.getSaborURL(this.props.donut.sabor_id)} />
 					<img className="donasboton" src={this.img.getGlaseadoURL(this.props.donut.glaseado_id)} />
 					<img className="donasboton" src={this.img.getDecoracionURL(this.props.donut.decorado_id)} />
-					
 				</button>
 
 				<br />
