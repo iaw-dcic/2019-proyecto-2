@@ -11,8 +11,8 @@ export default class ElementSelect extends Component {
 
     render () {
         return (
-            <div>
-                <div className="d-flex justify-content-center" id="elementsFlex">
+            <div className="auxflex">
+                <div className="d-flex justify-content-center elementsFlex">
                     {this.props.avatarList.map (avatar => (
                         <div className="card text-center savedCard" key={avatar.avatar_id}>
                             <div className="card-body avatarImage">

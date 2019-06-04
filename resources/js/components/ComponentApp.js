@@ -52,10 +52,9 @@ export default class ComponentApp extends Component {
     componentDidMount () {
         try {
             axios.get ('/api/app/avatars').then (response => {
-                    this.setState({ 
-                        allAvatar: response.data
-                    }
-                );
+                this.setState({
+                    allAvatar: response.data
+                });
             });
         } 
         catch (event) {
@@ -77,7 +76,7 @@ export default class ComponentApp extends Component {
 
     saveChanges = () => {
         if (this.state.currentAvatar.avatar_name == "") {
-            console.log ("Error: Name field is empty.");
+            alert ("Error: Name field is empty.");
         }
         else {
             try {
@@ -88,9 +87,19 @@ export default class ComponentApp extends Component {
                         shirt: this.state.currentAvatar.shirt,
                         beard: this.state.currentAvatar.beard
                     }).then (response => {
-                        console.log ('From Handle Submit ', response);
+                        console.log ('From Handle Submit ', response.statusText);
                         this.setState ({
-                            allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+                            currentAvatar: {
+                                "avatar_id": response.data,
+                                "avatar_name": this.state.currentAvatar.avatar_name,
+                                "hair": this.state.currentAvatar.hair,
+                                "shirt": this.state.currentAvatar.shirt,
+                                "beard": this.state.currentAvatar.beard
+                            }
+                        }, () => {
+                            this.setState ({
+                                allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
+                            })
                         });
                     });
                 }
@@ -102,9 +111,16 @@ export default class ComponentApp extends Component {
                         shirt: this.state.currentAvatar.shirt,
                         beard: this.state.currentAvatar.beard
                     }).then (response => {
-                        console.log ('From Handle Submit ', response);
-                        const firstHalf = this.state.allAvatar.slice (0, this.state.currentAvatar.avatar_id - 1);
-                        const secondHalf = this.state.allAvatar.slice (this.state.currentAvatar.avatar_id, this.state.allAvatar.length);
+                        console.log ('From Handle Submit ', response.data);
+                        let currentAvatarPlace = 0;
+                        for (let I = 0; I < this.state.allAvatar.length; I++) {
+                            if (this.state.allAvatar[I].avatar_id == this.state.currentAvatar.avatar_id) {
+                                currentAvatarPlace = I;
+                                break;
+                            }
+                        }
+                        const firstHalf = this.state.allAvatar.slice (0, currentAvatarPlace);
+                        const secondHalf = this.state.allAvatar.slice (currentAvatarPlace + 1, this.state.allAvatar.length);
                         const firstPlusNewAvatar = firstHalf.concat (this.state.currentAvatar);
                         this.setState ({
                             allAvatar: firstPlusNewAvatar.concat (secondHalf)

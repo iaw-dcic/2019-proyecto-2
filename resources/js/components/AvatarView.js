@@ -9,10 +9,10 @@ export default class AvatarView extends Component {
         return (
             <div className="mx-auto">
                 <div>
-                    <img src={window.location.origin + '/avatar_elements/BaseModel.png'} id="basePicture"/>
-                    <img src={window.location.origin + '/avatar_elements/' + this.props.avatar.hair + '.png'} id="hairPicture"/>
-                    <img src={window.location.origin + '/avatar_elements/' + this.props.avatar.shirt + '.png'} id="shirtPicture"/>
-                    <img src={window.location.origin + '/avatar_elements/' + this.props.avatar.beard + '.png'} id="beardPicture"/>
+                    <img src={window.location.origin + '/avatar_elements/BaseModel.png'} className="basePicture"/>
+                    <img src={window.location.origin + '/avatar_elements/' + this.props.avatar.hair + '.png'} className="hairPicture"/>
+                    <img src={window.location.origin + '/avatar_elements/' + this.props.avatar.shirt + '.png'} className="shirtPicture"/>
+                    <img src={window.location.origin + '/avatar_elements/' + this.props.avatar.beard + '.png'} className="beardPicture"/>
                 </div>
             </div>
         );

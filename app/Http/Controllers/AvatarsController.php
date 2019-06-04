@@ -39,7 +39,7 @@ class AvatarsController extends Controller {
             $avatar->beard = $request->beard;
             $avatar->save();
 
-            return response ()->json ('Save Finished');
+            return response ()->json ($avatar->avatar_id);
         }
     }
     

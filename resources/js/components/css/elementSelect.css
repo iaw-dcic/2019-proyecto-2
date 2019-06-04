@@ -1,11 +1,15 @@
-#elementsFlex {
+.elementsFlex {
     margin-top: 2%;
+    padding-left: relative;
+    position: relative;
+    width: auto;
 }
 
 .savedCard {
     height: 135px;
     width: 125px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     padding-right: 140px;
 }
 

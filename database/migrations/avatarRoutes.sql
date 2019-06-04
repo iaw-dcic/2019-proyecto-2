@@ -1,6 +1,6 @@
 USE proyecto2iaw;
 
-INSERT INTO avatarcomponents (element_type, element_source, element_var) VALUES
+INSERT INTO avatar_components (element_type, element_source, element_var) VALUES
 
 ('Hair', '/avatar_elements/Hair1.png', 'Hair1'),
 ('Hair', '/avatar_elements/Hair2.png', 'Hair2'),

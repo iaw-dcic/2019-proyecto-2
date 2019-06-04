@@ -1,6 +1,7 @@
-#basePicture, #hairPicture, #shirtPicture, #beardPicture {
+.basePicture, .hairPicture, .shirtPicture, .beardPicture {
     height: 200px;
     width: 200px;
     position: absolute;
     background-position: center center;
+    border-style: double;
 }

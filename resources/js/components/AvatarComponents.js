@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 //Seleccion de todos los elementos para modificar el avatar
 
@@ -9,6 +10,10 @@ export default class AvatarComponents extends Component {
         this.changeAvatarShirt = this.changeAvatarShirt.bind (this);
         this.changeAvatarBeard = this.changeAvatarBeard.bind (this);
     }
+
+    state = {
+        componentTable: []
+    };
 
     render () {
         return (

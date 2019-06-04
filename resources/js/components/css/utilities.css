@@ -1,12 +1,12 @@
-#textFlex, #buttonsFlex {
+.textFlex, .buttonsFlex {
     margin-top: 2%;
 }
 
-#saveButton {
+.saveButton {
     margin-left: 4px;
 }
 
-#avatarName {
+.avatarName {
     margin-bottom: 4px;
     width: 70%;
 }

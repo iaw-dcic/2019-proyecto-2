@@ -4,15 +4,15 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AvatarComponents extends Migration {
+class CreateAvatarComponentsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up () {
-        Schema::create('avatarcomponents', function (Blueprint $table) {
-            $table->increments ('avatar_id');
+        Schema::create('avatar_components', function (Blueprint $table) {
+            $table->increments ('element_id');
             $table->string ('element_type');
             $table->string ('element_source');
             $table->string ('element_var');
@@ -26,6 +26,6 @@ class AvatarComponents extends Migration {
      * @return void
      */
     public function down () {
-        Schema::dropIfExists('avatarcomponents');
+        Schema::dropIfExists('avatar_components');
     }
 }

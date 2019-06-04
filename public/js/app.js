@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#basePicture, #hairPicture, #shirtPicture, #beardPicture {\r\n    height: 200px;\r\n    width: 200px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}", ""]);
+exports.push([module.i, ".basePicture, .hairPicture, .shirtPicture, .beardPicture {\r\n    height: 200px;\r\n    width: 200px;\r\n    position: absolute;\r\n    background-position: center center;\r\n    border-style: double;\r\n}", ""]);
 
 // exports
 
@@ -6539,7 +6539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 350px;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    height: 200px;\r\n}\r\n\r\n#editor {\r\n    top: 20%;\r\n}\r\n\r\n#previous {\r\n    height: 220px;\r\n    width: 50%;\r\n    margin-top: 2%;\r\n    margin-left: 2%;\r\n    top: 50%;\r\n    overflow-x: auto;\r\n}\r\n\r\n#buttons {\r\n    margin-top: 5%;\r\n}", ""]);
+exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 300px;\r\n}\r\n\r\n#editor, #previous {\r\n    text-align: center;\r\n    height: 200px;\r\n}\r\n\r\n#editor {\r\n    top: 20%;\r\n}\r\n\r\n#previous {\r\n    height: 220px;\r\n    width: 50%;\r\n    margin-top: 2%;\r\n    margin-left: 2%;\r\n    top: 50%;\r\n    overflow-x: auto;\r\n    border: 2px solid gray;\r\n    border-radius: 5px;\r\n}\r\n\r\n#buttons {\r\n    margin-top: 5%;\r\n}", ""]);
 
 // exports
 
@@ -6558,7 +6558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#elementsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.savedCard {\r\n    height: 135px;\r\n    width: 125px;\r\n    margin-right: 10px;\r\n    padding-right: 140px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n.selectButtonContainer {\r\n    text-align: center;\r\n}\r\n\r\n.selectButton {\r\n    margin-top: 3%;\r\n    position: absolute;\r\n}", ""]);
+exports.push([module.i, ".elementsFlex {\r\n    margin-top: 2%;\r\n    padding-left: relative;\r\n    position: relative;\r\n    width: auto;\r\n}\r\n\r\n.savedCard {\r\n    height: 135px;\r\n    width: 125px;\r\n    margin-left: 5px;\r\n    margin-right: 5px;\r\n    padding-right: 140px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n}\r\n\r\n.selectButtonContainer {\r\n    text-align: center;\r\n}\r\n\r\n.selectButton {\r\n    margin-top: 3%;\r\n    position: absolute;\r\n}", ""]);
 
 // exports
 
@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#textFlex, #buttonsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#saveButton {\r\n    margin-left: 4px;\r\n}\r\n\r\n#avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
+exports.push([module.i, ".textFlex, .buttonsFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n.saveButton {\r\n    margin-left: 4px;\r\n}\r\n\r\n.avatarName {\r\n    margin-bottom: 4px;\r\n    width: 70%;\r\n}", ""]);
 
 // exports
 
@@ -66434,6 +66434,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AvatarComponents; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66454,6 +66456,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+
  //Seleccion de todos los elementos para modificar el avatar
 
 var AvatarComponents =
@@ -66473,6 +66476,10 @@ function (_Component) {
     }
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AvatarComponents)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      componentTable: []
+    });
 
     _defineProperty(_assertThisInitialized(_this), "createElements", function (type) {
       var table = [];
@@ -66732,16 +66739,16 @@ function (_Component) {
         className: "mx-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/BaseModel.png',
-        id: "basePicture"
+        className: "basePicture"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/' + this.props.avatar.hair + '.png',
-        id: "hairPicture"
+        className: "hairPicture"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/' + this.props.avatar.shirt + '.png',
-        id: "shirtPicture"
+        className: "shirtPicture"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.location.origin + '/avatar_elements/' + this.props.avatar.beard + '.png',
-        id: "beardPicture"
+        className: "beardPicture"
       })));
     }
   }]);
@@ -66844,7 +66851,7 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "saveChanges", function () {
       if (_this.state.currentAvatar.avatar_name == "") {
-        console.log("Error: Name field is empty.");
+        alert("Error: Name field is empty.");
       } else {
         try {
           if (_this.state.currentAvatar.avatar_id == null) {
@@ -66854,10 +66861,20 @@ function (_Component) {
               shirt: _this.state.currentAvatar.shirt,
               beard: _this.state.currentAvatar.beard
             }).then(function (response) {
-              console.log('From Handle Submit ', response);
+              console.log('From Handle Submit ', response.statusText);
 
               _this.setState({
-                allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
+                currentAvatar: {
+                  "avatar_id": response.data,
+                  "avatar_name": _this.state.currentAvatar.avatar_name,
+                  "hair": _this.state.currentAvatar.hair,
+                  "shirt": _this.state.currentAvatar.shirt,
+                  "beard": _this.state.currentAvatar.beard
+                }
+              }, function () {
+                _this.setState({
+                  allAvatar: _this.state.allAvatar.concat(_this.state.currentAvatar)
+                });
               });
             });
           } else {
@@ -66868,11 +66885,19 @@ function (_Component) {
               shirt: _this.state.currentAvatar.shirt,
               beard: _this.state.currentAvatar.beard
             }).then(function (response) {
-              console.log('From Handle Submit ', response);
+              console.log('From Handle Submit ', response.data);
+              var currentAvatarPlace = 0;
 
-              var firstHalf = _this.state.allAvatar.slice(0, _this.state.currentAvatar.avatar_id - 1);
+              for (var I = 0; I < _this.state.allAvatar.length; I++) {
+                if (_this.state.allAvatar[I].avatar_id == _this.state.currentAvatar.avatar_id) {
+                  currentAvatarPlace = I;
+                  break;
+                }
+              }
 
-              var secondHalf = _this.state.allAvatar.slice(_this.state.currentAvatar.avatar_id, _this.state.allAvatar.length);
+              var firstHalf = _this.state.allAvatar.slice(0, currentAvatarPlace);
+
+              var secondHalf = _this.state.allAvatar.slice(currentAvatarPlace + 1, _this.state.allAvatar.length);
 
               var firstPlusNewAvatar = firstHalf.concat(_this.state.currentAvatar);
 
@@ -67042,9 +67067,10 @@ function (_Component) {
     value: function render() {
       var _this = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex justify-content-center",
-        id: "elementsFlex"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "auxflex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center elementsFlex"
       }, this.props.avatarList.map(function (avatar) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card text-center savedCard",
@@ -67157,25 +67183,22 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex justify-content-center",
-        id: "textFlex"
+        className: "d-flex justify-content-center nameFlex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Current Name:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center textFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        className: "form-control",
-        id: "avatarName",
+        className: "form-control avatarName",
         placeholder: "Avatar Name",
-        defaultValue: this.props.name,
+        value: this.props.name,
         onChange: this.updateName
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex justify-content-center",
-        id: "buttonsFlex"
+        className: "d-flex justify-content-center buttonsFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-secondary",
-        id: "cancelButton",
+        className: "btn btn-secondary cancelButton",
         onClick: this.props.returnToDefault
       }, "Cancel Changes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary",
-        id: "saveButton",
+        className: "btn btn-primary saveButton",
         onClick: this.saveAvatar
       }, "Save Avatar")));
     }
