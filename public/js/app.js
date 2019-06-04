@@ -87884,7 +87884,7 @@ function (_Component) {
       }
     }
     /* Cuando se selecciona un ganador intermedio se deben actualizar los valores siguientes
-     Esto ocurre cuando se cambia el ganador de una ronda habiendo ya pasado a la siguiente. */
+     Esto ocurre cuando se cambia el ganador de una ronda habiendo ya pasado a la siguiente.  */
 
   }, {
     key: "updateLLave",
