@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AppContainer from './AppContainer'
+import AppNavbar from './AppNavbar'
 import Readme from './readme';
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div id="app">
+                    <AppNavbar user_info={this.state.user_info} />
                     <Switch>
                         <Route exact path="/" render={(props) => <AppContainer {...props} user_info={this.state.user_info} />} />
                         <Route path="/readme" component={Readme} />

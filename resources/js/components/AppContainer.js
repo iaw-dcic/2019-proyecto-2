@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppNavbar from './AppNavbar'
+
 import ShirtMenu from './ShirtMenu'
 import { Tabs, Tab, Container, Row, Col, Form } from 'react-bootstrap'
 import { CirclePicker } from 'react-color'
@@ -32,7 +32,6 @@ export default class AppContainer extends Component {
     render() {
         return (
             <React.Fragment>
-                <AppNavbar user_info={this.props.user_info} />
                 {this.showContent()}
             </React.Fragment>
         );
@@ -104,8 +103,8 @@ export default class AppContainer extends Component {
                             <div className="well">
                                 <Shirt shirt={this.state.shirt}
                                     received_shirts_info={this.state.received_shirts_info}
-                                    selected_decoration_image={this.state.selected_decoration_image}
-                                    shirtsImages={this.state.shirtsImages} />
+                                    shirtsImages={this.state.shirtsImages} 
+                                    decorations={this.state.decorations}/>
                             </div>
                         </Col>
                         <Col className="pt-2">
@@ -192,10 +191,10 @@ export default class AppContainer extends Component {
         this.setState({ shirt });
     }
 
-    handleSelectDecoration = (id, image) => {
+    handleSelectDecoration = (id) => {
         let shirt = this.state.shirt;
         shirt.decoration = id;
-        this.setState({ shirt, selected_decoration_image: image });
+        this.setState({ shirt });
     }
 
     handleShowSaveModal = () => {
