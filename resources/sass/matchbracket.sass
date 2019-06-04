@@ -1,0 +1,161 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700'
+
+$color-theme:				#488bf4
+$color-heading:			#363636
+$color-content:			#858585
+$color-background:	#f0f2f2
+$color-footer:			black
+$color-news:				#4549a8
+$color-community:		#dc563f
+$color-release:			#60c645
+$color-border:			#c0c0c8
+$font-content:			"Roboto Slab", serif
+
+html
+	font-size: 1rem
+body
+	background: $color-background
+
+h1, h2
+	text-align: center
+
+h1 
+	font-size: 2rem
+	font-weight: 700
+	margin-bottom: 0.5em
+
+h2
+	font-size: 1rem
+	font-weight: 600
+	margin-bottom: 2em
+
+.bracket
+	white-space: nowrap
+	font-size: 0
+	.round
+		display: inline-block
+		vertical-align: middle
+		.winners
+			& > div
+				display: inline-block
+				vertical-align: middle
+				&.matchups
+					.matchup
+						&:last-child
+							margin-bottom: 0 !important
+						.participants
+							// border-radius: 0.25rem
+							overflow: hidden
+							.participant
+								box-sizing: border-box
+								color: $color-content
+								border-left: 0.25rem solid $color-content
+								background: white
+								width: 10rem
+								height: 2rem
+								box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12)
+								&.winner
+									color: $color-release
+									border-color: $color-release
+								&.loser
+									color: $color-community
+									border-color: $color-community
+								&:not(:last-child)
+									border-bottom: thin solid $color-background
+								span
+									margin: 0 0.75rem
+									line-height: 2rem
+									font-size: 0.7rem
+									font-family: "Roboto Slab"
+								img
+									max-width: 100%
+									height: auto
+				&.connector
+					&.filled
+						.line, &.bottom .merger:after, &.top .merger:before
+							border-color: $color-release
+					.line, .merger
+						box-sizing: border-box
+						width: 2rem
+						display: inline-block
+						vertical-align: top
+					.line
+						border-bottom: thin solid $color-border
+						height: 4rem
+					.merger
+						position: relative
+						height: 8rem
+						&:before, &:after
+							content: ""
+							display: block
+							box-sizing: border-box
+							width: 100%
+							height: 50%
+							border: 0 solid
+							border-color: $color-border
+						&:before
+							border-right-width: thin
+							border-top-width: thin
+						&:after
+							border-right-width: thin
+							border-bottom-width: thin
+		&.eighthfinals
+			.winners
+				&:not(:last-child)
+					margin-bottom: 2rem
+				.matchups
+					.matchup
+						&:not(:last-child)
+							margin-bottom: 2rem
+						.participants
+							.participant
+				.connector
+					.merger
+						height: 6rem
+					.line
+						height: 3rem
+		&.quarterfinals
+			.winners
+				&:not(:last-child)
+					margin-bottom: 8rem
+				.matchups
+					.matchup
+						&:not(:last-child)
+							margin-bottom: 8rem
+						.participants
+							.participant
+				.connector
+					.merger
+						height: 12rem
+					.line
+						height: 6rem
+		&.semifinals
+			.winners
+				.matchups
+					.matchup
+						&:not(:last-child)
+							margin-bottom: 20rem
+						.participants
+							.participant
+				.connector
+					.merger
+						height: 24rem
+					.line
+						height: 12rem
+		&.finals
+			.winners
+				.matchups
+					.matchup
+						.participants
+							.participant
+				.connector
+					.merger
+						height: 3rem
+					.line
+						height: 0rem
+		&.champion
+			.winners
+				.matchups
+					.matchup
+						.participants
+							.participant

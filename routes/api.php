@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('brackets', 'BracketController@index');
+Route::get('bracket/{bracket_id}', 'BracketController@show')->middleware('auth:api');
+Route::get('teams/{bracket_id}', 'TeamController@index');
+Route::post('bracket/store', 'BracketController@store')->middleware('auth:api');
+Route::delete('bracket/delete/{id}', 'BracketController@delete')->middleware('auth:api');
