@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProdeTable extends Migration
+class CreateTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateProdeTable extends Migration
      */
     public function up()
     {
-        Schema::create('prode', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
             $table->string('name');
+            $table->string('pais');
             $table->timestamps();
-            $table->string('cuartos');
-            $table->string('semis');
-            $table->string('final');
-            $table->string('campeon');
-
-
         });
     }
 
@@ -34,6 +28,6 @@ class CreateProdeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prode');
+        Schema::dropIfExists('teams');
     }
 }
