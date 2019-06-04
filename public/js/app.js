@@ -81792,6 +81792,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+var username = document.querySelector('meta[name="username"]');
 
 var TShirtEditor =
 /*#__PURE__*/
@@ -81835,7 +81836,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "makeMenTee", function () {
-      localStorage.setItem('tshirt_type', 'men');
+      localStorage.setItem('tshirt_type' + username, 'men');
 
       _this.setState({
         tshirt_type: "men"
@@ -81843,7 +81844,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "makeWomenTee", function () {
-      localStorage.setItem('tshirt_type', 'women');
+      localStorage.setItem('tshirt_type' + username, 'women');
 
       _this.setState({
         tshirt_type: "women"
@@ -81851,7 +81852,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "changeColor", function (color, event) {
-      localStorage.setItem('tshirt_color', color.hex);
+      localStorage.setItem('tshirt_color' + username, color.hex);
 
       _this.setState({
         tshirt_color: color.hex
@@ -81860,8 +81861,8 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "clickCenterImage", function (key) {
       var image = document.getElementById(key);
-      localStorage.setItem('image_type', 'center');
-      localStorage.setItem('image', image.src);
+      localStorage.setItem('image_type' + username, 'center');
+      localStorage.setItem('image' + username, image.src);
 
       _this.setState({
         image: image.src,
@@ -81870,7 +81871,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "removeImage", function () {
-      localStorage.setItem('image', null);
+      localStorage.setItem('image' + username, null);
 
       _this.setState({
         image: null
@@ -81879,8 +81880,8 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "clickPocketImage", function (key) {
       var image = document.getElementById(key);
-      localStorage.setItem('image_type', 'pocket');
-      localStorage.setItem('image', image.src);
+      localStorage.setItem('image_type' + username, 'pocket');
+      localStorage.setItem('image' + username, image.src);
 
       _this.setState({
         image: image.src,

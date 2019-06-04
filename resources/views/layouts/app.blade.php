@@ -12,6 +12,9 @@
         <meta name="api-token" content="{{ Auth::user()->api_token }}">
     @endauth
 
+    <!-- username -->
+    <meta name="username" content="{{Auth::user()->name}}">
+
     <!-- Scripts -->
     @yield('scripts')
 

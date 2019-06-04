@@ -4,6 +4,8 @@ import './TShirtEditor.css'
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 
+let username = document.querySelector('meta[name="username"]');
+
 export default class TShirtEditor extends Component {
 
     state = {
@@ -28,24 +30,24 @@ export default class TShirtEditor extends Component {
     }
 
     makeMenTee = () => {
-        localStorage.setItem('tshirt_type', 'men');
+        localStorage.setItem('tshirt_type'+username, 'men');
         this.setState({ tshirt_type: "men" });
     }
 
     makeWomenTee = () => {
-        localStorage.setItem('tshirt_type', 'women');
+        localStorage.setItem('tshirt_type'+username, 'women');
         this.setState({ tshirt_type: "women" });
     }
 
     changeColor = (color, event) => {
-        localStorage.setItem('tshirt_color', color.hex);
+        localStorage.setItem('tshirt_color'+username, color.hex);
         this.setState({ tshirt_color: color.hex });
     }
 
     clickCenterImage = key => {
         const image = document.getElementById(key);
-        localStorage.setItem('image_type', 'center');
-        localStorage.setItem('image', image.src);
+        localStorage.setItem('image_type'+username, 'center');
+        localStorage.setItem('image'+username, image.src);
         this.setState({
             image: image.src,
             image_type: "center"
@@ -53,13 +55,13 @@ export default class TShirtEditor extends Component {
     }
 
     removeImage = () => {
-        localStorage.setItem('image', null);
+        localStorage.setItem('image'+username, null);
         this.setState({ image: null });
     }
     clickPocketImage = key => {
         const image = document.getElementById(key);
-        localStorage.setItem('image_type', 'pocket');
-        localStorage.setItem('image', image.src);
+        localStorage.setItem('image_type'+username, 'pocket');
+        localStorage.setItem('image'+username, image.src);
         this.setState({
             image: image.src,
             image_type: "pocket"
