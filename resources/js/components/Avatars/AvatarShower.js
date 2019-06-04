@@ -65,7 +65,7 @@ class AvatarShower extends Component{
         }
         else{
           return(
-            <div className="avatar-frame testing">
+            <div className="avatar-frame">
               <p className="text-justify text-weight-bold">
                 Seleccione un avatar...
               </p>              

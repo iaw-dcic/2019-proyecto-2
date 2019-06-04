@@ -291,18 +291,18 @@ class AvatarEditor extends Component{
    
     buttonsAvatarItems(){
         return(
-            <div className="btn-group-vertical btn-block" role="group" aria-label="avatar items buttons">
-                <button type="button" className={"btn btn-secondary "+ this.isActive('body')}
-                    onClick={this.handleButtonBody}>Cuerpo</button>
-                <button type="button" className={"btn btn-secondary "+ this.isActive('head')}
-                    onClick={this.handleButtonHead}>Cabeza</button>
-                <button type="button" className={"btn btn-secondary "+ this.isActive('upperbody')}
-                    onClick={this.handleButtonUpperbody}>Torso</button>
-                <button type="button" className={"btn btn-secondary "+ this.isActive('lowerbody')}
-                    onClick={this.handleButtonLowerbody}>Piernas</button>
-                <button type="button" className={"btn btn-secondary "+ this.isActive('extra')}
-                    onClick={this.handleButtonExtra}>Extra</button>
-            </div>
+                <div className="btn-group-vertical btn-block mt-3 mb-3" role="group" aria-label="avatar items buttons">
+                    <button type="button" className={"btn btn-secondary mt-3 mb-3"+ this.isActive('body')}
+                        onClick={this.handleButtonBody}>Cuerpo</button>
+                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('head')}
+                        onClick={this.handleButtonHead}>Cabeza</button>
+                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('upperbody')}
+                        onClick={this.handleButtonUpperbody}>Torso</button>
+                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('lowerbody')}
+                        onClick={this.handleButtonLowerbody}>Piernas</button>
+                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('extra')}
+                        onClick={this.handleButtonExtra}>Extra</button>
+                </div>
         );
     }
 
