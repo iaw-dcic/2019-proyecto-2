@@ -21,22 +21,42 @@ class BurgerController extends Controller
         $user_id = auth()->id();
         $burgers= Burger::all()->where('user_id',$user_id);
 
-        $burgersArray= array();
+        $burgerTemplate = array(
+            "res"=> 0,
+            "pollo"=> 0,
+            "queso" => 0,
+            "bacon" => 0,
+            "lechuga" => 0,
+            "tomate" => 0,
+        );
+
+        $response=array();
 
         foreach ($burgers as $burger){
+
             $burgerIngredients= $burger->ingredients()->get();
 
             foreach ($burgerIngredients as $ingredient) {
-                $tempArray=array(
-                    //"ingredient"=> $ingredient->ingredient,
-                    "type"=> $ingredient->type
-                );
 
-                array_push($burgersArray,$tempArray);
+                    $type = $ingredient->type;
+                    $burgerTemplate[$type] = $burgerTemplate[$type] + 1;
+                
             }
+
+            $response[] = $burgerTemplate;
+
+            $burgerTemplate = array(
+                "res"=> 0,
+                "pollo"=> 0,
+                "queso" => 0,
+                "bacon" => 0,
+                "lechuga" => 0,
+                "tomate" => 0,
+            );
+
         }
 
-        return json_encode($burgersArray);
+        return json_encode($response);
     }
 
      /**

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Button ,Container } from "react-bootstrap";
+
 
 import SavedBurger from '../../components/Burger/SavedBurger/SavedBurger';
 import axios from '../../components/axios-burgers';
-import breadImage from '../../../assets/images/prueba1.png';
 import localStorage from 'local-storage'
 import Burger from "../../components/Burger/Burger";
 
@@ -12,12 +13,14 @@ import Burger from "../../components/Burger/Burger";
 class SavedBurgers extends Component {
 
     state = {
+        isLoading : true,
         burgers: [],    
     }
 
   componentDidMount() {
 
         let token= localStorage.get('userToken');
+
         let axiosConfig = {
             headers: {
                 'Accept': 'application/json',
@@ -27,36 +30,13 @@ class SavedBurgers extends Component {
 
         axios.get('/burgers',axiosConfig)
             .then(res => {
-                const fetchedBurgers = [];
-                for (let key in res.data) {
-                    fetchedBurgers.push({
-                        ingredients: res.data[key],
-                        id: key
-                    });
-                };
-                /*const data = res.data;
-                console.log(data);
-                data.map(burger => {
-                    fetchedBurgers.push({burger})
-                });*/
 
-                this.setState({burgers: fetchedBurgers});
-                console.log("Fetched burgers: ",fetchedBurgers);
+                let fetchedData = res.data;
+            
+                this.setState({burgers: fetchedData});
+                this.setState({isLoading: false});
 
-
-
-                const array=[];
-                Object.values(fetchedBurgers).map(
-                    ingredientType => {
-                        //array.push(ingredientType.type);
-                        array[ingredientType.type]=1;
-                    }
-                );
-             //   console.log("Array de ingredientes que vienen del back: ",array);
-
-
-              
-                
+                console.log("Fetched burgers: ",fetchedData);
                
             })
             .catch(err => {
@@ -72,19 +52,28 @@ class SavedBurgers extends Component {
     render () {
         return (
             <div>
-                {this.state.burgers.map(burger => (
-                    <SavedBurger 
-                        key={burger.id} 
-                        ingredients={burger}/>
-                    /*<Burger
-                        key={burger.id}
-                        ingredients={burger.ingredients}/> */
+                {
+                    this.state.isLoading ?
+                        <div>
+                            Cargando ...
+                        </div>
+                        :
+                        <div>
+                        {
+                            this.state.burgers.map(function(item, i){
+                            return (
+                                <Container className="text-center" >
+                                    <Button>Editar</Button>
+                                    <Burger
+                                    key={i}
+                                    ingredients={item}/>
+                                </Container>
+                            )})
+                        }
+                        </div>
                         
-                 
-                ))} 
-                {/*<div className="IngredientImage">
-                    <img src={breadImage} alt="Ingrediente" />
-                </div>*/}
+                }
+            
             </div>
         );
     }

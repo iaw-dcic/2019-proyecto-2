@@ -2,12 +2,7 @@ import React, { Component } from "react";
 import Aux from "../../hoc/AuxDiv";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
-import Modal from "../../components/UI/Modal/CustomModal";
-import BurgerSummary from "../../components/Burger/BurgerSummary/BurgerSummary";
-import { Alert } from 'reactstrap';
-import { UncontrolledAlert } from 'reactstrap';
 import localStorage from 'local-storage'
-
 
 
 class BurgerBuilder extends Component {
@@ -15,7 +10,8 @@ class BurgerBuilder extends Component {
         ingredients: {},
         separatedIngredients: [],
         canSaveBurger: false,
-        savingBurger: false,        
+        savingBurger: false,
+        showingAlert : false,
     };
 
     componentDidMount() {
@@ -48,6 +44,18 @@ class BurgerBuilder extends Component {
                 }
             });
              
+    }
+
+    showAlert() {
+        this.setState({
+            showingAlert: true
+        });
+
+        setTimeout(() => {
+            this.setState({
+                showingAlert: false
+            });
+        }, 2000);
     }
 
     updateCanSaveBurgerState(ingredients) {
@@ -118,17 +126,10 @@ class BurgerBuilder extends Component {
 
         axios.post("/api/burgers", burger,axiosConfig)
             .then(response => {
-                //alert("Hamburguesa guardada");
+                this.showAlert();
             });
     };
 
-    /*savingCancelHandler = () => {
-        this.setState({ savingBurger: false });
-    };*/
-
-    /*savingContinueHandler = () => {
-        //alert("You continue!");
-    };*/
 
     render() {
         const disabledInfo = {
@@ -137,15 +138,18 @@ class BurgerBuilder extends Component {
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
-        // {lechuga: true, carne: false, ...}
         return (
             <Aux>
-                {/*<Modal show={this.state.savingBurger} modalClosed={this.savingCancelHandler} >
-                    <BurgerSummary 
-                        ingredients={this.state.ingredients}
-                        savingCancelled={this.savingCancelHandler}
-                        savingContinued={this.savingContinueHandler} />
-               </Modal>*/}
+                {
+                    this.state.showingAlert ?
+                        <div className={`alert alert-success text-center ${this.state.showingAlert ? 'alert-hidden' : 'alert-hidden'}`}>
+                            <strong>Éxito</strong> - Hamburguesa guardada correctamente!
+                        </div>
+                        :
+                        <>
+                        </>
+                }
+
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
                     separatedIngredients={this.state.separatedIngredients}
