@@ -13,4 +13,7 @@
 
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+// Route::view('/mylab', 'index')->middleware('auth');
+Route::view('/mylab/{id}', 'index')->middleware('auth');
+Route::view('/profile', 'index')->middleware('auth');
+Route::view('/{path?}', 'index');

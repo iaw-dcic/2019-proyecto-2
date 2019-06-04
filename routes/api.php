@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group( ['middleware' => 'auth:api' ], function(){
+    Route::resource('/avatars', 'Api\AvatarsController'); 
+    Route::resource('/bodies', 'Api\BodiesController'); 
+    Route::resource('/eyes', 'Api\EyesController'); 
+    Route::resource('/hairs', 'Api\HairsController'); 
+    Route::resource('/mouths', 'Api\MouthsController'); 
+    Route::resource('/noses', 'Api\NosesController'); 
+});
