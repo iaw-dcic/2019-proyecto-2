@@ -14,7 +14,7 @@ class CreateAvatarFeaturesTable extends Migration
     public function up()
     {
         Schema::create('avatar_features', function (Blueprint $table) {
-            $table->string('feature_name', 100);
+            $table->string('feature_name', 100)->unique();
             $table->timestamps();
         });
     }
