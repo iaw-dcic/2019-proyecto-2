@@ -9,9 +9,10 @@ export default class IndexProde extends Component {
         this.state = {
             eliminatorias:[]
         }
+        this.setGanador = this.setGanador.bind(this);
     }
 
-     metodoCall(){
+     componentDidMount(){
         const axios = require('axios');
         //obtengo el token del usr
         var token = document.head.querySelector('meta[name="user-token"]');
@@ -29,183 +30,124 @@ export default class IndexProde extends Component {
                // 'Authorization': 'Bearer'+token.content
             }
         }
-        let response = axios.get(`/api/prodes/${prode.id}`, axiosConfig);
-
-       return response;
-    }
-
-    //-----------------------local storage------------------------------------
-    componentWillMount(){
-        localStorage.getItem('eliminatorias') && this.setState({
-            eliminatorias: JSON.parse(localStorage.getItem('eliminatorias'))
-        })
-    }
-
-     async componentDidMount(){
-        if (!localStorage.getItem('eliminatorias')){
-            const response = await this.metodoCall();
-            this.setState((estadoActual)=> {
-                var eliminatorias= response.data;
-            return ({ eliminatorias })
-            })
-        }
-        //sino uso el guardado en localStorage   
-    }
-
-    componentWillUpdate(nextProps, nextState){
-        localStorage.setItem('eliminatorias', JSON.stringify(nextState.eliminatorias));
-    }
- //-----------------------local storage------------------------------------
-
-            //obj       int             int
-    avanzar(eliminatoria,equipoPasa, indiceProxRonda){
-        let existe=null;
-
-        this.state.eliminatorias.forEach((eliminatoria) => {    
-            if (eliminatoria.cruce_id == indiceProxRonda   && existe===null){
-                existe= eliminatoria;
-            }
-        });
-
-        //si cruce es impar -> es equipo_A
-        if (eliminatoria.cruce_id % 2 != 0) 
-            //la eliminatoria no existe
-            if (existe == null){
-                existe = {
-                    cruce_id: indiceProxRonda,
-                    prode_id: eliminatoria.prode_id,
-                    nombre_A: equipoPasa,
-                    nombre_B: null,
-                    
-
-                }
-            } 
-           
-
-        
-        const eliminatorias_copia ={ ...this.state.eliminatorias};
-        //creo la nueva eliminatoria o veo si existe y agrego otro equipo
-
-
-
-
-        this.setState({
-            
-            eliminatorias: eliminatorias_copia
-        });
-         /*let eliminatoriaAux = eliminatorias_copia[eliminatoria.cruce_id-1];
-        eliminatoriaAux.pasa= equipoPasa;
-        this.setState({
-            eliminatorias: eliminatorias_copia
-        });   */
-
-       // console.log(this.state.eliminatorias);
-
-    }
-
-
-     setGanador(eliminatoria1,eliminatoria2,nroCruce){
-     
-     
-        if (eliminatoria1.pasa !=null && eliminatoria2.pasa == null){
-            if (eliminatoria1.includes(eliminatoria1.nombre_A)){
-                var bandera_A= eliminatoria1.bandera_A;
-            }
-            else if (eliminatoria1.includes(eliminatoria1.nombre_B)){
-                var bandera_A= null;
-                var bandera_B= eliminatoria1.bandera_B;
-            }
-
-            let eliminatorias_copia = this.state.eliminatorias.slice();
-            var eliminatoria = new Eliminatoria(nroCruce,eliminatoria1.prode_id,eliminatoria1.pasa,
-                                null, bandera_A,bandera_B,null);
-
-            //eliminatoriaAux.pasa= equipoPasa;
+        axios.get(`/api/prodes/${prode.id}`, axiosConfig).then((response) => {
             this.setState({
-                eliminatorias:eliminatorias_copia
-            }); 
+                    eliminatorias: response.data,
+            })
+            console.log(this.state.eliminatorias);
+        })
+        
+    }
 
-     }
-
-
-       
-
-
-
-       /*  let eliminatorias_copia = this.state.eliminatorias.slice();
-        let eliminatoria = eliminatorias_copia[indiceProxRonda];
-        eliminatoria.pasa= equipoPasa;
+     setGanador(indiceActual,idPasa){
+        console.log("en el ganador"+ this.state);
+        let eliminatorias_copia = this.state.eliminatorias.slice();
+        eliminatorias_copia[indiceActual].id_pasa= idPasa;
+        //eliminatoriaAux.pasa= equipoPasa;
         this.setState({
             eliminatorias:eliminatorias_copia
         }); 
-        */ 
+     }
 
-        return eliminatoria;
-    } 
+     guardarProde(){
+         console.log('no entra');
+        let eliminatorias= this.state.eliminatorias;
 
+        const axios = require('axios');
+        //obtengo el token del usr
+        var token = document.head.querySelector('meta[name="user-token"]');
+        //uso Bearer
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.content; 
+
+        //obtengo el prode recibido de MisProdes
+        const prode= this.props.location.state.prode;
+
+
+
+        let axiosConfig={
+            headers:{
+                'Accept': 'application/json',
+               // 'Authorization': 'Bearer'+token.content
+            }
+        }
+        axios.put(`/api/prodes/${prode.id}`, {
+            eliminatorias
+
+        }).then((response) => {
+            this.props.history.push('/prodes');
+        })
+    }
+
+
+  
     render() {
-        return (
-            <div >
+        return ( 
+        <div>
+         {this.state.eliminatorias.length >0 ? 
+            <div className="container"  >
+                    <button onClick={() => this.guardarProde()} className="btn btn-primary"> Guardar Prode</button>
+
                             <h1>Prode: </h1>
 
                             <table className="table">
                             <thead>
                             <tr>
-                            <th scope="col">Octavos</th>
-                            <th scope="col">Cuartos</th>
-                            <th scope="col">Semifinal</th>
+                            <th scope="col" textAlign="center">Octavos</th>
+                            <th scope="col"  textAlign="center">Cuartos</th>
+                            <th scope="col"  textAlign="center">Semifinal</th>
                             <th scope="col">Final</th>
                             <th scope="col">Semifinal</th>                            
                             <th scope="col">Cuartos</th>                            
-                            <th scope="col">Octavos</th>                            
+                            <th textAlign="right" scope="col">Octavos</th>                            
 
                             </tr>
                             </thead>
                         <tbody>
 
-                        
+                           < td>
                             <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[0]}
+                                            id_A={ this.state.eliminatorias[0].id_A}
+                                            id_B={ this.state.eliminatorias[0].id_B}
                                             setGanador={this.setGanador}
-                                            indiceProxRonda={9}
-                                            avanzar={this.avanzar}
+                                            indice={0}
                             />
                             <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[1]}
-                                            setGanador={this.setGanador}
-                                            indiceProxRonda={9}
-                                            avanzar={this.avanzar}
+                                             id_A={ this.state.eliminatorias[1].id_A}
+                                             id_B={ this.state.eliminatorias[1].id_B}
+                                             setGanador={this.setGanador}
+                                             indice={1}
                             />
                             <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[2]}
-                                            setGanador={this.setGanador}
-                                            indiceProxRonda={10}
-                                            avanzar={this.avanzar}
+                                           id_A={ this.state.eliminatorias[2].id_A}
+                                           id_B={ this.state.eliminatorias[2].id_B}
+                                           setGanador={this.setGanador}
+                                           indice={2}
                             />
                             <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[3]}
+                                            id_A={ this.state.eliminatorias[3].id_A}
+                                            id_B={ this.state.eliminatorias[3].id_B}
                                             setGanador={this.setGanador}
-                                            indiceProxRonda={10}
-                                            avanzar={this.avanzar}
+                                            indice={3}
                             />
-                        
+                            </td>
 
 
                              {//CUARTOS
                            }
                            <td>
+                               <br/><br/><br/>
                            <Eliminatoria 
-                                            eliminatoria={this.setGanador(this.state.eliminatorias[0],this.state.eliminatorias[1],9) }
-                                            setGanador={this.setGanador}
-                                            indiceProxRonda={13}
-                                            avanzar={this.avanzar}
+                                           id_A={ this.state.eliminatorias[0].id_pasa}
+                                           id_B={ this.state.eliminatorias[1].id_pasa}
+                                           setGanador={this.setGanador}
+                                           indice={9}
                             />
-
+                            <br/><br/><br/><br/><br/>
                             <Eliminatoria 
-                                            eliminatoria={this.setGanador(this.state.eliminatorias[2], this.state.eliminatorias[3],10)}
-                                            setGanador={this.setGanador}
-                                            indiceProxRonda={13}
-                                            avanzar={this.avanzar}
+                                           id_A={ this.state.eliminatorias[2].id_pasa}
+                                           id_B={ this.state.eliminatorias[3].id_pasa}
+                                           setGanador={this.setGanador}
+                                           indice={10}
                             />
 
 
@@ -216,14 +158,28 @@ export default class IndexProde extends Component {
                              {//Semifinal
                            }
                            <td>
-                          
+                           <br/><br/><br/><br/><br/><br/><br/><br/>
+                           <Eliminatoria 
+                                           id_A={ this.state.eliminatorias[9].id_pasa}
+                                           id_B={ this.state.eliminatorias[10].id_pasa}
+                                           setGanador={this.setGanador}
+                                           indice={13}
+                            />
+
                            
                            </td>
 
                             {//final
                            }
                            <td>
-                          
+                           <br/><br/><br/><br/><br/><br/>
+                           <Eliminatoria 
+                                           id_A={ this.state.eliminatorias[13].id_pasa}
+                                           id_B={ this.state.eliminatorias[14].id_pasa}
+                                           setGanador={this.setGanador}
+                                           indice={15}
+                            />
+
                            
                            </td>
 
@@ -231,44 +187,76 @@ export default class IndexProde extends Component {
                               {//Semifinal
                            }
                            <td>
-                          
+                         <br/><br/><br/><br/><br/><br/><br/><br/>
+                           
+                           <Eliminatoria 
+                                            id_A={ this.state.eliminatorias[11].id_pasa}
+                                            id_B={ this.state.eliminatorias[12].id_pasa}
+                                            setGanador={this.setGanador}
+                                            indice={14}
+                            />
+
                            
                            </td>
 
                               {//Cuartos
                            }
                            <td>
-                          
+                            <br/><br/><br/>
+                           
+                           <Eliminatoria 
+                                            id_A={ this.state.eliminatorias[4].id_pasa}
+                                            id_B={ this.state.eliminatorias[5].id_pasa}
+                                            setGanador={this.setGanador}
+                                            indice={11}
+                            />
+                            <br/><br/> <br/><br/><br/>
+                            <Eliminatoria 
+                                            id_A={ this.state.eliminatorias[6].id_pasa}
+                                            id_B={ this.state.eliminatorias[7].id_pasa}
+                                            setGanador={this.setGanador}
+                                            indice={12}
+                            />
                            
                            </td>
 
                               {//octavos
                            }
+                           <td>
                           <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[4]}
-                                            setGanador={this.setGanador}
-                                            indiceProxRonda={1}
+                                             id_A={ this.state.eliminatorias[4].id_A}
+                                             id_B={ this.state.eliminatorias[4].id_B}
+                                             setGanador={this.setGanador}
+                                             indice={4}
                             />
                             <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[5]}
+                                            id_A={ this.state.eliminatorias[5].id_A}
+                                            id_B={ this.state.eliminatorias[5].id_B}
                                             setGanador={this.setGanador}
-                                            indiceProxRonda={2}
+                                            indice={5}
                             />
                             <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[6]}
+                                            id_A={ this.state.eliminatorias[6].id_A}
+                                            id_B={ this.state.eliminatorias[6].id_B}
                                             setGanador={this.setGanador}
-                                            indiceProxRonda={2}
+                                            indice={6}
                             />
                             <Eliminatoria 
-                                            eliminatoria={this.state.eliminatorias[7]}
-                                            setGanador={this.setGanador}
-                                            indiceProxRonda={2}
+                                             id_A={ this.state.eliminatorias[7].id_A}
+                                             id_B={ this.state.eliminatorias[7].id_B}
+                                             setGanador={this.setGanador}
+                                             indice={7}
                             />
-
+</td>
 
                             </tbody>
                             </table>
+
                     
+            </div>
+        : <div>
+        </div>
+            }
             </div>
         );
     }

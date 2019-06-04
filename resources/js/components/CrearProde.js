@@ -58,7 +58,7 @@ export default class CrearProde extends Component {
                         Nombre:
                         <input type="text" onChange={this.nombreProde.bind(this)}/>
                     </label>
-                    <button className="btn btn-success" onClick={this.registrar.bind(this)}>Registrar</button>
+                    <button  className=" btn btn-success" onClick={this.registrar.bind(this)}>Registrar</button>
                 </div>
             </div>
         )

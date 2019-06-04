@@ -3,56 +3,39 @@ import React, { Component } from 'react';
 
 
 export default class Eliminatoria extends Component {
-
-    constructor(props){
-        super(props);
-        this.state={
-            eliminatoria:{
-                cruce_id:"",
-                prode_id:"",
-                nombre_A:"",
-                nombre_B:"",
-                bandera_A:"",
-                bandera_B:"",
-                pasa: null
-            }
-        }
-    }
-    //this.props.eliminatoria
-    //this.props.setGanador()
-    //this.props.indiceProxRonda
-    //this.props.avanzar()
-
-    avanzar(eliminatoria,equipoPasa){
-        //modificar el estado del encuentro para poner quien pasa
-        //this.props.setGanador(eliminatoria,this.props.indiceProxRonda, equipoPasa);
-        if (eliminatoria.nombre_A != null  && eliminatoria.nombre_B !=null)
-            this.props.avanzar(eliminatoria,equipoPasa, this.props.indiceProxRonda);
-
-        //sino, no puedo avanzar aun
-    }
+    
+   /*  id_A={ this.state.eliminatorias[3].id_A}
+        id_B={ this.state.eliminatorias[3].id_B}
+        setGanador={this.setGanador}
+        indice={3} */
     
     //renderizo desps de recibir las props
     renderEliminatoria(){
-       if (this.props.eliminatoria)
+        let equipoA=null;
+        let equipoB = null;
+        if(this.props.id_A!=null)
+            equipoA= JSON.parse(localStorage.getItem(this.props.id_A));
+        if(this.props.id_B!=null)
+            equipoB= JSON.parse(localStorage.getItem(this.props.id_B));
+
             return          <tr>
                             <td>
-                                <p>     <img    width={25} height={25}  src={this.props.eliminatoria.bandera_A}  
-                                                alt={this.props.eliminatoria.nombre_A}>
+                                <p>     <img    width={27} height={22}  src={equipoA ? equipoA.bandera : ""}  
+                                                alt={equipoA ? equipoA.nombre : ""}>
                                         </img> 
                                         <button className="btn btn-light " 
-                                            onClick={() => this.avanzar(this.props.eliminatoria, 1)}>
-                                            {this.props.eliminatoria.nombre_A}
+                                            onClick={() => this.props.setGanador(this.props.indice, equipoA.id)}>
+                                            {equipoA ? equipoA.nombre : ""}
                                         </button> 
        
                                 </p>
 
-                                <p>     <img    width={25} height={25}  src={this.props.eliminatoria.bandera_B}  
-                                                alt={this.props.eliminatoria.nombre_B}>
+                                <p>     <img    width={27} height={22}  src={equipoB ? equipoB.bandera : ""}  
+                                                alt={equipoB ? equipoB.nombre : ""}>
                                         </img> 
                                         <button className="btn btn-light " 
-                                            onClick={() => this.avanzar(this.props.eliminatoria, 2)}>
-                                            {this.props.eliminatoria.nombre_B} 
+                                            onClick={() => this.props.setGanador(this.props.indice, equipoB.id)}>
+                                            {equipoB ? equipoB.nombre : ""} 
                                         </button> 
                                 </p>
                             </td>

@@ -110596,7 +110596,7 @@ function (_Component) {
         type: "text",
         onChange: this.nombreProde.bind(this)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-success",
+        className: " btn btn-success",
         onClick: this.registrar.bind(this)
       }, "Registrar")));
     }
@@ -110758,64 +110758,48 @@ var Eliminatoria =
 function (_Component) {
   _inherits(Eliminatoria, _Component);
 
-  function Eliminatoria(props) {
-    var _this;
-
+  function Eliminatoria() {
     _classCallCheck(this, Eliminatoria);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Eliminatoria).call(this, props));
-    _this.state = {
-      eliminatoria: {
-        cruce_id: "",
-        prode_id: "",
-        nombre_A: "",
-        nombre_B: "",
-        bandera_A: "",
-        bandera_B: "",
-        pasa: null
-      }
-    };
-    return _this;
-  } //this.props.eliminatoria
-  //this.props.setGanador()
-  //this.props.indiceProxRonda
-  //this.props.avanzar()
-
+    return _possibleConstructorReturn(this, _getPrototypeOf(Eliminatoria).apply(this, arguments));
+  }
 
   _createClass(Eliminatoria, [{
-    key: "avanzar",
-    value: function avanzar(eliminatoria, equipoPasa) {
-      //modificar el estado del encuentro para poner quien pasa
-      //this.props.setGanador(eliminatoria,this.props.indiceProxRonda, equipoPasa);
-      if (eliminatoria.nombre_A != null && eliminatoria.nombre_B != null) this.props.avanzar(eliminatoria, equipoPasa, this.props.indiceProxRonda); //sino, no puedo avanzar aun
-    } //renderizo desps de recibir las props
-
-  }, {
     key: "renderEliminatoria",
-    value: function renderEliminatoria() {
-      var _this2 = this;
 
-      if (this.props.eliminatoria) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "     ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        width: 25,
-        height: 25,
-        src: this.props.eliminatoria.bandera_A,
-        alt: this.props.eliminatoria.nombre_A
+    /*  id_A={ this.state.eliminatorias[3].id_A}
+         id_B={ this.state.eliminatorias[3].id_B}
+         setGanador={this.setGanador}
+         indice={3} */
+    //renderizo desps de recibir las props
+    value: function renderEliminatoria() {
+      var _this = this;
+
+      var equipoA = null;
+      var equipoB = null;
+      if (this.props.id_A != null) equipoA = JSON.parse(localStorage.getItem(this.props.id_A));
+      if (this.props.id_B != null) equipoB = JSON.parse(localStorage.getItem(this.props.id_B));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "     ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: 27,
+        height: 22,
+        src: equipoA ? equipoA.bandera : "",
+        alt: equipoA ? equipoA.nombre : ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light ",
         onClick: function onClick() {
-          return _this2.avanzar(_this2.props.eliminatoria, 1);
+          return _this.props.setGanador(_this.props.indice, equipoA.id);
         }
-      }, this.props.eliminatoria.nombre_A)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "     ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        width: 25,
-        height: 25,
-        src: this.props.eliminatoria.bandera_B,
-        alt: this.props.eliminatoria.nombre_B
+      }, equipoA ? equipoA.nombre : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "     ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: 27,
+        height: 22,
+        src: equipoB ? equipoB.bandera : "",
+        alt: equipoB ? equipoB.nombre : ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-light ",
         onClick: function onClick() {
-          return _this2.avanzar(_this2.props.eliminatoria, 2);
+          return _this.props.setGanador(_this.props.indice, equipoB.id);
         }
-      }, this.props.eliminatoria.nombre_B))));
+      }, equipoB ? equipoB.nombre : ""))));
     }
   }, {
     key: "render",
@@ -110890,6 +110874,23 @@ function (_Component) {
       this.props.history.push(path);
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      //get equipos de la bd
+      var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); //obtengo el token del usr
+
+
+      var token = document.head.querySelector('meta[name="user-token"]'); //uso Bearer
+
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.content; //realizo el delete
+
+      axios.get("/api/equipos").then(function (response) {
+        response.data.map(function (equipo) {
+          localStorage.setItem(equipo.id, JSON.stringify(equipo));
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -110918,24 +110919,12 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return IndexProde; });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Eliminatoria__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Eliminatoria */ "./resources/js/components/Eliminatoria.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Eliminatoria__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Eliminatoria */ "./resources/js/components/Eliminatoria.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -110945,9 +110934,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -110971,12 +110960,15 @@ function (_Component) {
     _this.state = {
       eliminatorias: []
     };
+    _this.setGanador = _this.setGanador.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(IndexProde, [{
-    key: "metodoCall",
-    value: function metodoCall() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
       var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); //obtengo el token del usr
 
 
@@ -110991,199 +110983,166 @@ function (_Component) {
 
         }
       };
-      var response = axios.get("/api/prodes/".concat(prode.id), axiosConfig);
-      return response;
-    } //-----------------------local storage------------------------------------
+      axios.get("/api/prodes/".concat(prode.id), axiosConfig).then(function (response) {
+        _this2.setState({
+          eliminatorias: response.data
+        });
 
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      localStorage.getItem('eliminatorias') && this.setState({
-        eliminatorias: JSON.parse(localStorage.getItem('eliminatorias'))
+        console.log(_this2.state.eliminatorias);
       });
     }
   }, {
-    key: "componentDidMount",
-    value: function () {
-      var _componentDidMount = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (localStorage.getItem('eliminatorias')) {
-                  _context.next = 5;
-                  break;
-                }
-
-                _context.next = 3;
-                return this.metodoCall();
-
-              case 3:
-                response = _context.sent;
-                this.setState(function (estadoActual) {
-                  var eliminatorias = response.data;
-                  return {
-                    eliminatorias: eliminatorias
-                  };
-                });
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function componentDidMount() {
-        return _componentDidMount.apply(this, arguments);
-      }
-
-      return componentDidMount;
-    }()
-  }, {
-    key: "componentWillUpdate",
-    value: function componentWillUpdate(nextProps, nextState) {
-      localStorage.setItem('eliminatorias', JSON.stringify(nextState.eliminatorias));
-    } //-----------------------local storage------------------------------------
-    //obj       int             int
-
-  }, {
-    key: "avanzar",
-    value: function avanzar(eliminatoria, equipoPasa, indiceProxRonda) {
-      var existe = null;
-      this.state.eliminatorias.forEach(function (eliminatoria) {
-        if (eliminatoria.cruce_id == indiceProxRonda && existe === null) {
-          existe = eliminatoria;
-        }
-      }); //si cruce es impar -> es equipo_A
-
-      if (eliminatoria.cruce_id % 2 != 0) //la eliminatoria no existe
-        if (existe == null) {
-          existe = {
-            cruce_id: indiceProxRonda,
-            prode_id: eliminatoria.prode_id,
-            nombre_A: equipoPasa,
-            nombre_B: null
-          };
-        }
-
-      var eliminatorias_copia = _objectSpread({}, this.state.eliminatorias); //creo la nueva eliminatoria o veo si existe y agrego otro equipo
-
+    key: "setGanador",
+    value: function setGanador(indiceActual, idPasa) {
+      console.log("en el ganador" + this.state);
+      var eliminatorias_copia = this.state.eliminatorias.slice();
+      eliminatorias_copia[indiceActual].id_pasa = idPasa; //eliminatoriaAux.pasa= equipoPasa;
 
       this.setState({
         eliminatorias: eliminatorias_copia
       });
-      /*let eliminatoriaAux = eliminatorias_copia[eliminatoria.cruce_id-1];
-      eliminatoriaAux.pasa= equipoPasa;
-      this.setState({
-         eliminatorias: eliminatorias_copia
-      });   */
-      // console.log(this.state.eliminatorias);
     }
   }, {
-    key: "setGanador",
-    value: function setGanador(eliminatoria1, eliminatoria2, nroCruce) {
-      if (eliminatoria1.pasa != null && eliminatoria2.pasa == null) {
-        if (eliminatoria1.includes(eliminatoria1.nombre_A)) {
-          var bandera_A = eliminatoria1.bandera_A;
-        } else if (eliminatoria1.includes(eliminatoria1.nombre_B)) {
-          var bandera_A = null;
-          var bandera_B = eliminatoria1.bandera_B;
+    key: "guardarProde",
+    value: function guardarProde() {
+      var _this3 = this;
+
+      console.log('no entra');
+      var eliminatorias = this.state.eliminatorias;
+
+      var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); //obtengo el token del usr
+
+
+      var token = document.head.querySelector('meta[name="user-token"]'); //uso Bearer
+
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.content; //obtengo el prode recibido de MisProdes
+
+      var prode = this.props.location.state.prode;
+      var axiosConfig = {
+        headers: {
+          'Accept': 'application/json' // 'Authorization': 'Bearer'+token.content
+
         }
-
-        var eliminatorias_copia = this.state.eliminatorias.slice();
-        var eliminatoria = new _Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"](nroCruce, eliminatoria1.prode_id, eliminatoria1.pasa, null, bandera_A, bandera_B, null); //eliminatoriaAux.pasa= equipoPasa;
-
-        this.setState({
-          eliminatorias: eliminatorias_copia
-        });
-      }
-      /*  let eliminatorias_copia = this.state.eliminatorias.slice();
-       let eliminatoria = eliminatorias_copia[indiceProxRonda];
-       eliminatoria.pasa= equipoPasa;
-       this.setState({
-           eliminatorias:eliminatorias_copia
-       }); 
-       */
-
-
-      return eliminatoria;
+      };
+      axios.put("/api/prodes/".concat(prode.id), {
+        eliminatorias: eliminatorias
+      }).then(function (response) {
+        _this3.props.history.push('/prodes');
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Prode: "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
+      var _this4 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.eliminatorias.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.guardarProde();
+        },
+        className: "btn btn-primary"
+      }, " Guardar Prode"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Prode: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        textAlign: "center"
+      }, "Octavos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        textAlign: "center"
+      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        textAlign: "center"
+      }, "Semifinal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Octavos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+      }, "Final"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+      }, "Semifinal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Semifinal"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        textAlign: "right",
         scope: "col"
-      }, "Final"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
-        scope: "col"
-      }, "Semifinal"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
-        scope: "col"
-      }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
-        scope: "col"
-      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[0],
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[0].id_A,
+        id_B: this.state.eliminatorias[0].id_B,
         setGanador: this.setGanador,
-        indiceProxRonda: 9,
-        avanzar: this.avanzar
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[1],
+        indice: 0
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[1].id_A,
+        id_B: this.state.eliminatorias[1].id_B,
         setGanador: this.setGanador,
-        indiceProxRonda: 9,
-        avanzar: this.avanzar
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[2],
+        indice: 1
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[2].id_A,
+        id_B: this.state.eliminatorias[2].id_B,
         setGanador: this.setGanador,
-        indiceProxRonda: 10,
-        avanzar: this.avanzar
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[3],
+        indice: 2
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[3].id_A,
+        id_B: this.state.eliminatorias[3].id_B,
         setGanador: this.setGanador,
-        indiceProxRonda: 10,
-        avanzar: this.avanzar
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.setGanador(this.state.eliminatorias[0], this.state.eliminatorias[1], 9),
+        indice: 3
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[0].id_pasa,
+        id_B: this.state.eliminatorias[1].id_pasa,
         setGanador: this.setGanador,
-        indiceProxRonda: 13,
-        avanzar: this.avanzar
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.setGanador(this.state.eliminatorias[2], this.state.eliminatorias[3], 10),
+        indice: 9
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[2].id_pasa,
+        id_B: this.state.eliminatorias[3].id_pasa,
         setGanador: this.setGanador,
-        indiceProxRonda: 13,
-        avanzar: this.avanzar
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[4],
+        indice: 10
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[9].id_pasa,
+        id_B: this.state.eliminatorias[10].id_pasa,
         setGanador: this.setGanador,
-        indiceProxRonda: 1
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[5],
+        indice: 13
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[13].id_pasa,
+        id_B: this.state.eliminatorias[14].id_pasa,
         setGanador: this.setGanador,
-        indiceProxRonda: 2
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[6],
+        indice: 15
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[11].id_pasa,
+        id_B: this.state.eliminatorias[12].id_pasa,
         setGanador: this.setGanador,
-        indiceProxRonda: 2
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        eliminatoria: this.state.eliminatorias[7],
+        indice: 14
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[4].id_pasa,
+        id_B: this.state.eliminatorias[5].id_pasa,
         setGanador: this.setGanador,
-        indiceProxRonda: 2
-      }))));
+        indice: 11
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[6].id_pasa,
+        id_B: this.state.eliminatorias[7].id_pasa,
+        setGanador: this.setGanador,
+        indice: 12
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[4].id_A,
+        id_B: this.state.eliminatorias[4].id_B,
+        setGanador: this.setGanador,
+        indice: 4
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[5].id_A,
+        id_B: this.state.eliminatorias[5].id_B,
+        setGanador: this.setGanador,
+        indice: 5
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[6].id_A,
+        id_B: this.state.eliminatorias[6].id_B,
+        setGanador: this.setGanador,
+        indice: 6
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Eliminatoria__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id_A: this.state.eliminatorias[7].id_A,
+        id_B: this.state.eliminatorias[7].id_B,
+        setGanador: this.setGanador,
+        indice: 7
+      }))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
     }
   }]);
 
   return IndexProde;
-}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 

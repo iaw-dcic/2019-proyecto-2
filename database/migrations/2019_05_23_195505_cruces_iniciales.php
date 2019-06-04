@@ -16,14 +16,12 @@ class CrucesIniciales extends Migration
         Schema::create('cruces_iniciales', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('llave_nro');
-            $table->string('nombre_A');
-            $table->string('nombre_B');
-            $table->string('bandera_A');
-            $table->string('bandera_B');
+            $table->bigInteger('id_A')->unsigned()->nullable();
+            $table->bigInteger('id_B')->unsigned()->nullable();
 
              //relacion constraint
-            // $table->foreign('id_A')->references('id')->on('equipos')->onDelete('cascade');
-             //$table->foreign('id_B')->references('id')->on('equipos')->onDelete('cascade');
+             $table->foreign('id_A')->references('id')->on('equipos')->onDelete('cascade');
+             $table->foreign('id_B')->references('id')->on('equipos')->onDelete('cascade');
         });
     }
 
@@ -34,6 +32,6 @@ class CrucesIniciales extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('cruces_iniciales');
     }
 }

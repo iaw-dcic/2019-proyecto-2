@@ -9,7 +9,7 @@ class Encuentro extends Model
     protected $table = "encuentros";
 
     //el 'id' lo agrega por defecto
-    protected $fillable = ['prode_id','cruce_id','nombre_A','nombre_B','resultado_A','resultado_B','bandera_A','bandera_B','pasa',];
+    protected $fillable = ['prode_id','cruce_id','id_A','id_B','id_pasa',];
 
 
     //Relaciones      muchas encuentros -> 1 prode

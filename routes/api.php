@@ -20,11 +20,12 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::get('/prodes', 'ProdesController@prodeAll');
     Route::get('/prodes/{id}', 'ProdesController@prodeDetails');
     Route::get('/prodes/token', 'ProdesController@token');
-   
+    Route::get('/equipos', 'ProdesController@getEquipos');
     Route::post('/prodes/create', 'ProdesController@prodeCreate');
     //veo los cruces
     Route::post('/prodes/{id}/edit', 'ProdesController@prodeEdit');
-   
+    Route::put('/prodes/{id}','ProdesController@prodeUpdate');
+
     Route::delete('/prodes/{id}', 'ProdesController@prodeDelete');
 
 

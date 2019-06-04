@@ -17,22 +17,18 @@ class EncuentrosTabla extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('cruce_id')->unsigned()->nullable();
             $table->bigInteger('prode_id')->unsigned()->nullable();
-            $table->string('nombre_A')->nullable();
-            $table->string('nombre_B')->nullable();
-            $table->string('resultado_A')->nullable();
-            $table->string('resultado_B')->nullable();
-            $table->string('bandera_A')->nullable();
-            $table->string('bandera_B')->nullable();
-            $table->string('pasa')->nullable(); //nombre del equipo que pasa
+            $table->bigInteger('id_A')->unsigned()->nullable();
+            $table->bigInteger('id_B')->unsigned()->nullable();
+            $table->bigInteger('id_pasa')->unsigned()->nullable(); //id del equipo que pasa
 
             $table->timestamps();
 
              //relacion constraint
              $table->foreign('cruce_id')->references('id')->on('cruces')->onDelete('cascade');
              $table->foreign('prode_id')->references('id')->on('prodes')->onDelete('cascade');
-             //$table->foreign('id_A')->references('id')->on('equipos')->onDelete('cascade');
-             //$table->foreign('id_B')->references('id')->on('equipos')->onDelete('cascade');
-             //$table->foreign('pasa')->references('id')->on('equipos')->onDelete('cascade');
+             $table->foreign('id_A')->references('id')->on('equipos')->onDelete('cascade');
+             $table->foreign('id_B')->references('id')->on('equipos')->onDelete('cascade');
+             $table->foreign('id_pasa')->references('id')->on('equipos')->onDelete('cascade');
              
              
 

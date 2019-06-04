@@ -80,18 +80,23 @@ class ProdesController extends Controller
             $encuentro= new Encuentro();
             $encuentro->prode_id= $prode->id;
             $encuentro->cruce_id= $cruce->id;
-            $encuentro->nombre_A= $ci->nombre_A;
-            $encuentro->nombre_B= $ci->nombre_B;
-            $encuentro->bandera_A= $ci->bandera_A;
-            $encuentro->bandera_B= $ci->bandera_B;
-            $encuentro->resultado_A= 0;
-            $encuentro->resultado_B= 0;
-            $encuentro->pasa= null;
+            $encuentro->id_A= $ci->id_A;
+            $encuentro->id_B= $ci->id_B;
+            $encuentro->id_pasa= null;
             $encuentro->save();
          }
 
          //y los otros 7 sin equipos aun
-        
+         for($i=0;$i<7;$i++){
+            $encuentro= new Encuentro();
+            $encuentro->prode_id= $prode->id;
+           
+            $encuentro->save();
+
+         }
+
+
+
 
         Flash::success("Prode ".$prode->nombre." ha sido creado con exito! ");
 
@@ -144,4 +149,31 @@ class ProdesController extends Controller
   
         return response()->json('Successfully Deleted');
     }
+
+
+
+
+    public function getEquipos()
+    {
+       
+        $equipos= Equipo::all()->toArray();
+
+        return response()->json($equipos);
+    }
+
+
+    public function prodeUpdate(Request $request){
+
+       foreach($request->eliminatorias as $eliminatoria){
+            $encuentro= Encuentro::where('id',$eliminatoria['id'])->where('prode_id',$eliminatoria['prode_id'])
+             ->update([
+                'id_A' => $eliminatoria['id_A'],
+                'id_B' => $eliminatoria['id_B'],
+                'id_pasa' => $eliminatoria['id_pasa']
+            ]); 
+        }
+       
+        return response()->json('200 OK');
+    }
+
 }

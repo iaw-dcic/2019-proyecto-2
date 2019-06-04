@@ -86,52 +86,36 @@ class CargaDeDatos extends Seeder
         DB::table('cruces_iniciales')->insert([
                 [
                     'llave_nro'=> '1',
-                    'nombre_A'=> 'Holanda',
-                    'nombre_B'=> 'Nigeria',
-                    'bandera_A'=> '/images/holanda.png',
-                    'bandera_B'=> '/images/nigeria.png'
+                    'id_A'=> '13',
+                    'id_B'=> '16'
                 ],[
                     'llave_nro'=> '2',
-                    'nombre_A'=> 'España',
-                    'nombre_B'=> 'Mexico',
-                    'bandera_A'=> '/images/espana.png',
-                    'bandera_B'=> '/images/mexico.png'
+                    'id_A'=> '9',
+                    'id_B'=> '5'
                 ],[
                     'llave_nro'=> '3',
-                    'nombre_A'=> 'Inglaterra',
-                    'nombre_B'=> 'Alemania',
-                    'bandera_A'=> '/images/inglaterra.png',
-                    'bandera_B'=> '/images/alemania.png'
+                    'id_A'=> '11',
+                    'id_B'=> '6'
                 ],[
                     'llave_nro'=> '4',
-                    'nombre_A'=> 'Brasil',
-                    'nombre_B'=> 'Portugal',
-                    'bandera_A'=> '/images/brasil.png',
-                    'bandera_B'=> '/images/portugal.png'
+                    'id_A'=> '2',
+                    'id_B'=> '14'
                 ],[
                     'llave_nro'=> '5',
-                    'nombre_A'=> 'Francia',
-                    'nombre_B'=> 'Croacia',
-                    'bandera_A'=> '/images/francia.png',
-                    'bandera_B'=> '/images/croacia.png'
+                    'id_A'=> '10',
+                    'id_B'=> '8'
                 ],[
                     'llave_nro'=> '6',
-                    'nombre_A'=> 'Uruguay',
-                    'nombre_B'=> 'Egipto',
-                    'bandera_A'=> '/images/uruguay.png',
-                    'bandera_B'=> '/images/egipto.png'
+                    'id_A'=> '4',
+                    'id_B'=> '15'
                 ],[
                     'llave_nro'=> '7',
-                    'nombre_A'=> 'Colombia',
-                    'nombre_B'=> 'Italia',
-                    'bandera_A'=> '/images/colombia.png',
-                    'bandera_B'=> '/images/italia.png'
+                    'id_A'=> '3',
+                    'id_B'=> '12'
                 ],[
                     'llave_nro'=> '8',
-                    'nombre_A'=> 'Argentina',
-                    'nombre_B'=> 'Belgica',
-                    'bandera_A'=> '/images/argentina.png',
-                    'bandera_B'=> '/images/belgica.png'
+                    'id_A'=> '1',
+                    'id_B'=> '7'
                 ],
         ]);    
     }
