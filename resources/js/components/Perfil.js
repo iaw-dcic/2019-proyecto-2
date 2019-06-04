@@ -778,7 +778,7 @@ export default class Perfil extends Component {
             console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
         }
         try {
-            const response = await axios.post('/pr2/api/actualizar', {
+            const response = await axios.post('/api/actualizar', {
                 c0: this.state.c0,
                 c1: this.state.c1,
                 c2: this.state.c2,

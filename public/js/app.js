@@ -69006,7 +69006,7 @@ function (_Component) {
 
                 _context.prev = 3;
                 _context.next = 6;
-                return axios.post('/pr2/api/actualizar', {
+                return axios.post('/api/actualizar', {
                   c0: this.state.c0,
                   c1: this.state.c1,
                   c2: this.state.c2,
