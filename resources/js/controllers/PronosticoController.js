@@ -4,37 +4,32 @@ import PronosticoModel from '../models/PronosticoModel';
 export default class PronosticoController{
 
     //Paso la vista para actualizar los datos
-    constructor(view){
-        this.view = view;
-        this.state = this.view.state;
-        this.pronosticoModel = new PronosticoModel(this.state.user);
-
-        if(this.state.prode == null)
-            this.state.prode = this.pronosticoModel.crearNuevoProde(this.state.user.id);
+    constructor(user){
+        this.user = user;
+        this.pronosticoModel = new PronosticoModel(this.user);
     }
 
-    init(){
-        return this.state.prode;
+    async saveProde(prode){
+        let prodeDB = await this.pronosticoModel.saveProde(prode); 
+        //this.saveOnLocalStorage(prodeDB);
+        return prodeDB;
+    }
+    
+    async resetProde(prode){
+        let newProde = await this.pronosticoModel.resetProde(prode);
+        this.saveOnLocalStorage(newProde);
+        return newProde;
     }
 
-    saveProde(refreshProde){
-        let prode = this.pronosticoModel.getProdeFromLocalStorage(this.state.prode.id);
-        this.pronosticoModel.saveProde(prode)
-            .then((prodeDB) => refreshProde(prodeDB))
-            .catch((error) => console.log(error));
+    async deleteProde(prode){
+        console.log(prode);
     }
 
-    saveOnLocalStorage(data){
-        this.pronosticoModel.saveProdeOnLocalStorage(data);
+    saveOnLocalStorage(prode){
+        this.pronosticoModel.saveProdeOnLocalStorage(prode);
     }
 
-    resetProde(){
-        let prode = this.pronosticoModel.resetPronostico(this.state.prode);
-        this.saveOnLocalStorage(prode);
-        this.view.setState({ user: this.state.user, prode });
-    }
-
-    deleteProde(){
-        
+    getFromLocalStorage(prode_id){
+        return this.pronosticoModel.getProdeFromLocalStorage(prode_id);
     }
 }

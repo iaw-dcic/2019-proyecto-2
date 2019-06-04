@@ -21,8 +21,8 @@ Route::get('/api/prodes/getNewId', 'ProdeController@getNewId');
 
 //Datos sobre los equipos, partidos y puntajes
 //Equipos
-Route::get('/api/user/{user}/teams', 'EquiposController@getEquipos');
-Route::get('/api/user/{user}/teams/{team}', 'EquiposController@getEquipo');
+Route::get('/api/teams', 'EquiposController@getEquipos');
+Route::get('/api/teams/{team}', 'EquiposController@getEquipo');
 
 //Partidos
 Route::get('/api/user/{user}/prodes/{prode}/matches', 'PartidosController@getPartidos');

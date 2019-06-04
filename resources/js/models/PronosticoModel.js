@@ -18,6 +18,34 @@ export default class PronosticoModel{
         return response.data;
     }
 
+    async resetProde(prode){
+        let teams = prode.teams != null ? prode.teams : await this.getEquipos();
+        let results = prode.results != null ? this.resetResults(prode.results) : [[[],[],[],[]]];
+        return {user_id: prode.user_id, id: prode.id, teams, results};
+    }
+
+    async getEquipos(){
+        let response = await Axios.get('/api/teams');
+        let equipos = response.data;
+        let partidos = [];
+        for(let i=0; i<equipos.length; i+=2)
+            partidos.push([equipos[i].nombre, equipos[i+1].nombre, equipos[i].id, equipos[i+1].id])
+        return partidos;
+    }
+
+    async createProde(user_id){
+        let id = this.getMaxIndice();
+        return await this.resetProde({ user_id, id: null, teams: null, results: null });
+    } 
+
+    resetResults(results){
+        return [results[0].map((result) => {
+            return result.map((partido) => {
+                return [null, null, partido[2]];
+            });
+        })];
+    }
+
     getProdeFromLocalStorage(id){
         let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
         let indice = this.getIndice(prodes, id);
@@ -31,7 +59,12 @@ export default class PronosticoModel{
 
     saveProdeOnLocalStorage(prode){
         let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
-        prodes[this.getIndice(prodes, prode.id)] = prode;
+        if(prode.id != null)
+            prodes[this.getIndice(prodes, prode.id)] = prode;
+        else{
+            prode.id = this.getMaxIndice();
+            prodes.push(prode);
+        }
         localStorage.setItem('lista_prodes', JSON.stringify(prodes));
     }
 
@@ -42,34 +75,7 @@ export default class PronosticoModel{
             return prode.id == id;
         });
         return i;
-    }
-
-    resetPronostico(prode){
-        let teams = prode.teams != null ? prode.teams : this.getEquipos();
-        let results = prode.results != null ? this.resetResults(prode.results) : [[[],[],[],[]]];
-        return {user_id: prode.user_id, id: prode.id, teams, results};
-    }
-
-    resetResults(results){
-        return [results[0].map((result) => {
-            return result.map((match) => {
-                return [null, null, match[2]];
-            });
-        })];
-    }
-
-    getEquipos(){
-        return [
-            ['Francia', 'Argentina',1,2],['Uruguay', 'Portugal',3,4],['Brasil', 'Mexico',5,6],['Bélgica', 'Japon',7,8],
-            ['España', 'Rusia',9,10],['Croacia', 'Dinamarca',11,12],['Suecia', 'Suiza',13,14],['Colombia', 'Inglaterra',15,16]
-        ]
-    }
-
-    crearNuevoProde(user_id){
-        let id = this.getMaxIndice();
-        console.log(id);
-        return this.resetPronostico({ user_id, id: null, teams: null, results: null });
-    }    
+    }   
 
     getMaxIndice(){
         let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
@@ -101,7 +107,6 @@ export default class PronosticoModel{
     }
 
     transformarDatosHaciaServidor(prode){
-        console.log(prode);
         let teams = prode.teams;
         let results = prode.results.flat(2);
 

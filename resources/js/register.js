@@ -37,6 +37,7 @@ $(document).ready(() => {
         let password = $(event.target.password).val();
         let data = {email, password, name, username};
         register(data, '/api/user/register', (data) => {
+            console.log(data);
             let {id, name, email, auth_token} = data;
             let user = {id, name, email, auth_token};
             localStorage.setItem('user', JSON.stringify(user));

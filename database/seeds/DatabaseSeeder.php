@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder{
             'image_url' => 'NO_IMAGE',
             'image_id' => 'NO_IMAGE',
             'email' => 'dylanbarbona97@gmail.com',
-            'password' => '27069706636/f',
+            'password' => \Hash::make('27069706636/f'),
         ]);
 
         foreach($equipos as $equipo){

@@ -11,13 +11,16 @@ export default class PronosticoComponent extends Component {
         this.resetProde = this.resetProde.bind(this); 
         this.deleteProde = this.deleteProde.bind(this);
         this.refreshProde = this.refreshProde.bind(this);
+        this.guardardatos = this.guardarDatos.bind(this);
 
         this.cerrarProde = this.props.cerrarProde;
         this.actualizarProdes = this.props.actualizarProdes;
 
-        this.state = {user: this.props.user, prode: this.props.prode};
+        this.prode = this.props.prode;
+        this.user = this.props.user;
+        this.state = {user: this.user, prode: this.prode};
 
-        this.pronosticoController = new PronosticoController(this);
+        this.pronosticoController = new PronosticoController(this.user);
     }
 
     render() {
@@ -55,37 +58,43 @@ export default class PronosticoComponent extends Component {
     //Guarda los datos en el servidor
     saveProde(event) {
         event.preventDefault();
-        this.pronosticoController.saveProde(this.refreshProde);
-        this.actualizarProdes();
-        //this.cerrarProde();
-    }
-
-    refreshProde(prode){
-        this.setState({
-            user: this.state.user,
-            prode
-        });
-        this.pronosticoController.saveOnLocalStorage(this.state.prode);
+        console.log(this.prode);
+        this.pronosticoController.saveProde(this.prode)
+            .then(prode => this.refreshProde(prode))
+            .catch(error => console.log(error));
     }
 
     //Reestablece los datos
     resetProde(event){
         event.preventDefault();
-        this.pronosticoController.resetProde();
+        this.pronosticoController.resetProde(this.prode)
+            .then(prode => this.refreshProde(prode))
+            .catch(error => console.log(error));
     }
 
     //Borrar los datos
     deleteProde(event){
         event.preventDefault();
-        this.actualizarProdes();
-        //this.cerrarProde();
+        this.pronosticoController.deleteProde(this.prode);
+    }
+
+    refreshProde(prode){
+        this.setState({
+            user: this.user,
+            prode
+        });
+    }
+
+    guardarDatos(data){
+        this.prode = data;
+        this.pronosticoController.saveOnLocalStorage(data);
     }
 
     //Actualiza el tablero en el div #tablero-pronosticos
     crearTablero(){
         $('#tablero-pronosticos').bracket({
             init: this.state.prode,
-            save: (data) => this.pronosticoController.saveOnLocalStorage(data),
+            save: (data) => this.guardarDatos(data),
             centerConnectors: true,
             disableToolbar: true,
             disableTeamEdit: true

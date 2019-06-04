@@ -32572,13 +32572,16 @@ function (_Component) {
     _this.resetProde = _this.resetProde.bind(_assertThisInitialized(_this));
     _this.deleteProde = _this.deleteProde.bind(_assertThisInitialized(_this));
     _this.refreshProde = _this.refreshProde.bind(_assertThisInitialized(_this));
+    _this.guardardatos = _this.guardarDatos.bind(_assertThisInitialized(_this));
     _this.cerrarProde = _this.props.cerrarProde;
     _this.actualizarProdes = _this.props.actualizarProdes;
+    _this.prode = _this.props.prode;
+    _this.user = _this.props.user;
     _this.state = {
-      user: _this.props.user,
-      prode: _this.props.prode
+      user: _this.user,
+      prode: _this.prode
     };
-    _this.pronosticoController = new _controllers_PronosticoController__WEBPACK_IMPORTED_MODULE_2__["default"](_assertThisInitialized(_this));
+    _this.pronosticoController = new _controllers_PronosticoController__WEBPACK_IMPORTED_MODULE_2__["default"](_this.user);
     return _this;
   }
 
@@ -32632,43 +32635,60 @@ function (_Component) {
   }, {
     key: "saveProde",
     value: function saveProde(event) {
+      var _this3 = this;
+
       event.preventDefault();
-      this.pronosticoController.saveProde(this.refreshProde);
-      this.actualizarProdes(); //this.cerrarProde();
-    }
-  }, {
-    key: "refreshProde",
-    value: function refreshProde(prode) {
-      this.setState({
-        user: this.state.user,
-        prode: prode
+      console.log(this.prode);
+      this.pronosticoController.saveProde(this.prode).then(function (prode) {
+        return _this3.refreshProde(prode);
+      })["catch"](function (error) {
+        return console.log(error);
       });
-      this.pronosticoController.saveOnLocalStorage(this.state.prode);
     } //Reestablece los datos
 
   }, {
     key: "resetProde",
     value: function resetProde(event) {
+      var _this4 = this;
+
       event.preventDefault();
-      this.pronosticoController.resetProde();
+      this.pronosticoController.resetProde(this.prode).then(function (prode) {
+        return _this4.refreshProde(prode);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     } //Borrar los datos
 
   }, {
     key: "deleteProde",
     value: function deleteProde(event) {
       event.preventDefault();
-      this.actualizarProdes(); //this.cerrarProde();
+      this.pronosticoController.deleteProde(this.prode);
+    }
+  }, {
+    key: "refreshProde",
+    value: function refreshProde(prode) {
+      this.setState({
+        user: this.user,
+        prode: prode
+      });
+    }
+  }, {
+    key: "guardarDatos",
+    value: function guardarDatos(data) {
+      this.prode = data;
+      this.pronosticoController.saveOnLocalStorage(data);
     } //Actualiza el tablero en el div #tablero-pronosticos
 
   }, {
     key: "crearTablero",
     value: function crearTablero() {
-      var _this3 = this;
+      var _this5 = this;
 
       $('#tablero-pronosticos').bracket({
         init: this.state.prode,
         save: function save(data) {
-          return _this3.pronosticoController.saveOnLocalStorage(data);
+          return _this5.guardarDatos(data);
         },
         centerConnectors: true,
         disableToolbar: true,
@@ -32803,21 +32823,20 @@ function (_Component) {
     _classCallCheck(this, PronosticosComponent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PronosticosComponent).call(this, props));
+    _this.createProde = _this.createProde.bind(_assertThisInitialized(_this));
     _this.actualizarProdes = _this.actualizarProdes.bind(_assertThisInitialized(_this));
     _this.cerrarProde = _this.cerrarProde.bind(_assertThisInitialized(_this));
     _this.state = {
       user: _this.props.user,
       prodes: []
     };
-    _this.pronosticosController = new _controllers_PronosticosController__WEBPACK_IMPORTED_MODULE_3__["default"](_assertThisInitialized(_this));
+    _this.pronosticosController = new _controllers_PronosticosController__WEBPACK_IMPORTED_MODULE_3__["default"](_this.state.user);
     return _this;
   }
 
   _createClass(PronosticosComponent, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -32840,9 +32859,7 @@ function (_Component) {
       }, this.cargarLista()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 d-flex w-100 justify-content-center align-items-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick(event) {
-          return _this2.seleccionarProde(event, null);
-        },
+        onClick: this.createProde,
         className: "btn btn-success mx-1 mt-4"
       }, "Crear prode"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "viewProde"
@@ -32856,28 +32873,31 @@ function (_Component) {
   }, {
     key: "actualizarProdes",
     value: function actualizarProdes() {
-      this.pronosticosController.loadPronosticos();
+      var _this2 = this;
+
+      this.pronosticosController.loadProdes().then(function (prodes) {
+        return _this2.setState({
+          user: _this2.state.user,
+          prodes: prodes
+        });
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     }
   }, {
-    key: "cargarLista",
-    value: function cargarLista() {
+    key: "createProde",
+    value: function createProde(event) {
       var _this3 = this;
 
-      return this.state.prodes.map(function (prode) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "",
-          onClick: function onClick(event) {
-            return _this3.seleccionarProde(event, prode);
-          },
-          key: prode.id,
-          className: "list-group-item list-group-item-action d-flex justify-content-center item-prode"
-        }, "Prode N\xB0", prode.id);
+      this.pronosticosController.createProde().then(function (prode) {
+        return _this3.seleccionarProde(event, prode);
+      })["catch"](function (error) {
+        return console.log(error);
       });
     }
   }, {
     key: "seleccionarProde",
-    value: function seleccionarProde(event, prode) {
-      event.preventDefault();
+    value: function seleccionarProde(prode) {
       this.cerrarProde();
       var viewProde = document.getElementById('viewProde');
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PronosticoComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -32893,6 +32913,21 @@ function (_Component) {
       var viewProde = document.getElementById('viewProde');
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(viewProde);
       this.actualizarProdes();
+    }
+  }, {
+    key: "cargarLista",
+    value: function cargarLista() {
+      var _this4 = this;
+
+      return this.state.prodes.map(function (prode) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this4.seleccionarProde(prode);
+          },
+          key: prode.id,
+          className: "list-group-item list-group-item-action d-flex justify-content-center item-prode"
+        }, "Prode N\xB0", prode.id);
+      });
     }
   }]);
 
@@ -32913,9 +32948,49 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PronosticoController; });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/PronosticoModel */ "./resources/js/models/PronosticoModel.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/PronosticoModel */ "./resources/js/models/PronosticoModel.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -32945,48 +33020,114 @@ var PronosticoController =
 /*#__PURE__*/
 function () {
   //Paso la vista para actualizar los datos
-  function PronosticoController(view) {
+  function PronosticoController(user) {
     _classCallCheck(this, PronosticoController);
 
-    this.view = view;
-    this.state = this.view.state;
-    this.pronosticoModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_1__["default"](this.state.user);
-    if (this.state.prode == null) this.state.prode = this.pronosticoModel.crearNuevoProde(this.state.user.id);
+    this.user = user;
+    this.pronosticoModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_2__["default"](this.user);
   }
 
   _createClass(PronosticoController, [{
-    key: "init",
-    value: function init() {
-      return this.state.prode;
-    }
-  }, {
     key: "saveProde",
-    value: function saveProde(refreshProde) {
-      var prode = this.pronosticoModel.getProdeFromLocalStorage(this.state.prode.id);
-      this.pronosticoModel.saveProde(prode).then(function (prodeDB) {
-        return refreshProde(prodeDB);
-      })["catch"](function (error) {
-        return console.log(error);
-      });
-    }
-  }, {
-    key: "saveOnLocalStorage",
-    value: function saveOnLocalStorage(data) {
-      this.pronosticoModel.saveProdeOnLocalStorage(data);
-    }
+    value: function () {
+      var _saveProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(prode) {
+        var prodeDB;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.pronosticoModel.saveProde(prode);
+
+              case 2:
+                prodeDB = _context.sent;
+                return _context.abrupt("return", prodeDB);
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function saveProde(_x) {
+        return _saveProde.apply(this, arguments);
+      }
+
+      return saveProde;
+    }()
   }, {
     key: "resetProde",
-    value: function resetProde() {
-      var prode = this.pronosticoModel.resetPronostico(this.state.prode);
-      this.saveOnLocalStorage(prode);
-      this.view.setState({
-        user: this.state.user,
-        prode: prode
-      });
-    }
+    value: function () {
+      var _resetProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(prode) {
+        var newProde;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.pronosticoModel.resetProde(prode);
+
+              case 2:
+                newProde = _context2.sent;
+                this.saveOnLocalStorage(newProde);
+                return _context2.abrupt("return", newProde);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function resetProde(_x2) {
+        return _resetProde.apply(this, arguments);
+      }
+
+      return resetProde;
+    }()
   }, {
     key: "deleteProde",
-    value: function deleteProde() {}
+    value: function () {
+      var _deleteProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(prode) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                console.log(prode);
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      function deleteProde(_x3) {
+        return _deleteProde.apply(this, arguments);
+      }
+
+      return deleteProde;
+    }()
+  }, {
+    key: "saveOnLocalStorage",
+    value: function saveOnLocalStorage(prode) {
+      this.pronosticoModel.saveProdeOnLocalStorage(prode);
+    }
+  }, {
+    key: "getFromLocalStorage",
+    value: function getFromLocalStorage(prode_id) {
+      return this.pronosticoModel.getProdeFromLocalStorage(prode_id);
+    }
   }]);
 
   return PronosticoController;
@@ -33006,7 +33147,47 @@ function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PronosticosController; });
-/* harmony import */ var _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/PronosticoModel */ "./resources/js/models/PronosticoModel.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/PronosticoModel */ "./resources/js/models/PronosticoModel.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -33034,30 +33215,79 @@ function _createClass(Constructor, protoProps, staticProps) {
 var PronosticosController =
 /*#__PURE__*/
 function () {
-  function PronosticosController(view) {
+  function PronosticosController(user) {
     _classCallCheck(this, PronosticosController);
 
-    this.view = view;
-    this.state = this.view.state;
-    this.pronosticosModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_0__["default"](this.state.user);
+    this.user = user;
+    this.pronosticosModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_1__["default"](this.user);
   }
 
   _createClass(PronosticosController, [{
-    key: "loadPronosticos",
-    value: function loadPronosticos() {
-      var _this = this;
+    key: "loadProdes",
+    value: function () {
+      var _loadProdes = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var prodes;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.pronosticosModel.loadProdes();
 
-      this.pronosticosModel.loadProdes().then(function (prodes) {
-        _this.pronosticosModel.saveAllProdesOnLocalStorage(prodes);
+              case 2:
+                prodes = _context.sent;
+                this.pronosticosModel.saveAllProdesOnLocalStorage(prodes);
+                return _context.abrupt("return", prodes);
 
-        _this.view.setState({
-          user: _this.state.user,
-          prodes: prodes
-        });
-      })["catch"](function (error) {
-        return console.log(error);
-      });
-    }
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function loadProdes() {
+        return _loadProdes.apply(this, arguments);
+      }
+
+      return loadProdes;
+    }()
+  }, {
+    key: "createProde",
+    value: function () {
+      var _createProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var prode;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.pronosticosModel.createProde(this.user.id);
+
+              case 2:
+                prode = _context2.sent;
+                this.pronosticosModel.saveProdeOnLocalStorage(prode);
+                return _context2.abrupt("return", prode);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function createProde() {
+        return _createProde.apply(this, arguments);
+      }
+
+      return createProde;
+    }()
   }]);
 
   return PronosticosController;
@@ -33225,6 +33455,142 @@ function () {
       return saveProde;
     }()
   }, {
+    key: "resetProde",
+    value: function () {
+      var _resetProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(prode) {
+        var teams, results;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!(prode.teams != null)) {
+                  _context3.next = 4;
+                  break;
+                }
+
+                _context3.t0 = prode.teams;
+                _context3.next = 7;
+                break;
+
+              case 4:
+                _context3.next = 6;
+                return this.getEquipos();
+
+              case 6:
+                _context3.t0 = _context3.sent;
+
+              case 7:
+                teams = _context3.t0;
+                results = prode.results != null ? this.resetResults(prode.results) : [[[], [], [], []]];
+                return _context3.abrupt("return", {
+                  user_id: prode.user_id,
+                  id: prode.id,
+                  teams: teams,
+                  results: results
+                });
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function resetProde(_x2) {
+        return _resetProde.apply(this, arguments);
+      }
+
+      return resetProde;
+    }()
+  }, {
+    key: "getEquipos",
+    value: function () {
+      var _getEquipos = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var response, equipos, partidos, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/teams');
+
+              case 2:
+                response = _context4.sent;
+                equipos = response.data;
+                partidos = [];
+
+                for (i = 0; i < equipos.length; i += 2) {
+                  partidos.push([equipos[i].nombre, equipos[i + 1].nombre, equipos[i].id, equipos[i + 1].id]);
+                }
+
+                return _context4.abrupt("return", partidos);
+
+              case 7:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      function getEquipos() {
+        return _getEquipos.apply(this, arguments);
+      }
+
+      return getEquipos;
+    }()
+  }, {
+    key: "createProde",
+    value: function () {
+      var _createProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(user_id) {
+        var id;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                id = this.getMaxIndice();
+                _context5.next = 3;
+                return this.resetProde({
+                  user_id: user_id,
+                  id: null,
+                  teams: null,
+                  results: null
+                });
+
+              case 3:
+                return _context5.abrupt("return", _context5.sent);
+
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function createProde(_x3) {
+        return _createProde.apply(this, arguments);
+      }
+
+      return createProde;
+    }()
+  }, {
+    key: "resetResults",
+    value: function resetResults(results) {
+      return [results[0].map(function (result) {
+        return result.map(function (partido) {
+          return [null, null, partido[2]];
+        });
+      })];
+    }
+  }, {
     key: "getProdeFromLocalStorage",
     value: function getProdeFromLocalStorage(id) {
       var prodes = JSON.parse(localStorage.getItem('lista_prodes'));
@@ -33241,7 +33607,10 @@ function () {
     key: "saveProdeOnLocalStorage",
     value: function saveProdeOnLocalStorage(prode) {
       var prodes = JSON.parse(localStorage.getItem('lista_prodes'));
-      prodes[this.getIndice(prodes, prode.id)] = prode;
+      if (prode.id != null) prodes[this.getIndice(prodes, prode.id)] = prode;else {
+        prode.id = this.getMaxIndice();
+        prodes.push(prode);
+      }
       localStorage.setItem('lista_prodes', JSON.stringify(prodes));
     }
   }, {
@@ -33253,44 +33622,6 @@ function () {
         return prode.id == id;
       });
       return i;
-    }
-  }, {
-    key: "resetPronostico",
-    value: function resetPronostico(prode) {
-      var teams = prode.teams != null ? prode.teams : this.getEquipos();
-      var results = prode.results != null ? this.resetResults(prode.results) : [[[], [], [], []]];
-      return {
-        user_id: prode.user_id,
-        id: prode.id,
-        teams: teams,
-        results: results
-      };
-    }
-  }, {
-    key: "resetResults",
-    value: function resetResults(results) {
-      return [results[0].map(function (result) {
-        return result.map(function (match) {
-          return [null, null, match[2]];
-        });
-      })];
-    }
-  }, {
-    key: "getEquipos",
-    value: function getEquipos() {
-      return [['Francia', 'Argentina', 1, 2], ['Uruguay', 'Portugal', 3, 4], ['Brasil', 'Mexico', 5, 6], ['Bélgica', 'Japon', 7, 8], ['España', 'Rusia', 9, 10], ['Croacia', 'Dinamarca', 11, 12], ['Suecia', 'Suiza', 13, 14], ['Colombia', 'Inglaterra', 15, 16]];
-    }
-  }, {
-    key: "crearNuevoProde",
-    value: function crearNuevoProde(user_id) {
-      var id = this.getMaxIndice();
-      console.log(id);
-      return this.resetPronostico({
-        user_id: user_id,
-        id: null,
-        teams: null,
-        results: null
-      });
     }
   }, {
     key: "getMaxIndice",
@@ -33337,7 +33668,6 @@ function () {
     value: function transformarDatosHaciaServidor(prode) {
       var _this3 = this;
 
-      console.log(prode);
       var teams = prode.teams;
       var results = prode.results.flat(2);
       var prode_nuevo = {

@@ -2,18 +2,20 @@ import PronosticoModel from '../models/PronosticoModel';
 
 export default class PronosticosController{
 
-    constructor(view){
-        this.view = view;
-        this.state = this.view.state;
-        this.pronosticosModel = new PronosticoModel(this.state.user);
+    constructor(user){
+        this.user = user;
+        this.pronosticosModel = new PronosticoModel(this.user);
     }
 
-    loadPronosticos(){
-        this.pronosticosModel.loadProdes()
-            .then(prodes => {
-                this.pronosticosModel.saveAllProdesOnLocalStorage(prodes);
-                this.view.setState({ user: this.state.user, prodes });
-            })
-            .catch((error) => console.log(error));
+    async loadProdes(){
+        let prodes = await this.pronosticosModel.loadProdes()
+        this.pronosticosModel.saveAllProdesOnLocalStorage(prodes);
+        return prodes;
+    }
+
+    async createProde(){
+        let prode = await this.pronosticosModel.createProde(this.user.id);
+        this.pronosticosModel.saveProdeOnLocalStorage(prode);
+        return prode;
     }
 }

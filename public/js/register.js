@@ -148,6 +148,7 @@ $(document).ready(function () {
       username: username
     };
     register(data, '/api/user/register', function (data) {
+      console.log(data);
       var id = data.id,
           name = data.name,
           email = data.email,
