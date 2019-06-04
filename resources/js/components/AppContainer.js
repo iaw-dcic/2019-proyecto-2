@@ -15,6 +15,8 @@ import { Hero } from 'react-landing-page'
 import ReactDOM from 'react-dom'
 
 
+
+
 export default class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -45,6 +47,10 @@ export default class AppContainer extends Component {
             axios.get(`/api/static/images/decorations`)
                 .then(res => {
                     this.setState({ decorations: res.data });
+                });
+            axios.get(`/api/static/images/shirts`)
+                .then(res => {
+                    this.setState({ shirtsImages: res.data });
                 });
         }
     }
@@ -100,7 +106,7 @@ export default class AppContainer extends Component {
                     <Row className="pt-3">
                         <Col>
                             <div className="well">
-                                <Shirt shirt={this.state.shirt} received_shirts_info={this.state.received_shirts_info} selected_decoration_image={this.state.selected_decoration_image} />
+                                <Shirt shirt={this.state.shirt} received_shirts_info={this.state.received_shirts_info} selected_decoration_image={this.state.selected_decoration_image} shirtsImages={this.state.shirtsImages} />
                             </div>
                         </Col>
                         <Col className="pt-2">
@@ -179,7 +185,7 @@ export default class AppContainer extends Component {
 
     handleColorChange = (color, event) => {
         let shirt = { ...this.state.shirt };
-        shirt.color = color.hex.substr(1);
+        shirt.color = color.hex.substr(1).toUpperCase();
         this.setState({ shirt });
     }
 

@@ -82,6 +82,30 @@ class ShirtController extends Controller
         return new ShirtResource($shirt);
     }
 
+    public function getAllShirts()
+    {
+        $TshirtsFilepath = public_path() . '/img/shirts/tshirt/';
+        $LongsleeveFilepath = public_path() . '/img/shirts/longsleeve/';
+        $tshirts = [
+            'FFFFFF' => base64_encode(File::get($TshirtsFilepath . 'FFFFFF.png')),
+            '1B998B' => base64_encode(File::get($TshirtsFilepath . '1B998B.png')),
+            'ED217C' => base64_encode(File::get($TshirtsFilepath . 'ED217C.png')),
+            'FF9B71' => base64_encode(File::get($TshirtsFilepath . 'FF9B71.png')),
+            '55DDFF' => base64_encode(File::get($TshirtsFilepath . '55DDFF.png')),
+        ];
+        $longsleeve = array(
+            'FFFFFF' => base64_encode(File::get($LongsleeveFilepath . 'FFFFFF.png')),
+            '1B998B' => base64_encode(File::get($LongsleeveFilepath . '1B998B.png')),
+            'ED217C' => base64_encode(File::get($LongsleeveFilepath . 'ED217C.png')),
+            'FF9B71' => base64_encode(File::get($LongsleeveFilepath . 'FF9B71.png')),
+            '55DDFF' => base64_encode(File::get($LongsleeveFilepath . '55DDFF.png')),
+        );
+        return Response::json(array(
+            'tshirt' => $tshirts,
+            'longsleeve' => $longsleeve
+        ));
+    }
+
     public function getShirtImage($type, $color)
     {
         $filepath = public_path() . '/img/shirts/' . $type . '/' . $color . '.png';

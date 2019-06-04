@@ -7,8 +7,6 @@ export default class Shirt extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: this.props.shirt.type,
-            color: this.props.shirt.color,
             shirtImage: '',
             decorationImage: '',
             received_shirt_image: false,
@@ -18,26 +16,41 @@ export default class Shirt extends Component {
 
     componentDidMount() {
         if (this.props.shirt.id != 0) {
-            axios.get(`/api/static/images/shirts/` + this.props.shirt.type + `/` + this.props.shirt.color)
-                .then(res => {
-                    const shirtImage = res.data.content;
-                    this.setState({ shirtImage, received_shirt_image: true });
-                })
+            if (this.props.shirt.type === 'tshirt') {
+                for (let key in this.props.shirtsImages.tshirt) {
+                    if (key === this.props.shirt.color) {
+                        this.setState({ shirtImage: this.props.shirtsImages.tshirt[key], received_shirt_image: true });
+                    }
+                }
+            }
+            else if (this.props.shirt.type === 'longsleeve') {
+                for (let key in this.props.shirtsImages.longsleeve) {
+                    if (key === this.props.shirt.color) {
+                        this.setState({ shirtImage: this.props.shirtsImages.longsleeve[key], received_shirt_image: true });
+                    }
+                }
+            }
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.shirt.id != 0) {
-            axios.get(`/api/static/images/shirts/` + nextProps.shirt.type + `/` + nextProps.shirt.color)
-                .then(res => {
-                    const newShirt = res.data.content;
-                    this.setState({
-                        type: nextProps.shirt.type,
-                        color: nextProps.shirt.color,
-                        shirtImage: newShirt,
-                        received_shirt_image: true,
-                    });
-                });
+            if (nextProps.shirt.type === 'tshirt') {
+                for (let key in nextProps.shirtsImages.tshirt) {
+                    if (key === nextProps.shirt.color) {
+                        this.setState({ shirtImage: this.props.shirtsImages.tshirt[key], received_shirt_image: true });
+                    }
+                }
+            }
+            else if (nextProps.shirt.type === 'longsleeve') {
+                for (let key in nextProps.shirtsImages.longsleeve) {
+                    if (key === nextProps.shirt.color) {
+                        this.setState({
+                            shirtImage: this.props.shirtsImages.longsleeve[key], received_shirt_image: true
+                        });
+                    }
+                }
+            }
             if (nextProps.shirt.decoration !== null) {
                 axios.get(`/api/static/images/decorations/` + nextProps.shirt.decoration)
                     .then(res => {

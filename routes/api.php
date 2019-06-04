@@ -20,3 +20,4 @@ Route::middleware('auth:api')->delete('shirts/{shirt}', 'ShirtController@destroy
 Route::middleware('auth:api')->get('static/images/shirts/{type}/{color}', 'ShirtController@getShirtImage');
 Route::get('static/images/decorations/{id}', 'ShirtController@getDecorationImage');
 Route::get('static/images/decorations', 'ShirtController@getAllDecorations');
+Route::get('static/images/shirts', 'ShirtController@getAllShirts');
