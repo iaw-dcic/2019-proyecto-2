@@ -3,7 +3,7 @@ import './ComponentCSS/superponer.css'
 import './ComponentCSS/Sidebar.css'
 import axios from 'axios'
 import avatar from './Avatar'
-;
+
 
 export default class SideBar extends Component{
   state={
@@ -41,7 +41,8 @@ export default class SideBar extends Component{
     this.props.handleMouthChange(event);
   }
 
-  
+  //Esta función no se usa, queda como placeholder para la obtención de los recursos desde la BD
+  //se presentan problemas de renderizado al usar esta alternativa
   cargarRecurso(tipo){
     axios.get('api/recursos', tipo).then((response)=>{
 
@@ -97,30 +98,10 @@ export default class SideBar extends Component{
   })
 
   }
-  
- 
 
-  /*componentDidMount(){
-    axios.get('api/recursos').then((response)=>{
-
-      response.data.map(recurso => 
-        
-        this.setState(state =>{
-          const caras = [... state.caras, recurso.source]
-          return {
-            caras
-          }
-        } )
-      
-    
-    )
-    console.log(this.state.caras) 
-  })
-  console.log(this.state.caras)
-    /*  {this.props.caras.map(cara =>(
-                <button className="dropdown-item" href="#" onClick={this.changeSkin}><img name={cara} src={window.location.origin + '/RecursosGraficos/Caras/'+ cara +'.png'}/></button>
-              ))} } */
-  
+nuevoAvatar(event){
+  this.props.defaultAvatar(event);
+}
 
   constructor(props){
     super(props)
@@ -131,6 +112,7 @@ export default class SideBar extends Component{
     this.changeEyes = this.changeEyes.bind(this);
     this.changeMouth = this.changeMouth.bind(this);
     this.cargarRecurso = this.cargarRecurso.bind(this);
+    this.nuevoAvatar = this.nuevoAvatar.bind(this);
   
   }
 
@@ -142,13 +124,13 @@ export default class SideBar extends Component{
        
 
             {this.props.AllAvatars.map((avatar,index) =>(
-                <div key={avatar.name+"-"+index} name={avatar.avatarID}  className="card  mx-auto text-center size-prev">
+                <div key={avatar.name+"-"+index} className="card  mx-auto  size-prev">
                     <img className="superponer" src={window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'}/> 
                     <img className="superponer" src={window.location.origin + '/RecursosGraficos/Ojos/' + avatar.eyes + '.png'}/>
                     <img className="superponer" src={window.location.origin + '/RecursosGraficos/Pelos/' + avatar.hair + '.png'}/>
                     <img className="superponer" src={window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'}/> 
                     
-                 <button className="btn btn-info btn-lg boton" name={avatar.avatarID} onClick={this.cargarAvatar}>Cargar {avatar.name}</button>     
+                <button className="btn btn-info btn-lg boton" value={index} onClick={this.cargarAvatar}>Cargar {avatar.name}</button>     
                 </div>
                 
             ))}
@@ -206,6 +188,7 @@ export default class SideBar extends Component{
             </div>
 
                 <input className="btn btn-outline-success btn-lg" type="submit" value="Guardar Avatar" onClick={this.saveAvatar}/>
+                <button className="btn btn-outline-warning btn-lg" onClick={this.nuevoAvatar}>resetear Avatar</button>
           </nav>
         </>
         )

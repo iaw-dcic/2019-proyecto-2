@@ -22,9 +22,14 @@ export default class Readme extends Component{
     <div className="d-flex flex-column">
         <h3> Comentarios y/o aclaraciones </h3>
             <ul>
-                <li>Es probable que al lanzar la App desde Heroku, la homepage no cargue los etilos CSS, desconozco las razones por las cuales ocurre esto
-                    esto SOLO OCURRE LA PRIMERA VEZ, cuando se vuelve a cargar la homepage, la misma se carga con los estilos CSS como debería.
-                         Esto solo ocurre para la homeepage </li>
+                <li>Debido a problemas con el api-token, se tomó la politica de obtener 
+                    el token de usuario directamente en el bootstrap.js para poder
+                        realizar las llamadas por axios a la API </li>
+                <li>para la creación de los componentes gráficos se uso
+                        Piskel: https://www.piskelapp.com/</li>
+                <li>para creación de backgrounds con gradientes se utilizó
+                    https://cssgradient.io/</li>
+                
                 <li>La contraseña al crear un usuario debe ser como mínimo de 8 caracteres </li>
                 <li>Para los estilos y la presentación se usó el framework de estilos Bootstrap: https://getbootstrap.com/ </li>
                 <li>para ciertas estilos de texto se usó Google Fonts: https://fonts.google.com/ </li>

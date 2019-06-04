@@ -7,11 +7,11 @@
 
 }
 .superponer-edicion{
-    position: absolute;
-    background-position: center;
-    width:750px;
-    height: 750px;
+    position: absolute; 
+    width:50%;
+    margin: 0 25%;
 }
 .divAv{
-    padding-right: 50%;
+    height: 750px;
+    text-align: left;
 }

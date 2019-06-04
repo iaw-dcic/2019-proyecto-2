@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:150px;\r\n    height:150px;\r\n    padding-bottom: 5%;\r\n    \r\n   \r\n}\r\n.boton{\r\n    padding-bottom: 5%;   \r\n}\r\n.side{\r\n    font-weight: bolder;\r\n    font-size: 30px;\r\n}\r\n.previos{\r\n    \r\n    background: rgb(238,174,202);\r\n    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);\r\n    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#94bbe9\",GradientType=1);\r\n    \r\n}\r\n.size-prev{\r\n    width:300px;\r\n    height:300px;\r\n    padding-bottom: 5%;\r\n    \r\n}\r\n", ""]);
+exports.push([module.i, "\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:150px;\r\n    height:150px;\r\n    padding-bottom: 5%;\r\n    \r\n   \r\n}\r\n.boton{\r\n    padding-bottom: 5%;\r\n    z-index:2;   \r\n}\r\n.side{\r\n    font-weight: bolder;\r\n    font-size: 30px;\r\n}\r\n.previos{\r\n    \r\n    min-height: 500px;\r\n}\r\n.size-prev{\r\n    width:300px;\r\n    height:300px;\r\n    padding-bottom: 5%;\r\n    \r\n}\r\n", ""]);
 
 // exports
 
@@ -6615,7 +6615,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".superponer{\r\n    position: absolute;\r\n    background-position: center;\r\n    padding-top: 20%;\r\n    padding-left: 10%;\r\n\r\n\r\n}\r\n.superponer-edicion{\r\n    position: absolute;\r\n    background-position: center;\r\n    width:750px;\r\n    height: 750px;\r\n}\r\n.divAv{\r\n    padding-right: 50%;\r\n}", ""]);
+exports.push([module.i, ".superponer{\r\n    position: absolute;\r\n    background-position: center;\r\n    padding-top: 20%;\r\n    padding-left: 10%;\r\n\r\n\r\n}\r\n.superponer-edicion{\r\n    position: absolute; \r\n    width:50%;\r\n    margin: 0 25%;\r\n}\r\n.divAv{\r\n    height: 750px;\r\n    text-align: left;\r\n}", ""]);
 
 // exports
 
@@ -6634,7 +6634,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\r\n.avatar{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#94bbe9\",GradientType=1);\r\n}\r\n\r\n.body{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(235,167,144,1) 52%, rgba(232,139,63,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#e88b3f\",GradientType=1);\r\n}\r\n.side{\r\n    background: rgb(131,58,180);\r\nbackground: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#833ab4\",endColorstr=\"#fcb045\",GradientType=1);\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "\r\n.avatar{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#94bbe9\",GradientType=1);\r\n}\r\n\r\n.body{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(235,167,144,1) 52%, rgba(232,139,63,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#e88b3f\",GradientType=1);\r\nheight: 100%;\r\n}\r\n.side{\r\n    background: rgb(131,58,180);\r\nbackground: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#833ab4\",endColorstr=\"#fcb045\",GradientType=1);\r\n}\r\n\r\n.alturaSidebar{\r\n    position: absolute !important;\r\n    z-index: 2;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -66716,32 +66716,20 @@ function (_Component) {
   }, {
     key: "loadAvatar",
     value: function loadAvatar(event) {
-      var _this2 = this;
-
-      console.log(event.target);
-      console.log(this.state.userID);
-      var ID = event.target.name;
-      console.log(ID);
-      ID = 2;
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/' + this.state.userID + '/avatars/' + ID).then(function (response) {
-        console.log(response.data);
-
-        _this2.setState({
-          name: response.data.name,
-          face: response.data.skin,
-          hair: response.data.hair,
-          eyes: response.data.eyes,
-          mouth: response.data.mouth,
-          avatarID: response.data.id
-        });
-      })["catch"](function (error) {
-        alert(error);
+      var ID = event.target.value;
+      this.setState({
+        name: this.state.AllAvatars[ID].name,
+        face: this.state.AllAvatars[ID].skin,
+        hair: this.state.AllAvatars[ID].hair,
+        eyes: this.state.AllAvatars[ID].eyes,
+        mouth: this.state.AllAvatars[ID].mouth,
+        avatarID: this.state.AllAvatars[ID].id
       });
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this3 = this;
+      var _this2 = this;
 
       var token = document.head.querySelector('meta[name="api-token"]');
       token = token.content; //obtengo el api-token del usuario
@@ -66757,19 +66745,31 @@ function (_Component) {
       //intento hacer la llamada por axios
 
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/user/').then(function (response) {
-        _this3.setState({
+        _this2.setState({
           userID: response.data
         });
 
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + _this3.state.userID + '/avatars').then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + _this2.state.userID + '/avatars').then(function (response) {
           if (response.data.length != 0) {
-            _this3.setState({
+            _this2.setState({
               AllAvatars: response.data
             });
           }
         });
       })["catch"](function (error) {
         console.log(error);
+      });
+    }
+  }, {
+    key: "defaultAvatar",
+    value: function defaultAvatar(event) {
+      this.setState({
+        name: '',
+        face: 'Cara1',
+        hair: 'Pelo1',
+        eyes: 'Ojos1',
+        mouth: 'Boca1',
+        avatarID: -1
       });
     }
   }]);
@@ -66789,8 +66789,7 @@ function (_Component) {
       mouth: 'Boca1',
       AllAvatars: [],
       userID: -1,
-      avatarID: -1,
-      errors: []
+      avatarID: -1
     });
 
     _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
@@ -66800,13 +66799,14 @@ function (_Component) {
     _this.handleMouthChange = _this.handleMouthChange.bind(_assertThisInitialized(_this));
     _this.handleCreateNewAvatar = _this.handleCreateNewAvatar.bind(_assertThisInitialized(_this));
     _this.loadAvatar = _this.loadAvatar.bind(_assertThisInitialized(_this));
+    _this.defaultAvatar = _this.defaultAvatar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AvatarView, [{
     key: "handleCreateNewAvatar",
     value: function handleCreateNewAvatar(event) {
-      var _this4 = this;
+      var _this3 = this;
 
       event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
 
@@ -66824,9 +66824,9 @@ function (_Component) {
         if (this.state.avatarID == -1) {
           //hago el POST por Axios a la API que yo creé, el avatar es uno nuevo que debo crear y guardar en la BD
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/' + this.state.userID + '/avatars', avatar).then(function (res) {
-            _this4.setState({
+            _this3.setState({
               avatarID: res.data,
-              AllAvatars: _this4.state.AllAvatars.concat(avatar)
+              AllAvatars: _this3.state.AllAvatars.concat(avatar)
             });
 
             alert("Tu avatar ha sido guardado con exito");
@@ -66840,8 +66840,8 @@ function (_Component) {
           }); //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
 
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(function (res) {
-            _this4.setState({
-              AllAvatars: _this4.state.AllAvatars.concat(avatar)
+            _this3.setState({
+              AllAvatars: _this3.state.AllAvatars.concat(avatar)
             });
 
             alert("tu avatar ha sido modificado con exito");
@@ -66854,6 +66854,17 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 alturaSidebar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        handleFaceChange: this.handleFaceChange,
+        handleHairChange: this.handleHairChange,
+        handleEyesChange: this.handleEyesChange,
+        handleMouthChange: this.handleMouthChange,
+        AllAvatars: this.state.AllAvatars,
+        handleCreateNewAvatar: this.handleCreateNewAvatar,
+        loadAvatar: this.loadAvatar,
+        defaultAvatar: this.defaultAvatar
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-12 text-center side"
@@ -66863,16 +66874,6 @@ function (_Component) {
         hair: this.state.hair,
         eyes: this.state.eyes,
         mouth: this.state.mouth
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-3 "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideBar_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        handleFaceChange: this.handleFaceChange,
-        handleHairChange: this.handleHairChange,
-        handleEyesChange: this.handleEyesChange,
-        handleMouthChange: this.handleMouthChange,
-        AllAvatars: this.state.AllAvatars,
-        handleCreateNewAvatar: this.handleCreateNewAvatar,
-        loadAvatar: this.loadAvatar
       }))));
     }
   }]);
@@ -67227,7 +67228,7 @@ function (_Component) {
         className: "p-2"
       }, "A\xF1o 2019 ")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex flex-column"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Comentarios y/o aclaraciones "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Es probable que al lanzar la App desde Heroku, la homepage no cargue los etilos CSS, desconozco las razones por las cuales ocurre esto esto SOLO OCURRE LA PRIMERA VEZ, cuando se vuelve a cargar la homepage, la misma se carga con los estilos CSS como deber\xEDa. Esto solo ocurre para la homeepage "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "La contrase\xF1a al crear un usuario debe ser como m\xEDnimo de 8 caracteres "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Para los estilos y la presentaci\xF3n se us\xF3 el framework de estilos Bootstrap: https://getbootstrap.com/ "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "para ciertas estilos de texto se us\xF3 Google Fonts: https://fonts.google.com/ "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " para manejo de recursos graficos desde react se uso WebPack https://opencollective.com/webpack"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " para manejo de rutas y saltos entre rutas en React se us\xF3 https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Comentarios y/o aclaraciones "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Debido a problemas con el api-token, se tom\xF3 la politica de obtener el token de usuario directamente en el bootstrap.js para poder realizar las llamadas por axios a la API "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "para la creaci\xF3n de los componentes gr\xE1ficos se uso Piskel: https://www.piskelapp.com/"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "para creaci\xF3n de backgrounds con gradientes se utiliz\xF3 https://cssgradient.io/"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "La contrase\xF1a al crear un usuario debe ser como m\xEDnimo de 8 caracteres "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Para los estilos y la presentaci\xF3n se us\xF3 el framework de estilos Bootstrap: https://getbootstrap.com/ "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "para ciertas estilos de texto se us\xF3 Google Fonts: https://fonts.google.com/ "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " para manejo de recursos graficos desde react se uso WebPack https://opencollective.com/webpack"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " para manejo de rutas y saltos entre rutas en React se us\xF3 https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm"))));
     }
   }]);
 
@@ -67319,7 +67320,9 @@ function (_Component) {
     key: "changeMouth",
     value: function changeMouth(event) {
       this.props.handleMouthChange(event);
-    }
+    } //Esta función no se usa, queda como placeholder para la obtención de los recursos desde la BD
+    //se presentan problemas de renderizado al usar esta alternativa
+
   }, {
     key: "cargarRecurso",
     value: function cargarRecurso(tipo) {
@@ -67365,26 +67368,11 @@ function (_Component) {
         }
       });
     }
-    /*componentDidMount(){
-      axios.get('api/recursos').then((response)=>{
-          response.data.map(recurso => 
-          
-          this.setState(state =>{
-            const caras = [... state.caras, recurso.source]
-            return {
-              caras
-            }
-          } )
-        
-      
-      )
-      console.log(this.state.caras) 
-    })
-    console.log(this.state.caras)
-      /*  {this.props.caras.map(cara =>(
-                  <button className="dropdown-item" href="#" onClick={this.changeSkin}><img name={cara} src={window.location.origin + '/RecursosGraficos/Caras/'+ cara +'.png'}/></button>
-                ))} } */
-
+  }, {
+    key: "nuevoAvatar",
+    value: function nuevoAvatar(event) {
+      this.props.defaultAvatar(event);
+    }
   }]);
 
   function SideBar(props) {
@@ -67408,6 +67396,7 @@ function (_Component) {
     _this.changeEyes = _this.changeEyes.bind(_assertThisInitialized(_this));
     _this.changeMouth = _this.changeMouth.bind(_assertThisInitialized(_this));
     _this.cargarRecurso = _this.cargarRecurso.bind(_assertThisInitialized(_this));
+    _this.nuevoAvatar = _this.nuevoAvatar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -67423,8 +67412,7 @@ function (_Component) {
       }, "haz clic en tus avatares previos para editarlos!"), this.props.AllAvatars.map(function (avatar, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: avatar.name + "-" + index,
-          name: avatar.avatarID,
-          className: "card  mx-auto text-center size-prev"
+          className: "card  mx-auto  size-prev"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "superponer",
           src: window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'
@@ -67439,7 +67427,7 @@ function (_Component) {
           src: window.location.origin + '/RecursosGraficos/Bocas/' + avatar.mouth + '.png'
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn btn-info btn-lg boton",
-          name: avatar.avatarID,
+          value: index,
           onClick: _this3.cargarAvatar
         }, "Cargar ", avatar.name));
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -67621,7 +67609,10 @@ function (_Component) {
         type: "submit",
         value: "Guardar Avatar",
         onClick: this.saveAvatar
-      })));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-warning btn-lg",
+        onClick: this.nuevoAvatar
+      }, "resetear Avatar")));
     }
   }]);
 
@@ -67650,8 +67641,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

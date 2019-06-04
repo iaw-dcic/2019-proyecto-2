@@ -25,15 +25,14 @@ class userAvatarController extends Controller
 
     public function store(Request $request){
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => ['required', 'unique:avatars'],
             'skin' => 'required',
             'hair' => 'required',
             'eyes' => 'required',
             'mouth' => 'required',
           ]);
-        $avatar = avatar::find($request->avatarID);
-        
-        if($avatar == null){
+       
+
           $avatar = avatar::create([
             'name' => $validatedData['name'],
             'skin' => $validatedData['skin'],
@@ -44,12 +43,14 @@ class userAvatarController extends Controller
           ]);
 
         return response()->json($avatar->id);
-        }
+       
+      
         
     }
 
     public function show($id){
         $avatar = avatar::findOrFail($id);
+        dd($id, $avatar);
         $owner = $avatar->owner;
         abort_if($owner != auth('api')->id(), 403,'se ha intentado acceder a un avatar que NO es del usuario logueado');
         return response()->json($avatar);

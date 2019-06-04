@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch, NavLink,HashRouter } from 'react-router-dom'
+import {Route, NavLink,HashRouter } from 'react-router-dom'
 import Home from './Home'
 import AvatarView from './AvatarView'
 import Readme from './Readme'

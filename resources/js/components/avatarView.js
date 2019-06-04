@@ -15,7 +15,6 @@ export default class AvatarView extends Component{
         AllAvatars : [],
         userID : -1,
         avatarID : -1,
-        errors : []
     };
     
    handleNameChange(event){
@@ -49,25 +48,15 @@ export default class AvatarView extends Component{
     }
 
     loadAvatar(event){
-        console.log(event.target)
-        console.log(this.state.userID)
-        let ID = event.target.name
-        console.log(ID)
-        ID = 2;
-        axios.get('/api/' + this.state.userID + '/avatars/'+ ID).then((response) =>{
-            console.log(response.data)
-            this.setState({
-                name : response.data.name,
-                face : response.data.skin,
-                hair : response.data.hair,
-                eyes : response.data.eyes,
-                mouth : response.data.mouth,
-                avatarID : response.data.id
-            })
-        }).catch((error)=>{
-            alert(error)
+        let ID = event.target.value;
+        this.setState({
+            name : this.state.AllAvatars[ID].name,
+            face : this.state.AllAvatars[ID].skin,
+            hair : this.state.AllAvatars[ID].hair,
+            eyes : this.state.AllAvatars[ID].eyes,
+            mouth : this.state.AllAvatars[ID].mouth,
+            avatarID : this.state.AllAvatars[ID].id
         })
-
     }
 
 
@@ -109,6 +98,18 @@ export default class AvatarView extends Component{
         });
     }
 
+    defaultAvatar(event){
+        this.setState({
+            name : '',
+            face : 'Cara1',
+            hair : 'Pelo1',
+            eyes : 'Ojos1',
+            mouth : 'Boca1',
+            avatarID : -1
+        })
+  
+    }
+
     constructor(props) {
         super(props)
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -118,6 +119,7 @@ export default class AvatarView extends Component{
         this.handleMouthChange = this.handleMouthChange.bind(this);
         this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
         this.loadAvatar = this.loadAvatar.bind(this);
+        this.defaultAvatar = this.defaultAvatar.bind(this);
     }
     
   
@@ -171,21 +173,7 @@ export default class AvatarView extends Component{
     render(){
         return (
             <>
-                <div className="side">
-                    <div className="col-md-12 text-center side">
-                        <Avatar 
-                            handleNameChange={this.handleNameChange}
-                            face={this.state.face}
-                            hair={this.state.hair}
-                            eyes={this.state.eyes}
-                            mouth={this.state.mouth}
-                        />
-                    </div>
-
-                            
-
-
-                    <div className="col-md-3 ">
+              <div className="col-md-3 alturaSidebar">
                         <SideBar
                             handleFaceChange={this.handleFaceChange}
                             handleHairChange={this.handleHairChange}
@@ -194,6 +182,18 @@ export default class AvatarView extends Component{
                             AllAvatars={this.state.AllAvatars}
                             handleCreateNewAvatar = {this.handleCreateNewAvatar}
                             loadAvatar = {this.loadAvatar}
+                            defaultAvatar = {this.defaultAvatar}
+                        />
+                </div>
+
+                <div className="side">
+                    <div className="col-md-12 text-center side">
+                        <Avatar 
+                            handleNameChange={this.handleNameChange}
+                            face={this.state.face}
+                            hair={this.state.hair}
+                            eyes={this.state.eyes}
+                            mouth={this.state.mouth}
                         />
                     </div>
                 </div>
