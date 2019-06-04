@@ -60905,7 +60905,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67711,11 +67711,32 @@ function (_Component) {
 
 
   _createClass(MainSection, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      if (localStorage.hasOwnProperty('id_color')) {
+        this.setState({
+          colorIndex: localStorage.getItem('id_color'),
+          caseIndex: localStorage.getItem('id_case'),
+          estampaIndex: localStorage.getItem('id_image')
+        });
+      } else {
+        this.setState({
+          colorIndex: 0,
+          caseIndex: 1,
+          estampaIndex: 1
+        });
+      }
+    }
+  }, {
     key: "setCaseImage",
     value: function setCaseImage(caseId) {
       this.setState({
         caseIndex: caseId
-      }); // this.getCaseImage()w
+      }); // this.getCaseImage()
+
+      localStorage.setItem('id_case', caseId);
+      localStorage.setItem('id_color', this.state.colorIndex);
+      localStorage.setItem('id_image', this.state.estampaIndex);
     }
   }, {
     key: "setCaseColor",
@@ -67723,6 +67744,10 @@ function (_Component) {
       this.setState({
         colorIndex: colorId
       }); //this.getCaseImage()
+
+      localStorage.setItem('id_color', colorId);
+      localStorage.setItem('id_case', this.state.caseIndex);
+      localStorage.setItem('id_image', this.state.estampaIndex);
     }
   }, {
     key: "setEstampa",
@@ -67730,6 +67755,9 @@ function (_Component) {
       this.setState({
         estampaIndex: estampaId
       });
+      localStorage.setItem('id_image', estampaId);
+      localStorage.setItem('id_color', this.state.colorIndex);
+      localStorage.setItem('id_case', this.state.caseIndex);
     }
   }, {
     key: "selectModal",

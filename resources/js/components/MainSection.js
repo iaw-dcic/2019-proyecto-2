@@ -35,20 +35,48 @@ export default class MainSection extends Component {
     //   this.getCaseImage();
     // }
 
-    
+    componentWillMount(){
+      if(localStorage.hasOwnProperty('id_color')){
+        this.setState({
+          colorIndex: localStorage.getItem('id_color'),
+          caseIndex: localStorage.getItem('id_case'),
+          estampaIndex: localStorage.getItem('id_image'),
+        })
+      }else{
+        this.setState({
+          colorIndex: 0,
+          caseIndex: 1,
+          estampaIndex: 1,
+        })
+      }
+  
+    }
+  
 
     setCaseImage(caseId){
         this.setState({caseIndex:caseId})
-        // this.getCaseImage()w
+        // this.getCaseImage()
+
+        localStorage.setItem('id_case',caseId)
+        localStorage.setItem('id_color',this.state.colorIndex)
+        localStorage.setItem('id_image',this.state.estampaIndex)
     }
 
     setCaseColor(colorId){
       this.setState({colorIndex:colorId})
        //this.getCaseImage()
+
+       localStorage.setItem('id_color',colorId)
+       localStorage.setItem('id_case',this.state.caseIndex)
+       localStorage.setItem('id_image',this.state.estampaIndex)
     }
 
     setEstampa(estampaId){
       this.setState({estampaIndex:estampaId})
+
+      localStorage.setItem('id_image',estampaId)
+      localStorage.setItem('id_color',this.state.colorIndex)
+      localStorage.setItem('id_case',this.state.caseIndex)
     }
 
     selectModal(info){
