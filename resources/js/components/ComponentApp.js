@@ -6,7 +6,7 @@ import AvatarComponents from './AvatarComponents'
 import ElementSelect from './ElementSelect'
 import Utilities from './Utilities'
 
-//Clase base de la aplicacion
+//Application's base class
 
 export default class ComponentApp extends Component {
     
@@ -18,42 +18,49 @@ export default class ComponentApp extends Component {
             "shirt": "Shirt1", 
             "beard": "Beard1"
         },
-        allAvatar: []
+        allAvatar: [],
+        mount: 0
     };
 
     render () {
-        return (
-            <>
-                <div className="d-flex justify-content-center" id="topFlex">
-                    <div className="col-md-9" id="editor">
-                        <AvatarView avatar={this.state.currentAvatar}/>
+        if (this.state.mount == 0) {
+            return (<div>Loading</div>);
+        }
+        else {
+            return (
+                <div>
+                    <div className="d-flex justify-content-center" id="topFlex">
+                        <div className="col-md-9" id="editor">
+                            <AvatarView avatar={this.state.currentAvatar}/>
+                        </div>
+                        <div className="col-md-3" id="options">
+                            <AvatarComponents avatar={this.state.currentAvatar} 
+                                            componentChange={this.componentChange}/>
+                        </div>
                     </div>
-                    <div className="col-md-3" id="options">
-                        <AvatarComponents avatar={this.state.currentAvatar} 
-                                          componentChange={this.componentChange}/>
+                    <div className="d-flex justify-content-center" id="bottomFlex">
+                        <div className="col-md-9" id="previous">
+                            <ElementSelect avatarList={this.state.allAvatar} 
+                                        setSavedAvatar={this.setSavedAvatar}/>
+                        </div>
+                        <div className="col-md-3" id="buttons">
+                            <Utilities name={this.state.currentAvatar.avatar_name} 
+                                    returnToDefault={this.returnToDefault} 
+                                    saveChanges={this.saveChanges}
+                                    updateName={this.updateName}/>
+                        </div>
                     </div>
                 </div>
-                <div className="d-flex justify-content-center" id="bottomFlex">
-                    <div className="col-md-9" id="previous">
-                        <ElementSelect avatarList={this.state.allAvatar} 
-                                       setSavedAvatar={this.setSavedAvatar}/>
-                    </div>
-                    <div className="col-md-3" id="buttons">
-                        <Utilities name={this.state.currentAvatar.avatar_name} 
-                                   returnToDefault={this.returnToDefault} 
-                                   saveChanges={this.saveChanges}
-                                   updateName={this.updateName}/>
-                    </div>
-                </div>
-            </>
-        );
+            );
+        }
     }
 
     componentDidMount () {
         try {
             axios.get ('/api/app/avatars').then (response => {
                 this.setState({
-                    allAvatar: response.data
+                    allAvatar: response.data,
+                    mount: 1
                 });
             });
         } 
@@ -63,14 +70,9 @@ export default class ComponentApp extends Component {
     }
 
     componentChange = (avatar) => {
+        const currentAvatar = { ...this.state.currentAvatar, "hair": avatar.hair, "shirt": avatar.shirt, "beard": avatar.beard }
         this.setState ({
-            currentAvatar: {
-                "avatar_id": this.state.currentAvatar.avatar_id,
-                "avatar_name": this.state.currentAvatar.avatar_name,
-                "hair": avatar.hair,
-                "shirt": avatar.shirt,
-                "beard": avatar.beard
-            }
+            currentAvatar
         });
     }
 
@@ -88,18 +90,10 @@ export default class ComponentApp extends Component {
                         beard: this.state.currentAvatar.beard
                     }).then (response => {
                         console.log ('From Handle Submit ', response.statusText);
+                        const currentAvatar = { ...this.state.currentAvatar, "avatar_id": response.data }
                         this.setState ({
-                            currentAvatar: {
-                                "avatar_id": response.data,
-                                "avatar_name": this.state.currentAvatar.avatar_name,
-                                "hair": this.state.currentAvatar.hair,
-                                "shirt": this.state.currentAvatar.shirt,
-                                "beard": this.state.currentAvatar.beard
-                            }
-                        }, () => {
-                            this.setState ({
-                                allAvatar: this.state.allAvatar.concat (this.state.currentAvatar)
-                            })
+                            currentAvatar,
+                            allAvatar: this.state.allAvatar.concat (currentAvatar)
                         });
                     });
                 }
@@ -159,14 +153,9 @@ export default class ComponentApp extends Component {
     }
 
     updateName = (newName) => {
+        const currentAvatar = { ...this.state.currentAvatar, "avatar_name": newName }
         this.setState ({
-            currentAvatar: {
-                "avatar_id": this.state.currentAvatar.avatar_id,
-                "avatar_name": newName,
-                "hair": this.state.currentAvatar.hair,
-                "shirt": this.state.currentAvatar.shirt,
-                "beard": this.state.currentAvatar.beard
-            }
+            currentAvatar
         });
     }
 

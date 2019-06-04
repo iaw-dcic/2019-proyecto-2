@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-//Seleccion de todos los elementos para modificar el avatar
+//All of the components available to modify the avatar
 
 export default class AvatarComponents extends Component {
 
@@ -12,7 +12,9 @@ export default class AvatarComponents extends Component {
     }
 
     state = {
-        componentTable: []
+        allHair: [],
+        allShirt: [],
+        allBeard: []
     };
 
     render () {
@@ -32,7 +34,9 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseTwo1" className="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
                             <div className="card-body">
-                                {this.createElements ('hair')}
+                                {this.state.allHair.map (hair => (
+                                    <button className="btn btn-outline-primary" key={hair.element_var}><img src={window.location.origin + hair.element_source} onClick={() => this.changeAvatarHair(hair.element_var)}/></button>
+                                ))}
                             </div>
                         </div>
 
@@ -50,7 +54,9 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseTwo21" className="collapse" role="tabpanel" aria-labelledby="headingTwo21" data-parent="#accordionEx1">
                             <div className="card-body">
-                                {this.createElements ('shirt')}
+                                {this.state.allShirt.map (shirt => (
+                                    <button className="btn btn-outline-danger" key={shirt.element_var}><img src={window.location.origin + shirt.element_source} onClick={() => this.changeAvatarShirt(shirt.element_var)}/></button>
+                                ))}
                             </div>
                         </div>
 
@@ -68,7 +74,9 @@ export default class AvatarComponents extends Component {
 
                         <div id="collapseThree31" className="collapse" role="tabpanel" aria-labelledby="headingThree31" data-parent="#accordionEx1">
                             <div className="card-body">
-                                {this.createElements ('beard')}
+                                {this.state.allBeard.map (beard => (
+                                    <button className="btn btn-outline-info" key={beard.element_var}><img src={window.location.origin + beard.element_source} onClick={() => this.changeAvatarBeard(beard.element_var)}/></button>
+                                ))}
                             </div>
                         </div>
 
@@ -79,33 +87,27 @@ export default class AvatarComponents extends Component {
         );
     }
 
-    createElements = (type) => {
-        let table = [];
-
-        switch (type) {
-            case ('hair'): {
-                for (let I = 1; I <= 4; I++) {
-                    table.push (<button className="btn btn-outline-primary" key={'Hair' + I}><img src={window.location.origin + '/avatar_elements/Hair' + I + '.png'} onClick={() => this.changeAvatarHair('Hair' + I)}/></button>)
-                }
-                break;
-            }
-            
-            case ('shirt'): {
-                for (let I = 1; I <= 4; I++) {
-                    table.push (<button className="btn btn-outline-danger" key={'Shirt' + I}><img src={window.location.origin + '/avatar_elements/Shirt' + I + '.png'} onClick={() => this.changeAvatarShirt('Shirt' + I)}/></button>)
-                }
-                break;
-            }
-
-            case ('beard'): {
-                for (let I = 1; I <= 4; I++) {
-                    table.push (<button className="btn btn-outline-info" key={'Beard' + I}><img src={window.location.origin + '/avatar_elements/Beard' + I + '.png'} onClick={() => this.changeAvatarBeard('Beard' + I)}/></button>)
-                }
-                break;
-            }
+    componentDidMount () {
+        try {
+            axios.get ('/api/app/loadhair').then (response => {
+                this.setState({
+                    allHair: response.data
+                });
+            });
+            axios.get ('/api/app/loadshirt').then (response => {
+                this.setState({
+                    allShirt: response.data
+                });
+            });
+            axios.get ('/api/app/loadbeard').then (response => {
+                this.setState({
+                    allBeard: response.data
+                });
+            });
+        } 
+        catch (event) {
+            console.log('Axios Request Failed: ', event);
         }
-
-        return table;
     }
 
     changeAvatarHair (newHair) {

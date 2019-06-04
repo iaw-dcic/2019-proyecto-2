@@ -6,13 +6,10 @@
     height: 300px;
 }
 
-#editor, #previous {
-    text-align: center;
-    height: 200px;
-}
-
 #editor {
     top: 20%;
+    text-align: center;
+    height: 200px;
 }
 
 #previous {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./css/avatarView.css";
 
-//Ventana principal del avatar actual
+//Current avatar's main window
 
 export default class AvatarView extends Component {
 

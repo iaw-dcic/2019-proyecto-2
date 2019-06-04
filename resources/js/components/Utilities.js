@@ -17,7 +17,7 @@ export default class Utilities extends Component {
                 </div>
                 <div className="d-flex justify-content-center buttonsFlex">
                     <button className="btn btn-secondary cancelButton" onClick={this.props.returnToDefault}>
-                        Cancel Changes
+                        Reset
                     </button>
                     <button className="btn btn-primary saveButton" onClick={this.saveAvatar}>
                         Save Avatar
