@@ -17,11 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('donuts','DonutsController@index');
-Route::post('donuts','DonutsController@store')->middleware('auth');
-Route::get('donuts/{id}','DonutsController@show');
-Route::put('donuts/{id}','DonutsController@update');
-Route::delete('donuts/{id}','DonutsController@delete');
+Route::get('donuts','DonutController@index');
+Route::post('donuts','DonutController@store')->middleware('auth');
+Route::get('donuts/{id}','DonutController@show');
+Route::put('donuts/{id}','DonutController@update');
+Route::delete('donuts/{id}','DonutController@delete');
 
 Route::get('sabores', 'SaborController@index');
 Route::get('glaseados', 'GlaseadoController@index');

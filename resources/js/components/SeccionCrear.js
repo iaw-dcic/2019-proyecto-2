@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import BotonSabor from './BotonSabor';
 import BotonGlaseado from './BotonGlaseado';
 import BotonDecoracion from './BotonDecoracion';
-import Axios from 'axios';
+import axios from 'axios';
 
 class SeccionCrear extends Component {
 	constructor() {
@@ -24,6 +24,10 @@ class SeccionCrear extends Component {
 		this.setGlaseado = this.setGlaseado.bind(this);
 		this.setDecoracion = this.setDecoracion.bind(this);
 		this.addDonut=this.addDonut.bind(this);
+
+		// localStorage.setItem('saborImagen', 'img/Donas/dona.png');
+		// localStorage.setItem('glaseadoImagen', 'img/Donas/glaseadoVacio2.png');
+		// localStorage.setItem('decoracionImagen', 'img/Donas/decoracionVacio.png');
 	}
 
 	setSabor(saborId, saborImage){
@@ -54,18 +58,16 @@ class SeccionCrear extends Component {
 	}
 	
 	addDonut() {
-		const donut={
-		  'sabor_id': this.state.sabor,
-		  'glaseado_id':this.state.glaseado,
-		  'decorado_id':this.state.decoracion
-		};
-		Axios.post('/donuts',donut)
+		axios.post('/api/donuts',{
+		  	sabor_id: this.state.sabor,
+		  	glaseado_id:this.state.glaseado,
+		  	decorado_id:this.state.decoracion
+		})
 		.then(response => {
-		  console.log(response)
-			alert("Dona creada correctamente");
+		  console.log('Donut creada', response);
 		});
 
-		// Axios({
+		// axios({
         //     method: 'post',
         //     url: '/donuts',
         //     data: donut
@@ -85,13 +87,14 @@ class SeccionCrear extends Component {
 	render() {
 		return (			
 				<div className="row">
-					<div className="col fondo" id="box">
-						<img src={ localStorage.getItem('saborImagen') } className="medioSabor" />
+					<div className="col-sm-9 col-md-6 fondo" id="box">
+						<img src="img/Donas/dona.png" className="medio" />
+						<img src={ localStorage.getItem('saborImagen') } className="medio" />
 						<img src={ localStorage.getItem('glaseadoImagen') } className="medio" />
 						<img src={ localStorage.getItem('decoracionImagen') } className="medio" />
 					</div>
 
-					<div className="col fondo" id="box">
+					<div className="col-sm-3 col-md-6 fondo" id="box">
 						<br />
 						<h4 className="font-weight-light mb-0">Sabor </h4>
 						<BotonSabor onClick={this.setSabor} />
@@ -114,3 +117,7 @@ class SeccionCrear extends Component {
 }
 
 export default SeccionCrear;
+
+{/* <img src="img/Donas/dona.png" className="medio" />
+		<img src="img/Donas/glaseadoVacio2.png" className="medio" />
+		<img src="img/Donas/decoracionVacio.png" className="medio" /> */}

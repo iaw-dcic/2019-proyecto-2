@@ -1,40 +1,35 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
+import MostrarDonut from './MostrarDonut';
 
 class SeccionEditar extends Component {
+	constructor() {
+		super();
 
-    constructor(){
-        super()
-    
-        this.state={
-            donuts:[]
-        }
-    }
-    
-    // componentWillMount(){
-    //     this.loadDonut();
-    // }
-    
-    // loadDonut(){
-    //     fetch('/api/donuts').then(
-    //         (response)=>{
-    //             return response.json();
-    //         }   )
-    //     .then(donuts => {
-    //         this.setState({ donuts : donuts });
-    //     });
-    // }
+		this.state = {
+			donuts: []
+		};
+	}
+
+	componentDidMount() {
+		axios.get('/api/donuts').then((response) => {
+			this.setState({
+				donuts: response.data
+			});
+		});
+	}
 
 	render() {
 		return (
 			<div className="row fondo">
-                <h4>Hola</h4>
-				{
-                this.state.donuts.map(donut => 
-                    <h4>{donut.id}</h4>
-                )
-            }
+				{this.state.donuts.map((donut) => 
+					<MostrarDonut 
+						key={donut.id}
+						donut={donut} 
+					/>
+                )}
 			</div>
 		);
 	}

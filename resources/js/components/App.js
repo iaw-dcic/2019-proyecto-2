@@ -8,6 +8,7 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
+
 				<div className="row">
 					<div className="col">
 						<h2 className="text-center text-uppercase text-secondary mb-0">
@@ -25,6 +26,7 @@ class App extends Component {
 					</div>
 				</div>
 				<br />
+				
 				<SeccionEditar />
 			</BrowserRouter>
 		);
@@ -33,5 +35,4 @@ class App extends Component {
 
 ReactDOM.render(<App />, document.getElementById('react-app'));
 
-// col-6 col-md-4
-// col-12 col-md-8
+

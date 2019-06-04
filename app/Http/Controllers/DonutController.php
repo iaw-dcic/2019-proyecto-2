@@ -11,22 +11,22 @@ class DonutController extends Controller
 {
     public function index()
     {
+        // $user = Auth::user();
+        // $donuts = Donut::where('user_id', $user->id)->get();
+        
         $donuts = Donut::all();
         return $donuts->toJson();
     }
  
     public function show($id)
     { 
-        $user = Auth::user();
-        $donut = Donut::where('user_id', $user->id)->get();
-        //$donut = Donut::find($id);
-        return $donut;
+        $donut = Donut::find($id);
+        return $donut->toJson();
     }
  
     public function store()
     {
         $user = Auth::user();
-        
         $data = request()->all();
 
         $donut = new Donut();

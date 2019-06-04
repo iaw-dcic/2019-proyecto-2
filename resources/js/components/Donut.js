@@ -9,9 +9,9 @@ class Donut extends React.Component {
 
         return (
                 <div className="col fondo">
-                    <img src={ sabor } className="chico" />
-                    <img src={ glaseado } className="chico" />
-                    <img src={ decoracion } className="chico" />
+                    <img src={ sabor } className="donasChicas" />
+                    <img src={ glaseado } className="donasChicas" />
+                    <img src={ decoracion } className="donasChicas" />
                 </div>  
                  );
 

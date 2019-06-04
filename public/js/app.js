@@ -65755,8 +65755,7 @@ function (_Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('react-app')); // col-6 col-md-4
-// col-12 col-md-8
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('react-app'));
 
 /***/ }),
 
@@ -65772,6 +65771,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EditarDonut__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarDonut */ "./resources/js/components/EditarDonut.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65789,6 +65790,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65813,18 +65815,11 @@ function (_React$Component) {
   _createClass(BotonDecoracion, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      this.loadDecoracion();
-    }
-  }, {
-    key: "loadDecoracion",
-    value: function loadDecoracion() {
       var _this2 = this;
 
-      fetch('/api/decoraciones').then(function (response) {
-        return response.json();
-      }).then(function (decoraciones) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/decoraciones').then(function (response) {
         _this2.setState({
-          decoraciones: decoraciones
+          decoraciones: response.data
         });
       });
     }
@@ -65835,6 +65830,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.decoraciones.map(function (decoracion) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditarDonut__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: decoracion.id,
           donut: decoracion,
           name: "decoracion",
           onClick: function onClick() {
@@ -65864,6 +65860,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EditarDonut__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarDonut */ "./resources/js/components/EditarDonut.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65881,6 +65879,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65905,18 +65904,11 @@ function (_React$Component) {
   _createClass(BotonGlaseado, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      this.loadGlaseado();
-    }
-  }, {
-    key: "loadGlaseado",
-    value: function loadGlaseado() {
       var _this2 = this;
 
-      fetch('/api/glaseados').then(function (response) {
-        return response.json();
-      }).then(function (glaseados) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/glaseados').then(function (response) {
         _this2.setState({
-          glaseados: glaseados
+          glaseados: response.data
         });
       });
     }
@@ -65927,6 +65919,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.glaseados.map(function (glaseado) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditarDonut__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: glaseado.id,
           donut: glaseado,
           name: "glaseado",
           onClick: function onClick() {
@@ -65956,6 +65949,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EditarDonut__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarDonut */ "./resources/js/components/EditarDonut.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65973,6 +65968,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65997,18 +65993,11 @@ function (_React$Component) {
   _createClass(BotonSabor, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      this.loadSabor();
-    }
-  }, {
-    key: "loadSabor",
-    value: function loadSabor() {
       var _this2 = this;
 
-      fetch('/api/sabores').then(function (response) {
-        return response.json();
-      }).then(function (sabores) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/sabores').then(function (response) {
         _this2.setState({
-          sabores: sabores
+          sabores: response.data
         });
       });
     }
@@ -66019,6 +66008,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.sabores.map(function (sabor) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditarDonut__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: sabor.id,
           donut: sabor,
           name: "sabor",
           onClick: function onClick() {
@@ -66086,9 +66076,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
       console.log(e.currentTarget.value);
-      console.log(); // const donut = { ...this.props.donut };
-      // donut[e.currentTarget.name] = e.currentTarget.value;
-      // this.props.actualizarDonuts(this.props.clave, donut);
+      console.log();
 
       _this.props.onClick(e.currentTarget.value2, e.currentTarget.value);
     });
@@ -66097,11 +66085,6 @@ function (_React$Component) {
   }
 
   _createClass(EditarDonut, [{
-    key: "buttonClick",
-    value: function buttonClick(id, url) {
-      this.props.onClick(id, url);
-    }
-  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -66109,8 +66092,7 @@ function (_React$Component) {
         className: "btn",
         value: this.props.donut.url,
         value2: this.props.donut.id,
-        onClick: this.handleClick // onClick={() =>this.buttonClick(this.props.donut.id,this.props.donut.url)}
-
+        onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "donasbotones",
         src: this.props.donut.url
@@ -66122,6 +66104,238 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (EditarDonut);
+
+/***/ }),
+
+/***/ "./resources/js/components/ImageDonut.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/ImageDonut.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageDonut; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ImageDonut =
+/*#__PURE__*/
+function () {
+  function ImageDonut() {
+    _classCallCheck(this, ImageDonut);
+  }
+
+  _createClass(ImageDonut, [{
+    key: "getGlaseadoURL",
+    value: function getGlaseadoURL(id) {
+      var image;
+
+      switch (id) {
+        case 1:
+          {
+            image = 'img/Donas/glaseadoBlanco.png';
+            break;
+          }
+
+        case 2:
+          {
+            image = 'img/Donas/glaseadoChocolate.png';
+            break;
+          }
+
+        case 3:
+          {
+            image = 'img/Donas/glaseadoRosa.png';
+            break;
+          }
+
+        case 4:
+          {
+            image = 'img/Donas/glaseadoCeleste.png';
+            break;
+          }
+
+        case 5:
+          {
+            image = 'img/Donas/glaseadoNaranja.png';
+            break;
+          }
+
+        default:
+          {
+            image = 'img/Donas/glaseadoVacio2.png';
+            break;
+          }
+      }
+
+      return image;
+    }
+  }, {
+    key: "getSaborURL",
+    value: function getSaborURL(id) {
+      var image;
+
+      switch (id) {
+        case 1:
+          {
+            image = 'img/Donas/donaVainilla.png';
+            break;
+          }
+
+        case 2:
+          {
+            image = 'img/Donas/donaChocolate.png';
+            break;
+          }
+
+        case 3:
+          {
+            image = 'img/Donas/donaMixta.png';
+            break;
+          }
+
+        default:
+          {
+            image = 'img/Donas/decoracionVacio.png';
+            break;
+          }
+      }
+
+      return image;
+    }
+  }, {
+    key: "getDecoracionURL",
+    value: function getDecoracionURL(id) {
+      var image;
+
+      switch (id) {
+        case 1:
+          {
+            image = 'img/Donas/chispas1.png';
+            break;
+          }
+
+        case 2:
+          {
+            image = 'img/Donas/chispas2.png';
+            break;
+          }
+
+        case 3:
+          {
+            image = 'img/Donas/chispas3.png';
+            break;
+          }
+
+        case 4:
+          {
+            image = 'img/Donas/glaseado1.png';
+            break;
+          }
+
+        case 5:
+          {
+            image = 'img/Donas/glaseado2.png';
+            break;
+          }
+
+        default:
+          {
+            image = 'img/Donas/decoracionVacio.png';
+            break;
+          }
+      }
+
+      return image;
+    }
+  }]);
+
+  return ImageDonut;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MostrarDonut.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/MostrarDonut.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ImageDonut__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ImageDonut */ "./resources/js/components/ImageDonut.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var MostrarDonut =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(MostrarDonut, _React$Component);
+
+  function MostrarDonut(props) {
+    var _this;
+
+    _classCallCheck(this, MostrarDonut);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MostrarDonut).call(this, props));
+    _this.img = new _ImageDonut__WEBPACK_IMPORTED_MODULE_2__["default"]();
+    return _this;
+  }
+
+  _createClass(MostrarDonut, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn donutboton2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasboton",
+        src: this.img.getSaborURL(this.props.donut.sabor_id)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasboton",
+        src: this.img.getGlaseadoURL(this.props.donut.glaseado_id)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "donasboton",
+        src: this.img.getDecoracionURL(this.props.donut.decorado_id)
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+    }
+  }]);
+
+  return MostrarDonut;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (MostrarDonut);
 
 /***/ }),
 
@@ -66192,7 +66406,10 @@ function (_Component) {
     _this.setSabor = _this.setSabor.bind(_assertThisInitialized(_this));
     _this.setGlaseado = _this.setGlaseado.bind(_assertThisInitialized(_this));
     _this.setDecoracion = _this.setDecoracion.bind(_assertThisInitialized(_this));
-    _this.addDonut = _this.addDonut.bind(_assertThisInitialized(_this));
+    _this.addDonut = _this.addDonut.bind(_assertThisInitialized(_this)); // localStorage.setItem('saborImagen', 'img/Donas/dona.png');
+    // localStorage.setItem('glaseadoImagen', 'img/Donas/glaseadoVacio2.png');
+    // localStorage.setItem('decoracionImagen', 'img/Donas/decoracionVacio.png');
+
     return _this;
   }
 
@@ -66226,15 +66443,13 @@ function (_Component) {
   }, {
     key: "addDonut",
     value: function addDonut() {
-      var donut = {
-        'sabor_id': this.state.sabor,
-        'glaseado_id': this.state.glaseado,
-        'decorado_id': this.state.decoracion
-      };
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post('/donuts', donut).then(function (response) {
-        console.log(response);
-        alert("Dona creada correctamente");
-      }); // Axios({
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post('/api/donuts', {
+        sabor_id: this.state.sabor,
+        glaseado_id: this.state.glaseado,
+        decorado_id: this.state.decoracion
+      }).then(function (response) {
+        console.log('Donut creada', response);
+      }); // axios({
       //     method: 'post',
       //     url: '/donuts',
       //     data: donut
@@ -66254,11 +66469,14 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col fondo",
+        className: "col-sm-9 col-md-6 fondo",
         id: "box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "img/Donas/dona.png",
+        className: "medio"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: localStorage.getItem('saborImagen'),
-        className: "medioSabor"
+        className: "medio"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: localStorage.getItem('glaseadoImagen'),
         className: "medio"
@@ -66266,7 +66484,7 @@ function (_Component) {
         src: localStorage.getItem('decoracionImagen'),
         className: "medio"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col fondo",
+        className: "col-sm-3 col-md-6 fondo",
         id: "box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "font-weight-light mb-0"
@@ -66294,6 +66512,11 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (SeccionCrear);
+{
+  /* <img src="img/Donas/dona.png" className="medio" />
+  	<img src="img/Donas/glaseadoVacio2.png" className="medio" />
+  	<img src="img/Donas/decoracionVacio.png" className="medio" /> */
+}
 
 /***/ }),
 
@@ -66311,6 +66534,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _MostrarDonut__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MostrarDonut */ "./resources/js/components/MostrarDonut.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66333,6 +66559,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var SeccionEditar =
 /*#__PURE__*/
 function (_Component) {
@@ -66348,27 +66576,29 @@ function (_Component) {
       donuts: []
     };
     return _this;
-  } // componentWillMount(){
-  //     this.loadDonut();
-  // }
-  // loadDonut(){
-  //     fetch('/api/donuts').then(
-  //         (response)=>{
-  //             return response.json();
-  //         }   )
-  //     .then(donuts => {
-  //         this.setState({ donuts : donuts });
-  //     });
-  // }
-
+  }
 
   _createClass(SeccionEditar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/donuts').then(function (response) {
+        _this2.setState({
+          donuts: response.data
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row fondo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Hola"), this.state.donuts.map(function (donut) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, donut.id);
+      }, this.state.donuts.map(function (donut) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          key: donut.id,
+          donut: donut
+        });
       }));
     }
   }]);
