@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Pronostico from './Pronostico/Pronostico'
 import Playoff from './Playoff/Playoff'
+import Readme from './Readme'
 
 export default class Example extends Component {
     
     constructor() {
         super()
         this.state = {
-            content:''
+            content: <Readme />
         }
     }
 

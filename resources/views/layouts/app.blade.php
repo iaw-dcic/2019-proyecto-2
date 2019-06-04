@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+<link rel="shortcut icon" type="image/png" href="{{ asset('/public/copa.png')}}" sizes="64x64">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -108,6 +108,7 @@ table {
 
   .fondo { 
     background-image: url('../fondo.jpg');
+    background-color: rgb(19, 18, 18)
     
     background-repeat: no-repeat;
     background-position: top center;
@@ -164,4 +165,8 @@ table {
   .style-8::-webkit-scrollbar-thumb
  {
 	background-color: rgb(116, 85, 8);	
+ }
+
+ .card-readme {
+   font-size: 18px;
  }
