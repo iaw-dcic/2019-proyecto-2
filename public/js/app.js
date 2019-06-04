@@ -87582,6 +87582,7 @@ function (_Component) {
       isLoading: true,
       isAuthenticated: false,
       showingAlert: false,
+      alertMessage: "",
       nombre: "",
       id_prode: null,
       prodes: [],
@@ -87589,11 +87590,11 @@ function (_Component) {
     };
     _this.showAlert = _this.showAlert.bind(_assertThisInitialized(_this));
     _this.chooseProde = _this.chooseProde.bind(_assertThisInitialized(_this));
+    _this.newProde = _this.newProde.bind(_assertThisInitialized(_this));
     _this.saveProde = _this.saveProde.bind(_assertThisInitialized(_this));
     _this.deleteProde = _this.deleteProde.bind(_assertThisInitialized(_this));
     _this.getProdes = _this.getProdes.bind(_assertThisInitialized(_this));
     _this.setGanador = _this.setGanador.bind(_assertThisInitialized(_this));
-    _this.newProde = _this.newProde.bind(_assertThisInitialized(_this));
     _this.updateLLave = _this.updateLLave.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -87634,11 +87635,12 @@ function (_Component) {
     }
   }, {
     key: "showAlert",
-    value: function showAlert() {
+    value: function showAlert(message) {
       var _this2 = this;
 
       this.setState({
-        showingAlert: true
+        showingAlert: true,
+        alertMessage: message
       });
       setTimeout(function () {
         _this2.setState({
@@ -87646,22 +87648,58 @@ function (_Component) {
         });
       }, 2000);
     }
+    /* Obtiene el panel de prodes del usuario activo. */
+
   }, {
-    key: "chooseProde",
+    key: "getProdes",
     value: function () {
-      var _chooseProde = _asyncToGenerator(
+      var _getProdes2 = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(id_prode, nombre) {
-        var llaves;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(token) {
+        var prodes;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
+                return Object(_api_ApiUtils__WEBPACK_IMPORTED_MODULE_8__["getProdes"])(token);
+
+              case 2:
+                prodes = _context.sent;
+                this.setState({
+                  prodes: prodes
+                });
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getProdes(_x) {
+        return _getProdes2.apply(this, arguments);
+      }
+
+      return getProdes;
+    }()
+  }, {
+    key: "chooseProde",
+    value: function () {
+      var _chooseProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id_prode, nombre) {
+        var llaves;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
                 return Object(_api_ApiUtils__WEBPACK_IMPORTED_MODULE_8__["getPartidos"])(id_prode, this.state.token);
 
               case 2:
-                llaves = _context.sent;
+                llaves = _context2.sent;
                 this.setState({
                   llaves: llaves
                 });
@@ -87677,52 +87715,17 @@ function (_Component) {
 
               case 9:
               case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function chooseProde(_x, _x2) {
-        return _chooseProde.apply(this, arguments);
-      }
-
-      return chooseProde;
-    }() // Obtiene el panel de prodes del usuario activo.
-
-  }, {
-    key: "getProdes",
-    value: function () {
-      var _getProdes2 = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(token) {
-        var prodes;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return Object(_api_ApiUtils__WEBPACK_IMPORTED_MODULE_8__["getProdes"])(token);
-
-              case 2:
-                prodes = _context2.sent;
-                this.setState({
-                  prodes: prodes
-                });
-
-              case 4:
-              case "end":
                 return _context2.stop();
             }
           }
         }, _callee2, this);
       }));
 
-      function getProdes(_x3) {
-        return _getProdes2.apply(this, arguments);
+      function chooseProde(_x2, _x3) {
+        return _chooseProde.apply(this, arguments);
       }
 
-      return getProdes;
+      return chooseProde;
     }()
   }, {
     key: "newProde",
@@ -87785,7 +87788,7 @@ function (_Component) {
       var _deleteProde2 = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var id_prode, token;
+        var id_prode, token, message;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -87812,9 +87815,10 @@ function (_Component) {
                 local_storage__WEBPACK_IMPORTED_MODULE_9___default.a.set('llaves', []);
                 local_storage__WEBPACK_IMPORTED_MODULE_9___default.a.set('id_prode', null);
                 local_storage__WEBPACK_IMPORTED_MODULE_9___default.a.set('nombre', "");
-                this.showAlert();
+                message = 'Éxito - Prode eliminado correctamente';
+                this.showAlert(message);
 
-              case 13:
+              case 14:
               case "end":
                 return _context4.stop();
             }
@@ -87834,7 +87838,7 @@ function (_Component) {
       var _saveProde2 = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var llaves, id_prode, token;
+        var llaves, id_prode, token, message;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
@@ -87846,9 +87850,10 @@ function (_Component) {
                 return Object(_api_ApiUtils__WEBPACK_IMPORTED_MODULE_8__["saveProde"])(id_prode, llaves, token);
 
               case 5:
-                this.showAlert();
+                message = 'Éxito -  Prode guardado correctamente';
+                this.showAlert(message);
 
-              case 6:
+              case 7:
               case "end":
                 return _context5.stop();
             }
@@ -87873,9 +87878,13 @@ function (_Component) {
           llaves: llaves
         });
         this.updateLLave(nro_proximoPartido, equipoGanador);
-      } else console.log(equipoGanador + " Campeón !");
-    } // Cuando se selecciona un ganador intermedio se deben actualizar los valores siguientes
-    // Esto ocurre cuando se cambia el ganador de una ronda habiendo ya pasado a la siguiente.
+      } else {
+        var message = equipoGanador + ' - Campeón del torneo!';
+        this.showAlert(message);
+      }
+    }
+    /* Cuando se selecciona un ganador intermedio se deben actualizar los valores siguientes
+     Esto ocurre cuando se cambia el ganador de una ronda habiendo ya pasado a la siguiente. */
 
   }, {
     key: "updateLLave",
@@ -87919,7 +87928,7 @@ function (_Component) {
         style: sectionStyle
       }, this.state.showingAlert ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "alert alert-success text-center ".concat(this.state.showingAlert ? 'alert-hidden' : 'alert-hidden')
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, "\xC9xito"), " -  Operaci\xF3n realizada correctamente!") : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], {
+      }, this.state.alertMessage) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], {
         className: "container pt-5 text-center"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Copa Libertadores"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("hr", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], {
         fluid: true
@@ -87927,7 +87936,9 @@ function (_Component) {
         show: this.state.modalShow,
         crear: this.newProde,
         onHide: modalClose
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], {
+        fluid: true
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         md: 6
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         md: 6,
@@ -87947,6 +87958,7 @@ function (_Component) {
         prodes: this.state.prodes,
         seleccionar: this.chooseProde
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        style: llavesStyle,
         md: 10
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_prode_Libertadores__WEBPACK_IMPORTED_MODULE_6__["default"], {
         nombre: this.state.nombre,
@@ -87962,6 +87974,9 @@ function (_Component) {
 
 var sectionStyle = {
   backgroundColor: 'ffff'
+};
+var llavesStyle = {
+  resize: 'none'
 };
 var nombreStyle = {
   justifyContent: 'center',
@@ -88146,7 +88161,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-var endpoint = 'https://prode-iaw.herokuapp.com';
+var endpoint = 'https://prode-iaw.herokuapp.com'; //const endpoint = 'http://127.0.0.1:8000';
+
 function login(_x, _x2) {
   return _login.apply(this, arguments);
 }

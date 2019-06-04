@@ -38,4 +38,3 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/prode/user', 'ProdeController@getProdes');
 
 });
-

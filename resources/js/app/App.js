@@ -8,7 +8,7 @@ import NuevoProde from "./components/prode/NuevoProde";
 import Libertadores from "./components/prode/Libertadores";
 import MisProdes from './components/prode/MisProdes';
 
-import {createProde , getPartidos , getProdes , saveProde , deleteProde } from "./api/ApiUtils";
+import { createProde , getPartidos , getProdes , saveProde , deleteProde } from "./api/ApiUtils";
 
 import localStorage from 'local-storage'
 
@@ -21,6 +21,7 @@ export default class App extends Component {
             isLoading: true,
             isAuthenticated : false ,
             showingAlert: false,
+            alertMessage: "",
             nombre : "",
             id_prode : null ,
             prodes : [],
@@ -30,13 +31,13 @@ export default class App extends Component {
         this.showAlert=this.showAlert.bind(this);
 
         this.chooseProde=this.chooseProde.bind(this);
+        this.newProde=this.newProde.bind(this);
         this.saveProde=this.saveProde.bind(this);
         this.deleteProde=this.deleteProde.bind(this);
 
         this.getProdes=this.getProdes.bind(this);
 
         this.setGanador=this.setGanador.bind(this);
-        this.newProde=this.newProde.bind(this);
         this.updateLLave=this.updateLLave.bind(this);
     }
 
@@ -69,9 +70,10 @@ export default class App extends Component {
 
     }
 
-    showAlert() {
+    showAlert(message) {
         this.setState({
-            showingAlert: true
+            showingAlert: true,
+            alertMessage : message
         });
 
         setTimeout(() => {
@@ -79,6 +81,14 @@ export default class App extends Component {
                 showingAlert: false
             });
         }, 2000);
+    }
+
+    /* Obtiene el panel de prodes del usuario activo. */
+    async getProdes(token){
+
+        let prodes = await getProdes(token);
+        this.setState({ prodes : prodes })
+
     }
 
     async chooseProde(id_prode,nombre){
@@ -92,14 +102,6 @@ export default class App extends Component {
         localStorage.set('id_prode',id_prode);
         localStorage.set('nombre',nombre);
         localStorage.set('llaves',llaves);
-
-    }
-
-    // Obtiene el panel de prodes del usuario activo.
-    async getProdes(token){
-
-        let prodes = await getProdes(token);
-        this.setState({ prodes : prodes })
 
     }
 
@@ -136,7 +138,8 @@ export default class App extends Component {
         localStorage.set('id_prode', null);
         localStorage.set('nombre', "");
 
-        this.showAlert();
+        let message = 'Éxito - Prode eliminado correctamente';
+        this.showAlert(message);
 
     }
 
@@ -148,7 +151,8 @@ export default class App extends Component {
 
         await saveProde(id_prode,llaves,token);
 
-        this.showAlert();
+        let message = 'Éxito -  Prode guardado correctamente';
+        this.showAlert(message);
     }
 
     setGanador(nro_partido, nro_proximoPartido, equipoGanador) {
@@ -167,13 +171,15 @@ export default class App extends Component {
             this.updateLLave(nro_proximoPartido,equipoGanador);
 
         }
-        else
-            console.log(equipoGanador + " Campeón !");
+        else{
+            let message = equipoGanador + ' - Campeón del torneo!';
+            this.showAlert(message);
+        }
 
     }
 
-    // Cuando se selecciona un ganador intermedio se deben actualizar los valores siguientes
-    // Esto ocurre cuando se cambia el ganador de una ronda habiendo ya pasado a la siguiente.
+    /* Cuando se selecciona un ganador intermedio se deben actualizar los valores siguientes
+     Esto ocurre cuando se cambia el ganador de una ronda habiendo ya pasado a la siguiente. */
     updateLLave(nro_partido , equipoGanador){
 
         let llaves = this.state.llaves.slice();
@@ -210,7 +216,7 @@ export default class App extends Component {
                 {
                     this.state.showingAlert ?
                         <div className={`alert alert-success text-center ${this.state.showingAlert ? 'alert-hidden' : 'alert-hidden'}`}>
-                            <strong>Éxito</strong> -  Operación realizada correctamente!
+                            {this.state.alertMessage}
                         </div>
                         :
                         <>
@@ -229,7 +235,7 @@ export default class App extends Component {
                         onHide={modalClose}
                     />
 
-                    <Container>
+                    <Container fluid>
                         <Row>
                             <Col md={6}/>
                             <Col md={6} style={nombreStyle} className="text-right">
@@ -248,7 +254,7 @@ export default class App extends Component {
                             />
 
                         </Col>
-                        <Col md={10}>
+                        <Col style={llavesStyle} md={10}>
 
                             <Libertadores
                                 nombre ={this.state.nombre}
@@ -267,6 +273,11 @@ export default class App extends Component {
 
 const sectionStyle = {
     backgroundColor : 'ffff'
+};
+
+const llavesStyle = {
+    resize : 'none',
+
 };
 
 const nombreStyle = {
