@@ -1,4 +1,4 @@
-USE avatarfactory;
+USE  gcp_d65e847e3db0bf733ff7;
 
 #....................
 # 4 skins
