@@ -81900,9 +81900,7 @@ function (_Component) {
           image: _this.state.image,
           image_type: _this.state.image_type,
           tshirt_type: _this.state.tshirt_type
-        });
-
-        _this.props.save();
+        }).then(_this.props.save());
       } catch (e) {
         console.log('axios request failed:', e);
       }

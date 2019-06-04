@@ -83,8 +83,9 @@ export default class TShirtEditor extends Component {
                 image: this.state.image,
                 image_type: this.state.image_type,
                 tshirt_type: this.state.tshirt_type,
-            });
-            this.props.save();
+            }).then(
+                this.props.save()
+            );
         } catch (e) {
             console.log('axios request failed:', e);
         }
