@@ -18,6 +18,6 @@ Route::middleware('auth:api')->post('shirts/store/{user}', 'ShirtController@stor
 Route::middleware('auth:api')->patch('shirts/{shirt}', 'ShirtController@update');
 Route::middleware('auth:api')->delete('shirts/{shirt}', 'ShirtController@destroy');
 Route::middleware('auth:api')->get('static/images/shirts/{type}/{color}', 'ShirtController@getShirtImage');
-Route::get('static/images/decorations/{id}', 'ShirtController@getDecorationImage');
-Route::get('static/images/decorations', 'ShirtController@getAllDecorations');
-Route::get('static/images/shirts', 'ShirtController@getAllShirts');
+Route::get('static/images/decorations/{id}', 'StaticImageController@getDecorationImage');
+Route::get('static/images/decorations', 'StaticImageController@getAllDecorations');
+Route::get('static/images/shirts', 'StaticImageController@getAllShirts');

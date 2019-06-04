@@ -14,9 +14,6 @@ import Logo from './img/logo.png'
 import { Hero } from 'react-landing-page'
 import ReactDOM from 'react-dom'
 
-
-
-
 export default class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -29,8 +26,6 @@ export default class AppContainer extends Component {
                 decoration: "",
             },
             shirts: [],
-            received_shirts_info: false,
-            received_shirts_images: false,
         };
     }
 
@@ -51,13 +46,13 @@ export default class AppContainer extends Component {
                 });
             axios.get(`/api/static/images/shirts`)
                 .then(res => {
-                    this.setState({ shirtsImages: res.data, received_shirts_images: true });
+                    this.setState({ shirtsImages: res.data });
                 });
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.received_user_info) {
+        if (nextProps.user_info.id != null) {
             axios.get("/api/" + nextProps.user_info.id + "/shirts").then(resp => {
                 let shirts = resp.data;
                 this.setState({ shirts, received_shirts_info: true });
@@ -107,11 +102,10 @@ export default class AppContainer extends Component {
                     <Row className="pt-3">
                         <Col>
                             <div className="well">
-                                <Shirt shirt={this.state.shirt} 
-                                    received_shirts_info={this.state.received_shirts_info} 
-                                    selected_decoration_image={this.state.selected_decoration_image} 
-                                    shirtsImages={this.state.shirtsImages} 
-                                    received_shirts_images={this.state.received_shirts_images}/>
+                                <Shirt shirt={this.state.shirt}
+                                    received_shirts_info={this.state.received_shirts_info}
+                                    selected_decoration_image={this.state.selected_decoration_image}
+                                    shirtsImages={this.state.shirtsImages} />
                             </div>
                         </Col>
                         <Col className="pt-2">

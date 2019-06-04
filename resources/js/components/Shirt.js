@@ -9,19 +9,18 @@ export default class Shirt extends Component {
         this.state = {
             shirtImage: '',
             decorationImage: '',
-            received_shirt_image: false,
         };
     }
 
 
     componentDidMount() {
-        if (this.props.shirt.id != 0 && this.props.received_shirts_images) {
+        if (this.props.shirt.id != 0 && this.props.shirtsImages != null) {
             this.loadShirtImage(this.props);
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.shirt.id != 0 && nextProps.received_shirts_images) {
+        if (nextProps.shirt.id != 0 && nextProps.shirtsImages != null) {
             this.loadShirtImage(nextProps);
             if (nextProps.shirt.decoration !== null) {
                 axios.get(`/api/static/images/decorations/` + nextProps.shirt.decoration)
@@ -45,7 +44,7 @@ export default class Shirt extends Component {
     }
 
     showShirt = () => {
-        if (this.state.received_shirt_image) {
+        if (this.state.loaded_image) {
             return (
                 <React.Fragment>
                     <div className="parent">
@@ -73,7 +72,7 @@ export default class Shirt extends Component {
             images = images.longsleeve;
         for (let key in images) {
             if (key === propState.shirt.color) {
-                this.setState({ shirtImage: images[key], received_shirt_image: true });
+                this.setState({ shirtImage: images[key], loaded_image: true });
             }
         }
     }

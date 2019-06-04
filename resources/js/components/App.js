@@ -10,12 +10,11 @@ class App extends Component {
         this.state = {
             user_info: {
                 'isLoggedIn': document.querySelector('meta[name="api_token"]') != null,
-                'id': '',
+                'id': null,
                 'api_token': '',
                 'name': '',
                 'email': '',
             },
-            received_user_info: false,
         };
 
     }
@@ -29,7 +28,7 @@ class App extends Component {
             <BrowserRouter>
                 <div id="app">
                     <Switch>
-                        <Route exact path="/" render={(props) => <AppContainer {...props} user_info={this.state.user_info} received_user_info={this.state.received_user_info} />} />
+                        <Route exact path="/" render={(props) => <AppContainer {...props} user_info={this.state.user_info} />} />
                         <Route path="/readme" component={Readme} />
                     </Switch>
                 </div>

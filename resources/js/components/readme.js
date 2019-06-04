@@ -14,8 +14,8 @@ export default class Readme extends Component {
                     bg="white"
                     backgroundImage={LandingImage}
                 >
-                    <Heading fontSize={[64]} className="xoverflow">ShirtDesigner</Heading>
-                    <Text fontSize={[20]}>This website was made by Sebastián Salaberría.</Text>
+                    <Heading fontSize={[64]}>ShirtDesigner</Heading>
+                    <Text fontSize={[20]}>This website was made by Sebastián Salaberría for academic purposes.</Text>
                 </Hero>
             </React.Fragment>
         );
