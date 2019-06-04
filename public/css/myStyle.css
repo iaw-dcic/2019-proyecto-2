@@ -1,0 +1,16 @@
+.stampa{
+    position:absolute;
+    height:150px;
+    width:200px;
+    top: 150px;
+    left : 215px;
+    z-index: 1;
+  }
+  
+  .remera
+  {
+    position:absolute;
+    width:550px;
+    height:500px;
+    z-index: -1;
+  }

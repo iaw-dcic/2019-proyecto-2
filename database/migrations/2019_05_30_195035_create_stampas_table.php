@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Shirts extends Migration
+class CreateStampasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Shirts extends Migration
      */
     public function up()
     {
-        Schema::create('shirts', function (Blueprint $table) {
+        Schema::create('stampas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre')->index();
+            $table->string('url');
             $table->timestamp('created_at')->nullable();
-            $table->unsignedBigInteger('stampa_id')->nullable();
-            $table->foreign('stampa_id')->references('id')->on('stampas');
         });
     }
 
@@ -29,6 +27,6 @@ class Shirts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shirts');
+        Schema::dropIfExists('stampas');
     }
 }

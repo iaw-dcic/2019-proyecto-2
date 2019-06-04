@@ -77333,9 +77333,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Remera__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Remera */ "./resources/js/components/Remera.js");
-/* harmony import */ var _PanelColores__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PanelColores */ "./resources/js/components/PanelColores.js");
-/* harmony import */ var _PanelStampa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PanelStampa */ "./resources/js/components/PanelStampa.js");
+/* harmony import */ var _PanelSupremo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PanelSupremo */ "./resources/js/components/PanelSupremo.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77353,8 +77351,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
 
@@ -77374,14 +77370,19 @@ function (_Component) {
 
   _createClass(App, [{
     key: "render",
+
+    /*<div class = "row">
+    <div class="col-md-8">
+        <Remera stampa="#"
+        />
+    </div>
+    <div class="col-md-4">
+        <PanelColores/>
+        <PanelStampa/>
+    </div>
+    </div>*/
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Dise\xF1a tu propia remera "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PanelColores__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PanelStampa__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Dise\xF1a tu propia remera "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PanelSupremo__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -77392,18 +77393,22 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
-/***/ "./resources/js/components/PanelColores.js":
+/***/ "./resources/js/components/PanelSupremo.js":
 /*!*************************************************!*\
-  !*** ./resources/js/components/PanelColores.js ***!
+  !*** ./resources/js/components/PanelSupremo.js ***!
   \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PanelColores; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PanelSupremo; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Remera__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Remera */ "./resources/js/components/Remera.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77424,174 +77429,153 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var PanelColores =
+
+
+
+var PanelSupremo =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(PanelColores, _Component);
+  _inherits(PanelSupremo, _Component);
 
-  function PanelColores() {
-    _classCallCheck(this, PanelColores);
+  function PanelSupremo() {
+    _classCallCheck(this, PanelSupremo);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(PanelColores).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(PanelSupremo).apply(this, arguments));
   }
 
-  _createClass(PanelColores, [{
+  _createClass(PanelSupremo, [{
     key: "render",
+    //TENGO que guardar la estampa en el state de la remera.
+
+    /*
+    state = {
+        currentStampa: localStorage.getItem('image') ? localStorage.getItem('image') : null,
+        //currentColur: localStorage.getItem('currentColour') ? localStorage.getItem('currentColour') :null,
+    }*/
+
+    /*
+    componentDidMount = () =>{
+        window.axios = require('axios');
+        try{
+            const response = axios.get('/images')
+            .then(res => {
+                this.setState({stampas : res.data});
+            }
+              );
+        }catch(e){
+            console.log('axios failed:',e);
+        }
+    }*/
+    //crearRemera = () => {}
+    //eliminarRemera = () => {}
+    //cambiarColor = () => {}
+    //guardarRemera = () => {}
+    //setStampa = () => {}
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        "class": "my-4"
-      }, "Elegir color"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
+        className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        colorURL: "images/negra.jpg",
+        stampaURL: "images/design3.png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "my-4"
+      }, "Elegir color"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/negra.jpg",
         alt: "",
         width: "50",
         height: "70"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/blanca.jpg",
         alt: "",
         width: "50",
         height: "70"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/violeta.jpg",
         alt: "",
         width: "50",
         height: "70"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/azul.jpg",
         alt: "",
         width: "50",
         height: "70"
-      })))));
-    }
-  }]);
-
-  return PanelColores;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/PanelStampa.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/PanelStampa.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PanelStampa; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var PanelStampa =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(PanelStampa, _Component);
-
-  function PanelStampa() {
-    _classCallCheck(this, PanelStampa);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(PanelStampa).apply(this, arguments));
-  }
-
-  _createClass(PanelStampa, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        "class": "my-4"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "my-4"
       }, "Elegir estampa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
+        className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/design1.jpg",
         alt: "",
         width: "50",
         height: "70"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/design2.png",
         alt: "",
         width: "50",
         height: "70"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/design3.png",
         alt: "",
         width: "50",
         height: "70"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-md-3 col-sm-6 mb-4"
+        className: "col-md-3 col-sm-6 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
+        className: "img-fluid",
         src: "images/design4.png",
         alt: "",
         width: "50",
         height: "70"
-      })))));
+      })))))));
     }
   }]);
 
-  return PanelStampa;
+  return PanelSupremo;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -77610,9 +77594,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Remera; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77630,8 +77611,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
 
@@ -77652,9 +77631,15 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        "class": "img-fluid",
-        src: "images/negra.jpg",
+        className: "img-fluid remera",
+        src: this.props.colorURL,
         width: "550",
+        height: "500",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-fluid stampa",
+        src: this.props.stampaURL,
+        width: "150",
         height: "500",
         alt: ""
       }));
