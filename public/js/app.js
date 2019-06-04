@@ -65830,10 +65830,12 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bienvenido al pronostico de la Copa Libertadores!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-playoff btn-playoff1 mr-2",
         onClick: function onClick(event) {
           return _this2.handleChangePronostico();
         }
       }, "Iniciar pron\xF3stico"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-playoff btn-playoff1",
         onClick: function onClick(event) {
           return _this2.handleChangePlayoff();
         }
@@ -66013,23 +66015,26 @@ function (_Component) {
         className: "d-flex flex-row buttonsSelectPlayoff"
       }, this.state.playoffs.map(function (name, id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "mr-2",
+          className: "btn-playoff btn-playoff1 mr-2",
           key: id,
           onClick: function onClick(event) {
             return _this5.handleChange(id);
           }
         }, " Playoff ", id + 1);
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Copa Libertadores"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "container-deshacer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-deshacer btn-eliminar",
         onClick: function onClick(event) {
           return _this5.handleDelete();
         }
-      }, "Eliminar playoff")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "mt-3"
-      }, "Campe\xF3n:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, "Eliminar playoff")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Copa Libertadores")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header mt-3 card-header2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Campe\xF3n \uD83C\uDFC6:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableFinal"
@@ -66310,9 +66315,15 @@ function (_Component) {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Copa Libertadores")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "\uD83C\uDFC6 Copa Libertadores \uD83C\uDFC6"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "fase-deshacer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableOctavos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66380,13 +66391,20 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeOctavos(octavos[15], 15);
         }
-      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-deshacer",
         onClick: function onClick(event) {
           return _this3.handleChangeBorrarCuartos();
         }
-      }, "Deshacer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, "Deshacer \u21B6"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableCuartos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66422,13 +66440,20 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(_this3.state.cuartos[7], 7);
         }
-      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-deshacer",
         onClick: function onClick(event) {
           return _this3.handleChangeBorrarSemifinal();
         }
-      }, "Deshacer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, "Deshacer \u21B6"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableSemifinal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66448,13 +66473,20 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeSemifinal(_this3.state.semifinal[3], 3);
         }
-      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " FINAL")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " FINAL"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-deshacer",
         onClick: function onClick(event) {
           return _this3.handleChangeBorrarFinal(_this3.state["final"]);
         }
-      }, "Deshacer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, "Deshacer \u21B6"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tablefinal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         id: "titleTableTorneo"
@@ -66466,13 +66498,20 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeFinal(_this3.state["final"][1]);
         }
-      }, this.state["final"][1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, this.state["final"][1])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header mt-3 card-header2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "mt-3"
-      }, "Campe\xF3n:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Campe\xF3n \uD83C\uDFC6:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", this.state.ganador))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-playoff btn-playoff1 mt-2",
         onClick: function onClick(event) {
           return _this3.handleChangeGuardar(event);
         }
-      }, "Guardar pron\xF3stico"));
+      }, "Guardar pron\xF3stico \uD83D\uDCBE"))));
     }
   }]);
 
@@ -66501,8 +66540,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -191,124 +191,141 @@ export default class Pronostico extends Component {
         return (
             <div className="container">
                 <div className="card-header mt-3">
-                    <h1>Copa Libertadores</h1>
+                    <div className="card">
+                        <h1>🏆 Copa Libertadores 🏆</h1>
+                    </div>
                 </div>
-                <h2 className="mt-3"><b> Octavos de final</b></h2>
-                <table id='tableOctavos'>
-                    <tr id='titleTableTorneo'>
-                        <th>Local</th>
-                        <th>vs.</th>
-                        <th>Visitante </th>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[0],0)}>{octavos[0]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[1],1)}>{octavos[1]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[2],2)}>{octavos[2]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[3],3)}>{octavos[3]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[4],4)}>{octavos[4]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[5],5)}>{octavos[5]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[6],6)}>{octavos[6]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[7],7)}>{octavos[7]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[8],8)}>{octavos[8]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[9],9)}>{octavos[9]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[10],10)}>{octavos[10]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[11],11)}>{octavos[11]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[12],12)}>{octavos[12]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[13],13)}>{octavos[13]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[14],14)}>{octavos[14]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeOctavos(octavos[15],15)}>{octavos[15]}</td>
-                    </tr>
-                </table>
+                <div className="card">
+                    <div className="fase-deshacer">
+                        <h2 className="mt-3"><b> Octavos de final</b></h2>
+                    </div>
+                        <table id='tableOctavos'>
+                        <tr id='titleTableTorneo'>
+                            <th>Local</th>
+                            <th>vs.</th>
+                            <th>Visitante </th>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[0],0)}>{octavos[0]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[1],1)}>{octavos[1]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[2],2)}>{octavos[2]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[3],3)}>{octavos[3]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[4],4)}>{octavos[4]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[5],5)}>{octavos[5]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[6],6)}>{octavos[6]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[7],7)}>{octavos[7]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[8],8)}>{octavos[8]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[9],9)}>{octavos[9]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[10],10)}>{octavos[10]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[11],11)}>{octavos[11]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[12],12)}>{octavos[12]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[13],13)}>{octavos[13]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[14],14)}>{octavos[14]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeOctavos(octavos[15],15)}>{octavos[15]}</td>
+                        </tr>
+                    </table>
 
-                <h2 className="mt-3"><b> Cuartos de final</b></h2>
-                <button onClick={(event) => this.handleChangeBorrarCuartos()}>Deshacer</button>
-                <table id='tableCuartos'>
-                    <tr id='titleTableTorneo'>
-                        <th>Local</th>
-                        <th>vs.</th>
-                        <th>Visitante </th>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[0],0)}>{this.state.cuartos[0]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[1],1)}>{this.state.cuartos[1]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[2],2)}>{this.state.cuartos[2]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[3],3)}>{this.state.cuartos[3]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[4],4)}>{this.state.cuartos[4]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[5],5)}>{this.state.cuartos[5]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[6],6)}>{this.state.cuartos[6]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[7],7)}>{this.state.cuartos[7]}</td>
-                    </tr>
-                </table>
+                    <div className="row">
+                        <div className="column"><h2 className="mt-3"><b> Cuartos de final</b></h2></div>
+                        <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarCuartos()}>Deshacer ↶</button></div>
+                    </div>                   
+                    <table id='tableCuartos'>
+                        <tr id='titleTableTorneo'>
+                            <th>Local</th>
+                            <th>vs.</th>
+                            <th>Visitante </th>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[0],0)}>{this.state.cuartos[0]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[1],1)}>{this.state.cuartos[1]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[2],2)}>{this.state.cuartos[2]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[3],3)}>{this.state.cuartos[3]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[4],4)}>{this.state.cuartos[4]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[5],5)}>{this.state.cuartos[5]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[6],6)}>{this.state.cuartos[6]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeCuartos(this.state.cuartos[7],7)}>{this.state.cuartos[7]}</td>
+                        </tr>
+                    </table>
 
-                <h2 className="mt-3"><b> Semifinal</b></h2>
-                <button onClick={(event) => this.handleChangeBorrarSemifinal()}>Deshacer</button>
-                <table id='tableSemifinal'>
-                    <tr id='titleTableTorneo'>
-                        <th>Local</th>
-                        <th>vs.</th>
-                        <th>Visitante </th>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[0],0)}>{this.state.semifinal[0]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[1],1)}>{this.state.semifinal[1]}</td>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[2],2)}>{this.state.semifinal[2]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[3],3)}>{this.state.semifinal[3]}</td>
-                    </tr>
-                </table>
+                    <div className="row">
+                        <div className="column"><h2 className="mt-3"><b> Semifinal</b></h2></div>
+                        <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarSemifinal()}>Deshacer ↶</button></div>
+                    </div>
+                    <table id='tableSemifinal'>
+                        <tr id='titleTableTorneo'>
+                            <th>Local</th>
+                            <th>vs.</th>
+                            <th>Visitante </th>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[0],0)}>{this.state.semifinal[0]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[1],1)}>{this.state.semifinal[1]}</td>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[2],2)}>{this.state.semifinal[2]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeSemifinal(this.state.semifinal[3],3)}>{this.state.semifinal[3]}</td>
+                        </tr>
+                    </table>
+                    <div className="row">
+                        <div className="column"><h2 className="mt-3"><b> FINAL</b></h2></div> 
+                        <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarFinal(this.state.final)}>Deshacer ↶</button></div> 
+                    </div> 
+                    <table id='tablefinal'>
+                        <tr id='titleTableTorneo'>
+                            <th>Local</th>
+                            <th>vs.</th>
+                            <th>Visitante </th>
+                        </tr>
+                        <tr>
+                            <td onClick={(event) => this.handleChangeFinal(this.state.final[0])}>{this.state.final[0]}</td>
+                            <td>-</td>
+                            <td onClick={(event) => this.handleChangeFinal(this.state.final[1])}>{this.state.final[1]}</td>
+                        </tr>
+                    </table>
+                </div>
 
-                <h2 className="mt-3"><b> FINAL</b></h2>
-                <button onClick={(event) => this.handleChangeBorrarFinal(this.state.final)}>Deshacer</button>
-                <table id='tablefinal'>
-                    <tr id='titleTableTorneo'>
-                        <th>Local</th>
-                        <th>vs.</th>
-                        <th>Visitante </th>
-                    </tr>
-                    <tr>
-                        <td onClick={(event) => this.handleChangeFinal(this.state.final[0])}>{this.state.final[0]}</td>
-                        <td>-</td>
-                        <td onClick={(event) => this.handleChangeFinal(this.state.final[1])}>{this.state.final[1]}</td>
-                    </tr>
-                </table>
-
-                <h2 className="mt-3">Campeón:<b> {this.state.ganador}</b></h2>
-                <button onClick={(event) => this.handleChangeGuardar(event)}>Guardar pronóstico</button>
+                <div className="card">
+                    <div className="card-header mt-3 card-header2">
+                        <h1 className="mt-3">Campeón 🏆:<b> {this.state.ganador}</b></h1>
+                    </div>
+                    <div className="card-body center">
+                         <button className="btn-playoff btn-playoff1 mt-2" onClick={(event) => this.handleChangeGuardar(event)}>Guardar pronóstico 💾</button>
+                    </div>
+                </div>
             </div>
         );
     }

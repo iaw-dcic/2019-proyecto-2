@@ -22,8 +22,113 @@ table {
 
   .card-header {
     text-align: center;
+    font-size: large;
+  }
+
+  .card-header2 {
+    text-align: left;
+  }
+
+  .center {
+    text-align: center;
   }
 
   .buttonsSelectPlayoff {
     overflow-x:auto;
+  }
+
+  .btn-deshacer {
+    color: white;
+    background-color: rgb(253, 0, 0);
+    border-color: rgb(252, 77, 77);
+    /*width: 20%;
+    height: 20%;
+    margin-top: 2%;
+    margin-bottom: 1%;*/
+    place-items: end;
+    margin-top: 4%;
+  }
+
+  .btn-deshacer:focus,
+  .btn-deshacer.focus {
+  outline: 0;
+  box-shadow: transparent;
+  }
+
+  .btn-deshacer:hover {
+    color: #eca3a3;
+    text-decoration: underline;
+  }
+
+  .btn-eliminar {
+      text-decoration: none;
+  }
+
+  .btn-eliminar:hover {
+    color: #c51616;
+    text-decoration: underline;
+  }
+
+  .container-deshacer{
+    text-align: right;
+  }
+
+  .btn-playoff {
+    background-color: rgb(155, 134, 16);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .btn-playoff1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid rgb(184, 159, 18);
+  }
+  
+  .btn-playoff1:hover {
+    background-color: rgb(184, 159, 18);
+    color: white;
+  }
+
+  .my-navbar {
+    background-color: rgba(184, 159, 18, 0.39);
+    color: white;
+  }
+
+  .fondo { 
+    background-image: url('../fondo.jpg');
+    
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .card {
+    background-color: rgba(184, 159, 18, 0.39);
+    padding: 0.75rem 1.25rem;
+  }
+
+  body {
+    color: white;
+  }
+
+  .fase-deshacer{
+    text-align: center;
+    display: flex;
+  }
+
+  .column {
+    float: left;
+    width: 50%;
+    text-align: center;
   }

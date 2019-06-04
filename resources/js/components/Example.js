@@ -32,8 +32,8 @@ export default class Example extends Component {
                         <div className="card">
                             <div className="card-header"><b>Bienvenido al pronostico de la Copa Libertadores!</b></div>
                             <div className="card-body">
-                                <button onClick={(event) => this.handleChangePronostico()} >Iniciar pronóstico</button>         
-                                <button onClick={(event) => this.handleChangePlayoff()} >Mis pronósticos</button>
+                                <button className="btn-playoff btn-playoff1 mr-2" onClick={(event) => this.handleChangePronostico()} >Iniciar pronóstico</button>         
+                                <button className="btn-playoff btn-playoff1" onClick={(event) => this.handleChangePlayoff()} >Mis pronósticos</button>
                             </div>
                         </div>
                     </div>

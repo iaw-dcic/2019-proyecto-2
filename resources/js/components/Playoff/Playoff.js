@@ -99,16 +99,18 @@ export default class Playoff extends Component {
             <h1 className="mt-3 mb-3">Mis pronósticos</h1>
             <div className='row'> 
                 <div className="d-flex flex-row buttonsSelectPlayoff" >
-                 { this.state.playoffs.map((name,id) => ( <button className="mr-2" key = {id} onClick={(event) => this.handleChange(id)}> Playoff {id+1}</button> ))}
+                 { this.state.playoffs.map((name,id) => ( <button className="btn-playoff btn-playoff1 mr-2" key = {id} onClick={(event) => this.handleChange(id)}> Playoff {id+1}</button> ))}
                 </div>
             </div>
+            <div className="container-deshacer"><button className="btn-deshacer btn-eliminar" onClick={(event) => this.handleDelete()}>Eliminar playoff</button></div>
             <div className="container mt-3">
                 <div className="card-header">
-                    <h1>Copa Libertadores</h1>                   
-                    <button onClick={(event) => this.handleDelete()}>Eliminar playoff</button>                  
+                    <h1>Copa Libertadores</h1>                                     
                 </div>
 
-                <h2 className="mt-3">Campeón:<b> {this.state.ganador}</b></h2>
+                <div className="card-header mt-3 card-header2">
+                    <h1>Campeón 🏆:<b> {this.state.ganador}</b></h1>
+                </div>
 
                 <h2 className="mt-3"><b> Final</b></h2>
                 <table id='tableFinal'>

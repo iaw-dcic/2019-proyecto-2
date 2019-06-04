@@ -22,9 +22,9 @@
     <link href="{{ asset('css/config-app.css') }}" rel="stylesheet">
     <!--<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"> -->
 </head>
-<body>
+<body class="fondo">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm my-navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/#') }}">
                     {{ config('app.name', 'Laravel') }}
