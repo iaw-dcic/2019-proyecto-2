@@ -32,12 +32,13 @@ export default class Campeon extends Component {
     }
 
     tick() {
-        if (this.props.nombre != EQUIPO_ND)
-            if (this.state.color == "red")
-                this.setState({color: "green"})
-            else if (this.state.color == "green")
-                this.setState({color: "blue"})
-            else
-                this.setState({color: "red"})
+        if (this.props.nombre == EQUIPO_ND)
+            this.setState({color: "black"})
+        else if (this.state.color == "red")
+            this.setState({color: "green"})
+        else if (this.state.color == "green")
+            this.setState({color: "blue"})
+        else
+            this.setState({color: "red"})
     }
 }

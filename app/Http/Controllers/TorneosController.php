@@ -89,4 +89,96 @@ class TorneosController extends Controller
 
         return response()->json($torneo->id);
     }
+
+    public function getTorneo($torneoId) {
+        $torneo = Torneos::where('id', $torneoId)->first();
+
+        $octavos = Partidos::where('torneo_id', $torneo->id)
+                            ->where('estado', 0)
+                            ->get();
+        
+        $cuartos = Partidos::where('torneo_id', $torneo->id)
+                            ->where('estado', 1)
+                            ->get();
+
+        $semifinales = Partidos::where('torneo_id', $torneo->id)
+                            ->where('estado', 2)
+                            ->get();
+
+        $final = Partidos::where('torneo_id', $torneo->id)
+                            ->where('estado', 3)
+                            ->get();
+        
+        $ret = [$torneo, $octavos, $cuartos, $semifinales, $final];
+
+        return response()->json($ret);
+    }
+
+    public function updateTorneo(Request $request, $torneoId) {
+        $torneo = Torneos::where('id', $torneoId)->first();
+
+        $torneo->etapa      = $request->input('data.etapa');
+        $torneo->campeon    = $request->input('data.campeon');
+
+        $torneo->save();
+
+        $partidos = Partidos::where('torneo_id', $torneo->id)
+                            ->where('estado', 0)
+                            ->get();
+        $i = 0;
+        foreach ($partidos as $p) {
+            $p->equipo1       = $request->input('data.octavos.'.$i.'.0');
+            $p->equipo2       = $request->input('data.octavos.'.$i.'.1');
+            $p->jugado        = $request->input('data.octavos.'.$i.'.2');
+
+            $p->save();
+            $i++;
+        }
+
+        $partidos = Partidos::where('torneo_id', $torneo->id)
+                            ->where('estado', 1)
+                            ->get();
+        $i = 0;
+        foreach ($partidos as $p) {
+            $p->equipo1       = $request->input('data.cuartos.'.$i.'.0');
+            $p->equipo2       = $request->input('data.cuartos.'.$i.'.1');
+            $p->jugado        = $request->input('data.cuartos.'.$i.'.2');
+
+            $p->save();
+            $i++;
+        }
+
+        $partidos = Partidos::where('torneo_id', $torneo->id)
+                            ->where('estado', 2)
+                            ->get();
+        $i = 0;
+        foreach ($partidos as $p) {
+            $p->equipo1       = $request->input('data.semifinales.'.$i.'.0');
+            $p->equipo2       = $request->input('data.semifinales.'.$i.'.1');
+            $p->jugado        = $request->input('data.semifinales.'.$i.'.2');
+
+            $p->save();
+            $i++;
+        }
+
+        $partido = Partidos::where('torneo_id', $torneoId)
+                            ->where('estado', 3)
+                            ->first();
+        
+        $partido->equipo1   = $request->input('data.final.0');
+        $partido->equipo2   = $request->input('data.final.1');
+        $partido->jugado    = $request->input('data.final.2');
+
+        $partido->save();
+
+        return response()->json('OK');
+    }
+
+    public function deleteTorneo($torneoId) {
+        $torneo = Torneos::where('id', $torneoId)->first();
+
+        $torneo->delete();
+
+        return response()->json('OK');
+    }
 }

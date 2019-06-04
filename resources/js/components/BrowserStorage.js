@@ -3,11 +3,6 @@ import { EQUIPO_ND } from './Torneo'
 import { OCTAVOS } from './Torneo'
 
 export default class BrowserStorage {
-    octavos
-
-    construct() {
-        this.octavos = this.getOctavosFromDB()
-    }
     getOctavos(response) {
         var oct
         

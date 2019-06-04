@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Partido from './Partido';
 import Campeon from './Campeon';
 import BrowserStorage from './BrowserStorage';
+import TraductorJSON from './TraductorJSON';
 import axios from 'axios';
 
 export const OCTAVOS       = 0,
@@ -15,7 +16,8 @@ export const OCTAVOS       = 0,
              POR_JUGAR     = 1,
              EQUIPO_ND     = "",
              NO_ID         = -1,
-             storage       = new BrowserStorage();
+             storage       = new BrowserStorage(),
+             traductor     = new TraductorJSON();
 
 export default class Torneo extends Component {
     constructor(props) {
@@ -28,16 +30,20 @@ export default class Torneo extends Component {
             semifinales:    [],
             final:          [],
             campeon:        EQUIPO_ND,
-            etapa:          OCTAVOS
+            etapa:          OCTAVOS,
+            cargarResponse: null
         }
 
-        this.handleClickOctavos = this.handleClickOctavos.bind(this)
-        this.handleClickCuartos = this.handleClickCuartos.bind(this)
-        this.handleClickSemifis = this.handleClickSemifis.bind(this)
-        this.handleClickFinal   = this.handleClickFinal.bind(this)
-        this.handleClickGuardar = this.handleClickGuardar.bind(this)
-        this.handleClickCargar  = this.handleClickCargar.bind(this)
-        this.handleClickBorrar  = this.handleClickBorrar.bind(this)
+        this.handleClickOctavos        = this.handleClickOctavos.bind(this)
+        this.handleClickCuartos        = this.handleClickCuartos.bind(this)
+        this.handleClickSemifis        = this.handleClickSemifis.bind(this)
+        this.handleClickFinal          = this.handleClickFinal.bind(this)
+        this.handleClickGuardar        = this.handleClickGuardar.bind(this)
+        this.handleClickCargar         = this.handleClickCargar.bind(this)
+        this.handleClickBorrar         = this.handleClickBorrar.bind(this)
+        this.handleClickCargarTorneo   = this.handleClickCargarTorneo.bind(this)
+        this.handleClickEliminarTorneo = this.handleClickEliminarTorneo.bind(this)
+        this.handleClickNuevo          = this.handleClickNuevo.bind(this)
     }
 
     componentDidMount() {
@@ -68,7 +74,7 @@ export default class Torneo extends Component {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <h1>Torneo</h1>
+                        <h1>{this.state.id==NO_ID? "Nuevo Torneo":"Torneo "+this.state.id}</h1>
                         <Campeon nombre={this.state.campeon}/>
                     </div>
                 </div>
@@ -78,6 +84,11 @@ export default class Torneo extends Component {
                 <br/>
 
                 {this.renderBotonera()}
+
+                <br/>
+
+                {this.renderListaTorneos()}
+
             </div>
         )
     }
@@ -183,6 +194,35 @@ export default class Torneo extends Component {
                     <button type="button" onClick={this.handleClickBorrar} className="btn btn-default mr-1">
                         Deshacer Cambios
                     </button>
+                    <button type="button" onClick={this.handleClickNuevo} className="btn btn-default mr-1">
+                        Nuevo Torneo
+                    </button>
+                </div>
+            </div>
+        )
+    }
+
+    renderListaTorneos() {
+        var torneos
+
+        if (this.state.cargarResponse)
+            torneos = this.state.cargarResponse.data.map(($torneo) =>
+                <div key={$torneo.id}>
+                    <button id={$torneo.id} type="button" onClick={this.handleClickCargarTorneo} className="btn btn-default mr-1">
+                        {$torneo.id}
+                    </button>
+                    <button id={$torneo.id} type="button" onClick={this.handleClickEliminarTorneo} className="btn btn-danger mr-1">
+                        Eliminar Torneo {$torneo.id}
+                    </button>
+                    <br/>
+                </div>
+            )
+
+        return (
+            <div className="row justify-content-left">
+                <div className="col-md-8">
+                    <h3>Lista de Torneos</h3>
+                    <ul>{torneos? torneos:"No hay torneos que mostrar"}</ul>
                 </div>
             </div>
         )
@@ -308,12 +348,35 @@ export default class Torneo extends Component {
                         id: response.data
                     })
                 })
+        else 
+            axios.put('/api/torneos/'+this.state.id, { data: this.state })
     }
 
     handleClickCargar(e) {
+        var thisss = this
+
         axios.get('/api/torneos')
             .then(function (response) {
-                console.log(response)
+                thisss.setState({
+                    cargarResponse: response
+                })
+            })
+    }
+
+    handleClickCargarTorneo(e) {
+        var thisss = this
+
+        axios.get('/api/torneos/'+e.target.id)
+            .then(function (response) {
+                thisss.setState({
+                    id: response.data[0].id,
+                    campeon: response.data[0].campeon ? response.data[0].campeon:EQUIPO_ND,
+                    etapa: response.data[0].etapa,
+                    octavos: traductor.traducirOctavos(response.data[1]),
+                    cuartos: traductor.traducirCuartos(response.data[2]),
+                    semifinales: traductor.traducirSemifinales(response.data[3]),
+                    final: traductor.traducirFinal(response.data[4])
+                })
             })
     }
 
@@ -324,6 +387,39 @@ export default class Torneo extends Component {
         axios.get('/api/torneoPred')
             .then(function (response) {
                 thisss.setState({
+                    octavos:        storage.getOctavos(response),
+                    cuartos:        storage.getCuartos(),
+                    semifinales:    storage.getSemis(),
+                    final :         storage.getFinal(),
+                    campeon :       storage.getCampeon(),
+                    etapa :         storage.getEtapa()
+                })
+            })
+    }
+
+    handleClickEliminarTorneo(e) {
+        var thisss = this
+
+        axios.delete('/api/torneos/'+e.target.id)
+            .then(function(response) {
+                axios.get('/api/torneos')
+                    .then(function (response) {
+                        thisss.setState({
+                            id:             NO_ID,
+                            cargarResponse: response
+                        })
+                    })
+            })
+    }
+
+    handleClickNuevo() {
+        storage.borrarMemoria()
+
+        var thisss = this
+        axios.get('/api/torneoPred')
+            .then(function (response) {
+                thisss.setState({
+                    id:             NO_ID,
                     octavos:        storage.getOctavos(response),
                     cuartos:        storage.getCuartos(),
                     semifinales:    storage.getSemis(),
