@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Partido from './Partido';
 import Campeon from './Campeon';
 import BrowserStorage from './BrowserStorage';
+import axios from 'axios';
 
 export const OCTAVOS       = 0,
              CUARTOS       = 1,
@@ -32,17 +33,41 @@ export default class Torneo extends Component {
         this.handleClickCuartos = this.handleClickCuartos.bind(this)
         this.handleClickSemifis = this.handleClickSemifis.bind(this)
         this.handleClickFinal   = this.handleClickFinal.bind(this)
+        this.handleClickGuardar = this.handleClickGuardar.bind(this)
     }
 
     componentDidMount() {
-        this.setState({
-            octavos:        storage.getOctavos(),
-            cuartos:        storage.getCuartos(),
-            semifinales:    storage.getSemis(),
-            final :         storage.getFinal(),
-            campeon :       storage.getCampeon(),
-            etapa :         storage.getEtapa()
-        })
+        var thisss = this
+        axios.get('/api/torneoPred')
+            .then(function (response) {
+                var oct = [ ["", "", POR_JUGAR], 
+                            ["", "", POR_JUGAR],
+                            ["", "", POR_JUGAR],
+                            ["", "", POR_JUGAR],
+                            ["", "", POR_JUGAR],
+                            ["", "", POR_JUGAR],
+                            ["", "", POR_JUGAR],
+                            ["", "", POR_JUGAR],] 
+
+                var i = 0, j = 0
+                for (var equipo of response.data) {
+                    oct[i][j] = equipo.name
+                    if (j==1) {
+                        j=0
+                        i++
+                    } else
+                        j++
+                }
+                
+                thisss.setState({
+                    octavos:        storage.getOctavos(oct),
+                    cuartos:        storage.getCuartos(),
+                    semifinales:    storage.getSemis(),
+                    final :         storage.getFinal(),
+                    campeon :       storage.getCampeon(),
+                    etapa :         storage.getEtapa()
+                })
+            })
     }
 
     render() {
@@ -160,8 +185,11 @@ export default class Torneo extends Component {
         return (
             <div className="row justify-content-left">
                 <div className="col-md-8">
-                    <button type="button" className="btn btn-primary mr-1">
+                    <button type="button" onClick={this.handleClickGuardar} className="btn btn-primary mr-1">
                         Guardar Cambios
+                    </button>
+                    <button type="button" className="btn btn-primary mr-1">
+                        Cargar Prode
                     </button>
                 </div>
             </div>
@@ -276,5 +304,9 @@ export default class Torneo extends Component {
             final: fin,
             campeon: champion
         })
+    }
+
+    handleClickGuardar(e) {
+        
     }
 }

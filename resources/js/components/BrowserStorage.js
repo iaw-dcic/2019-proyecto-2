@@ -3,22 +3,19 @@ import { EQUIPO_ND } from './Torneo'
 import { OCTAVOS } from './Torneo'
 
 export default class BrowserStorage {
-    getOctavos() {
-        var oct
+    octavos
 
+    construct() {
+        this.octavos = this.getOctavosFromDB()
+    }
+    getOctavos(octavos) {
+        var oct
+        
         if (sessionStorage.octavos)
             oct = JSON.parse(sessionStorage.octavos)
         else {
-            oct = [ ["River", "Boca", POR_JUGAR], 
-                    ["Hola", "Chau", POR_JUGAR],
-                    ["Quehace", "Comoanda", POR_JUGAR],
-                    ["Equipo 1", "Equipo 2", POR_JUGAR],
-                    ["Equipo 3", "Equipo 4", POR_JUGAR],
-                    ["Equipo 5", "Equipo 6", POR_JUGAR],
-                    ["Equipo 7", "Equipo 8", POR_JUGAR],
-                    ["Equipo 9", "Equipo 10", POR_JUGAR]]
-
-            sessionStorage.octavos = JSON.stringify(oct)
+            oct = octavos
+            sessionStorage.octavos = JSON.stringify(octavos)
         }
 
         return oct

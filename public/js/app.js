@@ -65759,6 +65759,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -65768,15 +65770,22 @@ var BrowserStorage =
 function () {
   function BrowserStorage() {
     _classCallCheck(this, BrowserStorage);
+
+    _defineProperty(this, "octavos", void 0);
   }
 
   _createClass(BrowserStorage, [{
+    key: "construct",
+    value: function construct() {
+      this.octavos = this.getOctavosFromDB();
+    }
+  }, {
     key: "getOctavos",
-    value: function getOctavos() {
+    value: function getOctavos(octavos) {
       var oct;
       if (sessionStorage.octavos) oct = JSON.parse(sessionStorage.octavos);else {
-        oct = [["River", "Boca", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Hola", "Chau", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Quehace", "Comoanda", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 1", "Equipo 2", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 3", "Equipo 4", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 5", "Equipo 6", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 7", "Equipo 8", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["Equipo 9", "Equipo 10", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
-        sessionStorage.octavos = JSON.stringify(oct);
+        oct = octavos;
+        sessionStorage.octavos = JSON.stringify(octavos);
       }
       return oct;
     }
@@ -66139,6 +66148,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Partido__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Partido */ "./resources/js/components/Partido.js");
 /* harmony import */ var _Campeon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Campeon */ "./resources/js/components/Campeon.js");
 /* harmony import */ var _BrowserStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BrowserStorage */ "./resources/js/components/BrowserStorage.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66156,6 +66167,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66196,19 +66208,55 @@ function (_Component) {
     _this.handleClickCuartos = _this.handleClickCuartos.bind(_assertThisInitialized(_this));
     _this.handleClickSemifis = _this.handleClickSemifis.bind(_assertThisInitialized(_this));
     _this.handleClickFinal = _this.handleClickFinal.bind(_assertThisInitialized(_this));
+    _this.handleClickGuardar = _this.handleClickGuardar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Torneo, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.setState({
-        octavos: storage.getOctavos(),
-        cuartos: storage.getCuartos(),
-        semifinales: storage.getSemis(),
-        "final": storage.getFinal(),
-        campeon: storage.getCampeon(),
-        etapa: storage.getEtapa()
+      var thisss = this;
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/api/torneoPred').then(function (response) {
+        var oct = [["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR], ["", "", POR_JUGAR]];
+        var i = 0,
+            j = 0;
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = response.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var equipo = _step.value;
+            oct[i][j] = equipo.name;
+
+            if (j == 1) {
+              j = 0;
+              i++;
+            } else j++;
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+              _iterator["return"]();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        thisss.setState({
+          octavos: storage.getOctavos(oct),
+          cuartos: storage.getCuartos(),
+          semifinales: storage.getSemis(),
+          "final": storage.getFinal(),
+          campeon: storage.getCampeon(),
+          etapa: storage.getEtapa()
+        });
       });
     }
   }, {
@@ -66311,8 +66359,12 @@ function (_Component) {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
+        onClick: this.handleClickGuardar,
         className: "btn btn-primary mr-1"
-      }, "Guardar Cambios")));
+      }, "Guardar Cambios"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary mr-1"
+      }, "Cargar Prode")));
     }
   }, {
     key: "handleClickOctavos",
@@ -66325,13 +66377,13 @@ function (_Component) {
       cuar[posEnCuartos][EQUIPO1] == EQUIPO_ND ? cuar[posEnCuartos][EQUIPO1] = equipoGanador : cuar[posEnCuartos][EQUIPO2] = equipoGanador;
       oct[nroPartido][ESTADO] = JUGADO;
       var nuevaEtapa = CUARTOS;
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
       try {
-        for (var _iterator = oct[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var partido = _step.value;
+        for (var _iterator2 = oct[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var partido = _step2.value;
 
           if (partido[ESTADO] == POR_JUGAR) {
             nuevaEtapa = OCTAVOS;
@@ -66339,16 +66391,16 @@ function (_Component) {
           }
         }
       } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-            _iterator["return"]();
+          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+            _iterator2["return"]();
           }
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
       }
@@ -66373,13 +66425,13 @@ function (_Component) {
       semi[posEnSemis][EQUIPO1] == EQUIPO_ND ? semi[posEnSemis][EQUIPO1] = equipoGanador : semi[posEnSemis][EQUIPO2] = equipoGanador;
       cuar[nroPartido][ESTADO] = JUGADO;
       var nuevaEtapa = SEMIFINALES;
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator2 = cuar[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var partido = _step2.value;
+        for (var _iterator3 = cuar[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var partido = _step3.value;
 
           if (partido[ESTADO] == POR_JUGAR) {
             nuevaEtapa = CUARTOS;
@@ -66387,16 +66439,16 @@ function (_Component) {
           }
         }
       } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
-            _iterator2["return"]();
+          if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+            _iterator3["return"]();
           }
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
@@ -66420,13 +66472,13 @@ function (_Component) {
       fin[EQUIPO1] == EQUIPO_ND ? fin[EQUIPO1] = equipoGanador : fin[EQUIPO2] = equipoGanador;
       semi[nroPartido][ESTADO] = JUGADO;
       var nuevaEtapa = FINAL;
-      var _iteratorNormalCompletion3 = true;
-      var _didIteratorError3 = false;
-      var _iteratorError3 = undefined;
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
 
       try {
-        for (var _iterator3 = semi[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var partido = _step3.value;
+        for (var _iterator4 = semi[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var partido = _step4.value;
 
           if (partido[ESTADO] == POR_JUGAR) {
             nuevaEtapa = SEMIFINALES;
@@ -66434,16 +66486,16 @@ function (_Component) {
           }
         }
       } catch (err) {
-        _didIteratorError3 = true;
-        _iteratorError3 = err;
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
-            _iterator3["return"]();
+          if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+            _iterator4["return"]();
           }
         } finally {
-          if (_didIteratorError3) {
-            throw _iteratorError3;
+          if (_didIteratorError4) {
+            throw _iteratorError4;
           }
         }
       }
@@ -66470,6 +66522,9 @@ function (_Component) {
         campeon: champion
       });
     }
+  }, {
+    key: "handleClickGuardar",
+    value: function handleClickGuardar(e) {}
   }]);
 
   return Torneo;

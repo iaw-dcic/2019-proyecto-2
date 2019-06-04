@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/torneoPred', 'TorneosController@pred');
+Route::get('/torneos', 'TorneosController@show')->middleware('auth:api');
