@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<link rel="shortcut icon" type="image/png" href="{{ asset('/public/copa.png')}}" sizes="64x64">
+<link rel="shortcut icon" type="image/png" href="{{ asset('../copa.png')}}" sizes="64x64">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
     <meta name="api-token" content="{{ Auth::user()->api_token}}">
     @endauth
 
-    <title>Prode Libertadores 🏆</title>
+    <title>Prode Libertadores</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
