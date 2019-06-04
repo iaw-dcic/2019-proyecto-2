@@ -16,67 +16,67 @@ class CargaDeDatos extends Seeder
         DB::table('equipos')->insert([
             [
                 'nombre'=> 'Argentina',
-                'bandera'=> 'src',
+                'bandera'=> '/images/argentina.png',
                 'continente'=> 'Sudamerica'
             ],[
                 'nombre'=> 'Brasil',
-                'bandera'=> 'src',
+                'bandera'=> '/images/brasil.png',
                 'continente'=> 'Sudamerica'
             ],[
                 'nombre'=> 'Colombia',
-                'bandera'=> 'src',
+                'bandera'=> '/images/colombia.png',
                 'continente'=> 'Sudamerica'
             ],[
                 'nombre'=> 'Uruguay',
-                'bandera'=> 'src',
+                'bandera'=> '/images/uruguay.png',
                 'continente'=> 'Sudamerica'
             ],[
                 'nombre'=> 'Mexico',
-                'bandera'=> 'src',
+                'bandera'=> '/images/mexico.png',
                 'continente'=> 'Norte y CentroAmerica'
             ],[
                 'nombre'=> 'Alemania',
-                'bandera'=> 'src',
+                'bandera'=> '/images/alemania.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Belgica',
-                'bandera'=> 'src',
+                'bandera'=> '/images/belgica.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Croacia',
-                'bandera'=> 'src',
+                'bandera'=> '/images/croacia.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'España',
-                'bandera'=> 'src',
+                'bandera'=> '/images/espana.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Francia',
-                'bandera'=> 'src',
+                'bandera'=> '/images/francia.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Inglaterra',
-                'bandera'=> 'src',
+                'bandera'=> '/images/inglaterra.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Italia',
-                'bandera'=> 'src',
+                'bandera'=> '/images/italia.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Holanda',
-                'bandera'=> 'src',
+                'bandera'=> '/images/holanda.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Portugal',
-                'bandera'=> 'src',
+                'bandera'=> '/images/portugal.png',
                 'continente'=> 'Europa'
             ],[
                 'nombre'=> 'Egipto',
-                'bandera'=> 'src',
+                'bandera'=> '/images/egipto.png',
                 'continente'=> 'Africa'
             ],[
                 'nombre'=> 'Nigeria',
-                'bandera'=> 'src',
+                'bandera'=> '/images/nigeria.png',
                 'continente'=> 'Africa'
             ],
         ]);
@@ -86,36 +86,52 @@ class CargaDeDatos extends Seeder
         DB::table('cruces_iniciales')->insert([
                 [
                     'llave_nro'=> '1',
-                    'id_A'=> '13',
-                    'id_B'=> '16'
+                    'nombre_A'=> 'Holanda',
+                    'nombre_B'=> 'Nigeria',
+                    'bandera_A'=> '/images/holanda.png',
+                    'bandera_B'=> '/images/nigeria.png'
                 ],[
                     'llave_nro'=> '2',
-                    'id_A'=> '9',
-                    'id_B'=> '5'
+                    'nombre_A'=> 'España',
+                    'nombre_B'=> 'Mexico',
+                    'bandera_A'=> '/images/espana.png',
+                    'bandera_B'=> '/images/mexico.png'
                 ],[
                     'llave_nro'=> '3',
-                    'id_A'=> '11',
-                    'id_B'=> '6'
+                    'nombre_A'=> 'Inglaterra',
+                    'nombre_B'=> 'Alemania',
+                    'bandera_A'=> '/images/inglaterra.png',
+                    'bandera_B'=> '/images/alemania.png'
                 ],[
                     'llave_nro'=> '4',
-                    'id_A'=> '2',
-                    'id_B'=> '14'
+                    'nombre_A'=> 'Brasil',
+                    'nombre_B'=> 'Portugal',
+                    'bandera_A'=> '/images/brasil.png',
+                    'bandera_B'=> '/images/portugal.png'
                 ],[
                     'llave_nro'=> '5',
-                    'id_A'=> '10',
-                    'id_B'=> '8'
+                    'nombre_A'=> 'Francia',
+                    'nombre_B'=> 'Croacia',
+                    'bandera_A'=> '/images/francia.png',
+                    'bandera_B'=> '/images/croacia.png'
                 ],[
                     'llave_nro'=> '6',
-                    'id_A'=> '4',
-                    'id_B'=> '15'
+                    'nombre_A'=> 'Uruguay',
+                    'nombre_B'=> 'Egipto',
+                    'bandera_A'=> '/images/uruguay.png',
+                    'bandera_B'=> '/images/egipto.png'
                 ],[
                     'llave_nro'=> '7',
-                    'id_A'=> '3',
-                    'id_B'=> '12'
+                    'nombre_A'=> 'Colombia',
+                    'nombre_B'=> 'Italia',
+                    'bandera_A'=> '/images/colombia.png',
+                    'bandera_B'=> '/images/italia.png'
                 ],[
                     'llave_nro'=> '8',
-                    'id_A'=> '1',
-                    'id_B'=> '7'
+                    'nombre_A'=> 'Argentina',
+                    'nombre_B'=> 'Belgica',
+                    'bandera_A'=> '/images/argentina.png',
+                    'bandera_B'=> '/images/belgica.png'
                 ],
         ]);    
     }

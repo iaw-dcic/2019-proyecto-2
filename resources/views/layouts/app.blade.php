@@ -15,11 +15,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
          <!-- NavBar  -->
         @include('navBar')
+
+          <!-- Mensaje flash de error para formularios  --> 
+          @if ($errors->any())
+        <div class="alert  alert-danger" role="alert">
+                <ul>
+                        @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                        @endforeach
+                </ul>
+        </div>
+        @endif
 
         <main class="py-4">
             @yield('content')

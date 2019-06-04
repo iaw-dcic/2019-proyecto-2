@@ -9,7 +9,7 @@ class Cruce extends Model
     protected $table = "cruces";
 
     //el 'id' lo agrega por defecto
-    protected $fillable = ['prode_id','llave_nro','id_A','id_B',];
+    protected $fillable = ['prode_id','llave_nro',];
 
 
     //Relaciones      muchas cruces -> 1 prode

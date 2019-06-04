@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user-token" content="{{ Auth::user()->api_token }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -21,9 +22,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
-    @include('navBar')
+        @include('navBar')
+
+         <!-- Mensaje flash de error para formularios  --> 
+         @if ($errors->any())
+        <div class="alert  alert-danger" role="alert">
+                <ul>
+                        @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                        @endforeach
+                </ul>
+        </div>
+        @endif
 
     <div id="react-app"></div>
 

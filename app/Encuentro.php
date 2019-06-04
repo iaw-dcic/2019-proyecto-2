@@ -9,19 +9,18 @@ class Encuentro extends Model
     protected $table = "encuentros";
 
     //el 'id' lo agrega por defecto
-    protected $fillable = ['llave_nro','resultado',];
+    protected $fillable = ['prode_id','cruce_id','nombre_A','nombre_B','resultado_A','resultado_B','bandera_A','bandera_B','pasa',];
 
 
     //Relaciones      muchas encuentros -> 1 prode
-    //public function prode(){
-    //    return $this->belongsTo('App\Prode');
-   // }
+    public function prode(){
+       return $this->belongsTo('App\Prode');
+    }
 
     //Un encuentro -> 1 cruce
     public function cruce(){
         return $this->belongsTo('App\Cruce');
     }
-
     
 
     //Un encuentro -> 2 equipos

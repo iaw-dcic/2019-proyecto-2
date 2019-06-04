@@ -14,7 +14,7 @@ class CrucesTabla extends Migration
     public function up()
     {
         Schema::create('cruces', function (Blueprint $table) {
-            $table->bigInteger('prode_id')->unsigned()->nullable();
+            $table->bigInteger('prode_id')->unsigned();
             $table->bigIncrements('id');
             $table->bigInteger('llave_nro');
             
