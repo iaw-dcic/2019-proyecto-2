@@ -8,7 +8,7 @@
     		<li>El botón "guardar cambios" crea una nueva entrada en la BD si se trabaja en un prode nuevo o modifica un prode si se trabaja sobre un prode seleccionado ya guardado</li>
     	</ul>
     </div>
-    <div class="container">
+    <div>
     	<p>Proyecto de Juan Martín Girón - 114157</p>
     </div>
 @endsection
