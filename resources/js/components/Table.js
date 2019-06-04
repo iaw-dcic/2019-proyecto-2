@@ -210,8 +210,8 @@ export default class Table extends Component {
 
     createChampion(){
         if (this.state.champ != "empty")
-            return <div className="myDiv">Campeón: {this.state.champ}</div>
-        else return <div className="myDiv">Campeón no seleccionado</div>
+            return <div className="myDiv champDiv col-sm">Campeón: {this.state.champ}</div>
+        else return <div className="myDiv champDiv col-sm">Campeón: sin seleccionar</div>
     }
 
     onClickOctavos(e){

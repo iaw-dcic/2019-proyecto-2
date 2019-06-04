@@ -3,6 +3,7 @@
 	height: 30px;
 	line-height: 10px;
 	text-align: center;
+	font-size: 13px;
 }
 
 .myDiv{
@@ -34,4 +35,14 @@
 
 .final{
 	margin-bottom: 210px;
+}
+
+.champDiv{
+	margin-top: 220px;
+	margin-bottom: 220px;
+	font-size: 30px;
+	color: white;
+	background-color: black;
+	text-align: center;
+	width: 70px;
 }

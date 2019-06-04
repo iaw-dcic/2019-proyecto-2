@@ -66103,10 +66103,10 @@ function (_Component) {
     key: "createChampion",
     value: function createChampion() {
       if (this.state.champ != "empty") return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "myDiv"
+        className: "myDiv champDiv col-sm"
       }, "Campe\xF3n: ", this.state.champ);else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "myDiv"
-      }, "Campe\xF3n no seleccionado");
+        className: "myDiv champDiv col-sm"
+      }, "Campe\xF3n: sin seleccionar");
     }
   }, {
     key: "onClickOctavos",
