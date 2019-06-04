@@ -81920,10 +81920,10 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-6 my-center"
+        className: "col-md-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tshirt-editor-container",
-        className: "my-center"
+        className: "justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tshirt_image",
         className: "tshirt-contents image " + this.state.tshirt_type + "_image",
@@ -82012,7 +82012,7 @@ function (_Component) {
         src: "/storage/uploads/women_tee.png",
         onClick: this.makeWomenTee
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, document.querySelector('meta[name="api-token"]') && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mycenter save-btn"
+        className: "my-center save-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-m",
         onClick: this.submit

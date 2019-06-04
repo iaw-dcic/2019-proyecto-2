@@ -97,8 +97,8 @@ export default class TShirtEditor extends Component {
     render() {
         return (
             <div className="row justify-content-center">
-                    <div className="col-md-6 my-center">
-                        <div id="tshirt-editor-container" className="my-center">
+                    <div className="col-md-6">
+                        <div id="tshirt-editor-container" className="justify-content-center">
                             <div>
                                 <div>
                                     <div id="tshirt_image"
@@ -175,7 +175,7 @@ export default class TShirtEditor extends Component {
 
                         <div>
                             {document.querySelector('meta[name="api-token"]') &&
-                                <div className="mycenter save-btn">
+                                <div className="my-center save-btn">
                                     <button className="btn btn-primary btn-m" onClick={this.submit}>Save</button>
                                 </div>}
                         </div>
