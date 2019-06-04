@@ -26,8 +26,7 @@ class App extends Component {
             try {
                 const response = axios.get('/api/tshirts')
                     .then(res => {
-                        this.setState({ my_tshirts: res.data }
-                        );
+                        this.setState({ my_tshirts: res.data });
                     });
             } catch (e) {
                 console.log('axios request failed:', e);
