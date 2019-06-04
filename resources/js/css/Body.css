@@ -1,0 +1,27 @@
+#eyes{
+    position:absolute;
+    /* left : 117px; */
+    /* top: 142px; */
+    z-index: 1;
+}
+
+#hair{
+    position:absolute;
+    /* left : 29px; */
+    /* top: 17px; */
+    z-index: 1;
+}
+
+#mouth{
+    position:absolute;
+    /* left : 119px; */
+    /* top: 177px; */
+    z-index: 1;
+}
+
+#nose{
+    position:absolute;
+    /* left : 151px; */
+    /* top: 165px; */
+    z-index: 1;
+}

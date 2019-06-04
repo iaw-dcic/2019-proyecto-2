@@ -7,6 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- API Token -->
+    @if(Auth::user() != null)
+    <meta name="api-token" content="{{ Auth::user()->api_token }}">
+    @endif
+
     <title>{{ config('app.name', 'AvatarIO') }}</title>
 
     <!-- Scripts -->

@@ -16,6 +16,7 @@ class App extends Component {
                     <Route path="/" component={Dashboard} exact/>
                     <Route path="/profile" component={Profile} exact/>
                     <Route path="/mylab" component={Lab} exact/>
+                    <Route path="/mylab/:id" component={Lab} exact/>
                     <Route component={Pagenotfound}/>
                 </Switch>
             </BrowserRouter>
