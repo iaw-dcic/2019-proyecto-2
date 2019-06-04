@@ -16,4 +16,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('/v1/notebookuser','notebookuserController', ['only' => ['index', 'show','update','store','destroy']]);

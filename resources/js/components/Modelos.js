@@ -16,7 +16,7 @@ export default class Modelos extends Component {
         return (
             <div className="container">
               <h3>Modelos</h3>
-              {this.state.modelos.map(modelo => <ModeloBtn valor={modelo} handler={this.props.handler}/>)}
+              {this.state.modelos.map(mo => <ModeloBtn valor={mo} handler={this.props.handler}/>)}
             </div>
         );
     }

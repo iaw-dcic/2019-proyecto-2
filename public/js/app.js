@@ -66895,9 +66895,9 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Modelos"), this.state.modelos.map(function (modelo) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Modelos"), this.state.modelos.map(function (mo) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModeloBtn__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          valor: modelo,
+          valor: mo,
           handler: _this2.props.handler
         });
       }));
@@ -66924,93 +66924,6 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/NotebookPanel.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/NotebookPanel.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NotebookPanel; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
-/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _ModeloBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ModeloBtn */ "./resources/js/components/ModeloBtn.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var NotebookPanel =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(NotebookPanel, _Component);
-
-  function NotebookPanel() {
-    var _this;
-
-    _classCallCheck(this, NotebookPanel);
-
-    // Required step: always call the parent class' constructor
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(NotebookPanel).call(this));
-    _this.state = {
-      url: "ASDasdasd"
-    };
-    _this.changeurl = _this.changeurl.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(NotebookPanel, [{
-    key: "changeurl",
-    value: function changeurl(someValue) {
-      this.setState({
-        url: someValue
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "features-image"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.url
-      }));
-    }
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {}
-  }]);
-
-  return NotebookPanel;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/Page.js":
 /*!*****************************************!*\
   !*** ./resources/js/components/Page.js ***!
@@ -67029,9 +66942,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modelos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Modelos */ "./resources/js/components/Modelos.js");
 /* harmony import */ var _Sizes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Sizes */ "./resources/js/components/Sizes.js");
 /* harmony import */ var _ConfirmBtn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ConfirmBtn */ "./resources/js/components/ConfirmBtn.js");
-/* harmony import */ var _NotebookPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NotebookPanel */ "./resources/js/components/NotebookPanel.js");
-/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
-/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67049,7 +66961,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -67074,15 +66985,15 @@ function (_Component) {
       userid: null,
       modelid: 1,
       sizeid: 1,
-      colorid: 1
+      colorid: 1,
+      url: null
     };
     _this.colorhandler = _this.colorhandler.bind(_assertThisInitialized(_this));
     _this.modelohandler = _this.modelohandler.bind(_assertThisInitialized(_this));
     _this.sizehandler = _this.sizehandler.bind(_assertThisInitialized(_this));
-    _this.test = _this.test.bind(_assertThisInitialized(_this));
     _this.updatepanel = _this.updatepanel.bind(_assertThisInitialized(_this));
     _this.guardarnotebookpersonalizada = _this.guardarnotebookpersonalizada.bind(_assertThisInitialized(_this));
-    _this.notebookPanelElement = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.savestate = _this.savestate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -67093,7 +67004,8 @@ function (_Component) {
         this.setState({
           colorid: localStorage.getItem('colorid'),
           modelid: localStorage.getItem('modelid'),
-          sizeid: localStorage.getItem('sizeid')
+          sizeid: localStorage.getItem('sizeid'),
+          url: localStorage.getItem('url')
         });
       } else {
         this.setState({
@@ -67108,11 +67020,13 @@ function (_Component) {
     value: function updatepanel() {
       var _this2 = this;
 
-      var s = "/api/v1/notebook/get/" + this.state.colorid + "/" + this.state.modelid + "/" + this.state.sizeid;
+      var s = "/api/v1/notebook/get/" + this.state.modelid + "/" + this.state.colorid + "/" + this.state.sizeid;
       fetch(s).then(function (response) {
         return response.json();
       }).then(function (estado) {
-        _this2.notebookPanelElement.current.changeurl(estado[0].url);
+        _this2.setState({
+          url: estado[0].url
+        });
       });
     }
   }, {
@@ -67135,10 +67049,16 @@ function (_Component) {
       this.setState({
         colorid: someValue
       });
-      localStorage.setItem('colorid', someValue);
-      localStorage.setItem('modelid', this.state.modelid);
-      localStorage.setItem('sizeid', this.state.sizeid);
+      this.savestate();
       this.updatepanel();
+    }
+  }, {
+    key: "savestate",
+    value: function savestate() {
+      localStorage.setItem('modelid', this.state.modelid);
+      localStorage.setItem('colorid', this.state.colorid);
+      localStorage.setItem('sizeid', this.state.sizeid);
+      localStorage.setItem('url', this.state.url);
     }
   }, {
     key: "modelohandler",
@@ -67146,9 +67066,7 @@ function (_Component) {
       this.setState({
         modelid: someValue
       });
-      localStorage.setItem('modelid', someValue);
-      localStorage.setItem('colorid', this.state.colorid);
-      localStorage.setItem('sizeid', this.state.sizeid);
+      this.savestate();
       this.updatepanel();
     }
   }, {
@@ -67157,9 +67075,7 @@ function (_Component) {
       this.setState({
         sizeid: someValue
       });
-      localStorage.setItem('sizeid', someValue);
-      localStorage.setItem('colorid', this.state.colorid);
-      localStorage.setItem('modelid', this.state.modelid);
+      this.savestate();
       this.updatepanel();
     }
   }, {
@@ -67174,9 +67090,13 @@ function (_Component) {
         id: "features"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "features-inner"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NotebookPanel__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        ref: this.notebookPanelElement
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "features-image"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        width: "360",
+        height: "288",
+        src: this.state.url
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "features-list list-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "features-item"

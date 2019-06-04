@@ -4,7 +4,6 @@ import Colores from './Colores';
 import Modelos from './Modelos';
 import Sizes from './Sizes';
 import ConfirmBtn from './ConfirmBtn';
-import NotebookPanel from './NotebookPanel'
 import './page.css'
 
 export default class Page extends Component {
@@ -15,14 +14,15 @@ export default class Page extends Component {
       modelid:1,
       sizeid:1,
       colorid:1,
+      url:null,
     }
     this.colorhandler = this.colorhandler.bind(this)
     this.modelohandler = this.modelohandler.bind(this)
     this.sizehandler = this.sizehandler.bind(this)
-    this.test = this.test.bind(this)
     this.updatepanel = this.updatepanel.bind(this)
     this.guardarnotebookpersonalizada = this.guardarnotebookpersonalizada.bind(this)
-    this.notebookPanelElement = React.createRef()
+    this.savestate = this.savestate.bind(this)
+
   }
   componentWillMount(){
     if(localStorage.hasOwnProperty('colorid')){
@@ -30,6 +30,7 @@ export default class Page extends Component {
         colorid: localStorage.getItem('colorid'),
         modelid: localStorage.getItem('modelid'),
         sizeid: localStorage.getItem('sizeid'),
+        url: localStorage.getItem('url'),
       })
     }else{
       this.setState({
@@ -38,17 +39,19 @@ export default class Page extends Component {
         sizeid: 1,
       })
     }
-
   }
   updatepanel(){
-    const s="/api/v1/notebook/get/"+this.state.colorid+"/"+this.state.modelid+"/"+this.state.sizeid;
+    const s="/api/v1/notebook/get/"+this.state.modelid+"/"+this.state.colorid+"/"+this.state.sizeid;
 
     fetch(s).then(
          (response)=>{
              return response.json();
          }   )
      .then(estado => {
-        this.notebookPanelElement.current.changeurl(estado[0].url);
+       this.setState({
+         url: estado[0].url,
+
+       })
 
      });
 
@@ -71,21 +74,22 @@ export default class Page extends Component {
     this.setState({
       colorid: someValue
     })
-
-    localStorage.setItem('colorid',someValue)
-    localStorage.setItem('modelid',this.state.modelid)
-    localStorage.setItem('sizeid',this.state.sizeid)
+    this.savestate()
     this.updatepanel()
 
 
+  }
+  savestate(){
+    localStorage.setItem('modelid',this.state.modelid)
+    localStorage.setItem('colorid',this.state.colorid)
+    localStorage.setItem('sizeid',this.state.sizeid)
+    localStorage.setItem('url',this.state.url)
   }
   modelohandler(someValue) {
     this.setState({
       modelid: someValue
     })
-    localStorage.setItem('modelid',someValue)
-    localStorage.setItem('colorid',this.state.colorid)
-    localStorage.setItem('sizeid',this.state.sizeid)
+    this.savestate()
     this.updatepanel()
 
   }
@@ -93,9 +97,7 @@ export default class Page extends Component {
     this.setState({
       sizeid: someValue
     })
-    localStorage.setItem('sizeid',someValue)
-    localStorage.setItem('colorid',this.state.colorid)
-    localStorage.setItem('modelid',this.state.modelid)
+    this.savestate()
     this.updatepanel()
 
   }
@@ -106,7 +108,10 @@ export default class Page extends Component {
         return (
           <section id="features">
             <div className="features-inner">
-              <NotebookPanel ref={this.notebookPanelElement}/>
+              <div className="features-image">
+                <img width="360" height="288" src={this.state.url}/>
+              </div>
+
               <ul className="features-list list-2">
 
                 <li className="features-item">
