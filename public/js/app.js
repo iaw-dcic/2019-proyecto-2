@@ -74547,7 +74547,7 @@ module.exports = exports['default'];
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91091,6 +91091,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
+var endpoint = 'https://iaw-burger.herokuapp.com';
 function login(_x, _x2) {
   return _login.apply(this, arguments);
 }
@@ -91099,39 +91100,37 @@ function _login() {
   _login = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(email, password) {
-    var res;
+    var axiosConfig, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default()({
-              url: 'http://localhost/api/login',
-              method: 'post',
-              timeout: 8000,
-              data: {
-                email: email,
-                password: password
-              }
-            });
+            axiosConfig = {
+              headers: {}
+            };
+            _context.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(endpoint + '/api/login', {
+              email: email,
+              password: password
+            }, axiosConfig);
 
-          case 3:
-            res = _context.sent;
-            return _context.abrupt("return", res.data);
+          case 4:
+            response = _context.sent;
+            return _context.abrupt("return", response.data);
 
-          case 7:
-            _context.prev = 7;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
-            console.log("Error API , POST de login: ".concat(e));
+            console.log("Error API , POST de login: ".concat(_context.t0));
             return _context.abrupt("return", 401);
 
-          case 11:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 8]]);
   }));
   return _login.apply(this, arguments);
 }
@@ -91157,7 +91156,7 @@ function _logout() {
               }
             };
             _context2.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost/api/logout', axiosConfig);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(endpoint + '/api/logout', axiosConfig);
 
           case 4:
             response = _context2.sent;
@@ -92373,7 +92372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: 'http://localhost/api/'
+  baseURL: 'https://iaw-burger.herokuapp.com/api/'
 });
 /* harmony default export */ __webpack_exports__["default"] = (instance);
 
