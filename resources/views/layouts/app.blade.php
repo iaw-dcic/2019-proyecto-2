@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('libs/popper/popper.min.js') }}"></script>
-    <script src="{{ asset('libs/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ secure_asset('libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ secure_asset('libs/popper/popper.min.js') }}"></script>
+    <script src="{{ secure_asset('libs/bootstrap/js/bootstrap.min.js') }}"></script>
 </head>
 <body>
     <div id="app">
