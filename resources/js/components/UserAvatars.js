@@ -253,10 +253,10 @@ class UserAvatars extends Component{
             <div className="col-md-8 ">
                 <div className="row justify-content-center ">
                 <div class="btn-toolbar" role="toolbar" aria-label="Botones editar y eliminar">
-                    <div class="btn-group mr-3" role="group" aria-label="Boton editar">
+                    <div class="btn-group mr-2" role="group" aria-label="Boton editar">
                         {this.renderButtonEditAvatar()}
                     </div>
-                    <div class="btn-group" role="group" aria-label="Boton eliminar"></div>
+                    <div class="btn-group ml-2" role="group" aria-label="Boton eliminar"></div>
                         {this.renderButtonDeleteAvatar()}
                     </div>
                 </div>

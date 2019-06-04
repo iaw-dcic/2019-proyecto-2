@@ -285,22 +285,22 @@ class AvatarEditor extends Component{
             return ('active');
         }
         else{
-            return null;
+            return ('');
         }
     }
    
     buttonsAvatarItems(){
         return(
                 <div className="btn-group-vertical btn-block mt-3 mb-3" role="group" aria-label="avatar items buttons">
-                    <button type="button" className={"btn btn-secondary mt-3 mb-3"+ this.isActive('body')}
+                    <button type="button" className={"btn btn-info "+ this.isActive('body')}
                         onClick={this.handleButtonBody}>Cuerpo</button>
-                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('head')}
+                    <button type="button" className={"btn btn-info "+ this.isActive('head')}
                         onClick={this.handleButtonHead}>Cabeza</button>
-                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('upperbody')}
+                    <button type="button" className={"btn btn-info "+ this.isActive('upperbody')}
                         onClick={this.handleButtonUpperbody}>Torso</button>
-                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('lowerbody')}
+                    <button type="button" className={"btn btn-info "+ this.isActive('lowerbody')}
                         onClick={this.handleButtonLowerbody}>Piernas</button>
-                    <button type="button" className={"btn btn-secondary mb-3"+ this.isActive('extra')}
+                    <button type="button" className={"btn btn-info "+ this.isActive('extra')}
                         onClick={this.handleButtonExtra}>Extra</button>
                 </div>
         );
@@ -308,11 +308,11 @@ class AvatarEditor extends Component{
 
     buttonsPrevNextItems(){
         return(
-            <div className="btn-group btn-block " role="group" aria-label="avatar items previous and next buttons">
-                <button type="button" className="btn btn-success "
-                    onClick={this.handleButtonPrev}>◄</button>
-                <button type="button" className="btn btn-success "
-                    onClick={this.handleButtonNext}>►</button>
+            <div className="btn-group btn-block mt-2 mb-2" role="group" aria-label="Botones previo y siguiente item">
+                <button type="button" className="btn btn-success boton-prev-next "
+                onClick={this.handleButtonPrev}>◄</button>
+                <button type="button" className="btn btn-success boton-prev-next "
+                onClick={this.handleButtonNext}>►</button>
             </div>
         );
     }
@@ -379,12 +379,12 @@ class AvatarEditor extends Component{
                             </div>
                             <div className="col-md-8 my-auto">
                                 <div className="row justify-content-center">
-                                    <div className="col-sm-8">
+                                    <div className="col-sm-8 text-center">
                                         {this.buttonsPrevNextItems()}
                                     </div>
                                 </div>
                                 <div className="row justify-content-center">
-                                    <div className="avatar-shower-frame"> 
+                                    <div className="avatar-shower-frame mt-2"> 
                                         <AvatarShower 
                                             avatar={this.getAvatar()}
                                             items={this.props.items}                

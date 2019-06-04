@@ -66091,7 +66091,7 @@ function (_Component) {
       if (button == this.state.currentItem) {
         return 'active';
       } else {
-        return null;
+        return '';
       }
     }
   }, {
@@ -66103,23 +66103,23 @@ function (_Component) {
         "aria-label": "avatar items buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary mt-3 mb-3" + this.isActive('body'),
+        className: "btn btn-info " + this.isActive('body'),
         onClick: this.handleButtonBody
       }, "Cuerpo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary mb-3" + this.isActive('head'),
+        className: "btn btn-info " + this.isActive('head'),
         onClick: this.handleButtonHead
       }, "Cabeza"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary mb-3" + this.isActive('upperbody'),
+        className: "btn btn-info " + this.isActive('upperbody'),
         onClick: this.handleButtonUpperbody
       }, "Torso"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary mb-3" + this.isActive('lowerbody'),
+        className: "btn btn-info " + this.isActive('lowerbody'),
         onClick: this.handleButtonLowerbody
       }, "Piernas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary mb-3" + this.isActive('extra'),
+        className: "btn btn-info " + this.isActive('extra'),
         onClick: this.handleButtonExtra
       }, "Extra"));
     }
@@ -66127,16 +66127,16 @@ function (_Component) {
     key: "buttonsPrevNextItems",
     value: function buttonsPrevNextItems() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group btn-block ",
+        className: "btn-group btn-block mt-2 mb-2",
         role: "group",
-        "aria-label": "avatar items previous and next buttons"
+        "aria-label": "Botones previo y siguiente item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-success ",
+        className: "btn btn-success boton-prev-next ",
         onClick: this.handleButtonPrev
       }, "\u25C4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-success ",
+        className: "btn btn-success boton-prev-next ",
         onClick: this.handleButtonNext
       }, "\u25BA"));
     }
@@ -66207,11 +66207,11 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row justify-content-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-8"
+          className: "col-sm-8 text-center"
         }, this.buttonsPrevNextItems())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row justify-content-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "avatar-shower-frame"
+          className: "avatar-shower-frame mt-2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
           avatar: this.getAvatar(),
           items: this.props.items,
@@ -66901,11 +66901,11 @@ function (_Component) {
         role: "toolbar",
         "aria-label": "Botones editar y eliminar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "btn-group mr-3",
+        "class": "btn-group mr-2",
         role: "group",
         "aria-label": "Boton editar"
       }, this.renderButtonEditAvatar()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "btn-group",
+        "class": "btn-group ml-2",
         role: "group",
         "aria-label": "Boton eliminar"
       }), this.renderButtonDeleteAvatar())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
