@@ -16,4 +16,4 @@ Auth::routes();
 
 Route::view('/readme', 'readme');
 
-Route::view('/{path?}', 'react');
+Route::view('/', 'react');
