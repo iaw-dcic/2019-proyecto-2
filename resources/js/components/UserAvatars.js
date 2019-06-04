@@ -169,16 +169,18 @@ class UserAvatars extends Component{
 
     resetMode = (avatar) => {
         if(this.state.isCreating){
-            this.setState(state => ({
+            this.setState( prevState => ({
                 isCreating: false,
                 isEditing: false,
-                avatars: state.avatars.concat(avatar),
+                avatars: prevState.avatars.concat(avatar),
+                selectedAvatar: avatar,
+                selectedAvatarIndex: prevState.avatars.length,
             }));
         }
         else{
             let newAvatars = this.state.avatars;
             newAvatars[this.state.selectedAvatarIndex] = avatar;            
-            this.setState( state => ({
+            this.setState( prevState => ({
                     isCreating: false,
                     isEditing: false,
                     avatars: newAvatars,
@@ -215,20 +217,19 @@ class UserAvatars extends Component{
                     </div>
                 </div>                
                 <div className="row-fluid">
-                    <div className="lista-avatares boton-nuevo">
+                    <div className="lista-avatares boton-panel-izq">
                         {this.renderButtonNewAvatar('Nuevo','btn btn-primary btn-block')}
                     </div>        
                 </div>
                 
                 <div className="row-fluid">
-                    <div className="lista-avatares errores">
+                    <div className="errores">
                         <Errors 
                             error={this.state.error}
                             message={this.state.status}
                         />  
                     </div>
-                </div>
-                
+                </div>                
             </div>
         );        
     }
@@ -249,14 +250,14 @@ class UserAvatars extends Component{
 
     renderAvatarShower(){
         return(
-            <div className="col-md-8 testing">
-                <div className="row justify-content-center testing">
-                    <div className="btn-group testing avatar-botones" role="group" aria-label="Botones editar y eliminar">
+            <div className="col-md-8 ">
+                <div className="row justify-content-center ">
+                    <div className="btn-group  avatar-botones" role="group" aria-label="Botones editar y eliminar">
                         {this.renderButtonEditAvatar()}
                         {this.renderButtonDeleteAvatar()}
                     </div>
                 </div>
-                <div className="row justify-content-center testing">
+                <div className="row justify-content-center ">
                 <AvatarShower 
                     items={this.props.items}
                     avatar={this.state.selectedAvatar}
@@ -294,8 +295,8 @@ class UserAvatars extends Component{
                                         {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg ')}
                                     </p>
                                 </div>
-                                <div className="col-md-2 testing">
-                                    <div className="jumbo-avatar testing">
+                                <div className="col-md-2 ">
+                                    <div className="jumbo-avatar ">
                                         <img className="sad-avatar " src="/avatars/sad.png"/>
                                     </div>
                                 </div>

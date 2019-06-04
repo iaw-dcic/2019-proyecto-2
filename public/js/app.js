@@ -66014,7 +66014,7 @@ function (_Component) {
         lowerbody: parseInt(_this.props.avatar.lowerbody_id / 10),
         extra: parseInt(_this.props.avatar.extra_id / 10),
         error: false,
-        status: null,
+        status: '',
         isSaving: false
       };
     } else {
@@ -66086,31 +66086,40 @@ function (_Component) {
       }
     }
   }, {
+    key: "isActive",
+    value: function isActive(button) {
+      if (button == this.state.currentItem) {
+        return 'active';
+      } else {
+        return null;
+      }
+    }
+  }, {
     key: "buttonsAvatarItems",
     value: function buttonsAvatarItems() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group",
+        className: "btn-group-vertical btn-block",
         role: "group",
-        "aria-label": "avatar items"
+        "aria-label": "avatar items buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary",
+        className: "btn btn-secondary " + this.isActive('body'),
         onClick: this.handleButtonBody
-      }, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Cuerpo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary",
+        className: "btn btn-secondary " + this.isActive('head'),
         onClick: this.handleButtonHead
-      }, "Head"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Cabeza"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary",
+        className: "btn btn-secondary " + this.isActive('upperbody'),
         onClick: this.handleButtonUpperbody
-      }, "Upperbody"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Torso"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary",
+        className: "btn btn-secondary " + this.isActive('lowerbody'),
         onClick: this.handleButtonLowerbody
-      }, "Lowerbody"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Piernas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary",
+        className: "btn btn-secondary " + this.isActive('extra'),
         onClick: this.handleButtonExtra
       }, "Extra"));
     }
@@ -66118,23 +66127,29 @@ function (_Component) {
     key: "buttonsPrevNextItems",
     value: function buttonsPrevNextItems() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group",
+        className: "btn-group btn-block ",
         role: "group",
-        "aria-label": "avatar items prev next"
+        "aria-label": "avatar items previous and next buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary",
+        className: "btn btn-success ",
         onClick: this.handleButtonPrev
-      }, "\u2190"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "\u25C4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-secondary",
+        className: "btn btn-success ",
         onClick: this.handleButtonNext
-      }, "\u2192"));
+      }, "\u25BA"));
     }
   }, {
     key: "formSaveAvatar",
     value: function formSaveAvatar() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSaveAvatar
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -66143,13 +66158,21 @@ function (_Component) {
         placeholder: "Nombre",
         onChange: this.handleFieldNameChange,
         value: this.state.field_name
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary btn-block"
-      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Guardar"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "errores "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_2__["default"], {
         error: this.state.error,
         message: this.state.status
-      }));
+      })))));
     }
   }, {
     key: "getAvatar",
@@ -66169,25 +66192,31 @@ function (_Component) {
     value: function renderApp() {
       if (!this.state.isSaving) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row justify-content-center testing"
+          className: "row justify-content-center"
+        }, this.formSaveAvatar(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-8"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-4 testing"
+          className: "row justify-content-center h-100"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row testing"
-        }, this.formSaveAvatar()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row testing"
+          className: "col-md-4 my-auto"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "botones-items-avatar"
         }, this.buttonsAvatarItems())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-8 testing"
+          className: "col-md-8 my-auto"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row testing"
-        }, this.buttonsPrevNextItems()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row testing"
+          className: "row justify-content-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-8"
+        }, this.buttonsPrevNextItems())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row justify-content-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "avatar-shower-frame"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarShower__WEBPACK_IMPORTED_MODULE_1__["default"], {
           avatar: this.getAvatar(),
           items: this.props.items,
-          renderName: true,
+          renderName: false,
           useIDs: false
-        }))));
+        })))))));
       } else {
         // Guardando
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading__WEBPACK_IMPORTED_MODULE_3__["default"], null);
@@ -66271,7 +66300,7 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "avatar-frame testing"
+        className: "avatar-frame"
       }, this.renderName(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img-avatar avatar-body",
         src: items.bodyitems[body].resource
@@ -66672,18 +66701,20 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "resetMode", function (avatar) {
       if (_this.state.isCreating) {
-        _this.setState(function (state) {
+        _this.setState(function (prevState) {
           return {
             isCreating: false,
             isEditing: false,
-            avatars: state.avatars.concat(avatar)
+            avatars: prevState.avatars.concat(avatar),
+            selectedAvatar: avatar,
+            selectedAvatarIndex: prevState.avatars.length
           };
         });
       } else {
         var newAvatars = _this.state.avatars;
         newAvatars[_this.state.selectedAvatarIndex] = avatar;
 
-        _this.setState(function (state) {
+        _this.setState(function (prevState) {
           return {
             isCreating: false,
             isEditing: false,
@@ -66834,11 +66865,11 @@ function (_Component) {
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lista-avatares boton-nuevo"
+        className: "lista-avatares boton-panel-izq"
       }, this.renderButtonNewAvatar('Nuevo', 'btn btn-primary btn-block'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lista-avatares errores"
+        className: "errores"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Errors__WEBPACK_IMPORTED_MODULE_3__["default"], {
         error: this.state.error,
         message: this.state.status
@@ -66861,15 +66892,15 @@ function (_Component) {
     key: "renderAvatarShower",
     value: function renderAvatarShower() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8 testing"
+        className: "col-md-8 "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center testing"
+        className: "row justify-content-center "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group testing avatar-botones",
+        className: "btn-group  avatar-botones",
         role: "group",
         "aria-label": "Botones editar y eliminar"
       }, this.renderButtonEditAvatar(), this.renderButtonDeleteAvatar())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center testing"
+        className: "row justify-content-center "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__["default"], {
         items: this.props.items,
         avatar: this.state.selectedAvatar,
@@ -66905,9 +66936,9 @@ function (_Component) {
         }, "A\xFAn no tienes snoovatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "lead "
         }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg '))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-2 testing"
+          className: "col-md-2 "
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "jumbo-avatar testing"
+          className: "jumbo-avatar "
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "sad-avatar ",
           src: "/avatars/sad.png"

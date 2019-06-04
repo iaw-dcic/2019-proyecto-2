@@ -22,7 +22,7 @@ class AvatarEditor extends Component{
                 extra: parseInt(this.props.avatar.extra_id/10),
 
                 error: false,
-                status: null,
+                status: '',
                 isSaving: false,
             }        
         }else{
@@ -279,55 +279,77 @@ class AvatarEditor extends Component{
         //console.log("AVATAREDITOR: handleButtonNext()");        
         //console.log(this.state.currentItem+": "+index);        
     }
+
+    isActive(button){
+        if (button==this.state.currentItem){
+            return ('active');
+        }
+        else{
+            return null;
+        }
+    }
    
     buttonsAvatarItems(){
         return(
-            <div className="btn-group" role="group" aria-label="avatar items">
-            <button type="button" className="btn btn-secondary"
-                onClick={this.handleButtonBody}>Body</button>
-            <button type="button" className="btn btn-secondary"
-                onClick={this.handleButtonHead}>Head</button>
-            <button type="button" className="btn btn-secondary"
-                onClick={this.handleButtonUpperbody}>Upperbody</button>
-            <button type="button" className="btn btn-secondary"
-                onClick={this.handleButtonLowerbody}>Lowerbody</button>
-            <button type="button" className="btn btn-secondary"
-                onClick={this.handleButtonExtra}>Extra</button>
+            <div className="btn-group-vertical btn-block" role="group" aria-label="avatar items buttons">
+                <button type="button" className={"btn btn-secondary "+ this.isActive('body')}
+                    onClick={this.handleButtonBody}>Cuerpo</button>
+                <button type="button" className={"btn btn-secondary "+ this.isActive('head')}
+                    onClick={this.handleButtonHead}>Cabeza</button>
+                <button type="button" className={"btn btn-secondary "+ this.isActive('upperbody')}
+                    onClick={this.handleButtonUpperbody}>Torso</button>
+                <button type="button" className={"btn btn-secondary "+ this.isActive('lowerbody')}
+                    onClick={this.handleButtonLowerbody}>Piernas</button>
+                <button type="button" className={"btn btn-secondary "+ this.isActive('extra')}
+                    onClick={this.handleButtonExtra}>Extra</button>
             </div>
         );
     }
 
     buttonsPrevNextItems(){
         return(
-            <div className="btn-group" role="group" aria-label="avatar items prev next">
-                <button type="button" className="btn btn-secondary"
-                    onClick={this.handleButtonPrev}>←</button>
-                <button type="button" className="btn btn-secondary"
-                    onClick={this.handleButtonNext}>→</button>
+            <div className="btn-group btn-block " role="group" aria-label="avatar items previous and next buttons">
+                <button type="button" className="btn btn-success "
+                    onClick={this.handleButtonPrev}>◄</button>
+                <button type="button" className="btn btn-success "
+                    onClick={this.handleButtonNext}>►</button>
             </div>
         );
     }
 
     formSaveAvatar(){
         return(
-
-            <form onSubmit={this.handleSaveAvatar}>
-                <div className="form-group">
-                    <input
-                        type="text"
-                        placeholder="Nombre"
-                        onChange={this.handleFieldNameChange}
-                        value={this.state.field_name}
-                    />
+            <div className="col-md-4">
+                <div className="row justify-content-center ">
+                    <div className="col-md-12">
+                        <form onSubmit={this.handleSaveAvatar}>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    placeholder="Nombre"
+                                    onChange={this.handleFieldNameChange}
+                                    value={this.state.field_name}
+                                />
+                            </div>
+                            <div className="form-group ">
+                                <button type="submit" className="btn btn-primary btn-block">
+                                    Guardar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">
-                   Guardar
-                </button>
-                <Errors 
-                    error={this.state.error}
-                    message={this.state.status}
-                />
-            </form>
+                <div className="row justify-content-center ">
+                    <div className="col-md-12">
+                        <div className="errores ">
+                            <Errors 
+                                error={this.state.error}
+                                message={this.state.status}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 
@@ -346,26 +368,32 @@ class AvatarEditor extends Component{
     renderApp(){
         if(!this.state.isSaving){
             return(
-                <div className="row justify-content-center testing">
-                    <div className="col-md-4 testing">
-                        <div className="row testing">
-                            {this.formSaveAvatar()}
-                        </div>
-                        <div className="row testing">
-                            {this.buttonsAvatarItems()}
-                        </div>
-                    </div>
-                    <div className="col-md-8 testing">
-                        <div className="row testing">
-                            {this.buttonsPrevNextItems()}
-                        </div>
-                        <div className="row testing">
-                        <AvatarShower 
-                            avatar={this.getAvatar()}
-                            items={this.props.items}                
-                            renderName={true}
-                            useIDs={false}                    
-                        />
+                <div className="row justify-content-center">                    
+                        {this.formSaveAvatar()}
+                    <div className="col-md-8">
+                        <div className="row justify-content-center h-100">
+                            <div className="col-md-4 my-auto">
+                                <div className="botones-items-avatar">
+                                    {this.buttonsAvatarItems()}
+                                </div>
+                            </div>
+                            <div className="col-md-8 my-auto">
+                                <div className="row justify-content-center">
+                                    <div className="col-sm-8">
+                                        {this.buttonsPrevNextItems()}
+                                    </div>
+                                </div>
+                                <div className="row justify-content-center">
+                                    <div className="avatar-shower-frame"> 
+                                        <AvatarShower 
+                                            avatar={this.getAvatar()}
+                                            items={this.props.items}                
+                                            renderName={false}
+                                            useIDs={false}                    
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
