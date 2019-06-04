@@ -107,7 +107,7 @@ export default class AvatarView extends Component{
             mouth : 'Boca1',
             avatarID : -1
         })
-  
+        alert("Avatar reseteado para crear uno nuevo")
     }
 
     constructor(props) {

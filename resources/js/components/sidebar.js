@@ -8,9 +8,10 @@ import avatar from './Avatar'
 export default class SideBar extends Component{
   state={
     caras: [],
-    Pelos: [],
-    Ojos: [],
-    Bocas: []
+    pelos: [],
+    ojos: [],
+    bocas: [],
+    bandera: 0
   }
   saveAvatar(event){
     event.preventDefault();
@@ -40,63 +41,63 @@ export default class SideBar extends Component{
 
     this.props.handleMouthChange(event);
   }
-
-  //Esta función no se usa, queda como placeholder para la obtención de los recursos desde la BD
-  //se presentan problemas de renderizado al usar esta alternativa
+  
   cargarRecurso(tipo){
-    axios.get('api/recursos', tipo).then((response)=>{
+    axios.get('api/recursos?tipo='+ tipo ).then((response)=>{
 
     switch(tipo){
       case "skin":
-          response.data.map(recurso => 
-        
-            this.setState({
-              caras : this.state.caras.concat(recurso.source)
-            })
+      
+      
+        this.setState({
+          caras : response.data
+        })
+       
           
-        
-        )
+        this.setState({
+          bandera: this.state.bandera + 1
+        })
       break;
 
       case "eyes":
-        response.data.map(recurso => 
-      
           this.setState({
-            caras : this.state.Ojos.concat(recurso.source)
+            ojos : response.data
           })
-        
       
-        )
+        
+        this.setState({
+          bandera: this.state.bandera + 1
+        })
       break;
 
       case "hair":
-        response.data.map(recurso => 
-      
           this.setState({
-            caras : this.state.Pelos.concat(recurso.source)
+            pelos : response.data
           })
-        
-      
-        )
+        this.setState({
+          bandera: this.state.bandera + 1
+        })
       break;
 
       case "mouth":
-          response.data.map(recurso => 
-        
-            this.setState({
-              caras : this.state.Bocas.concat(recurso.source)
-            })
-          
-        
-        )
-        /*for(let i = 0; i < 4; i++){
-          <button className="dropdown-item" name={this.state.Bocas[i]} onClick={this.changeMouth}><img className="size" name={this.state.Bocas[i]} src={window.location.origin + '/RecursosGraficos/Bocas/' + this.state.Bocas[i] + '.png'}/></button>
-        }*/
+          this.setState({
+            bocas : response.data
+          })
+        this.setState({
+          bandera: this.state.bandera + 1
+        })
       break;
     }
       
   })
 
+  }
+
+  componentDidMount(){
+    this.cargarRecurso("skin")
+    this.cargarRecurso("eyes")
+    this.cargarRecurso("hair")
+    this.cargarRecurso("mouth")
   }
 
 nuevoAvatar(event){
@@ -117,6 +118,13 @@ nuevoAvatar(event){
   }
 
   render(){
+    if(this.state.bandera != 4){
+     
+      return(
+        <h1>LOADING...</h1>
+      
+      )
+    }
         return (
           <>
             <div className="previos">
@@ -140,13 +148,14 @@ nuevoAvatar(event){
             <nav className="navbar fixed-bottom  navbar-dark bg-dark">
               <div className="btn-group dropup">
               <button type="button" className="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Piel
+                Pigmentacion
               </button>
               <div className="dropdown-menu">
-                <button className="dropdown-item" name="Cara1" href="#" onClick={this.changeSkin}><img className="size" name="Cara1" src={window.location.origin + '/RecursosGraficos/Caras/Cara1.png'}/></button>
-                <button className="dropdown-item" name="Cara2" href="#" onClick={this.changeSkin}><img className="size" name="Cara2" src={window.location.origin + '/RecursosGraficos/Caras/Cara2.png'}/></button>
-                <button className="dropdown-item" name="Cara3" href="#" onClick={this.changeSkin}><img className="size" name="Cara3" src={window.location.origin + '/RecursosGraficos/Caras/Cara3.png'}/></button>
-                <button className="dropdown-item" name="Cara4" href="#" onClick={this.changeSkin}><img className="size" name="Cara4" src={window.location.origin + '/RecursosGraficos/Caras/Cara4.png'}/></button>
+              
+                {this.state.caras.map((cara,index) =>(
+  
+                  <button  key={cara+"-"+index} className="dropdown-item" name={cara} onClick={this.changeSkin}><img className="size" name={cara} src={window.location.origin + '/RecursosGraficos/Caras/' + cara +'.png'}/></button>
+                ))}
                 
               </div>
             </div>
@@ -156,10 +165,10 @@ nuevoAvatar(event){
                 Cabello
               </button>
               <div className="dropdown-menu">
-                <button className="dropdown-item" name="Pelo1" onClick={this.changeHair}><img className="size" name="Pelo1" src={window.location.origin + '/RecursosGraficos/Pelos/Pelo1.png'}/></button>
-                <button className="dropdown-item" name="Pelo2" onClick={this.changeHair}><img className="size" name="Pelo2" src={window.location.origin + '/RecursosGraficos/Pelos/Pelo2.png'}/></button>
-                <button className="dropdown-item" name="Pelo3" onClick={this.changeHair}><img className="size" name="Pelo3" src={window.location.origin + '/RecursosGraficos/Pelos/Pelo3.png'}/></button>
-                <button className="dropdown-item" name="Pelo4" onClick={this.changeHair}><img className="size" name="Pelo4" src={window.location.origin + '/RecursosGraficos/Pelos/Pelo4.png'}/></button>
+              {this.state.pelos.map((pelo,index) =>(
+                
+                <button  key={pelo+"-"+index} className="dropdown-item" name={pelo} onClick={this.changeHair}><img className="size" name={pelo} src={window.location.origin + '/RecursosGraficos/Pelos/' + pelo +'.png'}/></button>
+              ))}
               </div>
             </div>
 
@@ -168,10 +177,10 @@ nuevoAvatar(event){
                 Ojos
               </button>
               <div className="dropdown-menu ">
-                <button className="dropdown-item" name="Ojos1" onClick={this.changeEyes}><img className="size" name="Ojos1" src={window.location.origin + '/RecursosGraficos/Ojos/Ojos1.png'}/></button>
-                <button className="dropdown-item" name="Ojos2" onClick={this.changeEyes}><img className="size" name="Ojos2" src={window.location.origin + '/RecursosGraficos/Ojos/Ojos2.png'}/></button>
-                <button className="dropdown-item" name="Ojos3" onClick={this.changeEyes}><img className="size" name="Ojos3" src={window.location.origin + '/RecursosGraficos/Ojos/Ojos3.png'}/></button>
-                <button className="dropdown-item" name="Ojos4" onClick={this.changeEyes}><img className="size" name="Ojos4" src={window.location.origin + '/RecursosGraficos/Ojos/Ojos4.png'}/></button>
+              {this.state.ojos.map((ojo,index) =>(
+  
+                <button  key={ojo+"-"+index} className="dropdown-item" name={ojo} onClick={this.changeEyes}><img className="size" name={ojo} src={window.location.origin + '/RecursosGraficos/Ojos/' + ojo +'.png'}/></button>
+              ))}
               </div>
             </div>
 
@@ -180,10 +189,10 @@ nuevoAvatar(event){
                 Boca
               </button>
               <div className="dropdown-menu ">
-                <button className="dropdown-item" name="Boca1" onClick={this.changeMouth}><img className="size" name="Boca1" src={window.location.origin + '/RecursosGraficos/Bocas/Boca1.png'}/></button>
-                <button className="dropdown-item" name="Boca2" onClick={this.changeMouth}><img className="size" name="Boca2" src={window.location.origin + '/RecursosGraficos/Bocas/Boca2.png'}/></button>
-                <button className="dropdown-item" name="Boca3" onClick={this.changeMouth}><img className="size" name="Boca3" src={window.location.origin + '/RecursosGraficos/Bocas/Boca3.png'}/></button>
-                <button className="dropdown-item" name="Boca4" onClick={this.changeMouth}><img className="size" name="Boca4" src={window.location.origin + '/RecursosGraficos/Bocas/Boca4.png'}/></button>
+              {this.state.bocas.map((boca,index) =>(
+                
+                <button  key={boca+"-"+index} className="dropdown-item" name={boca} onClick={this.changeMouth}><img className="size" name={boca} src={window.location.origin + '/RecursosGraficos/Bocas/' + boca +'.png'}/></button>
+              ))}
               </div>
             </div>
 

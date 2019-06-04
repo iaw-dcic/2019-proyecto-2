@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\r\n.dropdown-menu{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.size{\r\n    width:150px;\r\n    height:150px;\r\n    padding-bottom: 5%;\r\n    \r\n   \r\n}\r\n.boton{\r\n    padding-bottom: 5%;\r\n    z-index:2;   \r\n}\r\n.side{\r\n    font-weight: bolder;\r\n    font-size: 30px;\r\n}\r\n.previos{\r\n    \r\n    min-height: 500px;\r\n}\r\n.size-prev{\r\n    width:300px;\r\n    height:300px;\r\n    padding-bottom: 5%;\r\n    \r\n}\r\n", ""]);
+exports.push([module.i, ".size{\r\n    width:100px;\r\n    height:100px;\r\n    padding-bottom: 5%;\r\n    \r\n   \r\n}\r\n.boton{\r\n    padding-bottom: 5%;\r\n    z-index:2;   \r\n}\r\n.side{\r\n    font-weight: bolder;\r\n    font-size: 30px;\r\n}\r\n.previos{\r\n    min-height: 500px;\r\n}\r\n.size-prev{\r\n    width:300px;\r\n    height:300px;\r\n    padding-bottom: 5%;\r\n    \r\n    \r\n}\r\n", ""]);
 
 // exports
 
@@ -66496,22 +66496,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/avatarView",
         component: _AvatarView__WEBPACK_IMPORTED_MODULE_4__["default"]
-      }))))
-      /*<BrowserRouter>
-          <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/avatarView" component={AvatarView} />
-              <Route path="/readme" component={Readme} />
-          </Switch>
-          <div className="button-group-lg">
-              <HashRouter>
-                  <NavLink to="/avatarView">Ir al creador de avatares!</NavLink>
-                  <NavLink to="/readme">Ver Readme</NavLink>
-                  <NavLink to="/">Ir a Casa</NavLink> 
-              </HashRouter>
-          </div>
-      </BrowserRouter>*/
-      ;
+      }))));
     }
   }]);
 
@@ -66771,6 +66756,7 @@ function (_Component) {
         mouth: 'Boca1',
         avatarID: -1
       });
+      alert("Avatar reseteado para crear uno nuevo");
     }
   }]);
 
@@ -67320,53 +67306,67 @@ function (_Component) {
     key: "changeMouth",
     value: function changeMouth(event) {
       this.props.handleMouthChange(event);
-    } //Esta función no se usa, queda como placeholder para la obtención de los recursos desde la BD
-    //se presentan problemas de renderizado al usar esta alternativa
-
+    }
   }, {
     key: "cargarRecurso",
     value: function cargarRecurso(tipo) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos', tipo).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/recursos?tipo=' + tipo).then(function (response) {
         switch (tipo) {
           case "skin":
-            response.data.map(function (recurso) {
-              return _this2.setState({
-                caras: _this2.state.caras.concat(recurso.source)
-              });
+            _this2.setState({
+              caras: response.data
             });
+
+            _this2.setState({
+              bandera: _this2.state.bandera + 1
+            });
+
             break;
 
           case "eyes":
-            response.data.map(function (recurso) {
-              return _this2.setState({
-                caras: _this2.state.Ojos.concat(recurso.source)
-              });
+            _this2.setState({
+              ojos: response.data
             });
+
+            _this2.setState({
+              bandera: _this2.state.bandera + 1
+            });
+
             break;
 
           case "hair":
-            response.data.map(function (recurso) {
-              return _this2.setState({
-                caras: _this2.state.Pelos.concat(recurso.source)
-              });
+            _this2.setState({
+              pelos: response.data
             });
+
+            _this2.setState({
+              bandera: _this2.state.bandera + 1
+            });
+
             break;
 
           case "mouth":
-            response.data.map(function (recurso) {
-              return _this2.setState({
-                caras: _this2.state.Bocas.concat(recurso.source)
-              });
+            _this2.setState({
+              bocas: response.data
             });
-            /*for(let i = 0; i < 4; i++){
-              <button className="dropdown-item" name={this.state.Bocas[i]} onClick={this.changeMouth}><img className="size" name={this.state.Bocas[i]} src={window.location.origin + '/RecursosGraficos/Bocas/' + this.state.Bocas[i] + '.png'}/></button>
-            }*/
+
+            _this2.setState({
+              bandera: _this2.state.bandera + 1
+            });
 
             break;
         }
       });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.cargarRecurso("skin");
+      this.cargarRecurso("eyes");
+      this.cargarRecurso("hair");
+      this.cargarRecurso("mouth");
     }
   }, {
     key: "nuevoAvatar",
@@ -67384,9 +67384,10 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       caras: [],
-      Pelos: [],
-      Ojos: [],
-      Bocas: []
+      pelos: [],
+      ojos: [],
+      bocas: [],
+      bandera: 0
     });
 
     _this.saveAvatar = _this.saveAvatar.bind(_assertThisInitialized(_this));
@@ -67404,6 +67405,10 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this3 = this;
+
+      if (this.state.bandera != 4) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "LOADING...");
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "previos"
@@ -67440,45 +67445,20 @@ function (_Component) {
         "data-toggle": "dropdown",
         "aria-haspopup": "true",
         "aria-expanded": "false"
-      }, "Piel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Pigmentacion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Cara1",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Cara1",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara1.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Cara2",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Cara2",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara2.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Cara3",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Cara3",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara3.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Cara4",
-        href: "#",
-        onClick: this.changeSkin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Cara4",
-        src: window.location.origin + '/RecursosGraficos/Caras/Cara4.png'
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.caras.map(function (cara, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          key: cara + "-" + index,
+          className: "dropdown-item",
+          name: cara,
+          onClick: _this3.changeSkin
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "size",
+          name: cara,
+          src: window.location.origin + '/RecursosGraficos/Caras/' + cara + '.png'
+        }));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -67488,39 +67468,18 @@ function (_Component) {
         "aria-expanded": "false"
       }, "Cabello"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Pelo1",
-        onClick: this.changeHair
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Pelo1",
-        src: window.location.origin + '/RecursosGraficos/Pelos/Pelo1.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Pelo2",
-        onClick: this.changeHair
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Pelo2",
-        src: window.location.origin + '/RecursosGraficos/Pelos/Pelo2.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Pelo3",
-        onClick: this.changeHair
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Pelo3",
-        src: window.location.origin + '/RecursosGraficos/Pelos/Pelo3.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Pelo4",
-        onClick: this.changeHair
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Pelo4",
-        src: window.location.origin + '/RecursosGraficos/Pelos/Pelo4.png'
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.pelos.map(function (pelo, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          key: pelo + "-" + index,
+          className: "dropdown-item",
+          name: pelo,
+          onClick: _this3.changeHair
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "size",
+          name: pelo,
+          src: window.location.origin + '/RecursosGraficos/Pelos/' + pelo + '.png'
+        }));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -67530,39 +67489,18 @@ function (_Component) {
         "aria-expanded": "false"
       }, "Ojos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-menu "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Ojos1",
-        onClick: this.changeEyes
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Ojos1",
-        src: window.location.origin + '/RecursosGraficos/Ojos/Ojos1.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Ojos2",
-        onClick: this.changeEyes
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Ojos2",
-        src: window.location.origin + '/RecursosGraficos/Ojos/Ojos2.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Ojos3",
-        onClick: this.changeEyes
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Ojos3",
-        src: window.location.origin + '/RecursosGraficos/Ojos/Ojos3.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Ojos4",
-        onClick: this.changeEyes
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Ojos4",
-        src: window.location.origin + '/RecursosGraficos/Ojos/Ojos4.png'
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.ojos.map(function (ojo, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          key: ojo + "-" + index,
+          className: "dropdown-item",
+          name: ojo,
+          onClick: _this3.changeEyes
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "size",
+          name: ojo,
+          src: window.location.origin + '/RecursosGraficos/Ojos/' + ojo + '.png'
+        }));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group dropup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -67572,39 +67510,18 @@ function (_Component) {
         "aria-expanded": "false"
       }, "Boca"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-menu "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Boca1",
-        onClick: this.changeMouth
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Boca1",
-        src: window.location.origin + '/RecursosGraficos/Bocas/Boca1.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Boca2",
-        onClick: this.changeMouth
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Boca2",
-        src: window.location.origin + '/RecursosGraficos/Bocas/Boca2.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Boca3",
-        onClick: this.changeMouth
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Boca3",
-        src: window.location.origin + '/RecursosGraficos/Bocas/Boca3.png'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dropdown-item",
-        name: "Boca4",
-        onClick: this.changeMouth
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "size",
-        name: "Boca4",
-        src: window.location.origin + '/RecursosGraficos/Bocas/Boca4.png'
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, this.state.bocas.map(function (boca, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          key: boca + "-" + index,
+          className: "dropdown-item",
+          name: boca,
+          onClick: _this3.changeMouth
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "size",
+          name: boca,
+          src: window.location.origin + '/RecursosGraficos/Bocas/' + boca + '.png'
+        }));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "btn btn-outline-success btn-lg",
         type: "submit",
         value: "Guardar Avatar",

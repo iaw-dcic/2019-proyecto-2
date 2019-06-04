@@ -24,6 +24,7 @@ class userAvatarController extends Controller
     }
 
     public function store(Request $request){
+        
         $validatedData = $request->validate([
             'name' => ['required', 'unique:avatars'],
             'skin' => 'required',
@@ -69,13 +70,13 @@ class userAvatarController extends Controller
         return $ID; 
     }
 
-    public function getResources(String $tipo){
+    public function getResources(Request $request){
+        $tipo = $request->tipo;
         $recursos = DB::table('attires')->where('type',$tipo)->get();
-        $recursos = $recursos[0];
-        dd($recursos);
         $ret = array();
+      
         for($i = 0; $i < $recursos->count(); $i++){
-            $ret[$i] = $recursos[$i];
+            $ret[$i] = $recursos[$i]->source;
         }
         return response()->json($ret);
     }

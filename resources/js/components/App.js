@@ -25,20 +25,6 @@ class App extends Component {
           </div>
         </div>
       </HashRouter>
-        /*<BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/avatarView" component={AvatarView} />
-                <Route path="/readme" component={Readme} />
-            </Switch>
-            <div className="button-group-lg">
-                <HashRouter>
-                    <NavLink to="/avatarView">Ir al creador de avatares!</NavLink>
-                    <NavLink to="/readme">Ver Readme</NavLink>
-                    <NavLink to="/">Ir a Casa</NavLink> 
-                </HashRouter>
-            </div>
-        </BrowserRouter>*/
     )
     }
 }
