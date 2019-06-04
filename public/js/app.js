@@ -66279,7 +66279,7 @@ function (_Component) {
         }, item.tipo);
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title text-muted text-uppercase text-center"
       }, "Listado de Telas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"

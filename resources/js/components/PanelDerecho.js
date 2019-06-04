@@ -81,7 +81,7 @@ export default class PanelDerecho extends Component {
                     </select>
 
                     <hr width="100%"></hr>
-                    <p></p>
+                    
                     <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
                     <hr width="100%"></hr>
                     <h2 id="tittle">Tela {this.state.tela} </h2>
@@ -91,7 +91,6 @@ export default class PanelDerecho extends Component {
                             this.state.telas.map((item) => (
                                 <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
                             ))
-
                         }
                     </select>
                    
