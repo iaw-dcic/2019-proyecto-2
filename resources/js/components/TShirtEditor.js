@@ -20,8 +20,8 @@ export default class TShirtEditor extends Component {
         try {
             const response = axios.get('/api/images')
                 .then(res => {
-                    this.setState({ images: res.data }
-                    );
+                    this.setState({ images: res.data })
+                    console.log(res.data);
                 });
         } catch (e) {
             console.log('axios request failed:', e);
