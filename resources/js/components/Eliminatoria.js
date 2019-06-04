@@ -3,40 +3,53 @@ import React, { Component } from 'react';
 
 
 export default class Eliminatoria extends Component {
-    
-   /*  id_A={ this.state.eliminatorias[3].id_A}
-        id_B={ this.state.eliminatorias[3].id_B}
-        setGanador={this.setGanador}
-        indice={3} */
+    //mis props
+        /*id_A={ this.state.eliminatorias[3].id_A}
+            id_B={ this.state.eliminatorias[3].id_B}
+            setGanador={this.setGanador}
+            indice={3} */
     
     //renderizo desps de recibir las props
     renderEliminatoria(){
         let equipoA=null;
         let equipoB = null;
-        if(this.props.id_A!=null)
+        if(this.props.id_A !=null)
             equipoA= JSON.parse(localStorage.getItem(this.props.id_A));
-        if(this.props.id_B!=null)
+        if(this.props.id_B !=null)
             equipoB= JSON.parse(localStorage.getItem(this.props.id_B));
 
             return          <tr>
                             <td>
-                                <p>     <img    width={27} height={22}  src={equipoA ? equipoA.bandera : ""}  
-                                                alt={equipoA ? equipoA.nombre : ""}>
+                                <p>    
+                                    
+                                {equipoA ?
+                                    <div>
+                                     <img    width={27} height={22}  src={equipoA.bandera}  
+                                                alt={ equipoA.nombre}>
                                         </img> 
-                                        <button className="btn btn-light " 
-                                            onClick={() => this.props.setGanador(this.props.indice, equipoA.id)}>
-                                            {equipoA ? equipoA.nombre : ""}
+                                        <button className="btn btn-light "                          //gano      
+                                             onClick={() => this.props.setGanador(this.props.indice, equipoA.id)}>
+                                            {equipoA.nombre}
                                         </button> 
-       
+
+                                    </div>
+                                    : ""
+                                }
                                 </p>
 
-                                <p>     <img    width={27} height={22}  src={equipoB ? equipoB.bandera : ""}  
-                                                alt={equipoB ? equipoB.nombre : ""}>
+
+                                <p>  
+                                {equipoB ?  
+                                    <div>
+                                       <img    width={27} height={22}  src={equipoB.bandera}  
+                                                alt={equipoB.nombre}>
                                         </img> 
-                                        <button className="btn btn-light " 
+                                        <button className="btn btn-light "                          //gano      
                                             onClick={() => this.props.setGanador(this.props.indice, equipoB.id)}>
-                                            {equipoB ? equipoB.nombre : ""} 
+                                            {equipoB.nombre} 
                                         </button> 
+                                    </div>
+                                :""}
                                 </p>
                             </td>
                             </tr>

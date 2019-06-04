@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import { Redirect } from 'react-router';
-import { EXITED } from 'react-transition-group/Transition';
-
-import MisProdes from './MisProdes';
-import { Router } from 'react-router';
 
 
 export default class CrearProde extends Component {
@@ -32,7 +26,7 @@ export default class CrearProde extends Component {
           .then( (response) => {
             prode= response.data;
             //redirijo a IndexProde y le creo los cruces iniciales
-            let url= '/prodes/'+prode.id;
+            let url= '/prodes';
             this.props.history.push(url);
           })
           .catch(function (error) {

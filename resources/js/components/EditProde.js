@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import { Redirect } from 'react-router';
-import { EXITED } from 'react-transition-group/Transition';
-
-import MisProdes from './MisProdes';
-import { Router } from 'react-router';
-
 
 export default class EditProde extends Component {
   

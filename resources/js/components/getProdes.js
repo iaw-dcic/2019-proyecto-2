@@ -1,5 +1,3 @@
-import Axios from "axios";
-
 
 //funcion usada para acceder a la BD y obtener los prodes
 export  async function getProdes(){

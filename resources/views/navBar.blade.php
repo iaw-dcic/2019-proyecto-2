@@ -40,10 +40,7 @@
                      </a>
 
 
-                    <form class="form-inline my-2 my-lg-0 ml-5"   method="GET"   action="/search">
-                        <input class="form-control mr-sm-2" style="width: 300px;" type="search" name='search' placeholder="Buscar pronostico por nombre" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
+                   <a style="color:blue; font-size:200%; font-family:Impact; text-align:rigth;">       Copa Mundial FIFA 2019 </a>
 
                     
                 </div>

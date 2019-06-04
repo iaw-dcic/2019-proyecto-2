@@ -115,8 +115,12 @@ class ProdesController extends Controller
     {
         $idInt= (int)$id;
         $encuentros= Encuentro::all()->where('prode_id', $idInt)->toArray();
-
-        return response()->json($encuentros);
+      
+        $aux= array(current($encuentros),next($encuentros),next($encuentros),next($encuentros),next($encuentros)
+                    ,next($encuentros),next($encuentros),next($encuentros),next($encuentros),next($encuentros)
+                    ,next($encuentros),next($encuentros),next($encuentros),next($encuentros),next($encuentros));
+    
+        return response()->json($aux);
     }
 
 

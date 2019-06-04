@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Divider } from '@material-ui/core';
 
 export default class NotFound extends Component {
     render() {

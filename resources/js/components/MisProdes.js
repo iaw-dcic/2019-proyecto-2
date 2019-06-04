@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import { EXITED } from 'react-transition-group/Transition';
-import {Link} from 'react-router-dom';
 import {getProdes} from './getProdes'
-import IndexProde from './IndexProde';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class MisProdes extends Component {
 
@@ -17,11 +12,12 @@ export default class MisProdes extends Component {
    
      obtenerProdes(){
         var responseData=  getProdes();
-
-        return responseData;
+      return responseData;
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
+
+        //obtengo todos los prodes
         var responseData =  await this.obtenerProdes();
 
         this.setState((estadoActual)=> {
@@ -45,44 +41,69 @@ export default class MisProdes extends Component {
 
     editarProde(prode){
         this.props.history.push(`/prodes/${prode.id}/edit`, {prode});
+    }
 
+    irAProde(prode){
+        const axios = require('axios');
+        //obtengo el token del usr
+        var token = document.head.querySelector('meta[name="user-token"]');
+        //uso Bearer
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.content; 
+
+        let axiosConfig={
+            headers:{
+                'Accept': 'application/json',
+            }
+        }
+        //obtengo todos los encuentros
+        axios.get(`/api/prodes/${prode.id}`, axiosConfig).then((response) => {
+            //recibo las eliminatorias en un arreglo de 0 a 15
+
+            //aca recibo correctamente las eliminatorias
+            this.props.history.push({
+                pathname: `/prodes/${prode.id}`,
+                state: { eliminatorias: response.data,
+                         prode: prode }
+              })
+            });
     }
 
 
     render() {
-        var url;
         return (
             <div className="container">
                 <h1>Mis prodes</h1>
                 <ul>
                     {this.state.prodes.map((prode) => 
-                            <li key={prode.id}>
+                        <div key={prode.id}>
+                            <br/>
+                            <li >
                                 <td>
+                                    <h3> {prode.nombre}</h3> 
+                                   
 
-                                    <Link to={{
-                                        pathname: `/prodes/${prode.id}`,
-                                        state: {
-                                        prode: prode
-                                        }
-                                    }}>  
-                               
-                                   <h3> {prode.nombre}</h3> 
-                                   </Link>
+                                    <button className="btn btn-secondary" onClick={()=> this.irAProde(prode)}>
+                                        Acceder
+                                    </button>
+                                  
+                                   
 
 
-                                    <button   onClick={() => this.editarProde(prode)}>
+                                    <button className="btn btn-light"  onClick={() => this.editarProde(prode)}>
                                         <img src="https://img.icons8.com/material/16/000000/edit.png"/>
                                     </button>
                                     
 
-                                    <button  onClick={() => this.eliminarProde(prode)}>
+                                    <button className="btn btn-light" onClick={() => this.eliminarProde(prode)}>
                                         <span  aria-hidden="true" className="glyphicon glyphicon-trash"/>
                                         <img src="https://img.icons8.com/material/16/000000/trash.png"/>
                                     </button>
                                 </td>
                             </li>
+                        </div>
                         )}
                 </ul>
+                <br/><br/><br/>
             </div>
         )
     }
