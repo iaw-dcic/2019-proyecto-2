@@ -13,211 +13,211 @@ class PrimeraRondaSeeder extends Seeder
     {
         DB::table('partidos')->insert([
             'jugador_uno_id' => '1',
-            'jugador_dos_id'=> '56',  
+            'jugador_dos_id'=> '551',  
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '26',        
-            'jugador_dos_id'=> '27',//shapavalov
+            'jugador_uno_id' => '251',        
+            'jugador_dos_id'=> '261',//shapavalov
             'resultado'=>'2',
             'ronda'=>'32',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '54',        //kohlschreiber
-            'jugador_dos_id'=> '53',
+            'jugador_uno_id' => '531',        //kohlschreiber
+            'jugador_dos_id'=> '521',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '25',
-            'jugador_dos_id'=> '16',        //cecchinato
+            'jugador_uno_id' => '241',
+            'jugador_dos_id'=> '151',        //cecchinato
             'ronda'=>'32',
             'resultado'=>'2',
         ]);
        
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '12',
-            'jugador_dos_id'=> '44',       //krygios
+            'jugador_uno_id' => '111',
+            'jugador_dos_id'=> '431',       //krygios
             'ronda'=>'32',
             'resultado'=>'2',
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '28',    //ruud
-            'jugador_dos_id'=> '29', 
+            'jugador_uno_id' => '271',    //ruud
+            'jugador_dos_id'=> '281', 
             'ronda'=>'32',
             'resultado'=>'1',
         ]); 
         DB::table('partidos')->insert([ 
-            'jugador_uno_id' => '45',   //goffin
-            'jugador_dos_id'=> '46',
+            'jugador_uno_id' => '441',   //goffin
+            'jugador_dos_id'=> '451',
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '7',      //delpo
-            'jugador_dos_id'=> '56',
+            'jugador_uno_id' => '61',      //delpo
+            'jugador_dos_id'=> '551',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '4',     //a. zverev
-            'jugador_dos_id'=> '56',
+            'jugador_uno_id' => '31',     //a. zverev
+            'jugador_dos_id'=> '551',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
 
         DB::table('partidos')->insert([ 
-            'jugador_uno_id' => '38',       //berretini
-            'jugador_dos_id'=> '57',
+            'jugador_uno_id' => '371',       //berretini
+            'jugador_dos_id'=> '561', //pouille
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '42',        //peque
-            'jugador_dos_id'=> '43',
+            'jugador_uno_id' => '411',        //peque
+            'jugador_dos_id'=> '421',
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '24',
-            'jugador_dos_id'=> '15',      //monfils
+            'jugador_uno_id' => '231', //ramos
+            'jugador_dos_id'=> '141',      //monfils
             'ronda'=>'32',
         'resultado'=>'1',
 
         ]);
         
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '9',      //cilic
-            'jugador_dos_id'=> '39',
+            'jugador_uno_id' => '81',      //cilic
+            'jugador_dos_id'=> '381', //baso
             'ronda'=>'32',
              'resultado'=>'2',
             
         ]);
         
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '36',   //dimitrov
-            'jugador_dos_id'=> '37',
+            'jugador_uno_id' => '351',   //dimitrov
+            'jugador_dos_id'=> '361', //struff
             'resultado'=>'2',
             'ronda'=>'32',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '49',
-            'jugador_dos_id'=> '50',    //pella
+            'jugador_uno_id' => '481',
+            'jugador_dos_id'=> '491',    //pella
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '6',    //nishikori
-            'jugador_dos_id'=> '56',
+            'jugador_uno_id' => '51',    //nishikori
+            'jugador_dos_id'=> '551',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '8',    //tsitispas
-            'jugador_dos_id'=> '56',
+            'jugador_uno_id' => '71',    //tsitispas
+            'jugador_dos_id'=> '551',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '52',   //j sinner
-            'jugador_dos_id'=> '51',
+            'jugador_uno_id' => '511',   //j sinner
+            'jugador_dos_id'=> '501',
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
         
         
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '47',   //albot
-            'jugador_dos_id'=> '48',
+            'jugador_uno_id' => '461',   //albot
+            'jugador_dos_id'=> '471',
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '19',
-            'jugador_dos_id'=> '10',      //fognini
+            'jugador_uno_id' => '181',
+            'jugador_dos_id'=> '91',      //fognini
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '13',     //coric
-            'jugador_dos_id'=> '35',
+            'jugador_uno_id' => '121',     //coric
+            'jugador_dos_id'=> '341',
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '22',
-            'jugador_dos_id'=> '23',      //norrie
+            'jugador_uno_id' => '211',
+            'jugador_dos_id'=> '221',      //norrie
             'ronda'=>'32',
             'resultado'=>'2',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '40',
-            'jugador_dos_id'=> '41',     //sousa
+            'jugador_uno_id' => '391',
+            'jugador_dos_id'=> '401',     //sousa
             'ronda'=>'32',
             'resultado'=>'2',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '3',      //roger
-            'jugador_dos_id'=> '56',
+            'jugador_uno_id' => '21',      //roger
+            'jugador_dos_id'=> '551',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
         
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '5',      //thiem
-            'jugador_dos_id'=> '56',
+            'jugador_uno_id' => '41',      //thiem
+            'jugador_dos_id'=> '551',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);
      
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '33',  //verdasco
-            'jugador_dos_id'=> '34',
+            'jugador_uno_id' => '321',  //verdasco
+            'jugador_dos_id'=> '331',
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
      
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '20',   //bautista augut
-            'jugador_dos_id'=> '21',
+            'jugador_uno_id' => '191',   //bautista augut
+            'jugador_dos_id'=> '201',
             'ronda'=>'32',
             'resultado'=>'1',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '30',
-            'jugador_dos_id'=> '11',   //kachanov
+            'jugador_uno_id' => '291',
+            'jugador_dos_id'=> '101',   //kachanov
             'ronda'=>'32',
             'resultado'=>'2',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '55',
-            'jugador_dos_id'=> '14',   //basilashivil
+            'jugador_uno_id' => '541',
+            'jugador_dos_id'=> '131',   //basilashivil
             'ronda'=>'32',
             'resultado'=>'2',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '31',
-            'jugador_dos_id'=> '32',   //djere
+            'jugador_uno_id' => '301',
+            'jugador_dos_id'=> '311',   //djere
             'ronda'=>'32', 
             'resultado'=>'2',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '18',   //gasquet
-            'jugador_dos_id'=> '17',
+            'jugador_uno_id' => '161',   //gasquet
+            'jugador_dos_id'=> '171',
             'ronda'=>'32',
         ]);
     
        
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '2',
-            'jugador_dos_id'=> '56',
+            'jugador_uno_id' => '11',
+            'jugador_dos_id'=> '551',
             'resultado'=>'1',
             'ronda'=>'32',
         ]);

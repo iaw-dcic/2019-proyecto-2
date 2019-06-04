@@ -402,7 +402,7 @@ export default class Playoffs extends Component {
             }
 
             try {
-                const response = await axios.post('http://localhost/pr2/api/insert', {
+                const response = await axios.post('/api/insert', {
                     pronostico: pro,
                     c0j1: this.state.c0j1.id,
                     c0j2: this.state.c0j2.id,
@@ -462,7 +462,7 @@ export default class Playoffs extends Component {
             }
 
             try {
-                const response = await axios.post('http://localhost/pr2/api/insertpronostico');
+                const response = await axios.post('/api/insertpronostico');
                 //    console.log('Returned data:', response);
             } catch (e) {
                 console.log('axios request failed:', e);
@@ -494,7 +494,7 @@ export default class Playoffs extends Component {
                 }
             }
 
-            const res = await fetch('http://localhost/pr2/api/ultimopronostico', miInit)
+            const res = await fetch('/api/ultimopronostico', miInit)
             const something = await res.json();
             this.setState({ pronost: something })
 

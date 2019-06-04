@@ -13,45 +13,45 @@ class OctavosSeeder extends Seeder
     {
         DB::table('partidos')->insert([
             'jugador_uno_id' => '1',  //nole
-            'jugador_dos_id'=> '54',  //kohlscreiber
+            'jugador_dos_id'=> '531',  //kohlscreiber
             'ronda'=>'8',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '8', //tsitipas
-            'jugador_dos_id'=> '10',  //fognini
+            'jugador_uno_id' => '71', //tsitipas
+            'jugador_dos_id'=> '91',  //fognini
             'ronda'=>'8',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '28', //ruud
-            'jugador_dos_id'=> '7',  //delpo
+            'jugador_uno_id' => '271', //ruud
+            'jugador_dos_id'=> '61',  //delpo
             'ronda'=>'8',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '13', //coric
-            'jugador_dos_id'=> '3',  //roger
+            'jugador_uno_id' => '121', //coric
+            'jugador_dos_id'=> '21',  //roger
             'ronda'=>'8',
         ]);
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '38', //berretini
-            'jugador_dos_id'=> '42',  //peque
+            'jugador_uno_id' => '371', //berretini
+            'jugador_dos_id'=> '411',  //peque
             'ronda'=>'8',
         ]); 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '33', //verdasco
-            'jugador_dos_id'=> '11',  //kachanov
+            'jugador_uno_id' => '321', //verdasco
+            'jugador_dos_id'=> '101',  //kachanov
             'ronda'=>'8',
         ]);
 
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '37', //struf
-            'jugador_dos_id'=> '6',  //nishikori
+            'jugador_uno_id' => '361', //struf
+            'jugador_dos_id'=> '51',  //nishikori
             'ronda'=>'8',
         ]);
       
       
         DB::table('partidos')->insert([
-            'jugador_uno_id' => '14', 
-            'jugador_dos_id'=> '2',  //nadal
+            'jugador_uno_id' => '131', 
+            'jugador_dos_id'=> '11',  //nadal
             'ronda'=>'8',
         ]);
     }

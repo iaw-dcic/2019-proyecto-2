@@ -19,7 +19,7 @@ export default class Header extends Component {
                 'Authorization': 'Bearer ' + api_token.content
             }
         }
-        fetch('http://localhost/pr2/api/user', miInit)
+        fetch('/api/user', miInit)
             .then(res => res.json())
             .then(json => {
                 if (json != null)

@@ -67573,7 +67573,7 @@ function (_Component) {
           'Authorization': 'Bearer ' + api_token.content
         }
       };
-      fetch('http://localhost/pr2/api/user', miInit).then(function (res) {
+      fetch('/api/user', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this2.setState({
@@ -67884,7 +67884,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('http://localhost/pr2/api/octavos/' + this.props.i).then(function (res) {
+      fetch('/api/octavos/' + this.props.i).then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -69006,7 +69006,7 @@ function (_Component) {
 
                 _context.prev = 3;
                 _context.next = 6;
-                return axios.post('http://localhost/pr2/api/actualizar', {
+                return axios.post('/pr2/api/actualizar', {
                   c0: this.state.c0,
                   c1: this.state.c1,
                   c2: this.state.c2,
@@ -69072,7 +69072,7 @@ function (_Component) {
 
                 _context2.prev = 3;
                 _context2.next = 6;
-                return axios.post('http://localhost/pr2/api/eliminarpronostico', {
+                return axios.post('/api/eliminarpronostico', {
                   pronostico: this.state.pronostico,
                   c0: this.state.c0.id,
                   c1: this.state.c1.id,
@@ -69587,7 +69587,7 @@ function (_Component) {
 
                 _context.prev = 6;
                 _context.next = 9;
-                return axios.post('http://localhost/pr2/api/insert', {
+                return axios.post('/api/insert', {
                   pronostico: pro,
                   c0j1: this.state.c0j1.id,
                   c0j2: this.state.c0j2.id,
@@ -69673,7 +69673,7 @@ function (_Component) {
 
                 _context2.prev = 7;
                 _context2.next = 10;
-                return axios.post('http://localhost/pr2/api/insertpronostico');
+                return axios.post('/api/insertpronostico');
 
               case 10:
                 response = _context2.sent;
@@ -69732,7 +69732,7 @@ function (_Component) {
                   }
                 };
                 _context3.next = 6;
-                return fetch('http://localhost/pr2/api/ultimopronostico', miInit);
+                return fetch('/api/ultimopronostico', miInit);
 
               case 6:
                 res = _context3.sent;
@@ -69899,7 +69899,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('http://localhost/pr2/api/partidos/32').then(function (res) {
+      fetch('/api/partidos/32').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -70057,27 +70057,27 @@ function (_Component) {
                 this.props.setPronostico(selectedValue); //   console.log(this.state.pronostico);
 
                 if (this.state.pronostico != -1 && selectedValue != '') {
-                  fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
+                  fetch('/api/partidos/8').then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.octavos(json.items[0], 0), _this3.props.octavos(json.items[1], 1), _this3.props.octavos(json.items[2], 2), _this3.props.octavos(json.items[3], 3), _this3.props.octavos(json.items[4], 4), _this3.props.octavos(json.items[5], 5), _this3.props.octavos(json.items[6], 6), _this3.props.octavos(json.items[7], 7);
                   });
-                  fetch('http://localhost/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/4/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.cuartos(json.items[0], 0), _this3.props.cuartos(json.items[1], 1), _this3.props.cuartos(json.items[2], 2), _this3.props.cuartos(json.items[3], 3);
                   });
-                  fetch('http://localhost/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.semis(json.items[0], 0), _this3.props.semis(json.items[1], 1);
                   });
-                  fetch('http://localhost/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/1/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props["final"](json.items[0]);
                   });
-                  fetch('http://localhost/pr2/api/pronostico/0/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/0/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.campeon(json.items[0]);
@@ -70210,7 +70210,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('http://localhost/pr2/api/partidos/16').then(function (res) {
+      fetch('/api/partidos/16').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
