@@ -11,7 +11,7 @@ export default class PronosticoController{
 
     async saveProde(prode){
         let prodeDB = await this.pronosticoModel.saveProde(prode); 
-        //this.saveOnLocalStorage(prodeDB);
+        this.saveOnLocalStorage(prodeDB);
         return prodeDB;
     }
     
@@ -22,7 +22,9 @@ export default class PronosticoController{
     }
 
     async deleteProde(prode){
-        console.log(prode);
+        this.pronosticoModel.removeFromLocalStorage(prode);
+        let resultado = await this.pronosticoModel.deleteProde(prode);
+        return resultado;
     }
 
     saveOnLocalStorage(prode){

@@ -8,14 +8,15 @@ export default class PronosticoModel{
     }
 
     async loadProdes(){
-        let response = await Axios.get(`/api/user/${this.user.id}/prodes`)
+        let response = await Axios.get(`/api/user/${this.user.id}/prodes`);
         return response.data.map(prode => this.transformarDatosDesdeServidor(prode));
     }
 
     async saveProde(prode){
         let pronostico = this.transformarDatosHaciaServidor(prode);
-        let response = Axios.post(`/api/user/${this.user.id}/prodes`, pronostico)
-        return response.data;
+        let response = await Axios.post(`/api/user/${this.user.id}/prodes`, pronostico);
+        let prodeDB = this.transformarDatosDesdeServidor(response.data);
+        return prodeDB;
     }
 
     async resetProde(prode){
@@ -35,8 +36,14 @@ export default class PronosticoModel{
 
     async createProde(user_id){
         let id = this.getMaxIndice();
-        return await this.resetProde({ user_id, id: null, teams: null, results: null });
+        let prode = await this.resetProde({ user_id, id: null, teams: null, results: null });
+        return prode;
     } 
+
+    async deleteProde(prode){
+        let response = await Axios.delete(`/api/user/${prode.user_id}/prodes/${prode.id}`);
+        return response.data.resultado;
+    }
 
     resetResults(results){
         return [results[0].map((result) => {
@@ -44,6 +51,13 @@ export default class PronosticoModel{
                 return [null, null, partido[2]];
             });
         })];
+    }
+
+    removeFromLocalStorage(prode){
+        let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
+        let indice = this.getIndice(prodes, prode.id);
+        prodes.splice(indice, 1);
+        localStorage.setItem('lista_prodes', JSON.stringify(prodes));
     }
 
     getProdeFromLocalStorage(id){
@@ -59,9 +73,10 @@ export default class PronosticoModel{
 
     saveProdeOnLocalStorage(prode){
         let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
-        if(prode.id != null)
+        if(prode.id != null){
+            
             prodes[this.getIndice(prodes, prode.id)] = prode;
-        else{
+        }else{
             prode.id = this.getMaxIndice();
             prodes.push(prode);
         }

@@ -126,18 +126,20 @@ class ProdeController extends Controller{
      */
     public function destroy($user_id, $prode_id){
         if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => '401 Unauthorized'], 401);
+            return Response()->json(['error' => false], 401);
         $user = Auth::user();
         DB::beginTransaction();
         try{
-            $user = User::find($user_id);   //Borrar y reemplazar por el comentario de arriba
             $prode = $user->getProdes()->find($prode_id);
-            $prode->destroy();
-            return Response()->json(['ok' => 'Eliminado']);
+            $partidos = $prode->getPartidos()->get();
+            foreach($partidos as $partido)
+                $partido->delete();
+            $prode->delete();
+            return Response()->json(['resultado' => true], 200);
             DB::commit();
         }catch(\Exception $ex){
             DB::rollback();
-            return Response()->json(['error' => 'Error al eliminar el prode']);
+            return Response()->json(['resultado' => false], 400);
         }
     }
 

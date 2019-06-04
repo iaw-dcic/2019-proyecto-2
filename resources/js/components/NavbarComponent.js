@@ -56,7 +56,7 @@ export default class NavbarComponent extends Component {
                         <Link className="nav-link js-scroll" to="#pronosticos">Pronósticos</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link js-scroll" onClick={this.logout} >Salir</a>
+                        <a className="nav-link js-scroll" href="" onClick={this.logout} >Salir</a>
                     </li>
                 </ul>
             )

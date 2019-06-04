@@ -12,6 +12,7 @@ export default class App extends Component{
     constructor(){
         super();
 
+        //Obtengo el usuario de los metadatos
         let data = document.getElementById('user');
         if(data != null){
             let user = JSON.parse(data.content);

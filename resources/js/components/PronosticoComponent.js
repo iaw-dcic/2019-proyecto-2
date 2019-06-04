@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
 import PronosticoController from '../controllers/PronosticoController';
 
 export default class PronosticoComponent extends Component {
@@ -58,10 +59,22 @@ export default class PronosticoComponent extends Component {
     //Guarda los datos en el servidor
     saveProde(event) {
         event.preventDefault();
-        console.log(this.prode);
         this.pronosticoController.saveProde(this.prode)
-            .then(prode => this.refreshProde(prode))
-            .catch(error => console.log(error));
+            .then(prode => {
+                this.refreshProde(prode);
+                Swal.fire(
+                    'Prode creado correctamente!',
+                    'Presiona OK para continuar',
+                    'success'
+                );
+            })
+            .catch(error => {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Error, intente nuevamente en unos momentos!'
+                })
+            });
     }
 
     //Reestablece los datos
@@ -75,14 +88,53 @@ export default class PronosticoComponent extends Component {
     //Borrar los datos
     deleteProde(event){
         event.preventDefault();
-        this.pronosticoController.deleteProde(this.prode);
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Esta acción es irreversible",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar!'
+            })
+            .then((result) => {
+            if (result.value) {
+                this.pronosticoController.deleteProde(this.prode)
+                    .then(resultado => {
+                        if(resultado == true){
+                             Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            );
+                            this.refreshProde(null);
+                        }else{
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Error, intente nuevamente en unos momentos!'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error, intente nuevamente en unos momentos!'
+                        });
+                    });
+            }
+        });
     }
 
     refreshProde(prode){
-        this.setState({
-            user: this.user,
-            prode
-        });
+        if(prode != null){
+            this.setState({
+                user: this.user,
+                prode
+            });
+            this.actualizarProdes();
+        }
     }
 
     guardarDatos(data){

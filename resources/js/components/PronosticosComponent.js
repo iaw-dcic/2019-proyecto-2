@@ -56,8 +56,8 @@ export default class PronosticosComponent extends Component {
 
     createProde(event){
         this.pronosticosController.createProde()
-            .then(prode => this.seleccionarProde(event, prode))
-            .catch(error => console.log(error)); 
+            .then(prode => this.seleccionarProde(prode))
+            .catch(error => console.log(`Error: ${error}`)); 
     }
 
     seleccionarProde(prode){
@@ -73,10 +73,10 @@ export default class PronosticosComponent extends Component {
     }
 
     cargarLista(){
-        return this.state.prodes.map((prode) => {
+        return this.state.prodes.map((prode, indice) => {
             return (
                 <button onClick={() => this.seleccionarProde(prode)} key={prode.id} className="list-group-item list-group-item-action d-flex justify-content-center item-prode">
-                    Prode N°{prode.id}
+                    Prode N°{indice+1}
                 </button>
             )
         });
