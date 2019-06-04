@@ -12,9 +12,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        //
+    public function register () {
+        if (env('APP_ENV') === 'production') {
+            $this->app['url']->forceScheme('https');
+        }
     }
 
     /**
