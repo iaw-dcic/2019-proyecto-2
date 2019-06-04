@@ -41,29 +41,29 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <div className="row justify-content-center">
+                <div className="container">
                     <TShirtEditor save={this.componentDidMount} />
-                </div>
-                {api_token &&
-                    <div className="row justify-content-center">
-                        <div id="myTshirts">
-                            <ScrollMenu
-                                data={this.state.my_tshirts.map((tshirt, key) =>
-                                    <TShirt key={key}
-                                        id={tshirt.id}
-                                        tshirt_type={tshirt.tshirt_type}
-                                        image_type={tshirt.image_type}
-                                        image={tshirt.image}
-                                        tshirt_color={tshirt.color}
-                                        delete={this.componentDidMount}/>)
-                                }
-                                arrowLeft={<div className="arrow left"></div>}
-                                arrowRight={<div className="arrow right"></div>}
-                                onSelect={this.onSelect}
-                            />
+                    {api_token &&
+                        <div className="row justify-content-center">
+                            <div id="myTshirts">
+                                <ScrollMenu
+                                    data={this.state.my_tshirts.map((tshirt, key) =>
+                                        <TShirt key={key}
+                                            id={tshirt.id}
+                                            tshirt_type={tshirt.tshirt_type}
+                                            image_type={tshirt.image_type}
+                                            image={tshirt.image}
+                                            tshirt_color={tshirt.color}
+                                            delete={this.componentDidMount} />)
+                                    }
+                                    arrowLeft={<div className="arrow left"></div>}
+                                    arrowRight={<div className="arrow right"></div>}
+                                    onSelect={this.onSelect}
+                                />
+                            </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
             </BrowserRouter>
         )
     }

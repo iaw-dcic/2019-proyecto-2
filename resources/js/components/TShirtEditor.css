@@ -84,11 +84,6 @@
     text-align: center;
 }
 
-#content{
-    display: flex;
-    flex-direction: row;
-}
-
 .men_image{
     background-image: url('/storage/uploads/basic_tee.png')
 }
@@ -101,4 +96,11 @@
 }
 .women_foreground{
     background-image: url('/storage/uploads/women_tee_foreground.png')
+}
+
+.my-center{
+    text-align: center;
+}
+.my-right{
+    text-align: right;
 }

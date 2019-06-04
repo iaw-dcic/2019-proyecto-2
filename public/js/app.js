@@ -6656,7 +6656,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#tshirt-editor-container{\n    align-items: center;\n    width: 443px;\n    height: 467px;\n    position: relative;\n}\n\n#color_picker{\n    align-items: center;\n    padding: 20px;\n    width: 443px;\n    position: relative;\n}\n\n.tshirt-contents{\n    position: absolute;\n    left: 0px;\n    right: 0px;\n    top: 0px;\n    bottom: 0px;\n}\n.image{\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.save-btn{\n    margin: 10px;\n}\n\n.editor-center{\n    padding: 20px;\n    margin-top: 120px;\n    margin-left: 125px;\n    width: 193px;\n    height: 193px;\n}\n\n.editor-pocket{\n    padding: 20px;\n    margin-top: 100px;\n    margin-left: 225px;\n    width: 100px;\n    height: 100px;\n}\n\n.options{\n    height: 100px;\n    width: 300px;\n}\n\n.arrow{\n    width: 30px;\n    height:60px;\n    margin: 5px;\n    background-size: cover;\n}\n\n.left{\n    background-image: url('/storage/left-arrow.png')\n}\n.right{\n    background-image: url('/storage/right-arrow.png')\n}\n\n.type_options{\n    display: flex;\n    flex-direction: row;\n}\n\n.image_button{\n    width: 50px;\n    height: 50px;\n    margin:10px;\n}\n\n.large_image_button{\n    width: 143px;\n    height: 147px;\n    margin:10px;\n}\n\n.option_label{\n    text-align: center;\n}\n\n#content{\n    display: flex;\n    flex-direction: row;\n}\n\n.men_image{\n    background-image: url('/storage/uploads/basic_tee.png')\n}\n.men_foreground{\n    background-image: url('/storage/uploads/basic_tee_foreground.png')\n}\n\n.women_image{\n    background-image: url('/storage/uploads/women_tee.png')\n}\n.women_foreground{\n    background-image: url('/storage/uploads/women_tee_foreground.png')\n}\n", ""]);
+exports.push([module.i, "#tshirt-editor-container{\n    align-items: center;\n    width: 443px;\n    height: 467px;\n    position: relative;\n}\n\n#color_picker{\n    align-items: center;\n    padding: 20px;\n    width: 443px;\n    position: relative;\n}\n\n.tshirt-contents{\n    position: absolute;\n    left: 0px;\n    right: 0px;\n    top: 0px;\n    bottom: 0px;\n}\n.image{\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.save-btn{\n    margin: 10px;\n}\n\n.editor-center{\n    padding: 20px;\n    margin-top: 120px;\n    margin-left: 125px;\n    width: 193px;\n    height: 193px;\n}\n\n.editor-pocket{\n    padding: 20px;\n    margin-top: 100px;\n    margin-left: 225px;\n    width: 100px;\n    height: 100px;\n}\n\n.options{\n    height: 100px;\n    width: 300px;\n}\n\n.arrow{\n    width: 30px;\n    height:60px;\n    margin: 5px;\n    background-size: cover;\n}\n\n.left{\n    background-image: url('/storage/left-arrow.png')\n}\n.right{\n    background-image: url('/storage/right-arrow.png')\n}\n\n.type_options{\n    display: flex;\n    flex-direction: row;\n}\n\n.image_button{\n    width: 50px;\n    height: 50px;\n    margin:10px;\n}\n\n.large_image_button{\n    width: 143px;\n    height: 147px;\n    margin:10px;\n}\n\n.option_label{\n    text-align: center;\n}\n\n.men_image{\n    background-image: url('/storage/uploads/basic_tee.png')\n}\n.men_foreground{\n    background-image: url('/storage/uploads/basic_tee_foreground.png')\n}\n\n.women_image{\n    background-image: url('/storage/uploads/women_tee.png')\n}\n.women_foreground{\n    background-image: url('/storage/uploads/women_tee_foreground.png')\n}\n\n.my-center{\n    text-align: center;\n}\n.my-right{\n    text-align: right;\n}\n", ""]);
 
 // exports
 
@@ -81505,10 +81505,10 @@ function (_Component) {
       var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
+        className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TShirtEditor__WEBPACK_IMPORTED_MODULE_4__["default"], {
         save: this.componentDidMount
-      })), api_token && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), api_token && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "myTshirts"
@@ -81531,7 +81531,7 @@ function (_Component) {
           className: "arrow right"
         }),
         onSelect: this.onSelect
-      }))));
+      })))));
     }
   }]);
 
@@ -81917,13 +81917,13 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "tshirt-editor-container",
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 my-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tshirt-editor-container",
+        className: "my-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tshirt_image",
         className: "tshirt-contents image " + this.state.tshirt_type + "_image",
         style: {
@@ -81941,10 +81941,12 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_color__WEBPACK_IMPORTED_MODULE_1__["SliderPicker"], {
         color: this.state.tshirt_color,
         onChange: this.changeColor
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "option_label"
       }, "No image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
+        className: "my-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "image_button",
         alt: "none",
@@ -81953,7 +81955,7 @@ function (_Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "option_label"
       }, "Center image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "options"
+        className: "options my-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3___default.a, {
         data: this.state.images.map(function (image, key) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -81974,7 +81976,7 @@ function (_Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "option_label"
       }, "Pocket image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "options"
+        className: "options my-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3___default.a, {
         data: this.state.images.map(function (image, key) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -82009,7 +82011,7 @@ function (_Component) {
         src: "/storage/uploads/women_tee.png",
         onClick: this.makeWomenTee
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, document.querySelector('meta[name="api-token"]') && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center save-btn"
+        className: "mycenter save-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-m",
         onClick: this.submit
