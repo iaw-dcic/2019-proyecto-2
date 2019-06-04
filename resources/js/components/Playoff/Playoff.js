@@ -96,20 +96,28 @@ export default class Playoff extends Component {
 
         return ( 
         <>
-            <h1 className="mt-3 mb-3">Mis pronósticos</h1>
-            <div className='row'> 
-                <div className="d-flex flex-row buttonsSelectPlayoff" >
-                 { this.state.playoffs.map((name,id) => ( <button className="btn-playoff btn-playoff1 mr-2" key = {id} onClick={(event) => this.handleChange(id)}> Playoff {id+1}</button> ))}
+            <div className="card mt-3">
+                <div className="card-header card-header2">
+                        <h1 className="center">Mis pronósticos</h1>
+                </div>
+                <div className="card-body center">
+                    <div className='row'> 
+                        <div className="d-flex flex-row buttonsSelectPlayoff style-8"  >
+                        { this.state.playoffs.map((name,id) => ( <button className="btn-playoff btn-playoff1 btn-playoff2 mr-2" key = {id} onClick={(event) => this.handleChange(id)}> Playoff {id+1}</button> ))}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="container-deshacer"><button className="btn-deshacer btn-eliminar" onClick={(event) => this.handleDelete()}>Eliminar playoff</button></div>
             <div className="container mt-3">
-                <div className="card-header">
-                    <h1>Copa Libertadores</h1>                                     
+                 <div className="card-header mt-3">
+                    <div className="card">
+                        <h1>🏆 Copa Libertadores 🏆</h1>
+                    </div>
                 </div>
 
                 <div className="card-header mt-3 card-header2">
-                    <h1>Campeón 🏆:<b> {this.state.ganador}</b></h1>
+                    <h1>Campeón :<b> {this.state.ganador}</b></h1>
                 </div>
 
                 <h2 className="mt-3"><b> Final</b></h2>

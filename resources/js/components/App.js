@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import Main from './Main'
 
 class App extends Component {
+    
+    componentDidMount(){
+        localStorage.clear();
+    }
     render () {
-    return (
-        <BrowserRouter>
-        <div>
-            <Example />
-        </div>
-        </BrowserRouter>
-    )
+        return (
+            <BrowserRouter>
+            <div>
+                <Main />
+            </div>
+            </BrowserRouter>
+        )
     }
 }
 

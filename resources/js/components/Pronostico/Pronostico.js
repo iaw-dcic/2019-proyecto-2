@@ -195,7 +195,7 @@ export default class Pronostico extends Component {
                         <h1>🏆 Copa Libertadores 🏆</h1>
                     </div>
                 </div>
-                <div className="card">
+                
                     <div className="fase-deshacer">
                         <h2 className="mt-3"><b> Octavos de final</b></h2>
                     </div>
@@ -316,11 +316,11 @@ export default class Pronostico extends Component {
                             <td onClick={(event) => this.handleChangeFinal(this.state.final[1])}>{this.state.final[1]}</td>
                         </tr>
                     </table>
-                </div>
+                
 
-                <div className="card">
-                    <div className="card-header mt-3 card-header2">
-                        <h1 className="mt-3">Campeón 🏆:<b> {this.state.ganador}</b></h1>
+                <div className="card mt-3">
+                    <div className="card-header mt-1 card-header2">
+                        <h1 className="mt-1">Campeón 🏆:<b> {this.state.ganador}</b></h1>
                     </div>
                     <div className="card-body center">
                          <button className="btn-playoff btn-playoff1 mt-2" onClick={(event) => this.handleChangeGuardar(event)}>Guardar pronóstico 💾</button>

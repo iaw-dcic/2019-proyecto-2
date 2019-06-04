@@ -6,14 +6,19 @@ table {
   }
   
   td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid goldenrod;
     text-align: center;
     padding: 8px;
     cursor: pointer;
+    background-color: #252424;
+  }
+
+  th {
+    font-size: 18px;
   }
   
   tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #252424;
   }
 
   .card-body {
@@ -39,12 +44,8 @@ table {
 
   .btn-deshacer {
     color: white;
-    background-color: rgb(253, 0, 0);
+    background-color: rgba(241, 76, 76, 0.616);
     border-color: rgb(252, 77, 77);
-    /*width: 20%;
-    height: 20%;
-    margin-top: 2%;
-    margin-bottom: 1%;*/
     place-items: end;
     margin-top: 4%;
   }
@@ -56,16 +57,16 @@ table {
   }
 
   .btn-deshacer:hover {
-    color: #eca3a3;
+    color: #f8eeee;
     text-decoration: underline;
   }
 
   .btn-eliminar {
       text-decoration: none;
+      margin-top: 1%;
   }
 
   .btn-eliminar:hover {
-    color: #c51616;
     text-decoration: underline;
   }
 
@@ -102,6 +103,7 @@ table {
   .my-navbar {
     background-color: rgba(184, 159, 18, 0.39);
     color: white;
+    padding: 1.5rem;
   }
 
   .fondo { 
@@ -114,7 +116,7 @@ table {
   }
 
   .card {
-    background-color: rgba(184, 159, 18, 0.39);
+    background-color: rgba(184, 159, 18, 0.356);
     padding: 0.75rem 1.25rem;
   }
 
@@ -132,3 +134,34 @@ table {
     width: 50%;
     text-align: center;
   }
+
+  .btn-playoff2 {
+    margin-bottom: 2%;
+  }
+
+  .scrollbar{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+  }
+
+  .style-8::-webkit-scrollbar-track
+  {
+	border: 1px solid goldenrod;
+  background-color: rgb(206, 206, 206);
+  }
+
+  .style-8::-webkit-scrollbar
+  {
+	width: 10px;
+	background-color: #F5F5F5;
+  }
+
+  .style-8::-webkit-scrollbar-thumb
+ {
+	background-color: rgb(116, 85, 8);	
+ }
