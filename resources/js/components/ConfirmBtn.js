@@ -14,7 +14,7 @@ export default class ConfirmBtn extends Component{
     render(){
       return(
         <div>
-          <button onClick={this.props.handler}>Confirm</button>
+          <button className="btn btn-success" onClick={this.props.handler}>Confirm</button>
         </div>
       )
     }

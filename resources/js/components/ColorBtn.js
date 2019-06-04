@@ -18,7 +18,7 @@ export default class ColorBtn extends Component{
 
     return(
       <div class="col-sm">
-           <button type="button" class="btn btn-default btn-circle" style={stylee} onClick={()=>this.props.handler(this.props.valor.id)}></button>
+           <button type="button" class="btn btn-default btn-circle btn-lg" style={stylee} onClick={()=>this.props.handler(this.props.valor.id)}></button>
       </div>
 
 

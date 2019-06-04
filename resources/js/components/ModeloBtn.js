@@ -8,7 +8,7 @@ export default class ModeloBtn extends Component{
   render(){
     return(
       <div>
-      <button onClick={()=>this.props.handler(this.props.valor.id)}>{this.props.valor.modelo}</button>
+      <button className="btn btn-light btn-sm" onClick={()=>this.props.handler(this.props.valor.id)}>{this.props.valor.modelo}</button>
       </div>
     )
   }

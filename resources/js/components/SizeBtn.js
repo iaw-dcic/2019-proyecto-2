@@ -9,8 +9,8 @@ export default class SizeBtn extends Component{
     return(
       <div>
 
-      <button onClick={()=>this.props.handler(this.props.valor.id)}>{this.props.valor.size}</button>
-      {this.props.valor.id}
+      <button className="btn btn-light btn-sm" onClick={()=>this.props.handler(this.props.valor.id)}>{this.props.valor.size}</button>
+
       </div>
     )
   }

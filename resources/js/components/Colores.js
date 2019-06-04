@@ -25,9 +25,9 @@ export default class Colores extends Component{
     }
   render(){
     return(
-      <div ClassName="container">
+      <div className="container">
 
-        <h3>Color</h3>
+        <h1>Color</h1>
         {
           this.state.col.map(color => <ColorBtn valor={color} handler={this.props.handler}/>)
         }

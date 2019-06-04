@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
           'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/dellxpsverde13.webp',
         ]);
         DB::table('notebooks')->insert([
-          'modelid' => '1',
+          'modelid' => '2',
           'colorid' => '2',
           'sizeid' => '2',
           'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/dellxpsverde15.webp',

@@ -19,7 +19,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="react-app"></div>
-</body>
+
+  <body>
+    @extends('layouts.app')
+    @section('content')
+      <div id="react-app" data-user='{{Auth::user()}}'></div>
+      @endsection
+  </body>
 </html>

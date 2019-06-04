@@ -22,7 +22,7 @@ export default class Page extends Component {
     this.updatepanel = this.updatepanel.bind(this)
     this.guardarnotebookpersonalizada = this.guardarnotebookpersonalizada.bind(this)
     this.savestate = this.savestate.bind(this)
-
+    this.seturl = this.seturl.bind(this)
   }
   componentWillMount(){
     if(localStorage.hasOwnProperty('colorid')){
@@ -30,8 +30,8 @@ export default class Page extends Component {
         colorid: localStorage.getItem('colorid'),
         modelid: localStorage.getItem('modelid'),
         sizeid: localStorage.getItem('sizeid'),
-        url: localStorage.getItem('url'),
       })
+      this.updatepanel(localStorage.getItem('modelid'),localStorage.getItem('colorid'),localStorage.getItem('sizeid'),)
     }else{
       this.setState({
         colorid: 1,
@@ -40,18 +40,20 @@ export default class Page extends Component {
       })
     }
   }
-  updatepanel(){
-    const s="/api/v1/notebook/get/"+this.state.modelid+"/"+this.state.colorid+"/"+this.state.sizeid;
+  seturl(value){
+    this.setState({
+      url: value,
+    })
+  }
+  updatepanel(model,color,size){
+    const s="/api/v1/notebook/get/"+model+"/"+color+"/"+size;
 
     fetch(s).then(
          (response)=>{
              return response.json();
          }   )
      .then(estado => {
-       this.setState({
-         url: estado[0].url,
-
-       })
+       this.seturl(estado[0].url)
 
      });
 
@@ -74,31 +76,34 @@ export default class Page extends Component {
     this.setState({
       colorid: someValue
     })
-    this.savestate()
-    this.updatepanel()
+    this.updatepanel(this.state.modelid,someValue,this.state.sizeid)
+    this.savestate(this.state.modelid,someValue,this.state.sizeid)
+
 
 
   }
-  savestate(){
-    localStorage.setItem('modelid',this.state.modelid)
-    localStorage.setItem('colorid',this.state.colorid)
-    localStorage.setItem('sizeid',this.state.sizeid)
+  savestate(model,color,size){
+    localStorage.setItem('modelid',model)
+    localStorage.setItem('colorid',color)
+    localStorage.setItem('sizeid',size)
     localStorage.setItem('url',this.state.url)
   }
   modelohandler(someValue) {
     this.setState({
       modelid: someValue
     })
-    this.savestate()
-    this.updatepanel()
+    this.updatepanel(someValue,this.state.colorid,this.state.sizeid)
+    this.savestate(someValue,this.state.colorid,this.state.sizeid)
+
 
   }
   sizehandler(someValue) {
     this.setState({
       sizeid: someValue
     })
-    this.savestate()
-    this.updatepanel()
+    this.updatepanel(this.state.modelid,this.state.colorid,someValue)
+    this.savestate(this.state.modelid,this.state.colorid,someValue)
+
 
   }
   test(){
