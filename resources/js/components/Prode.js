@@ -203,22 +203,20 @@ export default class Prode extends Component {
 
     }
 
-    async handleDelete(e){
-        let id = e.target.id;
+    async handleDelete(id){
         var self = this;
-        if(confirm("¿Estas seguro de borrar este prode?")){
-            await axios.delete('/api/prode/'+id).then(function(response) {
-                if(self.state.prode_id==id){
-                    self.setState({
-                        cuartos : ["", "", "", "", "", "", "", ""],
-                        semis : ["", "", "", ""],
-                        final : ["", ""],
-                        campeon : "",
-                        name : "",
-                        prode_id : 0,
-                        prodes : response.data,
-                        show : 0
-                    })
+        await axios.delete('/api/prode/'+id).then(function(response) {
+            if(self.state.prode_id==id){
+                self.setState({
+                    cuartos : ["", "", "", "", "", "", "", ""],
+                    semis : ["", "", "", ""],
+                    final : ["", ""],
+                    campeon : "",
+                    name : "",
+                    prode_id : 0,
+                    prodes : response.data,
+                    show : 0
+                })
                     self.setLocal(0);
                 }
                 else{
@@ -228,8 +226,7 @@ export default class Prode extends Component {
                 }
             }).catch(function (error) {
                 console.log(error);
-            });
-        }
+        });
     }
 
     async handleOctavos(e){

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './css/MisProdes.css'
+import './css/MisProdes.css';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default class MisProdes extends Component {
 
@@ -25,7 +27,7 @@ export default class MisProdes extends Component {
                             <th>{prode.created_at}</th>
                             <th>
                                 <button id={prode.id} type="button" className="btn btn-success" onClick={this.props.edit}>Editar</button>
-                                <button id={prode.id} type="button" className="btn btn-danger ml-1" onClick={this.props.delete}>Borrar</button>
+                                <button id={prode.id} type="button" className="btn btn-danger ml-1" onClick={this.submit}>Borrar</button>
                             </th>
                         </tr>
                         )}
@@ -35,4 +37,25 @@ export default class MisProdes extends Component {
         )
     }
 
+
+    submit = (e) => {
+        let id = e.target.id;
+        confirmAlert({
+          title: 'Confirmar',
+          message: '¿Estas seguro de eliminar este Prode?',
+          buttons: [
+            {
+              label: 'Si',
+              onClick: () => {this.props.delete(id)}
+            },
+            {
+              label: 'No',
+            }
+          ]
+        });
+      };
+
+
+
+    
 }
