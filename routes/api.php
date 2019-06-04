@@ -21,3 +21,4 @@ Route::get('/team', 'TeamController@index');
 Route::resource('/prediction', 'PredictionController');
 Route::resource('/match', 'MatchController');
 
+Route::get('/token', 'TeamController@token');

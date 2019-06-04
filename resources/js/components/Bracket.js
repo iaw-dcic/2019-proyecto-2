@@ -84,8 +84,10 @@ export default class Example extends Component {
 
         return (
             <section id="bracket">
+                <center><h2>Pronósticos Copa Libertadores 2019</h2></center>
                 <div className="tournament-brackets">
                     <ul className="bracket bracket-1">
+                        
                         <center><h4>Octavos de Final</h4></center>
                         {round16}
                     </ul>  

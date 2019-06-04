@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Team;
 use Illuminate\Http\Request;
+use Auth;
 
 class TeamController extends Controller
 {
@@ -17,6 +18,9 @@ class TeamController extends Controller
         return Team::all();
     }
 
+    public function token() {
+        return Auth::user()->createToken('Auth Token')->accessToken;
+    }
     /**
      * Show the form for creating a new resource.
      *

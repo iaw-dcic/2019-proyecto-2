@@ -106,5 +106,6 @@ class MatchController extends Controller
     {
         if (Match::where('id', $match)->delete()) {
             return response()->json(null, 204);
+        }
     }
 }
