@@ -70001,7 +70001,7 @@ function (_Component) {
             'Authorization': 'Bearer ' + api_token.content
           }
         };
-        fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
+        fetch('/api/cantidadpronosticos', miInit).then(function (res) {
           return res.json();
         }).then(function (json) {
           if (json != null) _this.setState({
@@ -70029,7 +70029,7 @@ function (_Component) {
           'Authorization': 'Bearer ' + api_token.content
         }
       };
-      fetch('http://localhost/pr2/api/cantidadpronosticos', miInit).then(function (res) {
+      fetch('/api/cantidadpronosticos', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this2.setState({

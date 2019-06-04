@@ -17,7 +17,7 @@ export default class Pronostico extends Component {
             }
         }
 
-        fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
+        fetch('/api/cantidadpronosticos', miInit)
             .then(res => res.json())
             .then(json => {
                 if (json != null)
@@ -40,7 +40,7 @@ export default class Pronostico extends Component {
                 }
             }
 
-            fetch('http://localhost/pr2/api/cantidadpronosticos', miInit)
+            fetch('/api/cantidadpronosticos', miInit)
                 .then(res => res.json())
                 .then(json => {
                     if (json != null)
