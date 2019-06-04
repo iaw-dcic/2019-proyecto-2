@@ -720,7 +720,6 @@ export default class Perfil extends Component {
     }
     async actualizar(e) {
 
-        console.log("actualizar : ");
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -740,7 +739,7 @@ export default class Perfil extends Component {
                 s1: this.state.s1,
                 s2: this.state.s2,
                 f: this.state.f,
-                campeon: this.state.campeon,
+                campeon: this.state.champion,
             });
             for (let key in this.state) {
                 // if the key exists in localStorage
@@ -758,8 +757,6 @@ export default class Perfil extends Component {
     }
 
     async eliminar(e) {
-
-        console.log("eliminar : ");
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -785,7 +782,7 @@ export default class Perfil extends Component {
                 campeon: this.state.champion.id,
             });
             for (let key in this.state) {
-                console.log([key]);
+
                 if (localStorage.hasOwnProperty(key))
                     localStorage.removeItem(key);
             }
@@ -799,8 +796,5 @@ export default class Perfil extends Component {
 
 
     }
-
-
-
 
 }

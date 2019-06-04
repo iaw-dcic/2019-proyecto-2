@@ -67622,6 +67622,10 @@ function (_Component) {
         className: "collapse navbar-collapse",
         id: "navbarSupportedContent"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav mr-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item active"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "navbar-nav",
         "ml-auto": ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -69078,7 +69082,6 @@ function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log("actualizar : ");
                 api_token = document.querySelector('meta[name="api-token"]');
                 token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -69089,8 +69092,8 @@ function (_Component) {
                   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
                 }
 
-                _context.prev = 4;
-                _context.next = 7;
+                _context.prev = 3;
+                _context.next = 6;
                 return axios.post('http://localhost/pr2/api/actualizar', {
                   c0: this.state.c0,
                   c1: this.state.c1,
@@ -69099,10 +69102,10 @@ function (_Component) {
                   s1: this.state.s1,
                   s2: this.state.s2,
                   f: this.state.f,
-                  campeon: this.state.campeon
+                  campeon: this.state.champion
                 });
 
-              case 7:
+              case 6:
                 response = _context.sent;
 
                 for (key in this.state) {
@@ -69112,20 +69115,20 @@ function (_Component) {
 
                 this.setState(this.baseState);
                 alert("Su pronostico se guardo correctamente");
-                _context.next = 16;
+                _context.next = 15;
                 break;
 
-              case 13:
-                _context.prev = 13;
-                _context.t0 = _context["catch"](4);
+              case 12:
+                _context.prev = 12;
+                _context.t0 = _context["catch"](3);
                 console.log('axios request failed:', _context.t0);
 
-              case 16:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[4, 13]]);
+        }, _callee, this, [[3, 12]]);
       }));
 
       function actualizar(_x) {
@@ -69145,7 +69148,6 @@ function (_Component) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log("eliminar : ");
                 api_token = document.querySelector('meta[name="api-token"]');
                 token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -69156,8 +69158,8 @@ function (_Component) {
                   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
                 }
 
-                _context2.prev = 4;
-                _context2.next = 7;
+                _context2.prev = 3;
+                _context2.next = 6;
                 return axios.post('http://localhost/pr2/api/eliminarpronostico', {
                   pronostico: this.state.pronostico,
                   c0: this.state.c0.id,
@@ -69170,32 +69172,31 @@ function (_Component) {
                   campeon: this.state.champion.id
                 });
 
-              case 7:
+              case 6:
                 response = _context2.sent;
 
                 for (key in this.state) {
-                  console.log([key]);
                   if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
                 }
 
                 this.setState(this.baseState);
                 localStorage.setItem("use", "false");
                 alert("Se elimino correctamente");
-                _context2.next = 18;
+                _context2.next = 17;
                 break;
 
-              case 14:
-                _context2.prev = 14;
-                _context2.t0 = _context2["catch"](4);
+              case 13:
+                _context2.prev = 13;
+                _context2.t0 = _context2["catch"](3);
                 alert("Hubo problema no se pudo eliminar,intente nuevamente");
                 console.log('axios request failed:', _context2.t0);
 
-              case 18:
+              case 17:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[4, 14]]);
+        }, _callee2, this, [[3, 13]]);
       }));
 
       function eliminar(_x2) {
@@ -69656,11 +69657,11 @@ function (_Component) {
                 return this.addPronostico();
 
               case 2:
-                console.log("hanle cuartos : " + this.state.pronost.id);
+                //  console.log("hanle cuartos : " + this.state.pronost.id);
                 pro = this.state.pronost.id;
 
                 if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context.next = 21;
+                  _context.next = 19;
                   break;
                 }
 
@@ -69672,8 +69673,8 @@ function (_Component) {
                   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
                 }
 
-                _context.prev = 7;
-                _context.next = 10;
+                _context.prev = 6;
+                _context.next = 9;
                 return axios.post('http://localhost/pr2/api/insert', {
                   pronostico: pro,
                   c0j1: this.state.c0j1.id,
@@ -69693,7 +69694,7 @@ function (_Component) {
                   campeon: this.state.campeon.id
                 });
 
-              case 10:
+              case 9:
                 response = _context.sent;
 
                 for (key in this.state) {
@@ -69703,22 +69704,22 @@ function (_Component) {
 
                 this.setState(this.baseState);
                 localStorage.setItem("use", "false");
-                alert("Su pronostico se guardo correctamente");
-                console.log('Returned data:', response);
-                _context.next = 21;
+                alert("Su pronostico se guardo correctamente"); // console.log('Returned data:', response);
+
+                _context.next = 19;
                 break;
 
-              case 18:
-                _context.prev = 18;
-                _context.t0 = _context["catch"](7);
+              case 16:
+                _context.prev = 16;
+                _context.t0 = _context["catch"](6);
                 console.log('axios request failed:', _context.t0);
 
-              case 21:
+              case 19:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[7, 18]]);
+        }, _callee, this, [[6, 16]]);
       }));
 
       function handleCuartos() {
@@ -69744,7 +69745,7 @@ function (_Component) {
                 }
 
                 alert("no se puede guardar el cuadro sin completar");
-                _context2.next = 17;
+                _context2.next = 16;
                 break;
 
               case 4:
@@ -69764,29 +69765,28 @@ function (_Component) {
 
               case 10:
                 response = _context2.sent;
-                console.log('Returned data:', response);
-                _context2.next = 17;
+                _context2.next = 16;
                 break;
 
-              case 14:
-                _context2.prev = 14;
+              case 13:
+                _context2.prev = 13;
                 _context2.t0 = _context2["catch"](7);
                 console.log('axios request failed:', _context2.t0);
 
-              case 17:
-                _context2.next = 19;
+              case 16:
+                _context2.next = 18;
                 return this.getUltimo();
 
-              case 19:
+              case 18:
                 this.props.agregarPronostico(this.state.pronost);
                 localStorage.setItem("pronost", JSON.stringify(this.state.pronost));
 
-              case 21:
+              case 20:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[7, 14]]);
+        }, _callee2, this, [[7, 13]]);
       }));
 
       function addPronostico() {
@@ -70142,8 +70142,7 @@ function (_Component) {
                 selectBox = document.getElementById("selectBox");
                 selectedValue = selectBox.options[selectBox.selectedIndex].value;
                 localStorage.setItem("pronostico", selectedValue);
-                this.props.setPronostico(selectedValue);
-                console.log(this.state.pronostico);
+                this.props.setPronostico(selectedValue); //   console.log(this.state.pronostico);
 
                 if (this.state.pronostico != -1 && selectedValue != '') {
                   fetch('http://localhost/pr2/api/partidos/8').then(function (res) {
@@ -70173,7 +70172,7 @@ function (_Component) {
                   });
                 }
 
-              case 6:
+              case 5:
               case "end":
                 return _context.stop();
             }

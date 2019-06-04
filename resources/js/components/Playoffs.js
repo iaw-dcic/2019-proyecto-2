@@ -383,7 +383,7 @@ export default class Playoffs extends Component {
     async handleCuartos() {
         await this.addPronostico();
 
-        console.log("hanle cuartos : " + this.state.pronost.id);
+        //  console.log("hanle cuartos : " + this.state.pronost.id);
         var pro = this.state.pronost.id;
         if (!(this.state.c0j1.id == null || this.state.c0j2.id == null ||
             this.state.c1j1.id == null || this.state.c1j2.id == null ||
@@ -429,7 +429,7 @@ export default class Playoffs extends Component {
                 this.setState(this.baseState);
                 localStorage.setItem("use", "false");
                 alert("Su pronostico se guardo correctamente");
-                console.log('Returned data:', response);
+                // console.log('Returned data:', response);
             } catch (e) {
                 console.log('axios request failed:', e);
             }
@@ -463,7 +463,7 @@ export default class Playoffs extends Component {
 
             try {
                 const response = await axios.post('http://localhost/pr2/api/insertpronostico');
-                console.log('Returned data:', response);
+                //    console.log('Returned data:', response);
             } catch (e) {
                 console.log('axios request failed:', e);
             }

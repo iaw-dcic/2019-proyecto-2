@@ -59,7 +59,7 @@ export default class Pronostico extends Component {
         localStorage.setItem("pronostico", selectedValue);
         this.props.setPronostico(selectedValue);
 
-        console.log(this.state.pronostico);
+        //   console.log(this.state.pronostico);
         if (this.state.pronostico != -1 && selectedValue != '') {
 
             fetch('http://localhost/pr2/api/partidos/8')
@@ -107,11 +107,12 @@ export default class Pronostico extends Component {
 
                 });
         }
-        
+
     }
 
 
     render() {
+
         var i = "";
         var { items } = this.state;
         if (items != null) {

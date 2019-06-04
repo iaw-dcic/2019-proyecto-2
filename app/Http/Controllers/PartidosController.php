@@ -238,6 +238,7 @@ public function actualizar(Request $request){
         $jugador_uno=$c0['jugador_uno'];
         $jugador_dos=$c0['jugador_dos'];
         $partido= Partido::find($id);
+        if($partido != null)
         $partido->update([
             'jugador_uno_id' =>$jugador_uno['id'],
             'jugador_dos_id' =>$jugador_dos['id'],
@@ -247,7 +248,8 @@ public function actualizar(Request $request){
         $id= $c1['id'];
         $jugador_uno=$c1['jugador_uno'];
         $jugador_dos=$c1['jugador_dos'];
-        $partido= Partido::find($id);     
+        $partido= Partido::find($id);  
+        if($partido != null)   
         $partido->update([
             'jugador_uno_id' =>$jugador_uno['id'],
             'jugador_dos_id' =>$jugador_dos['id'],
@@ -258,6 +260,7 @@ public function actualizar(Request $request){
         $jugador_uno=$c2['jugador_uno'];
         $jugador_dos=$c2['jugador_dos'];
         $partido= Partido::find($id);  
+        if($partido != null)
         $partido->update([
             'jugador_uno_id' =>$jugador_uno['id'],
         '   jugador_dos_id' =>$jugador_dos['id'],
@@ -267,7 +270,9 @@ public function actualizar(Request $request){
         $id= $c3['id'];
         $jugador_uno=$c3['jugador_uno'];
         $jugador_dos=$c3['jugador_dos'];
+        
         $partido= Partido::find($id);
+        if($partido != null)
         $partido->update([
             'jugador_uno_id' =>$jugador_uno['id'],
             'jugador_dos_id' =>$jugador_dos['id'],
@@ -278,6 +283,7 @@ public function actualizar(Request $request){
         $jugador_uno=$s1['jugador_uno'];
         $jugador_dos=$s1['jugador_dos'];
         $partido= Partido::find($id);
+        if($partido != null)
         $partido->update([
              'jugador_uno_id' =>$jugador_uno['id'],
             'jugador_dos_id' =>$jugador_dos['id'],
@@ -288,6 +294,7 @@ public function actualizar(Request $request){
         $jugador_uno=$s2['jugador_uno'];
         $jugador_dos=$s2['jugador_dos'];
         $partido= Partido::find($id);
+        if($partido != null)
         $partido->update([
              'jugador_uno_id' =>$jugador_uno['id'],
             'jugador_dos_id' =>$jugador_dos['id'],
@@ -298,6 +305,7 @@ public function actualizar(Request $request){
         $jugador_uno=$f['jugador_uno'];
         $jugador_dos=$f['jugador_dos'];
         $partido= Partido::find($id);
+        if($partido != null)
         $partido->update([
              'jugador_uno_id' =>$jugador_uno['id'],
             'jugador_dos_id' =>$jugador_dos['id'],
@@ -307,6 +315,7 @@ public function actualizar(Request $request){
         $id= $campeon['id'];
         $jugador_uno=$campeon['jugador_uno'];
         $partido= Partido::find($id);
+        if($partido != null)
         $partido->update([
              'jugador_uno_id' =>$jugador_uno['id']
         ]);

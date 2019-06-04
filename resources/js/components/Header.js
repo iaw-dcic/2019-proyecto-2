@@ -59,7 +59,12 @@ export default class Header extends Component {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
 
+                        </li>
+
+                    </ul>
                     <ul className="navbar-nav" ml-auto="">
                         <li className="nav-item">
 
