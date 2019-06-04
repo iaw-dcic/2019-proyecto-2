@@ -55,9 +55,9 @@ class PartidosController extends Controller
             DB::beginTransaction();
              $partidos= Partido::where('ronda','=',8)->get();
              $arreglo=array();
-             $i=0;
+             
          $partido=$partidos[$i];
-                $arreglo["items"][$i++]= array(
+                $arreglo["items"] = array(
                     'id' => $partido->id,
                      'jugador_uno' =>  array(
                          'id' =>$partido->nombreJugadorUno->id,
