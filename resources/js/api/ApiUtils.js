@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const endpoint = 'https://iaw-burger.herokuapp.com';
+
 export async function login(email,password) {
     try {
         let res = await axios({
-            url: 'http://localhost/api/login',
+            url: endpoint+'/api/login',
             method: 'post',
             timeout: 8000,
             data: {
@@ -31,7 +33,7 @@ export async function logout(token){
             }
         };
 
-        let response = await axios.get('http://localhost/api/logout' , axiosConfig);
+        let response = await axios.get(endpoint+'/api/logout' , axiosConfig);
 
         return response.data;
 
