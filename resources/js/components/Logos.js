@@ -22,7 +22,9 @@ export default class Logos extends Component {
         })
     }
 
-    eliminarLogo(e){}
+    eliminarLogo(e){
+        this.props.addLogo("")
+    }
 
     cambiarLogo(e, id){
         this.props.addLogo(id)
@@ -50,13 +52,7 @@ export default class Logos extends Component {
             <button type="button" onClick={(e) => this.eliminarLogo(e)} className="btn btn-secondary">Eliminar logo</button>
         </div>
 
-
         )
 
     }
-
-
-
-
-
 }

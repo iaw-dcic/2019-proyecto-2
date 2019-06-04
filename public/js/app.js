@@ -65916,7 +65916,9 @@ function (_Component) {
     }
   }, {
     key: "eliminarLogo",
-    value: function eliminarLogo(e) {}
+    value: function eliminarLogo(e) {
+      this.props.addLogo("");
+    }
   }, {
     key: "cambiarLogo",
     value: function cambiarLogo(e, id) {
@@ -66194,7 +66196,6 @@ function (_Component) {
       telas: [],
       talles: [],
       colores: [],
-      logos: [],
       misDiseños: [],
       edit: false,
       idRemeraEditar: ""

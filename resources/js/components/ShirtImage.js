@@ -14,7 +14,6 @@ export default class ShirtImage extends Component {
             telas: [],
             talles: [],
             colores: [],
-            logos: [],
             misDiseños: [],
             edit: false,
             idRemeraEditar: ""
@@ -153,7 +152,6 @@ export default class ShirtImage extends Component {
                     tela: response.data.tela,
                     talle: response.data.talle,
                     logo: response.data.logo,
-
                 })
 
             });
@@ -247,9 +245,7 @@ export default class ShirtImage extends Component {
                                                 }
                                             </div>
                                         </div>
-
                                         <hr width="100%"></hr>
-
                                         <h2 id="tittle">Talle {this.state.talle} </h2>
                                         <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
                                         <select className="form-control" value={this.state.talle} onChange={(e) => this.cambiarTalle(e)}>
@@ -326,27 +322,6 @@ export default class ShirtImage extends Component {
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
         );
