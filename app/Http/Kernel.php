@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\HttpsProtocol::class //segun https://gist.github.com/haog1/19542070babe15c66e5b3c4c0cb211ee
     ];
 
     /**
