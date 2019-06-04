@@ -26,6 +26,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "babel": "^6.23.0",
         "react-router-dom": "^5.0.0"
     }
 }

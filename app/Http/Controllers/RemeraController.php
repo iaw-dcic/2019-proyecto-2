@@ -60,15 +60,50 @@ class RemeraController extends Controller
         return response()->json('OK', 200);
     }
 
-    public function update($id)
+
+    public function getRemera($id){
+
+        $userId = auth('api')->user()->id;
+        $remera = Shirt::where('user_id', $userId)->where('id', $id)->get()->first();
+        if ($remera == null) {
+            abort(403, 'No esta autorizado');
+        }
+        return response()->json($remera, 200);
+    }
+
+    public function update(Request $request, $id)
     {
+        
         $userId = auth('api')->user()->id;
         $remera = Shirt::where('user_id', $userId)->where('id', $id)->get()->first();
         if ($remera == null) {
             abort(403, 'No esta autorizado');
         }
 
-        //ACA DEBERIA EDITAR EL CAMPO QE SE CAMBIE
+        $data = $request->all();
+        $request->validate([
+            'tela' => ['required', 'string', 'exists:telas', 'max:255'],
+            'talle' => ['required', 'string', 'exists:talles', 'max:255'],
+            'color' => ['required', 'string', 'exists:colours', 'max:255'],
+            'logo' => ['nullable', 'string', 'exists:logos', 'max:255'],
+        ]);
+
+        /**Si existe algun campo distinto actualizarlo */
+        //Si se cambio la tela
+        if (strcmp($data['tela'], $remera->tela) != 0)
+            $remera->update(['tela' => $data['tela']]);
+        //Si se cambio el talle
+        if (strcmp($data['talle'], $remera->talle) != 0)
+            $remera->update(['talle' => $data['talle']]);
+
+        //Si se cambio el color
+        if (strcmp($data['color'], $remera->color) != 0)
+            $remera->update(['color' => $data['color']]);
+
+        //Si se cambio el logo
+        if (strcmp($data['logo'], $remera->logo) != 0)
+            $remera->update(['logo' => $data['logo']]);
+       
         return response()->json('OK', 200);
     }
 }

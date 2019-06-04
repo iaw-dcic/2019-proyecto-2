@@ -65848,6 +65848,123 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Logos.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Logos.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Logos; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Logos =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Logos, _Component);
+
+  function Logos(props) {
+    var _this;
+
+    _classCallCheck(this, Logos);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Logos).call(this, props));
+    _this.state = {
+      logos: []
+    };
+    return _this;
+  }
+
+  _createClass(Logos, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/logos').then(function (response) {
+        _this2.setState({
+          logos: response.data
+        });
+      });
+    }
+  }, {
+    key: "eliminarLogo",
+    value: function eliminarLogo(e) {}
+  }, {
+    key: "cambiarLogo",
+    value: function cambiarLogo(e, id) {
+      this.props.addLogo(id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card mb-5 mb-lg-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Logos centrales"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, " Seleccione el logo "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-imagenesLogos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "thumbnail"
+      }, this.state.logos.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          key: item.logo,
+          className: "img-thumbnail",
+          src: "/images/logos/" + item.logo + ".png",
+          onClick: function onClick(e) {
+            return _this3.cambiarLogo(e, item.logo);
+          }
+        });
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: function onClick(e) {
+          return _this3.eliminarLogo(e);
+        },
+        className: "btn btn-secondary"
+      }, "Eliminar logo"));
+    }
+  }]);
+
+  return Logos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/MisDiseños.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/MisDiseños.js ***!
@@ -66024,6 +66141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Logos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Logos */ "./resources/js/components/Logos.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66034,13 +66152,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -66056,6 +66177,15 @@ function (_Component) {
     _classCallCheck(this, ShirtImage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "addLogo", function (src) {
+      _this.setState({
+        logo: src
+      });
+
+      localStorage.setItem("logo", JSON.stringify(src));
+    });
+
     _this.state = {
       remera: "colorBlanco",
       talle: "XS",
@@ -66064,7 +66194,10 @@ function (_Component) {
       telas: [],
       talles: [],
       colores: [],
-      logos: []
+      logos: [],
+      misDiseños: [],
+      edit: false,
+      idRemeraEditar: ""
     };
     return _this;
   }
@@ -66079,6 +66212,11 @@ function (_Component) {
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/misDiseños').then(function (response) {
+        _this2.setState({
+          misDiseños: response.data
+        });
+      });
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
         _this2.setState({
           telas: response.data
@@ -66092,11 +66230,6 @@ function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/colores').then(function (response) {
         _this2.setState({
           colores: response.data
-        });
-      });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/logos').then(function (response) {
-        _this2.setState({
-          logos: response.data
         });
       });
 
@@ -66170,14 +66303,6 @@ function (_Component) {
       localStorage.setItem("remera", JSON.stringify(remeraAux));
     }
   }, {
-    key: "cambiarLogo",
-    value: function cambiarLogo(e, src) {
-      this.setState({
-        logo: src
-      });
-      localStorage.setItem("logo", JSON.stringify(src));
-    }
-  }, {
     key: "cambiarTalle",
     value: function cambiarTalle(e) {
       var talleAux = e.target.value;
@@ -66206,6 +66331,29 @@ function (_Component) {
       }
     }
   }, {
+    key: "editarRemera",
+    value: function editarRemera(e, idRemera) {
+      var _this3 = this;
+
+      this.setState({
+        edit: true,
+        idRemeraEditar: idRemera
+      });
+
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/misDiseños/' + idRemera).then(function (response) {
+          _this3.setState({
+            remera: response.data.color,
+            tela: response.data.tela,
+            talle: response.data.talle,
+            logo: response.data.logo
+          });
+        });
+      } catch (e) {
+        console.log('Error Axios', e);
+      }
+    }
+  }, {
     key: "crearDise\xF1o",
     value: function crearDiseO(e) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/crearDiseño', {
@@ -66218,9 +66366,29 @@ function (_Component) {
       });
     }
   }, {
+    key: "actualizarDise\xF1o",
+    value: function actualizarDiseO() {
+      var _this4 = this;
+
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('/api/editarRemera/' + this.state.idRemeraEditar, {
+          color: this.state.remera,
+          logo: this.state.logo,
+          talle: this.state.talle,
+          tela: this.state.tela
+        }).then(function (response) {
+          _this4.setState({
+            edit: false
+          });
+        });
+      } catch (e) {
+        console.log('Error Axios', e);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this5 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pricing py-5"
@@ -66230,34 +66398,9 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card mb-5 mb-lg-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "card-title text-muted text-uppercase text-center"
-      }, "Logos centrales"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "tittle"
-      }, " Seleccione el logo "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container-imagenesLogos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "thumbnail"
-      }, this.state.logos.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          key: item.logo,
-          className: "img-thumbnail",
-          src: "/images/logos/" + item.logo + ".png",
-          onClick: function onClick(e) {
-            return _this3.cambiarLogo(e, item.logo);
-          }
-        });
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        onClick: function onClick(e) {
-          return _this3.eliminarLogo(e);
-        },
-        className: "btn btn-secondary"
-      }, "Eliminar logo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Logos__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        addLogo: this.addLogo
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mb-5 mb-lg-0"
@@ -66277,12 +66420,17 @@ function (_Component) {
         height: "100",
         src: "/images/logos/" + this.state.logo + ".png",
         id: "imagenLogo"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), this.state.edit == false && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase",
         onClick: function onClick(e) {
-          return _this3.crearDiseño(e);
+          return _this5.crearDiseño(e);
         }
-      }, "Crear dise\xF1o"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Crear dise\xF1o"), this.state.edit == true && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "btn btn-block btn-secondary text-uppercase",
+        onClick: function onClick(e) {
+          return _this5.actualizarDiseño(e);
+        }
+      }, "Guardar Cambios"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
@@ -66309,7 +66457,7 @@ function (_Component) {
           id: item.color,
           value: item.color,
           onClick: function onClick(e) {
-            return _this3.cambiarColorRemera(e, item.color);
+            return _this5.cambiarColorRemera(e, item.color);
           },
           className: "btn-item-color"
         }, "  ");
@@ -66323,7 +66471,7 @@ function (_Component) {
         className: "form-control",
         value: this.state.talle,
         onChange: function onChange(e) {
-          return _this3.cambiarTalle(e);
+          return _this5.cambiarTalle(e);
         }
       }, this.state.talles.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -66340,7 +66488,7 @@ function (_Component) {
         className: "form-control",
         value: this.state.tela,
         onChange: function onChange(e) {
-          return _this3.cambiarTela(e);
+          return _this5.cambiarTela(e);
         }
       }, this.state.telas.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -66349,7 +66497,57 @@ function (_Component) {
         }, item.nombre);
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)))))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-lg-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card mb-5 mb-lg-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Listado de remeras creadas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Seleccione la remera que desea editar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-MisDise\xF1osRemeras"
+      }, this.state.misDiseños.map(function (item, id) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: item.id,
+          className: "col-lg-3 col-md-4 col-sm-6 mb-4"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card h-100"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "card-img-top",
+          src: "/images/remeras/" + item.color + ".png"
+        }), item.logo != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          height: "100",
+          src: "/images/logos/" + item.logo + ".png",
+          id: "imagenLogo2"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-body"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+          className: "card-title"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#"
+        }, "Dise\xF1o: ", id + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "card-text"
+        }, "Talle :", item.talle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "card-text"
+        }, "Tela :", item.tela), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick(e) {
+            return _this5.editarRemera(e, item.id);
+          },
+          className: "btn btn-outline-primary"
+        }, "Editar"))));
+      }))))))));
     }
   }]);
 
