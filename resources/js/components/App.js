@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch,} from 'react-router-dom'
 import Dashboard from './Dashboard' 
 import Profile from './Profile' 
 import Lab from './Lab' 
+import About from './About' 
 import Pagenotfound from './Pagenotfound' 
 
 
@@ -17,6 +18,7 @@ class App extends Component {
                     <Route path="/profile" component={Profile} exact/>
                     <Route path="/mylab" component={Lab} exact/>
                     <Route path="/mylab/:id" component={Lab} exact/>
+                    <Route path="/about" component={About} exact/>
                     <Route component={Pagenotfound}/>
                 </Switch>
             </BrowserRouter>
