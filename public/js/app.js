@@ -81657,7 +81657,9 @@ function (_Component) {
         window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         try {
-          var response = axios["delete"]('/api/tshirts/' + _this.props.id).then(_this.props["delete"]());
+          var response = axios["delete"]('/api/tshirts/' + _this.props.id).then(function (res) {
+            return _this.props["delete"]();
+          });
         } catch (e) {
           console.log('axios request failed:', e);
         }

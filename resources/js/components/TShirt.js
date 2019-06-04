@@ -29,7 +29,7 @@ export default class TShirt extends Component {
 
             try {
                 const response = axios.delete('/api/tshirts/'+this.props.id)
-                    .then(
+                    .then( res =>
                         this.props.delete()
                     );
             } catch (e) {
