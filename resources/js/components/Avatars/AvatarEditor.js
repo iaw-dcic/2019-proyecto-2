@@ -324,7 +324,7 @@ class AvatarEditor extends Component{
                     <div className="col-md-12">
                         <form onSubmit={this.handleSaveAvatar}>
                             <div className="form-group">
-                                <input
+                                <input className="w-100"
                                     type="text"
                                     placeholder="Nombre"
                                     onChange={this.handleFieldNameChange}

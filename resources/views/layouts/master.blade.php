@@ -27,7 +27,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-    
+    <!--buscar "instructions to set https redirections using laravel on heroku"-->
   </head>
   <body>
     <div id="wrap">
