@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-    @section('scrips')
+    @section('scripts')
         <script src="{{ asset('js/app.js') }}" defer></script>
     @endsection
 

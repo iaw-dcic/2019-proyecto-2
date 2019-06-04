@@ -15,7 +15,8 @@
     <title>{{ config('app.name', 'CopaLibertadores') }}</title>
 
     <!-- Scripts -->
-    @yield('scrips')
+    <script src="{{ asset('js/applaravel.js') }}" defer></script>
+    @yield('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

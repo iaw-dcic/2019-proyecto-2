@@ -11,13 +11,6 @@ class ProdeController extends Controller
     
     public function index(){
 
-        /*$prode = Prode::all()->first();
-        $cuartos = explode(',', $prode->cuartos);
-        $semis = explode(',', $prode->semis);
-        $final = explode(',', $prode->final);
-        $campeon = $prode->campeon;
-        $response = ['cuartos' => $cuartos, 'semis' => $semis, 'final' => $final, 'campeon' => $campeon];*/
-
         $octavos = Team::all();
         $response = [];
         for ($i = 0; $i < 16; $i++) {
