@@ -223,7 +223,7 @@ export default class Perfil extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                                <td >   {this.state.pOctavos0.jugador_uno && <img src={this.state.pOctavos0.jugador_uno.pais + ".png"}></img>}
+                                <td >   {this.state.pOctavos0.jugador_uno && <img src={"banderas/" + this.state.pOctavos0.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc0(this.state.pOctavos0.jugador_uno, e)}>
                                         {this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_uno.nombre}
                                     </button>
@@ -231,7 +231,7 @@ export default class Perfil extends Component {
                                         {this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_uno.abrev}
                                     </button>
                                     <br></br>
-                                    {this.state.pOctavos0.jugador_dos && <img src={this.state.pOctavos0.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos0.jugador_dos && <img src={"banderas/" + this.state.pOctavos0.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc0(this.state.pOctavos0.jugador_dos, e)}>
                                         {this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_dos.nombre}
                                     </button>
@@ -243,7 +243,7 @@ export default class Perfil extends Component {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td > {this.state.pOctavos1.jugador_uno && <img src={this.state.pOctavos1.jugador_uno.pais + ".png"}></img>}
+                                <td > {this.state.pOctavos1.jugador_uno && <img src={"banderas/" + this.state.pOctavos1.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc1(this.state.pOctavos1.jugador_uno, e)}>
                                         {this.state.pOctavos1.jugador_uno && this.state.pOctavos1.jugador_uno.nombre}
                                     </button>
@@ -251,7 +251,7 @@ export default class Perfil extends Component {
                                         {this.state.pOctavos1.jugador_uno && this.state.pOctavos1.jugador_uno.abrev}
                                     </button>
                                     <br></br>
-                                    {this.state.pOctavos1.jugador_dos && <img src={this.state.pOctavos1.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos1.jugador_dos && <img src={"banderas/" + this.state.pOctavos1.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc1(this.state.pOctavos1.jugador_dos, e)}>
                                         {this.state.pOctavos1.jugador_dos && this.state.pOctavos1.jugador_dos.nombre}
                                     </button>
@@ -263,14 +263,14 @@ export default class Perfil extends Component {
 
                             <tr>
                                 <td ></td>
-                                <td> {this.state.c0.jugador_uno && <img src={this.state.c0.jugador_uno.pais + ".png"}></img>}
+                                <td> {this.state.c0.jugador_uno && <img src={"banderas/" + this.state.c0.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC0(this.state.c0.jugador_uno, e)} >
                                         {this.state.c0.jugador_uno && this.state.c0.jugador_uno.nombre}
                                     </button>
                                     <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC0(this.state.c0.jugador_uno, e)} >
                                         {this.state.c0.jugador_uno && this.state.c0.jugador_uno.abrev}
                                     </button><br></br>
-                                    {this.state.c0.jugador_dos && <img src={this.state.c0.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.c0.jugador_dos && <img src={"banderas/" + this.state.c0.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC0(this.state.c0.jugador_dos, e)} >
                                         {this.state.c0.jugador_dos && this.state.c0.jugador_dos.nombre}
                                     </button>
@@ -280,7 +280,7 @@ export default class Perfil extends Component {
                                 </td>
                                 <td> </td>
                                 <td></td>
-                                <td> {this.state.c1.jugador_uno && <img src={this.state.c1.jugador_uno.pais + ".png"}></img>}
+                                <td> {this.state.c1.jugador_uno && <img src={"banderas/" + this.state.c1.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC1(this.state.c1.jugador_uno, e)} >
                                         {this.state.c1.jugador_uno && this.state.c1.jugador_uno.nombre}
                                     </button>
@@ -288,7 +288,7 @@ export default class Perfil extends Component {
                                         {this.state.c1.jugador_uno && this.state.c1.jugador_uno.abrev}
                                     </button>
                                     <br></br>
-                                    {this.state.c1.jugador_dos && <img src={this.state.c1.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.c1.jugador_dos && <img src={"banderas/" + this.state.c1.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC1(this.state.c1.jugador_dos, e)} >
                                         {this.state.c1.jugador_dos && this.state.c1.jugador_dos.nombre}
                                     </button>
@@ -301,7 +301,7 @@ export default class Perfil extends Component {
 
                             <tr>
 
-                                <td> {this.state.pOctavos2.jugador_uno && <img src={this.state.pOctavos2.jugador_uno.pais + ".png"}></img>}
+                                <td> {this.state.pOctavos2.jugador_uno && <img src={"banderas/" + this.state.pOctavos2.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc2(this.state.pOctavos2.jugador_uno, e)} >
                                         {this.state.pOctavos2.jugador_uno && this.state.pOctavos2.jugador_uno.nombre}
                                     </button>
@@ -310,7 +310,7 @@ export default class Perfil extends Component {
                                     </button>
                                     <br></br>
 
-                                    {this.state.pOctavos2.jugador_dos && <img src={this.state.pOctavos2.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos2.jugador_dos && <img src={"banderas/" + this.state.pOctavos2.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc2(this.state.pOctavos2.jugador_dos, e)} >
                                         {this.state.pOctavos2.jugador_dos && this.state.pOctavos2.jugador_dos.nombre}
                                     </button>
@@ -322,7 +322,7 @@ export default class Perfil extends Component {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >  {this.state.pOctavos3.jugador_uno && <img src={this.state.pOctavos3.jugador_uno.pais + ".png"}></img>}
+                                <td >  {this.state.pOctavos3.jugador_uno && <img src={"banderas/" + this.state.pOctavos3.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc3(this.state.pOctavos3.jugador_uno, e)} >
                                         {this.state.pOctavos3.jugador_uno && this.state.pOctavos3.jugador_uno.nombre}
                                     </button>
@@ -331,7 +331,7 @@ export default class Perfil extends Component {
                                     </button>
                                     <br></br>
 
-                                    {this.state.pOctavos3.jugador_dos && <img src={this.state.pOctavos3.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos3.jugador_dos && <img src={"banderas/" + this.state.pOctavos3.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc3(this.state.pOctavos3.jugador_dos, e)} >
                                         {this.state.pOctavos3.jugador_dos && this.state.pOctavos3.jugador_dos.nombre}
                                     </button>
@@ -343,29 +343,44 @@ export default class Perfil extends Component {
                             <tr>
                                 <td > </td>
                                 <td></td>
-                                <td>{this.state.s1.jugador_uno && <img src={this.state.s1.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light" onClick={(e) => this.handleS1(this.state.s1.jugador_uno, e)}>
+                                <td>{this.state.s1.jugador_uno && <img src={"banderas/" + this.state.s1.jugador_uno.pais + ".png"}></img>}
+                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS1(this.state.s1.jugador_uno, e)}>
                                         {this.state.s1.jugador_uno && this.state.s1.jugador_uno.nombre}
-                                    </button><br></br>
-                                    {this.state.s1.jugador_dos && <img src={this.state.s1.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light" onClick={(e) => this.handleS1(this.state.s1.jugador_dos, e)}>
+                                    </button>
+                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS1(this.state.s1.jugador_uno, e)}>
+                                        {this.state.s1.jugador_uno && this.state.s1.jugador_uno.abrev}
+                                    </button>
+                                    <br></br>
+                                    {this.state.s1.jugador_dos && <img src={"banderas/" + this.state.s1.jugador_dos.pais + ".png"}></img>}
+                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS1(this.state.s1.jugador_dos, e)}>
                                         {this.state.s1.jugador_dos && this.state.s1.jugador_dos.nombre}
                                     </button>
+                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS1(this.state.s1.jugador_dos, e)}>
+                                        {this.state.s1.jugador_dos && this.state.s1.jugador_dos.abrev}
+                                    </button>
                                 </td>
-                                <td> {this.state.s2.jugador_uno && <img src={this.state.s2.jugador_uno.pais + ".png"}></img>}
+                                <td> {this.state.s2.jugador_uno && <img src={"banderas/" + this.state.s2.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light" onClick={(e) => this.handleS2(this.state.s2.jugador_uno, e)}>
                                         {this.state.s2.jugador_uno && this.state.s2.jugador_uno.nombre}
-                                    </button><br></br>
-                                    {this.state.s2.jugador_dos && <img src={this.state.s2.jugador_dos.pais + ".png"}></img>}
+                                    </button>
+                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS2(this.state.s2.jugador_uno, e)}>
+                                        {this.state.s2.jugador_uno && this.state.s2.jugador_uno.abrev}
+                                    </button>
+
+                                    <br></br>
+                                    {this.state.s2.jugador_dos && <img src={"banderas/" + this.state.s2.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light" onClick={(e) => this.handleS2(this.state.s2.jugador_dos, e)}>
                                         {this.state.s2.jugador_dos && this.state.s2.jugador_dos.nombre}
+                                    </button>
+                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS2(this.state.s2.jugador_dos, e)}>
+                                        {this.state.s2.jugador_dos && this.state.s2.jugador_dos.abrev}
                                     </button>
                                 </td>
                                 <td> </td>
                                 <td></td>
                             </tr >
                             <tr>
-                                <td >  {this.state.pOctavos4.jugador_uno && <img src={this.state.pOctavos4.jugador_uno.pais + ".png"}></img>}
+                                <td >  {this.state.pOctavos4.jugador_uno && <img src={"banderas/" + this.state.pOctavos4.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc4(this.state.pOctavos4.jugador_uno, e)} >
                                         {this.state.pOctavos4.jugador_uno && this.state.pOctavos4.jugador_uno.nombre}
                                     </button>
@@ -374,7 +389,7 @@ export default class Perfil extends Component {
                                     </button>
                                     <br></br>
 
-                                    {this.state.pOctavos4.jugador_dos && <img src={this.state.pOctavos4.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos4.jugador_dos && <img src={"banderas/" + this.state.pOctavos4.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc4(this.state.pOctavos4.jugador_dos, e)} >
                                         {this.state.pOctavos4.jugador_dos && this.state.pOctavos4.jugador_dos.nombre}
                                     </button>
@@ -386,7 +401,7 @@ export default class Perfil extends Component {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >  {this.state.pOctavos5.jugador_uno && <img src={this.state.pOctavos5.jugador_uno.pais + ".png"}></img>}
+                                <td >  {this.state.pOctavos5.jugador_uno && <img src={"banderas/" + this.state.pOctavos5.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc5(this.state.pOctavos5.jugador_uno, e)} >
                                         {this.state.pOctavos5.jugador_uno && this.state.pOctavos5.jugador_uno.nombre}
                                     </button>
@@ -395,7 +410,7 @@ export default class Perfil extends Component {
                                     </button>
                                     <br></br>
 
-                                    {this.state.pOctavos5.jugador_dos && <img src={this.state.pOctavos5.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos5.jugador_dos && <img src={"banderas/" + this.state.pOctavos5.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc5(this.state.pOctavos5.jugador_dos, e)} >
                                         {this.state.pOctavos5.jugador_dos && this.state.pOctavos5.jugador_dos.nombre}
                                     </button>
@@ -409,7 +424,7 @@ export default class Perfil extends Component {
 
                             <tr>
                                 <td ></td>
-                                <td> {this.state.c2.jugador_uno && <img src={this.state.c2.jugador_uno.pais + ".png"}></img>}
+                                <td> {this.state.c2.jugador_uno && <img src={"banderas/" + this.state.c2.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC2(this.state.c2.jugador_uno, e)} >
                                         {this.state.c2.jugador_uno && this.state.c2.jugador_uno.nombre}
                                     </button>
@@ -417,7 +432,7 @@ export default class Perfil extends Component {
                                         {this.state.c2.jugador_uno && this.state.c2.jugador_uno.abrev}
                                     </button>
                                     <br></br>
-                                    {this.state.c2.jugador_dos && <img src={this.state.c2.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.c2.jugador_dos && <img src={"banderas/" + this.state.c2.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC2(this.state.c2.jugador_dos, e)} >
                                         {this.state.c2.jugador_dos && this.state.c2.jugador_dos.nombre}
                                     </button>
@@ -427,7 +442,7 @@ export default class Perfil extends Component {
                                 </td>
                                 <td> </td>
                                 <td></td>
-                                <td> {this.state.c3.jugador_uno && <img src={this.state.c3.jugador_uno.pais + ".png"}></img>}
+                                <td> {this.state.c3.jugador_uno && <img src={"banderas/" + this.state.c3.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC3(this.state.c3.jugador_uno, e)} >
                                         {this.state.c3.jugador_uno && this.state.c3.jugador_uno.nombre}
                                     </button>
@@ -435,7 +450,7 @@ export default class Perfil extends Component {
                                         {this.state.c3.jugador_uno && this.state.c3.jugador_uno.abrev}
                                     </button>
                                     <br></br>
-                                    {this.state.c3.jugador_dos && <img src={this.state.c3.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.c3.jugador_dos && <img src={"banderas/" + this.state.c3.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light jugador" onClick={(e) => this.handleC3(this.state.c3.jugador_dos, e)} >
                                         {this.state.c3.jugador_dos && this.state.c3.jugador_dos.nombre}
                                     </button>
@@ -447,7 +462,7 @@ export default class Perfil extends Component {
                             </tr >
 
                             <tr>
-                                <td >  {this.state.pOctavos6.jugador_uno && <img src={this.state.pOctavos6.jugador_uno.pais + ".png"}></img>}
+                                <td >  {this.state.pOctavos6.jugador_uno && <img src={"banderas/" + this.state.pOctavos6.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc6(this.state.pOctavos6.jugador_uno, e)} >
                                         {this.state.pOctavos6.jugador_uno && this.state.pOctavos6.jugador_uno.nombre}
                                     </button>
@@ -456,7 +471,7 @@ export default class Perfil extends Component {
                                     </button>
                                     <br></br>
 
-                                    {this.state.pOctavos6.jugador_dos && <img src={this.state.pOctavos6.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos6.jugador_dos && <img src={"banderas/" + this.state.pOctavos6.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc6(this.state.pOctavos6.jugador_dos, e)} >
                                         {this.state.pOctavos6.jugador_dos && this.state.pOctavos6.jugador_dos.nombre}
                                     </button>
@@ -468,7 +483,7 @@ export default class Perfil extends Component {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >  {this.state.pOctavos7.jugador_uno && <img src={this.state.pOctavos7.jugador_uno.pais + ".png"}></img>}
+                                <td >  {this.state.pOctavos7.jugador_uno && <img src={"banderas/" + this.state.pOctavos7.jugador_uno.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc7(this.state.pOctavos7.jugador_uno, e)} >
                                         {this.state.pOctavos7.jugador_uno && this.state.pOctavos7.jugador_uno.nombre}
                                     </button>
@@ -477,7 +492,7 @@ export default class Perfil extends Component {
                                     </button>
                                     <br></br>
 
-                                    {this.state.pOctavos7.jugador_dos && <img src={this.state.pOctavos7.jugador_dos.pais + ".png"}></img>}
+                                    {this.state.pOctavos7.jugador_dos && <img src={"banderas/" + this.state.pOctavos7.jugador_dos.pais + ".png"}></img>}
                                     <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc7(this.state.pOctavos7.jugador_dos, e)} >
                                         {this.state.pOctavos7.jugador_dos && this.state.pOctavos7.jugador_dos.nombre}
                                     </button>
@@ -498,13 +513,13 @@ export default class Perfil extends Component {
                     <div className="col-2"></div>
                     <div className="col-2"></div>
                     <div className="col-2  justify-content-center align-items-center minh-100 ">
-                        {this.state.f.jugador_uno && <img src={this.state.f.jugador_uno.pais + ".png"}></img>}
+                        {this.state.f.jugador_uno && <img src={"banderas/" + this.state.f.jugador_uno.pais + ".png"}></img>}
                         <button className="btn btn-light" onClick={(e) => this.handleCampeon(this.state.f.jugador_uno, e)}>
                             {this.state.f.jugador_uno && this.state.f.jugador_uno.nombre}
                         </button>
                     </div>
                     <div className="col-2  justify-content-center align-items-center minh-100">
-                        {this.state.f.jugador_dos && <img src={this.state.f.jugador_dos.pais + ".png"}></img>}
+                        {this.state.f.jugador_dos && <img src={"banderas/" + this.state.f.jugador_dos.pais + ".png"}></img>}
                         <button className="btn btn-light" onClick={(e) => this.handleCampeon(this.state.f.jugador_dos, e)}>
                             {this.state.f.jugador_uno && this.state.f.jugador_dos.nombre}
                         </button>

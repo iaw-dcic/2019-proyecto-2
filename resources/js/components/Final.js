@@ -21,7 +21,7 @@ export default class Final extends Component {
         if (this.props.jugadorFinal.nombre != null) {
             jugador1 = this.props.jugadorFinal.nombre;
             jugadorAbre1 = this.props.jugadorFinal.abrev;
-            pais = <img src={this.props.jugadorFinal.pais + ".png"}></img>
+            pais = <img src={"banderas/" + this.props.jugadorFinal.pais + ".png"}></img>
         }
 
         return <div className="row header">

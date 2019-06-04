@@ -26,12 +26,12 @@ export default class Cuartos extends Component {
         if (this.props.jugador1.nombre != null) {
             jugador1 = this.props.jugador1.nombre;
             jugadorAbre1 = this.props.jugador1.abrev;
-            pais1 = <img src={this.props.jugador1.pais + ".png"}></img>
+            pais1 = <img src={"banderas/" + this.props.jugador1.pais + ".png"}></img>
         }
         if (this.props.jugador2.nombre != null) {
             jugador2 = this.props.jugador2.nombre;
             jugadorAbre2 = this.props.jugador2.abrev;
-            pais2 = <img src={this.props.jugador2.pais + ".png"}></img>;
+            pais2 = <img src={"banderas/" + this.props.jugador2.pais + ".png"}></img>;
         }
         return <div>
 

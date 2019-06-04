@@ -19,13 +19,27 @@ export default class SegundaRonda extends Component {
     }
     render() {
         var { items } = this.state;
-        return <ul>
-            {items.map(item => (
-                <li key={item.id}>
-                    {item.junonombre} vs {item.jdosnombre}
-                </li>
-            ))}
-        </ul>
+
+        return <div className="row table-responsive">
+            <table className="table-striped ">
+                <thead >
+                    <tr>
+                        <th scope="col">Jugador 1 </th>
+                        <th scope="col" >Jugador 2 </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items.map(item => (
+
+                        <tr key={item.id}>
+                            <td> {item.junonombre} </td>
+                            <td>{item.jdosnombre}</td>
+                        </tr>
+
+                    ))}
+                </tbody>
+            </table>
+        </div>
 
     }
 }

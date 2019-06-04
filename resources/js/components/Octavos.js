@@ -35,7 +35,7 @@ export default class Octavos extends Component {
 
             <div className="row border">
                 <div className="col-2 jugador">
-                    {this.state.jugador_uno && <img src={this.state.jugador_uno.pais + ".png"}></img>}
+                    {this.state.jugador_uno && <img src={"/banderas/" + this.state.jugador_uno.pais + ".png"}></img>}
                 </div>
                 <div className="col-10 jugador">
                     <button type="button" id={"juno" + this.props.i} className="btn btn-light jugador"
@@ -50,7 +50,7 @@ export default class Octavos extends Component {
 
             <div className="row border">
                 <div className="col-2 jugador">
-                    {this.state.jugador_dos && <img src={this.state.jugador_dos.pais + ".png"}></img>}
+                    {this.state.jugador_dos && <img src={"/banderas/" + this.state.jugador_dos.pais + ".png"}></img>}
                 </div>
                 <div className="col-10 jugador">
                     <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador"
