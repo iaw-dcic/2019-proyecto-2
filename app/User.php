@@ -15,7 +15,7 @@ class User extends Authenticatable{
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'auth_token'
+        'name', 'username', 'email', 'password'
     ];
 
     /**
@@ -24,7 +24,7 @@ class User extends Authenticatable{
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'active',
+        'password', 'remember_token', 'active', 'email_verified_at', 'updated_at', 'created_at'
     ];
 
     /**
@@ -38,12 +38,5 @@ class User extends Authenticatable{
 
     public function getProdes(){
         return $this->belongsToMany('App\Prode')->using('App\ProdeUser');
-    }
-
-    public function getJWTIdentifier(){
-        return $this->getKey();
-    }
-    public function getJWTCustomClaims(){
-        return [];
     }
 }

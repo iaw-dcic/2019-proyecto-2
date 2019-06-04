@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title text-center">Registro</h5>
-                    <form id="form-login" class="form-login">
+                    <form action="/login" method="POST" id="form-login" class="form-login">
                     @csrf
                         <div class="form-label-group">
                             <input type="email" id="validationEmail" value="{{ old('email') }}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" name="email" required autofocus>

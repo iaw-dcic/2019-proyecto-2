@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration{
             $table->increments('id');
             $table->string('name')->nullable(false);
             $table->string('username')->nullable(false)->unique();
-            $table->string('auth_token', 300)->nullable(true);
             $table->string('image_url')->nullable();
             $table->string('image_id')->nullable();
             $table->string('description', 300)->nullable();

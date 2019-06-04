@@ -11,14 +11,11 @@ class CreateTablePartidoProde extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('partido_prode', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('prode_id');
             $table->integer('partido_id');
-            $table->foreign('prode_id')->references('id')->on('prodes');
-            $table->foreign('partido_id')->references('id')->on('partidos');
         });
     }
 

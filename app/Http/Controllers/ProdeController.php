@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Prode;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Prode;
 use App\Partido;
 use App\Equipo;
 use App\User;
+use Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProdeController extends Controller{
 
     public function __construct(){
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -21,12 +22,10 @@ class ProdeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index($user_id){
-        /*
         if(Auth::user()->id != $user_id)
             return Response()->json(['error' => '401 Unauthorized'], 401);
         $user = Auth::user();
-        */
-        $user = User::find($user_id);   //Borrar y reemplazar por el comentario de arriba
+
         $prodes = $user->getProdes()->get();
         $prodes_user = [];
         $partidos_prodes = [];
@@ -47,11 +46,9 @@ class ProdeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $user_id){
-        /*
         if(Auth::user()->id != $user_id)
             return Response()->json(['error' => '401 Unauthorized'], 401);
         $user = Auth::user();
-        */
 
         DB::beginTransaction();
         try{
@@ -92,22 +89,15 @@ class ProdeController extends Controller{
         }
     }
 
-    private function crearPartidos($partidos){
-        
-        return $partidosDB;
-    }
-
     /**
      * Display the specified resource.
      * @param  \App\Prode  $prode
      * @return \Illuminate\Http\Response
      */
     public function show($user_id, $prode_id){
-        /*
         if(Auth::user()->id != $user_id)
             return Response()->json(['error' => '401 Unauthorized'], 401);
         $user = Auth::user();
-        */
 
         $user = User::find($user_id);   //Borrar y reemplazar por el comentario de arriba
         $prode = $user->getProdes()->find($prode_id);
@@ -135,17 +125,18 @@ class ProdeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function destroy($user_id, $prode_id){
-        /*
         if(Auth::user()->id != $user_id)
             return Response()->json(['error' => '401 Unauthorized'], 401);
         $user = Auth::user();
-        */
+        DB::beginTransaction();
         try{
             $user = User::find($user_id);   //Borrar y reemplazar por el comentario de arriba
             $prode = $user->getProdes()->find($prode_id);
             $prode->destroy();
             return Response()->json(['ok' => 'Eliminado']);
+            DB::commit();
         }catch(\Exception $ex){
+            DB::rollback();
             return Response()->json(['error' => 'Error al eliminar el prode']);
         }
     }

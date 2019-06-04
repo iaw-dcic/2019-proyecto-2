@@ -15,8 +15,6 @@ class CreateTableProdeUser extends Migration{
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('prode_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('prode_id')->references('id')->on('prodes');
         });
     }
 

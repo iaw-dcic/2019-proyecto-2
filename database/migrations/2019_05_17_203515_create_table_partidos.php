@@ -18,8 +18,6 @@ class CreateTablePartidos extends Migration{
             $table->string('fase')->nullable(true);
             $table->integer('goles_local')->nullable(true);
             $table->integer('goles_visitante')->nullable(true);
-            $table->foreign('local_id')->references('id')->on('equipos');
-            $table->foreign('visitante_id')->references('id')->on('equipos');
         });
     }
 

@@ -12,10 +12,11 @@ export default class App extends Component{
     constructor(){
         super();
 
-        let user = JSON.parse(localStorage.getItem('user'));
-        if(user != null)
+        let data = document.getElementById('user');
+        if(data != null){
+            let user = JSON.parse(data.content);
             this.state = { isLoggedIn: true, user };
-        else
+        }else
             this.state = { isLoggedIn: false, user: null };
     }
 
@@ -28,7 +29,9 @@ export default class App extends Component{
                         <div id="inicio" className="intro route bg-image">
                             <IndexComponent/>
                         </div>
-                        {this.getPronosticos()}
+                        <Route exact path="/home">
+                            { this.getPronosticos() }
+                        </Route>
                         <section className="bg-image footer route">
                             <div className="overlay-mf"></div>
                             <FooterComponent/>

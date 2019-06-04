@@ -93,77 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-//form-login
-//form-register
-function register(data, url, callback) {
-  $.ajax({
-    method: 'POST',
-    url: url,
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    data: {
-      name: 'service',
-      data: data
-    },
-    success: function success(response) {
-      return callback(response.data);
-    }
-  });
-}
-
-$(document).ready(function () {
-  $('#form-login').on('submit', function (event) {
-    event.preventDefault();
-    var email = $(event.target.email).val();
-    var password = $(event.target.password).val();
-    register({
-      email: email,
-      password: password
-    }, '/api/user/login', function (data) {
-      var id = data.id,
-          name = data.name,
-          email = data.email,
-          auth_token = data.auth_token;
-      var user = {
-        id: id,
-        name: name,
-        email: email,
-        auth_token: auth_token
-      };
-      localStorage.setItem('user', JSON.stringify(user));
-      window.location.replace("/");
-    });
-  });
-  $('#form-register').on('submit', function (event) {
-    event.preventDefault();
-    var username = $(event.target.username).val();
-    var name = $(event.target.name).val();
-    var email = $(event.target.email).val();
-    var password = $(event.target.password).val();
-    var data = {
-      email: email,
-      password: password,
-      name: name,
-      username: username
-    };
-    register(data, '/api/user/register', function (data) {
-      console.log(data);
-      var id = data.id,
-          name = data.name,
-          email = data.email,
-          auth_token = data.auth_token;
-      var user = {
-        id: id,
-        name: name,
-        email: email,
-        auth_token: auth_token
-      };
-      localStorage.setItem('user', JSON.stringify(user));
-      window.location.replace("/");
-    });
-  });
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\Proyectos\\www\\proyecto-2\\resources\\js\\register.js'");
 
 /***/ }),
 

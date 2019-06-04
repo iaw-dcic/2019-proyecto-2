@@ -1,25 +1,24 @@
 <?php
 
+
+
 Auth::routes();
-Route::view('/', 'react');
-//Route::view('/{path?}', 'react');//->middleware('auth');
+Route::get('/', 'IndexController@index')->middleware('guest');
+Route::get('/home', 'IndexController@index')->middleware('auth');
 
-Route::post('/api/user/register', 'UsersController@register');
-Route::post('/api/user/login', 'UsersController@login');
-Route::post('/api/user/logout', 'UsersController@logout');
-Route::post('/api/user/getAuthUser', 'UsersController@getAuthUser');
-
+//Usuarios
 Route::resource('/api/user', 'UsersController')->only([
     'index', 'store', 'show', 'update', 'destroy'
 ]);
 
+//Prodes
 Route::resource('/api/user/{user}/prodes', 'ProdeController')->only([
     'index', 'store', 'show','update', 'destroy'
 ]);
 
+//Obtiene el ultimo ID para crear un nuevo prode
 Route::get('/api/prodes/getNewId', 'ProdeController@getNewId');
 
-//Datos sobre los equipos, partidos y puntajes
 //Equipos
 Route::get('/api/teams', 'EquiposController@getEquipos');
 Route::get('/api/teams/{team}', 'EquiposController@getEquipo');

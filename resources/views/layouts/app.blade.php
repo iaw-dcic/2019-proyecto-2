@@ -56,8 +56,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-
-        <script src="{{ asset('js/register.js') }}"></script>
     </div>
 </body>
 </html>

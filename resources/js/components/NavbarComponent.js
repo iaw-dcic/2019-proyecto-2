@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import Axios from 'axios';
+import axios from 'axios';
 
 export default class NavbarComponent extends Component {
 
     constructor(props){
         super(props);
         this.user = this.props.user;
-        this.logout = this.logout.bind(this);
     }
 
     render() {
@@ -57,25 +56,17 @@ export default class NavbarComponent extends Component {
                         <Link className="nav-link js-scroll" to="#pronosticos">Pronósticos</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link js-scroll"  onClick={this.logout} >Salir</a>
+                        <a className="nav-link js-scroll" onClick={this.logout} >Salir</a>
                     </li>
                 </ul>
             )
         }
     }
 
-    logout(){
-        Axios.post('/api/user/logout', {'auth_token': this.user.auth_token})
-            .then(response => {
-                console.log(response);
-                if(response.data.success){
-                    localStorage.clear();
-                    window.location.replace("/");
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            });
+    logout(event){
+        axios.post('logout')
+            .then(response => window.location.replace("/"))
+            .catch(error => console.log(error));
     }
 
     componentDidMount(){

@@ -26,7 +26,6 @@ class DatabaseSeeder extends Seeder{
         factory(\App\User::class, 1)->create([
             'name' => 'Dylan Barbona',
             'username' => 'dylanbarbona',
-            'auth_token' => JWTAuth::attempt( ['email'=>'dylanbarbona97@gmail.com', 'password'=>'27069706636/f']),
             'image_url' => 'NO_IMAGE',
             'image_id' => 'NO_IMAGE',
             'email' => 'dylanbarbona97@gmail.com',
