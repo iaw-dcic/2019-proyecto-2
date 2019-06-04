@@ -30,6 +30,7 @@ export default class AppContainer extends Component {
             },
             shirts: [],
             received_shirts_info: false,
+            received_shirts_images: false,
         };
     }
 
@@ -50,7 +51,7 @@ export default class AppContainer extends Component {
                 });
             axios.get(`/api/static/images/shirts`)
                 .then(res => {
-                    this.setState({ shirtsImages: res.data });
+                    this.setState({ shirtsImages: res.data, received_shirts_images: true });
                 });
         }
     }
@@ -106,7 +107,11 @@ export default class AppContainer extends Component {
                     <Row className="pt-3">
                         <Col>
                             <div className="well">
-                                <Shirt shirt={this.state.shirt} received_shirts_info={this.state.received_shirts_info} selected_decoration_image={this.state.selected_decoration_image} shirtsImages={this.state.shirtsImages} />
+                                <Shirt shirt={this.state.shirt} 
+                                    received_shirts_info={this.state.received_shirts_info} 
+                                    selected_decoration_image={this.state.selected_decoration_image} 
+                                    shirtsImages={this.state.shirtsImages} 
+                                    received_shirts_images={this.state.received_shirts_images}/>
                             </div>
                         </Col>
                         <Col className="pt-2">

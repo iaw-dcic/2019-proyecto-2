@@ -15,42 +15,14 @@ export default class Shirt extends Component {
 
 
     componentDidMount() {
-        if (this.props.shirt.id != 0) {
-            if (this.props.shirt.type === 'tshirt') {
-                for (let key in this.props.shirtsImages.tshirt) {
-                    if (key === this.props.shirt.color) {
-                        this.setState({ shirtImage: this.props.shirtsImages.tshirt[key], received_shirt_image: true });
-                    }
-                }
-            }
-            else if (this.props.shirt.type === 'longsleeve') {
-                for (let key in this.props.shirtsImages.longsleeve) {
-                    if (key === this.props.shirt.color) {
-                        this.setState({ shirtImage: this.props.shirtsImages.longsleeve[key], received_shirt_image: true });
-                    }
-                }
-            }
+        if (this.props.shirt.id != 0 && this.props.received_shirts_images) {
+            this.loadShirtImage(this.props);
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.shirt.id != 0) {
-            if (nextProps.shirt.type === 'tshirt') {
-                for (let key in nextProps.shirtsImages.tshirt) {
-                    if (key === nextProps.shirt.color) {
-                        this.setState({ shirtImage: this.props.shirtsImages.tshirt[key], received_shirt_image: true });
-                    }
-                }
-            }
-            else if (nextProps.shirt.type === 'longsleeve') {
-                for (let key in nextProps.shirtsImages.longsleeve) {
-                    if (key === nextProps.shirt.color) {
-                        this.setState({
-                            shirtImage: this.props.shirtsImages.longsleeve[key], received_shirt_image: true
-                        });
-                    }
-                }
-            }
+        if (nextProps.shirt.id != 0 && nextProps.received_shirts_images) {
+            this.loadShirtImage(nextProps);
             if (nextProps.shirt.decoration !== null) {
                 axios.get(`/api/static/images/decorations/` + nextProps.shirt.decoration)
                     .then(res => {
@@ -90,6 +62,19 @@ export default class Shirt extends Component {
                     </Spinner>
                 </React.Fragment>
             )
+        }
+    }
+
+    loadShirtImage = (propState) => {
+        let images = propState.shirtsImages;
+        if (propState.shirt.type === 'tshirt')
+            images = images.tshirt;
+        else if (propState.shirt.type === 'longsleeve')
+            images = images.longsleeve;
+        for (let key in images) {
+            if (key === propState.shirt.color) {
+                this.setState({ shirtImage: images[key], received_shirt_image: true });
+            }
         }
     }
 
