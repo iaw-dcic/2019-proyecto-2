@@ -66329,6 +66329,7 @@ function (_Component) {
         alert("Prode creado exitosamente");
       })["catch"](function (error) {
         console.log("this is error", error);
+        alert("Usted debe estar registrado");
       });
     });
 
@@ -66337,6 +66338,7 @@ function (_Component) {
         alert("Prode actualizado exitosamente"); // console.log(response);
       })["catch"](function (error) {
         console.log("this is error", error);
+        alert("Usted debe estar registrado");
       });
     });
 

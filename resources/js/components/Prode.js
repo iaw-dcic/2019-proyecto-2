@@ -106,6 +106,7 @@ export default class Prode extends Component {
       alert("Prode creado exitosamente")
     }).catch(error => {
       console.log("this is error", error);
+      alert("Usted debe estar registrado")
     });
   }
 
@@ -115,6 +116,7 @@ export default class Prode extends Component {
       // console.log(response);
     }).catch(error => {
       console.log("this is error", error);
+      alert("Usted debe estar registrado")
     });
   }
 
