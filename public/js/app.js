@@ -81990,32 +81990,23 @@ function (_Component) {
           className: "arrow right"
         }),
         onSelect: this.clickPocketImage.bind(this)
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_horizontal_scrolling_menu__WEBPACK_IMPORTED_MODULE_3___default.a, {
-        data: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "type_options"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "option_label"
-        }, "Men"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "large_image_button",
-          alt: "none",
-          src: "/storage/uploads/basic_tee.png",
-          onClick: this.makeMenTee
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "option_label"
-        }, "Women"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "large_image_button",
-          alt: "none",
-          src: "/storage/uploads/women_tee.png",
-          onClick: this.makeWomenTee
-        }))),
-        arrowLeft: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "arrow left"
-        }),
-        arrowRight: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "arrow right"
-        }),
-        onSelect: this.onSelect
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, document.querySelector('meta[name="api-token"]') && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "type_options"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "option_label"
+      }, "Men"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "large_image_button",
+        alt: "none",
+        src: "/storage/uploads/basic_tee.png",
+        onClick: this.makeMenTee
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "option_label"
+      }, "Women"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "large_image_button",
+        alt: "none",
+        src: "/storage/uploads/women_tee.png",
+        onClick: this.makeWomenTee
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, document.querySelector('meta[name="api-token"]') && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center save-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-m",

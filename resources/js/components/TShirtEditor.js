@@ -158,24 +158,16 @@ export default class TShirtEditor extends Component {
                             />
                         </div>
                     </div>
-                    <div>
-                        <ScrollMenu
-                            data={
-                                <div className="type_options">
-                                    <div>
-                                        <div className="option_label">Men</div>
-                                        <img className="large_image_button" alt="none" src="/storage/uploads/basic_tee.png" onClick={this.makeMenTee} />
-                                    </div>
-                                    <div>
-                                        <div className="option_label">Women</div>
-                                        <img className="large_image_button" alt="none" src="/storage/uploads/women_tee.png" onClick={this.makeWomenTee} />
-                                    </div>
-                                </div>
-                            }
-                            arrowLeft={<div className="arrow left"></div>}
-                            arrowRight={<div className="arrow right"></div>}
-                            onSelect={this.onSelect}
-                        />
+
+                    <div className="type_options">
+                        <div>
+                            <div className="option_label">Men</div>
+                            <img className="large_image_button" alt="none" src="/storage/uploads/basic_tee.png" onClick={this.makeMenTee} />
+                        </div>
+                        <div>
+                            <div className="option_label">Women</div>
+                            <img className="large_image_button" alt="none" src="/storage/uploads/women_tee.png" onClick={this.makeWomenTee} />
+                        </div>
                     </div>
 
                     <div>
