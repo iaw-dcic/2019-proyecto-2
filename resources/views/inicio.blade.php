@@ -17,7 +17,7 @@
             <!-- Texto de bienvenida -->
             <div class="col-md-9 col-lg-8 mx-auto">
               <div class="fondoBienvenida">
-                <h1>Bienvenido</h1>
+                <h1 class="font-weight-light">Bienvenido a nuestro sitio web</h1>
               </div>
 
             </div>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ShirtImage from './ShirtImage';
 import MisDiseños from './MisDiseños';
-import ReactDOM from 'react-dom';
-import Axios from 'axios';
+
 export default class Container extends Component {
 
     constructor() {

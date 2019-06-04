@@ -65761,10 +65761,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ShirtImage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShirtImage */ "./resources/js/components/ShirtImage.js");
 /* harmony import */ var _MisDise_os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MisDiseños */ "./resources/js/components/MisDiseños.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65782,8 +65778,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
 
@@ -65866,8 +65860,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MisDiseños; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65888,7 +65880,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var MisDiseños =
 /*#__PURE__*/
 function (_Component) {
@@ -65901,7 +65892,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MisDiseños).call(this));
     _this.state = {
-      misDiseños: []
+      misDiseños: [],
+      telas: [],
+      talles: []
     };
     return _this;
   }
@@ -65914,6 +65907,16 @@ function (_Component) {
       axios.get('/api/misDiseños').then(function (response) {
         _this2.setState({
           misDiseños: response.data
+        });
+      });
+      axios.get('/api/telas').then(function (response) {
+        _this2.setState({
+          telas: response.data
+        });
+      });
+      axios.get('/api/talles').then(function (response) {
+        _this2.setState({
+          talles: response.data
         });
       });
     }
@@ -65943,6 +65946,22 @@ function (_Component) {
         });
       });
     }
+    /* editarRemera(e, idRemera) {
+         this.state.editarRemera = <EditarRemera />;
+         // this.edit(idRemera);
+     }
+        edit(idRemera) {
+         try {
+             axios.put('/api/editarRemera/' + idRemera)
+                 .then(response => {
+                     console.log(response);
+                    });
+         }
+         catch (e) {
+             console.log('Error Axios', e);
+         }
+        }*/
+
   }, {
     key: "render",
     value: function render() {
@@ -65987,12 +66006,9 @@ function (_Component) {
           href: "#"
         }, "Dise\xF1o: ", id + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "card-text"
-        }, "Talle: ", item.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, "Talle :", item.talle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "card-text"
-        }, "Tela: ", item.tela), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          className: "btn btn-outline-success"
-        }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "Tela :", item.tela), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick(e) {
             return _this5.borrarRemera(e, item.id);

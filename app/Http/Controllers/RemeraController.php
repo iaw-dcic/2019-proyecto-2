@@ -45,8 +45,6 @@ class RemeraController extends Controller
         foreach ($remeras as $remera) {
             $arreglo[] = ['id' => $remera->id, 'color' => $remera->color, 'logo' => $remera->logo, 'tela' => $remera->tela, 'talle' => $remera->talle];
         }
-
-
         return response()->json($arreglo, 200);
     }
 
@@ -59,6 +57,18 @@ class RemeraController extends Controller
         }
 
         $remera->delete();
+        return response()->json('OK', 200);
+    }
+
+    public function update($id)
+    {
+        $userId = auth('api')->user()->id;
+        $remera = Shirt::where('user_id', $userId)->where('id', $id)->get()->first();
+        if ($remera == null) {
+            abort(403, 'No esta autorizado');
+        }
+
+        //ACA DEBERIA EDITAR EL CAMPO QE SE CAMBIE
         return response()->json('OK', 200);
     }
 }

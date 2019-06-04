@@ -30,4 +30,6 @@ Route::post('/crearDiseño','RemeraController@store');
 Route::get('/misDiseños','RemeraController@MisDiseños');
 //Borrar remera 
 Route::delete('/borrarRemera/{id}','RemeraController@delete');
+//Editar remera
+Route::put('/editarRemera/{id}','RemeraController@update');
 
