@@ -11,7 +11,6 @@
 |
 */
 
-
 Auth::routes();
 
 Route::view('/readme', 'readme');
