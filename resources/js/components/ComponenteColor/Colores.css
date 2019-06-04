@@ -1,0 +1,25 @@
+.panelColores
+{
+    width: 500px;
+    height: auto;
+    text-align: center;
+    margin:  auto;
+    
+}
+.Negro{
+background-color: black;
+text-decoration: none;
+padding: 16px;
+border: none;
+border-radius: 30px;
+margin:5px;
+}
+
+.Azul{
+background-color: blue;
+text-decoration: none;
+padding: 16px;
+border: none;
+border-radius: 30px;
+margin:5px;
+}

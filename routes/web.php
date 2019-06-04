@@ -14,3 +14,6 @@
 
 Auth::routes();
 Route::view('/{path?}', 'react');//->middleware('auth');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
