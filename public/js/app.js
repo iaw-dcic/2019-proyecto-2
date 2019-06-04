@@ -65876,7 +65876,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: 'http://iaw-proy2.test'
+  // baseURL: 'http://iaw-proy2.test'
+  baseURL: window.location.origin
 })); // axios.defaults.baseURL = 'http://iaw-proy2.test';
 
 /***/ }),
@@ -66037,7 +66038,7 @@ function (_React$Component) {
   }, {
     key: "armarImgUrl",
     value: function armarImgUrl() {
-      var imgBaseUrl = "http://iaw-proy2.test/avatar?";
+      var imgBaseUrl = window.location.origin + "/avatar?";
       var options = this.state.current_options;
       var url = imgBaseUrl;
 
@@ -66080,7 +66081,7 @@ function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.alert_message == 'success' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SuccessAlert__WEBPACK_IMPORTED_MODULE_2__["default"], null) : null, this.state.alert_message == 'error' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ErrorAlert__WEBPACK_IMPORTED_MODULE_3__["default"], null) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: ""
-      }, "Personaliza tu Avatar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Personaliza tu avatar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4"

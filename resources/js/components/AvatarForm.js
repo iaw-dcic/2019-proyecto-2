@@ -88,7 +88,7 @@ export default class AvatarForm extends React.Component {
   }
 
   armarImgUrl() {
-    const imgBaseUrl = "http://iaw-proy2.test/avatar?";
+    const imgBaseUrl = window.location.origin + "/avatar?";
     const options = this.state.current_options;
     let url = imgBaseUrl;
     if (Object.values(options).length == 0) {
@@ -122,7 +122,7 @@ export default class AvatarForm extends React.Component {
       <div>
         {this.state.alert_message == 'success' ? <SuccessAlert /> : null}
         {this.state.alert_message == 'error' ? <ErrorAlert /> : null}
-        <h2 className="">Personaliza tu Avatar</h2>
+        <h2 className="">Personaliza tu avatar</h2>
         <div className="row">
           <div className="col-md-4">
             <img
