@@ -74,7 +74,7 @@ section.pricing {
     top: 0.1%; 
     left: 0.1%;
     height: 0.01%;
-    width: 100%;
+    width: 93%;
     display: flex;
     overflow-y: scroll;
   
@@ -85,7 +85,7 @@ section.pricing {
     padding:1%;
     border:1%;
     width:29%;
-    height:19%;
+    height:16%;
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 2%;

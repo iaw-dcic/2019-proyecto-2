@@ -46,24 +46,7 @@ export default class MisDiseños extends Component {
     }
 
    
-    /* editarRemera(e, idRemera) {
-         this.state.editarRemera = <EditarRemera />;
-         // this.edit(idRemera);
-     }
  
-     edit(idRemera) {
-         try {
-             axios.put('/api/editarRemera/' + idRemera)
-                 .then(response => {
-                     console.log(response);
- 
-                 });
-         }
-         catch (e) {
-             console.log('Error Axios', e);
-         }
- 
-     }*/
     render() {
         return (
             <section className="pricing py-5">

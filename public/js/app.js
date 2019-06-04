@@ -65946,22 +65946,6 @@ function (_Component) {
         });
       });
     }
-    /* editarRemera(e, idRemera) {
-         this.state.editarRemera = <EditarRemera />;
-         // this.edit(idRemera);
-     }
-        edit(idRemera) {
-         try {
-             axios.put('/api/editarRemera/' + idRemera)
-                 .then(response => {
-                     console.log(response);
-                    });
-         }
-         catch (e) {
-             console.log('Error Axios', e);
-         }
-        }*/
-
   }, {
     key: "render",
     value: function render() {

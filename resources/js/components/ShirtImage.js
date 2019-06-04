@@ -13,7 +13,8 @@ export default class ShirtImage extends Component {
             telas: [],
             talles: [],
             colores: [],
-            logos: []
+            logos: [],
+         
         }
     }
 
@@ -25,6 +26,7 @@ export default class ShirtImage extends Component {
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
         window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
+        
         axios.get('/api/telas').then(response => {
             this.setState({ telas: response.data })
         })
@@ -244,6 +246,8 @@ export default class ShirtImage extends Component {
                                 </div>
                             </div>
                         </div>
+
+
 
                     </div>
                 </div>
