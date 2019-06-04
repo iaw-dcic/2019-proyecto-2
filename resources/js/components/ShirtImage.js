@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Logos from './Logos';
+import PanelDerecho from './PanelDerecho'
 
 export default class ShirtImage extends Component {
 
@@ -11,9 +12,6 @@ export default class ShirtImage extends Component {
             talle: "XS",
             tela: "Algodon",
             logo: "",
-            telas: [],
-            talles: [],
-            colores: [],
             misDiseños: [],
             edit: false,
             idRemeraEditar: ""
@@ -34,16 +32,7 @@ export default class ShirtImage extends Component {
                 misDiseños: response.data
             })
         });
-        axios.get('/api/telas').then(response => {
-            this.setState({ telas: response.data })
-        })
-        axios.get('/api/talles').then(response => {
-            this.setState({ talles: response.data })
-        })
-        axios.get('/api/colores').then(response => {
-            this.setState({ colores: response.data })
-        })
-
+       
 
         if (localStorage.hasOwnProperty('remera')) {
             var remeraAux = localStorage.getItem('remera');
@@ -110,25 +99,21 @@ export default class ShirtImage extends Component {
         localStorage.setItem("logo", JSON.stringify(src));
     }
 
-    cambiarColorRemera(e, id) {
-        var remeraAux = id;
-        this.setState({ remera: id });
+    cambiarColorRemera = (newId) =>{
+        this.setState({ remera: newId });
         localStorage.setItem("remera", JSON.stringify(remeraAux));
     }
 
+   
+    cambiarTalle = (newTalle) =>{
+       
+        this.setState({ talle: newTalle });
+        localStorage.setItem("talle", JSON.stringify(talleAux));
+    }
     
 
-
-    cambiarTalle(e) {
-        var talleAux = e.target.value;
-        this.setState({ talle: e.target.value });
-        localStorage.setItem("talle", JSON.stringify(talleAux));
-
-    }
-
-    cambiarTela(e) {
-        var telaAux = e.target.value;
-        this.setState({ tela: e.target.value });
+    cambiarTela = (newTela) => {
+        this.setState({ tela: newTela });
         localStorage.setItem("tela", JSON.stringify(telaAux));
     }
 
@@ -228,54 +213,7 @@ export default class ShirtImage extends Component {
                         </div>
 
                         <div className="col-lg-3">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title text-muted text-uppercase text-center">Colores disponibles</h5>
-                                    <hr width="100%"></hr>
-                                    <h2 id="tittle">Seleccione un color </h2>
-                                    <hr></hr>
-                                    <div className="btn-toolbar mb-2" role="toolbar">
-                                        <div id="listColours" className="btn-color" role="toolbar">
-                                            <div className="btn-group" >
-                                                {
-                                                    this.state.colores.map((item) => (
-                                                        <button key={item.color} id={item.color} value={item.color} onClick={(e) => this.cambiarColorRemera(e, item.color)} className="btn-item-color">  </button>
-
-                                                    ))
-                                                }
-                                            </div>
-                                        </div>
-                                        <hr width="100%"></hr>
-                                        <h2 id="tittle">Talle {this.state.talle} </h2>
-                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
-                                        <select className="form-control" value={this.state.talle} onChange={(e) => this.cambiarTalle(e)}>
-                                            {
-                                                this.state.talles.map((item) => (
-                                                    <option key={item.tipo} value={item.tipo}>{item.tipo}</option>
-                                                ))
-
-                                            }
-                                        </select>
-
-                                        <hr width="100%"></hr>
-
-                                        <h2 id="tittle">Tela {this.state.tela} </h2>
-                                        <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
-                                        <select className="form-control" value={this.state.tela} onChange={(e) => this.cambiarTela(e)}>
-                                            {
-                                                this.state.telas.map((item) => (
-                                                    <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
-                                                ))
-
-                                            }
-                                        </select>
-                                        <hr width="100%"></hr>
-
-
-                                    </div>
-                                    <hr></hr>
-                                </div>
-                            </div>
+                            <PanelDerecho cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela} cambiarColorRemera={this.cambiarColorRemera}/>
                         </div>
                     </div>
                 </div>

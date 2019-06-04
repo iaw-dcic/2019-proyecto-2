@@ -66129,6 +66129,184 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/PanelDerecho.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/PanelDerecho.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PanelDerecho; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var PanelDerecho =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PanelDerecho, _Component);
+
+  function PanelDerecho(props) {
+    var _this;
+
+    _classCallCheck(this, PanelDerecho);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PanelDerecho).call(this, props));
+    _this.state = {
+      telas: [],
+      talles: [],
+      colores: []
+    };
+    return _this;
+  }
+
+  _createClass(PanelDerecho, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
+        _this2.setState({
+          telas: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/talles').then(function (response) {
+        _this2.setState({
+          talles: response.data
+        });
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/colores').then(function (response) {
+        _this2.setState({
+          colores: response.data
+        });
+      });
+    }
+  }, {
+    key: "cambiarTalle",
+    value: function cambiarTalle(e) {
+      var talleAux = e.target.value;
+      this.props.cambiarTalle(talleAux);
+    }
+  }, {
+    key: "cambiarTela",
+    value: function cambiarTela(e) {
+      var telaAux = e.target.value;
+      this.props.cambiarTela(telaAux);
+    }
+  }, {
+    key: "cambiarColorRemera",
+    value: function cambiarColorRemera(e, id) {
+      this.props.cambiarColorRemera(id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Colores disponibles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Seleccione un color "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "btn-toolbar mb-2",
+        role: "toolbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "listColours",
+        className: "btn-color",
+        role: "toolbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "btn-group"
+      }, this.state.colores.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          key: item.color,
+          id: item.color,
+          value: item.color,
+          onClick: function onClick(e) {
+            return _this3.cambiarColorRemera(e, item.color);
+          },
+          className: "btn-item-color"
+        }, "  ");
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Talle ", this.state.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
+        value: this.state.talle,
+        onChange: function onChange(e) {
+          return _this3.cambiarTalle(e);
+        }
+      }, this.state.talles.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: item.tipo,
+          value: item.tipo
+        }, item.tipo);
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Listado de Telas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Tela ", this.state.tela, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
+        value: this.state.tela,
+        onChange: function onChange(e) {
+          return _this3.cambiarTela(e);
+        }
+      }, this.state.telas.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: item.nombre,
+          value: item.nombre
+        }, item.nombre);
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)));
+    }
+  }]);
+
+  return PanelDerecho;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ShirtImage.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/ShirtImage.js ***!
@@ -66144,6 +66322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Logos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Logos */ "./resources/js/components/Logos.js");
+/* harmony import */ var _PanelDerecho__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PanelDerecho */ "./resources/js/components/PanelDerecho.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66163,6 +66342,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -66188,14 +66368,35 @@ function (_Component) {
       localStorage.setItem("logo", JSON.stringify(src));
     });
 
+    _defineProperty(_assertThisInitialized(_this), "cambiarColorRemera", function (newId) {
+      _this.setState({
+        remera: newId
+      });
+
+      localStorage.setItem("remera", JSON.stringify(remeraAux));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "cambiarTalle", function (newTalle) {
+      _this.setState({
+        talle: newTalle
+      });
+
+      localStorage.setItem("talle", JSON.stringify(talleAux));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "cambiarTela", function (newTela) {
+      _this.setState({
+        tela: newTela
+      });
+
+      localStorage.setItem("tela", JSON.stringify(telaAux));
+    });
+
     _this.state = {
       remera: "colorBlanco",
       talle: "XS",
       tela: "Algodon",
       logo: "",
-      telas: [],
-      talles: [],
-      colores: [],
       misDiseños: [],
       edit: false,
       idRemeraEditar: ""
@@ -66216,21 +66417,6 @@ function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/misDiseños').then(function (response) {
         _this2.setState({
           misDiseños: response.data
-        });
-      });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/telas').then(function (response) {
-        _this2.setState({
-          telas: response.data
-        });
-      });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/talles').then(function (response) {
-        _this2.setState({
-          talles: response.data
-        });
-      });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/colores').then(function (response) {
-        _this2.setState({
-          colores: response.data
         });
       });
 
@@ -66293,33 +66479,6 @@ function (_Component) {
           });
         }
       }
-    }
-  }, {
-    key: "cambiarColorRemera",
-    value: function cambiarColorRemera(e, id) {
-      var remeraAux = id;
-      this.setState({
-        remera: id
-      });
-      localStorage.setItem("remera", JSON.stringify(remeraAux));
-    }
-  }, {
-    key: "cambiarTalle",
-    value: function cambiarTalle(e) {
-      var talleAux = e.target.value;
-      this.setState({
-        talle: e.target.value
-      });
-      localStorage.setItem("talle", JSON.stringify(talleAux));
-    }
-  }, {
-    key: "cambiarTela",
-    value: function cambiarTela(e) {
-      var telaAux = e.target.value;
-      this.setState({
-        tela: e.target.value
-      });
-      localStorage.setItem("tela", JSON.stringify(telaAux));
     }
   }, {
     key: "eliminarLogo",
@@ -66433,72 +66592,11 @@ function (_Component) {
         }
       }, "Guardar Cambios"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "card-title text-muted text-uppercase text-center"
-      }, "Colores disponibles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "tittle"
-      }, "Seleccione un color "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-toolbar mb-2",
-        role: "toolbar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "listColours",
-        className: "btn-color",
-        role: "toolbar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group"
-      }, this.state.colores.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          key: item.color,
-          id: item.color,
-          value: item.color,
-          onClick: function onClick(e) {
-            return _this5.cambiarColorRemera(e, item.color);
-          },
-          className: "btn-item-color"
-        }, "  ");
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "tittle"
-      }, "Talle ", this.state.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "card-title text-muted text-uppercase text-center"
-      }, "Listado de talles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "form-control",
-        value: this.state.talle,
-        onChange: function onChange(e) {
-          return _this5.cambiarTalle(e);
-        }
-      }, this.state.talles.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: item.tipo,
-          value: item.tipo
-        }, item.tipo);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "tittle"
-      }, "Tela ", this.state.tela, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "card-title text-muted text-uppercase text-center"
-      }, "Listado de Telas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "form-control",
-        value: this.state.tela,
-        onChange: function onChange(e) {
-          return _this5.cambiarTela(e);
-        }
-      }, this.state.telas.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: item.nombre,
-          value: item.nombre
-        }, item.nombre);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PanelDerecho__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        cambiarTalle: this.cambiarTalle,
+        cambiarTela: this.cambiarTela,
+        cambiarColorRemera: this.cambiarColorRemera
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
