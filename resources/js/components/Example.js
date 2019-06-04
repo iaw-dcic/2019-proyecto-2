@@ -8,8 +8,8 @@ export default class Example extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header">Test Component</div>
-                            <div className="card-body">I'm an test component!</div>
+                            <div className="card-header">Asencio Victor</div>
+                            <div className="card-body">No commits yet!</div>
                         </div>
                     </div>
                 </div>
