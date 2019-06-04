@@ -36,7 +36,7 @@ export default class Example extends Component {
         var arr = statex;
         const new_index = index % 2 == 0 ? index : index-1
 
-        if(arr.length<tsize) {
+        //if(arr.length<tsize) {
 
             if(typeof arr[new_index/2] === 'undefined') {
                 arr[Math.floor(new_index/2)] = {name: item.name}
@@ -45,7 +45,7 @@ export default class Example extends Component {
                 });
                 this.saveToStorage()
             }
-        }
+        //}
         
         
     }

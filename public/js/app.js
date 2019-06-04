@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65830,17 +65830,16 @@ function (_Component) {
       }
 
       var arr = statex;
-      var new_index = index % 2 == 0 ? index : index - 1;
+      var new_index = index % 2 == 0 ? index : index - 1; //if(arr.length<tsize) {
 
-      if (arr.length < tsize) {
-        if (typeof arr[new_index / 2] === 'undefined') {
-          arr[Math.floor(new_index / 2)] = {
-            name: item.name
-          };
-          this.setState(_defineProperty({}, state_name, arr));
-          this.saveToStorage();
-        }
-      }
+      if (typeof arr[new_index / 2] === 'undefined') {
+        arr[Math.floor(new_index / 2)] = {
+          name: item.name
+        };
+        this.setState(_defineProperty({}, state_name, arr));
+        this.saveToStorage();
+      } //}
+
     }
   }, {
     key: "saveToStorage",
@@ -66104,8 +66103,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\fritz\Documents\Joni\2019\UNS\1er Cuatrimestre\IAWEB\Proyecto React+Laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\fritz\Documents\Joni\2019\UNS\1er Cuatrimestre\IAWEB\Proyecto React+Laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\fritz\Documents\Joni\2019\UNS\1er Cuatrimestre\IAWEB\Proyecto React Final\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\fritz\Documents\Joni\2019\UNS\1er Cuatrimestre\IAWEB\Proyecto React Final\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
