@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import BotonSabor from './BotonSabor';
 import BotonGlaseado from './BotonGlaseado';
 import BotonDecoracion from './BotonDecoracion';
+import SeccionEditar from './SeccionEditar';
+import ImageDonut from './ImageDonut';
 import axios from 'axios';
 
 class SeccionCrear extends Component {
@@ -23,75 +25,82 @@ class SeccionCrear extends Component {
 		this.setSabor = this.setSabor.bind(this);
 		this.setGlaseado = this.setGlaseado.bind(this);
 		this.setDecoracion = this.setDecoracion.bind(this);
-		this.addDonut=this.addDonut.bind(this);
+		this.addDonut = this.addDonut.bind(this);
+		this.updateDonut = this.addDonut.bind(this);
 
-		// localStorage.setItem('saborImagen', 'img/Donas/dona.png');
-		// localStorage.setItem('glaseadoImagen', 'img/Donas/glaseadoVacio2.png');
-		// localStorage.setItem('decoracionImagen', 'img/Donas/decoracionVacio.png');
+		this.img = new ImageDonut();
 	}
 
-	setSabor(saborId, saborImage){
-        this.setState({
-			sabor : saborId, 
-			saborImg : saborImage
-		})
+	setSabor(saborId, saborImage) {
+		this.setState({
+			sabor: saborId,
+			saborImg: saborImage
+		});
 
 		localStorage.setItem('saborImagen', saborImage);
 	}
 
-	setGlaseado(glaseadoId, glaseadoImage){
-        this.setState({
-			glaseado : glaseadoId, 
-			glaseadoImg : glaseadoImage
-		})
+	setGlaseado(glaseadoId, glaseadoImage) {
+		this.setState({
+			glaseado: glaseadoId,
+			glaseadoImg: glaseadoImage
+		});
 
 		localStorage.setItem('glaseadoImagen', glaseadoImage);
 	}
 
-	setDecoracion(decoracionId, decoracionImage){
-        this.setState({
-			decoracion : decoracionId, 
-			decoracionImg : decoracionImage
-		})
+	setDecoracion(decoracionId, decoracionImage) {
+		this.setState({
+			decoracion: decoracionId,
+			decoracionImg: decoracionImage
+		});
 
 		localStorage.setItem('decoracionImagen', decoracionImage);
 	}
-	
-	addDonut() {
-		axios.post('/api/donuts',{
-		  	sabor_id: this.state.sabor,
-		  	glaseado_id:this.state.glaseado,
-		  	decorado_id:this.state.decoracion
-		})
-		.then(response => {
-		  console.log('Donut creada', response);
+
+	updateDonut(decoracionId, glaseadoId, saborId) {
+		this.setState({
+			decoracion: decoracionId,
+			decoracionImg: this.img.getDecoracionURL(decoracionId),
+			glaseado: glaseadoId,
+			glaseadoImg: this.img.getGlaseadoURL(glaseadoId),
+			sabor: saborId,
+			saborImg: this.img.getSaborURL(saborId)
 		});
 
-		// axios({
-        //     method: 'post',
-        //     url: '/donuts',
-        //     data: donut
-        // })
-        // .then(function (response) {
-        //     //handle success
-        //     console.log(response)
+		localStorage.setItem('decoracionImagen', this.img.getDecoracionURL(decoracionId));
+		localStorage.setItem('glaseadoImagen', this.img.getGlaseadoURL(glaseadoId));
+		localStorage.setItem('saborImagen', this.img.getSaborURL(saborId));
+	}
 
-        // })
-        // .catch(function (response) {
-        //     //handle error
-        //     console.log(response)
-		// });
-				
-		}
+	addDonut() {
+		axios.post('/api/donuts', {
+				sabor_id: this.state.sabor,
+				glaseado_id: this.state.glaseado,
+				decorado_id: this.state.decoracion
+			})
+			.then((response) => {
+				console.log('Donut creada', response);
+			});
+	}
 
 	render() {
-		return (			
+		return (
+			<div>
+				<div className="row">
+					<div className="col">
+						<h2 className="text-center text-uppercase text-secondary mb-0">
+							Crea tu Devil Donut <img className="donasbotones" src="img/Logo/logo.png" />
+						</h2>
+					</div>
+				</div>
+
 				<div className="row">
 					<div className="col-sm-9 col-md-6 fondo" id="box">
 						<img src="img/Donas/dona.png" className="medio" />
-						<img src={ localStorage.getItem('saborImagen') } className="medio" />
-						<img src={ localStorage.getItem('glaseadoImagen') } className="medio" />
-						<img src={ localStorage.getItem('decoracionImagen') } className="medio" />
+						<img src={localStorage.getItem('saborImagen')} className="medio" />
+						<img src={localStorage.getItem('glaseadoImagen')} className="medio" />
+						<img src={localStorage.getItem('decoracionImagen')} className="medio" />
 					</div>
 
 					<div className="col-sm-3 col-md-6 fondo" id="box">
@@ -108,16 +117,26 @@ class SeccionCrear extends Component {
 						<br />
 
 						<div className="form-group">
-							<button type="submit" className="btn btn-primary btn-xl" onClick={this.addDonut}>Guardar</button>
+							<button type="submit" className="btn btn-primary btn-xl" onClick={this.addDonut}>
+								Guardar
+							</button>
 						</div>
 					</div>
 				</div>
+
+				<br />
+
+				<div className="row">
+					<div className="col">
+						<h2 className="text-center text-uppercase text-secondary mb-0">Edita tu Devil Donut</h2>
+					</div>
+				</div>
+				<br />
+
+				<SeccionEditar onClick={this.updateDonut} />
+			</div>
 		);
 	}
 }
 
 export default SeccionCrear;
-
-{/* <img src="img/Donas/dona.png" className="medio" />
-		<img src="img/Donas/glaseadoVacio2.png" className="medio" />
-		<img src="img/Donas/decoracionVacio.png" className="medio" /> */}

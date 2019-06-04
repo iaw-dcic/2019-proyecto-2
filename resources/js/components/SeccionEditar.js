@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import MostrarDonut from './MostrarDonut';
 
@@ -13,7 +11,7 @@ class SeccionEditar extends Component {
 		};
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		axios.get('/api/donuts').then((response) => {
 			this.setState({
 				donuts: response.data
@@ -24,12 +22,13 @@ class SeccionEditar extends Component {
 	render() {
 		return (
 			<div className="row fondo">
-				{this.state.donuts.map((donut) => 
-					<MostrarDonut 
+				{this.state.donuts.map((donut) => (
+					<MostrarDonut
 						key={donut.id}
-						donut={donut} 
+						donut={donut}
+						onClick={() => this.props.onClick(donut.decorado_id, donut.glaseado_id, donut.sabor_id)}
 					/>
-                )}
+				))}
 			</div>
 		);
 	}
