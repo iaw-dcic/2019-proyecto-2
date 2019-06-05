@@ -41,8 +41,16 @@ export default class Example extends Component {
             console.log(response)
             vm.predictionsFetch()
             vm.setState({
-                showButtonSave: false
+                showButtonSave: false,
+                quarters: [],
+                semis: [],
+                finals: [],
+                champion: [],
             });
+            localStorage.removeItem('quarters');
+            localStorage.removeItem('semis');
+            localStorage.removeItem('finals');
+            localStorage.removeItem('champion');
         }).catch(function (error){
             console.log(error.response)
         })
@@ -89,6 +97,25 @@ export default class Example extends Component {
             .then(function (response) {
                 console.log(response)
                 vm.predictionsFetch()
+            }).catch(function (error){
+                console.log(error.response)
+            })
+            
+    }
+
+    async onClickShow(idd){
+        let vm = this;
+            let user = localStorage.getItem('api-token');
+            axios.get('/api/prediction/show/'+ idd, { headers: {"Authorization" : `Bearer ${user}`} })
+            .then(function (response) {
+                console.log(response)
+                vm.setState({
+                    quarters: JSON.parse(response.data.quarters),
+                    semis: JSON.parse(response.data.semis),
+                    finals: JSON.parse(response.data.finals),
+                    champion: JSON.parse(response.data.champion),
+                });
+
             }).catch(function (error){
                 console.log(error.response)
             })
@@ -183,6 +210,7 @@ export default class Example extends Component {
                 <tr>
                     <th>{item.name}</th>
                     <th>{item.created_at}</th>
+                    <th><button  type="button" onClick={() => {vm.onClickShow(item.id) }} className="btn btn-primary btn-sm ml-3" >Ver</button></th>
                     <th><button  type="button" onClick={() => {vm.onClickDelete(item.id) }} className="btn btn-danger btn-sm ml-3" >Borrar</button></th>
                 </tr>
             )

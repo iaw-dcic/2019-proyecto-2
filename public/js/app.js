@@ -66613,8 +66613,16 @@ function (_Component) {
                   console.log(response);
                   vm.predictionsFetch();
                   vm.setState({
-                    showButtonSave: false
+                    showButtonSave: false,
+                    quarters: [],
+                    semis: [],
+                    finals: [],
+                    champion: []
                   });
+                  localStorage.removeItem('quarters');
+                  localStorage.removeItem('semis');
+                  localStorage.removeItem('finals');
+                  localStorage.removeItem('champion');
                 })["catch"](function (error) {
                   console.log(error.response);
                 });
@@ -66739,6 +66747,49 @@ function (_Component) {
       return onClickDelete;
     }()
   }, {
+    key: "onClickShow",
+    value: function () {
+      var _onClickShow = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(idd) {
+        var vm, user;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                vm = this;
+                user = localStorage.getItem('api-token');
+                axios.get('/api/prediction/show/' + idd, {
+                  headers: {
+                    "Authorization": "Bearer ".concat(user)
+                  }
+                }).then(function (response) {
+                  console.log(response);
+                  vm.setState({
+                    quarters: JSON.parse(response.data.quarters),
+                    semis: JSON.parse(response.data.semis),
+                    finals: JSON.parse(response.data.finals),
+                    champion: JSON.parse(response.data.champion)
+                  });
+                })["catch"](function (error) {
+                  console.log(error.response);
+                });
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function onClickShow(_x2) {
+        return _onClickShow.apply(this, arguments);
+      }
+
+      return onClickShow;
+    }()
+  }, {
     key: "predictionsFetch",
     value: function predictionsFetch() {
       var vm = this;
@@ -66846,6 +66897,12 @@ function (_Component) {
       });
       var predictions = this.state.predictions.map(function (item, index) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, item.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, item.created_at), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick() {
+            vm.onClickShow(item.id);
+          },
+          className: "btn btn-primary btn-sm ml-3"
+        }, "Ver")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           type: "button",
           onClick: function onClick() {
             vm.onClickDelete(item.id);

@@ -61,9 +61,11 @@ class PredictionController extends Controller
      * @param  \App\Prediction  $prediction
      * @return \Illuminate\Http\Response
      */
-    public function show(Prediction $prediction)
+    public function show(Request $request, $id)
     {
-        return $prediction;
+        $prediction = Prediction::where('id', $id)->first();
+
+        return $prediction->match()->first();
     }
 
     /**

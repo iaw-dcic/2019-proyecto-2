@@ -10,6 +10,6 @@ class Prediction extends Model
 
     public function match()
     {
-    	return $this->hasMany('App\Match', 'prediction_id');
+    	return $this->hasOne('App\Match', 'prediction_id');
     }
 }
