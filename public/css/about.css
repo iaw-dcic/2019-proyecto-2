@@ -1,7 +1,7 @@
 .aboutFormat {
-    text-align:center;
+    text-align: center;
 }
 
-.goBackButton, #firstTable, #secondTable {
-    margin-top:2%;
+.goBackButton, .firstTable, .secondTable {
+    margin-top: 2%;
 }

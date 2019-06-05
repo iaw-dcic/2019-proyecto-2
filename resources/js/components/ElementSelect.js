@@ -21,7 +21,7 @@ export default class ElementSelect extends Component {
                             <img src={window.location.origin + '/avatar_elements/' + avatar.shirt + '.png'} className="savedShirt"/>
                             <img src={window.location.origin + '/avatar_elements/' + avatar.beard + '.png'} className="savedBeard"/>
                         </div>
-                        <div className="card-text selectButtonContainer">
+                        <div className="card-footer selectButtonContainer">
                             <button className="btn btn-primary selectButton" onClick={() => this.selectAvatar(avatar)}>
                                 {avatar.avatar_name}
                             </button>

@@ -2,11 +2,11 @@
     margin-top: 2%;
     padding-left: relative;
     position: relative;
-    width: 100%;
+    width: 10000px;
 }
 
 .savedCard {
-    height: 135px;
+    height: 195px;
     width: 140px;
     margin-left: 5px;
     margin-right: 5px;
@@ -24,11 +24,6 @@
     -ms-user-select: none;
 }
 
-.selectButtonContainer {
-    text-align: center;
-}
-
 .selectButton {
     margin-top: 3%;
-    position: absolute;
 }

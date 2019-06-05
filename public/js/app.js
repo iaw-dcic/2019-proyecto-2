@@ -6539,7 +6539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 300px;\r\n}\r\n\r\n#editor {\r\n    top: 20%;\r\n    text-align: center;\r\n    height: 200px;\r\n}\r\n\r\n#previous {\r\n    height: 220px;\r\n    width: 50%;\r\n    margin-top: 2%;\r\n    margin-left: 2%;\r\n    top: 50%;\r\n    overflow-x: auto;\r\n    border: 2px solid gray;\r\n    border-radius: 5px;\r\n}\r\n\r\n#buttons {\r\n    margin-top: 5%;\r\n}", ""]);
+exports.push([module.i, "#topFlex, #bottomFlex {\r\n    margin-top: 2%;\r\n}\r\n\r\n#topFlex {\r\n    height: 300px;\r\n}\r\n\r\n#editor {\r\n    top: 20%;\r\n    text-align: center;\r\n    height: 200px;\r\n}\r\n\r\n#previous {\r\n    height: 240px;\r\n    width: 50%;\r\n    margin-top: 2%;\r\n    margin-left: 2%;\r\n    top: 50%;\r\n    overflow-x: auto;\r\n    border: 2px solid gray;\r\n    border-radius: 5px;\r\n}\r\n\r\n#buttons {\r\n    margin-top: 5%;\r\n}", ""]);
 
 // exports
 
@@ -6558,7 +6558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".elementsFlex {\r\n    margin-top: 2%;\r\n    padding-left: relative;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.savedCard {\r\n    height: 135px;\r\n    width: 140px;\r\n    margin-left: 5px;\r\n    margin-right: 5px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n    user-select: none;\r\n    -moz-user-select: none;\r\n    -webkit-user-drag: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n}\r\n\r\n.selectButtonContainer {\r\n    text-align: center;\r\n}\r\n\r\n.selectButton {\r\n    margin-top: 3%;\r\n    position: absolute;\r\n}", ""]);
+exports.push([module.i, ".elementsFlex {\r\n    margin-top: 2%;\r\n    padding-left: relative;\r\n    position: relative;\r\n    width: 10000px;\r\n}\r\n\r\n.savedCard {\r\n    height: 195px;\r\n    width: 140px;\r\n    margin-left: 5px;\r\n    margin-right: 5px;\r\n}\r\n\r\n.savedBase, .savedHair, .savedShirt, .savedBeard {\r\n    height: 100px;\r\n    width: 100px;\r\n    position: absolute;\r\n    background-position: center center;\r\n    user-select: none;\r\n    -moz-user-select: none;\r\n    -webkit-user-drag: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n}\r\n\r\n.selectButton {\r\n    margin-top: 3%;\r\n}", ""]);
 
 // exports
 
@@ -60886,7 +60886,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67078,7 +67078,7 @@ function (_Component) {
           src: window.location.origin + '/avatar_elements/' + avatar.beard + '.png',
           className: "savedBeard"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card-text selectButtonContainer"
+          className: "card-footer selectButtonContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn btn-primary selectButton",
           onClick: function onClick() {
