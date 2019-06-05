@@ -66975,6 +66975,7 @@ function (_Component) {
   _createClass(IndexProde, [{
     key: "setGanador",
     value: function setGanador(indiceActual, idPasa) {
+      if (indiceActual === 15) alert('Felicitaciones campeon!!!');
       var eliminatorias_copia = this.state.eliminatorias.slice();
       eliminatorias_copia[indiceActual].id_pasa = idPasa;
       this.setState({

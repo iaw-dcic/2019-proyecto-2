@@ -13,6 +13,9 @@ export default class IndexProde extends Component {
 
      setGanador(indiceActual,idPasa){
          
+        if (indiceActual === 15)
+            alert('Felicitaciones campeon!!!');
+
         let eliminatorias_copia = this.state.eliminatorias.slice();
         eliminatorias_copia[indiceActual].id_pasa= idPasa;
         
