@@ -65930,6 +65930,7 @@ function (_Component) {
 
           _this3.props.addLogo(response.data.logo);
         });
+        this.props.setearEditIdRemeraEditar(idRemera);
       } catch (e) {
         console.log('Error Axios', e);
       }
@@ -66548,6 +66549,12 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "setearEditIdRemeraEditar", function (valor) {
+      _this.setState({
+        idRemeraEditar: valor
+      });
+    });
+
     _this.state = {
       remera: "colorBlanco",
       talle: "XS",
@@ -66732,7 +66739,8 @@ function (_Component) {
         cambiarTalle: this.cambiarTalle,
         cambiarTela: this.cambiarTela,
         cambiarColorRemera: this.cambiarColorRemera,
-        setearEdit: this.setearEdit
+        setearEdit: this.setearEdit,
+        setearEditIdRemeraEditar: this.setearEditIdRemeraEditar
       })));
     }
   }]);

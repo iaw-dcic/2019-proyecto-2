@@ -27,6 +27,7 @@ export default class ListadoEditar extends Component {
     editarRemera(e,idRemera) {
         this.props.setearEdit(true);
         
+        
         try {
             axios.get('/api/misDiseños/'+idRemera).then(response => {
                 console.log(response.data);
@@ -36,6 +37,7 @@ export default class ListadoEditar extends Component {
                 this.props.addLogo(response.data.logo);
 
             });
+            this.props.setearEditIdRemeraEditar(idRemera);
         }
         catch (e) {
             console.log('Error Axios', e);
