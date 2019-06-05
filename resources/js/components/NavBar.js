@@ -4,27 +4,19 @@ import {Navbar , Nav , Button } from 'react-bootstrap';
 
 export default class NavBar extends Component {
 
-    constructor(props){
-        super(props);
-    }
-
     render () {
         return (
-                <Navbar className="Navbar" expand="lg" bg="dark" variant="dark">
-                    {
-                        this.props.isAuthenticated ?
-                            <Nav className="navbar-nav ml-auto">
-                                <Nav.Link href="/">Inicio</Nav.Link>
-                                <Nav.Link href="/misCreaciones">Mis Creaciones</Nav.Link>
-                                <Nav.Link onClick={() => this.props.logout()}>Cerrar Sesión</Nav.Link>
-                            </Nav>
-                            :
-                            <Nav className="navbar-nav ml-auto">
-                                <Nav.Link href="/login">Iniciar Sesion</Nav.Link>
-                                <Nav.Link href="/register">Registrarse</Nav.Link>
-                            </Nav>
-                    }
-                </Navbar>
+
+            <Navbar className="Navbar" expand="lg" bg="dark" variant="dark">
+                <Navbar.Brand href="/">Inicio</Navbar.Brand>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                    <Navbar.Text>
+                        <Nav.Link href="/login">Iniciar Sesion</Nav.Link>
+                        <Nav.Link href="/register">Registrarse</Nav.Link>
+                    </Navbar.Text>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }

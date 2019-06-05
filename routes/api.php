@@ -13,11 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-
-Route::post('login', 'PassportController@login')->name('loginAPI');
-Route::post('register', 'PassportController@register');
-
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
   return $request->user();
 });
 
@@ -25,8 +21,8 @@ Route::get('colores', 'ColoresController@index');
 Route::get('cuello', 'CuelloController@index');
 Route::get('tipo', 'TipoController@index');
 
-Route::post('remeras', 'RemerasController@store');*/
-Route::middleware('auth:api')->group(function () {
+Route::post('remeras', 'RemerasController@store');
+/*Route::middleware('auth:api')->group(function () {
     Route::get('user', 'PassportController@details');
     Route::get('logout', 'PassportController@logout');
 
@@ -35,4 +31,4 @@ Route::middleware('auth:api')->group(function () {
     Route::get('tipo', 'TipoController@index');
 
     Route::post('remeras', 'RemerasController@store');
-});
+});*/
