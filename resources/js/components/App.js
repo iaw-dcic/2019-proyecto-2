@@ -8,15 +8,6 @@ import {ProovedorLogica} from './Logica'
 import Default from './ComponenteDefault/Default'
 
 class App extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isAuthenticated: false
-        };
-    }
-
     render () {
         return (
             <ProovedorLogica>
@@ -35,4 +26,4 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<Router />, document.getElementById('react-app'))
+ReactDOM.render(<App />, document.getElementById('react-app'))
