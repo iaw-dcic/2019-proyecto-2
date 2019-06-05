@@ -66253,7 +66253,7 @@ function (_Component) {
         response.data.forEach(function (team) {
           _this3.setState({
             equipos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.equipos, _defineProperty({}, i, {
-              $set: [team.name, team.description, team.icon, team.id, team.bracket_id]
+              $set: [team.name, team.description, team.icon, team.i, team.bracket_id]
             }))
           });
 

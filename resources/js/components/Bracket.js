@@ -79,7 +79,7 @@ export default class Bracket extends Component {
         axios.get(teams).then(response => {
             const i=0
             response.data.forEach(team => {
-                this.setState({equipos: update(this.state.equipos,{[i]: {$set: [team.name, team.description, team.icon, team.id, team.bracket_id]}})})
+                this.setState({equipos: update(this.state.equipos,{[i]: {$set: [team.name, team.description, team.icon, team.i, team.bracket_id]}})})
                 i++
             });
         })
