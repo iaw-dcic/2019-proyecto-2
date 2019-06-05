@@ -82,16 +82,9 @@ body{
     z-index: 14;
 }
 
-.lista-avatares{
-    margin-bottom: 5px;
-}
-
-.lista-avatares.titulo{
-    margin-top: 5px;
-}
-
-.lista-avatares.lista{
-    padding: 2px;
+.borde-lista{
+    border: 2px solid gray;
+    border-radius: 1.5em;
 }
 
 .errores{
@@ -105,11 +98,15 @@ body{
 }
 
 .boton-prev-next{
-    border: 4px outset #38c172;
+    border: 2px solid white;
 }
 
 .botones-items-avatar {
     padding: 5px 5px 5px 5px;
+}
+
+.footer-link:hover{
+    text-decoration: none;
 }
 
 html,
@@ -132,16 +129,4 @@ body {
 /* Set the fixed height of the footer here */
 #footer {
   height: 60px;
-}
-
-
-.testing {
-    border: 6px solid red;
-}
-.testing2 {
-    border: 6px dotted blue;
-}
-
-.testing3 {
-    border: 6px dashed green;
 }

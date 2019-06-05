@@ -140,7 +140,7 @@ class UserAvatars extends Component{
         if (this.state.selectedAvatar){
             return(            
                 <button onClick={this.handleButtonEditAvatar} 
-                    type="button" className="btn btn-secondary">
+                    type="button" className="btn btn-success">
                     Editar
                 </button>
             );
@@ -165,6 +165,13 @@ class UserAvatars extends Component{
         }))
 
 
+    }
+
+    modeCancel = () =>{
+        this.setState({
+            isCreating: false,
+            isEditing: false,
+        })
     }
 
     resetMode = (avatar) => {
@@ -200,24 +207,24 @@ class UserAvatars extends Component{
 
     renderAvatarList(){
         return(
-            <div className="col-md-4">
+            <div className="col-md-4 borde-lista m-3 h-100">
                 <div className="row-fluid">
-                    <div className="lista-avatares titulo text-center">
-                        <h5>Tus snoovatares </h5>
+                    <div className="mb-3 mt-3 text-center">
+                        <h4>Tus snoovatares </h4>
                     </div>
                 </div>
                 <div className="row-fluid">
-                    <div className="lista-avatares lista">
+                    <div className="mb-3 lista p-2">
                         <div className="list-group list-group-flush">
                             {this.state.avatars.map((item,index) => 
-                            <a className={"list-group-item list-group-item-info list-group-item-action"+this.getActive(index)}
-                            href="#" id={index} onClick={this.handleAvatarClick}>{item.name}</a>
+                            <a className={"list-group-item list-group-item-light list-group-item-action"+this.getActive(index)}
+                            href="#avatar-frame" id={index} onClick={this.handleAvatarClick}>{item.name}</a>
                             )}
                         </div>
                     </div>
                 </div>                
                 <div className="row-fluid">
-                    <div className="lista-avatares boton-panel-izq">
+                    <div className="mb-3 boton-panel-izq">
                         {this.renderButtonNewAvatar('Nuevo','btn btn-primary btn-block')}
                     </div>        
                 </div>
@@ -250,23 +257,24 @@ class UserAvatars extends Component{
 
     renderAvatarShower(){
         return(
-            <div className="col-md-8 ">
+            <div className="col-md-7 borde-lista m-3 pt-3">
                 <div className="row justify-content-center ">
-                <div class="btn-toolbar" role="toolbar" aria-label="Botones editar y eliminar">
-                    <div class="btn-group mr-2" role="group" aria-label="Boton editar">
-                        {this.renderButtonEditAvatar()}
-                    </div>
-                    <div class="btn-group ml-2" role="group" aria-label="Boton eliminar"></div>
-                        {this.renderButtonDeleteAvatar()}
+                    <div className="btn-toolbar" role="toolbar" aria-label="Botones editar y eliminar">
+                        <div className="btn-group mr-2" role="group" aria-label="Boton editar">
+                            {this.renderButtonEditAvatar()}
+                        </div>
+                        <div className="btn-group ml-2" role="group" aria-label="Boton eliminar">
+                            {this.renderButtonDeleteAvatar()}
+                        </div>
                     </div>
                 </div>
-                <div className="row justify-content-center ">
-                <AvatarShower 
-                    items={this.props.items}
-                    avatar={this.state.selectedAvatar}
-                    renderName={false}
-                    useIDs={true}
-                />
+                <div className="row justify-content-center mt-3">
+                    <AvatarShower 
+                        items={this.props.items}
+                        avatar={this.state.selectedAvatar}
+                        renderName={false}
+                        useIDs={true}
+                    />
                 </div>
             </div>
         );
@@ -292,10 +300,10 @@ class UserAvatars extends Component{
                         <div className="jumbotron">
                             <h1 className="display-4">:(</h1>
                             <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-8">
                                     <p className="lead ">Aún no tienes snoovatares.</p>
                                     <p className="lead ">
-                                        {this.renderButtonNewAvatar('Crear avatar!','btn btn-primary btn-lg ')}
+                                        {this.renderButtonNewAvatar('Crear avatar!','btn btn-success btn-lg text-white')}
                                     </p>
                                 </div>
                                 <div className="col-md-2 ">
@@ -319,6 +327,7 @@ class UserAvatars extends Component{
                         api_token={this.props.api_token}
                         mode={'create'}
                         resetMode={this.resetMode}
+                        modeCancel={this.modeCancel}
                     />
                 );
         }
@@ -330,6 +339,7 @@ class UserAvatars extends Component{
                     avatar={this.state.selectedAvatar}
                     mode={'edit'}
                     resetMode={this.resetMode}
+                    modeCancel={this.modeCancel}
                 />
             );
         }

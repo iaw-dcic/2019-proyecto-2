@@ -292,15 +292,15 @@ class AvatarEditor extends Component{
     buttonsAvatarItems(){
         return(
                 <div className="btn-group-vertical btn-block mt-3 mb-3" role="group" aria-label="avatar items buttons">
-                    <button type="button" className={"btn btn-info "+ this.isActive('body')}
+                    <button type="button" className={"btn btn-success "+ this.isActive('body')}
                         onClick={this.handleButtonBody}>Cuerpo</button>
-                    <button type="button" className={"btn btn-info "+ this.isActive('head')}
+                    <button type="button" className={"btn btn-success "+ this.isActive('head')}
                         onClick={this.handleButtonHead}>Cabeza</button>
-                    <button type="button" className={"btn btn-info "+ this.isActive('upperbody')}
+                    <button type="button" className={"btn btn-success "+ this.isActive('upperbody')}
                         onClick={this.handleButtonUpperbody}>Torso</button>
-                    <button type="button" className={"btn btn-info "+ this.isActive('lowerbody')}
+                    <button type="button" className={"btn btn-success "+ this.isActive('lowerbody')}
                         onClick={this.handleButtonLowerbody}>Piernas</button>
-                    <button type="button" className={"btn btn-info "+ this.isActive('extra')}
+                    <button type="button" className={"btn btn-success "+ this.isActive('extra')}
                         onClick={this.handleButtonExtra}>Extra</button>
                 </div>
         );
@@ -309,9 +309,9 @@ class AvatarEditor extends Component{
     buttonsPrevNextItems(){
         return(
             <div className="btn-group btn-block mt-2 mb-2" role="group" aria-label="Botones previo y siguiente item">
-                <button type="button" className="btn btn-success boton-prev-next "
+                <button type="button" className="btn btn-warning boton-prev-next "
                 onClick={this.handleButtonPrev}>◄</button>
-                <button type="button" className="btn btn-success boton-prev-next "
+                <button type="button" className="btn btn-warning boton-prev-next "
                 onClick={this.handleButtonNext}>►</button>
             </div>
         );
@@ -319,7 +319,7 @@ class AvatarEditor extends Component{
 
     formSaveAvatar(){
         return(
-            <div className="col-md-4">
+            <div className="col-md-4 borde-lista m-3 h-100 pt-4 pb-4">
                 <div className="row justify-content-center ">
                     <div className="col-md-12">
                         <form onSubmit={this.handleSaveAvatar}>
@@ -337,6 +337,13 @@ class AvatarEditor extends Component{
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div className="row justify-content-center ">
+                    <div className="col-md-12">
+                        <button type="button" onClick={this.props.modeCancel} className="btn btn-danger btn-block">
+                            Cancelar
+                        </button>
                     </div>
                 </div>
                 <div className="row justify-content-center ">
@@ -370,7 +377,7 @@ class AvatarEditor extends Component{
             return(
                 <div className="row justify-content-center">                    
                         {this.formSaveAvatar()}
-                    <div className="col-md-8">
+                    <div className="col-md-7 borde-lista m-3">
                         <div className="row justify-content-center h-100">
                             <div className="col-md-4 my-auto">
                                 <div className="botones-items-avatar">

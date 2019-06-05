@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 ">
             <div class="card">
-                <div class="card-header">Login</div>
+                <div class="card-header bg-secondary text-white text-weight-bold">Login</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -53,7 +53,7 @@
                                 </button>
                             </div>
                             <div class="col-md-2 mr-auto ">
-                                <a class="btn btn-outline-primary" href="{{ route('register') }}">Registrarse</a>
+                                <a class="btn btn-outline-danger" href="{{ route('register') }}">Registrarse</a>
                             </div>
                         </div>
                     </form>

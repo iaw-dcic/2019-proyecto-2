@@ -28,7 +28,7 @@ class AvatarShower extends Component{
         extra=parseInt(extra/10);
       }
       return(
-        <div className="avatar-frame">                  
+        <div name="avatar-frame" className="avatar-frame">                  
           {this.renderName()}
           <img className="img-avatar avatar-body" 
             src={items.bodyitems[body].resource}></img>

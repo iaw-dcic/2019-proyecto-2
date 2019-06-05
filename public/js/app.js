@@ -66103,23 +66103,23 @@ function (_Component) {
         "aria-label": "avatar items buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-info " + this.isActive('body'),
+        className: "btn btn-success " + this.isActive('body'),
         onClick: this.handleButtonBody
       }, "Cuerpo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-info " + this.isActive('head'),
+        className: "btn btn-success " + this.isActive('head'),
         onClick: this.handleButtonHead
       }, "Cabeza"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-info " + this.isActive('upperbody'),
+        className: "btn btn-success " + this.isActive('upperbody'),
         onClick: this.handleButtonUpperbody
       }, "Torso"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-info " + this.isActive('lowerbody'),
+        className: "btn btn-success " + this.isActive('lowerbody'),
         onClick: this.handleButtonLowerbody
       }, "Piernas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-info " + this.isActive('extra'),
+        className: "btn btn-success " + this.isActive('extra'),
         onClick: this.handleButtonExtra
       }, "Extra"));
     }
@@ -66132,11 +66132,11 @@ function (_Component) {
         "aria-label": "Botones previo y siguiente item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-success boton-prev-next ",
+        className: "btn btn-warning boton-prev-next ",
         onClick: this.handleButtonPrev
       }, "\u25C4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-success boton-prev-next ",
+        className: "btn btn-warning boton-prev-next ",
         onClick: this.handleButtonNext
       }, "\u25BA"));
     }
@@ -66144,7 +66144,7 @@ function (_Component) {
     key: "formSaveAvatar",
     value: function formSaveAvatar() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4"
+        className: "col-md-4 borde-lista m-3 h-100 pt-4 pb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66165,6 +66165,14 @@ function (_Component) {
         type: "submit",
         className: "btn btn-primary btn-block"
       }, "Guardar"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.props.modeCancel,
+        className: "btn btn-danger btn-block"
+      }, "Cancelar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-12"
@@ -66195,7 +66203,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row justify-content-center"
         }, this.formSaveAvatar(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-8"
+          className: "col-md-7 borde-lista m-3"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row justify-content-center h-100"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66301,6 +66309,7 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        name: "avatar-frame",
         className: "avatar-frame"
       }, this.renderName(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img-avatar avatar-body",
@@ -66700,6 +66709,13 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "modeCancel", function () {
+      _this.setState({
+        isCreating: false,
+        isEditing: false
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "resetMode", function (avatar) {
       if (_this.state.isCreating) {
         _this.setState(function (prevState) {
@@ -66824,7 +66840,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.handleButtonEditAvatar,
           type: "button",
-          className: "btn btn-secondary"
+          className: "btn btn-success"
         }, "Editar");
       } else {
         return null;
@@ -66845,28 +66861,28 @@ function (_Component) {
       var _this4 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4"
+        className: "col-md-4 borde-lista m-3 h-100"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lista-avatares titulo text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Tus snoovatares "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 mt-3 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Tus snoovatares "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lista-avatares lista"
+        className: "mb-3 lista p-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-group list-group-flush"
       }, this.state.avatars.map(function (item, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          className: "list-group-item list-group-item-info list-group-item-action" + _this4.getActive(index),
-          href: "#",
+          className: "list-group-item list-group-item-light list-group-item-action" + _this4.getActive(index),
+          href: "#avatar-frame",
           id: index,
           onClick: _this4.handleAvatarClick
         }, item.name);
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lista-avatares boton-panel-izq"
+        className: "mb-3 boton-panel-izq"
       }, this.renderButtonNewAvatar('Nuevo', 'btn btn-primary btn-block'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66893,23 +66909,23 @@ function (_Component) {
     key: "renderAvatarShower",
     value: function renderAvatarShower() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8 "
+        className: "col-md-7 borde-lista m-3 pt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "btn-toolbar",
+        className: "btn-toolbar",
         role: "toolbar",
         "aria-label": "Botones editar y eliminar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "btn-group mr-2",
+        className: "btn-group mr-2",
         role: "group",
         "aria-label": "Boton editar"
       }, this.renderButtonEditAvatar()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "btn-group ml-2",
+        className: "btn-group ml-2",
         role: "group",
         "aria-label": "Boton eliminar"
-      }), this.renderButtonDeleteAvatar())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center "
+      }, this.renderButtonDeleteAvatar()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarShower__WEBPACK_IMPORTED_MODULE_2__["default"], {
         items: this.props.items,
         avatar: this.state.selectedAvatar,
@@ -66939,12 +66955,12 @@ function (_Component) {
         }, ":("), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-6"
+          className: "col-md-8"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "lead "
         }, "A\xFAn no tienes snoovatares."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "lead "
-        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-primary btn-lg '))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, this.renderButtonNewAvatar('Crear avatar!', 'btn btn-success btn-lg text-white'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-md-2 "
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "jumbo-avatar "
@@ -66962,7 +66978,8 @@ function (_Component) {
           items: this.props.items,
           api_token: this.props.api_token,
           mode: 'create',
-          resetMode: this.resetMode
+          resetMode: this.resetMode,
+          modeCancel: this.modeCancel
         });
       } else if (this.state.isEditing) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatars_AvatarEditor__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -66970,7 +66987,8 @@ function (_Component) {
           api_token: this.props.api_token,
           avatar: this.state.selectedAvatar,
           mode: 'edit',
-          resetMode: this.resetMode
+          resetMode: this.resetMode,
+          modeCancel: this.modeCancel
         });
       } else {
         return (// No esta editando ni creando
