@@ -37,7 +37,7 @@ export default class AvatarForm extends React.Component {
 
   delayAlertState() {
     setTimeout(() => {
-        this.setState({
+      this.setState({
         alert_message: false
       })
     }, 2000);
@@ -117,6 +117,21 @@ export default class AvatarForm extends React.Component {
           options={element.options} onChange={(e) => this.handleChange(e)}
         />);
     });
+    // Por ultimo se agrega el boton de submit
+    if (formRows.length > 0) {
+      formRows.push(
+        (
+          <div key="button" className="form-group row">
+            <div className="col-sm-9 offset-sm-3">
+              <input type="submit" value="Guardar" className="btn btn-primary" />
+            </div>
+          </div>
+        )
+      );
+    }
+    if (Object.values(features).length == 0) {
+      formRows.push((<p key="cargando">Cargando...</p>));
+    }
 
     return (
       <div>
@@ -133,11 +148,6 @@ export default class AvatarForm extends React.Component {
           <div className="col-md-8">
             <form onSubmit={this.handleSubmit} className="pt-4">
               {formRows}
-              <div className="form-group row">
-                <div className="col-sm-9 offset-sm-3">
-                  <input type="submit" value="Guardar" className="btn btn-primary" />
-                </div>
-              </div>
             </form>
 
           </div>

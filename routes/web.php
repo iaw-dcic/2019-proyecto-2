@@ -29,8 +29,8 @@ Route::get('/avatar', 'AvatarController@foto');
 Route::get('/user/avatar', 'UserController@getAvatar');
 Route::put('/user/avatar', 'UserController@updateAvatar');
 
-
-Route::view('/{path?}', 'welcome')->name('welcome')->middleware('auth');
+Route::view('/readme', 'readme')->name('readme');
+Route::view('/{path?}', 'home')->name('home')->middleware('auth');
 // Route::view('/user/{path?}', 'home')->name('home');//->middleware('auth');
 
 

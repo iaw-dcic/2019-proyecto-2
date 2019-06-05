@@ -49,11 +49,7 @@ class AvatarController extends Controller
         $Ropa = $request->query('Ropa');
         $Color_de_la_ropa = $request->query('Color_de_la_ropa');
         $fileName = $Piel.$Pelo.$Color_del_pelo.$Ropa.$Color_de_la_ropa;
-        // foreach ($queries as $key => $value) {
-        //     if($value != null){
-        //         $fileName = $fileName.$value;
-        //     }
-        // }
+
         $path = "/img/".$fileName.".png";
         $path = url($path);
         return redirect($path);

@@ -65666,7 +65666,11 @@ function (_Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('react-app'));
+var element = document.getElementById('react-app');
+
+if (element) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), element);
+}
 
 /***/ }),
 
@@ -66078,7 +66082,27 @@ function (_React$Component) {
             return _this5.handleChange(e);
           }
         }));
-      });
+      }); // Por ultimo se agrega el boton de submit
+
+      if (formRows.length > 0) {
+        formRows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "button",
+          className: "form-group row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-9 offset-sm-3"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "submit",
+          value: "Guardar",
+          className: "btn btn-primary"
+        }))));
+      }
+
+      if (Object.values(features).length == 0) {
+        formRows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          key: "cargando"
+        }, "Cargando..."));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.alert_message == 'success' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SuccessAlert__WEBPACK_IMPORTED_MODULE_2__["default"], null) : null, this.state.alert_message == 'error' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ErrorAlert__WEBPACK_IMPORTED_MODULE_3__["default"], null) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: ""
       }, "Personaliza tu avatar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66093,15 +66117,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "pt-4"
-      }, formRows, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-9 offset-sm-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Guardar",
-        className: "btn btn-primary"
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      }, formRows))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }
   }]);
 
