@@ -87,7 +87,7 @@ export default class Bracket extends Component {
                 champ: response2.data[1]!=null ? this.state.equipos[Math.floor(response2.data[1].team_id/10)] : "",
                 competition: this.state.brackets[Math.floor(id/10)].competition_name,
                 bracket_actual: Math.floor(id/10),
-                info: this.state.brackets[id-1].description,
+                info: this.state.brackets[Math.floor(id/10)].description,
                 partidos: [
                     [['','',''],['','',''],['','',''],['','',''],['','',''],['','',''],['','',''],['','','']],
                     [['','',''],['','',''],['','',''],['','','']],
