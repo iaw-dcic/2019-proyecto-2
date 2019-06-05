@@ -66137,8 +66137,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -66249,15 +66247,14 @@ function (_Component) {
       var route = '/api/bracket/'.concat(id);
       var teams = '/api/teams/'.concat(id);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(teams).then(function (response) {
-        var i = 0;
         response.data.forEach(function (team) {
+          var i = 0;
+
           _this3.setState({
-            equipos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.equipos, _defineProperty({}, i, {
-              $set: [team.name, team.description, team.icon, team.i, team.bracket_id]
+            equipos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.equipos, _defineProperty({}, i * 10 - 1, {
+              $set: [team.name, team.description, team.icon, i, team.bracket_id]
             }))
           });
-
-          _readOnlyError("i"), i++;
         });
       });
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(route).then(function (response2) {

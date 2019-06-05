@@ -77,10 +77,9 @@ export default class Bracket extends Component {
         const route = '/api/bracket/'.concat(id)
         const teams ='/api/teams/'.concat(id)
         axios.get(teams).then(response => {
-            const i=0
             response.data.forEach(team => {
-                this.setState({equipos: update(this.state.equipos,{[i]: {$set: [team.name, team.description, team.icon, team.i, team.bracket_id]}})})
-                i++
+                const i=0
+                this.setState({equipos: update(this.state.equipos,{[i*10-1]: {$set: [team.name, team.description, team.icon, i, team.bracket_id]}})})
             });
         })
         axios.get(route).then(response2 => {
