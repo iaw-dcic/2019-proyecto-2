@@ -133,6 +133,10 @@ export default class AvatarForm extends React.Component {
       formRows.push((<p key="cargando">Cargando...</p>));
     }
 
+    if(this.state.alert_message != ""){
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
     return (
       <div>
         {this.state.alert_message == 'success' ? <SuccessAlert /> : null}

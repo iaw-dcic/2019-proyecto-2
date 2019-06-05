@@ -19,7 +19,7 @@ class AvatarFeatureOptionsTableSeeder extends Seeder
         $afo->save();
 
         $afo = new AvatarFeatureOption();
-        $afo->option_name = "Oscura";
+        $afo->option_name = "Morena";
         $afo->avatar_feature = "Piel";
         $afo->save();
 

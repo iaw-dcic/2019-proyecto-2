@@ -66103,6 +66103,11 @@ function (_React$Component) {
         }, "Cargando..."));
       }
 
+      if (this.state.alert_message != "") {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.alert_message == 'success' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SuccessAlert__WEBPACK_IMPORTED_MODULE_2__["default"], null) : null, this.state.alert_message == 'error' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ErrorAlert__WEBPACK_IMPORTED_MODULE_3__["default"], null) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: ""
       }, "Personaliza tu avatar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
