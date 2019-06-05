@@ -15,13 +15,17 @@ class CreateProdesTable extends Migration
     {
         Schema::create('prodes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->string('name');
-            $table->integer('prode_completo')->default(0);
             $table->timestamps();
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('octavos');
+            $table->string('cuartos');
+            $table->string('semis');
+            $table->string('final');
+            $table->string('champ');
+            
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
-
     /**
      * Reverse the migrations.
      *

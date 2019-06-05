@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Prode;
+use App\Partido;
+use App\ListaPartido;
 use App\User;
 
 class ProdeController extends Controller
@@ -42,11 +44,24 @@ class ProdeController extends Controller
     public function store(Request $request)
     {
         $this->middleware('auth');
-        $userLog=Auth::user();
+        $userLog = Auth::user();
         $prode = new Prode();
         $prode->name = $request->prode_name;
         $prode->user_id = $userLog->id;
         $prode->save();
+
+        for ($x = 1; $x <= 31; $x++) {
+            $partido = new Partido();
+            $partidoBase = Partido::find($x);
+            $partido->prode_id = $prode->id;
+            $partido->numero_partido=$x;
+            $partido->ronda = $partidoBase->ronda;
+            $partido->equipo_1_nombre = $partidoBase->equipo_1_nombre;
+            $partido->equipo_2_nombre = $partidoBase->equipo_2_nombre;
+            $partido->equipo_1_escudo = $partidoBase->equipo_1_escudo;
+            $partido->equipo_2_escudo = $partidoBase->equipo_2_escudo;
+            $partido->save();
+        }
     }
 
     /**

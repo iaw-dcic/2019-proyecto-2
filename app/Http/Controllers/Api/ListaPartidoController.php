@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Prode;
+use App\User;
+use App\Partido;
 
-class ProdeItemController extends Controller
+class ListaPartidoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,7 @@ class ProdeItemController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
 
     /**
@@ -46,7 +50,11 @@ class ProdeItemController extends Controller
      */
     public function show($id)
     {
-        //
+        /*$this->middleware('auth');
+        $userLog = Auth::user();
+        $prode = Prode::where(['id'=>$id, 'user_id'=>$userLog->id])->first();
+        $result = Partido::where('prode_id',$prode->id)->get();
+        return $result;*/
     }
 
     /**
@@ -57,7 +65,21 @@ class ProdeItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->middleware('auth');
+        $prode = Prode::find($id);
+        if($prode){
+            $user = User::find($prode->user_id);
+            if($user && Auth::user()->id == $user->id){
+                $partidos = Partido::where('prode_id',$prode->id)->get();
+                return $partidos;
+            }
+            else{
+                abort(403,'Usuario no autorizado');
+            }
+        }
+        else{
+            abort(403,'Usuario no autorizado');
+        }
     }
 
     /**

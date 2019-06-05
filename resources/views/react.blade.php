@@ -19,8 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/estilo2.css') }}" type="text/css" rel="stylesheet" />
-    <link href="{{ asset('css/promiedosCSS.css') }}" type="text/css" rel="stylesheet" /> 
+    <link href="{{ asset('css/estilo_tabla.css') }}" rel="stylesheet">
 </head>
 <body>
     <div>

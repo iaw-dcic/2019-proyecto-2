@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link, Route} from 'react-router-dom';
 import Home from './Home';
 import About from './About';
-import Prode from './prode/Index';
+import Prode from './Table';
 
 export default class Header extends Component {
     render () {
@@ -19,7 +19,7 @@ export default class Header extends Component {
                                 <Link className="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
                             </li>
                             <li class="nav-item">
-                                <Link className="nav-link" to="/prode">Prodes</Link>
+                                <Link className="nav-link" to="/teams">Prodes</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/about">About</Link>
@@ -29,10 +29,8 @@ export default class Header extends Component {
                 </nav>
                 <div>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/prode" component={Prode} />
+                    <Route exact path="/teams" component={Prode} />
                     <Route exact path="/about" component={About} />
-                    <Route exact path="/prode/add" component={Prode} />
-                    <Route exact path="/prode/edit/:id" component={Prode} />
                 </div>
             </div>
         );

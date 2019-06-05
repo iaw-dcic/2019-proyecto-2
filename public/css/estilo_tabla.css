@@ -1,0 +1,49 @@
+.myButton{
+	width: 100%;
+	height: 40px;
+	line-height: 10px;
+	text-align: center;
+	font-size: 12px;
+	background-color: black;
+	color:white;
+}
+
+.myDiv{
+	width: 230px;
+}
+
+.myTitle{
+	font-size: 20px;
+	text-align: center;
+	background-color: black;
+	color:white;
+}
+
+.Content
+{
+	float:right;
+  	padding:3px; 
+  	height:224px;
+	overflow:auto;
+}
+
+.cuartos{
+	margin-bottom: 120px;
+}
+
+.semis{
+	margin-bottom: 180px;
+}
+
+.final{
+	margin-bottom: 210px;
+}
+
+.champDiv{
+	margin-top: 220px;
+	margin-bottom: 280px;
+	font-size: 30px;
+	text-align: center;
+	width: 70px;
+	border-block-color: black;
+}

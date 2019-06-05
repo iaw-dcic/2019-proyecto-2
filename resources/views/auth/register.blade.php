@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-white bg-dark">{{ __('Register') }}</div>
+                <div class="card-header text-white bg-dark">
+                    <img src="http://www.promiedos.com.ar/images/copas/copasudamericana.png" width="10" height="20" class="d-inline-block align-top" alt="">
+                    {{ __('Register') }}
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
