@@ -63,54 +63,49 @@ export default class Example extends Component {
     render() {
         const vm = this
         const round16 =  this.state.team.map(function(item, index)  {
-            return <button className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.quarters, 'quarters') }} key={index}>{item.name}</button>
+            return <button className="team-item btn btn-primary" onClick={() => {vm.handleBrackets(index, item, vm.state.quarters, 'quarters') }} key={index}>{item.name}</button>
         })
 
         const quarters =  this.state.quarters.map(function(item, index) {
-            return  <button className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.semis, 'semis')} } key={index}>{item.name}</button>
+            return  <button className="team-item btn btn-primary" onClick={() => {vm.handleBrackets(index, item, vm.state.semis, 'semis')} } key={index}>{item.name}</button>
         })
 
         const semis =  this.state.semis.map(function(item, index) {
-            return  <button className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.finals, 'finals')} } key={index}>{item.name}</button>
+            return  <button className="team-item btn btn-primary" onClick={() => {vm.handleBrackets(index, item, vm.state.finals, 'finals')} } key={index}>{item.name}</button>
         })
 
         const finals =  this.state.finals.map(function(item, index) {
-            return  <button className="team-item" onClick={() => {vm.handleBrackets(index, item, vm.state.champion, 'champion')} } key={index}>{item.name}</button>
+            return  <button className="team-item btn btn-primary" onClick={() => {vm.handleBrackets(index, item, vm.state.champion, 'champion')} } key={index}>{item.name}</button>
         })
 
         const champion =  this.state.champion.map(function(item, index) {
-            return  <button className="team-item"  key={index}>{item.name}</button>
+            return  <button className="team-item btn btn-primary"  key={index}>{item.name}</button>
         })
 
         return (
             <section id="bracket">
-                <center><h2>Pronósticos Copa Libertadores 2019</h2></center>
                 <div className="tournament-brackets">
                     <ul className="bracket bracket-1">
                         
-                        <center><h4>Octavos de Final</h4></center>
                         {round16}
                     </ul>  
                     <ul className="bracket bracket-2">
-                    <center><h4>Cuartos de Final</h4></center>
                         {quarters}
                     </ul>  
                     <ul class="bracket bracket-3">
-                    <center><h4>Semifinales</h4></center>
                         {semis}
                     </ul>  
                     <ul className="bracket bracket-4">
-                    <center><h4>Final</h4></center>
                         {finals}
                     </ul>  
 
                     <ul className="bracket bracket-5">
-                    <center><h4>Campeón</h4></center>
                         {champion}
                     </ul>  
                 </div>
 
             </section>
+    
         );
     }
 

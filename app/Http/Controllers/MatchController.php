@@ -36,14 +36,12 @@ class MatchController extends Controller
     public function store(Request $request)
     {
         $match = New Match();
-
-        $match->name = $request->name;
-        $match->round = $request->round;
+        
+        $match->quarters = $request->quarters;
+        $match->semis = $request->semis;
+        $match->finals = $request->finals;
+        $match->champion = $request->champion;
         $match->prediction_id = $request->prediction_id;
-        $match->team_a = $request->team_a;
-        $match->team_b = $request->team_b;
-        $match->goals_a = $request->goals_a;
-        $match->goals_b = $request->goals_b;
 
         if ($match->save()) {
             return response()->json($match, 201);

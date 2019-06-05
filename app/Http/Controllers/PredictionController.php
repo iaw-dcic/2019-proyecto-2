@@ -20,9 +20,9 @@ class PredictionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $predictions = Auth::user()->prediction()->get();
+        $predictions = $request->user()->prediction()->get();
 
         return $predictions;
     }
@@ -48,7 +48,7 @@ class PredictionController extends Controller
         $prediction = New Prediction();
 
         $prediction->name = $request->name;
-        $prediction->user_id = Auth::user()->id;
+        $prediction->user_id = $request->user()->id;
 
         if ($prediction->save()) {
             return response()->json($prediction, 201);
@@ -106,5 +106,6 @@ class PredictionController extends Controller
     {
         if (Prediction::where('id', $prediction)->delete()) {
             return response()->json(null, 204);
+        }
     }
 }

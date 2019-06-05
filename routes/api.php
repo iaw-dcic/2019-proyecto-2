@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/team', 'TeamController@index');
-Route::resource('/prediction', 'PredictionController');
-Route::resource('/match', 'MatchController');
+Route::middleware('auth:api')->get('/prediction', 'PredictionController@index');
+Route::middleware('auth:api')->post('/prediction', 'PredictionController@store');
+//Route::resource('/match', 'MatchController');
+Route::middleware('auth:api')->post('/match', 'MatchController@store');
 
 Route::get('/token', 'TeamController@token');

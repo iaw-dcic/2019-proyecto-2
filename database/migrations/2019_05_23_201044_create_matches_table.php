@@ -18,9 +18,8 @@ class CreateMatchesTable extends Migration
             $table->string('quarters');
             $table->string('semis');
             $table->string('finals');
-            $table->bigInteger('user_id');
+            $table->string('champion');
             $table->bigInteger('prediction_id');
-            
             $table->timestamps();
         });
     }

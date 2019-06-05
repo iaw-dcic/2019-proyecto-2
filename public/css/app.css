@@ -10696,17 +10696,14 @@ a.text-dark:focus {
   flex-direction: column;
   justify-content: space-around;
   list-style-type: none;
-  border-right: 1px dashed #ccc;
   flex: 1;
 }
 
 .team-item {
-  background-color: #f4f4f4;
   padding: 0.5rem;
   display: block;
   margin: 0.5rem 10px;
   position: relative;
-  vertical-align: middle;
   line-height: 2;
   text-align: center;
 }
@@ -10779,12 +10776,7 @@ a.text-dark:focus {
   display: none;
 }
 
-.bracket-4 .team-item:after {
-  display: none;
-}
-
-.bracket:last-of-type .team-item:before,
-.bracket:last-of-type .team-item:after {
+.bracket-5 .team-item:after {
   display: none;
 }
 
