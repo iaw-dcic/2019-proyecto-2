@@ -74,6 +74,7 @@ export default class Bracket extends Component {
     }
 
     changeBracket(id){
+        console.log(id)
         const route = '/api/bracket/'.concat(id)
         const teams ='/api/teams/'.concat(id)
         axios.get(teams).then(response => {
@@ -201,7 +202,7 @@ export default class Bracket extends Component {
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Copas
                 </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">{ this.state.brackets.map((id,id2) => ( <a className="dropdown-item" key = {id2+1} onClick={(event) => this.changeBracket(id2+1)}> Copa {id2+1}</a> ))}</div>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">{ this.state.brackets.map((id,id2) => ( <a className="dropdown-item" key = {id2+1} onClick={(event) => this.changeBracket(id2+10)}> Copa {id2+1}</a> ))}</div>
                 <div/>
             </div>
                  <button onClick={this.saveMatches}>Guardar cuadro</button>

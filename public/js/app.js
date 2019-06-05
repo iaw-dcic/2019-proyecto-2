@@ -66244,6 +66244,7 @@ function (_Component) {
     value: function changeBracket(id) {
       var _this3 = this;
 
+      console.log(id);
       var route = '/api/bracket/'.concat(id);
       var teams = '/api/teams/'.concat(id);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(teams).then(function (response) {
@@ -66541,7 +66542,7 @@ function (_Component) {
           className: "dropdown-item",
           key: id2 + 1,
           onClick: function onClick(event) {
-            return _this4.changeBracket(id2 + 1);
+            return _this4.changeBracket(id2 + 10);
           }
         }, " Copa ", id2 + 1);
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
