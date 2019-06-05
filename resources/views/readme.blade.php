@@ -22,6 +22,15 @@
     <div class="notfound">
 
         <h2>Autor: Matias Massetti - LU: 107954</h2>
+        
+        <h3 style="color:black">Se utilizó: </h3>
+        <ul style="list-style-type: square;">
+                <li> <p> React Bootstrap para el estilo general de la app</p></li>
+                <li> <p> Passport (para utilizar tokens en la API) </p> </li>
+               
+        </ul>
+       
+       
         <a href="/">Volver al inicio</a>
     </div>
 </div>
