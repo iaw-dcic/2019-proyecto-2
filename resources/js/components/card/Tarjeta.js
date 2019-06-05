@@ -13,14 +13,10 @@ class Tarjeta extends Component {
         return (
             <div className="card">
             <Card>
-                <CardHeader>Header</CardHeader>
                 <CardBody>
-                <CardTitle>{ this.props.name}</CardTitle>
-                <CardText>{ this.props.username}, {this.props.website}</CardText>
-                <Button>Go somewhere</Button>
+                <CardTitle>{ this.props.name}({this.props.pais})</CardTitle>
                 </CardBody>
-                <CardFooter>Footer</CardFooter>
-          </Card>
+         </Card>
           </div>
         );
     }

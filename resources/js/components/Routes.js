@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 
 import Usuario from './../pages/Usuario'
 import Prode from './Prode';
+import Home from './Home';
 import CrearProde from './CrearProde';
 import EditarProde from '../pages/prode/EditarProde';
 
@@ -23,6 +24,7 @@ class Routes extends Component {
              <Route exact path="/usuarios" component={Usuario} />
              <Route exact path="/crear" component={CrearProde} />
              <Route exact path="/modificar" component={EditarProde}  />
+             <Route exact path="" component={Home}  />
 
         </Switch>
         </BrowserRouter>
