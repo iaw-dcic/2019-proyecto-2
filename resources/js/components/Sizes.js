@@ -16,7 +16,7 @@ export default class Sizes extends Component {
     render() {
         return (
             <div className="container">
-              <h1>Size</h1>
+              <p className="titulo">Size</p>
               {this.state.sizes.map(size => <SizeBtn valor={size} handler={this.props.handler}/>)}
             </div>
         );

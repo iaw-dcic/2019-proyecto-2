@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
 body {
-  font-family: Montserrat, sans-serif;
+  font-family: 'Pacifico', cursive;
 }
 h1,h2,h3,h4,h5,h6{
-    font-family:montserrat;
+    font-family: 'Pacifico', cursive;
 }
 #features {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0.7));
@@ -83,6 +83,7 @@ h1,h2,h3,h4,h5,h6{
 @media (min-width: 900px) {
   .list-1 {
     text-align: right;
+    grid-column: 2;
   }
 }
 @media (min-width: 600px) {
@@ -366,4 +367,9 @@ h1,h2,h3,h4,h5,h6{
 }
  .elements-page-btn .btn {
      margin: 6px 3px;
+}
+
+.titulo{
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
 }

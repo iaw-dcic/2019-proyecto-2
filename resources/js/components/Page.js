@@ -113,15 +113,20 @@ export default class Page extends Component {
         return (
           <section id="features">
             <div className="features-inner">
+
               <div className="features-image">
+                <p className="titulo" >Personaliza Tu Notebook</p>
                 <img width="360" height="288" src={this.state.url}/>
               </div>
 
-              <ul className="features-list list-2">
-
+              <ul className="features-list list-1">
                 <li className="features-item">
                   <Colores handler={this.colorhandler}/>
                 </li>
+              </ul>
+              <ul className="features-list list-2">
+
+
 
                 <li className="features-item">
                   <Modelos handler={this.modelohandler}/>

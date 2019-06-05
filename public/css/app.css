@@ -8395,7 +8395,7 @@ button.bg-dark:focus {
 
 .pt-4,
 .py-4 {
-  padding-top: 0rem !important;
+  padding-top: 1.5rem !important;
 }
 
 .pr-4,
@@ -10661,3 +10661,4 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+

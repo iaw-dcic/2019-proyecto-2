@@ -15,7 +15,7 @@ export default class Modelos extends Component {
     render() {
         return (
             <div className="container">
-              <h1>Marca</h1>
+              <p className="titulo">Marca</p>
               {this.state.modelos.map(mo => <ModeloBtn valor={mo} handler={this.props.handler}/>)}
             </div>
         );
