@@ -102,9 +102,9 @@ class PredictionController extends Controller
      * @param  \App\Prediction  $prediction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prediction $prediction)
+    public function destroy(Request $request)
     {
-        if (Prediction::where('id', $prediction)->delete()) {
+        if (Prediction::where('id', $request->id)->delete()) {
             return response()->json(null, 204);
         }
     }

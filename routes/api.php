@@ -23,4 +23,6 @@ Route::middleware('auth:api')->post('/prediction', 'PredictionController@store')
 //Route::resource('/match', 'MatchController');
 Route::middleware('auth:api')->post('/match', 'MatchController@store');
 
+Route::middleware('auth:api')->post('/prediction/delete', 'PredictionController@destroy');
+
 Route::get('/token', 'TeamController@token');

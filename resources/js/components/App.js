@@ -21,7 +21,6 @@ class App extends Component {
         <BrowserRouter>
             <div>
                 <center><h1>Pronósticos Copa Libertadores 2019</h1></center>
-                <MyPredictions/>
                 <Bracket />               
             </div>
         </BrowserRouter>

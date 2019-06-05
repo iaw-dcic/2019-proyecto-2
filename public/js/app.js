@@ -66398,8 +66398,8 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.baseURL = 'http://localhost:8000';
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; //axios.defaults.baseURL = 'http://localhost:8000'
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -66498,7 +66498,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Pron\xF3sticos Copa Libertadores 2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MyPredictions__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bracket__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Pron\xF3sticos Copa Libertadores 2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bracket__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }]);
 
@@ -66519,14 +66519,22 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Example; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Team__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Team */ "./resources/js/components/Team.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Team__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Team */ "./resources/js/components/Team.js");
+
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -66564,13 +66572,191 @@ function (_Component) {
       quarters: localStorage.getItem('quarters') ? JSON.parse(localStorage.getItem('quarters')) : [],
       semis: localStorage.getItem('semis') ? JSON.parse(localStorage.getItem('semis')) : [],
       finals: localStorage.getItem('finals') ? JSON.parse(localStorage.getItem('finals')) : [],
-      champion: localStorage.getItem('champion') ? JSON.parse(localStorage.getItem('champion')) : []
+      champion: localStorage.getItem('champion') ? JSON.parse(localStorage.getItem('champion')) : [],
+      showButtonSave: false,
+      predictions: [],
+      name: null,
+      predictionid: null
     };
     _this.handleBrackets = _this.handleBrackets.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Example, [{
+    key: "onClickSaveBracket",
+    value: function () {
+      var _onClickSaveBracket = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var vm, user, quarters, semis, finals, champion;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                vm = this;
+                user = localStorage.getItem('api-token');
+                quarters = localStorage.getItem('quarters');
+                semis = localStorage.getItem('semis');
+                finals = localStorage.getItem('finals');
+                champion = localStorage.getItem('champion');
+                axios.post('/api/match', {
+                  quarters: quarters,
+                  semis: semis,
+                  finals: finals,
+                  champion: champion,
+                  prediction_id: vm.state.predictionid
+                }, {
+                  headers: {
+                    "Authorization": "Bearer ".concat(user)
+                  }
+                }).then(function (response) {
+                  console.log(response);
+                  vm.predictionsFetch();
+                  vm.setState({
+                    showButtonSave: false
+                  });
+                })["catch"](function (error) {
+                  console.log(error.response);
+                });
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function onClickSaveBracket() {
+        return _onClickSaveBracket.apply(this, arguments);
+      }
+
+      return onClickSaveBracket;
+    }()
+  }, {
+    key: "onClickCreate",
+    value: function () {
+      var _onClickCreate = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var name, vm, user;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                name = prompt("Ingresa el nombre del Pronóstico", "");
+                vm = this;
+
+                if (!(name != null && name != "")) {
+                  _context2.next = 7;
+                  break;
+                }
+
+                _context2.next = 5;
+                return this.setState({
+                  name: name
+                });
+
+              case 5:
+                user = localStorage.getItem('api-token');
+                axios.post('/api/prediction', {
+                  name: vm.state.name
+                }, {
+                  headers: {
+                    "Authorization": "Bearer ".concat(user)
+                  }
+                }).then(function (response) {
+                  console.log(response);
+                  vm.predictionsFetch();
+                  vm.setState({
+                    showButtonSave: true,
+                    predictionid: response.data.id,
+                    quarters: [],
+                    semis: [],
+                    finals: [],
+                    champion: []
+                  });
+                  localStorage.removeItem('quarters');
+                  localStorage.removeItem('semis');
+                  localStorage.removeItem('finals');
+                  localStorage.removeItem('champion');
+                })["catch"](function (error) {
+                  console.log(error.response);
+                });
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function onClickCreate() {
+        return _onClickCreate.apply(this, arguments);
+      }
+
+      return onClickCreate;
+    }()
+  }, {
+    key: "onClickDelete",
+    value: function () {
+      var _onClickDelete = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(idd) {
+        var vm, user;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                vm = this;
+                user = localStorage.getItem('api-token');
+                axios.post('/api/prediction/delete', {
+                  id: idd
+                }, {
+                  headers: {
+                    "Authorization": "Bearer ".concat(user)
+                  }
+                }).then(function (response) {
+                  console.log(response);
+                  vm.predictionsFetch();
+                })["catch"](function (error) {
+                  console.log(error.response);
+                });
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function onClickDelete(_x) {
+        return _onClickDelete.apply(this, arguments);
+      }
+
+      return onClickDelete;
+    }()
+  }, {
+    key: "predictionsFetch",
+    value: function predictionsFetch() {
+      var vm = this;
+      var user = localStorage.getItem('api-token');
+      axios.get('/api/prediction', {
+        headers: {
+          "Authorization": "Bearer ".concat(user)
+        }
+      }).then(function (response) {
+        vm.setState({
+          predictions: response.data
+        });
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    }
+  }, {
     key: "handleBrackets",
     value: function handleBrackets(index, item, statex, state_name) {
       var tsize;
@@ -66613,9 +66799,11 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var vm = this;
       var round16 = this.state.team.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "team-item btn btn-primary",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.quarters, 'quarters');
@@ -66624,7 +66812,7 @@ function (_Component) {
         }, item.name);
       });
       var quarters = this.state.quarters.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "team-item btn btn-primary",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.semis, 'semis');
@@ -66633,7 +66821,7 @@ function (_Component) {
         }, item.name);
       });
       var semis = this.state.semis.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "team-item btn btn-primary",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.finals, 'finals');
@@ -66642,7 +66830,7 @@ function (_Component) {
         }, item.name);
       });
       var finals = this.state.finals.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "team-item btn btn-primary",
           onClick: function onClick() {
             vm.handleBrackets(index, item, vm.state.champion, 'champion');
@@ -66651,24 +66839,63 @@ function (_Component) {
         }, item.name);
       });
       var champion = this.state.champion.map(function (item, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "team-item btn btn-primary",
           key: index
         }, item.name);
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      var predictions = this.state.predictions.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, item.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, item.created_at), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick() {
+            vm.onClickDelete(item.id);
+          },
+          className: "btn btn-danger btn-sm ml-3"
+        }, "Borrar")));
+      });
+      var saveButton = this.state.showButtonSave ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        onClick: function onClick() {
+          _this2.onClickSaveBracket();
+        },
+        className: "btn btn-primary ml-3"
+      }, "Guardar") : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null);
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
         id: "bracket"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center mt-5"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        "class": "table-responsive-md"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
+        "class": "table"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        scope: "col"
+      }, "Mis Pron\xF3sticos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        scope: "col"
+      }, "Fecha de creaci\xF3n"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        scope: "col",
+        className: "thbtnsize"
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, predictions)))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center mt-2"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        "class": "col-md-12 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        onClick: function onClick() {
+          _this2.onClickCreate();
+        },
+        className: "btn btn-primary ml-3"
+      }, "Crear Pron\xF3stico"), saveButton))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "tournament-brackets"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "bracket bracket-1"
-      }, round16), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, round16), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "bracket bracket-2"
-      }, quarters), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, quarters), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         "class": "bracket bracket-3"
-      }, semis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, semis), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "bracket bracket-4"
-      }, finals), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, finals), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "bracket bracket-5"
       }, champion)));
     }
@@ -66684,11 +66911,12 @@ function (_Component) {
       })["catch"](function (error) {
         console.log(error.response);
       });
+      this.predictionsFetch();
     }
   }]);
 
   return Example;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
 
@@ -66751,7 +66979,8 @@ function (_Component) {
     _this.state = {
       showButtonSave: false,
       predictions: [],
-      name: null
+      name: null,
+      predictionid: null
     };
     return _this;
   }
@@ -66762,25 +66991,12 @@ function (_Component) {
       var _onClickSaveBracket = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var name, vm, user, quarters, semis, finals, champion;
+        var vm, user, quarters, semis, finals, champion;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                name = prompt("Ingresa el nombre del Pronóstico", "");
                 vm = this;
-
-                if (!(name != null && name != "")) {
-                  _context.next = 11;
-                  break;
-                }
-
-                _context.next = 5;
-                return this.setState({
-                  name: name
-                });
-
-              case 5:
                 user = localStorage.getItem('api-token');
                 quarters = localStorage.getItem('quarters');
                 semis = localStorage.getItem('semis');
@@ -66790,7 +67006,8 @@ function (_Component) {
                   quarters: quarters,
                   semis: semis,
                   finals: finals,
-                  champion: champion
+                  champion: champion,
+                  prediction_id: vm.state.predictionid
                 }, {
                   headers: {
                     "Authorization": "Bearer ".concat(user)
@@ -66799,13 +67016,13 @@ function (_Component) {
                   console.log(response);
                   vm.predictionsFetch();
                   vm.setState({
-                    showButtonSave: true
+                    showButtonSave: false
                   });
                 })["catch"](function (error) {
                   console.log(error.response);
                 });
 
-              case 11:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -66855,8 +67072,13 @@ function (_Component) {
                   console.log(response);
                   vm.predictionsFetch();
                   vm.setState({
-                    showButtonSave: true
+                    showButtonSave: true,
+                    predictionid: response.data.id
                   });
+                  localStorage.removeItem('quarters');
+                  localStorage.removeItem('semis');
+                  localStorage.removeItem('finals');
+                  localStorage.removeItem('champion');
                 })["catch"](function (error) {
                   console.log(error.response);
                 });

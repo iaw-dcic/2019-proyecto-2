@@ -9,42 +9,39 @@ export default class MyPredictions extends Component {
             showButtonSave: false,
             predictions: [],
             name: null,
+            predictionid : null,
         };
     }
 
     async onClickSaveBracket() {
-        let name = prompt("Ingresa el nombre del Pronóstico", "");
         let vm = this;
-        if(name != null && name != ""){
-            await this.setState({
-                name : name,
-            })
-            let user = localStorage.getItem('api-token');
+        let user = localStorage.getItem('api-token');
 
-            let quarters = localStorage.getItem('quarters');
-            let semis = localStorage.getItem('semis');
-            let finals = localStorage.getItem('finals');
-            let champion = localStorage.getItem('champion');
+        let quarters = localStorage.getItem('quarters');
+        let semis = localStorage.getItem('semis');
+        let finals = localStorage.getItem('finals');
+        let champion = localStorage.getItem('champion');
 
-            axios.post('/api/match', 
-            {
-                quarters: quarters,
-                semis: semis,
-                finals: finals,
-                champion: champion
-            }, 
-            { headers: {"Authorization" : `Bearer ${user}`} })
-            .then(function (response) {
-                console.log(response)
-                vm.predictionsFetch()
-                vm.setState({
-                    showButtonSave: true
-                });
-            }).catch(function (error){
-                console.log(error.response)
-            })
+        axios.post('/api/match', 
+        {
+            quarters: quarters,
+            semis: semis,
+            finals: finals,
+            champion: champion,
+            prediction_id: vm.state.predictionid
+        }, 
+        { headers: {"Authorization" : `Bearer ${user}`} })
+        .then(function (response) {
+            console.log(response)
+            vm.predictionsFetch()
+            vm.setState({
+                showButtonSave: false
+            });
+        }).catch(function (error){
+            console.log(error.response)
+        })
             
-        }
+       
     }
 
     async onClickCreate(){
@@ -60,8 +57,13 @@ export default class MyPredictions extends Component {
                 console.log(response)
                 vm.predictionsFetch()
                 vm.setState({
-                    showButtonSave: true
+                    showButtonSave: true,
+                    predictionid: response.data.id
                 });
+                localStorage.removeItem('quarters');
+                localStorage.removeItem('semis');
+                localStorage.removeItem('finals');
+                localStorage.removeItem('champion');
             }).catch(function (error){
                 console.log(error.response)
             })
