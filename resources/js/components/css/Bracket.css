@@ -1,0 +1,40 @@
+.colsize{
+    width: 250px;
+}
+
+.octavosspacer{
+    margin-top: 22px;
+}
+
+.cuartosspacer{
+    margin-top: 73px;
+}
+
+.cuartosspacer2{
+    margin-top: 122px;
+}
+
+.semisspacer{
+    margin-top: 172px;
+}
+
+.semisspacer2{
+    margin-top: 322px;
+}
+
+.finalspacer{
+    margin-top: 372px;
+}
+
+.campeonspacer{
+    margin-top: 392px;
+}
+
+.bordersize{
+    height: 39px;
+    width: 160px;
+}
+
+.btnsize{
+    width: 158px;
+}
