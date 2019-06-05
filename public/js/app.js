@@ -65848,6 +65848,152 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/ListadoEditar.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ListadoEditar.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ListadoEditar; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ListadoEditar =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ListadoEditar, _Component);
+
+  function ListadoEditar(props) {
+    var _this;
+
+    _classCallCheck(this, ListadoEditar);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListadoEditar).call(this, props));
+    _this.state = {
+      misDiseños: []
+    };
+    return _this;
+  }
+
+  _createClass(ListadoEditar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios.get('/api/misDiseños').then(function (response) {
+        _this2.setState({
+          misDiseños: response.data
+        });
+      });
+    }
+  }, {
+    key: "editarRemera",
+    value: function editarRemera(e, idRemera) {
+      var _this3 = this;
+
+      try {
+        axios.get('/api/misDiseños/' + idRemera).then(function (response) {
+          console.log(response.data);
+
+          _this3.props.cambiarColorRemera(response.data.color);
+
+          _this3.props.cambiarTalle(response.data.talle);
+
+          _this3.props.cambiarTela(response.data.tela);
+
+          _this3.props.addLogo(response.data.logo);
+        });
+      } catch (e) {
+        console.log('Error Axios', e);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-lg-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card mb-5 mb-lg-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title text-muted text-uppercase text-center"
+      }, "Listado de remeras creadas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "tittle"
+      }, "Seleccione la remera que desea editar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-MisDise\xF1osRemeras"
+      }, this.state.misDiseños.map(function (item, id) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: item.id,
+          className: "col-lg-3 col-md-4 col-sm-6 mb-4"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card h-100"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "card-img-top",
+          src: "/images/remeras/" + item.color + ".png"
+        }), item.logo != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          height: "100",
+          src: "/images/logos/" + item.logo + ".png",
+          id: "imagenLogo2"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-body"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+          className: "card-title"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#"
+        }, "Dise\xF1o: ", id + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "card-text"
+        }, "Talle :", item.talle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "card-text"
+        }, "Tela :", item.tela), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick(e) {
+            return _this4.editarRemera(e, item.id);
+          },
+          className: "btn btn-outline-primary"
+        }, "Editar"))));
+      }))))));
+    }
+  }]);
+
+  return ListadoEditar;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Logos.js":
 /*!******************************************!*\
   !*** ./resources/js/components/Logos.js ***!
@@ -66266,9 +66412,9 @@ function (_Component) {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "tittle"
-      }, "Talle ", this.state.talle, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Talle ", this.props.talleActual, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
-        value: this.state.talle,
+        value: this.props.talleActual,
         onChange: function onChange(e) {
           return _this3.cambiarTalle(e);
         }
@@ -66285,9 +66431,9 @@ function (_Component) {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "tittle"
-      }, "Tela ", this.state.tela, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Tela ", this.props.telaActual, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
-        value: this.state.tela,
+        value: this.props.telaActual,
         onChange: function onChange(e) {
           return _this3.cambiarTela(e);
         }
@@ -66323,6 +66469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Logos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Logos */ "./resources/js/components/Logos.js");
 /* harmony import */ var _PanelDerecho__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PanelDerecho */ "./resources/js/components/PanelDerecho.js");
+/* harmony import */ var _ListadoEditar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ListadoEditar */ "./resources/js/components/ListadoEditar.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66342,6 +66489,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -66373,7 +66521,7 @@ function (_Component) {
         remera: newId
       });
 
-      localStorage.setItem("remera", JSON.stringify(remeraAux));
+      localStorage.setItem("remera", JSON.stringify(newId));
     });
 
     _defineProperty(_assertThisInitialized(_this), "cambiarTalle", function (newTalle) {
@@ -66381,7 +66529,7 @@ function (_Component) {
         talle: newTalle
       });
 
-      localStorage.setItem("talle", JSON.stringify(talleAux));
+      localStorage.setItem("talle", JSON.stringify(newTalle));
     });
 
     _defineProperty(_assertThisInitialized(_this), "cambiarTela", function (newTela) {
@@ -66389,7 +66537,7 @@ function (_Component) {
         tela: newTela
       });
 
-      localStorage.setItem("tela", JSON.stringify(telaAux));
+      localStorage.setItem("tela", JSON.stringify(newTela));
     });
 
     _this.state = {
@@ -66397,7 +66545,6 @@ function (_Component) {
       talle: "XS",
       tela: "Algodon",
       logo: "",
-      misDiseños: [],
       edit: false,
       idRemeraEditar: ""
     };
@@ -66407,18 +66554,11 @@ function (_Component) {
   _createClass(ShirtImage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/misDiseños').then(function (response) {
-        _this2.setState({
-          misDiseños: response.data
-        });
-      });
 
       if (localStorage.hasOwnProperty('remera')) {
         var remeraAux = localStorage.getItem('remera');
@@ -66491,29 +66631,6 @@ function (_Component) {
       }
     }
   }, {
-    key: "editarRemera",
-    value: function editarRemera(e, idRemera) {
-      var _this3 = this;
-
-      this.setState({
-        edit: true,
-        idRemeraEditar: idRemera
-      });
-
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/misDiseños/' + idRemera).then(function (response) {
-          _this3.setState({
-            remera: response.data.color,
-            tela: response.data.tela,
-            talle: response.data.talle,
-            logo: response.data.logo
-          });
-        });
-      } catch (e) {
-        console.log('Error Axios', e);
-      }
-    }
-  }, {
     key: "crearDise\xF1o",
     value: function crearDiseO(e) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/crearDiseño', {
@@ -66528,7 +66645,7 @@ function (_Component) {
   }, {
     key: "actualizarDise\xF1o",
     value: function actualizarDiseO() {
-      var _this4 = this;
+      var _this2 = this;
 
       try {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('/api/editarRemera/' + this.state.idRemeraEditar, {
@@ -66537,7 +66654,7 @@ function (_Component) {
           talle: this.state.talle,
           tela: this.state.tela
         }).then(function (response) {
-          _this4.setState({
+          _this2.setState({
             edit: false
           });
         });
@@ -66548,7 +66665,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this3 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pricing py-5"
@@ -66583,16 +66700,18 @@ function (_Component) {
       }), this.state.edit == false && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase",
         onClick: function onClick(e) {
-          return _this5.crearDiseño(e);
+          return _this3.crearDiseño(e);
         }
       }, "Crear dise\xF1o"), this.state.edit == true && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase",
         onClick: function onClick(e) {
-          return _this5.actualizarDiseño(e);
+          return _this3.actualizarDiseño(e);
         }
       }, "Guardar Cambios"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PanelDerecho__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        talleActual: this.state.talle,
+        telaActual: this.state.tela,
         cambiarTalle: this.cambiarTalle,
         cambiarTela: this.cambiarTela,
         cambiarColorRemera: this.cambiarColorRemera
@@ -66600,53 +66719,12 @@ function (_Component) {
         width: "100%"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-lg-12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card mb-5 mb-lg-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "card-title text-muted text-uppercase text-center"
-      }, "Listado de remeras creadas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "tittle"
-      }, "Seleccione la remera que desea editar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container-MisDise\xF1osRemeras"
-      }, this.state.misDiseños.map(function (item, id) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: item.id,
-          className: "col-lg-3 col-md-4 col-sm-6 mb-4"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card h-100"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "card-img-top",
-          src: "/images/remeras/" + item.color + ".png"
-        }), item.logo != null && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          height: "100",
-          src: "/images/logos/" + item.logo + ".png",
-          id: "imagenLogo2"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card-body"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-          className: "card-title"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#"
-        }, "Dise\xF1o: ", id + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "card-text"
-        }, "Talle :", item.talle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "card-text"
-        }, "Tela :", item.tela), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          onClick: function onClick(e) {
-            return _this5.editarRemera(e, item.id);
-          },
-          className: "btn btn-outline-primary"
-        }, "Editar"))));
-      }))))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ListadoEditar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        addLogo: this.addLogo,
+        cambiarTalle: this.cambiarTalle,
+        cambiarTela: this.cambiarTela,
+        cambiarColorRemera: this.cambiarColorRemera
+      })));
     }
   }]);
 

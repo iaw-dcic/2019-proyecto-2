@@ -5,7 +5,7 @@ use App\Colour;
 use App\Tela;
 use App\Talle;
 use App\Logo;
-use Illuminate\Http\Request;
+
 
 class VistaDiseñarController extends Controller
 {

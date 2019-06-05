@@ -69,9 +69,9 @@ export default class PanelDerecho extends Component {
                     <hr width="100%"></hr>
                     <h5 className="card-title text-muted text-uppercase text-center">Listado de talles</h5>
                     <hr width="100%"></hr>
-                    <h2 id="tittle">Talle {this.state.talle} </h2>
+                    <h2 id="tittle">Talle {this.props.talleActual} </h2>
                    
-                    <select className="form-control" value={this.state.talle} onChange={(e) => this.cambiarTalle(e)}>
+                    <select className="form-control" value={this.props.talleActual} onChange={(e) => this.cambiarTalle(e)}>
                         {
                             this.state.talles.map((item) => (
                                 <option key={item.tipo} value={item.tipo}>{item.tipo}</option>
@@ -84,9 +84,9 @@ export default class PanelDerecho extends Component {
                     
                     <h5 className="card-title text-muted text-uppercase text-center">Listado de Telas</h5>
                     <hr width="100%"></hr>
-                    <h2 id="tittle">Tela {this.state.tela} </h2>
+                    <h2 id="tittle">Tela {this.props.telaActual} </h2>
                    
-                    <select className="form-control" value={this.state.tela} onChange={(e) => this.cambiarTela(e)}>
+                    <select className="form-control" value={this.props.telaActual} onChange={(e) => this.cambiarTela(e)}>
                         {
                             this.state.telas.map((item) => (
                                 <option key={item.nombre} value={item.nombre}>{item.nombre}</option>
