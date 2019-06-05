@@ -22,6 +22,7 @@ class App extends Component {
             <ProovedorLogica>
                 <React.Fragment>
                     <BrowserRouter>
+                      <NavBar />
                         <Switch>
                             <Route exact path="/" component={Remera} />
                             <Route path="/misCreaciones" component={MisCreaciones}/>
@@ -34,4 +35,4 @@ class App extends Component {
     }
 }
 
-export default App;
+ReactDOM.render(<Router />, document.getElementById('react-app'))
