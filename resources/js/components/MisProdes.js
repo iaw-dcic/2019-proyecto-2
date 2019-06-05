@@ -11,7 +11,7 @@ export default class MisProdes extends Component {
 
     render(){
         return(
-            <div className="row justify-content-center mt-5">
+            <div className="row justify-content-center mt-4">
                 <table className="table table-striped tablesize" align="center">
                     <thead>
                         <tr>

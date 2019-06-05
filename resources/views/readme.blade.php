@@ -1,18 +1,23 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Readme</div>
+@section('scripts')
+    <script src="{{ asset('js/applaravel.js') }}" defer></script>
+@endsection
 
-                <div class="card-body">
-                        <h4>Alumno: Fiore Ibarguren, Agustín</h3>
-                        <h4>LU: 111230</h3>
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Readme</div>
+
+                    <div class="card-body">
+                            <h4>Alumno: Fiore Ibarguren, Agustín</h4>
+                            <h4>LU: 111230</h4>
+                            <p>Esta aplicación permite crear diferentes prodes de la fase eliminatoria de la actual Copa Libertadores.<p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

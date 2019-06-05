@@ -4,6 +4,8 @@ import './css/Prode.css';
 import copa from './img/copa.png';
 import MisProdes from './MisProdes';
 import Bracket from './Bracket';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default class Prode extends Component {
         constructor(){
@@ -17,7 +19,8 @@ export default class Prode extends Component {
                 name : "",
                 prode_id: 0,
                 prodes : [],
-                show: 0
+                show: 0,
+                input : ""
             };
             this.handleOctavos = this.handleOctavos.bind(this);
             this.handleCuartos = this.handleCuartos.bind(this);
@@ -28,6 +31,7 @@ export default class Prode extends Component {
             this.handleEdit = this.handleEdit.bind(this);
             this.handleDelete = this.handleDelete.bind(this);
             this.onChange = this.onChange.bind(this);
+            this.inputOnChange = this.inputOnChange.bind(this);
         }
 
         async componentDidMount () {
@@ -81,8 +85,13 @@ export default class Prode extends Component {
                     <img src={copa} className="imgsize" alt="copa"></img>
                 </div>              
 
-                <div className="row justify-content-center mt-5">
-                    <button className="btn btn-primary btnconfig" onClick={this.onClickCreate}>Crear Prode</button>
+                <div className="row">
+                    <div className="col-lg-4 mt-5 col-centered">
+                        <input type="text" className="form-control" placeholder="Nombre del Prode" required value={this.state.input} onChange={this.inputOnChange}></input>
+                        <div className="row justify-content-center">
+                            <button className="btn btn-primary btnconfig mt-3" onClick={this.onClickCreate}>Crear Prode</button>
+                        </div>
+                    </div>
                 </div>
 
                 <MisProdes
@@ -114,9 +123,16 @@ export default class Prode extends Component {
         );
     }
 
-    onChange(e){
-        this.setState({
+    async onChange(e){
+        await this.setState({
             name : e.target.value
+        })
+        this.setLocal(1);
+    }
+
+    async inputOnChange(e){
+        await this.setState({
+            input : e.target.value
         })
         this.setLocal(1);
     }
@@ -133,14 +149,14 @@ export default class Prode extends Component {
     }
 
     async onClickCreate(){
-        let name = prompt("Ingresá el nombre del Prode", "");
-        if(name != null && name != ""){
+        if(this.state.input != ""){
             await this.setState({
-                name : name,
+                name : this.state.input,
                 cuartos : ["", "", "", "", "", "", "", ""],
                 semis : ["", "", "", ""],
                 final : ["", ""],
-                campeon : "" 
+                campeon : "",
+                input : ""
             })
             let prode = await axios.post('/api/prode', {
                 data : this.state
@@ -154,7 +170,21 @@ export default class Prode extends Component {
 
             this.getProdes();
         }
+        else
+            this.alerta();
     }
+
+    alerta = () => {
+        confirmAlert({
+          title: 'Error',
+          message: 'Debe ingresarle un nombre al Prode',
+          buttons: [
+            {
+              label: 'OK',
+            }
+          ]
+        });
+      };
 
     setLocal(show){
         localStorage.setItem('name', this.state.name);
@@ -175,7 +205,7 @@ export default class Prode extends Component {
             this.getProdes();
         }
         else{
-            alert("Debe ingresar un nombre");
+            this.alerta();
         }
     }
 
