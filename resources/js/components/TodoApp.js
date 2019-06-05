@@ -7,38 +7,64 @@ import Pronostico from './Pronostico'
 export default class TodoApp extends Component {
 
     state = { 
-        idPronostico: 0
+        pronosticos: [],
     };
 
-    constructor(props){
-        super(props);
-    }
-
     render() {
+        var i = "";
+        var { pronosticos } = this.state;
+        if (pronosticos != null) {
+            {
+                i = pronosticos.map((pronostico, i) => (
+                    <option key={i}>
+                        {pronostico.id}
+                    </option>
+                ))
+            }
+}
+
       return (
         
         <div>
             <Navbar />
             
             <div className="container">
-                <button type="button" className="btn btn-outline-primary btn-block" onClick={this.handleClick} >Crear Nuevo Pronostico</button>
-                if(idPronostico!=0){
-                    <Pronostico id={this.state.idPronostico}/>
-                } 
+            <button type="button" className="btn btn-outline-primary btn-block" onClick={(e) => this.getPronosticos()} > Ver Pronosticos</button>
+                <div className="form-group">
+                    <label className="texto">Selecciona el pronóstico a ver:</label>
+                    <select className="form-control" id="selectBox" onClick={(e) => this.getPronosticos()}>
+                        <option> </option>
+                        {i}
+
+                    </select>
+                </div>
+                <button type="button" className="btn btn-outline-primary btn-block" onClick={(e) => this.handleClick()} >Crear Nuevo Pronostico</button>
             </div>
         </div>
       );
     }
 
-    handelClick = (e) => {
-        event.preventDefault();
+    getPronosticos = (e) => {
+        fetch('http://127.0.0.1:8000/api/getPronosticos')
+            .then(response => response.json())
+            .then(json => {
+                if(json != null)
+                    this.setState({
+                        pronosticos: json.pronosticos
+                     });
+            });
+            console.log(this.state.pronosticos);
+    }
+    handleClick = (e) => {
         fetch('http://127.0.0.1:8000/api/newPronostico')
             .then(response => response.json())
             .then(json => {
-                this.setState({
-                   idPronostico: json.idPronostico
-                })
+                if(json != null)
+                    this.setState({
+                        pronosticos: json.pronosticos
+                    });
             });
+            console.log(this.state.pronosticos);
         
     }
 /*

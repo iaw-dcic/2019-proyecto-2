@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/selecciones', 'SeleccionesController@getSelecciones');
 Route::get('/newPronostico', 'PronosticoController@crearPronostico');
-Route::get('/partidosCuartos', 'CuartosController@getPartidos');
+Route::get('/getPronosticos', 'PronosticoController@getPronosticos');
+Route::get('/partidos/{ronda}/{id}', 'PartidosController@getPartidos');

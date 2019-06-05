@@ -18,7 +18,28 @@ class PronosticoController extends Controller
             'user_id' => 1
             ]);
       $prono -> inicializarCuartos();
-      $id_prono = $prono->id;
-      return response()->json($id_prono, 200);
+      $arregloProno = Pronostico::all();
+      $pronosticos = array();
+      $i=0;
+      foreach($arregloProno as $pronostico){
+        $pronosticos["item"][$i++]=array(
+            'id' => $pronostico->id
+        );
+      }
+
+      return response()->json($pronosticos, 200);
+    }
+
+    public function getPronosticos(){
+        $arregloProno = Pronostico::all();
+      $pronosticos = array();
+      $i=0;
+      foreach($arregloProno as $pronostico){
+        $pronosticos["item"][$i++]=array(
+            'id' => $pronostico->id
+        );
+      }
+
+      return response()->json($pronosticos, 200);
     }
 }

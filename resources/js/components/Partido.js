@@ -8,20 +8,18 @@ export default class Partido extends Component {
         seleccion1: {
             nombre: "",
             codigo: "",
-            goles
+            goles: null
         },
         seleccion2: {
             nombre: "",
             codigo: "",
-            goles
+            goles: null
         }
     } 
 
     constructor(props){
         super(props);
-        this.setState({
-            intancia: this.props.instancia
-        });
+       
     }
 
     render() {

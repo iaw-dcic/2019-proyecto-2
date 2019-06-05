@@ -66183,17 +66183,13 @@ function (_Component) {
       seleccion1: {
         nombre: "",
         codigo: "",
-        goles: goles
+        goles: null
       },
       seleccion2: {
         nombre: "",
         codigo: "",
-        goles: goles
+        goles: null
       }
-    });
-
-    _this.setState({
-      intancia: _this.props.instancia
     });
 
     return _this;
@@ -66271,11 +66267,12 @@ function (_Component) {
       selecciones: [],
       partidosCuartos: [],
       partidosSemis: [],
-      "final": any,
-      tercerPuesto: any
+      "final": [],
+      tercerPuesto: []
     });
 
     _this.state.id = _this.props.id;
+    console.log(_this.state.id);
     return _this;
   }
 
@@ -66291,49 +66288,27 @@ function (_Component) {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "badge badge-info text-wrap"
-      }, "Cuartos")), "if(this.state.partidosCuartos[0] != null)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "cuartos1",
-        partido: this.state.partidosCuartos[0]
-      }), "if(this.state.partidosCuartos[1] != null)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "cuartos2",
-        partido: this.state.partidosCuartos[1]
-      }), "if(this.state.partidosCuartos[2] != null)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "cuartos3",
-        partido: this.state.partidosCuartos[2]
-      }), "if(this.state.partidosCuartos[3] != null)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "cuartos4",
-        partido: this.state.partidosCuartos[3]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Cuartos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-4 ubicacion-semi",
         id: "semi"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "badge badge-info text-wrap"
-      }, "Semis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "semi1",
-        partido: this.state.partidosSemis[0]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Semis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ubicacion-semi-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "semi2",
-        partido: this.state.partidosSemis[1]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-4 ubicacion-final",
         id: "final"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "badge badge-info text-wrap"
-      }, "Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "final"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+      }, "Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "text-center ubicacion-tercero"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "badge badge-info text-wrap"
-      }, "Tercer Puesto")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        instancia: "tercero"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Tercer Puesto")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-outline-primary btn-block"
       }, "Guardar"));
@@ -66350,7 +66325,7 @@ function (_Component) {
           selecciones: json.items
         });
       });
-      fetch('http://127.0.0.1:8000/api/partidosCuartos').then(function (response) {
+      fetch('http://127.0.0.1:8000/api/partidos/4').then(function (response) {
         return response.json();
       }).then(function (json) {
         _this2.setState({
@@ -66520,26 +66495,43 @@ var TodoApp =
 function (_Component) {
   _inherits(TodoApp, _Component);
 
-  function TodoApp(props) {
+  function TodoApp() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, TodoApp);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoApp).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TodoApp)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      idPronostico: 0
+      pronosticos: []
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handelClick", function (e) {
-      event.preventDefault();
+    _defineProperty(_assertThisInitialized(_this), "getPronosticos", function (e) {
+      fetch('http://127.0.0.1:8000/api/getPronosticos').then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        if (json != null) _this.setState({
+          pronosticos: json.pronosticos
+        });
+      });
+      console.log(_this.state.pronosticos);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
       fetch('http://127.0.0.1:8000/api/newPronostico').then(function (response) {
         return response.json();
       }).then(function (json) {
-        _this.setState({
-          idPronostico: json.idPronostico
+        if (json != null) _this.setState({
+          pronosticos: json.pronosticos
         });
       });
+      console.log(_this.state.pronosticos);
     });
 
     _defineProperty(_assertThisInitialized(_this), "addItem", function (newItem) {
@@ -66556,15 +66548,46 @@ function (_Component) {
   _createClass(TodoApp, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var i = "";
+      var pronosticos = this.state.pronosticos;
+
+      if (pronosticos != null) {
+        {
+          i = pronosticos.map(function (pronostico, i) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+              key: i
+            }, pronostico.id);
+          });
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-outline-primary btn-block",
-        onClick: this.handleClick
-      }, "Crear Nuevo Pronostico"), "if(idPronostico!=0)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pronostico__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        id: this.state.idPronostico
-      })));
+        onClick: function onClick(e) {
+          return _this2.getPronosticos();
+        }
+      }, " Ver Pronosticos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "texto"
+      }, "Selecciona el pron\xF3stico a ver:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
+        id: "selectBox",
+        onClick: function onClick(e) {
+          return _this2.getPronosticos();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, " "), i)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-outline-primary btn-block",
+        onClick: function onClick(e) {
+          return _this2.handleClick();
+        }
+      }, "Crear Nuevo Pronostico")));
     }
   }]);
 

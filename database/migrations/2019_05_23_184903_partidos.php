@@ -16,6 +16,7 @@ class Partidos extends Migration
         Schema::create('partidos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('pronostico_id');
+            $table->integer('ronda');
             $table->string('codigo_sel_A')->nullable();
             $table->foreign('codigo_sel_A')->references('codigo')->on('seleccions');
             $table->string('codigo_sel_B')->nullable();
