@@ -66244,7 +66244,6 @@ function (_Component) {
     value: function changeBracket(id) {
       var _this3 = this;
 
-      console.log(id);
       var route = '/api/bracket/'.concat(id);
       var teams = '/api/teams/'.concat(id);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(teams).then(function (response) {
@@ -66412,7 +66411,6 @@ function (_Component) {
   }, {
     key: "handleEighthWinner",
     value: function handleEighthWinner(id, winner) {
-      console.log(id);
       var anterior = this.state.cuartos[id - 1];
       this.setState({
         cuartos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(this.state.cuartos, _defineProperty({}, id - 1, {

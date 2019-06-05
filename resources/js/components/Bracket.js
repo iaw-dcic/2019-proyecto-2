@@ -74,7 +74,6 @@ export default class Bracket extends Component {
     }
 
     changeBracket(id){
-        console.log(id)
         const route = '/api/bracket/'.concat(id)
         const teams ='/api/teams/'.concat(id)
         axios.get(teams).then(response => {
@@ -136,7 +135,6 @@ export default class Bracket extends Component {
     }
 
     handleEighthWinner(id, winner){
-        console.log(id)
         const anterior=this.state.cuartos[id-1]
         this.setState({
             cuartos: update(this.state.cuartos,{[id-1]: {$set: winner}}),

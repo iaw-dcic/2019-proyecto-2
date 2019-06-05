@@ -54,10 +54,10 @@ class BracketController extends Controller
             $i=0;
             foreach ($cuartos as $partido) {
                 if($partido[0][0]!="" && $partido[0][1]!=""){
-                    $m= Matchup::where('user_id', auth('api')->user()->id)->where('bracket_id', $request->input('data.bracket_actual'))->where('match_no', $i)->where('phase', 'quarter')->delete();
+                    $m= Matchup::where('user_id', auth('api')->user()->id)->where('bracket_id', $request->input('data.bracket_actual')*10+1)->where('match_no', $i)->where('phase', 'quarter')->delete();
                     $m = new Matchup();
                     $m->user_id=auth('api')->user()->id;
-                    $m->bracket_id=$request->input('data.bracket_actual');
+                    $m->bracket_id=$request->input('data.bracket_actual')*10+1;
                     $m->match_no=$i;
                     $m->team1=$partido[0][3];
                     $m->team2=$partido[1][3];
@@ -72,10 +72,10 @@ class BracketController extends Controller
             $i=0;
             foreach ($semis as $partido) {
                 if($partido[0][0]!="" && $partido[0][1]!=""){
-                    $m= Matchup::where('user_id',auth('api')->user()->id)->where('bracket_id', $request->input('data.bracket_actual'))->where('match_no', $i)->where('phase', 'semis')->delete();
+                    $m= Matchup::where('user_id',auth('api')->user()->id)->where('bracket_id', $request->input('data.bracket_actual')*10+1)->where('match_no', $i)->where('phase', 'semis')->delete();
                     $m = new Matchup();
                     $m->user_id=auth('api')->user()->id;
-                    $m->bracket_id=$request->input('data.bracket_actual');
+                    $m->bracket_id=$request->input('data.bracket_actual')*10+1;
                     $m->match_no=$i;
                     $m->team1=$partido[0][3];
                     $m->team2=$partido[1][3];
@@ -90,10 +90,10 @@ class BracketController extends Controller
             $i=0;
             foreach ($final as $partido) {
                 if($partido[0][0]!="" && $partido[0][1]!=""){
-                    $m= Matchup::where('user_id', auth('api')->user()->id)->where('bracket_id', $request->input('data.bracket_actual'))->where('match_no', $i)->where('phase', 'final')->delete();
+                    $m= Matchup::where('user_id', auth('api')->user()->id)->where('bracket_id', $request->input('data.bracket_actual')*10+1)->where('match_no', $i)->where('phase', 'final')->delete();
                     $m = new Matchup();
                     $m->user_id=auth('api')->user()->id;
-                    $m->bracket_id=$request->input('data.bracket_actual');
+                    $m->bracket_id=$request->input('data.bracket_actual')*10+1;
                     $m->match_no=$i;
                     $m->team1=$partido[0][3];
                     $m->team2=$partido[1][3];
@@ -106,7 +106,7 @@ class BracketController extends Controller
         $campeon = $request->input('data.champ');
         if($campeon!=""){
             $c = new Campeon();
-            $c->bracket_id=$request->input('data.bracket_actual');
+            $c->bracket_id=$request->input('data.bracket_actual')*10+1;
             $c->user_id=auth('api')->user()->id;
             $c->team_id=$campeon[3];
             $c->save();
