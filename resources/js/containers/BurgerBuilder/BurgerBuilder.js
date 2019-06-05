@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Aux from "../../hoc/AuxDiv";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
-import localStorage from 'local-storage'
-
+import localStorage from 'local-storage';
+import axios from '../../components/axios-burgers';
 
 class BurgerBuilder extends Component {
     state = {
@@ -24,7 +24,7 @@ class BurgerBuilder extends Component {
         };
 
         let ingredients = localStorage.get('ingredients') || null;    
-            axios.get("/api/ingredients",axiosConfig).then(response => {
+            axios.get("/ingredients",axiosConfig).then(response => {
                 let ingredientsToAssign = [];
                 const data = response.data;
                 data.map(ingredient => {
@@ -124,7 +124,7 @@ class BurgerBuilder extends Component {
             }
         };
 
-        axios.post("/api/burgers", burger,axiosConfig)
+        axios.post("/burgers", burger,axiosConfig)
             .then(response => {
                 this.showAlert();
             });

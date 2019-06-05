@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Layout from "../hoc/Layout";
 import BurgerBuilder from "./../containers/BurgerBuilder/BurgerBuilder";
 import SavedBurgers from "../containers/SavedBurgers/SavedBurgers";
 import Login from "../containers/Login/Login";

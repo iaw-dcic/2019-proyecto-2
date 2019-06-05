@@ -1,15 +1,13 @@
 import axios from "axios";
 
 const endpoint = 'https://iaw-burger.herokuapp.com';
-//const endpoint = 'http://127.0.0.1:8000';
+//const endpoint = 'http://localhost';
 
 export async function login(email,password) {
 
     try {
-
         let axiosConfig = {
-            headers: {
-            }
+            headers: {}
         };
 
         let response = await axios.post(endpoint + '/api/login' , {email: email,

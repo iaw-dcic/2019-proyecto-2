@@ -9,9 +9,9 @@ class BuildControls extends Component {
         const ingredientsTypes = [];
         const controls = [];
 
-        //Show labels and ingredients
+        //Mostrar labels e ingredientes
         Object.values(this.props.separatedIngredients).map(ingredient => {
-            //Create columns with labels : carne,queso,...
+            //Crear columnas con labels: verdura, embutido, carne
             var index = ingredientsTypes.findIndex(
                 x => x.label == ingredient.ingredient
             );
@@ -20,7 +20,7 @@ class BuildControls extends Component {
                 ingredientsTypes.push(labelToAdd);
             }
 
-            //Add controls for types of ingredients: Carne: res, pollo, ...  - Queso: comun, cheddar, ...
+            //Agregar controles para los tipos de ingrediente: Carne: res, pollo - Embutido: queso, bacon - Verdura: tomate, lechuga
             let controlToAdd= {label: ingredient.ingredient , type: ingredient.type};
             controls.push(controlToAdd);
 

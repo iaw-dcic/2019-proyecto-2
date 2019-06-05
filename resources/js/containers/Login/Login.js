@@ -37,17 +37,13 @@ export default class Login extends Component {
         const response = await login(this.state.email,this.state.password);
 
         if(response !== 401){
-
             const token = response.token;
-
             await localStorage.set('userToken',token);
             this.props.authenticate();
-
         }
-        else
-            this.setState({ showingAlert : true })
-
-
+        else {
+            this.setState({ showingAlert : true });
+        }
     }
 
     render() {

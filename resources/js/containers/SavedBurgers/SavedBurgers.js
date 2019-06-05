@@ -1,79 +1,62 @@
-import React, { Component } from 'react';
-import { Button ,Container } from "react-bootstrap";
-
-
-import SavedBurger from '../../components/Burger/SavedBurger/SavedBurger';
-import axios from '../../components/axios-burgers';
-import localStorage from 'local-storage'
+import React, { Component } from "react";
+import {Container} from "react-bootstrap";
+import axios from "../../components/axios-burgers";
+import localStorage from "local-storage";
 import Burger from "../../components/Burger/Burger";
 
-
-
-
 class SavedBurgers extends Component {
-
     state = {
-        isLoading : true,
-        burgers: [],    
-    }
+        isLoading: true,
+        burgers: [],
+        hasResults: true
+    };
 
-  componentDidMount() {
-
-        let token= localStorage.get('userToken');
+    componentDidMount() {
+        let token = localStorage.get("userToken");
 
         let axiosConfig = {
             headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer '+ token
+                Accept: "application/json",
+                Authorization: "Bearer " + token
             }
         };
 
-        axios.get('/burgers',axiosConfig)
+        axios
+            .get("/burgers", axiosConfig)
             .then(res => {
-
                 let fetchedData = res.data;
-            
-                this.setState({burgers: fetchedData});
-                this.setState({isLoading: false});
+                if (!$.isArray(fetchedData) || !fetchedData.length) {
+                    this.setState({ hasResults: false });
+                }
 
-                console.log("Fetched burgers: ",fetchedData);
-               
+                this.setState({ burgers: fetchedData });
+                this.setState({ isLoading: false });
             })
             .catch(err => {
-                console.log("ERROR obteniendo las hamburguesas")
+                console.log("ERROR obteniendo las hamburguesas");
             });
-        
-
-        let burgerIngredients= [];
-            
-        
     }
 
-    render () {
+    render() {
         return (
             <div>
-                {
-                    this.state.isLoading ?
-                        <div>
-                            Cargando ...
-                        </div>
-                        :
-                        <div>
-                        {
-                            this.state.burgers.map(function(item, i){
+                {!this.state.hasResults ? (
+                    <div>
+                        <Container><h1>No tenes hamburguesas cargadas!</h1></Container>
+                    </div>
+                ) : this.state.isLoading ? (
+                    <div>Cargando ...</div>
+                ) : (
+                    <div>
+                        {this.state.burgers.map(function(item, i) {
                             return (
-                                <Container className="text-center" >
-                                    <Button>Editar</Button>
-                                    <Burger
-                                    key={i}
-                                    ingredients={item}/>
+                                <Container className="text-center" key={i}>
+                                    <Burger key={i} ingredients={item} />
                                 </Container>
-                            )})
-                        }
-                        </div>
-                        
-                }
-            
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         );
     }
