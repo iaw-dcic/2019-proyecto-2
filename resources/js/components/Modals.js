@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button, Modal } from 'react-bootstrap'
-
 import ReactDOM from 'react-dom'
-
-
-
-
 export default class Modals extends Component {
     constructor(props) {
         super(props);

@@ -110,7 +110,7 @@ export default class AppContainer extends Component {
                         </Col>
                         <Col className="pt-2">
                             <Heading fontSize={[34]}>{this.state.shirt.design_name}</Heading>
-                            <Tabs className="padtop">
+                            <Tabs className="myTabs">
                                 <Tab eventKey="typeAndColor" title="Type and color">
                                     <div className="well">
                                         <Form.Label>Type</Form.Label>
@@ -162,7 +162,7 @@ export default class AppContainer extends Component {
                     backgroundImage={LandingImage}
                 >
                     <Heading fontSize={[64]} className="xoverflow">ShirtDesigner</Heading>
-                    <Text fontSize={[20]}><a href="/login">Login</a> to start designing</Text>
+                    <Text fontSize={[20]}><a href="/register">Register</a> to start designing, or <a href="/login">login</a> instead.</Text>
                 </Hero>
 
             </React.Fragment>
