@@ -26,6 +26,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "formik": "^1.5.7",
         "react-router-dom": "^5.0.0",
         "reactstrap": "^8.0.0"
     }
