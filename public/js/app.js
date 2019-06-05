@@ -66412,6 +66412,7 @@ function (_Component) {
   }, {
     key: "handleEighthWinner",
     value: function handleEighthWinner(id, winner) {
+      console.log(id);
       var anterior = this.state.cuartos[id - 1];
       this.setState({
         cuartos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(this.state.cuartos, _defineProperty({}, id - 1, {
