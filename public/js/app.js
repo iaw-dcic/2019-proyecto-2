@@ -66248,20 +66248,18 @@ function (_Component) {
       var teams = '/api/teams/'.concat(id);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(teams).then(function (response) {
         response.data.forEach(function (team) {
-          var i = 0;
-
           _this3.setState({
-            equipos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.equipos, _defineProperty({}, i * 10 - 1, {
-              $set: [team.name, team.description, team.icon, i, team.bracket_id]
+            equipos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.equipos, _defineProperty({}, Math.floor(team.id / 10) % 16, {
+              $set: [team.name, team.description, team.icon, team.id, team.bracket_id]
             }))
           });
         });
       });
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(route).then(function (response2) {
         _this3.setState({
-          champ: response2.data[1] != null ? _this3.state.equipos[response2.data[1].team_id - 1] : "",
-          competition: _this3.state.brackets[id - 1].competition_name,
-          bracket_actual: id,
+          champ: response2.data[1] != null ? _this3.state.equipos[Math.floor(response2.data[1].team_id / 10)] : "",
+          competition: _this3.state.brackets[Math.floor(id / 10)].competition_name,
+          bracket_actual: Math.floor(id / 10),
           info: _this3.state.brackets[id - 1].description,
           partidos: [[['', '', ''], ['', '', ''], ['', '', ''], ['', '', ''], ['', '', ''], ['', '', ''], ['', '', ''], ['', '', '']], [['', '', ''], ['', '', ''], ['', '', ''], ['', '', '']], [['', '', ''], ['', '', '']], [['', '', '']]],
           cuartos: ["", "", "", "", "", "", "", ""],
