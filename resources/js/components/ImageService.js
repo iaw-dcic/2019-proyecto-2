@@ -94,15 +94,15 @@ export default class ImageService{
 
         switch(estampaId){
             case 0:{image=require('./images/estampas/sin-estampa.png'); break;}
-            case 1:{image=require('./images/estampas/girl.png'); break;}
+            case 6:{image=require('./images/estampas/girl.png'); break;}
             case 2:{image=require('./images/estampas/cat.png'); break;}
-            case 3:{image=require('./images/estampas/stitch.png'); break;}
-            case 4:{image=require('./images/estampas/palmeras.png'); break;}
-            case 5:{image=require('./images/estampas/cobra.png'); break;}
-            case 6:{image=require('./images/estampas/elephant-mandala.png'); break;}
+            case 9:{image=require('./images/estampas/stitch.png'); break;}
+            case 8:{image=require('./images/estampas/palmeras.png'); break;}
+            case 3:{image=require('./images/estampas/cobra.png'); break;}
+            case 4:{image=require('./images/estampas/elephant-mandala.png'); break;}
             case 7:{image=require('./images/estampas/minion.png'); break;}
-            case 8:{image=require('./images/estampas/girl-poweer.png'); break;}
-            case 9:{image=require('./images/estampas/abortolegal.png'); break;}
+            case 5:{image=require('./images/estampas/girl-poweer.png'); break;}
+            case 1:{image=require('./images/estampas/abortolegal.png'); break;}
         }
 
         return image;

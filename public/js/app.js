@@ -6558,7 +6558,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\r\n\r\n/* Button Style 5 (Size) */\r\n.hover-btn{\r\n    min-height: 20px;\r\n    line-height: 10px;\r\n}\r\n\r\n.hover-btn button{\r\n   margin:5px; \r\n   color: black;\r\n}\r\n\r\n.hover-btn button:hover{\r\n    background:#b9b9b9;\r\n}\r\n\r\n.btn-style{\r\n    padding: 10px;\r\n    background-color:transparent; \r\n    border-color:black;\r\n}", ""]);
+exports.push([module.i, "\r\n\r\n/* Button Style 5 (Size) */\r\n.hover-btn{\r\n    min-height: 20px;\r\n    line-height: 10px;\r\n}\r\n\r\n.hover-btn button{\r\n   margin:5px; \r\n   color: black;\r\n}\r\n\r\n.hover-btn button:hover{\r\n    /*background:#b9b9b9;*/\r\n    background:white;\r\n}\r\n\r\n.btn-style{\r\n    margin: 3px;\r\n    padding: 10px;\r\n    background-color:transparent; \r\n    border-color:black;\r\n}", ""]);
 
 // exports
 
@@ -60905,7 +60905,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67095,6 +67095,87 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/ImageButton.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/ImageButton.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageButton; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _public_css_images_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/images.css */ "./public/css/images.css");
+/* harmony import */ var _public_css_images_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_css_images_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/css/layout.css */ "./public/css/layout.css");
+/* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var ImageButton =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ImageButton, _Component);
+
+  function ImageButton(props) {
+    _classCallCheck(this, ImageButton);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ImageButton).call(this, props));
+  }
+
+  _createClass(ImageButton, [{
+    key: "buttonClick",
+    value: function buttonClick(id) {
+      this.props.onClick(id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this.buttonClick(_this.props.image.id);
+        },
+        className: "btn btn-style"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.props.image.path,
+        height: "35"
+      }));
+    }
+  }]);
+
+  return ImageButton;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ImageService.js":
 /*!*************************************************!*\
   !*** ./resources/js/components/ImageService.js ***!
@@ -67406,7 +67487,7 @@ function () {
             break;
           }
 
-        case 1:
+        case 6:
           {
             image = __webpack_require__(/*! ./images/estampas/girl.png */ "./resources/js/components/images/estampas/girl.png");
             break;
@@ -67418,25 +67499,25 @@ function () {
             break;
           }
 
-        case 3:
+        case 9:
           {
             image = __webpack_require__(/*! ./images/estampas/stitch.png */ "./resources/js/components/images/estampas/stitch.png");
             break;
           }
 
-        case 4:
+        case 8:
           {
             image = __webpack_require__(/*! ./images/estampas/palmeras.png */ "./resources/js/components/images/estampas/palmeras.png");
             break;
           }
 
-        case 5:
+        case 3:
           {
             image = __webpack_require__(/*! ./images/estampas/cobra.png */ "./resources/js/components/images/estampas/cobra.png");
             break;
           }
 
-        case 6:
+        case 4:
           {
             image = __webpack_require__(/*! ./images/estampas/elephant-mandala.png */ "./resources/js/components/images/estampas/elephant-mandala.png");
             break;
@@ -67448,13 +67529,13 @@ function () {
             break;
           }
 
-        case 8:
+        case 5:
           {
             image = __webpack_require__(/*! ./images/estampas/girl-poweer.png */ "./resources/js/components/images/estampas/girl-poweer.png");
             break;
           }
 
-        case 9:
+        case 1:
           {
             image = __webpack_require__(/*! ./images/estampas/abortolegal.png */ "./resources/js/components/images/estampas/abortolegal.png");
             break;
@@ -67490,6 +67571,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_css_layout_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_css_layout_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _public_css_images_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/css/images.css */ "./public/css/images.css");
 /* harmony import */ var _public_css_images_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_css_images_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ImageButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ImageButton */ "./resources/js/components/ImageButton.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67513,110 +67595,59 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Images =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Images, _Component);
 
   function Images() {
+    var _this;
+
     _classCallCheck(this, Images);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Images).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Images).call(this));
+    _this.state = {
+      images: []
+    };
+    return _this;
   }
+  /* buttonClick(id){
+       this.props.onClick(id)
+   }*/
+
 
   _createClass(Images, [{
-    key: "buttonClick",
-    value: function buttonClick(id) {
-      this.props.onClick(id);
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.loadImages();
+    }
+  }, {
+    key: "loadImages",
+    value: function loadImages() {
+      var _this2 = this;
+
+      fetch('/api/images').then(function (response) {
+        return response.json();
+      }).then(function (images) {
+        _this2.setState({
+          images: images
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hover-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(1);
-        },
-        className: "btn btn-style"
-      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/girl_button.png */ "./resources/js/components/images/estampas/botones/girl_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(2);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/cat_button.png */ "./resources/js/components/images/estampas/botones/cat_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(3);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/stitch_button.png */ "./resources/js/components/images/estampas/botones/stitch_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(4);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/palmeras_button.png */ "./resources/js/components/images/estampas/botones/palmeras_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(5);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/cobra_button.png */ "./resources/js/components/images/estampas/botones/cobra_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(6);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/elephant-mandala_button.png */ "./resources/js/components/images/estampas/botones/elephant-mandala_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(7);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/minion_button.png */ "./resources/js/components/images/estampas/botones/minion_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(8);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/girl-poweer_button.png */ "./resources/js/components/images/estampas/botones/girl-poweer_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(9);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/abortolegal_button.png */ "./resources/js/components/images/estampas/botones/abortolegal_button.png"),
-        height: "35"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.buttonClick(0);
-        },
-        className: "btn btn-style"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: __webpack_require__(/*! ./images/estampas/botones/sin-estampa_button.png */ "./resources/js/components/images/estampas/botones/sin-estampa_button.png"),
-        height: "35"
-      }))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.images.map(function (image) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImageButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          image: image,
+          onClick: function onClick() {
+            return _this3.props.onClick(image.id);
+          }
+        });
+      }));
     }
   }]);
 
@@ -68046,116 +68077,6 @@ module.exports = "/images/Xiaomi-F1.png?ac68027835aeb99bca41639d9b2a7503";
 /***/ (function(module, exports) {
 
 module.exports = "/images/abortolegal.png?a622233cde26e2a7330a1495c4cdee83";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/abortolegal_button.png":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/abortolegal_button.png ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/abortolegal_button.png?9f6d0e26ae15ae30d1cd4fa34414fb5b";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/cat_button.png":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/cat_button.png ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/cat_button.png?7a6f6bc78fa360431f1687d75bf43373";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/cobra_button.png":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/cobra_button.png ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/cobra_button.png?8d6a26bd9c5ef01c95f09ba728c13596";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/elephant-mandala_button.png":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/elephant-mandala_button.png ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/elephant-mandala_button.png?b423598e3d3cfe8e68d18dd670fbe72c";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/girl-poweer_button.png":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/girl-poweer_button.png ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/girl-poweer_button.png?cfce7c6dd9689d7631f63b9c2a7c2afb";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/girl_button.png":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/girl_button.png ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/girl_button.png?dec2526d005e60abc41162137fcafebf";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/minion_button.png":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/minion_button.png ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/minion_button.png?dad71a21001d58cb9ca9b250f86b76ca";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/palmeras_button.png":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/palmeras_button.png ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/palmeras_button.png?9a7f9ad7c352dd20a04bbd3a243a13d4";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/sin-estampa_button.png":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/sin-estampa_button.png ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/sin-estampa_button.png?d446091ace1cc098409b2b3ed10bbeb2";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/botones/stitch_button.png":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/images/estampas/botones/stitch_button.png ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/stitch_button.png?017c20d7642b6e862ccaea243f72d421";
 
 /***/ }),
 
