@@ -52,3 +52,6 @@ Eso debería permitirle acceder a http://127.0.0.1:8000
 1. Haga click en el nombre de la base de datos ![Ver](screenshots/screenshot18.png)
 1. Seleccione el tab "System Information" ![Ver](screenshots/screenshot19.png)
 1. Aquí encontrará el nombre de la base de datos, el hostname, el usuario y la contraseña. el puerto es el 3306. ![Ver](screenshots/screenshot20.png)
+
+HEROKU
+http://prodelibertadores.herokuapp.com/
