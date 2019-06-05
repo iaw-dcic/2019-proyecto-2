@@ -83,7 +83,7 @@ export default class Bracket extends Component {
         })
         axios.get(route).then(response2 => {
             this.setState({
-                champ: response2.data[1]!=null ? this.state.equipos[Math.floor(response2.data[1].team_id/10)] : "",
+                champ: response2.data[1]!=null ? this.state.equipos[Math.floor(response2.data[1].team_id/10)%16] : "",
                 competition: this.state.brackets[Math.floor(id/10)].competition_name,
                 bracket_actual: Math.floor(id/10),
                 info: this.state.brackets[Math.floor(id/10)].description,

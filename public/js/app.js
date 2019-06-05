@@ -66257,7 +66257,7 @@ function (_Component) {
       });
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(route).then(function (response2) {
         _this3.setState({
-          champ: response2.data[1] != null ? _this3.state.equipos[Math.floor(response2.data[1].team_id / 10)] : "",
+          champ: response2.data[1] != null ? _this3.state.equipos[Math.floor(response2.data[1].team_id / 10) % 16] : "",
           competition: _this3.state.brackets[Math.floor(id / 10)].competition_name,
           bracket_actual: Math.floor(id / 10),
           info: _this3.state.brackets[Math.floor(id / 10)].description,
