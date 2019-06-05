@@ -1,0 +1,29 @@
+.elementsFlex {
+    margin-top: 2%;
+    padding-left: relative;
+    position: relative;
+    width: 10000px;
+}
+
+.savedCard {
+    height: 195px;
+    width: 140px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.savedBase, .savedHair, .savedShirt, .savedBeard {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    background-position: center center;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.selectButton {
+    margin-top: 3%;
+}

@@ -1,0 +1,12 @@
+.basePicture, .hairPicture, .shirtPicture, .beardPicture {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    background-position: center center;
+    border-style: double;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

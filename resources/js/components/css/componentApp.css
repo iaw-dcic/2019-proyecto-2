@@ -1,0 +1,28 @@
+#topFlex, #bottomFlex {
+    margin-top: 2%;
+}
+
+#topFlex {
+    height: 300px;
+}
+
+#editor {
+    top: 20%;
+    text-align: center;
+    height: 200px;
+}
+
+#previous {
+    height: 240px;
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 2%;
+    top: 50%;
+    overflow-x: auto;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+#buttons {
+    margin-top: 5%;
+}

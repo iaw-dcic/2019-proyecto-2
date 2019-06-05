@@ -16,3 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/app/avatars', 'AvatarsController@index')->middleware('auth:api');
+
+Route::post('/app/avatars', 'AvatarsController@store')->middleware('auth:api');
+
+Route::put('/app/avatars/{avatar}', 'AvatarsController@update')->middleware('auth:api');
+
+Route::get('/app/loadhair', 'ExternalSqlController@indexHair')->middleware('auth:api');
+
+Route::get('/app/loadshirt', 'ExternalSqlController@indexShirt')->middleware('auth:api');
+
+Route::get('/app/loadbeard', 'ExternalSqlController@indexBeard')->middleware('auth:api');
