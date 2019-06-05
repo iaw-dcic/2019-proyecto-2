@@ -35,13 +35,14 @@
                         </a>
                     <ul class="navbar-nav">
                     <!-- Authentication Links -->
+                    <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
@@ -69,18 +70,7 @@
 
 
 
-                        {{-- @if(auth()->user()!=null)
-                        <li class="nav-item">
-                            <a class="nav-link"  data-ajax="false" href="{{ route('users.create') }}">Crear Lista</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  data-ajax="false" href="{{ route('users.showListas') }}">Mis Listas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-ajax="false"href="{{ route('users.edit',auth()->user()) }}">Configuración</a>
-                        </li>
-                        @endif --}}
-                    </ul>
+
                 </div>
         </nav>
 

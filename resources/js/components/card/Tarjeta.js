@@ -11,11 +11,11 @@ class Tarjeta extends Component {
 
     render(){
         return (
-            <div className="card">
-            <Card>
-                <CardBody>
-                <CardTitle>{ this.props.name}({this.props.pais})</CardTitle>
-                </CardBody>
+            <div className="card-xs">
+            <Card className="text-center">
+
+                <Button  onClick={()=>{this.props.ganador(this.props.id)}}color="secondary">{ this.props.name}({this.props.pais})</Button>
+
          </Card>
           </div>
         );

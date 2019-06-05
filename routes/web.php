@@ -6,9 +6,10 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 //Recuperar la contraseña
 Route::post('password/reset', 'Auth\ResetPasswordController@postReset')->name('password.reset');
 
-// Auth::routes();
+Auth::routes();
 // Route::get('', function ($id) {
 // });
+
 
 //
 Route::view('/{path?}', 'react')->name('react');//->middleware('auth');
@@ -22,3 +23,16 @@ Route::view('/{path?}', 'react')->name('react');//->middleware('auth');
 // Route::get('/',function () {
 //     return view('welcome');
 // });
+
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+// Password Reset Routes...
+Route::resetPassword();
+// Email Verification Routes...
+Route::emailVerification();
+Route::get('/home', 'HomeController@index')->name('home');

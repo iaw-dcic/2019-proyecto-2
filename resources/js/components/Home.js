@@ -9,8 +9,27 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
+            llave1 : [],
+            llave2 : [],
+            llave3: [],
+            llave4: [],
+            llave5:[],
+            llave6:[],
+            llave7:[],
+            llave8:[],
             equipos : [],
+            cuartos : [],
+            semis: [],
+            final: [],
+            campeon: []
         }
+    }
+
+    ganador(id){
+        this.setState({
+            llave1: id
+        })
+        console.log(this.state.llave1)
     }
 
     /**Cuando monte el componente que me liste los equipos */
@@ -31,10 +50,10 @@ class Home extends Component {
     }
     pintar_equipos(){
         return this.state.equipos.map((e, i) =>
-            <div className="col-md-6">
+            <div className="col-sm-6">
                 {/* <Card key={i} id={e.id} name = {e.name} /> */}
                 {/* Le pasamos una propiedad que se llama key y asi ...e le pasamos todas los atributos del objeto */}
-                <Tarjeta key={i} {...e} />
+                <Tarjeta key={i} {...e} ganador={this.ganador.bind(this)} />
 
             </div>
         );

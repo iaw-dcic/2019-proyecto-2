@@ -78143,14 +78143,34 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "url", "/api/index");
 
     _this.state = {
-      equipos: []
+      llave1: [],
+      llave2: [],
+      llave3: [],
+      llave4: [],
+      llave5: [],
+      llave6: [],
+      llave7: [],
+      llave8: [],
+      equipos: [],
+      cuartos: [],
+      semis: [],
+      "final": [],
+      campeon: []
     };
     return _this;
   }
-  /**Cuando monte el componente que me liste los equipos */
-
 
   _createClass(Home, [{
+    key: "ganador",
+    value: function ganador(id) {
+      this.setState({
+        llave1: id
+      });
+      console.log(this.state.llave1);
+    }
+    /**Cuando monte el componente que me liste los equipos */
+
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -78171,12 +78191,16 @@ function (_Component) {
   }, {
     key: "pintar_equipos",
     value: function pintar_equipos() {
+      var _this3 = this;
+
       return this.state.equipos.map(function (e, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-md-6"
+          className: "col-sm-6"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_Tarjeta__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
           key: i
-        }, e)));
+        }, e, {
+          ganador: _this3.ganador.bind(_this3)
+        })));
       });
     }
   }, {
@@ -78401,9 +78425,18 @@ function (_Component) {
   _createClass(Tarjeta, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardTitle"], null, this.props.name, "(", this.props.pais, ")"))));
+        className: "card-xs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        onClick: function onClick() {
+          _this.props.ganador(_this.props.id);
+        },
+        color: "secondary"
+      }, this.props.name, "(", this.props.pais, ")")));
     }
   }]);
 
