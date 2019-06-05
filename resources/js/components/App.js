@@ -2,18 +2,26 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Remera from './ComponenteRemera/Remera'
-import Header from './Header'
+import NavBar from './NavBar'
 import MisCreaciones from './ComponenteCreaciones/MisCreaciones'
 import {ProovedorLogica} from './Logica'
 import Default from './ComponenteDefault/Default'
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isAuthenticated: false
+        };
+    }
+
     render () {
         return (
             <ProovedorLogica>
                 <React.Fragment>
                     <BrowserRouter>
-                        <Header />
                         <Switch>
                             <Route exact path="/" component={Remera} />
                             <Route path="/misCreaciones" component={MisCreaciones}/>
@@ -26,4 +34,4 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('react-app'))
+export default App;
