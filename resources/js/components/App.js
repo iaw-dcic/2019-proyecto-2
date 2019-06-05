@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import FixtureApp from './FixtureApp';
 
 class App extends Component {
     render () {
-    return (
-        <BrowserRouter>
-        <div>
-            <Example />
-        </div>
-        </BrowserRouter>
-    )
+        return (
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={FixtureApp}/>
+                </Switch>
+            </BrowserRouter>
+        )
     }
 }
 

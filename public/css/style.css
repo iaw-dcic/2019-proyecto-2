@@ -1,0 +1,8 @@
+.Content
+{
+	float:right;
+  	padding:3px; 
+  	height:224px;
+   	overflow:auto;
+    background:#fff;
+}
