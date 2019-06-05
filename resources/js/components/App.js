@@ -13,7 +13,6 @@ class App extends Component {
 
     render () {
         return (
-           
             <BrowserRouter>
             {   //al primero que matchea entra..
             }
@@ -29,7 +28,6 @@ class App extends Component {
                     <Route  path="/prodes/:id" component={IndexProde} />
                     <Route exact path="/prodes" component={MisProdes} />
                    
-
                     <Route component={NotFound} />
                 </Switch>    
             </BrowserRouter>

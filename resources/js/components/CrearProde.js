@@ -45,13 +45,14 @@ export default class CrearProde extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Crear Prode</h1>
                 <div >
                     <label>
-                        Nombre:
+                        Nombre del Prode: <span>    </span>
                         <input type="text" onChange={this.nombreProde.bind(this)}/>
                     </label>
+                    <br/> <br/>
                     <button  className=" btn btn-success" onClick={this.registrar.bind(this)}>Registrar</button>
                 </div>
             </div>

@@ -7,8 +7,6 @@ export default class EditProde extends Component {
         this.state = {
             nombre: ""
         }
-        //var prode;
-
     }
 
     modificar(){
@@ -43,13 +41,14 @@ export default class EditProde extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Editar Prode</h1>
                 <div >
                     <label>
-                        Nombre:
+                        Nuevo nombre del Prode:
                         <input type="text" defaultValue={this.props.location.state.prode.nombre} onChange={this.nombreProde.bind(this)}/>
                     </label>
+                    <br/> <br/>
                     <button className="btn btn-success" onClick={this.modificar.bind(this)}>Guardar Cambios</button>
                 </div>
             </div>

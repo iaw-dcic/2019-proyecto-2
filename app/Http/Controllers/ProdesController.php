@@ -13,7 +13,6 @@ use Laracasts\Flash\Flash;
 
 class ProdesController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +21,15 @@ class ProdesController extends Controller
     public function prodeAll()
     {
         $user= Auth::user();
-
         $prodes = Prode::all()->toArray();
+       
+        $aux= array();
+        foreach($prodes as $prode){
+            if ($prode['user_id'] == $user->id)
+                array_push ($aux,$prode);
+        }
 
-        return response()->json($prodes);
+        return response()->json($aux);
     }
 
 
@@ -35,7 +39,6 @@ class ProdesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function token(){
         $request->user()->forceFill([
             'api_token' => hash('sha256', $token),
@@ -49,17 +52,11 @@ class ProdesController extends Controller
 
     public function prodeCreate(Request $request)
     {
-      
         $user = Auth::user();
-        //$user_id= \Auth::user()->id;
         
         //2da capa de validacion: si no la pasa me redirige a la misma pagina
-         $prode= new Prode(//$request->all());
-         
-            request()->validate([
-                   'nombre'=> ['required','min:3'],
-               ],Prode::messages())
-           );
+         $prode= new Prode();
+         $prode->nombre= $request->nombre;
            
         //dd($request->nombre);
         //$prode->nombre= $request->nombre;
