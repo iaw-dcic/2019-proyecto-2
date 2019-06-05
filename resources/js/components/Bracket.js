@@ -101,23 +101,23 @@ export default class Bracket extends Component {
                 switch(match.phase) {
                     case 'quarter':
                         this.setState({partidos: update(this.state.partidos,{1: {[match.match_no] : {[0] : {$set: match.team1}}}})})
-                        this.setState({cuartos: update(this.state.cuartos,{[match.match_no*2] : {$set: this.state.equipos[Math.floor(match.team1/10)]}})})
+                        this.setState({cuartos: update(this.state.cuartos,{[match.match_no*2] : {$set: this.state.equipos[Math.floor(match.team1/10)%16]}})})
                         this.setState({partidos: update(this.state.partidos,{1: {[match.match_no] : {[1] : {$set: match.team2}}}})})
-                        this.setState({cuartos: update(this.state.cuartos,{[match.match_no*2+1] : {$set: this.state.equipos[Math.floor(match.team2/10)]}})})
+                        this.setState({cuartos: update(this.state.cuartos,{[match.match_no*2+1] : {$set: this.state.equipos[Math.floor(match.team2/10)%16]}})})
                         this.setState({partidos: update(this.state.partidos,{1: {[match.match_no] : {[2] : {$set: match.result}}}})})
                         break
                     case 'semis':
                         this.setState({partidos: update(this.state.partidos,{2: {[match.match_no] : {[0] : {$set: match.team1}}}})})
-                        this.setState({semis: update(this.state.semis,{[match.match_no*2] : {$set: this.state.equipos[Math.floor(match.team1/10)]}})})
+                        this.setState({semis: update(this.state.semis,{[match.match_no*2] : {$set: this.state.equipos[Math.floor(match.team1/10)%16]}})})
                         this.setState({partidos: update(this.state.partidos,{2: {[match.match_no] : {[1] : {$set: match.team2}}}})})
-                        this.setState({semis: update(this.state.semis,{[match.match_no*2+1] : {$set: this.state.equipos[Math.floor(match.team2/10)]}})})
+                        this.setState({semis: update(this.state.semis,{[match.match_no*2+1] : {$set: this.state.equipos[Math.floor(match.team2/10)%16]}})})
                         this.setState({partidos: update(this.state.partidos,{2: {[match.match_no] : {[2] : {$set: match.result}}}})})
                         break
                     case 'final':
                         this.setState({partidos: update(this.state.partidos,{3: {0 : {[0] : {$set: match.team1}}}})})
-                        this.setState({final: update(this.state.final,{0 : {$set: this.state.equipos[Math.floor(match.team1/10)]}})})
+                        this.setState({final: update(this.state.final,{0 : {$set: this.state.equipos[Math.floor(match.team1/10)%16]}})})
                         this.setState({partidos: update(this.state.partidos,{3: {0 : {[1] : {$set: match.team2}}}})})
-                        this.setState({final: update(this.state.final,{1 : {$set: this.state.equipos[Math.floor(match.team2/10)]}})})
+                        this.setState({final: update(this.state.final,{1 : {$set: this.state.equipos[Math.floor(match.team2/10)%16]}})})
                         this.setState({partidos: update(this.state.partidos,{3: {0 : {[2] : {$set: match.result}}}})})
                         break
                     }

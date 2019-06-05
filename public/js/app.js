@@ -66280,7 +66280,7 @@ function (_Component) {
 
               _this3.setState({
                 cuartos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.cuartos, _defineProperty({}, match.match_no * 2, {
-                  $set: _this3.state.equipos[Math.floor(match.team1 / 10)]
+                  $set: _this3.state.equipos[Math.floor(match.team1 / 10) % 16]
                 }))
               });
 
@@ -66294,7 +66294,7 @@ function (_Component) {
 
               _this3.setState({
                 cuartos: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.cuartos, _defineProperty({}, match.match_no * 2 + 1, {
-                  $set: _this3.state.equipos[Math.floor(match.team2 / 10)]
+                  $set: _this3.state.equipos[Math.floor(match.team2 / 10) % 16]
                 }))
               });
 
@@ -66319,7 +66319,7 @@ function (_Component) {
 
               _this3.setState({
                 semis: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.semis, _defineProperty({}, match.match_no * 2, {
-                  $set: _this3.state.equipos[Math.floor(match.team1 / 10)]
+                  $set: _this3.state.equipos[Math.floor(match.team1 / 10) % 16]
                 }))
               });
 
@@ -66333,7 +66333,7 @@ function (_Component) {
 
               _this3.setState({
                 semis: immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state.semis, _defineProperty({}, match.match_no * 2 + 1, {
-                  $set: _this3.state.equipos[Math.floor(match.team2 / 10)]
+                  $set: _this3.state.equipos[Math.floor(match.team2 / 10) % 16]
                 }))
               });
 
@@ -66361,7 +66361,7 @@ function (_Component) {
               _this3.setState({
                 "final": immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state["final"], {
                   0: {
-                    $set: _this3.state.equipos[Math.floor(match.team1 / 10)]
+                    $set: _this3.state.equipos[Math.floor(match.team1 / 10) % 16]
                   }
                 })
               });
@@ -66379,7 +66379,7 @@ function (_Component) {
               _this3.setState({
                 "final": immutability_helper__WEBPACK_IMPORTED_MODULE_5___default()(_this3.state["final"], {
                   1: {
-                    $set: _this3.state.equipos[Math.floor(match.team2 / 10)]
+                    $set: _this3.state.equipos[Math.floor(match.team2 / 10) % 16]
                   }
                 })
               });
