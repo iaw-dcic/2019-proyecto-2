@@ -41,11 +41,17 @@ export default class Equipo extends Component {
     })
   }
 
+getName(i){
+  let cuartos = [...this.state.teams];     // create the copy of state array
+  teams[i] = newteam;                  //new value
+  return teams[i].name;
+}
+
+
   render() {
    /* Some css code has been removed for brevity */
     return (
               <React.Fragment>
-                  <Navigation user={this.state.user}/>
 
                   <main role="main" className="container">
                   <div className="row mt-5">

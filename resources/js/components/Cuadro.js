@@ -1,39 +1,57 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Navigation from './Navigation'
-import Octavos from './Octavos'
-import Cuartos from './Cuartos'
-import SemiFinal from './SemiFinal'
-import Final from './Final'
-import Ganador from './Ganador'
 
 import  "./css/cuadro.scss";
 
 /* Main Component */
 export default class Cuadro extends Component {
 
-  state = {
+  constructor(){
+         super();
+  this.state = {
+  //    teams: [],
       matches: [],
       cuartos: ["", "", "", "", "", "", "", ""],
       semifinal: ["", "", "", ""],
       final: ["", ""],
       ganador: ""
-  };
+
+  }
+}
 
   componentDidMount() {
+/*
+      fetch('/api/teams')
+      .then(response => {
+             return response.json();
+         })
+         .then(teams => {
+             //Fetched product is stored in the state
+             this.setState({ teams });
+             this.inicializarTeams();
+
+         });
+  }
+
+    inicializarTeams(){
+*/
       fetch('api/matches/16')
       .then(response => {
+        console.log(response)
              return response.json();
          })
          .then(matches => {
              //Fetched product is stored in the state
              this.setState({ matches });
          });
+
   }
 
+
+
   octavos(){
-let i=0;
     return this.state.matches.map(match => {
+
      return(
 
             <li key={match.id}  className="team-item">
@@ -41,17 +59,19 @@ let i=0;
                   <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.id-1)}>{match.team1_id}</button>
                     <time>vs</time>
 
-                  <button  id={match.team2_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team2_id,match.id-1)} type="button">  {match.team2_id}</button>
+                  <button  id={match.team2_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team2_id,match.id-1)} type="button">{match.team2_id}</button>
 
             </li>
         );
     })
   }
 
+
+
   onClick1(event, newcuartos, i){
       console.log(event.target.id);
       let cuartos = [...this.state.cuartos];     // create the copy of state array
-      cuartos[i] = newcuartos;                  //new value
+      cuartos[i] = newcuartos;                  //new value //mas mal q la mierda
       this.setState({ cuartos });            //update the value
   }
 
@@ -80,16 +100,13 @@ let i=0;
 
         render() {
           return <div>
-
-          <Navigation />
-
           <div className="tournament-container">
             <div className="tournament-headers">
-            <h3>Round of 16</h3>
-            <h3>Quarter-Finals</h3>
-            <h3>Semi-Finals</h3>
+            <h3>Ronda de 16</h3>
+            <h3>Cuartos de Final</h3>
+            <h3>Semi-Finales</h3>
             <h3>Final</h3>
-            <h3>Winner</h3>
+            <h3>Ganador</h3>
             </div>
 
 
@@ -101,7 +118,7 @@ let i=0;
                     <ul className="bracket bracket-2">
                         <li className="team-item">
 
-                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[0], 0)}>  {this.state.cuartos[0]}</button>
+                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[0], 0)}>{this.state.cuartos[0]}</button>
                         <time>vs</time>
                             <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[1], 0)}>
                               {this.state.cuartos[1]}</button>
@@ -168,21 +185,12 @@ let i=0;
                       <li className="team-item">
                       {this.state.ganador}
                       </li>
+                      <input type="submit" className= "btn btn-info" value="Guardar" />
                     </ul>
 
-
-                    <input type="submit" className= "btn btn-info" value="Guardar" />
-
-
-
-
-
-
-
-
-          </div>
             </div>
-  </div>
+            </div>
+            </div>
 
 
       }

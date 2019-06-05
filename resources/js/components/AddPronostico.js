@@ -30,13 +30,13 @@ export default class AddPronostico extends Component{
          const { history } = this.props
          const prediction = {
            name: this.state.name,
-           user_id: 1,
          }
 
        Axios.post('/predictions', prediction)
          .then(response => {
            // redirect to the homepage
            history.push('/pronostico')
+
            console.log(response)
 
          })
@@ -67,7 +67,7 @@ export default class AddPronostico extends Component{
 
   return(
     <div>
-    <Navigation />
+  
 
 
     <div className='container py-4'>

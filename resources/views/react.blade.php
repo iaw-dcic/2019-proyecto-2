@@ -15,9 +15,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    
+
 </head>
-<body>
-    <div id="react-app"></div>
-</body>
+@extends('layouts.app')
+@section('content')
+    <div id="react-app" data-user='{{Auth::user()}}'></div>
+@endsection  
 </html>

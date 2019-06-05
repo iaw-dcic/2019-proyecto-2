@@ -18,7 +18,6 @@ class CreateMatchesTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('team1_id');
             $table->unsignedBigInteger('team2_id');
-            $table->integer('result')->nullable();  // 1 o 2
             $table->unsignedBigInteger('prediction')->nullable();
             $table->integer('ronda'); //16-8-4-2
         });

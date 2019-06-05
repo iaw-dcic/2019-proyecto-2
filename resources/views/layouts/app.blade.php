@@ -20,9 +20,11 @@
     <div class="bg-image"></div>
     <div id="app">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-            <a class="navbar-brand" href="{{ url('/#') }}">
+            <a class="navbar-brand" href="{{ url('/home') }}">
                 SpoCtor
             </a>
+
+
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -31,7 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                      <li class="nav-item">
+                          <a class="nav-link" href="/home">Home</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -47,6 +51,15 @@
                                 </li>
                             @endif
                         @else
+
+                        <li class="nav-item">
+                          <a href="/new" <button type="button" class="btn btn-success">+ Pronostico</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/teams">Equipos</a>
+                        </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -71,10 +84,8 @@
         </nav>
 
 
-        <main class="py-4" >
-
+        <main>
               @yield('content')
-
         </main>
     </div>
 

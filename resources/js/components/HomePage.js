@@ -10,13 +10,6 @@ export default class HomePage extends Component {
   render() {
     return(
     <div>
-    <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">SpoCtor</Navbar.Brand>
-        <Nav className="ml-auto">
-          <Nav.Link href="/login">Iniciar sesión</Nav.Link>
-          <Nav.Link href="/register">Registrarse</Nav.Link>
-        </Nav>
-      </Navbar>
         <Carousel>
           <Carousel.Item>
             <img
