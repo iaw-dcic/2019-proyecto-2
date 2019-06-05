@@ -201,7 +201,7 @@ export default class ShirtImage extends Component {
                 <hr width="100%"></hr>
         
                 <div className="container">
-                    <ListadoEditar addLogo={this.addLogo} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela}cambiarColorRemera={this.cambiarColorRemera} setearEdit = {this.setearEdit} setearEditIdRemeraEditar = {this.setearEditIdRemeraEditar}/>
+                    <ListadoEditar addLogo={this.addLogo} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela}cambiarColorRemera={this.cambiarColorRemera} setearEdit = {this.setearEdit} setearEditIdRemeraEditar ={this.setearEditIdRemeraEditar}/>
                 </div>
             </section>
 
