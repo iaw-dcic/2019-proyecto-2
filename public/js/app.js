@@ -65916,6 +65916,8 @@ function (_Component) {
     value: function editarRemera(e, idRemera) {
       var _this3 = this;
 
+      this.props.setearEdit(true);
+
       try {
         axios.get('/api/misDiseños/' + idRemera).then(function (response) {
           console.log(response.data);
@@ -66540,6 +66542,12 @@ function (_Component) {
       localStorage.setItem("tela", JSON.stringify(newTela));
     });
 
+    _defineProperty(_assertThisInitialized(_this), "setearEdit", function (valor) {
+      _this.setState({
+        edit: valor
+      });
+    });
+
     _this.state = {
       remera: "colorBlanco",
       talle: "XS",
@@ -66723,7 +66731,8 @@ function (_Component) {
         addLogo: this.addLogo,
         cambiarTalle: this.cambiarTalle,
         cambiarTela: this.cambiarTela,
-        cambiarColorRemera: this.cambiarColorRemera
+        cambiarColorRemera: this.cambiarColorRemera,
+        setearEdit: this.setearEdit
       })));
     }
   }]);

@@ -131,6 +131,11 @@ export default class ShirtImage extends Component {
         })
     }
 
+    setearEdit = (valor) =>{
+        this.setState({edit:valor });
+    }
+
+
     actualizarDiseño() {
         try {
             axios.put('/api/editarRemera/' + this.state.idRemeraEditar, {
@@ -192,7 +197,7 @@ export default class ShirtImage extends Component {
                 <hr width="100%"></hr>
         
                 <div className="container">
-                    <ListadoEditar addLogo={this.addLogo} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela}cambiarColorRemera={this.cambiarColorRemera}  />
+                    <ListadoEditar addLogo={this.addLogo} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela}cambiarColorRemera={this.cambiarColorRemera} setearEdit = {this.setearEdit} />
                 </div>
             </section>
 

@@ -25,6 +25,7 @@ export default class ListadoEditar extends Component {
     }
 
     editarRemera(e,idRemera) {
+        this.props.setearEdit(true);
         
         try {
             axios.get('/api/misDiseños/'+idRemera).then(response => {
