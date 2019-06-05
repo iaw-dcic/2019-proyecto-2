@@ -1,0 +1,132 @@
+body{
+    padding-top: 70px;
+}
+
+.about-title {
+    display: block;
+    margin: 5px 10px 0 10px;
+    font-size: 28px;
+ }
+
+.about-info {
+    height: auto;
+    width: auto;
+    display: block;
+    font-size: 18px;
+    margin: 10px 10px 5px 10px;
+}
+
+.about-link {
+    color:#ececee; /* light */
+    display: inline-block;
+    font-size: 18px;
+    margin: 5px 0 0 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.about-link:hover {
+    color: #282149; /* secondary*/
+    text-decoration: none;
+}
+
+
+.loading {
+    font-size: 1.5rem;
+}
+
+
+.avatar-frame{  
+    position: relative;
+    left: 0%;
+    width: 298px;
+    height: 410px;
+}
+
+.img-avatar {
+    position:absolute;
+    top: 0%;
+    left: 0%;   
+}
+
+.avatar-botones-edit-delete{
+    padding: 5px 0px 5px 0px;
+}
+
+.jumbotron{
+    margin-top: +5px;
+}
+
+.sad-avatar {
+    opacity: 0.75;
+}
+
+
+.avatar-body{    
+    z-index: 1;
+}
+
+.avatar-lowerbody{    
+    z-index: 4;
+}
+
+.avatar-upperbody{    
+    z-index: 7;
+}
+
+.avatar-head{    
+    z-index: 10;
+}
+
+.avatar-extra{    
+    z-index: 14;
+}
+
+.borde-lista{
+    border: 2px solid gray;
+    border-radius: 1.5em;
+}
+
+.errores{
+    margin: 5px 2px 5px 2px;
+    padding: 2px;
+}
+
+.boton-panel-izq{
+    margin: 5px;
+    padding: 0px 5px 0px 5px;
+}
+
+.boton-prev-next{
+    border: 2px solid white;
+}
+
+.botones-items-avatar {
+    padding: 5px 5px 5px 5px;
+}
+
+.footer-link:hover{
+    text-decoration: none;
+}
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+}

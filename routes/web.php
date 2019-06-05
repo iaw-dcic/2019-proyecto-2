@@ -13,4 +13,8 @@
 
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+
+Route::get('/readme', 'PageController@readme')->name('readme');
+
+// TODO: descomentar el middleware
+Route::view('/{path?}', 'react')->middleware('auth');

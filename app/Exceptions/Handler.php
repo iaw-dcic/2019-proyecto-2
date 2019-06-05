@@ -46,6 +46,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) 
+        {
+            return response()->json([
+                'message' => 'Resource not found'
+            ], 404);
+        }
+
         return parent::render($request, $exception);
+        
+        // Codigo original antes de copiar 
+        // codigo de: https://code.tutsplus.com/tutorials/build-a-react-app-with-laravel-restful-backend-part-1-laravel-5-api--cms-29442
+        // return parent::render($request, $exception);
     }
 }
