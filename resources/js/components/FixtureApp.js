@@ -99,11 +99,11 @@ export default class FixtureApp extends Component {
             </div>
               <div className="row">
                 {this.createTeams(0)}
-                {this.createQuarTeamsA(0)}           
-                {this.createSemiTeamsA(0)}
+                {this.createQuarTeams(0)}           
+                {this.createSemiTeams(0)}
                 {this.createFinal()}
-                {this.createSemiTeamsB(2)}
-                {this.createQuarTeamsB(4)}  
+                {this.createSemiTeams(2)}
+                {this.createQuarTeams(4)}  
                 {this.createTeams(8)}   
             </div>     
             <br></br>
@@ -185,6 +185,7 @@ export default class FixtureApp extends Component {
           axios.post('/api/prode', {
               data: self.state
           }).then(function (response) {
+            console.log(response);
               self.setState({
                   fixtures: response.data,
                   id: response.data[response.data.length-1]['id'],
