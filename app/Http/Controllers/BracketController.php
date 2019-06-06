@@ -163,5 +163,6 @@ class BracketController extends Controller
     public function delete($id)
     {
         Matchup::where('user_id', auth('api')->user()->id)->where('bracket_id', $id*10+1)->delete();
+        Campeon::where('user_id', auth('api')->user()->id)->where('bracket_id', $id*10+1)->delete();
     }
 }

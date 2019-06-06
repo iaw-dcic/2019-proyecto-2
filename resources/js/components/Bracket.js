@@ -24,7 +24,10 @@ export default class Bracket extends Component {
             cuartos : ["","","","","","","",""],
             semis : ["","","",""],
             final : ["",""],
-            champ : ""
+            champ : "",
+            a: [],
+            b: [],
+            c: []
         }
         this.handleEighthWinner = this.handleEighthWinner.bind(this)
         this.handleQuarterWinner = this.handleQuarterWinner.bind(this)
@@ -48,13 +51,20 @@ export default class Bracket extends Component {
             this.setState({brackets: response.data})
             this.changeBracket(this.state.brackets[0].id)
         })
+        
+        for(let i=0; i<4;i++){
+            this.state.a.push(1)
+            if(i<2){
+                this.state.b.push(1)
+            }
+        }
     }
 
     saveMatches(){
         const data = this.state
         axios.post('/api/bracket/store', {
                 data
-        }).then(console.log(data))
+        })
     }
 
     deleteMatches(){
@@ -122,15 +132,6 @@ export default class Bracket extends Component {
                         break
                     }
             });
-            for(let i=0;i<8;i++){
-                // this.setState({cuartos: update(this.state.cuartos,{[i]: {$set: this.state.partidos[1][Math.floor(i/2)][i%2]}})})
-            }
-            for(let i=0;i<4;i++){
-                // this.setState({semis: update(this.state.semis,{[i]: {$set: this.state.partidos[2][Math.floor(i/2)][i%2]}})})
-            }
-            for(let i=0;i<2;i++){
-                // this.setState({final: update(this.state.final,{[i]: {$set: this.state.partidos[3][Math.floor(i/2)][i%2]}})})
-            }
         });
     }
 
@@ -212,49 +213,26 @@ export default class Bracket extends Component {
             <div className="container">
             <div className="bracket">
             <section className="round eighthfinals">
-                <div className="winners">
-                    <div className="matchups">
-                        <Matchup id="1" team1={this.state.equipos[0]} team2={this.state.equipos[1]} onChange={this.handleEighthWinner}/>
-                        <Matchup id="2" team1={this.state.equipos[2]} team2={this.state.equipos[3]} onChange={this.handleEighthWinner}/>
+                {this.state.a.map((a,i) => (
+                    <div key={Math.random()} className="winners">
+                        <div className="matchups">
+                            <Matchup id={(i*2)} team1={this.state.equipos[(i*4)]} team2={this.state.equipos[(i*4)+1]} onChange={this.handleEighthWinner}/>
+                            <Matchup id={(i*2)+1} team1={this.state.equipos[(i*4)+2]} team2={this.state.equipos[(i*4)+3]} onChange={this.handleEighthWinner}/>
+                        </div>
+                        <Connector />
                     </div>
-                    <Connector />
-                </div>
-                <div className="winners">
-                    <div className="matchups">
-                        <Matchup id="3" team1={this.state.equipos[4]} team2={this.state.equipos[5]} onChange={this.handleEighthWinner}/>
-                        <Matchup id="4" team1={this.state.equipos[6]} team2={this.state.equipos[7]} onChange={this.handleEighthWinner}/>
-                    </div>
-                    <Connector />
-                </div><div className="winners">
-                    <div className="matchups">
-                        <Matchup id="5" team1={this.state.equipos[8]} team2={this.state.equipos[9]} onChange={this.handleEighthWinner}/>
-                        <Matchup id="6" team1={this.state.equipos[10]} team2={this.state.equipos[11]} onChange={this.handleEighthWinner}/>
-                    </div>
-                    <Connector />
-                </div>
-                <div className="winners">
-                    <div className="matchups">
-                        <Matchup id="7" team1={this.state.equipos[12]} team2={this.state.equipos[13]} onChange={this.handleEighthWinner}/>
-                        <Matchup id="8" team1={this.state.equipos[14]} team2={this.state.equipos[15]} onChange={this.handleEighthWinner}/>
-                    </div>
-                    <Connector />
-                </div>
+                ))}
             </section>
             <section className="round quarterfinals">
-                <div className="winners">
-                    <div className="matchups">
-                        <Matchup id="9" team1={this.state.cuartos[0]} team2={this.state.cuartos[1]} onChange={this.handleQuarterWinner}/>
-                        <Matchup id="10" team1={this.state.cuartos[2]} team2={this.state.cuartos[3]} onChange={this.handleQuarterWinner}/>
+                {this.state.b.map((a, i) => (
+                    <div key={Math.random()} className="winners">
+                        <div className="matchups">
+                            <Matchup id={i+9} team1={this.state.cuartos[(i*4)]} team2={this.state.cuartos[(i*4)+1]} onChange={this.handleQuarterWinner}/>
+                            <Matchup id={i+10} team1={this.state.cuartos[(i*4)+2]} team2={this.state.cuartos[(i*4)+3]} onChange={this.handleQuarterWinner}/>
+                        </div>
+                        <Connector />
                     </div>
-                    <Connector />
-                </div>
-                <div className="winners">
-                    <div className="matchups">
-                        <Matchup id="11" team1={this.state.cuartos[4]} team2={this.state.cuartos[5]} onChange={this.handleQuarterWinner}/>
-                        <Matchup id="12" team1={this.state.cuartos[6]} team2={this.state.cuartos[7]} onChange={this.handleQuarterWinner}/>
-                    </div>
-                    <Connector />
-                </div>
+                ))}
             </section>
             <section className="round semifinals">
                 <div className="winners">

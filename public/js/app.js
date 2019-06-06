@@ -66182,7 +66182,10 @@ function (_Component) {
       cuartos: ["", "", "", "", "", "", "", ""],
       semis: ["", "", "", ""],
       "final": ["", ""],
-      champ: ""
+      champ: "",
+      a: [],
+      b: [],
+      c: []
     };
     _this.handleEighthWinner = _this.handleEighthWinner.bind(_assertThisInitialized(_this));
     _this.handleQuarterWinner = _this.handleQuarterWinner.bind(_assertThisInitialized(_this));
@@ -66215,6 +66218,14 @@ function (_Component) {
 
         _this2.changeBracket(_this2.state.brackets[0].id);
       });
+
+      for (var i = 0; i < 4; i++) {
+        this.state.a.push(1);
+
+        if (i < 2) {
+          this.state.b.push(1);
+        }
+      }
     }
   }, {
     key: "saveMatches",
@@ -66222,7 +66233,7 @@ function (_Component) {
       var data = this.state;
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.post('/api/bracket/store', {
         data: data
-      }).then(console.log(data));
+      });
     }
   }, {
     key: "deleteMatches",
@@ -66397,15 +66408,6 @@ function (_Component) {
               break;
           }
         });
-
-        for (var i = 0; i < 8; i++) {// this.setState({cuartos: update(this.state.cuartos,{[i]: {$set: this.state.partidos[1][Math.floor(i/2)][i%2]}})})
-        }
-
-        for (var _i = 0; _i < 4; _i++) {// this.setState({semis: update(this.state.semis,{[i]: {$set: this.state.partidos[2][Math.floor(i/2)][i%2]}})})
-        }
-
-        for (var _i2 = 0; _i2 < 2; _i2++) {// this.setState({final: update(this.state.final,{[i]: {$set: this.state.partidos[3][Math.floor(i/2)][i%2]}})})
-        }
       });
     }
   }, {
@@ -66554,93 +66556,43 @@ function (_Component) {
         className: "bracket"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "round eighthfinals"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "1",
-        team1: this.state.equipos[0],
-        team2: this.state.equipos[1],
-        onChange: this.handleEighthWinner
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "2",
-        team1: this.state.equipos[2],
-        team2: this.state.equipos[3],
-        onChange: this.handleEighthWinner
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "3",
-        team1: this.state.equipos[4],
-        team2: this.state.equipos[5],
-        onChange: this.handleEighthWinner
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "4",
-        team1: this.state.equipos[6],
-        team2: this.state.equipos[7],
-        onChange: this.handleEighthWinner
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "5",
-        team1: this.state.equipos[8],
-        team2: this.state.equipos[9],
-        onChange: this.handleEighthWinner
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "6",
-        team1: this.state.equipos[10],
-        team2: this.state.equipos[11],
-        onChange: this.handleEighthWinner
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "7",
-        team1: this.state.equipos[12],
-        team2: this.state.equipos[13],
-        onChange: this.handleEighthWinner
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "8",
-        team1: this.state.equipos[14],
-        team2: this.state.equipos[15],
-        onChange: this.handleEighthWinner
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, this.state.a.map(function (a, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: Math.random(),
+          className: "winners"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "matchups"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          id: i * 2,
+          team1: _this4.state.equipos[i * 4],
+          team2: _this4.state.equipos[i * 4 + 1],
+          onChange: _this4.handleEighthWinner
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          id: i * 2 + 1,
+          team1: _this4.state.equipos[i * 4 + 2],
+          team2: _this4.state.equipos[i * 4 + 3],
+          onChange: _this4.handleEighthWinner
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "round quarterfinals"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "9",
-        team1: this.state.cuartos[0],
-        team2: this.state.cuartos[1],
-        onChange: this.handleQuarterWinner
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "10",
-        team1: this.state.cuartos[2],
-        team2: this.state.cuartos[3],
-        onChange: this.handleQuarterWinner
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "11",
-        team1: this.state.cuartos[4],
-        team2: this.state.cuartos[5],
-        onChange: this.handleQuarterWinner
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: "12",
-        team1: this.state.cuartos[6],
-        team2: this.state.cuartos[7],
-        onChange: this.handleQuarterWinner
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, this.state.b.map(function (a, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: Math.random(),
+          className: "winners"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "matchups"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          id: i + 9,
+          team1: _this4.state.cuartos[i * 4],
+          team2: _this4.state.cuartos[i * 4 + 1],
+          onChange: _this4.handleQuarterWinner
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Matchup__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          id: i + 10,
+          team1: _this4.state.cuartos[i * 4 + 2],
+          team2: _this4.state.cuartos[i * 4 + 3],
+          onChange: _this4.handleQuarterWinner
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Connector__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "round semifinals"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "winners"
