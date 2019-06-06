@@ -7,6 +7,7 @@ import BotonDecoracion from './BotonDecoracion';
 import SeccionEditar from './SeccionEditar';
 import ImageDonut from './ImageDonut';
 import axios from 'axios';
+import MostrarDonut from './MostrarDonut';
 
 class SeccionCrear extends Component {
 	constructor() {
@@ -19,7 +20,9 @@ class SeccionCrear extends Component {
 
 			saborImg: 'img/Donas/dona.png',
 			glaseadoImg: 'img/Donas/glaseadoVacio2.png',
-			decoracionImg: 'img/Donas/decoracionVacio.png'
+			decoracionImg: 'img/Donas/decoracionVacio.png',
+
+			donuts: []
 		};
 
 		this.setSabor = this.setSabor.bind(this);
@@ -76,11 +79,11 @@ class SeccionCrear extends Component {
 	addDonut() {
 		window.axios = require('axios');
 		let api_token = document.querySelector('meta[name="api-token"]');
-		
-		if (api_token)
-			window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-			
-		axios.post('/api/donuts', {
+
+		if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
+		axios
+			.post('/api/donuts', {
 				sabor_id: this.state.sabor,
 				glaseado_id: this.state.glaseado,
 				decorado_id: this.state.decoracion
@@ -88,8 +91,14 @@ class SeccionCrear extends Component {
 			.then((response) => {
 				console.log('Donut creada', response);
 			});
+	}
 
-		//this.updateDonut(6,6,4);
+	componentWillMount() {
+		axios.get('/api/donuts').then((response) => {
+			this.setState({
+				donuts: response.data
+			});
+		});
 	}
 
 	render() {
@@ -141,7 +150,14 @@ class SeccionCrear extends Component {
 				</div>
 				<br />
 
-				<SeccionEditar onClick={this.updateDonut} />
+				<div className="row fondo">
+					{this.state.donuts.map((donut) => 
+						<MostrarDonut 
+							key={donut.id} 
+							donut={donut} 
+						/>)
+					}
+				</div>
 			</div>
 		);
 	}

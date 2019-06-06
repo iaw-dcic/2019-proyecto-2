@@ -26,7 +26,7 @@ class SeccionEditar extends Component {
 					<MostrarDonut
 						key={donut.id}
 						donut={donut}
-						onClick={() => this.props.onClick(donut.decorado_id, donut.glaseado_id, donut.sabor_id)}
+						// onClick={() => this.props.onClick(donut.decorado_id, donut.glaseado_id, donut.sabor_id)}
 					/>
 				))}
 			</div>
