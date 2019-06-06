@@ -37,95 +37,99 @@ class Listar extends Component {
 
     ganadorO(e,id){
         e.preventDefault();
-
+        const {cuartos} = this.state.cuartos;
+        const newItem = id;
         switch (id) {
             case(1):
-
                 this.setState({
-                    cuartos: this.state.cuartos[0]=id,
+                    cuartos: [...this.state.cuartos,newItem]
                 })
-              break;
+                break;
 
             case(2):
                 this.setState({
-                    cuartos: this.state.cuartos[0]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 3):
                 this.setState({
-                    cuartos: this.state.cuartos[1]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 4):
                 this.setState({
-                    cuartos: this.state.cuartos[1]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 5):
                 this.setState({
-                    cuartos: this.state.cuartos[2]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 6):
                 this.setState({
-                    cuartos: this.state.cuartos[2]=id
+                    // cuartos: this.state.cuartos[2]=id
+                    cuartos: [...this.state.cuartos,newItem]
+
                 })
               break;
             case( 7):
                 this.setState({
-                    cuartos: this.state.cuartos[3]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 8):
                 this.setState({
-                    cuartos: this.state.cuartos[3]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 9):
                 this.setState({
-                    cuartos: this.state.cuartos[4]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 10):
                 this.setState({
-                    cuartos: this.state.cuartos[4]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 11):
                 this.setState({
-                    cuartos: this.state.cuartos[5]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 12):
                 this.setState({
-                    cuartos: this.state.cuartos[5]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 13):
                 this.setState({
-                    cuartos: this.state.cuartos[6]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 14):
                 this.setState({
-                    cuartos: this.state.cuartos[6]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 15):
                 this.setState({
-                    cuartos: this.state.cuartos[7]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
             case( 16):
                 this.setState({
-                    cuartos: this.state.cuartos[7]=id
+                    cuartos: [...this.state.cuartos,newItem]
                 })
               break;
               default:
                   console.log('error');
 
           }
+
     }
+
 
 
     /**Cuando monte el componente que me liste los equipos */
@@ -155,6 +159,7 @@ class Listar extends Component {
 
 
     render() {
+        const {cuartos} = this.state.cuartos;
         return (
 
 

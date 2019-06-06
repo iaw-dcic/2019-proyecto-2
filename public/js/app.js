@@ -85042,7 +85042,13 @@ function (_React$Component) {
     _classCallCheck(this, Tabla);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(Tabla).call(this, props));
-  }
+  } // shouldComponentUpdate(){
+  //     if (this.props.cuartos[0]===0)
+  //         return false;
+  //     else
+  //         return true;
+  // }
+
 
   _createClass(Tabla, [{
     key: "render",
@@ -85082,6 +85088,7 @@ function (_React$Component) {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
       } else {
+        console.log(this.props.cuartos[0]);
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
@@ -85090,31 +85097,31 @@ function (_React$Component) {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[7])));
       }
     }
   }]);
@@ -85727,6 +85734,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -85792,101 +85807,104 @@ function (_Component) {
     key: "ganadorO",
     value: function ganadorO(e, id) {
       e.preventDefault();
+      var cuartos = this.state.cuartos.cuartos;
+      var newItem = id;
 
       switch (id) {
         case 1:
           this.setState({
-            cuartos: this.state.cuartos[0] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 2:
           this.setState({
-            cuartos: this.state.cuartos[0] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 3:
           this.setState({
-            cuartos: this.state.cuartos[1] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 4:
           this.setState({
-            cuartos: this.state.cuartos[1] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 5:
           this.setState({
-            cuartos: this.state.cuartos[2] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 6:
           this.setState({
-            cuartos: this.state.cuartos[2] = id
+            // cuartos: this.state.cuartos[2]=id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 7:
           this.setState({
-            cuartos: this.state.cuartos[3] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 8:
           this.setState({
-            cuartos: this.state.cuartos[3] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 9:
           this.setState({
-            cuartos: this.state.cuartos[4] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 10:
           this.setState({
-            cuartos: this.state.cuartos[4] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 11:
           this.setState({
-            cuartos: this.state.cuartos[5] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 12:
           this.setState({
-            cuartos: this.state.cuartos[5] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 13:
           this.setState({
-            cuartos: this.state.cuartos[6] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 14:
           this.setState({
-            cuartos: this.state.cuartos[6] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 15:
           this.setState({
-            cuartos: this.state.cuartos[7] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
         case 16:
           this.setState({
-            cuartos: this.state.cuartos[7] = id
+            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
           });
           break;
 
@@ -85931,6 +85949,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var cuartos = this.state.cuartos.cuartos;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container Container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
