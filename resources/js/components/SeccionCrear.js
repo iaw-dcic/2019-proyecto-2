@@ -157,7 +157,7 @@ class SeccionCrear extends Component {
 						<MostrarDonut 
 							key={donut.id} 
 							donut={donut} 
-							onClick={this.updateDonut}
+							// onClick={this.updateDonut}
 						/>)
 					}
 				</div>

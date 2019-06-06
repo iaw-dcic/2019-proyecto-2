@@ -66311,11 +66311,11 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn donutboton2",
-        value: this.props.donut.decorado_id,
-        value1: this.props.donut.glaseado_id,
-        value2: this.props.donut.sabor_id,
-        onClick: this.handleClick
+        className: "btn donutboton2" // value={this.props.donut.decorado_id}
+        // value1={this.props.donut.glaseado_id}
+        // value2={this.props.donut.sabor_id}
+        // onClick={this.handleClick}
+
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "donasboton",
         src: this.img.getSaborURL(this.props.donut.sabor_id)
@@ -66487,8 +66487,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66547,8 +66545,8 @@ function (_Component) {
       }, this.state.donuts.map(function (donut) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: donut.id,
-          donut: donut,
-          onClick: _this3.updateDonut
+          donut: donut // onClick={this.updateDonut}
+
         });
       })));
     }

@@ -21,10 +21,10 @@ class MostrarDonut extends React.Component {
 				<button
 					type="button"
 					className="btn donutboton2"
-					value={this.props.donut.decorado_id}
-					value1={this.props.donut.glaseado_id}
-					value2={this.props.donut.sabor_id}
-					onClick={this.handleClick}
+					// value={this.props.donut.decorado_id}
+					// value1={this.props.donut.glaseado_id}
+					// value2={this.props.donut.sabor_id}
+					// onClick={this.handleClick}
 				>
 					<img className="donasboton" src={this.img.getSaborURL(this.props.donut.sabor_id)} />
 					<img className="donasboton" src={this.img.getGlaseadoURL(this.props.donut.glaseado_id)} />
