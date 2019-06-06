@@ -26,7 +26,7 @@ export default class AvatarForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      features: [], // con las opciones
+      features: [], // [{'feature': '', options: ['','',...]}, {...}, ...]
       current_options: {}, // {'feature1':'current_option', 'feature2':'current_option', ... }
       alert_message: '',
     };

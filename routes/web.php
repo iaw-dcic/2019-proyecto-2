@@ -20,7 +20,7 @@ Auth::routes();
 // Todas las caracteristicas
 Route::get('/avatar/caracteristicas', 'AvatarController@getCaracteristicas');
 // Opciones de una caracteristica
-Route::get('/avatar/caracteristicas/{caracteristica}', 'AvatarController@opciones');
+Route::get('/avatar/caracteristicas/{caracteristica}', 'AvatarController@getOpciones');
 // Todas las caracteristicas con sus respectivas opciones
 Route::get('/avatar/caracteristicas-con-opciones', 'AvatarController@caracteristicasConOpciones');
 // Imagen del avatar
@@ -28,10 +28,11 @@ Route::get('/avatar', 'AvatarController@foto');
 // User
 Route::get('/user/avatar', 'UserController@getAvatar');
 Route::put('/user/avatar', 'UserController@updateAvatar');
+//---------------------------------------------------------------------------------
+
 
 Route::view('/readme', 'readme')->name('readme');
 Route::view('/{path?}', 'home')->name('home')->middleware('auth');
-// Route::view('/user/{path?}', 'home')->name('home');//->middleware('auth');
 
 
 
