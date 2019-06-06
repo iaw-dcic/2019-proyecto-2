@@ -18,81 +18,81 @@ class TeamSeeder extends Seeder
     {
         Team::create([
             'name' => 'River Plate',
-            'pais' => 'Argentina'
+            'pais' => 'Arg'
         ]);
         Team::create([
             'name' => 'Cruzeiro',
-            'pais' => 'Brasil'
+            'pais' => 'Bra'
 
         ]);
         Team::create([
             'name' => 'San Lorenzo',
-            'pais' => 'Argentina'
+            'pais' => 'Arg'
 
         ]);
         Team::create([
             'name' => 'Cerro Porteño',
-            'pais' => 'Paraguay'
+            'pais' => 'Par'
 
         ]);
         Team::create([
             'name' => 'Liga Quito',
-            'pais' => 'Ecuador'
+            'pais' => 'Ec'
 
         ]);
         Team::create([
             'name' => 'Olimpia',
-            'pais' => 'Paraguay'
+            'pais' => 'Par'
 
         ]);
         Team::create([
-            'name' => 'Atletico Paranaense',
-            'pais' => 'Brasil'
+            'name' => 'Paranaense',
+            'pais' => 'Bra'
 
         ]);
         Team::create([
             'name' => 'Boca Juniors',
-            'pais' => 'Argentina'
+            'pais' => 'Arg'
 
         ]);
         Team::create([
             'name' => 'Godoy Cruz',
-            'pais' => 'Argentina'
+            'pais' => 'Arg'
 
         ]);
         Team::create([
             'name' => 'Palmeiras',
-            'pais' => 'Brasil'
+            'pais' => 'Bra'
 
         ]);
         Team::create([
             'name' => 'Gremio',
-            'pais' => 'Brasil'
+            'pais' => 'Bra'
 
         ]);
         Team::create([
             'name' => 'Libertad',
-            'pais' => 'Paraguay'
+            'pais' => 'Par'
 
         ]);
         Team::create([
             'name' => 'Emelec',
-            'pais' => 'Ecuador'
+            'pais' => 'Ec'
 
         ]);
         Team::create([
             'name' => 'Flamengo',
-            'pais' => 'Brasil'
+            'pais' => 'Bra'
 
         ]);
         Team::create([
             'name' => 'Nacional',
-            'pais' => 'Uruguay'
+            'pais' => 'Ur'
 
         ]);
         Team::create([
             'name' => 'Internacional',
-            'pais' => 'Brasil'
+            'pais' => 'Bra'
 
         ]);
     }

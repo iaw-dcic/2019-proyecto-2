@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, Button } from 'reactstrap';
+import { Card } from 'reactstrap';
 
 
 
@@ -13,7 +13,6 @@ class Tarjeta extends Component {
         return (
             <div className="card-xs">
             <Card className="text-center">
-                <Button  onClick={()=>{this.props.ganador(this.props.id)}}color="secondary">{ this.props.name}({this.props.pais})</Button>
 
          </Card>
           </div>
