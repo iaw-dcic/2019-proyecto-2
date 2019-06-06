@@ -238,7 +238,7 @@ export default class FixtureApp extends Component {
           semiTeams: ["", "", "", ""],
           finalTeams: ["", ""],
           championTeam: "none",
-          fixtureId: 0,
+          id: 0,
           fixtureName: "New Fixture"
       });
   }
