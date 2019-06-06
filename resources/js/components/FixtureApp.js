@@ -98,13 +98,13 @@ export default class FixtureApp extends Component {
 
             </div>
               <div className="row">
-                {this.createTeamsA()}
-                {this.createQuarTeamsA()}           
-                {this.createSemiTeamsA()}
+                {this.createTeams(0)}
+                {this.createQuarTeamsA(0)}           
+                {this.createSemiTeamsA(0)}
                 {this.createFinal()}
-                {this.createSemiTeamsB()}
-                {this.createQuarTeamsB()}  
-                {this.createTeamsB()}   
+                {this.createSemiTeamsB(2)}
+                {this.createQuarTeamsB(4)}  
+                {this.createTeams(8)}   
             </div>     
             <br></br>
             <div className="row">
@@ -244,44 +244,44 @@ export default class FixtureApp extends Component {
   }
 
 
-  createTeamsA(){
+  createTeams(ind){
     var disabled1="";     var disabled2="";     var disabled3="";     var disabled4="";
 
-    if(this.state.quarTeams[0]!="" ) disabled1="disabled";
-    if(this.state.quarTeams[1]!="" ) disabled2="disabled";
-    if(this.state.quarTeams[2]!="" ) disabled3="disabled";
-    if(this.state.quarTeams[3]!="" ) disabled4="disabled";
+    if(this.state.quarTeams[ind]!="" ) disabled1="disabled";
+    if(this.state.quarTeams[ind+1]!="" ) disabled2="disabled";
+    if(this.state.quarTeams[ind+2]!="" ) disabled3="disabled";
+    if(this.state.quarTeams[ind+3]!="" ) disabled4="disabled";
 
     return (<div className="col-sm" id="teamsA" >
-    <FixtureGame  onClick={this.handleToQuart} key="teams1" disabled={disabled1} teams={ this.state.teams} index={0} ></FixtureGame><br></br>
-    <FixtureGame  onClick={this.handleToQuart} key="teams2" disabled={disabled2} teams={ this.state.teams} index={2} ></FixtureGame><br></br>
-    <FixtureGame  onClick={this.handleToQuart} key="teams3" disabled={disabled3} teams={ this.state.teams} index={4} ></FixtureGame><br></br>
-    <FixtureGame  onClick={this.handleToQuart} key="teams4" disabled={disabled4} teams={ this.state.teams} index={6} ></FixtureGame>
+    <FixtureGame  onClick={this.handleToQuart} key="teams1" disabled={disabled1} teams={ this.state.teams} index={ind} ></FixtureGame><br></br>
+    <FixtureGame  onClick={this.handleToQuart} key="teams2" disabled={disabled2} teams={ this.state.teams} index={ind+2} ></FixtureGame><br></br>
+    <FixtureGame  onClick={this.handleToQuart} key="teams3" disabled={disabled3} teams={ this.state.teams} index={ind+4} ></FixtureGame><br></br>
+    <FixtureGame  onClick={this.handleToQuart} key="teams4" disabled={disabled4} teams={ this.state.teams} index={ind+6} ></FixtureGame>
     </div>  );
   }
 
-  createQuarTeamsA(){
+  createQuarTeams(ind){
     var disabled1="";     var disabled2="";     
     
-    if (this.state.quarTeams[0] == "" || this.state.quarTeams[1] == "" || this.state.semiTeams[0] != "") disabled1="disabled";
-    if (this.state.quarTeams[2] == "" || this.state.quarTeams[3] == "" || this.state.semiTeams[1] != "") disabled2="disabled";
+    if (this.state.quarTeams[ind] == "" || this.state.quarTeams[ind+1] == "" || this.state.semiTeams[ind] != "") disabled1="disabled";
+    if (this.state.quarTeams[ind+2] == "" || this.state.quarTeams[ind+3] == "" || this.state.semiTeams[ind+1] != "") disabled2="disabled";
 
     return(
     <div className="col-sm" id="cuartosA" >
     <br></br><br></br><br></br>
-    <FixtureGame onClick={this.handleToSemi} key="cuartos1" disabled={disabled1}  teams={ this.state.quarTeams} index={0} ></FixtureGame>
+    <FixtureGame onClick={this.handleToSemi} key="cuartos1" disabled={disabled1}  teams={ this.state.quarTeams} index={ind} ></FixtureGame>
     <br></br><br></br><br></br><br></br><br></br>
-    <FixtureGame onClick={this.handleToSemi} key="cuartos2" disabled={disabled2}  teams={ this.state.quarTeams} index={2} ></FixtureGame></div>);
+    <FixtureGame onClick={this.handleToSemi} key="cuartos2" disabled={disabled2}  teams={ this.state.quarTeams} index={ind+2} ></FixtureGame></div>);
   }
 
-  createSemiTeamsA(){
+  createSemiTeams(){
     var disabled1="";
-    if (this.state.semiTeams[0] == "" || this.state.semiTeams[1] == "" || this.state.finalTeams[0] != "") disabled1="disabled";
+    if (this.state.semiTeams[ind] == "" || this.state.semiTeams[ind+1] == "" || this.state.finalTeams[ind] != "") disabled1="disabled";
 
     return(
       <div className="col-sm" id="semifinalesA" >
       <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-        <FixtureGame onClick={this.handleToFinal} key="semifinal1" disabled={disabled1} teams={ this.state.semiTeams} index={0} ></FixtureGame>
+        <FixtureGame onClick={this.handleToFinal} key="semifinal1" disabled={disabled1} teams={ this.state.semiTeams} index={ind} ></FixtureGame>
       </div>);
   }
 
@@ -299,7 +299,7 @@ export default class FixtureApp extends Component {
     </div> 
     ); 
   }
-
+/*index
   createSemiTeamsB(){
     var disabled1="";
     if (this.state.semiTeams[2] == "" || this.state.semiTeams[3] == "" || this.state.finalTeams[1] != "") disabled1="disabled";
@@ -339,7 +339,7 @@ export default class FixtureApp extends Component {
     <FixtureGame  onClick={this.handleToQuart} key="teams7" disabled={disabled3} teams={ this.state.teams} index={12} ></FixtureGame><br></br>
     <FixtureGame  onClick={this.handleToQuart} key="teams8" disabled={disabled4} teams={ this.state.teams} index={14} ></FixtureGame>
     </div>  );
-  }
+  }*/
   
 }
   
