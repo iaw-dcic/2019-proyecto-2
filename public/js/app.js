@@ -85734,14 +85734,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -85788,123 +85780,131 @@ function (_Component) {
     _this.state = {
       octavos: [],
       equipos: [],
-      cuartos: [],
-      semis: [],
-      "final": [],
-      campeon: []
+      cuartos: ["", "", "", "", "", "", "", ""],
+      semis: ["", "", "", ""],
+      "final": ["", ""],
+      campeon: ""
     };
     return _this;
   }
 
   _createClass(Listar, [{
-    key: "pintar_cuartos",
-    value: function pintar_cuartos() {
-      if (this.state.cuartos.length > 0) {
-        console.log(this.state.cuartos[0]);
-      }
-    }
-  }, {
     key: "ganadorO",
     value: function ganadorO(e, id) {
       e.preventDefault();
-      var cuartos = this.state.cuartos.cuartos;
-      var newItem = id;
+      var cuartos = this.state.cuartos; // this.setState({valores: valores});
 
       switch (id) {
         case 1:
+          cuartos[0] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 2:
+          cuartos[0] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 3:
+          cuartos[1] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 4:
+          cuartos[1] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 5:
+          cuartos[2] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 6:
+          cuartos[2] = id;
           this.setState({
             // cuartos: this.state.cuartos[2]=id
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 7:
+          cuartos[3] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 8:
+          cuartos[3] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 9:
+          cuartos[4] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 10:
+          cuartos[4] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 11:
+          cuartos[5] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 12:
+          cuartos[5] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 13:
+          cuartos[6] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 14:
+          cuartos[6] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 15:
+          cuartos[7] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 
         case 16:
+          cuartos[7] = id;
           this.setState({
-            cuartos: [].concat(_toConsumableArray(this.state.cuartos), [newItem])
+            cuartos: cuartos
           });
           break;
 

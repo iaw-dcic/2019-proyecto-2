@@ -21,106 +21,117 @@ class Listar extends Component {
         this.state = {
             octavos: [],
             equipos: [],
-            cuartos: [],
-            semis: [],
-            final: [],
-            campeon: [],
+            cuartos: ["","","","","","","",""],
+            semis: ["","","",""],
+            final: ["",""],
+            campeon: "",
         }
     }
 
-    pintar_cuartos() {
-        if(this.state.cuartos.length>0){
-        console.log(this.state.cuartos[0]);
-        }
-
-    }
 
     ganadorO(e,id){
         e.preventDefault();
-        const {cuartos} = this.state.cuartos;
-        const newItem = id;
+        var cuartos = this.state.cuartos;
+        // this.setState({valores: valores});
         switch (id) {
             case(1):
+                cuartos[0] =id;
+
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos,
                 })
                 break;
 
             case(2):
+                cuartos[0]=id;
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 3):
+                cuartos[1] = id;
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos,
                 })
               break;
             case( 4):
+                cuartos[1]=id;
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 5):
+                cuartos[2]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos,
                 })
               break;
             case( 6):
+                cuartos[2]=id
                 this.setState({
                     // cuartos: this.state.cuartos[2]=id
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos,
 
                 })
               break;
             case( 7):
+                cuartos[3]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 8):
+                cuartos[3]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 9):
+                cuartos[4]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 10):
+                cuartos[4]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 11):
+                cuartos[5]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 12):
+                cuartos[5]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 13):
+                cuartos[6]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 14):
+                cuartos[6]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 15):
+                cuartos[7]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
             case( 16):
+                cuartos[7]=id
                 this.setState({
-                    cuartos: [...this.state.cuartos,newItem]
+                    cuartos: cuartos
                 })
               break;
               default:
