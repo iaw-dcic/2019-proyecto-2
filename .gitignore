@@ -1,8 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
-/vendor
 /storage/*.key
+/vendor
 .env
 .phpunit.result.cache
 Homestead.json

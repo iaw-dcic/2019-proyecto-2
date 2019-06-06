@@ -9,7 +9,7 @@ class Cuello extends Component {
             <div className="Botones">
                 <ConsumidorLogica>
                     {(value) => ( 
-                         <button className="BotonGeneral" onClick={() => value.cambiarCuello(this.props.cuello)}>{nombre}</button>
+                        <button className="BotonGeneral" onClick={() => value.cambiarCuello(this.props.cuello)}>{nombre}</button>
                     )}
                 </ConsumidorLogica>
             </div>

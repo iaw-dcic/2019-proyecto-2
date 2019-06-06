@@ -28,10 +28,10 @@ class ProovedorLogica extends Component {
   
     guardarRemera =event=> {
         event.preventDefault();
-        axios.post('/api/remeras', {
-            color_remera: this.state.color.nombre,
-            tipo_remera: this.state.tipo.nombre,
-            cuello_remera: this.state.cuello.nombre
+        axios.post('/remeras', {
+            color_remera: this.state.color,
+            tipo_remera: this.state.tipo,
+            cuello_remera: this.state.cuello
         }).then (res=> {console.log(res); console.log(res.data)});
     }
 

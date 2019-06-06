@@ -14,14 +14,16 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito|Permanent+Marker" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="react-app"></div>
-</body>
-</html>
+    </head>
+    @extends('layouts.app')
+    @section('content')    
+        <div id="react-app" data-user='{{Auth::user()}}'></div>
+    @endsection
+    <!--<body>
+        <div id="react-app"></div>
+    </body>-->
+    </html>

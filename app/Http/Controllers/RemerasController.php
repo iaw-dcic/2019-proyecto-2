@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Remeras;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RemerasController extends Controller
 {
@@ -36,14 +38,15 @@ class RemerasController extends Controller
     public function store(Request $request)
     {  
         $remera= new Remeras();
+        $user= Auth::user();
         
         $remera->color= $request->color_remera;
         $remera->cuello= $request->cuello_remera;
         $remera->tipo= $request->tipo_remera;
-        $remera->id_usuario=2;
-        // $remera->id_usuario= auth('api')->user()->id,
+        $remera->id_usuario= $user->id;
 
         $remera->save();
+        
     }
 
     /**
@@ -52,9 +55,17 @@ class RemerasController extends Controller
      * @param  \App\Remeras  $remeras
      * @return \Illuminate\Http\Response
      */
-    public function show(Remeras $remeras)
+    public function show()
     {
-       //
+       /* $user = Auth::user();
+        $remeras=Remeras::where('id_usuario', $user->id)->get();
+
+        $arregloRemeras = [];
+        foreach ($remeras as $remera) {
+            $arreglo[] = ['id' => $remera->id, 'color' => $remera->color,  'tipo' => $remera->tipo, 'cuello' => $remera->cuello];
+        }
+        return response()->json($arreglo, 200);
+        //return $remeras->toJson();*/
     }
 
     /**
@@ -83,7 +94,7 @@ class RemerasController extends Controller
         $remera->cuello= $request->cuello_remera;
         $remera->tipo= $request->tipo_remera;
         $remera->id_usuario=1;
-        //$remera->id_usuario=auth('api')->user()->id,
+        //$remera->id_usuario=$user= Auth::user() ->id,
 
         $remera->save();
     }
@@ -99,24 +110,12 @@ class RemerasController extends Controller
         //
         /*
         $remera = Remeras::findOrFail($id);
-        if(auth('api')->user()->id == $remera->id_usuario){
+        $user= Auth::user();
+        if($user->id == $remera->id_usuario){
             $remera->delete();
             return response()->json(['result' => 'success']);
         }
         return response()->json(['result' => 'fail']);*/
     }
         
-    public function misCreaciones()
-    {//
-        /* $userId = auth('api')->user()->id;
-        $remeras=Remeras::where('user_id', $userId)->get();
-        $remeras=Remeras::find(2);
-
-        $arregloRemeras = [];
-        foreach ($remeras as $remera) {
-            $arreglo[] = ['id' => $remera->id, 'color' => $remera->color,  'tipo' => $remera->tipo, 'cuello' => $remera->cuello];
-        }
-        return response()->json($arreglo, 200);
-        */
-    }
 }

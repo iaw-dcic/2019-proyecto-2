@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Remera from './ComponenteRemera/Remera'
 import NavBar from './NavBar'
-import MisCreaciones from './ComponenteCreaciones/MisCreaciones'
+import ListaCreaciones from './ComponenteCreaciones/ListaCreaciones'
 import {ProovedorLogica} from './Logica'
 import Default from './ComponenteDefault/Default'
 
@@ -13,10 +13,9 @@ class App extends Component {
             <ProovedorLogica>
                 <React.Fragment>
                     <BrowserRouter>
-                      <NavBar />
                         <Switch>
                             <Route exact path="/" component={Remera} />
-                            <Route path="/misCreaciones" component={MisCreaciones}/>
+                            <Route path="/misCreaciones" component={ListaCreaciones}/>
                             <Route component={Default}/>
                         </Switch>
                     </BrowserRouter>

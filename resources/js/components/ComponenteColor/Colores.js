@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Colores.css'
 import {ConsumidorLogica} from '../Logica'
-import Button from 'react-bootstrap/Button'
+
 
 class Colores extends Component {
     

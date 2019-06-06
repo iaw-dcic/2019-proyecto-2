@@ -13,7 +13,7 @@
 
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+Route::view('/{path?}', 'react')->middleware('auth');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('remeras', 'RemerasController@store');
+Route::get('creaciones', 'RemerasController@show');
