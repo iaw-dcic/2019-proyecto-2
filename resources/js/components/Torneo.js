@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Partido from './Partido';
+import ListaTorneos from './ListaTorneos';
 import Campeon from './Campeon';
 import BrowserStorage from './BrowserStorage';
 import TraductorJSON from './TraductorJSON';
@@ -87,7 +88,9 @@ export default class Torneo extends Component {
 
                 <br/>
 
-                {this.renderListaTorneos()}
+                <ListaTorneos cargarResponse = {this.state.cargarResponse}
+                              handleClickCargarTorneo = {this.handleClickCargarTorneo}
+                              handleClickEliminarTorneo = {this.handleClickEliminarTorneo} />
 
             </div>
         )
@@ -109,7 +112,7 @@ export default class Torneo extends Component {
 
     renderOctavos() {
         const partidos = this.state.octavos.map((partido, index) => 
-            <div key={index}>    
+            <div key={index} style={{marginTop: index%2==0 && index!=0?"12.3%":"0%"}}>    
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]} 
                          id={index}
@@ -129,7 +132,7 @@ export default class Torneo extends Component {
 
     renderCuartos() {
         const partidos = this.state.cuartos.map((partido, index) => 
-            <div key={index+8}>    
+            <div key={index} style={{marginTop:index!=0?"35%":"0%"}}>    
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]} 
                          id={index} 
@@ -141,7 +144,7 @@ export default class Torneo extends Component {
 
         return (
             <div className="col-md-3">
-                <h4>Cuartos de Final</h4>
+                <h4 style={{marginBottom:"12.3%"}}>Cuartos de Final</h4>
                 {partidos}
             </div>
         )
@@ -149,7 +152,7 @@ export default class Torneo extends Component {
 
     renderSemifinales() {
         const partidos = this.state.semifinales.map((partido, index) => 
-            <div key={index+12}>    
+            <div key={index} style={{marginTop:index==0?"40%":"100%"}}>    
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]}  
                          id={index} 
@@ -171,11 +174,13 @@ export default class Torneo extends Component {
         return (
             <div className="col-md-3">
                 <h4>Final</h4>
+                <div style={{marginTop:"100%"}}>
                 <Partido equipo1={this.state.final[EQUIPO1]} 
                          equipo2={this.state.final[EQUIPO2]}  
                          id={0} 
                          handler={this.handleClickFinal} 
                          habilitado={this.state.etapa == FINAL && this.state.final[ESTADO] == POR_JUGAR? "true":"false"}/>
+                </div>
                 <br/>
             </div>
         )
@@ -197,32 +202,6 @@ export default class Torneo extends Component {
                     <button type="button" onClick={this.handleClickNuevo} className="btn btn-default mr-1">
                         Nuevo Torneo
                     </button>
-                </div>
-            </div>
-        )
-    }
-
-    renderListaTorneos() {
-        var torneos
-
-        if (this.state.cargarResponse)
-            torneos = this.state.cargarResponse.data.map(($torneo) =>
-                <div key={$torneo.id}>
-                    <button id={$torneo.id} type="button" onClick={this.handleClickCargarTorneo} className="btn btn-default mr-1">
-                        {$torneo.id}
-                    </button>
-                    <button id={$torneo.id} type="button" onClick={this.handleClickEliminarTorneo} className="btn btn-danger mr-1">
-                        Eliminar Torneo {$torneo.id}
-                    </button>
-                    <br/>
-                </div>
-            )
-
-        return (
-            <div className="row justify-content-left">
-                <div className="col-md-8">
-                    <h3>Lista de Torneos</h3>
-                    <ul>{torneos? torneos:"No hay torneos que mostrar"}</ul>
                 </div>
             </div>
         )
