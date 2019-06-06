@@ -24,7 +24,7 @@ export default class Avatar extends Component {
            
                         <div className="card config mx-auto side">
                             <div className="card-body mx-auto">
-                                <input type="text" className="card-title text-center"  value={this.state.nameValue} onChange={this.handleChange}/>
+                                <input type="text" className="card-title text-center"  placeholder="Ponme un Nombre" value="" onChange={this.handleChange}/>
                             </div>
                             <div className="divAv">
                                 

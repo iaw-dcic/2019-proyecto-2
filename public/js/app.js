@@ -66702,6 +66702,7 @@ function (_Component) {
     key: "loadAvatar",
     value: function loadAvatar(event) {
       var ID = event.target.value;
+      console.log(this.state.AllAvatars[ID]);
       this.setState({
         name: this.state.AllAvatars[ID].name,
         face: this.state.AllAvatars[ID].skin,
@@ -66786,10 +66787,24 @@ function (_Component) {
     _this.handleCreateNewAvatar = _this.handleCreateNewAvatar.bind(_assertThisInitialized(_this));
     _this.loadAvatar = _this.loadAvatar.bind(_assertThisInitialized(_this));
     _this.defaultAvatar = _this.defaultAvatar.bind(_assertThisInitialized(_this));
+    _this.newAvatares = _this.newAvatares.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AvatarView, [{
+    key: "newAvatares",
+    value: function newAvatares(ID) {
+      var avatares = [];
+      var i = 0;
+      this.state.AllAvatars.forEach(function (element) {
+        if (element.id != ID) {
+          avatares[i] = element;
+          i++;
+        }
+      });
+      return avatares;
+    }
+  }, {
     key: "handleCreateNewAvatar",
     value: function handleCreateNewAvatar(event) {
       var _this3 = this;
@@ -66826,6 +66841,10 @@ function (_Component) {
           }); //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
 
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(function (res) {
+            _this3.setState({
+              AllAvatars: _this3.newAvatares(_this3.state.avatarID)
+            });
+
             _this3.setState({
               AllAvatars: _this3.state.AllAvatars.concat(avatar)
             });

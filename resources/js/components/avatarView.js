@@ -49,6 +49,7 @@ export default class AvatarView extends Component{
 
     loadAvatar(event){
         let ID = event.target.value;
+        console.log(this.state.AllAvatars[ID])
         this.setState({
             name : this.state.AllAvatars[ID].name,
             face : this.state.AllAvatars[ID].skin,
@@ -120,9 +121,20 @@ export default class AvatarView extends Component{
         this.handleCreateNewAvatar = this.handleCreateNewAvatar.bind(this);
         this.loadAvatar = this.loadAvatar.bind(this);
         this.defaultAvatar = this.defaultAvatar.bind(this);
+        this.newAvatares = this.newAvatares.bind(this);
     }
     
-  
+    newAvatares(ID){
+        let avatares = []
+        let i = 0;
+        this.state.AllAvatars.forEach(element => {
+            if(element.id != ID){
+                avatares[i]=element
+                i++
+            }
+        });
+        return avatares
+    }
 
     handleCreateNewAvatar(event){
         event.preventDefault(); //evito que la página reaccione e intente hacer un POST convencional para yo manejarlo por la API
@@ -156,6 +168,9 @@ export default class AvatarView extends Component{
                 })
                 //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
                 axios.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(res =>{
+                    this.setState({
+                        AllAvatars : this.newAvatares(this.state.avatarID)
+                    })
                     this.setState({
                         AllAvatars : this.state.AllAvatars.concat(avatar)
                     })
