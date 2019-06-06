@@ -196,6 +196,7 @@ export default class FixtureApp extends Component {
           });
 
       } else {
+        console.log("entre al save2");
           axios.put('/api/teams/'+this.state.id, {
               data: this.state
           }).then(function (response) {
