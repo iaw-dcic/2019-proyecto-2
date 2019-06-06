@@ -91,6 +91,8 @@ class SeccionCrear extends Component {
 			.then((response) => {
 				console.log('Donut creada', response);
 			});
+
+			this.componentWillMount();		
 	}
 
 	componentWillMount() {

@@ -66466,6 +66466,7 @@ function (_Component) {
       }).then(function (response) {
         console.log('Donut creada', response);
       });
+      this.componentWillMount();
     }
   }, {
     key: "componentWillMount",
