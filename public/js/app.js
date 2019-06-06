@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66476,101 +66476,121 @@ function (_Component) {
           return octavos.push(team.nombre);
         });
       }
+      var listaOctavos1 = [];
+
+      var _loop = function _loop(i) {
+        listaOctavos1.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          key: i,
+          className: "matchup"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-top"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleOctavosClick(2 * i, octavos[2 * i], e);
+          }
+        }, octavos[2 * i])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-bottom"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleOctavosClick(2 * i + 1, octavos[2 * i + 1], e);
+          }
+        }, octavos[2 * i + 1]))));
+      };
+
+      for (var i = 0; i <= 3; i++) {
+        _loop(i);
+      }
+
+      var listaOctavos2 = [];
+
+      var _loop2 = function _loop2(i) {
+        listaOctavos2.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          key: i,
+          className: "matchup"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-top"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleOctavosClick(2 * i, octavos[2 * i], e);
+          }
+        }, octavos[2 * i])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-bottom"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleOctavosClick(2 * i + 1, octavos[2 * i + 1], e);
+          }
+        }, octavos[2 * i + 1]))));
+      };
+
+      for (var i = 4; i <= 7; i++) {
+        _loop2(i);
+      }
+
+      var listaCuartos1 = [];
+
+      var _loop3 = function _loop3(i) {
+        listaCuartos1.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          key: i,
+          className: "matchup"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-top"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleCuartosClick(2 * i, _this3.state.cuartos[2 * i], e);
+          }
+        }, _this3.state.cuartos[2 * i])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-bottom"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleCuartosClick(2 * i + 1, _this3.state.cuartos[2 * i + 1], e);
+          }
+        }, _this3.state.cuartos[2 * i + 1]))));
+      };
+
+      for (var i = 0; i <= 1; i++) {
+        _loop3(i);
+      }
+
+      var listaCuartos2 = [];
+
+      var _loop4 = function _loop4(i) {
+        listaCuartos2.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          key: i,
+          className: "matchup"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-top"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleCuartosClick(2 * i, _this3.state.cuartos[2 * i], e);
+          }
+        }, _this3.state.cuartos[2 * i])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "team team-bottom"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: function onClick(e) {
+            return _this3.handleCuartosClick(2 * i + 1, _this3.state.cuartos[2 * i + 1], e);
+          }
+        }, _this3.state.cuartos[2 * i + 1]))));
+      };
+
+      for (var i = 2; i <= 3; i++) {
+        _loop4(i);
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "split split-one"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round round-one current"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round-details"
-      }, "Octavos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(0, octavos[0], e);
-        }
-      }, octavos[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(1, octavos[1], e);
-        }
-      }, octavos[1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(2, octavos[2], e);
-        }
-      }, octavos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(3, octavos[3], e);
-        }
-      }, octavos[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(4, octavos[4], e);
-        }
-      }, octavos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(5, octavos[5], e);
-        }
-      }, octavos[5]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(6, octavos[6], e);
-        }
-      }, octavos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(7, octavos[7], e);
-        }
-      }, octavos[7])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Octavos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), listaOctavos1.map(function (par) {
+        return par;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round round-two current"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round-details"
-      }, "Cuartos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(0, _this3.state.cuartos[0], e);
-        }
-      }, this.state.cuartos[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(1, _this3.state.cuartos[1], e);
-        }
-      }, this.state.cuartos[1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(2, _this3.state.cuartos[2], e);
-        }
-      }, this.state.cuartos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(3, _this3.state.cuartos[3], e);
-        }
-      }, this.state.cuartos[3])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Cuartos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), listaCuartos1.map(function (par) {
+        return par;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round round-three current"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round-details"
@@ -66648,95 +66668,15 @@ function (_Component) {
         className: "round round-two current"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round-details"
-      }, "Cuartos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(4, _this3.state.cuartos[4], e);
-        }
-      }, this.state.cuartos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(5, _this3.state.cuartos[5], e);
-        }
-      }, this.state.cuartos[5]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(6, _this3.state.cuartos[6], e);
-        }
-      }, this.state.cuartos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleCuartosClick(7, _this3.state.cuartos[7], e);
-        }
-      }, this.state.cuartos[7])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Cuartos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), listaCuartos2.map(function (par) {
+        return par;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round round-one current"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round-details"
-      }, "Octavos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(8, octavos[8], e);
-        }
-      }, octavos[8])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(9, octavos[9], e);
-        }
-      }, octavos[9]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(10, octavos[10], e);
-        }
-      }, octavos[10])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(11, octavos[11], e);
-        }
-      }, octavos[11]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(12, octavos[12], e);
-        }
-      }, octavos[12])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(13, octavos[13], e);
-        }
-      }, octavos[13]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(14, octavos[14], e);
-        }
-      }, octavos[14])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        onClick: function onClick(e) {
-          return _this3.handleOctavosClick(15, octavos[15], e);
-        }
-      }, octavos[15]))))));
+      }, "Octavos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), listaOctavos2.map(function (par) {
+        return par;
+      }))));
     }
   }]);
 

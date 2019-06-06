@@ -238,40 +238,66 @@ export default class Container extends Component {
                 octavos.push(team.nombre)
             ))
         }
+
+        var listaOctavos1 = [];
+        for (let i = 0; i <= 3; i++) {
+            listaOctavos1.push(
+                <ul key={i} className="matchup">
+                    <li className="team team-top"><span onClick={(e) => this.handleOctavosClick((2 * i), octavos[2 * i], e)}>{octavos[2 * i]}</span></li>
+                    <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick((2 * i) + 1, octavos[(2 * i) + 1], e)}>{octavos[(2 * i) + 1]}</span></li>
+                </ul>
+            );
+        }
+
+        var listaOctavos2 = [];
+        for (let i = 4; i <= 7; i++) {
+            listaOctavos2.push(
+                <ul key={i} className="matchup">
+                    <li className="team team-top"><span onClick={(e) => this.handleOctavosClick((2 * i), octavos[2 * i], e)}>{octavos[2 * i]}</span></li>
+                    <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick((2 * i) + 1, octavos[(2 * i) + 1], e)}>{octavos[(2 * i) + 1]}</span></li>
+                </ul>
+            );
+        }
+
+        var listaCuartos1 = [];
+        for (let i = 0; i <= 1; i++) {
+            listaCuartos1.push(
+                <ul key={i} className="matchup">
+                    <li className="team team-top"><span onClick={(e) => this.handleCuartosClick((2 * i), this.state.cuartos[(2 * i)], e)}>{this.state.cuartos[(2 * i)]}</span></li>
+                    <li className="team team-bottom"><span onClick={(e) => this.handleCuartosClick((2 * i)+1, this.state.cuartos[(2 * i)+1], e)}>{this.state.cuartos[(2 * i)+1]}</span></li>
+                </ul>
+            );
+        }
+
+        var listaCuartos2 = [];
+        for (let i = 2; i <= 3; i++) {
+            listaCuartos2.push(
+                <ul key={i} className="matchup">
+                    <li className="team team-top"><span onClick={(e) => this.handleCuartosClick((2 * i), this.state.cuartos[(2 * i)], e)}>{this.state.cuartos[(2 * i)]}</span></li>
+                    <li className="team team-bottom"><span onClick={(e) => this.handleCuartosClick((2 * i)+1, this.state.cuartos[(2 * i)+1], e)}>{this.state.cuartos[(2 * i)+1]}</span></li>
+                </ul>
+            );
+        }
+
         return (
             <>
                 <div className="split split-one">
                     <div className="round round-one current">
                         <div className="round-details">Octavos<br /></div>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(0, octavos[0], e)}>{octavos[0]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(1, octavos[1], e)}>{octavos[1]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(2, octavos[2], e)}>{octavos[2]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(3, octavos[3], e)}>{octavos[3]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(4, octavos[4], e)}>{octavos[4]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(5, octavos[5], e)}>{octavos[5]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(6, octavos[6], e)}>{octavos[6]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(7, octavos[7], e)}>{octavos[7]}</span></li>
-                        </ul>
-
+                        {
+                            listaOctavos1.map((par) => (
+                                par
+                            ))
+                        }
                     </div>
 
                     <div className="round round-two current">
                         <div className="round-details">Cuartos<br /></div>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleCuartosClick(0, this.state.cuartos[0], e)}>{this.state.cuartos[0]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleCuartosClick(1, this.state.cuartos[1], e)}>{this.state.cuartos[1]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleCuartosClick(2, this.state.cuartos[2], e)}>{this.state.cuartos[2]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleCuartosClick(3, this.state.cuartos[3], e)}>{this.state.cuartos[3]}</span></li>
-                        </ul>
+                        {
+                            listaCuartos1.map((par) => (
+                                par
+                            ))
+                        }
                     </div>
 
                     <div className="round round-three current">
@@ -312,33 +338,19 @@ export default class Container extends Component {
 
                     <div className="round round-two current">
                         <div className="round-details">Cuartos<br /></div>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleCuartosClick(4, this.state.cuartos[4], e)}>{this.state.cuartos[4]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleCuartosClick(5, this.state.cuartos[5], e)}>{this.state.cuartos[5]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleCuartosClick(6, this.state.cuartos[6], e)}>{this.state.cuartos[6]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleCuartosClick(7, this.state.cuartos[7], e)}>{this.state.cuartos[7]}</span></li>
-                        </ul>
+                        {
+                            listaCuartos2.map((par) => (
+                                par
+                            ))
+                        }
                     </div>
                     <div className="round round-one current">
                         <div className="round-details">Octavos<br /></div>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(8, octavos[8], e)}>{octavos[8]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(9, octavos[9], e)}>{octavos[9]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(10, octavos[10], e)}>{octavos[10]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(11, octavos[11], e)}>{octavos[11]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(12, octavos[12], e)}>{octavos[12]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(13, octavos[13], e)}>{octavos[13]}</span></li>
-                        </ul>
-                        <ul className="matchup">
-                            <li className="team team-top"><span onClick={(e) => this.handleOctavosClick(14, octavos[14], e)}>{octavos[14]}</span></li>
-                            <li className="team team-bottom"><span onClick={(e) => this.handleOctavosClick(15, octavos[15], e)}>{octavos[15]}</span></li>
-                        </ul>
+                        {
+                            listaOctavos2.map((par) => (
+                                par
+                            ))
+                        }
                     </div>
                 </div>
 
