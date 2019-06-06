@@ -181,6 +181,7 @@ export default class FixtureApp extends Component {
    
     save(){
       var self = this;
+      console.log("ENTRE AL SAVE CON ID= ",self.state.id);
       if (self.state.id == 0){
           axios.post('/api/prode', {
               data: self.state
