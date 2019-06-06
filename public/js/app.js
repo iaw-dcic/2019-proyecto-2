@@ -66269,13 +66269,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -66292,25 +66294,28 @@ function (_React$Component) {
     _classCallCheck(this, MostrarDonut);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MostrarDonut).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+      console.log(e.currentTarget.value);
+      console.log();
+
+      _this.props.onClick(e.currentTarget.value, e.currentTarget.value1, e.currentTarget.value2);
+    });
+
     _this.img = new _ImageDonut__WEBPACK_IMPORTED_MODULE_2__["default"]();
     return _this;
-  } // handleClick = (e) => {
-  // 	console.log(e.currentTarget.value);
-  // 	console.log();
-  // 	this.props.onClick(e.currentTarget.value, e.currentTarget.value1, e.currentTarget.value2);
-  // };
-
+  }
 
   _createClass(MostrarDonut, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn donutboton2" // value={this.props.donut.decorado_id}
-        // value1={this.props.donut.glaseado_id}
-        // value2={this.props.donut.sabor_id}
-        // onClick={this.handleClick}
-
+        className: "btn donutboton2",
+        value: this.props.donut.decorado_id,
+        value1: this.props.donut.glaseado_id,
+        value2: this.props.donut.sabor_id,
+        onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "donasboton",
         src: this.img.getSaborURL(this.props.donut.sabor_id)
@@ -66482,6 +66487,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66540,7 +66547,8 @@ function (_Component) {
       }, this.state.donuts.map(function (donut) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: donut.id,
-          donut: donut
+          donut: donut,
+          onClick: _this3.updateDonut
         });
       })));
     }
