@@ -66458,6 +66458,9 @@ function (_Component) {
   }, {
     key: "addDonut",
     value: function addDonut() {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       axios__WEBPACK_IMPORTED_MODULE_8___default.a.post('/api/donuts', {
         sabor_id: this.state.sabor,
         glaseado_id: this.state.glaseado,

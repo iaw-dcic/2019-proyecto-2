@@ -9,6 +9,12 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+     <!-- API Token -->
+     @auth
+        <meta name="api-token" content="{{ Auth::user()->api_token }}">
+        <meta name="username" content="{{ Auth::user()->name}}">
+    @endauth
+
     <title>Devil Donuts</title>
 
     <link rel="icon" type="image/png" href="/img/Logo/logo.png" />
@@ -84,4 +90,3 @@
 </body>
 
 </html>
-

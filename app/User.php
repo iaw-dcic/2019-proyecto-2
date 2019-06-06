@@ -40,4 +40,12 @@ class User extends Authenticatable
     public function donut(){
         return $this->hasMany(Donut::class);
     }
+
+    public function generateToken()
+    {
+        $this->api_token = str_random(60);
+        $this->save();
+
+        return $this->api_token;
+    }
 }

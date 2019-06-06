@@ -74,6 +74,13 @@ class SeccionCrear extends Component {
 	}
 
 	addDonut() {
+
+		window.axios = require('axios');
+		let api_token = document.querySelector('meta[name="api-token"]');
+		
+		if (api_token)
+			window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+			
 		axios.post('/api/donuts', {
 				sabor_id: this.state.sabor,
 				glaseado_id: this.state.glaseado,
