@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('glaseado')->insert([
-            'nombre' => 'Chosolate',
+            'nombre' => 'Chocolate',
             'url' => 'img/Donas/glaseadoChocolate.png',
         ]);
 

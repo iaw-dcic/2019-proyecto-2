@@ -74,7 +74,6 @@ class SeccionCrear extends Component {
 	}
 
 	addDonut() {
-
 		window.axios = require('axios');
 		let api_token = document.querySelector('meta[name="api-token"]');
 		
@@ -89,6 +88,8 @@ class SeccionCrear extends Component {
 			.then((response) => {
 				console.log('Donut creada', response);
 			});
+
+		//this.updateDonut(6,6,4);
 	}
 
 	render() {

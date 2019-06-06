@@ -66467,7 +66467,7 @@ function (_Component) {
         decorado_id: this.state.decoracion
       }).then(function (response) {
         console.log('Donut creada', response);
-      });
+      }); //this.updateDonut(6,6,4);
     }
   }, {
     key: "render",
