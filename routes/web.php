@@ -13,4 +13,9 @@
 
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+
+Route::get('/readme',function () {
+    return view('readme');
+})->name('readme');
+
+Route::view('/{path?}', 'react')->middleware('auth');
