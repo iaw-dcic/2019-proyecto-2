@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('octavos', 'EquipoController@getOctavos');
+Route::get('Equipos', 'EquipoController@index')->middleware('auth:api');
