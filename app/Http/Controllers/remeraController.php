@@ -7,9 +7,20 @@ use Illuminate\Http\Request;
 class remeraController extends Controller
 {
 
-    //public getRemeras(){
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
+    
+    public function getRemeras(){
         //aca tengo que devolver todas las remeras del usuario logeado.
-    //}
+        $user = auth('api')->user();
+
+        $remeras = $user->misRemeras()->getResults();
+
+        return response()->json(['remeras' => 'success']);
+    }
 
     public function guardar(){
         $remera = Shirt::create([

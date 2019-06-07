@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Stampa extends Model
 {
     protected $fillable = [
-        'url',
+        'url','id'
     ];
 }
