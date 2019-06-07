@@ -64,7 +64,6 @@ export default class Table extends Component {
                 mount: 1
             });
         }
-        //this.new();
     }
 
     render() {
@@ -114,7 +113,7 @@ export default class Table extends Component {
                                 {this.state.prodes.map((prode, i) =>
                                         <tr>
                                             <th scope="row">
-                                                {`Prode ${prode.id}`}
+                                                {`Prode ${i+1}`}
                                             </th>
                                             <td>{prode.created_at}</td>
                                             <th scope="row">

@@ -14,5 +14,6 @@
 
 Auth::routes();
 Route::view('/', 'react')->middleware('auth');
+Route::view('/{path?}', 'react')->middleware('auth');
 
 Route::resource('users', 'UserController')->middleware('auth');

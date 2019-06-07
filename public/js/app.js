@@ -60647,7 +60647,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66176,8 +66176,7 @@ function (_Component) {
           champ: localStorage.getItem('champ'),
           mount: 1
         });
-      } //this.new();
-
+      }
     }
   }, {
     key: "render",
@@ -66228,7 +66227,7 @@ function (_Component) {
       }, "Modificacion"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.prodes.map(function (prode, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, "Prode ".concat(prode.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, prode.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        }, "Prode ".concat(i + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, prode.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "text-white",
