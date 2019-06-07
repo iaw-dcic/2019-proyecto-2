@@ -6845,7 +6845,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".size{\n    width: 330px;\n    height: 70px;\n}\n\n", ""]);
+exports.push([module.i, ".size{\n    width: 330px;\n    height: 70px;\n}\n\n\nrow > .col-xs-3 {\n    display:flex;\n    flex: 0 0 25%;\n    max-width: 25%\n}\n\n.flex-nowrap {\n    flex-wrap: nowrap!important;\n}\n.flex-row {\n    display:flex;\n    flex-direction: row!important;\n}\n", ""]);
 
 // exports
 
@@ -84976,14 +84976,18 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        onClick: function onClick() {
-          _this.props.ganadorO(event, _this.props.id);
-        },
-        color: "secondary"
-      }, this.props.name, "(", this.props.pais, ")"))));
+      if (this.props.e.id < 9) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          className: "size"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+          onClick: function onClick() {
+            _this.props.ganadorO(event, _this.props.e);
+          },
+          color: "secondary"
+        }, this.props.e.name, "(", this.props.e.pais, ")"))));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null);
+      }
     }
   }]);
 
@@ -85003,13 +85007,14 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Tabla; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaC; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../card/Tarjeta2 */ "./resources/js/components/card/Tarjeta2.js");
 /* harmony import */ var _card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../card/Tarjeta */ "./resources/js/components/card/Tarjeta.js");
 /* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabla.css */ "./resources/js/components/table/tabla.css");
 /* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tabla_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85033,15 +85038,22 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Tabla =
+
+var TablaC =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Tabla, _React$Component);
+  _inherits(TablaC, _React$Component);
 
-  function Tabla(props) {
-    _classCallCheck(this, Tabla);
+  function TablaC(props) {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Tabla).call(this, props));
+    _classCallCheck(this, TablaC);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TablaC).call(this, props));
+    _this.state = {
+      visibility: [false, false, false, false]
+    };
+    return _this;
   } // shouldComponentUpdate(){
   //     if (this.props.cuartos[0]===0)
   //         return false;
@@ -85050,83 +85062,90 @@ function (_React$Component) {
   // }
 
 
-  _createClass(Tabla, [{
+  _createClass(TablaC, [{
+    key: "cambiarEstado",
+    value: function cambiarEstado() {
+      var visibility = this.state.visibility;
+
+      if (this.props.cuartos[0].id > 0) {
+        visibility[0] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.cuartos[1].id > 0) {
+        visibility[1] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.cuartos[2].id > 0) {
+        visibility[2] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.cuartos[3].id > 0) {
+        visibility[3] = true;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      if (this.props.cuartos.length == 0) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
-      } else {
-        console.log(this.props.cuartos[0]);
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.cuartos[7])));
-      }
+      var _this2 = this;
+
+      this.cambiarEstado();
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[0],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[0]);
+        },
+        color: "secondary"
+      }, this.props.cuartos[0].name, "(", this.props.cuartos[0].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[1],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[1]);
+        },
+        color: "secondary"
+      }, this.props.cuartos[1].name, "(", this.props.cuartos[1].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[2],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[2]);
+        },
+        color: "secondary"
+      }, this.props.cuartos[2].name, "(", this.props.cuartos[2].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[3],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[3]);
+        },
+        color: "secondary"
+      }, this.props.cuartos[3].name, "(", this.props.cuartos[3].pais, ")"))));
     }
   }]);
 
-  return Tabla;
+  return TablaC;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
@@ -85142,13 +85161,14 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaS; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../card/Tarjeta2 */ "./resources/js/components/card/Tarjeta2.js");
 /* harmony import */ var _card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../card/Tarjeta */ "./resources/js/components/card/Tarjeta.js");
 /* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabla.css */ "./resources/js/components/table/tabla.css");
 /* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tabla_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85172,20 +85192,48 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var TablaF =
+
+var TablaS =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(TablaF, _React$Component);
+  _inherits(TablaS, _React$Component);
 
-  function TablaF() {
-    _classCallCheck(this, TablaF);
+  function TablaS(props) {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(TablaF).apply(this, arguments));
-  }
+    _classCallCheck(this, TablaS);
 
-  _createClass(TablaF, [{
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TablaS).call(this, props));
+    _this.state = {
+      visibility: [false]
+    };
+    return _this;
+  } // shouldComponentUpdate(){
+  //     if (this.props.cuartos[0]===0)
+  //         return false;
+  //     else
+  //         return true;
+  // }
+
+
+  _createClass(TablaS, [{
+    key: "cambiarEstado",
+    value: function cambiarEstado() {
+      var visibility = this.state.visibility;
+
+      if (this.props["final"][0].id > 0) {
+        visibility[0] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      this.cambiarEstado();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
@@ -85196,33 +85244,23 @@ function (_React$Component) {
         className: "size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[0],
+        onClick: function onClick() {
+          _this2.props.ganadorF(event, _this2.props["final"][0]);
+        },
+        color: "secondary"
+      }, this.props["final"][0].name, "(", this.props["final"][0].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
     }
   }]);
 
-  return TablaF;
+  return TablaS;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
@@ -85337,11 +85375,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaS; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var _card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../card/Tarjeta2 */ "./resources/js/components/card/Tarjeta2.js");
-/* harmony import */ var _card_Tarjeta__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../card/Tarjeta */ "./resources/js/components/card/Tarjeta.js");
-/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabla.css */ "./resources/js/components/table/tabla.css");
-/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tabla_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../card/Tarjeta2 */ "./resources/js/components/card/Tarjeta2.js");
+/* harmony import */ var _card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../card/Tarjeta */ "./resources/js/components/card/Tarjeta.js");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabla.css */ "./resources/js/components/table/tabla.css");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tabla_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85371,48 +85409,78 @@ var TablaS =
 function (_React$Component) {
   _inherits(TablaS, _React$Component);
 
-  function TablaS() {
+  function TablaS(props) {
+    var _this;
+
     _classCallCheck(this, TablaS);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(TablaS).apply(this, arguments));
-  }
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TablaS).call(this, props));
+    _this.state = {
+      visibility: [false, false]
+    };
+    return _this;
+  } // shouldComponentUpdate(){
+  //     if (this.props.cuartos[0]===0)
+  //         return false;
+  //     else
+  //         return true;
+  // }
+
 
   _createClass(TablaS, [{
+    key: "cambiarEstado",
+    value: function cambiarEstado() {
+      var visibility = this.state.visibility;
+
+      if (this.props.semis[0].id > 0) {
+        visibility[0] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.semis[1].id > 0) {
+        visibility[1] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      this.cambiarEstado();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[0],
+        onClick: function onClick() {
+          _this2.props.ganadorS(event, _this2.props.semis[0]);
+        },
+        color: "secondary"
+      }, this.props.semis[0].name, "(", this.props.semis[0].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[1],
+        onClick: function onClick() {
+          _this2.props.ganadorS(event, _this2.props.semis[1]);
+        },
+        color: "secondary"
+      }, this.props.semis[1].name, "(", this.props.semis[1].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
     }
   }]);
 
@@ -85719,20 +85787,17 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_card_Tarjeta__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/card/Tarjeta */ "./resources/js/components/card/Tarjeta.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_table_Tabla__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/table/Tabla */ "./resources/js/components/table/Tabla.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var _components_table_TablaC__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/table/TablaC */ "./resources/js/components/table/TablaC.js");
-/* harmony import */ var _components_table_TablaS__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/table/TablaS */ "./resources/js/components/table/TablaS.js");
-/* harmony import */ var _components_table_TablaF__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/table/TablaF */ "./resources/js/components/table/TablaF.js");
-/* harmony import */ var _components_table_TablaG__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/table/TablaG */ "./resources/js/components/table/TablaG.js");
-/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/table/tabla.css */ "./resources/js/components/table/tabla.css");
-/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_table_tabla_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_table_Tabla__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/table/Tabla */ "./resources/js/components/table/Tabla.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _components_table_TablaC__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/table/TablaC */ "./resources/js/components/table/TablaC.js");
+/* harmony import */ var _components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/table/TablaS */ "./resources/js/components/table/TablaS.js");
+/* harmony import */ var _components_table_TablaF__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/table/TablaF */ "./resources/js/components/table/TablaF.js");
+/* harmony import */ var _components_table_TablaG__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/table/TablaG */ "./resources/js/components/table/TablaG.js");
+/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/table/tabla.css */ "./resources/js/components/table/tabla.css");
+/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_table_tabla_css__WEBPACK_IMPORTED_MODULE_8__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -85751,7 +85816,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -85790,121 +85854,128 @@ function (_Component) {
 
   _createClass(Listar, [{
     key: "ganadorO",
-    value: function ganadorO(e, id) {
+    value: function ganadorO(e, equipo) {
       e.preventDefault();
       var cuartos = this.state.cuartos; // this.setState({valores: valores});
 
-      switch (id) {
-        case 1:
-          cuartos[0] = id;
+      switch (true) {
+        case equipo.id <= 2:
+          cuartos[0] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 2:
-          cuartos[0] = id;
+        case equipo.id >= 3 && equipo.id < 5:
+          cuartos[1] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 3:
-          cuartos[1] = id;
+        case equipo.id >= 5 && equipo.id < 7:
+          cuartos[2] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 4:
-          cuartos[1] = id;
+        case equipo.id >= 7 && equipo.id < 9:
+          cuartos[3] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 5:
-          cuartos[2] = id;
+        case equipo.id >= 9 && equipo.id < 11:
+          cuartos[4] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 6:
-          cuartos[2] = id;
-          this.setState({
-            // cuartos: this.state.cuartos[2]=id
-            cuartos: cuartos
-          });
-          break;
-
-        case 7:
-          cuartos[3] = id;
+        case equipo.id >= 11 && equipo.id < 13:
+          cuartos[5] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 8:
-          cuartos[3] = id;
+        case equipo.id >= 13 && equipo.id < 15:
+          cuartos[6] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 9:
-          cuartos[4] = id;
+        case equipo.id >= 15 && equipo.id < 17:
+          cuartos[7] = equipo;
           this.setState({
             cuartos: cuartos
           });
           break;
 
-        case 10:
-          cuartos[4] = id;
+        default:
+          console.log('error');
+      }
+    }
+  }, {
+    key: "ganadorC",
+    value: function ganadorC(e, equipo) {
+      e.preventDefault();
+      var semis = this.state.semis; // this.setState({valores: valores});
+
+      switch (true) {
+        case equipo.id <= 4:
+          semis[0] = equipo;
           this.setState({
-            cuartos: cuartos
+            semis: semis
           });
           break;
 
-        case 11:
-          cuartos[5] = id;
+        case equipo.id >= 5 && equipo.id < 9:
+          semis[1] = equipo;
           this.setState({
-            cuartos: cuartos
+            semis: semis
           });
           break;
 
-        case 12:
-          cuartos[5] = id;
+        case equipo.id >= 9 && equipo.id < 13:
+          semis[2] = equipo;
           this.setState({
-            cuartos: cuartos
+            semis: semis
           });
           break;
 
-        case 13:
-          cuartos[6] = id;
+        case equipo.id >= 13 && equipo.id < 17:
+          semis[3] = equipo;
           this.setState({
-            cuartos: cuartos
+            semis: semis
           });
           break;
 
-        case 14:
-          cuartos[6] = id;
+        default:
+          console.log('error');
+      }
+    }
+  }, {
+    key: "ganadorS",
+    value: function ganadorS(e, equipo) {
+      e.preventDefault();
+      var _final = this.state["final"]; // this.setState({valores: valores});
+
+      switch (true) {
+        case equipo.id <= 8:
+          _final[0] = equipo;
           this.setState({
-            cuartos: cuartos
+            "final": _final
           });
           break;
 
-        case 15:
-          cuartos[7] = id;
+        case equipo.id >= 9 && equipo.id < 17:
+          _final[1] = equipo;
           this.setState({
-            cuartos: cuartos
-          });
-          break;
-
-        case 16:
-          cuartos[7] = id;
-          this.setState({
-            cuartos: cuartos
+            "final": _final
           });
           break;
 
@@ -85919,7 +85990,7 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default()({
+      axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'get',
         url: this.url
       }).then(function (respuesta) {
@@ -85939,11 +86010,12 @@ function (_Component) {
       var _this3 = this;
 
       return this.state.equipos.map(function (e, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tabla__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
-          key: i
-        }, e, {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tabla__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: i,
+          e: e,
+          r: _this3.state.r,
           ganadorO: _this3.ganadorO.bind(_this3)
-        }));
+        });
       });
     }
   }, {
@@ -85951,37 +86023,73 @@ function (_Component) {
     value: function render() {
       var cuartos = this.state.cuartos.cuartos;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container Container"
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row flex-row flex-nowrap"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaC__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        cuartos: this.state.cuartos
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaC__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        cuartos: this.state.cuartos,
+        ganadorC: this.ganadorC.bind(this)
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_6__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        semis: this.state.semis,
+        ganadorS: this.ganadorS.bind(this)
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaF__WEBPACK_IMPORTED_MODULE_7__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaF__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        "final": this.state["final"]
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Campeon"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaG__WEBPACK_IMPORTED_MODULE_8__["default"], null))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        semis: this.state.semis,
+        ganadorS: this.ganadorS.bind(this)
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+        responsive: true,
+        className: "table-borderless"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaC__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        cuartos: this.state.cuartos,
+        ganadorC: this.ganadorC.bind(this)
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+        responsive: true,
+        className: "table-borderless"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos()))))));
     }
   }]);
 

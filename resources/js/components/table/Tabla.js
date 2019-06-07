@@ -11,17 +11,24 @@ export default class Tabla extends React.Component {
 
     }
     render() {
-        return (
+        if ((this.props.e.id )< 9) {
+            return (
+                <tbody>
+                    <tr className="size">
+                        <td>
+                            <Button onClick={() => { this.props.ganadorO(event, this.props.e) }} color="secondary">{this.props.e.name}({this.props.e.pais})</Button>
+                        </td>
+                    </tr>
+                </tbody>
+            );
+        } else{
+            return (
 
-            <tbody>
+                <tbody>
 
-                <tr className = "size">
-                    <td>
-                    <Button  onClick={()=>{this.props.ganadorO(event,this.props.id)}}color="secondary">{this.props.name}({this.props.pais})</Button>
-                    </td>
-                </tr>
+                </tbody>
+            );
+        }
 
-            </tbody>
-        );
     }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Tarjeta from '../../components/card/Tarjeta';
 import axios from 'axios';
 import Tabla from '../../components/table/Tabla';
 import { Table } from 'reactstrap';
@@ -21,124 +20,134 @@ class Listar extends Component {
         this.state = {
             octavos: [],
             equipos: [],
-            cuartos: ["","","","","","","",""],
-            semis: ["","","",""],
-            final: ["",""],
+            cuartos: ["", "", "", "", "", "", "", ""],
+            semis: ["", "", "", ""],
+            final: ["", ""],
             campeon: "",
         }
     }
 
 
-    ganadorO(e,id){
+    ganadorO(e, equipo) {
         e.preventDefault();
         var cuartos = this.state.cuartos;
         // this.setState({valores: valores});
-        switch (id) {
-            case(1):
-                cuartos[0] =id;
+        switch (true) {
+            case equipo.id <= 2:
+                cuartos[0] = equipo;
 
                 this.setState({
                     cuartos: cuartos,
                 })
                 break;
 
-            case(2):
-                cuartos[0]=id;
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 3):
-                cuartos[1] = id;
+            case equipo.id >= 3 && equipo.id < 5:
+                cuartos[1] = equipo;
                 this.setState({
                     cuartos: cuartos,
                 })
-              break;
-            case( 4):
-                cuartos[1]=id;
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 5):
-                cuartos[2]=id
+                break;
+            case equipo.id >= 5 && equipo.id < 7:
+                cuartos[2] = equipo;
                 this.setState({
                     cuartos: cuartos,
                 })
-              break;
-            case( 6):
-                cuartos[2]=id
+                break;
+            case (equipo.id >= 7 && equipo.id < 9):
+                cuartos[3] = equipo;
                 this.setState({
-                    // cuartos: this.state.cuartos[2]=id
-                    cuartos: cuartos,
+                    cuartos: cuartos
+                })
+                break;
+            case (equipo.id >= 9 && equipo.id < 11):
+                cuartos[4] = equipo;
+                this.setState({
+                    cuartos: cuartos
+                })
+                break;
+            case (equipo.id >= 11 && equipo.id < 13):
+                cuartos[5] = equipo;
+                this.setState({
+                    cuartos: cuartos
+                })
+                break;
+            case (equipo.id >= 13 && equipo.id < 15):
+                cuartos[6] = equipo;
+                this.setState({
+                    cuartos: cuartos
+                })
+                break;
+            case (equipo.id >= 15 && equipo.id < 17):
+                cuartos[7] = equipo;
+                this.setState({
+                    cuartos: cuartos
+                })
+                break;
+            default:
+                console.log('error');
 
-                })
-              break;
-            case( 7):
-                cuartos[3]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 8):
-                cuartos[3]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 9):
-                cuartos[4]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 10):
-                cuartos[4]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 11):
-                cuartos[5]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 12):
-                cuartos[5]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 13):
-                cuartos[6]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 14):
-                cuartos[6]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 15):
-                cuartos[7]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-            case( 16):
-                cuartos[7]=id
-                this.setState({
-                    cuartos: cuartos
-                })
-              break;
-              default:
-                  console.log('error');
+        }
 
-          }
+    }
+    ganadorC(e, equipo) {
+        e.preventDefault();
+        var semis = this.state.semis;
+        // this.setState({valores: valores});
+        switch (true) {
+            case equipo.id <= 4:
+                semis[0] = equipo;
 
+                this.setState({
+                    semis: semis,
+                })
+                break;
+
+            case equipo.id >= 5 && equipo.id < 9:
+                semis[1] = equipo;
+                this.setState({
+                    semis: semis,
+                })
+                break;
+            case equipo.id >= 9 && equipo.id < 13:
+                semis[2] = equipo;
+                this.setState({
+                    semis: semis,
+                })
+                break;
+            case (equipo.id >= 13 && equipo.id < 17):
+                semis[3] = equipo;
+                this.setState({
+                    semis: semis
+                })
+                break;
+            default:
+                console.log('error');
+
+        }
+    }
+    ganadorS(e, equipo) {
+        e.preventDefault();
+        var final = this.state.final;
+        // this.setState({valores: valores});
+        switch (true) {
+            case equipo.id <= 8:
+                final[0] = equipo;
+
+                this.setState({
+                    final: final,
+                })
+                break;
+
+            case equipo.id >= 9 && equipo.id < 17:
+               final[1] = equipo;
+                this.setState({
+                    final: final,
+                })
+                break;
+            default:
+                console.log('error');
+
+        }
     }
 
 
@@ -162,7 +171,7 @@ class Listar extends Component {
     }
     pintar_equipos() {
         return this.state.equipos.map((e, i) =>
-            <Tabla key={i} {...e} ganadorO={this.ganadorO.bind(this)}/>
+            <Tabla key={i} e={e} r={this.state.r} ganadorO={this.ganadorO.bind(this)} />
         );
 
 
@@ -170,75 +179,129 @@ class Listar extends Component {
 
 
     render() {
-        const {cuartos} = this.state.cuartos;
+        const { cuartos } = this.state.cuartos;
         return (
 
 
-            <div className="container Container">
+
+
+
+            <div className="container">
+                    <div className="row flex-row flex-nowrap">
+
                 <div className="row">
                     <div className="col-sm">
 
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th>Octavos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.pintar_equipos()}
-                                </tbody>
-                            </Table>
-                    </div>
-                    <div className="col-sm">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th>Cuartos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaC cuartos={this.state.cuartos}/>
-                                </tbody>
-                            </Table>
-                    </div>
-                    <div className="col-sm">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th>Semifinal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaS/>
-                                </tbody>
-                            </Table>
-                    </div>
-                    <div className="col-sm">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th>Final</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaF/>
-                                </tbody>
-                            </Table>
-                    </div>
-                    <div className="col-sm">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th>Campeon</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaG/>
-                                </tbody>
-                            </Table>
+                        <Table responsive className="table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Octavos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.pintar_equipos()}
+                            </tbody>
+                        </Table>
                     </div>
                 </div>
+                <div className="row">
+
+                    <div className="col-sm">
+                        <Table responsive className="table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Cuartos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <TablaC cuartos={this.state.cuartos} ganadorC={this.ganadorC.bind(this)} />
+                            </tbody>
+                        </Table>
+                    </div>
+                    </div>
+                    <div className="row">
+
+                    <div className="col-sm">
+                        <Table responsive className="table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Semifinal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <TablaS semis={this.state.semis} ganadorS={this.ganadorS.bind(this)}/>
+                            </tbody>
+                        </Table>
+                    </div>
+                    </div>
+                    <div className="row">
+
+                    <div className="col-sm">
+                        <Table responsive className="table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Final</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <TablaF final={this.state.final}/>
+                            </tbody>
+                        </Table>
+                    </div>
+                    </div>
+                    <div className="row">
+
+                    <div className="col-sm">
+                        <Table responsive className="table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Semifinal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <TablaS semis={this.state.semis} ganadorS={this.ganadorS.bind(this)}/>
+                            </tbody>
+                        </Table>
+                    </div>
+                    </div>
+                    <div className="row">
+
+                    <div className="col-sm">
+                        <Table responsive className="table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Cuartos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <TablaC cuartos={this.state.cuartos} ganadorC={this.ganadorC.bind(this)} />
+                            </tbody>
+                        </Table>
+                    </div>
+                    </div>
+                    <div className="row">
+
+                    <div className="col-sm">
+                        <Table responsive className="table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Octavos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {this.pintar_equipos() }
+
+                            </tbody>
+                        </Table>
+                    </div>
+                    </div>
+
+
+                </div>
             </div>
+
+
+
 
 
 

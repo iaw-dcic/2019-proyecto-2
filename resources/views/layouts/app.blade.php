@@ -79,11 +79,9 @@
     <br>
     <br>
 
-    <div class="container">
         <div>
             @yield('content')
         </div>
-    </div>
 </div>
 </body>
 </html>
