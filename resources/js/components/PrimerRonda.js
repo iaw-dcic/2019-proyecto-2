@@ -8,7 +8,7 @@ export default class PrimerRonda extends Component {
     };
 
     componentWillMount() {
-        fetch('/api/partidos/32')
+        fetch('/pr2/api/partidos/32')
             .then(res => res.json())
             .then(json => {
                 this.setState({

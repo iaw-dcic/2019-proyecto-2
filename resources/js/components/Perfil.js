@@ -2,6 +2,10 @@
 import React, { Component } from 'react';
 import './perfil.css';
 import Pronostico from './Pronostico.js';
+import Octavos from './Octavos.js';
+import Cuartos from './Cuartos.js';
+import Semis from './Semis.js';
+import Final from './Final.js';
 export default class Perfil extends Component {
     constructor(props) {
         super(props)
@@ -210,7 +214,7 @@ export default class Perfil extends Component {
 
             <div className="container-fluid">
                 <div className="row table-responsive">
-                    < table className="table-striped ">
+                    < table className="table ">
                         <thead >
                             <tr>
                                 <th scope="col">Octavos</th>
@@ -223,200 +227,58 @@ export default class Perfil extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                                <td >   {this.state.pOctavos0.jugador_uno && <img src={"banderas/" + this.state.pOctavos0.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc0(this.state.pOctavos0.jugador_uno, e)}>
-                                        {this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc0(this.state.pOctavos0.jugador_uno, e)}>
-                                        {this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-                                    {this.state.pOctavos0.jugador_dos && <img src={"banderas/" + this.state.pOctavos0.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc0(this.state.pOctavos0.jugador_dos, e)}>
-                                        {this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc0(this.state.pOctavos0.jugador_dos, e)}>
-                                        {this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_dos.abrev}
-                                    </button>
+                                <td >
+                                    {this.state.pronostico && < Octavos i={0} setJugador={this.handleOc0} />}
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td > {this.state.pOctavos1.jugador_uno && <img src={"banderas/" + this.state.pOctavos1.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc1(this.state.pOctavos1.jugador_uno, e)}>
-                                        {this.state.pOctavos1.jugador_uno && this.state.pOctavos1.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc1(this.state.pOctavos1.jugador_uno, e)}>
-                                        {this.state.pOctavos1.jugador_uno && this.state.pOctavos1.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-                                    {this.state.pOctavos1.jugador_dos && <img src={"banderas/" + this.state.pOctavos1.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc1(this.state.pOctavos1.jugador_dos, e)}>
-                                        {this.state.pOctavos1.jugador_dos && this.state.pOctavos1.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc1(this.state.pOctavos1.jugador_dos, e)}>
-                                        {this.state.pOctavos1.jugador_dos && this.state.pOctavos1.jugador_dos.abrev}
-                                    </button>
+                                <td >  {this.state.pronostico && < Octavos i={1} setJugador={this.handleOc1} />}
                                 </td>
                             </tr>
 
                             <tr>
                                 <td ></td>
-                                <td> {this.state.c0.jugador_uno && <img src={"banderas/" + this.state.c0.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC0(this.state.c0.jugador_uno, e)} >
-                                        {this.state.c0.jugador_uno && this.state.c0.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC0(this.state.c0.jugador_uno, e)} >
-                                        {this.state.c0.jugador_uno && this.state.c0.jugador_uno.abrev}
-                                    </button><br></br>
-                                    {this.state.c0.jugador_dos && <img src={"banderas/" + this.state.c0.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC0(this.state.c0.jugador_dos, e)} >
-                                        {this.state.c0.jugador_dos && this.state.c0.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC0(this.state.c0.jugador_dos, e)} >
-                                        {this.state.c0.jugador_dos && this.state.c0.jugador_dos.abrev}
-                                    </button>
+                                <td>  {this.state.c0.jugador_uno && <Cuartos i={0} jugador1={this.state.c0.jugador_uno} jugador2={this.state.c0.jugador_dos} setJugador={this.handleC0} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
-                                <td> {this.state.c1.jugador_uno && <img src={"banderas/" + this.state.c1.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC1(this.state.c1.jugador_uno, e)} >
-                                        {this.state.c1.jugador_uno && this.state.c1.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC1(this.state.c1.jugador_uno, e)} >
-                                        {this.state.c1.jugador_uno && this.state.c1.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-                                    {this.state.c1.jugador_dos && <img src={"banderas/" + this.state.c1.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC1(this.state.c1.jugador_dos, e)} >
-                                        {this.state.c1.jugador_dos && this.state.c1.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC1(this.state.c1.jugador_dos, e)} >
-                                        {this.state.c1.jugador_dos && this.state.c1.jugador_dos.abrev}
-                                    </button>
+                                <td>  {this.state.c1.jugador_uno && <Cuartos i={1} jugador1={this.state.c1.jugador_uno} jugador2={this.state.c1.jugador_dos} setJugador={this.handleC1} />}
                                 </td>
                                 <td> </td>
                             </tr >
 
                             <tr>
 
-                                <td> {this.state.pOctavos2.jugador_uno && <img src={"banderas/" + this.state.pOctavos2.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc2(this.state.pOctavos2.jugador_uno, e)} >
-                                        {this.state.pOctavos2.jugador_uno && this.state.pOctavos2.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc2(this.state.pOctavos2.jugador_uno, e)} >
-                                        {this.state.pOctavos2.jugador_uno && this.state.pOctavos2.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
+                                <td>  {this.state.pronostico && < Octavos i={2} setJugador={this.handleOc2} />}
 
-                                    {this.state.pOctavos2.jugador_dos && <img src={"banderas/" + this.state.pOctavos2.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc2(this.state.pOctavos2.jugador_dos, e)} >
-                                        {this.state.pOctavos2.jugador_dos && this.state.pOctavos2.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc2(this.state.pOctavos2.jugador_dos, e)} >
-                                        {this.state.pOctavos2.jugador_dos && this.state.pOctavos2.jugador_dos.abrev}
-                                    </button>
                                 </td>
                                 <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >  {this.state.pOctavos3.jugador_uno && <img src={"banderas/" + this.state.pOctavos3.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc3(this.state.pOctavos3.jugador_uno, e)} >
-                                        {this.state.pOctavos3.jugador_uno && this.state.pOctavos3.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc3(this.state.pOctavos3.jugador_uno, e)} >
-                                        {this.state.pOctavos3.jugador_uno && this.state.pOctavos3.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-
-                                    {this.state.pOctavos3.jugador_dos && <img src={"banderas/" + this.state.pOctavos3.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc3(this.state.pOctavos3.jugador_dos, e)} >
-                                        {this.state.pOctavos3.jugador_dos && this.state.pOctavos3.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc3(this.state.pOctavos3.jugador_dos, e)} >
-                                        {this.state.pOctavos3.jugador_dos && this.state.pOctavos3.jugador_dos.abrev}
-                                    </button>
+                                <td >    {this.state.pronostico && < Octavos i={3} setJugador={this.handleOc3} />}
                                 </td>
                             </tr >
                             <tr>
                                 <td > </td>
                                 <td></td>
-                                <td>{this.state.s1.jugador_uno && <img src={"banderas/" + this.state.s1.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS1(this.state.s1.jugador_uno, e)}>
-                                        {this.state.s1.jugador_uno && this.state.s1.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS1(this.state.s1.jugador_uno, e)}>
-                                        {this.state.s1.jugador_uno && this.state.s1.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-                                    {this.state.s1.jugador_dos && <img src={"banderas/" + this.state.s1.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS1(this.state.s1.jugador_dos, e)}>
-                                        {this.state.s1.jugador_dos && this.state.s1.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS1(this.state.s1.jugador_dos, e)}>
-                                        {this.state.s1.jugador_dos && this.state.s1.jugador_dos.abrev}
-                                    </button>
+                                <td> {this.state.s1.jugador_uno && <Semis i={1} jugador1={this.state.s1.jugador_uno} jugador2={this.state.s1.jugador_dos} setJugador={this.handleS1} />}
                                 </td>
-                                <td> {this.state.s2.jugador_uno && <img src={"banderas/" + this.state.s2.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS2(this.state.s2.jugador_uno, e)}>
-                                        {this.state.s2.jugador_uno && this.state.s2.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS2(this.state.s2.jugador_uno, e)}>
-                                        {this.state.s2.jugador_uno && this.state.s2.jugador_uno.abrev}
-                                    </button>
-
-                                    <br></br>
-                                    {this.state.s2.jugador_dos && <img src={"banderas/" + this.state.s2.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleS2(this.state.s2.jugador_dos, e)}>
-                                        {this.state.s2.jugador_dos && this.state.s2.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleS2(this.state.s2.jugador_dos, e)}>
-                                        {this.state.s2.jugador_dos && this.state.s2.jugador_dos.abrev}
-                                    </button>
+                                <td>  {this.state.s2.jugador_uno && <Semis i={2} jugador1={this.state.s2.jugador_uno} jugador2={this.state.s2.jugador_dos} setJugador={this.handleS2} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
                             </tr >
                             <tr>
-                                <td >  {this.state.pOctavos4.jugador_uno && <img src={"banderas/" + this.state.pOctavos4.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc4(this.state.pOctavos4.jugador_uno, e)} >
-                                        {this.state.pOctavos4.jugador_uno && this.state.pOctavos4.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc4(this.state.pOctavos4.jugador_uno, e)} >
-                                        {this.state.pOctavos4.jugador_uno && this.state.pOctavos4.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-
-                                    {this.state.pOctavos4.jugador_dos && <img src={"banderas/" + this.state.pOctavos4.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc4(this.state.pOctavos4.jugador_dos, e)} >
-                                        {this.state.pOctavos4.jugador_dos && this.state.pOctavos4.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc4(this.state.pOctavos4.jugador_dos, e)} >
-                                        {this.state.pOctavos4.jugador_dos && this.state.pOctavos4.jugador_dos.abrev}
-                                    </button>
+                                <td >   {this.state.pronostico && < Octavos i={4} setJugador={this.handleOc4} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >  {this.state.pOctavos5.jugador_uno && <img src={"banderas/" + this.state.pOctavos5.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc5(this.state.pOctavos5.jugador_uno, e)} >
-                                        {this.state.pOctavos5.jugador_uno && this.state.pOctavos5.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc5(this.state.pOctavos5.jugador_uno, e)} >
-                                        {this.state.pOctavos5.jugador_uno && this.state.pOctavos5.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-
-                                    {this.state.pOctavos5.jugador_dos && <img src={"banderas/" + this.state.pOctavos5.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc5(this.state.pOctavos5.jugador_dos, e)} >
-                                        {this.state.pOctavos5.jugador_dos && this.state.pOctavos5.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc5(this.state.pOctavos5.jugador_dos, e)} >
-                                        {this.state.pOctavos5.jugador_dos && this.state.pOctavos5.jugador_dos.abrev}
-                                    </button>
+                                <td >   {this.state.pronostico && < Octavos i={5} setJugador={this.handleOc5} />}
                                 </td>
                             </tr >
 
@@ -424,81 +286,23 @@ export default class Perfil extends Component {
 
                             <tr>
                                 <td ></td>
-                                <td> {this.state.c2.jugador_uno && <img src={"banderas/" + this.state.c2.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC2(this.state.c2.jugador_uno, e)} >
-                                        {this.state.c2.jugador_uno && this.state.c2.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC2(this.state.c2.jugador_uno, e)} >
-                                        {this.state.c2.jugador_uno && this.state.c2.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-                                    {this.state.c2.jugador_dos && <img src={"banderas/" + this.state.c2.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC2(this.state.c2.jugador_dos, e)} >
-                                        {this.state.c2.jugador_dos && this.state.c2.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC2(this.state.c2.jugador_dos, e)} >
-                                        {this.state.c2.jugador_dos && this.state.c2.jugador_dos.abrev}
-                                    </button>
+                                <td> {this.state.c2.jugador_uno && <Cuartos i={2} jugador1={this.state.c2.jugador_uno} jugador2={this.state.c2.jugador_dos} setJugador={this.handleC2} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
-                                <td> {this.state.c3.jugador_uno && <img src={"banderas/" + this.state.c3.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC3(this.state.c3.jugador_uno, e)} >
-                                        {this.state.c3.jugador_uno && this.state.c3.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC3(this.state.c3.jugador_uno, e)} >
-                                        {this.state.c3.jugador_uno && this.state.c3.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-                                    {this.state.c3.jugador_dos && <img src={"banderas/" + this.state.c3.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light jugador" onClick={(e) => this.handleC3(this.state.c3.jugador_dos, e)} >
-                                        {this.state.c3.jugador_dos && this.state.c3.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light jugadorabre" onClick={(e) => this.handleC3(this.state.c3.jugador_dos, e)} >
-                                        {this.state.c3.jugador_dos && this.state.c3.jugador_dos.abrev}
-                                    </button>
+                                <td> {this.state.c3.jugador_uno && <Cuartos i={3} jugador1={this.state.c3.jugador_uno} jugador2={this.state.c3.jugador_dos} setJugador={this.handleC3} />}
                                 </td>
                                 <td> </td>
                             </tr >
 
                             <tr>
-                                <td >  {this.state.pOctavos6.jugador_uno && <img src={"banderas/" + this.state.pOctavos6.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc6(this.state.pOctavos6.jugador_uno, e)} >
-                                        {this.state.pOctavos6.jugador_uno && this.state.pOctavos6.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc6(this.state.pOctavos6.jugador_uno, e)} >
-                                        {this.state.pOctavos6.jugador_uno && this.state.pOctavos6.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-
-                                    {this.state.pOctavos6.jugador_dos && <img src={"banderas/" + this.state.pOctavos6.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc6(this.state.pOctavos6.jugador_dos, e)} >
-                                        {this.state.pOctavos6.jugador_dos && this.state.pOctavos6.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc6(this.state.pOctavos6.jugador_dos, e)} >
-                                        {this.state.pOctavos6.jugador_dos && this.state.pOctavos6.jugador_dos.abrev}
-                                    </button>
+                                <td >   {this.state.pronostico && < Octavos i={6} setJugador={this.handleOc6} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >  {this.state.pOctavos7.jugador_uno && <img src={"banderas/" + this.state.pOctavos7.jugador_uno.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc7(this.state.pOctavos7.jugador_uno, e)} >
-                                        {this.state.pOctavos7.jugador_uno && this.state.pOctavos7.jugador_uno.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc7(this.state.pOctavos7.jugador_uno, e)} >
-                                        {this.state.pOctavos7.jugador_uno && this.state.pOctavos7.jugador_uno.abrev}
-                                    </button>
-                                    <br></br>
-
-                                    {this.state.pOctavos7.jugador_dos && <img src={"banderas/" + this.state.pOctavos7.jugador_dos.pais + ".png"}></img>}
-                                    <button className="btn btn-light-grey jugador" onClick={(e) => this.handleOc7(this.state.pOctavos7.jugador_dos, e)} >
-                                        {this.state.pOctavos7.jugador_dos && this.state.pOctavos7.jugador_dos.nombre}
-                                    </button>
-                                    <button className="btn btn-light-grey jugadorabre" onClick={(e) => this.handleOc7(this.state.pOctavos7.jugador_dos, e)} >
-                                        {this.state.pOctavos7.jugador_dos && this.state.pOctavos7.jugador_dos.abrev}
-                                    </button>
+                                <td >   {this.state.pronostico && < Octavos i={7} setJugador={this.handleOc7} />}
                                 </td>
                             </tr >
 
@@ -510,24 +314,15 @@ export default class Perfil extends Component {
                     <h3> FINAL MASTER 1000 </h3>
                 </div>
                 <div className="row justify-content-center align-items-center minh-100">
-                    <div className="col-2"></div>
-                    <div className="col-2"></div>
-                    <div className="col-2  justify-content-center align-items-center minh-100 ">
-                        {this.state.f.jugador_uno && <img src={"banderas/" + this.state.f.jugador_uno.pais + ".png"}></img>}
-                        <button className="btn btn-light" onClick={(e) => this.handleCampeon(this.state.f.jugador_uno, e)}>
-                            {this.state.f.jugador_uno && this.state.f.jugador_uno.nombre}
-                        </button>
-                    </div>
-                    <div className="col-2  justify-content-center align-items-center minh-100">
-                        {this.state.f.jugador_dos && <img src={"banderas/" + this.state.f.jugador_dos.pais + ".png"}></img>}
-                        <button className="btn btn-light" onClick={(e) => this.handleCampeon(this.state.f.jugador_dos, e)}>
-                            {this.state.f.jugador_uno && this.state.f.jugador_dos.nombre}
-                        </button>
-                    </div>
-                    <div className="col-2"></div>
-                    <div className="col-2"></div>
-                </div>
 
+                    <div className="col-2"></div>
+
+                    {this.state.f.jugador_uno && <Final jugadorFinal1={this.state.f.jugador_uno} jugadorFinal2={this.state.f.jugador_dos} setJugador={this.handleCampeon} />}
+
+                    <div className="col-2"></div>
+
+
+                </div>
                 <div className="row header texto-final justify-content-center align-items-center minh-100">
                     <h3> CAMPEON </h3>
                 </div>

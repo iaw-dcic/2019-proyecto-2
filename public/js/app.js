@@ -67143,7 +67143,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "/",
+        path: "",
         component: _Ppal__WEBPACK_IMPORTED_MODULE_3__["default"]
       })));
     }
@@ -67212,8 +67212,6 @@ function (_Component) {
   _createClass(Cuartos, [{
     key: "handleClick",
     value: function handleClick(param, i, e) {
-      console.log('Parameter', param);
-      console.log('Event', e);
       this.props.setJugador(param, i);
     }
   }, {
@@ -67221,34 +67219,13 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var jugador1 = "";
-      var pais2 = "";
-      var pais1 = "";
-      var jugadorAbre1 = "";
-      var jugadorAbre2 = "";
-      var jugador2 = "";
-
-      if (this.props.jugador1.nombre != null) {
-        jugador1 = this.props.jugador1.nombre;
-        jugadorAbre1 = this.props.jugador1.abrev;
-        pais1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "banderas/" + this.props.jugador1.pais + ".png"
-        });
-      }
-
-      if (this.props.jugador2.nombre != null) {
-        jugador2 = this.props.jugador2.nombre;
-        jugadorAbre2 = this.props.jugador2.abrev;
-        pais2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "banderas/" + this.props.jugador2.pais + ".png"
-        });
-      }
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-2 jugador"
-      }, pais1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.jugador1.pais && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "banderas/" + this.props.jugador1.pais + ".png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -67257,18 +67234,20 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
-      }, jugador1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.props.jugador1.nombre && this.props.jugador1.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "junoabre" + this.props.i,
         className: "btn btn-light jugadorabre",
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
         }
-      }, jugadorAbre1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.jugador1.abrev && this.props.jugador1.abrev)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row border"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-2 jugador"
-      }, pais2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.jugador2.pais && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "banderas/" + this.props.jugador2.pais + ".png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-10 jugador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -67277,14 +67256,14 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
         }
-      }, jugador2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.props.jugador2.nombre && this.props.jugador2.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "jdosabre" + this.props.i,
         className: "btn btn-light jugadorabre",
         onClick: function onClick(e) {
           return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
         }
-      }, jugadorAbre2)));
+      }, this.props.jugador2.abrev && this.props.jugador2.abrev)));
     }
   }]);
 
@@ -67369,37 +67348,35 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var jugador1 = "";
-      var jugadorAbre1 = "";
-      var pais = "";
+      var a = [this.props.jugadorFinal1, this.props.jugadorFinal2];
+      var r = [];
 
-      if (this.props.jugadorFinal.nombre != null) {
-        jugador1 = this.props.jugadorFinal.nombre;
-        jugadorAbre1 = this.props.jugadorFinal.abrev;
-        pais = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "banderas/" + this.props.jugadorFinal.pais + ".png"
-        });
+      var _loop = function _loop(i) {
+        r.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "final" + i,
+          className: "col-2 header justify-content-cente r align-items-center minh-100 "
+        }, a[i].pais && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "banderas/" + a[i].pais + ".png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-light jugador",
+          onClick: function onClick(e) {
+            return _this2.handleClick(a[i], e);
+          }
+        }, a[i].nombre && a[i].nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-light jugadorabre",
+          onClick: function onClick(e) {
+            return _this2.handleClick(a[i], e);
+          }
+        }, a[i].abrev && a[i].abrev)));
+      };
+
+      for (var i = 0; i < 2; i++) {
+        _loop(i);
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2 jugador"
-      }, pais), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-10 jugador"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleClick(_this2.props.jugadorFinal, e);
-        }
-      }, jugador1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleClick(_this2.props.jugadorFinal, e);
-        }
-      }, jugadorAbre1));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, r);
     }
   }]);
 
@@ -67573,7 +67550,7 @@ function (_Component) {
           'Authorization': 'Bearer ' + api_token.content
         }
       };
-      fetch('/api/user', miInit).then(function (res) {
+      fetch('/pr2/api/user', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this2.setState({
@@ -67884,7 +67861,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('/api/octavos/' + this.props.i).then(function (res) {
+      fetch('/pr2/api/octavos/' + this.props.i).then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -67897,8 +67874,6 @@ function (_Component) {
   }, {
     key: "handleClick",
     value: function handleClick(param, i, e) {
-      // console.log('Parameter', param);
-      //   console.log('Event', e);
       this.props.setJugador(param, i);
     }
   }, {
@@ -67906,51 +67881,39 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row border"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2 jugador"
-      }, this.state.jugador_uno && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/banderas/" + this.state.jugador_uno.pais + ".png"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-10 jugador"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "juno" + this.props.i,
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this3.handleClick(_this3.state.jugador_uno, Number(_this3.props.i), e);
-        }
-      }, this.state.jugador_uno.nombre && this.state.jugador_uno.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "junoabre" + this.props.i,
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this3.handleClick(_this3.state.jugador_uno, Number(_this3.props.i), e);
-        }
-      }, this.state.jugador_uno.nombre && this.state.jugador_uno.abrev)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row border"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2 jugador"
-      }, this.state.jugador_dos && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/banderas/" + this.state.jugador_dos.pais + ".png"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-10 jugador"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "jdos" + this.props.i,
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this3.handleClick(_this3.state.jugador_dos, Number(_this3.props.i), e);
-        }
-      }, this.state.jugador_dos.nombre && this.state.jugador_dos.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "jdosabre" + this.props.i,
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this3.handleClick(_this3.state.jugador_dos, Number(_this3.props.i), e);
-        }
-      }, this.state.jugador_dos.nombre && this.state.jugador_dos.abrev)));
+      var a = [this.state.jugador_uno, this.state.jugador_dos];
+      var r = [];
+
+      var _loop = function _loop(i) {
+        r.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "oct" + _this3.props.i + i,
+          className: "row border"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-2 jugador"
+        }, a[i].pais && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "banderas/" + a[i].pais + ".png"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-10 jugador"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-light jugador",
+          onClick: function onClick(e) {
+            return _this3.handleClick(a[i], Number(_this3.props.i), e);
+          }
+        }, a[i].nombre && a[i].nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-light jugadorabre",
+          onClick: function onClick(e) {
+            return _this3.handleClick(a[i], Number(_this3.props.i), e);
+          }
+        }, a[i].abrev && a[i].abrev)));
+      };
+
+      for (var i = 0; i < 2; i++) {
+        _loop(i);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, r);
     }
   }]);
 
@@ -67978,6 +67941,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _perfil_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./perfil.css */ "./resources/js/components/perfil.css");
 /* harmony import */ var _perfil_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_perfil_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Pronostico_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pronostico.js */ "./resources/js/components/Pronostico.js");
+/* harmony import */ var _Octavos_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Octavos.js */ "./resources/js/components/Octavos.js");
+/* harmony import */ var _Cuartos_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Cuartos.js */ "./resources/js/components/Cuartos.js");
+/* harmony import */ var _Semis_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Semis.js */ "./resources/js/components/Semis.js");
+/* harmony import */ var _Final_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Final.js */ "./resources/js/components/Final.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -68005,6 +67972,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
 
 
 
@@ -68567,7 +68538,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
-        className: "table-striped "
+        className: "table "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
       }, "Octavos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
@@ -68580,370 +68551,70 @@ function (_Component) {
         scope: "col"
       }, "Cuartos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
-      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pOctavos0.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos0.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc0(_this2.state.pOctavos0.jugador_uno, e);
-        }
-      }, this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc0(_this2.state.pOctavos0.jugador_uno, e);
-        }
-      }, this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos0.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos0.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc0(_this2.state.pOctavos0.jugador_dos, e);
-        }
-      }, this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc0(_this2.state.pOctavos0.jugador_dos, e);
-        }
-      }, this.state.pOctavos0.jugador_uno && this.state.pOctavos0.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.pOctavos1.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos1.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc1(_this2.state.pOctavos1.jugador_uno, e);
-        }
-      }, this.state.pOctavos1.jugador_uno && this.state.pOctavos1.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc1(_this2.state.pOctavos1.jugador_uno, e);
-        }
-      }, this.state.pOctavos1.jugador_uno && this.state.pOctavos1.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos1.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos1.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc1(_this2.state.pOctavos1.jugador_dos, e);
-        }
-      }, this.state.pOctavos1.jugador_dos && this.state.pOctavos1.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc1(_this2.state.pOctavos1.jugador_dos, e);
-        }
-      }, this.state.pOctavos1.jugador_dos && this.state.pOctavos1.jugador_dos.abrev))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c0.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c0.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC0(_this2.state.c0.jugador_uno, e);
-        }
-      }, this.state.c0.jugador_uno && this.state.c0.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC0(_this2.state.c0.jugador_uno, e);
-        }
-      }, this.state.c0.jugador_uno && this.state.c0.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.c0.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c0.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC0(_this2.state.c0.jugador_dos, e);
-        }
-      }, this.state.c0.jugador_dos && this.state.c0.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC0(_this2.state.c0.jugador_dos, e);
-        }
-      }, this.state.c0.jugador_dos && this.state.c0.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c1.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c1.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC1(_this2.state.c1.jugador_uno, e);
-        }
-      }, this.state.c1.jugador_uno && this.state.c1.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC1(_this2.state.c1.jugador_uno, e);
-        }
-      }, this.state.c1.jugador_uno && this.state.c1.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.c1.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c1.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC1(_this2.state.c1.jugador_dos, e);
-        }
-      }, this.state.c1.jugador_dos && this.state.c1.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC1(_this2.state.c1.jugador_dos, e);
-        }
-      }, this.state.c1.jugador_dos && this.state.c1.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.pOctavos2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos2.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc2(_this2.state.pOctavos2.jugador_uno, e);
-        }
-      }, this.state.pOctavos2.jugador_uno && this.state.pOctavos2.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc2(_this2.state.pOctavos2.jugador_uno, e);
-        }
-      }, this.state.pOctavos2.jugador_uno && this.state.pOctavos2.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos2.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos2.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc2(_this2.state.pOctavos2.jugador_dos, e);
-        }
-      }, this.state.pOctavos2.jugador_dos && this.state.pOctavos2.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc2(_this2.state.pOctavos2.jugador_dos, e);
-        }
-      }, this.state.pOctavos2.jugador_dos && this.state.pOctavos2.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pOctavos3.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos3.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc3(_this2.state.pOctavos3.jugador_uno, e);
-        }
-      }, this.state.pOctavos3.jugador_uno && this.state.pOctavos3.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc3(_this2.state.pOctavos3.jugador_uno, e);
-        }
-      }, this.state.pOctavos3.jugador_uno && this.state.pOctavos3.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos3.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos3.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc3(_this2.state.pOctavos3.jugador_dos, e);
-        }
-      }, this.state.pOctavos3.jugador_dos && this.state.pOctavos3.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc3(_this2.state.pOctavos3.jugador_dos, e);
-        }
-      }, this.state.pOctavos3.jugador_dos && this.state.pOctavos3.jugador_dos.abrev))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, this.state.s1.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.s1.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleS1(_this2.state.s1.jugador_uno, e);
-        }
-      }, this.state.s1.jugador_uno && this.state.s1.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleS1(_this2.state.s1.jugador_uno, e);
-        }
-      }, this.state.s1.jugador_uno && this.state.s1.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.s1.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.s1.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleS1(_this2.state.s1.jugador_dos, e);
-        }
-      }, this.state.s1.jugador_dos && this.state.s1.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleS1(_this2.state.s1.jugador_dos, e);
-        }
-      }, this.state.s1.jugador_dos && this.state.s1.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.s2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.s2.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleS2(_this2.state.s2.jugador_uno, e);
-        }
-      }, this.state.s2.jugador_uno && this.state.s2.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleS2(_this2.state.s2.jugador_uno, e);
-        }
-      }, this.state.s2.jugador_uno && this.state.s2.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.s2.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.s2.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleS2(_this2.state.s2.jugador_dos, e);
-        }
-      }, this.state.s2.jugador_dos && this.state.s2.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleS2(_this2.state.s2.jugador_dos, e);
-        }
-      }, this.state.s2.jugador_dos && this.state.s2.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pOctavos4.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos4.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc4(_this2.state.pOctavos4.jugador_uno, e);
-        }
-      }, this.state.pOctavos4.jugador_uno && this.state.pOctavos4.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc4(_this2.state.pOctavos4.jugador_uno, e);
-        }
-      }, this.state.pOctavos4.jugador_uno && this.state.pOctavos4.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos4.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos4.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc4(_this2.state.pOctavos4.jugador_dos, e);
-        }
-      }, this.state.pOctavos4.jugador_dos && this.state.pOctavos4.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc4(_this2.state.pOctavos4.jugador_dos, e);
-        }
-      }, this.state.pOctavos4.jugador_dos && this.state.pOctavos4.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pOctavos5.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos5.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc5(_this2.state.pOctavos5.jugador_uno, e);
-        }
-      }, this.state.pOctavos5.jugador_uno && this.state.pOctavos5.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc5(_this2.state.pOctavos5.jugador_uno, e);
-        }
-      }, this.state.pOctavos5.jugador_uno && this.state.pOctavos5.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos5.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos5.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc5(_this2.state.pOctavos5.jugador_dos, e);
-        }
-      }, this.state.pOctavos5.jugador_dos && this.state.pOctavos5.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc5(_this2.state.pOctavos5.jugador_dos, e);
-        }
-      }, this.state.pOctavos5.jugador_dos && this.state.pOctavos5.jugador_dos.abrev))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c2.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC2(_this2.state.c2.jugador_uno, e);
-        }
-      }, this.state.c2.jugador_uno && this.state.c2.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC2(_this2.state.c2.jugador_uno, e);
-        }
-      }, this.state.c2.jugador_uno && this.state.c2.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.c2.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c2.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC2(_this2.state.c2.jugador_dos, e);
-        }
-      }, this.state.c2.jugador_dos && this.state.c2.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC2(_this2.state.c2.jugador_dos, e);
-        }
-      }, this.state.c2.jugador_dos && this.state.c2.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c3.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c3.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC3(_this2.state.c3.jugador_uno, e);
-        }
-      }, this.state.c3.jugador_uno && this.state.c3.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC3(_this2.state.c3.jugador_uno, e);
-        }
-      }, this.state.c3.jugador_uno && this.state.c3.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.c3.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.c3.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleC3(_this2.state.c3.jugador_dos, e);
-        }
-      }, this.state.c3.jugador_dos && this.state.c3.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleC3(_this2.state.c3.jugador_dos, e);
-        }
-      }, this.state.c3.jugador_dos && this.state.c3.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pOctavos6.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos6.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc6(_this2.state.pOctavos6.jugador_uno, e);
-        }
-      }, this.state.pOctavos6.jugador_uno && this.state.pOctavos6.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc6(_this2.state.pOctavos6.jugador_uno, e);
-        }
-      }, this.state.pOctavos6.jugador_uno && this.state.pOctavos6.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos6.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos6.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc6(_this2.state.pOctavos6.jugador_dos, e);
-        }
-      }, this.state.pOctavos6.jugador_dos && this.state.pOctavos6.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc6(_this2.state.pOctavos6.jugador_dos, e);
-        }
-      }, this.state.pOctavos6.jugador_dos && this.state.pOctavos6.jugador_dos.abrev)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pOctavos7.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos7.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc7(_this2.state.pOctavos7.jugador_uno, e);
-        }
-      }, this.state.pOctavos7.jugador_uno && this.state.pOctavos7.jugador_uno.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc7(_this2.state.pOctavos7.jugador_uno, e);
-        }
-      }, this.state.pOctavos7.jugador_uno && this.state.pOctavos7.jugador_uno.abrev), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), this.state.pOctavos7.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.pOctavos7.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugador",
-        onClick: function onClick(e) {
-          return _this2.handleOc7(_this2.state.pOctavos7.jugador_dos, e);
-        }
-      }, this.state.pOctavos7.jugador_dos && this.state.pOctavos7.jugador_dos.nombre), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light-grey jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleOc7(_this2.state.pOctavos7.jugador_dos, e);
-        }
-      }, this.state.pOctavos7.jugador_dos && this.state.pOctavos7.jugador_dos.abrev)))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 0,
+        setJugador: this.handleOc0
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 1,
+        setJugador: this.handleOc1
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.c0.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        i: 0,
+        jugador1: this.state.c0.jugador_uno,
+        jugador2: this.state.c0.jugador_dos,
+        setJugador: this.handleC0
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.c1.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        i: 1,
+        jugador1: this.state.c1.jugador_uno,
+        jugador2: this.state.c1.jugador_dos,
+        setJugador: this.handleC1
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 2,
+        setJugador: this.handleOc2
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "    ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 3,
+        setJugador: this.handleOc3
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.s1.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        i: 1,
+        jugador1: this.state.s1.jugador_uno,
+        jugador2: this.state.s1.jugador_dos,
+        setJugador: this.handleS1
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.s2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        i: 2,
+        jugador1: this.state.s2.jugador_uno,
+        jugador2: this.state.s2.jugador_dos,
+        setJugador: this.handleS2
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 4,
+        setJugador: this.handleOc4
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 5,
+        setJugador: this.handleOc5
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        i: 2,
+        jugador1: this.state.c2.jugador_uno,
+        jugador2: this.state.c2.jugador_dos,
+        setJugador: this.handleC2
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c3.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        i: 3,
+        jugador1: this.state.c3.jugador_uno,
+        jugador2: this.state.c3.jugador_dos,
+        setJugador: this.handleC3
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 6,
+        setJugador: this.handleOc6
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        i: 7,
+        setJugador: this.handleOc7
+      })))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row header texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2  justify-content-center align-items-center minh-100 "
-      }, this.state.f.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.f.jugador_uno.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
-        onClick: function onClick(e) {
-          return _this2.handleCampeon(_this2.state.f.jugador_uno, e);
-        }
-      }, this.state.f.jugador_uno && this.state.f.jugador_uno.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2  justify-content-center align-items-center minh-100"
-      }, this.state.f.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "banderas/" + this.state.f.jugador_dos.pais + ".png"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-light",
-        onClick: function onClick(e) {
-          return _this2.handleCampeon(_this2.state.f.jugador_dos, e);
-        }
-      }, this.state.f.jugador_uno && this.state.f.jugador_dos.nombre)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
+      }), this.state.f.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        jugadorFinal1: this.state.f.jugador_uno,
+        jugadorFinal2: this.state.f.jugador_dos,
+        setJugador: this.handleCampeon
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -69543,17 +69214,11 @@ function (_Component) {
         className: "row justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        jugadorFinal1: this.state.j1,
+        jugadorFinal2: this.state.j2,
+        setJugador: this.setCampeon
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-4  justify-content-center align-items-center minh-100 "
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        jugadorFinal: this.state.j1,
-        setJugador: this.setCampeon
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-4  justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        jugadorFinal: this.state.j2,
-        setJugador: this.setCampeon
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row  texto-final justify-content-center align-items-center minh-100"
@@ -69568,12 +69233,7 @@ function (_Component) {
           return _this2.handleCuartos();
         }
       }, "Guardar")));
-    } // nombre = (newnombre) => {
-    //     this.setState({
-    //         nombre: newnombre
-    //     });
-    // }
-
+    }
   }, {
     key: "handleCuartos",
     value: function () {
@@ -69693,7 +69353,7 @@ function (_Component) {
 
                 _context2.prev = 7;
                 _context2.next = 10;
-                return axios.post('/api/insertpronostico');
+                return axios.post('pr2/api/insertpronostico');
 
               case 10:
                 response = _context2.sent;
@@ -69919,7 +69579,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('/api/partidos/32').then(function (res) {
+      fetch('/pr2/api/partidos/32').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -70029,7 +69689,7 @@ function (_Component) {
             'Authorization': 'Bearer ' + api_token.content
           }
         };
-        fetch('/api/cantidadpronosticos', miInit).then(function (res) {
+        fetch('/pr2/api/cantidadpronosticos', miInit).then(function (res) {
           return res.json();
         }).then(function (json) {
           if (json != null) _this.setState({
@@ -70057,7 +69717,7 @@ function (_Component) {
           'Authorization': 'Bearer ' + api_token.content
         }
       };
-      fetch('/api/cantidadpronosticos', miInit).then(function (res) {
+      fetch('/pr2/api/cantidadpronosticos', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this2.setState({
@@ -70085,27 +69745,27 @@ function (_Component) {
                 this.props.setPronostico(selectedValue); //   console.log(this.state.pronostico);
 
                 if (this.state.pronostico != -1 && selectedValue != '') {
-                  fetch('/api/partidos/8').then(function (res) {
+                  fetch('/pr2/api/partidos/8').then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.octavos(json.items[0], 0), _this3.props.octavos(json.items[1], 1), _this3.props.octavos(json.items[2], 2), _this3.props.octavos(json.items[3], 3), _this3.props.octavos(json.items[4], 4), _this3.props.octavos(json.items[5], 5), _this3.props.octavos(json.items[6], 6), _this3.props.octavos(json.items[7], 7);
                   });
-                  fetch('/api/pronostico/4/' + selectedValue).then(function (res) {
+                  fetch('/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.cuartos(json.items[0], 0), _this3.props.cuartos(json.items[1], 1), _this3.props.cuartos(json.items[2], 2), _this3.props.cuartos(json.items[3], 3);
                   });
-                  fetch('/api/pronostico/2/' + selectedValue).then(function (res) {
+                  fetch('/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.semis(json.items[0], 0), _this3.props.semis(json.items[1], 1);
                   });
-                  fetch('/api/pronostico/1/' + selectedValue).then(function (res) {
+                  fetch('/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props["final"](json.items[0]);
                   });
-                  fetch('/api/pronostico/0/' + selectedValue).then(function (res) {
+                  fetch('/pr2/api/pronostico/0/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.campeon(json.items[0]);
@@ -70238,7 +69898,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('/api/partidos/16').then(function (res) {
+      fetch('/pr2/api/partidos/16').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -70339,8 +69999,6 @@ function (_Component) {
   _createClass(Semis, [{
     key: "handleClick",
     value: function handleClick(param, i, e) {
-      console.log('Parameter', param);
-      console.log('Event', e);
       this.props.setJugador(param, i);
     }
   }, {
@@ -70348,70 +70006,39 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var jugador1Nombre = "";
-      var pais2 = "";
-      var pais1 = "";
-      var jugadorAbre1 = "";
-      var jugadorAbre2 = "";
-      var jugador2Nombre = "";
+      var a = [this.props.jugador1, this.props.jugador2];
+      var r = [];
 
-      if (this.props.jugador1.nombre != null) {
-        jugador1Nombre = this.props.jugador1.nombre;
-        jugadorAbre1 = this.props.jugador1.abrev;
-        pais1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "banderas/" + this.props.jugador1.pais + ".png"
-        });
+      var _loop = function _loop(i) {
+        r.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: a[i].nombre,
+          className: "row border"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-2 jugador"
+        }, a[i].pais && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "banderas/" + a[i].pais + ".png"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-10 jugador"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-light jugador",
+          onClick: function onClick(e) {
+            return _this2.handleClick(a[i], Number(_this2.props.i), e);
+          }
+        }, a[i].nombre && a[i].nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "btn btn-light jugadorabre",
+          onClick: function onClick(e) {
+            return _this2.handleClick(a[i], Number(_this2.props.i), e);
+          }
+        }, a[i].abrev && a[i].abrev)));
+      };
+
+      for (var i = 0; i < 2; i++) {
+        _loop(i);
       }
 
-      if (this.props.jugador2.nombre != null) {
-        jugador2Nombre = this.props.jugador2.nombre;
-        jugadorAbre2 = this.props.jugador2.abrev;
-        pais2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "banderas/" + this.props.jugador2.pais + ".png"
-        });
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row border"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2 jugador"
-      }, pais1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-10 jugador"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "juno" + this.props.i,
-        className: "btn btn-light jugador",
-        onClick: function onClick(e) {
-          return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
-        }
-      }, jugador1Nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "junoabre" + this.props.i,
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleClick(_this2.props.jugador1, Number(_this2.props.i), e);
-        }
-      }, jugadorAbre1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row border"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-2 jugador"
-      }, pais2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-10 jugador"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "jdos" + this.props.i,
-        className: "btn btn-light jugador ",
-        onClick: function onClick(e) {
-          return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
-        }
-      }, jugador2Nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        id: "jdosabre" + this.props.i,
-        className: "btn btn-light jugadorabre",
-        onClick: function onClick(e) {
-          return _this2.handleClick(_this2.props.jugador2, Number(_this2.props.i), e);
-        }
-      }, jugadorAbre2)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, r);
     }
   }]);
 

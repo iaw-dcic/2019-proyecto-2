@@ -8,7 +8,7 @@ export default class SegundaRonda extends Component {
     };
 
     componentWillMount() {
-        fetch('/api/partidos/16')
+        fetch('/pr2/api/partidos/16')
             .then(res => res.json())
             .then(json => {
                 this.setState({

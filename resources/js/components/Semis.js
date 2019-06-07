@@ -9,57 +9,34 @@ export default class Semis extends Component {
 
 
     handleClick(param, i, e) {
-        console.log('Parameter', param);
-        console.log('Event', e);
+
         this.props.setJugador(param, i);
     }
     render() {
-        let jugador1Nombre = ""; let pais2 = ""; let pais1 = "";
-        let jugadorAbre1 = ""; let jugadorAbre2 = "";
-        let jugador2Nombre = "";
-        if (this.props.jugador1.nombre != null) {
-            jugador1Nombre = this.props.jugador1.nombre;
-            jugadorAbre1 = this.props.jugador1.abrev;
-            pais1 = <img src={"banderas/" + this.props.jugador1.pais + ".png"}></img>
-        }
-        if (this.props.jugador2.nombre != null) {
-            jugador2Nombre = this.props.jugador2.nombre;
-            jugadorAbre2 = this.props.jugador2.abrev;
-            pais2 = <img src={"banderas/" + this.props.jugador2.pais + ".png"}></img>;
+        let a = [this.props.jugador1, this.props.jugador2];
+        let r = [];
+
+        for (let i = 0; i < 2; i++) {
+
+            r.push(<div key={a[i].nombre}className="row border">
+                <div className="col-2 jugador">
+                    {a[i].pais && <img src={"banderas/" + a[i].pais + ".png"}></img>}
+                </div>
+                <div className="col-10 jugador">
+                    <button type="button" className="btn btn-light jugador"
+                        onClick={(e) => this.handleClick(a[i], (Number(this.props.i)), e)}>
+                        {a[i].nombre && a[i].nombre}
+                    </button>
+                </div>
+                <button type="button" className="btn btn-light jugadorabre"
+                    onClick={(e) => this.handleClick(a[i], (Number(this.props.i)), e)}>
+                    {a[i].abrev && a[i].abrev}
+                </button>
+            </div >);
         }
         return <div>
 
-            <div className="row border" >
-                <div className="col-2 jugador">
-                    {pais1}
-                </div>
-                <div className="col-10 jugador">
-                    <button type="button" id={"juno" + this.props.i} className="btn btn-light jugador"
-                        onClick={(e) => this.handleClick(this.props.jugador1, (Number(this.props.i)), e)}>
-                        {jugador1Nombre}
-                    </button>
-                </div>
-                <button type="button" id={"junoabre" + this.props.i} className="btn btn-light jugadorabre"
-                    onClick={(e) => this.handleClick(this.props.jugador1, (Number(this.props.i)), e)}>
-                    {jugadorAbre1}
-                </button>
-            </div>
-
-            <div className="row border">
-                <div className="col-2 jugador">
-                    {pais2}
-                </div>
-                <div className="col-10 jugador">
-                    <button type="button" id={"jdos" + this.props.i} className="btn btn-light jugador "
-                        onClick={(e) => this.handleClick(this.props.jugador2, (Number(this.props.i)), e)}>
-                        {jugador2Nombre}
-                    </button>
-                </div>
-                <button type="button" id={"jdosabre" + this.props.i} className="btn btn-light jugadorabre"
-                    onClick={(e) => this.handleClick(this.props.jugador2, (Number(this.props.i)), e)}>
-                    {jugadorAbre2}
-                </button>
-            </div>
+            {r}
 
 
 

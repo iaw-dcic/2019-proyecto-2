@@ -77,7 +77,6 @@ export default class Playoffs extends Component {
 
             <div className="partido row " >
                 <div className="col-2 octavos">
-
                     <Octavos i={0} setJugador={this.setJugador} />
                 </div>
 
@@ -217,7 +216,6 @@ export default class Playoffs extends Component {
 
             <div className="partido row " >
                 <div className="col-2 octavos">
-
                     <Octavos i={6} setJugador={this.setJugador} />
                 </div>
 
@@ -240,16 +238,11 @@ export default class Playoffs extends Component {
                 <h3> FINAL MASTER 1000 </h3>
             </div>
             <div className="row justify-content-center align-items-center minh-100">
-
-                <div className="col-2"></div>
-                <div className="col-4  justify-content-center align-items-center minh-100 ">
-                    <Final jugadorFinal={this.state.j1} setJugador={this.setCampeon} />
-                </div>
-                <div className="col-4  justify-content-center align-items-center minh-100">
-                    <Final jugadorFinal={this.state.j2} setJugador={this.setCampeon} />
-                </div>
                 <div className="col-2"></div>
 
+                <Final jugadorFinal1={this.state.j1} jugadorFinal2={this.state.j2} setJugador={this.setCampeon} />
+
+                <div className="col-2"></div>
             </div>
 
             <div className="row  texto-final justify-content-center align-items-center minh-100">
@@ -270,12 +263,7 @@ export default class Playoffs extends Component {
         </div >
 
     }
-    // nombre = (newnombre) => {
-    //     this.setState({
-    //         nombre: newnombre
-    //     });
 
-    // }
     setJugador = (newjugador, i) => {
 
         if (i == 0) {
@@ -372,6 +360,7 @@ export default class Playoffs extends Component {
             localStorage.setItem("j2", JSON.stringify(newjugador));
         }
     }
+
     setCampeon = (newjugador) => {
 
         this.setState({
@@ -462,7 +451,7 @@ export default class Playoffs extends Component {
             }
 
             try {
-                const response = await axios.post('/api/insertpronostico');
+                const response = await axios.post('pr2/api/insertpronostico');
                 //    console.log('Returned data:', response);
             } catch (e) {
                 console.log('axios request failed:', e);
