@@ -62,35 +62,16 @@ export default class Pronostico extends Component {
         //   console.log(this.state.pronostico);
         if (this.state.pronostico != -1 && selectedValue != '') {
 
-            fetch('/pr2/api/partidos/8')
-                .then(res => res.json())
-                .then(json => {
 
-                    this.props.octavos(json.items[0], 0),
-                        this.props.octavos(json.items[1], 1),
-                        this.props.octavos(json.items[2], 2),
-                        this.props.octavos(json.items[3], 3),
-                        this.props.octavos(json.items[4], 4),
-                        this.props.octavos(json.items[5], 5),
-                        this.props.octavos(json.items[6], 6),
-                        this.props.octavos(json.items[7], 7)
-
-                });
             fetch('/pr2/api/pronostico/4/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
-
-                    this.props.cuartos(json.items[0], 0),
-                        this.props.cuartos(json.items[1], 1),
-                        this.props.cuartos(json.items[2], 2),
-                        this.props.cuartos(json.items[3], 3)
-
+                    this.props.cuartos(json.items)
                 });
             fetch('/pr2/api/pronostico/2/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
-                    this.props.semis(json.items[0], 0),
-                        this.props.semis(json.items[1], 1)
+                    this.props.semis(json.items)
 
                 });
             fetch('/pr2/api/pronostico/1/' + selectedValue)

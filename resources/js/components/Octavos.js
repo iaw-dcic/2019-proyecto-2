@@ -3,11 +3,9 @@ import axios from 'axios';
 import './partidos.css'
 export default class Octavos extends Component {
     state = {
-        item: [],
         jugador_uno: [],
         jugador_dos: [],
 
-        pronostico: null,
     };
 
     componentWillMount() {
@@ -15,14 +13,11 @@ export default class Octavos extends Component {
             .then(res => res.json())
             .then(json => {
                 this.setState({
-                    item: json,
                     jugador_uno: json.items.jugador_uno,
                     jugador_dos: json.items.jugador_dos,
                 })
             });
     }
-
-
 
     handleClick(param, i, e) {
         this.props.setJugador(param, i);

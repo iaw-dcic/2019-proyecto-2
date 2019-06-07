@@ -10,9 +10,9 @@ export default class Perfil extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pOctavos0: [], pOctavos1: [], pOctavos2: [], pOctavos3: [], pOctavos4: [], pOctavos5: [], pOctavos6: [], pOctavos7: [],
-            c0: [], c1: [], c2: [], c3: [],
-            s1: [], s2: [],
+
+            cuartos: [],
+            semis: [],
             f: [],
             champion: [],
             pronostico: null,
@@ -26,141 +26,66 @@ export default class Perfil extends Component {
         });
 
     }
-    //metodos para que pronostico setee
-    octavos = (oct, i) => {
-        if (i == 0) {
-
-            this.setState({ pOctavos0: oct })
-        }
-        if (i == 1) {
-
-            this.setState({ pOctavos1: oct })
-        }
-        if (i == 2) {
-
-            this.setState({ pOctavos2: oct })
-        }
-        if (i == 3) {
-            if (localStorage.hasOwnProperty("pOctavos3")) {
-                let value = localStorage.getItem("pOctavos3");
-                value = JSON.parse(value);
-                this.setState({ pOctavos3: value });
-            } else
-                this.setState({ pOctavos3: oct })
-        }
-        if (i == 4) {
-
-            this.setState({ pOctavos4: oct })
-        }
-        if (i == 5) {
-
-            this.setState({ pOctavos5: oct })
-        }
-        if (i == 6) {
-
-            this.setState({ pOctavos6: oct })
-        }
-        if (i == 7) {
-
-            this.setState({ pOctavos7: oct })
-        }
-
-    }
-
-
-    cuartos = (cuart, i) => {
-        if (i == 0) {
-            if (localStorage.hasOwnProperty("c0")) {
-                let value = JSON.parse(localStorage.getItem("c0"));
+    verLocalStorageC = () => {
+        for (var i = 0; i <= 3; i++) {
+            if (localStorage.hasOwnProperty("cuartos" + i)) {
+                let value = JSON.parse(localStorage.getItem("cuartos" + i));
                 if (value.pronostico == localStorage.getItem("pronostico")) {
+                    var final = this.state.cuartos[i];
+                    console.log(final);
+                    this.setState(({ cuartos }) => ({
+                        cuartos: {
+                            ...cuartos,
+                            [i]: value
 
-                    this.setState({ c0: value });
-                } else
-                    this.setState({ c0: cuart, })
-            }
-            else
-                this.setState({ c0: cuart, })
-        }
-        if (i == 1) {
-            if (localStorage.hasOwnProperty("c1")) {
-                let value = JSON.parse(localStorage.getItem("c1"));
-                if (value.pronostico == localStorage.getItem("pronostico")) {
-
-                    this.setState({ c1: value });
-                } else
-                    this.setState({
-                        c1: cuart
-                    })
-            }
-            else
-                this.setState({
-                    c1: cuart
-                })
-        }
-        if (i == 2) {
-            if (localStorage.hasOwnProperty("c2")) {
-                let value = JSON.parse(localStorage.getItem("c2"));
-                if (value.pronostico == localStorage.getItem("pronostico")) {
-
-                    this.setState({ c2: value });
-                } else
-                    this.setState({
-                        c2: cuart
-                    })
-            } else
-                this.setState({
-                    c2: cuart
-                })
-        }
-
-        if (i == 3) {
-            if (localStorage.hasOwnProperty("c3")) {
-                let value = JSON.parse(localStorage.getItem("c3"));
-                if (value.pronostico == localStorage.getItem("pronostico")) {
-                    this.setState({ c3: value });
-                } else
-                    this.setState({
-                        c3: cuart
-                    })
-            } else
-                this.setState({
-                    c3: cuart
-                })
-        }
-
-    }
-    semis = (semi, i) => {
-        if (i == 0) {
-            if (localStorage.hasOwnProperty("s1")) {
-                let value = JSON.parse(localStorage.getItem("s1"));
-                if (value.pronostico == localStorage.getItem("pronostico")) {
-                    this.setState({ s1: value });
+                        }
+                    }), () => {
+                        console.log(this.state.cuartos)
+                    });
                 }
-                else
-                    this.setState({
-                        s1: semi
-                    })
-            } else
-                this.setState({
-                    s1: semi
-                })
-        }
-        if (i == 1) {
-            if (localStorage.hasOwnProperty("s2")) {
-                let value = JSON.parse(localStorage.getItem("s2"));
-                if (value.pronostico == localStorage.getItem("pronostico")) {
-                    this.setState({ s2: value });
-                }
-                else
-                    this.setState({
-                        s2: semi
-                    })
-            } else
-                this.setState({
-                    s2: semi
-                })
+            }
         }
     }
+    verLocalStorageS = () => {
+        for (var i = 0; i <= 1; i++) {
+            if (localStorage.hasOwnProperty("semis" + i)) {
+                let value = JSON.parse(localStorage.getItem("semis" + i));
+                if (value.pronostico == localStorage.getItem("pronostico")) {
+                    this.setState(({ semis }) => ({
+                        semis: {
+                            ...semis,
+                            [i]: value
+
+                        }
+                    }), () => {
+                        console.log(this.state.semis)
+                    });
+                }
+            }
+        }
+    }
+    cuartos = (c) => {
+
+        for (var i = 0; i <= 3; i++) {
+            this.setState({
+                cuartos: c
+            })
+
+        }
+        this.verLocalStorageC();
+    }
+
+
+    semis = (semi) => {
+        for (var i = 0; i <= 1; i++) {
+            this.setState({
+                semis: semi
+            })
+        }
+        this.verLocalStorageS();
+    }
+
+
 
     final = (fi) => {
         if (localStorage.hasOwnProperty("f")) {
@@ -214,8 +139,8 @@ export default class Perfil extends Component {
 
             <div className="container-fluid">
                 <div className="row table-responsive">
-                    < table className="table ">
-                        <thead >
+                    < table className="table-borderless ">
+                        <thead className="thead-dark" >
                             <tr>
                                 <th scope="col">Octavos</th>
                                 <th scope="col" >Cuartos</th>
@@ -228,57 +153,57 @@ export default class Perfil extends Component {
                         <tbody>
                             <tr>
                                 <td >
-                                    {this.state.pronostico && < Octavos i={0} setJugador={this.handleOc0} />}
+                                    {this.state.pronostico && < Octavos i={0} setJugador={this.handleOc} />}
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >  {this.state.pronostico && < Octavos i={1} setJugador={this.handleOc1} />}
+                                <td >  {this.state.pronostico && < Octavos i={1} setJugador={this.handleOc} />}
                                 </td>
                             </tr>
 
                             <tr>
                                 <td ></td>
-                                <td>  {this.state.c0.jugador_uno && <Cuartos i={0} jugador1={this.state.c0.jugador_uno} jugador2={this.state.c0.jugador_dos} setJugador={this.handleC0} />}
+                                <td>  {this.state.cuartos[0] && <Cuartos i={0} jugador1={this.state.cuartos[0].jugador_uno} jugador2={this.state.cuartos[0].jugador_dos} setJugador={this.handleC} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
-                                <td>  {this.state.c1.jugador_uno && <Cuartos i={1} jugador1={this.state.c1.jugador_uno} jugador2={this.state.c1.jugador_dos} setJugador={this.handleC1} />}
+                                <td>  {this.state.cuartos[1] && <Cuartos i={1} jugador1={this.state.cuartos[1].jugador_uno} jugador2={this.state.cuartos[1].jugador_dos} setJugador={this.handleC} />}
                                 </td>
                                 <td> </td>
                             </tr >
 
                             <tr>
 
-                                <td>  {this.state.pronostico && < Octavos i={2} setJugador={this.handleOc2} />}
+                                <td>  {this.state.pronostico && < Octavos i={2} setJugador={this.handleOc} />}
 
                                 </td>
                                 <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >    {this.state.pronostico && < Octavos i={3} setJugador={this.handleOc3} />}
+                                <td >    {this.state.pronostico && < Octavos i={3} setJugador={this.handleOc} />}
                                 </td>
                             </tr >
                             <tr>
                                 <td > </td>
                                 <td></td>
-                                <td> {this.state.s1.jugador_uno && <Semis i={1} jugador1={this.state.s1.jugador_uno} jugador2={this.state.s1.jugador_dos} setJugador={this.handleS1} />}
+                                <td> {this.state.semis[0] && <Semis i={0} jugador1={this.state.semis[0].jugador_uno} jugador2={this.state.semis[0].jugador_dos} setJugador={this.handleS1} />}
                                 </td>
-                                <td>  {this.state.s2.jugador_uno && <Semis i={2} jugador1={this.state.s2.jugador_uno} jugador2={this.state.s2.jugador_dos} setJugador={this.handleS2} />}
+                                <td>  {this.state.semis[1] && <Semis i={1} jugador1={this.state.semis[1].jugador_uno} jugador2={this.state.semis[1].jugador_dos} setJugador={this.handleS2} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
                             </tr >
                             <tr>
-                                <td >   {this.state.pronostico && < Octavos i={4} setJugador={this.handleOc4} />}
+                                <td >   {this.state.pronostico && < Octavos i={4} setJugador={this.handleOc} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >   {this.state.pronostico && < Octavos i={5} setJugador={this.handleOc5} />}
+                                <td >   {this.state.pronostico && < Octavos i={5} setJugador={this.handleOc} />}
                                 </td>
                             </tr >
 
@@ -286,23 +211,23 @@ export default class Perfil extends Component {
 
                             <tr>
                                 <td ></td>
-                                <td> {this.state.c2.jugador_uno && <Cuartos i={2} jugador1={this.state.c2.jugador_uno} jugador2={this.state.c2.jugador_dos} setJugador={this.handleC2} />}
+                                <td> {this.state.cuartos[2] && <Cuartos i={2} jugador1={this.state.cuartos[2].jugador_uno} jugador2={this.state.cuartos[2].jugador_dos} setJugador={this.handleC} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
-                                <td> {this.state.c3.jugador_uno && <Cuartos i={3} jugador1={this.state.c3.jugador_uno} jugador2={this.state.c3.jugador_dos} setJugador={this.handleC3} />}
+                                <td> {this.state.cuartos[3] && <Cuartos i={3} jugador1={this.state.cuartos[3].jugador_uno} jugador2={this.state.cuartos[3].jugador_dos} setJugador={this.handleC} />}
                                 </td>
                                 <td> </td>
                             </tr >
 
                             <tr>
-                                <td >   {this.state.pronostico && < Octavos i={6} setJugador={this.handleOc6} />}
+                                <td >   {this.state.pronostico && < Octavos i={6} setJugador={this.handleOc} />}
                                 </td>
                                 <td> </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td >   {this.state.pronostico && < Octavos i={7} setJugador={this.handleOc7} />}
+                                <td >   {this.state.pronostico && < Octavos i={7} setJugador={this.handleOc} />}
                                 </td>
                             </tr >
 
@@ -310,7 +235,7 @@ export default class Perfil extends Component {
                         </tbody>
                     </table>
                 </div>
-                <div className="row header texto-final justify-content-center align-items-center minh-100">
+                <div className="row   texto-final justify-content-center align-items-center minh-100">
                     <h3> FINAL MASTER 1000 </h3>
                 </div>
                 <div className="row justify-content-center align-items-center minh-100">
@@ -323,7 +248,7 @@ export default class Perfil extends Component {
 
 
                 </div>
-                <div className="row header texto-final justify-content-center align-items-center minh-100">
+                <div className="row   texto-final justify-content-center align-items-center minh-100">
                     <h3> CAMPEON </h3>
                 </div>
                 <div className="row texto-final justify-content-center align-items-center minh-100">
@@ -333,8 +258,8 @@ export default class Perfil extends Component {
             </div>
             <div className="row">
 
-                {this.state.c0.jugador_dos && <button className="btn btn-primary" onClick={(e) => this.actualizar(e)}>Guardar</button>}
-                {this.state.c0.jugador_dos && <button className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Eliminar</button>}
+                {this.state.cuartos[0] && <button className="btn btn-primary" onClick={(e) => this.actualizar(e)}>Guardar</button>}
+                {this.state.cuartos[0] && <button className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Eliminar</button>}
             </div >
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -401,180 +326,82 @@ export default class Perfil extends Component {
         localStorage.setItem("champion", JSON.stringify(final));
     }
     //se encarga de cambiar el pronostico de la semi
-    handleC0 = (newP, e) => {
-        this.setState(({ s1 }) => ({
-            s1: {
-                ...s1,
-                jugador_uno: newP,
-            }
-        })
-            , () => {
+
+    handleC = (newP, i) => {
+        var j;
+        if (i == 0 || i == 2) j = 0;
+        if (i == 3 || i == 1) j = 1;
+
+        var cc1 = this.state.semis[j];
+        const final = this.state.semis[j];
+        if (i == 0 || i == 1) {
+            this.setState(({ cc1 }) => ({
+
+                cc1: {
+                    ...cc1,
+                    jugador_uno: newP,
+                }
+            }), () => {
                 this.setState({ load: true })
             });
-        const final = this.state.s1;
-        final["jugador_uno"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("s1", JSON.stringify(final));
-    }
-    handleC1 = (newP, e) => {
-        this.setState(({ s2 }) => ({
-            s2: {
-                ...s2,
-                jugador_uno: newP,
-            }
-        }), () => {
-            this.setState({ load: true })
-        });
-        const final = this.state.s2;
-        final["jugador_uno"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("s2", JSON.stringify(final));
-    }
-    handleC2 = (newP, e) => {
-        this.setState(({ s1 }) => ({
-            s1: {
-                ...s1,
-                jugador_dos: newP,
-            }
-        }), () => {
-            this.setState({ load: true })
-        });
-        const final = this.state.s1;
-        final["jugador_dos"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("s1", JSON.stringify(final));
-    }
-    handleC3 = (newP, e) => {
-        this.setState(({ s2 }) => ({
-            s2: {
-                ...s2,
-                jugador_dos: newP,
-            }
-        }), () => {
-            this.setState({ load: true })
-        });
-        const final = this.state.s2;
-        final["jugador_dos"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("s2", JSON.stringify(final));
-    }
-    handleOc0 = (newP, e) => {
-        this.setState(({ c0 }) => ({
-            c0: {
-                ...c0,
-                jugador_uno: newP,
-            }
-        }), () => {
-            this.setState({ load: true })
-        });
-        const final = this.state.c0;
-        final["jugador_uno"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("c0", JSON.stringify(final));
-    }
-    handleOc1 = (newP, e) => {
-        this.setState(({ c1 }) => ({
-            c1: {
-                ...c1,
-                jugador_uno: newP,
-            }
-        }), () => {
-            this.setState({ load: true })
-        });
-        const final = this.state.c1;
-        final["jugador_uno"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("c1", JSON.stringify(final));
-    }
-    handleOc2 = (newP, e) => {
-        this.setState(({ c0 }) => ({
-            c0: {
-                ...c0,
-                jugador_dos: newP,
-            }
-        }), () => {
-            this.setState({ load: true })
-        });
-        const final = this.state.c0;
-        final["jugador_dos"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("c0", JSON.stringify(final));
-    }
-    handleOc3 = (newP, e) => {
-        this.setState(({ c1 }) => ({
-            c1: {
-                ...c1,
-                jugador_dos: newP,
-            }
-        }), () => {
-            this.setState({ load: true })
-        });
-        const final = this.state.c1;
-        final["jugador_dos"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("c1", JSON.stringify(final));
-    }
-    handleOc4 = (newP, e) => {
-        this.setState(({ c2 }) => ({
-            c2: {
-                ...c2,
-                jugador_uno: newP,
-            }
-        }), () => {
-            this.setState({ load: true });
 
-        });
-        const final = this.state.c2;
-        final["jugador_uno"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("c2", JSON.stringify(final));
-    }
-    handleOc5 = (newP, e) => {
-        this.setState(({ c3 }) => ({
-            c3: {
-                ...c3,
-                jugador_uno: newP,
-            }
-        }), () => {
-            this.setState({ load: true });
+            final["jugador_uno"] = newP;
+        }
+        else {
+            this.setState(({ cc1 }) => ({
 
-        });
-        const final = this.state.c3;
-        final["jugador_uno"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("c3", JSON.stringify(final));
-    }
-    handleOc6 = (newP, e) => {
-        this.setState(({ c2 }) => ({
-            c2: {
-                ...c2,
-                jugador_dos: newP,
-            }
-        }), () => {
-            this.setState({ load: true });
-        });
-        const final = this.state.c2;
-        final["jugador_dos"] = newP;
-        final["pronostico"] = this.state.pronostico;
-        localStorage.setItem("c2", JSON.stringify(final));
+                cc1: {
+                    ...cc1,
+                    jugador_dos: newP,
+                }
+            }), () => {
+                this.setState({ load: true })
+            });
 
-    }
-    handleOc7 = (newP, e) => {
-        this.setState(({ c3 }) => ({
-            c3: {
-                ...c3,
-                jugador_dos: newP,
-            }
-        }), () => {
-            this.setState({ load: true });
-            const final = this.state.c3;
             final["jugador_dos"] = newP;
-            final["pronostico"] = this.state.pronostico;
-            localStorage.setItem("c3", JSON.stringify(final));
-        });
-
-
+        }
+        final["pronostico"] = this.state.pronostico;
+        localStorage.setItem("semis" + j, JSON.stringify(final));
     }
+
+    handleOc = (newP, i) => {
+        var j;
+        if (i == 0 || i == 2) j = 0;
+        if (i == 1 || i == 3) j = 1;
+        if (i == 4 || i == 6) j = 2;
+        if (i == 5 || i == 7) j = 3;
+        var cc1 = this.state.cuartos[j];
+        const final = this.state.cuartos[j];
+        if (i == 0 || i == 1 || i == 4 || i == 5) {
+            this.setState(({ cc1 }) => ({
+
+                cc1: {
+                    ...cc1,
+                    jugador_uno: newP,
+                }
+            }), () => {
+                this.setState({ load: true })
+            });
+
+            final["jugador_uno"] = newP;
+        }
+        else {
+            this.setState(({ cc1 }) => ({
+
+                cc1: {
+                    ...cc1,
+                    jugador_dos: newP,
+                }
+            }), () => {
+                this.setState({ load: true })
+            });
+
+            final["jugador_dos"] = newP;
+        }
+        final["pronostico"] = this.state.pronostico;
+        localStorage.setItem("cuartos" + j, JSON.stringify(final));
+    }
+
     async actualizar(e) {
 
         let api_token = document.querySelector('meta[name="api-token"]');
@@ -584,24 +411,22 @@ export default class Perfil extends Component {
         if (token && api_token) {
             window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
             window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-        } else {
-            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
         }
         try {
-            const response = await axios.post('/api/actualizar', {
-                c0: this.state.c0,
-                c1: this.state.c1,
-                c2: this.state.c2,
-                c3: this.state.c3,
-                s1: this.state.s1,
-                s2: this.state.s2,
+            const response = await axios.post('/pr2/api/actualizar', {
+                c0: this.state.cuartos[0],
+                c1: this.state.cuartos[1],
+                c2: this.state.cuartos[2],
+                c3: this.state.cuartos[3],
+                s1: this.state.semis[0],
+                s2: this.state.semis[1],
                 f: this.state.f,
                 campeon: this.state.champion,
             });
             for (let key in this.state) {
-                // if the key exists in localStorage
-                if (localStorage.hasOwnProperty(key))
-                    localStorage.removeItem(key);
+                for (var i = 0; i <= 3; i++)
+                    if (localStorage.hasOwnProperty(key + i))
+                        localStorage.removeItem(key + i);
 
             }
             this.setState(this.baseState);
@@ -609,39 +434,33 @@ export default class Perfil extends Component {
         } catch (e) {
             console.log('axios request failed:', e);
         }
-
-
     }
 
     async eliminar(e) {
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
-
-
         if (token && api_token) {
             window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
             window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-        } else {
-            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
         }
 
-
         try {
-            const response = await axios.post('/api/eliminarpronostico', {
+            const response = await axios.post('/pr2/api/eliminarpronostico', {
                 pronostico: this.state.pronostico,
-                c0: this.state.c0.id,
-                c1: this.state.c1.id,
-                c2: this.state.c2.id,
-                c3: this.state.c3.id,
-                s1: this.state.s1.id,
-                s2: this.state.s2.id,
+                c0: this.state.cuartos[0].id,
+                c1: this.state.cuartos[1].id,
+                c2: this.state.cuartos[2].id,
+                c3: this.state.cuartos[3].id,
+                s1: this.state.semis[0].id,
+                s2: this.state.semis[1].id,
                 f: this.state.f.id,
                 campeon: this.state.champion.id,
             });
             for (let key in this.state) {
+                for (var i = 0; i <= 3; i++)
+                    if (localStorage.hasOwnProperty(key + i))
+                        localStorage.removeItem(key + i);
 
-                if (localStorage.hasOwnProperty(key))
-                    localStorage.removeItem(key);
             }
             this.setState(this.baseState);
             localStorage.setItem("use", "false");

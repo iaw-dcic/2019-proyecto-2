@@ -67847,10 +67847,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Octavos)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      item: [],
       jugador_uno: [],
-      jugador_dos: [],
-      pronostico: null
+      jugador_dos: []
     });
 
     return _this;
@@ -67865,7 +67863,6 @@ function (_Component) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
-          item: json,
           jugador_uno: json.items.jugador_uno,
           jugador_dos: json.items.jugador_dos
         });
@@ -67999,161 +67996,71 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "octavos", function (oct, i) {
-      if (i == 0) {
-        _this.setState({
-          pOctavos0: oct
-        });
-      }
+    _defineProperty(_assertThisInitialized(_this), "verLocalStorageC", function () {
+      for (var i = 0; i <= 3; i++) {
+        if (localStorage.hasOwnProperty("cuartos" + i)) {
+          var _final;
 
-      if (i == 1) {
-        _this.setState({
-          pOctavos1: oct
-        });
-      }
+          (function () {
+            var value = JSON.parse(localStorage.getItem("cuartos" + i));
 
-      if (i == 2) {
-        _this.setState({
-          pOctavos2: oct
-        });
-      }
+            if (value.pronostico == localStorage.getItem("pronostico")) {
+              _final = _this.state.cuartos[i];
+              console.log(_final);
 
-      if (i == 3) {
-        if (localStorage.hasOwnProperty("pOctavos3")) {
-          var value = localStorage.getItem("pOctavos3");
-          value = JSON.parse(value);
-
-          _this.setState({
-            pOctavos3: value
-          });
-        } else _this.setState({
-          pOctavos3: oct
-        });
-      }
-
-      if (i == 4) {
-        _this.setState({
-          pOctavos4: oct
-        });
-      }
-
-      if (i == 5) {
-        _this.setState({
-          pOctavos5: oct
-        });
-      }
-
-      if (i == 6) {
-        _this.setState({
-          pOctavos6: oct
-        });
-      }
-
-      if (i == 7) {
-        _this.setState({
-          pOctavos7: oct
-        });
+              _this.setState(function (_ref) {
+                var cuartos = _ref.cuartos;
+                return {
+                  cuartos: _objectSpread({}, cuartos, _defineProperty({}, i, value))
+                };
+              }, function () {
+                console.log(_this.state.cuartos);
+              });
+            }
+          })();
+        }
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "cuartos", function (cuart, i) {
-      if (i == 0) {
-        if (localStorage.hasOwnProperty("c0")) {
-          var value = JSON.parse(localStorage.getItem("c0"));
+    _defineProperty(_assertThisInitialized(_this), "verLocalStorageS", function () {
+      for (var i = 0; i <= 1; i++) {
+        if (localStorage.hasOwnProperty("semis" + i)) {
+          (function () {
+            var value = JSON.parse(localStorage.getItem("semis" + i));
 
-          if (value.pronostico == localStorage.getItem("pronostico")) {
-            _this.setState({
-              c0: value
-            });
-          } else _this.setState({
-            c0: cuart
-          });
-        } else _this.setState({
-          c0: cuart
-        });
-      }
-
-      if (i == 1) {
-        if (localStorage.hasOwnProperty("c1")) {
-          var _value = JSON.parse(localStorage.getItem("c1"));
-
-          if (_value.pronostico == localStorage.getItem("pronostico")) {
-            _this.setState({
-              c1: _value
-            });
-          } else _this.setState({
-            c1: cuart
-          });
-        } else _this.setState({
-          c1: cuart
-        });
-      }
-
-      if (i == 2) {
-        if (localStorage.hasOwnProperty("c2")) {
-          var _value2 = JSON.parse(localStorage.getItem("c2"));
-
-          if (_value2.pronostico == localStorage.getItem("pronostico")) {
-            _this.setState({
-              c2: _value2
-            });
-          } else _this.setState({
-            c2: cuart
-          });
-        } else _this.setState({
-          c2: cuart
-        });
-      }
-
-      if (i == 3) {
-        if (localStorage.hasOwnProperty("c3")) {
-          var _value3 = JSON.parse(localStorage.getItem("c3"));
-
-          if (_value3.pronostico == localStorage.getItem("pronostico")) {
-            _this.setState({
-              c3: _value3
-            });
-          } else _this.setState({
-            c3: cuart
-          });
-        } else _this.setState({
-          c3: cuart
-        });
+            if (value.pronostico == localStorage.getItem("pronostico")) {
+              _this.setState(function (_ref2) {
+                var semis = _ref2.semis;
+                return {
+                  semis: _objectSpread({}, semis, _defineProperty({}, i, value))
+                };
+              }, function () {
+                console.log(_this.state.semis);
+              });
+            }
+          })();
+        }
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "semis", function (semi, i) {
-      if (i == 0) {
-        if (localStorage.hasOwnProperty("s1")) {
-          var value = JSON.parse(localStorage.getItem("s1"));
-
-          if (value.pronostico == localStorage.getItem("pronostico")) {
-            _this.setState({
-              s1: value
-            });
-          } else _this.setState({
-            s1: semi
-          });
-        } else _this.setState({
-          s1: semi
+    _defineProperty(_assertThisInitialized(_this), "cuartos", function (c) {
+      for (var i = 0; i <= 3; i++) {
+        _this.setState({
+          cuartos: c
         });
       }
 
-      if (i == 1) {
-        if (localStorage.hasOwnProperty("s2")) {
-          var _value4 = JSON.parse(localStorage.getItem("s2"));
+      _this.verLocalStorageC();
+    });
 
-          if (_value4.pronostico == localStorage.getItem("pronostico")) {
-            _this.setState({
-              s2: _value4
-            });
-          } else _this.setState({
-            s2: semi
-          });
-        } else _this.setState({
-          s2: semi
+    _defineProperty(_assertThisInitialized(_this), "semis", function (semi) {
+      for (var i = 0; i <= 1; i++) {
+        _this.setState({
+          semis: semi
         });
       }
+
+      _this.verLocalStorageS();
     });
 
     _defineProperty(_assertThisInitialized(_this), "final", function (fi) {
@@ -68189,8 +68096,8 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleS1", function (newP, e) {
-      _this.setState(function (_ref) {
-        var f = _ref.f;
+      _this.setState(function (_ref3) {
+        var f = _ref3.f;
         return {
           f: _objectSpread({}, f, {
             jugador_uno: newP
@@ -68202,15 +68109,15 @@ function (_Component) {
         });
       });
 
-      var _final = _this.state.f;
-      _final["jugador_uno"] = newP;
-      _final["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("f", JSON.stringify(_final));
+      var _final2 = _this.state.f;
+      _final2["jugador_uno"] = newP;
+      _final2["pronostico"] = _this.state.pronostico;
+      localStorage.setItem("f", JSON.stringify(_final2));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleS2", function (newP, e) {
-      _this.setState(function (_ref2) {
-        var f = _ref2.f;
+      _this.setState(function (_ref4) {
+        var f = _ref4.f;
         return {
           f: _objectSpread({}, f, {
             jugador_dos: newP
@@ -68222,15 +68129,15 @@ function (_Component) {
         });
       });
 
-      var _final2 = _this.state.f;
-      _final2["jugador_dos"] = newP;
-      _final2["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("f", JSON.stringify(_final2));
+      var _final3 = _this.state.f;
+      _final3["jugador_dos"] = newP;
+      _final3["pronostico"] = _this.state.pronostico;
+      localStorage.setItem("f", JSON.stringify(_final3));
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleCampeon", function (newP, e) {
-      _this.setState(function (_ref3) {
-        var champion = _ref3.champion;
+      _this.setState(function (_ref5) {
+        var champion = _ref5.champion;
         return {
           champion: _objectSpread({}, champion, {
             jugador_uno: newP
@@ -68242,267 +68149,103 @@ function (_Component) {
         });
       });
 
-      var _final3 = _this.state.champion;
-      _final3["jugador_uno"] = newP;
-      _final3["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("champion", JSON.stringify(_final3));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleC0", function (newP, e) {
-      _this.setState(function (_ref4) {
-        var s1 = _ref4.s1;
-        return {
-          s1: _objectSpread({}, s1, {
-            jugador_uno: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final4 = _this.state.s1;
+      var _final4 = _this.state.champion;
       _final4["jugador_uno"] = newP;
       _final4["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("s1", JSON.stringify(_final4));
+      localStorage.setItem("champion", JSON.stringify(_final4));
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleC1", function (newP, e) {
-      _this.setState(function (_ref5) {
-        var s2 = _ref5.s2;
-        return {
-          s2: _objectSpread({}, s2, {
-            jugador_uno: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
+    _defineProperty(_assertThisInitialized(_this), "handleC", function (newP, i) {
+      var j;
+      if (i == 0 || i == 2) j = 0;
+      if (i == 3 || i == 1) j = 1;
+      var cc1 = _this.state.semis[j];
+      var _final5 = _this.state.semis[j];
 
-      var _final5 = _this.state.s2;
-      _final5["jugador_uno"] = newP;
+      if (i == 0 || i == 1) {
+        _this.setState(function (_ref6) {
+          var cc1 = _ref6.cc1;
+          return {
+            cc1: _objectSpread({}, cc1, {
+              jugador_uno: newP
+            })
+          };
+        }, function () {
+          _this.setState({
+            load: true
+          });
+        });
+
+        _final5["jugador_uno"] = newP;
+      } else {
+        _this.setState(function (_ref7) {
+          var cc1 = _ref7.cc1;
+          return {
+            cc1: _objectSpread({}, cc1, {
+              jugador_dos: newP
+            })
+          };
+        }, function () {
+          _this.setState({
+            load: true
+          });
+        });
+
+        _final5["jugador_dos"] = newP;
+      }
+
       _final5["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("s2", JSON.stringify(_final5));
+      localStorage.setItem("semis" + j, JSON.stringify(_final5));
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleC2", function (newP, e) {
-      _this.setState(function (_ref6) {
-        var s1 = _ref6.s1;
-        return {
-          s1: _objectSpread({}, s1, {
-            jugador_dos: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
+    _defineProperty(_assertThisInitialized(_this), "handleOc", function (newP, i) {
+      var j;
+      if (i == 0 || i == 2) j = 0;
+      if (i == 1 || i == 3) j = 1;
+      if (i == 4 || i == 6) j = 2;
+      if (i == 5 || i == 7) j = 3;
+      var cc1 = _this.state.cuartos[j];
+      var _final6 = _this.state.cuartos[j];
 
-      var _final6 = _this.state.s1;
-      _final6["jugador_dos"] = newP;
+      if (i == 0 || i == 1 || i == 4 || i == 5) {
+        _this.setState(function (_ref8) {
+          var cc1 = _ref8.cc1;
+          return {
+            cc1: _objectSpread({}, cc1, {
+              jugador_uno: newP
+            })
+          };
+        }, function () {
+          _this.setState({
+            load: true
+          });
+        });
+
+        _final6["jugador_uno"] = newP;
+      } else {
+        _this.setState(function (_ref9) {
+          var cc1 = _ref9.cc1;
+          return {
+            cc1: _objectSpread({}, cc1, {
+              jugador_dos: newP
+            })
+          };
+        }, function () {
+          _this.setState({
+            load: true
+          });
+        });
+
+        _final6["jugador_dos"] = newP;
+      }
+
       _final6["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("s1", JSON.stringify(_final6));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleC3", function (newP, e) {
-      _this.setState(function (_ref7) {
-        var s2 = _ref7.s2;
-        return {
-          s2: _objectSpread({}, s2, {
-            jugador_dos: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final7 = _this.state.s2;
-      _final7["jugador_dos"] = newP;
-      _final7["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("s2", JSON.stringify(_final7));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc0", function (newP, e) {
-      _this.setState(function (_ref8) {
-        var c0 = _ref8.c0;
-        return {
-          c0: _objectSpread({}, c0, {
-            jugador_uno: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final8 = _this.state.c0;
-      _final8["jugador_uno"] = newP;
-      _final8["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("c0", JSON.stringify(_final8));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc1", function (newP, e) {
-      _this.setState(function (_ref9) {
-        var c1 = _ref9.c1;
-        return {
-          c1: _objectSpread({}, c1, {
-            jugador_uno: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final9 = _this.state.c1;
-      _final9["jugador_uno"] = newP;
-      _final9["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("c1", JSON.stringify(_final9));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc2", function (newP, e) {
-      _this.setState(function (_ref10) {
-        var c0 = _ref10.c0;
-        return {
-          c0: _objectSpread({}, c0, {
-            jugador_dos: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final10 = _this.state.c0;
-      _final10["jugador_dos"] = newP;
-      _final10["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("c0", JSON.stringify(_final10));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc3", function (newP, e) {
-      _this.setState(function (_ref11) {
-        var c1 = _ref11.c1;
-        return {
-          c1: _objectSpread({}, c1, {
-            jugador_dos: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final11 = _this.state.c1;
-      _final11["jugador_dos"] = newP;
-      _final11["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("c1", JSON.stringify(_final11));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc4", function (newP, e) {
-      _this.setState(function (_ref12) {
-        var c2 = _ref12.c2;
-        return {
-          c2: _objectSpread({}, c2, {
-            jugador_uno: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final12 = _this.state.c2;
-      _final12["jugador_uno"] = newP;
-      _final12["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("c2", JSON.stringify(_final12));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc5", function (newP, e) {
-      _this.setState(function (_ref13) {
-        var c3 = _ref13.c3;
-        return {
-          c3: _objectSpread({}, c3, {
-            jugador_uno: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final13 = _this.state.c3;
-      _final13["jugador_uno"] = newP;
-      _final13["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("c3", JSON.stringify(_final13));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc6", function (newP, e) {
-      _this.setState(function (_ref14) {
-        var c2 = _ref14.c2;
-        return {
-          c2: _objectSpread({}, c2, {
-            jugador_dos: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-      });
-
-      var _final14 = _this.state.c2;
-      _final14["jugador_dos"] = newP;
-      _final14["pronostico"] = _this.state.pronostico;
-      localStorage.setItem("c2", JSON.stringify(_final14));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleOc7", function (newP, e) {
-      _this.setState(function (_ref15) {
-        var c3 = _ref15.c3;
-        return {
-          c3: _objectSpread({}, c3, {
-            jugador_dos: newP
-          })
-        };
-      }, function () {
-        _this.setState({
-          load: true
-        });
-
-        var _final15 = _this.state.c3;
-        _final15["jugador_dos"] = newP;
-        _final15["pronostico"] = _this.state.pronostico;
-        localStorage.setItem("c3", JSON.stringify(_final15));
-      });
+      localStorage.setItem("cuartos" + j, JSON.stringify(_final6));
     });
 
     _this.state = {
-      pOctavos0: [],
-      pOctavos1: [],
-      pOctavos2: [],
-      pOctavos3: [],
-      pOctavos4: [],
-      pOctavos5: [],
-      pOctavos6: [],
-      pOctavos7: [],
-      c0: [],
-      c1: [],
-      c2: [],
-      c3: [],
-      s1: [],
-      s2: [],
+      cuartos: [],
+      semis: [],
       f: [],
       champion: [],
       pronostico: null,
@@ -68538,8 +68281,10 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
-        className: "table "
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        className: "table-borderless "
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", {
+        className: "thead-dark"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
       }, "Octavos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         scope: "col"
@@ -68553,60 +68298,60 @@ function (_Component) {
         scope: "col"
       }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 0,
-        setJugador: this.handleOc0
+        setJugador: this.handleOc
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 1,
-        setJugador: this.handleOc1
-      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.c0.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        setJugador: this.handleOc
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.cuartos[0] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
         i: 0,
-        jugador1: this.state.c0.jugador_uno,
-        jugador2: this.state.c0.jugador_dos,
-        setJugador: this.handleC0
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.c1.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        jugador1: this.state.cuartos[0].jugador_uno,
+        jugador2: this.state.cuartos[0].jugador_dos,
+        setJugador: this.handleC
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.cuartos[1] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
         i: 1,
-        jugador1: this.state.c1.jugador_uno,
-        jugador2: this.state.c1.jugador_dos,
-        setJugador: this.handleC1
+        jugador1: this.state.cuartos[1].jugador_uno,
+        jugador2: this.state.cuartos[1].jugador_dos,
+        setJugador: this.handleC
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 2,
-        setJugador: this.handleOc2
+        setJugador: this.handleOc
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "    ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 3,
-        setJugador: this.handleOc3
-      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.s1.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        i: 1,
-        jugador1: this.state.s1.jugador_uno,
-        jugador2: this.state.s1.jugador_dos,
+        setJugador: this.handleOc
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.semis[0] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        i: 0,
+        jugador1: this.state.semis[0].jugador_uno,
+        jugador2: this.state.semis[0].jugador_dos,
         setJugador: this.handleS1
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.s2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        i: 2,
-        jugador1: this.state.s2.jugador_uno,
-        jugador2: this.state.s2.jugador_dos,
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "  ", this.state.semis[1] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        i: 1,
+        jugador1: this.state.semis[1].jugador_uno,
+        jugador2: this.state.semis[1].jugador_dos,
         setJugador: this.handleS2
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 4,
-        setJugador: this.handleOc4
+        setJugador: this.handleOc
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 5,
-        setJugador: this.handleOc5
-      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c2.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        setJugador: this.handleOc
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.cuartos[2] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
         i: 2,
-        jugador1: this.state.c2.jugador_uno,
-        jugador2: this.state.c2.jugador_dos,
-        setJugador: this.handleC2
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.c3.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        jugador1: this.state.cuartos[2].jugador_uno,
+        jugador2: this.state.cuartos[2].jugador_dos,
+        setJugador: this.handleC
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ", this.state.cuartos[3] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
         i: 3,
-        jugador1: this.state.c3.jugador_uno,
-        jugador2: this.state.c3.jugador_dos,
-        setJugador: this.handleC3
+        jugador1: this.state.cuartos[3].jugador_uno,
+        jugador2: this.state.cuartos[3].jugador_dos,
+        setJugador: this.handleC
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 6,
-        setJugador: this.handleOc6
+        setJugador: this.handleOc
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 7,
-        setJugador: this.handleOc7
+        setJugador: this.handleOc
       })))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row header texto-final justify-content-center align-items-center minh-100"
+        className: "row   texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -68618,17 +68363,17 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row header texto-final justify-content-center align-items-center minh-100"
+        className: "row   texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row texto-final justify-content-center align-items-center minh-100"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, " ", camp.nombre, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row"
-      }, this.state.c0.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, this.state.cuartos[0] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary",
         onClick: function onClick(e) {
           return _this2.actualizar(e);
         }
-      }, "Guardar"), this.state.c0.jugador_dos && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "Guardar"), this.state.cuartos[0] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary",
         "data-toggle": "modal",
         "data-target": "#exampleModal"
@@ -68680,7 +68425,7 @@ function (_Component) {
       var _actualizar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
-        var api_token, token, response, key;
+        var api_token, token, response, key, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -68691,19 +68436,17 @@ function (_Component) {
                 if (token && api_token) {
                   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
                   window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-                } else {
-                  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
                 }
 
                 _context.prev = 3;
                 _context.next = 6;
-                return axios.post('/api/actualizar', {
-                  c0: this.state.c0,
-                  c1: this.state.c1,
-                  c2: this.state.c2,
-                  c3: this.state.c3,
-                  s1: this.state.s1,
-                  s2: this.state.s2,
+                return axios.post('/pr2/api/actualizar', {
+                  c0: this.state.cuartos[0],
+                  c1: this.state.cuartos[1],
+                  c2: this.state.cuartos[2],
+                  c3: this.state.cuartos[3],
+                  s1: this.state.semis[0],
+                  s2: this.state.semis[1],
                   f: this.state.f,
                   campeon: this.state.champion
                 });
@@ -68712,8 +68455,9 @@ function (_Component) {
                 response = _context.sent;
 
                 for (key in this.state) {
-                  // if the key exists in localStorage
-                  if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
+                  for (i = 0; i <= 3; i++) {
+                    if (localStorage.hasOwnProperty(key + i)) localStorage.removeItem(key + i);
+                  }
                 }
 
                 this.setState(this.baseState);
@@ -68746,7 +68490,7 @@ function (_Component) {
       var _eliminar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
-        var api_token, token, response, key;
+        var api_token, token, response, key, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -68757,20 +68501,18 @@ function (_Component) {
                 if (token && api_token) {
                   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
                   window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-                } else {
-                  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
                 }
 
                 _context2.prev = 3;
                 _context2.next = 6;
-                return axios.post('/api/eliminarpronostico', {
+                return axios.post('/pr2/api/eliminarpronostico', {
                   pronostico: this.state.pronostico,
-                  c0: this.state.c0.id,
-                  c1: this.state.c1.id,
-                  c2: this.state.c2.id,
-                  c3: this.state.c3.id,
-                  s1: this.state.s1.id,
-                  s2: this.state.s2.id,
+                  c0: this.state.cuartos[0].id,
+                  c1: this.state.cuartos[1].id,
+                  c2: this.state.cuartos[2].id,
+                  c3: this.state.cuartos[3].id,
+                  s1: this.state.semis[0].id,
+                  s2: this.state.semis[1].id,
                   f: this.state.f.id,
                   campeon: this.state.champion.id
                 });
@@ -68779,7 +68521,9 @@ function (_Component) {
                 response = _context2.sent;
 
                 for (key in this.state) {
-                  if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
+                  for (i = 0; i <= 3; i++) {
+                    if (localStorage.hasOwnProperty(key + i)) localStorage.removeItem(key + i);
+                  }
                 }
 
                 this.setState(this.baseState);
@@ -69055,7 +68799,13 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var items = this.state.items;
+      var oct = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-4 semis"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-2 cuartos"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), " ");
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -69075,13 +68825,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 0,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      })), oct, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 1,
@@ -69099,7 +68843,7 @@ function (_Component) {
         setJugador: this.setJugadorSemi
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 1,
@@ -69115,13 +68859,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 2,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      })), oct, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 3,
@@ -69130,9 +68868,9 @@ function (_Component) {
         className: "partido row "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "  "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 1,
@@ -69148,22 +68886,16 @@ function (_Component) {
         setJugador: this.setJugadorFinal
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "  ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 4,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      })), oct, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 5,
@@ -69181,7 +68913,7 @@ function (_Component) {
         setJugador: this.setJugadorSemi
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 3,
@@ -69197,13 +68929,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 6,
         setJugador: this.setJugador
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-4 semis"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2 cuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      })), oct, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 7,
@@ -69251,12 +68977,6 @@ function (_Component) {
               case 2:
                 //  console.log("hanle cuartos : " + this.state.pronost.id);
                 pro = this.state.pronost.id;
-
-                if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context.next = 19;
-                  break;
-                }
-
                 token = document.head.querySelector('meta[name="csrf-token"]');
 
                 if (token) {
@@ -69265,9 +68985,9 @@ function (_Component) {
                   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
                 }
 
-                _context.prev = 6;
-                _context.next = 9;
-                return axios.post('/api/insert', {
+                _context.prev = 5;
+                _context.next = 8;
+                return axios.post('/pr2/api/insert', {
                   pronostico: pro,
                   c0j1: this.state.c0j1.id,
                   c0j2: this.state.c0j2.id,
@@ -69286,7 +69006,7 @@ function (_Component) {
                   campeon: this.state.campeon.id
                 });
 
-              case 9:
+              case 8:
                 response = _context.sent;
 
                 for (key in this.state) {
@@ -69298,20 +69018,20 @@ function (_Component) {
                 localStorage.setItem("use", "false");
                 alert("Su pronostico se guardo correctamente"); // console.log('Returned data:', response);
 
-                _context.next = 19;
+                _context.next = 18;
                 break;
 
-              case 16:
-                _context.prev = 16;
-                _context.t0 = _context["catch"](6);
+              case 15:
+                _context.prev = 15;
+                _context.t0 = _context["catch"](5);
                 console.log('axios request failed:', _context.t0);
 
-              case 19:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[6, 16]]);
+        }, _callee, this, [[5, 15]]);
       }));
 
       function handleCuartos() {
@@ -69337,7 +69057,7 @@ function (_Component) {
                 }
 
                 alert("no se puede guardar el cuadro sin completar");
-                _context2.next = 16;
+                _context2.next = 20;
                 break;
 
               case 4:
@@ -69353,7 +69073,7 @@ function (_Component) {
 
                 _context2.prev = 7;
                 _context2.next = 10;
-                return axios.post('pr2/api/insertpronostico');
+                return axios.post('/pr2/api/insertpronostico');
 
               case 10:
                 response = _context2.sent;
@@ -69398,11 +69118,6 @@ function (_Component) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                if (this.state.c0j1.id == null || this.state.c0j2.id == null || this.state.c1j1.id == null || this.state.c1j2.id == null || this.state.c2j1.id == null || this.state.c2j2.id == null || this.state.c3j1.id == null || this.state.c3j2.id == null || this.state.s1j1.id == null || this.state.s1j2.id == null || this.state.s2j1.id == null || this.state.s2j2.id == null || this.state.j1.id == null || this.state.j2.id == null || this.state.campeon.id == null) {
-                  _context3.next = 11;
-                  break;
-                }
-
                 api_token = document.querySelector('meta[name="api-token"]');
                 token = document.head.querySelector('meta[name="csrf-token"]');
                 miInit = {
@@ -69411,21 +69126,21 @@ function (_Component) {
                     'Authorization': 'Bearer ' + api_token.content
                   }
                 };
-                _context3.next = 6;
-                return fetch('/api/ultimopronostico', miInit);
+                _context3.next = 5;
+                return fetch('/pr2/api/ultimopronostico', miInit);
 
-              case 6:
+              case 5:
                 res = _context3.sent;
-                _context3.next = 9;
+                _context3.next = 8;
                 return res.json();
 
-              case 9:
+              case 8:
                 something = _context3.sent;
                 this.setState({
                   pronost: something
                 });
 
-              case 11:
+              case 10:
               case "end":
                 return _context3.stop();
             }
@@ -69745,20 +69460,15 @@ function (_Component) {
                 this.props.setPronostico(selectedValue); //   console.log(this.state.pronostico);
 
                 if (this.state.pronostico != -1 && selectedValue != '') {
-                  fetch('/pr2/api/partidos/8').then(function (res) {
-                    return res.json();
-                  }).then(function (json) {
-                    _this3.props.octavos(json.items[0], 0), _this3.props.octavos(json.items[1], 1), _this3.props.octavos(json.items[2], 2), _this3.props.octavos(json.items[3], 3), _this3.props.octavos(json.items[4], 4), _this3.props.octavos(json.items[5], 5), _this3.props.octavos(json.items[6], 6), _this3.props.octavos(json.items[7], 7);
-                  });
                   fetch('/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this3.props.cuartos(json.items[0], 0), _this3.props.cuartos(json.items[1], 1), _this3.props.cuartos(json.items[2], 2), _this3.props.cuartos(json.items[3], 3);
+                    _this3.props.cuartos(json.items);
                   });
                   fetch('/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
-                    _this3.props.semis(json.items[0], 0), _this3.props.semis(json.items[1], 1);
+                    _this3.props.semis(json.items);
                   });
                   fetch('/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
                     return res.json();
@@ -70011,7 +69721,7 @@ function (_Component) {
 
       var _loop = function _loop(i) {
         r.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: a[i].nombre,
+          key: "semi" + _this2.props.i + i,
           className: "row border"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-2 jugador"

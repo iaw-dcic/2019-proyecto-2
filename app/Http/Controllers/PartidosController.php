@@ -129,10 +129,7 @@ class PartidosController extends Controller
         DB::rollback();
         abort(500);
     }
-        // if($arreglo != null)
-        //      return response()->json($arreglo, 200);
-        // else
-        //     return response()->json("no hay", 404);
+      
     }
      
 

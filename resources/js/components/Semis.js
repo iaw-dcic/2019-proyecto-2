@@ -18,7 +18,7 @@ export default class Semis extends Component {
 
         for (let i = 0; i < 2; i++) {
 
-            r.push(<div key={a[i].nombre}className="row border">
+            r.push(<div key={"semi" + this.props.i + i} className="row border">
                 <div className="col-2 jugador">
                     {a[i].pais && <img src={"banderas/" + a[i].pais + ".png"}></img>}
                 </div>
