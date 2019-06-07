@@ -6539,7 +6539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Arvo|PT+Sans&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".subTitle1{\r\n    background: rgba(244,122,255,1);\r\n    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(244,122,255,1)), color-stop(32%, rgba(92,152,255,1)), color-stop(72%, rgba(92,152,255,1)), color-stop(100%, rgba(249,66,255,1)));\r\n    background: linear-gradient(to bottom, rgba(244,122,255,1) 0%, rgba(92,152,255,1) 32%, rgba(92,152,255,1) 72%, rgba(249,66,255,1) 100%);\r\n    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f47aff', endColorstr='#f942ff', GradientType=0 );\r\n}\r\n\r\n.subTitle2{\r\n    background: rgba(255,218,31,1);\r\n    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,218,31,1)), color-stop(32%, rgba(255,71,71,1)), color-stop(68%, rgba(255,92,92,1)), color-stop(100%, rgba(255,255,36,1)));\r\n    background: linear-gradient(to bottom, rgba(255,218,31,1) 0%, rgba(255,71,71,1) 32%, rgba(255,92,92,1) 68%, rgba(255,255,36,1) 100%);\r\n    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffda1f', endColorstr='#ffff24', GradientType=0 );\r\n}\r\n\r\n.subTitle3{\r\n    background: rgba(252,240,74,1);\r\n    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,240,74,1)), color-stop(100%, rgba(255,177,51,1)));\r\n    background: linear-gradient(to bottom, rgba(252,240,74,1) 0%, rgba(255,177,51,1) 100%);\r\n    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf04a', endColorstr='#ffb133', GradientType=0 );\r\n\r\n}\r\n\r\n.reason{\r\n    display: inline-table;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    height:100%;\r\n    padding-top: 0%;\r\n    padding-bottom: 2%;\r\n     \r\n }\r\n\r\n .reason > h1{\r\n    font-weight: bolder;\r\n    font-size: 50px;\r\n }\r\n\r\n .reason > h3{\r\n    font-family: 'Arvo', serif;\r\n    font-weight: 800;\r\n    font-size:50px;\r\n    padding-top: 0;\r\n    padding-bottom: 2%;\r\n }\r\n\r\n.reason > p {\r\n\r\n    font-size:30px;\r\n    font-weight: 200;\r\n    padding-bottom: 2.5%;\r\n    font-family: 'PT Sans', sans-serif;\r\n}", ""]);
+exports.push([module.i, ".subTitle1{\r\n    background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);\r\n}\r\n\r\n.subTitle2{\r\n    background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);\r\n}\r\n\r\n.subTitle3{\r\n    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);\r\n\r\n}\r\n\r\n.reason{\r\n    display: inline-table;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    height:100%;\r\n    padding-top: 0%;\r\n    padding-bottom: 2%;\r\n     \r\n }\r\n\r\n .reason > h1{\r\n    font-weight: bolder;\r\n    font-size: 50px;\r\n }\r\n\r\n .reason > h3{\r\n    font-family: 'Arvo', serif;\r\n    font-weight: 800;\r\n    font-size:50px;\r\n    padding-top: 0;\r\n    padding-bottom: 2%;\r\n }\r\n\r\n.reason > p {\r\n\r\n    font-size:30px;\r\n    font-weight: 200;\r\n    padding-bottom: 2.5%;\r\n    font-family: 'PT Sans', sans-serif;\r\n}", ""]);
 
 // exports
 
@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".size{\r\n    width:100px;\r\n    height:100px;\r\n    padding-bottom: 5%;\r\n    \r\n   \r\n}\r\n.boton{\r\n    padding-bottom: 5%;\r\n    z-index:2;   \r\n}\r\n.side{\r\n    font-weight: bolder;\r\n    font-size: 30px;\r\n}\r\n.previos{\r\n    min-height: 500px;\r\n}\r\n.size-prev{\r\n    width:300px;\r\n    height:300px;\r\n    padding-bottom: 5%;\r\n    \r\n    \r\n}\r\n", ""]);
+exports.push([module.i, ".size{\r\n    width:100px;\r\n    height:100px;\r\n    padding-bottom: 5%;\r\n    \r\n   \r\n}\r\n.boton{\r\n    padding-bottom: 5%;\r\n    z-index:2;   \r\n}\r\n\r\n.previos{\r\n    min-height: 500px;\r\n}\r\n.size-prev{\r\n    width:300px;\r\n    height:300px;\r\n    padding-bottom: 5%;\r\n    \r\n    \r\n}\r\n", ""]);
 
 // exports
 
@@ -6634,7 +6634,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\r\n.avatar{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#94bbe9\",GradientType=1);\r\n}\r\n\r\n.body{\r\nbackground: rgb(238,174,202);\r\nbackground: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(235,167,144,1) 52%, rgba(232,139,63,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#eeaeca\",endColorstr=\"#e88b3f\",GradientType=1);\r\nheight: 100%;\r\n}\r\n.side{\r\n    background: rgb(131,58,180);\r\nbackground: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);\r\nfilter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#833ab4\",endColorstr=\"#fcb045\",GradientType=1);\r\n}\r\n\r\n.alturaSidebar{\r\n    position: absolute !important;\r\n    z-index: 2;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "\r\n.avatar{\r\n    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);\r\n}\r\n\r\n.body{\r\n    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);\r\nheight: 100%;\r\n}\r\n.side{\r\n    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);\r\n}\r\n\r\n.alturaSidebar{\r\n    position: absolute !important;\r\n    z-index: 2;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -66587,6 +66587,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "card-title text-center",
+        placeholder: "Ponme un Nombre",
         value: this.state.nameValue,
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66796,12 +66797,12 @@ function (_Component) {
     value: function newAvatares(ID) {
       var avatares = [];
       var i = 0;
-      this.state.AllAvatars.forEach(function (element) {
-        if (element.id != ID) {
-          avatares[i] = element;
-          i++;
-        }
-      });
+
+      for (var _i = 0; _i < this.state.AllAvatars.length; _i++) {
+        if (this.state.AllAvatars[_i].id != ID) avatares[_i] = this.state.AllAvatars[_i];
+      }
+
+      console.log(avatares);
       return avatares;
     }
   }, {
@@ -66834,21 +66835,19 @@ function (_Component) {
           });
         } else {
           //asumo que avatarID != -1
-          this.setState({
-            AllAvatars: this.state.AllAvatars.filter(function (avatarnew) {
-              return avatarnew.avatarID != avatar.avatarID;
-            })
-          }); //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
-
+          //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(function (res) {
             _this3.setState({
               AllAvatars: _this3.newAvatares(_this3.state.avatarID)
             });
 
+            console.log(_this3.state.AllAvatars);
+
             _this3.setState({
               AllAvatars: _this3.state.AllAvatars.concat(avatar)
             });
 
+            console.log(_this3.state.AllAvatars);
             alert("tu avatar ha sido modificado con exito");
           });
         } //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
@@ -67262,7 +67261,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ComponentCSS_Sidebar_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ComponentCSS_Sidebar_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Avatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Avatar */ "./resources/js/components/Avatar.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67282,7 +67280,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -67431,9 +67428,7 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "previos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-center side"
-      }, "haz clic en tus avatares previos para editarlos!"), this.props.AllAvatars.map(function (avatar, index) {
+      }, this.props.AllAvatars.map(function (avatar, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: avatar.name + "-" + index,
           className: "card  mx-auto  size-prev"
@@ -67577,8 +67572,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

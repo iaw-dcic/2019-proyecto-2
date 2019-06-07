@@ -1,36 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo|PT+Sans&display=swap');
 
 .subTitle1{
-    background: rgba(244,122,255,1);
-    background: -moz-linear-gradient(top, rgba(244,122,255,1) 0%, rgba(92,152,255,1) 32%, rgba(92,152,255,1) 72%, rgba(249,66,255,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(244,122,255,1)), color-stop(32%, rgba(92,152,255,1)), color-stop(72%, rgba(92,152,255,1)), color-stop(100%, rgba(249,66,255,1)));
-    background: -webkit-linear-gradient(top, rgba(244,122,255,1) 0%, rgba(92,152,255,1) 32%, rgba(92,152,255,1) 72%, rgba(249,66,255,1) 100%);
-    background: -o-linear-gradient(top, rgba(244,122,255,1) 0%, rgba(92,152,255,1) 32%, rgba(92,152,255,1) 72%, rgba(249,66,255,1) 100%);
-    background: -ms-linear-gradient(top, rgba(244,122,255,1) 0%, rgba(92,152,255,1) 32%, rgba(92,152,255,1) 72%, rgba(249,66,255,1) 100%);
-    background: linear-gradient(to bottom, rgba(244,122,255,1) 0%, rgba(92,152,255,1) 32%, rgba(92,152,255,1) 72%, rgba(249,66,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f47aff', endColorstr='#f942ff', GradientType=0 );
+    background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
 }
 
 .subTitle2{
-    background: rgba(255,218,31,1);
-    background: -moz-linear-gradient(top, rgba(255,218,31,1) 0%, rgba(255,71,71,1) 32%, rgba(255,92,92,1) 68%, rgba(255,255,36,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,218,31,1)), color-stop(32%, rgba(255,71,71,1)), color-stop(68%, rgba(255,92,92,1)), color-stop(100%, rgba(255,255,36,1)));
-    background: -webkit-linear-gradient(top, rgba(255,218,31,1) 0%, rgba(255,71,71,1) 32%, rgba(255,92,92,1) 68%, rgba(255,255,36,1) 100%);
-    background: -o-linear-gradient(top, rgba(255,218,31,1) 0%, rgba(255,71,71,1) 32%, rgba(255,92,92,1) 68%, rgba(255,255,36,1) 100%);
-    background: -ms-linear-gradient(top, rgba(255,218,31,1) 0%, rgba(255,71,71,1) 32%, rgba(255,92,92,1) 68%, rgba(255,255,36,1) 100%);
-    background: linear-gradient(to bottom, rgba(255,218,31,1) 0%, rgba(255,71,71,1) 32%, rgba(255,92,92,1) 68%, rgba(255,255,36,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffda1f', endColorstr='#ffff24', GradientType=0 );
+    background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
 }
 
 .subTitle3{
-    background: rgba(252,240,74,1);
-    background: -moz-linear-gradient(top, rgba(252,240,74,1) 0%, rgba(255,177,51,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,240,74,1)), color-stop(100%, rgba(255,177,51,1)));
-    background: -webkit-linear-gradient(top, rgba(252,240,74,1) 0%, rgba(255,177,51,1) 100%);
-    background: -o-linear-gradient(top, rgba(252,240,74,1) 0%, rgba(255,177,51,1) 100%);
-    background: -ms-linear-gradient(top, rgba(252,240,74,1) 0%, rgba(255,177,51,1) 100%);
-    background: linear-gradient(to bottom, rgba(252,240,74,1) 0%, rgba(255,177,51,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf04a', endColorstr='#ffb133', GradientType=0 );
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 
 }
 

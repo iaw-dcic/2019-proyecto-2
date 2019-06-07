@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './ComponentCSS/superponer.css'
 import './ComponentCSS/Sidebar.css'
 import axios from 'axios'
-import avatar from './Avatar'
+
 
 
 export default class SideBar extends Component{
@@ -128,9 +128,7 @@ nuevoAvatar(event){
         return (
           <>
             <div className="previos">
-              <p className="text-center side">haz clic en tus avatares previos para editarlos!</p>
        
-
             {this.props.AllAvatars.map((avatar,index) =>(
                 <div key={avatar.name+"-"+index} className="card  mx-auto  size-prev">
                     <img className="superponer" src={window.location.origin + '/RecursosGraficos/Caras/' + avatar.skin + '.png'}/> 

@@ -58,8 +58,20 @@ class userAvatarController extends Controller
     }
 
 
-    public function update(avatar $avatar){
-        $avatar->update();
+    public function update(Request $request){
+        $avatar = avatar::findOrFail($request->avatarId);
+     
+        $validatedData = $request->validate([
+            'skin' => 'required',
+            'hair' => 'required',
+            'eyes' => 'required',
+            'mouth' => 'required',
+          ]);
+        $avatar->skin=$validatedData['skin'];
+        $avatar->eyes=$validatedData['eyes'];
+        $avatar->hair=$validatedData['hair'];
+        $avatar->mouth=$validatedData['mouth'];
+        $avatar->save();
         return response()->json('avatar actualizado!');
     }
 

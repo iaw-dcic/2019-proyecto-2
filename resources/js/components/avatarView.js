@@ -127,12 +127,12 @@ export default class AvatarView extends Component{
     newAvatares(ID){
         let avatares = []
         let i = 0;
-        this.state.AllAvatars.forEach(element => {
-            if(element.id != ID){
-                avatares[i]=element
-                i++
-            }
-        });
+        for(let i = 0; i < this.state.AllAvatars.length; i++){
+            if(this.state.AllAvatars[i].id != ID)
+                avatares[i] = this.state.AllAvatars[i]
+        }
+        
+        console.log(avatares);
         return avatares
     }
 
@@ -163,17 +163,16 @@ export default class AvatarView extends Component{
                 })
             }
             else{//asumo que avatarID != -1
-                this.setState({
-                    AllAvatars : this.state.AllAvatars.filter(avatarnew => avatarnew.avatarID != avatar.avatarID)
-                })
                 //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
                 axios.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(res =>{
                     this.setState({
                         AllAvatars : this.newAvatares(this.state.avatarID)
                     })
+                    console.log(this.state.AllAvatars)
                     this.setState({
                         AllAvatars : this.state.AllAvatars.concat(avatar)
                     })
+                    console.log(this.state.AllAvatars)
                     alert("tu avatar ha sido modificado con exito")
                 })
 
