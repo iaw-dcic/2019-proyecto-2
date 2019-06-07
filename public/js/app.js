@@ -66260,8 +66260,8 @@ function (_Component) {
         var child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.octavos[i],
           teamB: this.state.octavos[i + 1],
-          iconA: "./images/".concat(this.state.octavos[i], ".png"),
-          iconB: "./images/".concat(this.state.octavos[i + 1], ".png"),
+          iconA: "./images/".concat(this.state.octavos[i], "_esc\xFAdo.png"),
+          iconB: "./images/".concat(this.state.octavos[i + 1], "_esc\xFAdo.png"),
           id1: i,
           id2: i + 1,
           onClick: this.onClickOctavos,
@@ -66298,8 +66298,8 @@ function (_Component) {
         children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.cuartos[i],
           teamB: this.state.cuartos[i + 1],
-          iconA: "./images/".concat(this.state.cuartos[i], ".png"),
-          iconB: "./images/".concat(this.state.cuartos[i + 1], ".png"),
+          iconA: "./images/".concat(this.state.cuartos[i], "_esc\xFAdo.png"),
+          iconB: "./images/".concat(this.state.cuartos[i + 1], "_esc\xFAdo.png"),
           id1: i,
           id2: i + 1,
           onClick: this.onClickCuartos,
@@ -66333,8 +66333,8 @@ function (_Component) {
         children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.semis[i],
           teamB: this.state.semis[i + 1],
-          iconA: "./images/".concat(this.state.semis[i], ".png"),
-          iconB: "./images/".concat(this.state.semis[i + 1], ".png"),
+          iconA: "./images/".concat(this.state.semis[i], "_esc\xFAdo.png"),
+          iconB: "./images/".concat(this.state.semis[i + 1], "_esc\xFAdo.png"),
           id1: i,
           id2: i + 1,
           onClick: this.onClickSemis,
@@ -66367,8 +66367,8 @@ function (_Component) {
       children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
         teamA: this.state["final"][i],
         teamB: this.state["final"][i + 1],
-        iconA: "./images/".concat(this.state["final"][i], ".png"),
-        iconB: "./images/".concat(this.state["final"][i + 1], ".png"),
+        iconA: "./images/".concat(this.state["final"][i], "_esc\xFAdo.png"),
+        iconB: "./images/".concat(this.state["final"][i + 1], "_esc\xFAdo.png"),
         id1: "0",
         id2: "1",
         onClick: this.onClickFinal,
@@ -66388,7 +66388,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: 'images/copasudamericana.png'
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.champ, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "images/".concat(this.state.champ, ".png")
+        src: "images/".concat(this.state.champ, "_esc\xFAdo.png")
       }));else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "myDiv champDiv col-sm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

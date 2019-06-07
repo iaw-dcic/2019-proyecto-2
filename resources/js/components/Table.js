@@ -159,8 +159,8 @@ export default class Table extends Component {
             else disabled = "";
 
             let child = <Game teamA = {this.state.octavos[i]} teamB = {this.state.octavos[i+1]}
-                        iconA = {`./images/${this.state.octavos[i]}.png`}
-                        iconB = {`./images/${this.state.octavos[i+1]}.png`}
+                        iconA = {`./images/${this.state.octavos[i]}_escúdo.png`}
+                        iconB = {`./images/${this.state.octavos[i+1]}_escúdo.png`}
                         id1 = {i} id2 = {i+1}  onClick = {this.onClickOctavos} 
                         create = {this.create} disable = {disabled}/>
             children.push(child);
@@ -191,8 +191,8 @@ export default class Table extends Component {
 
             children.push(<Game teamA = {this.state.cuartos[i]} 
                                 teamB = {this.state.cuartos[i+1]}
-                                iconA = {`./images/${this.state.cuartos[i]}.png`}
-                                iconB = {`./images/${this.state.cuartos[i+1]}.png`}
+                                iconA = {`./images/${this.state.cuartos[i]}_escúdo.png`}
+                                iconB = {`./images/${this.state.cuartos[i+1]}_escúdo.png`}
                         id1 = {i} id2 = {i+1}  onClick = {this.onClickCuartos} disable = {disabled}/>);
 
             children.push(
@@ -220,8 +220,8 @@ export default class Table extends Component {
 
             children.push(<Game teamA = {this.state.semis[i]} 
                                 teamB = {this.state.semis[i+1]}
-                                iconA = {`./images/${this.state.semis[i]}.png`}
-                                iconB = {`./images/${this.state.semis[i+1]}.png`}
+                                iconA = {`./images/${this.state.semis[i]}_escúdo.png`}
+                                iconB = {`./images/${this.state.semis[i+1]}_escúdo.png`}
                         id1 = {i} id2 = {i+1}  onClick = {this.onClickSemis} disable = {disabled}/>);
 
             children.push(
@@ -250,8 +250,8 @@ export default class Table extends Component {
                 disabled = "disabled";
         
         children.push(<Game teamA = {this.state.final[i]} teamB = {this.state.final[i+1]} 
-            iconA = {`./images/${this.state.final[i]}.png`}
-            iconB = {`./images/${this.state.final[i+1]}.png`}
+            iconA = {`./images/${this.state.final[i]}_escúdo.png`}
+            iconB = {`./images/${this.state.final[i+1]}_escúdo.png`}
             id1 = "0" id2 = "1"  onClick = {this.onClickFinal} disable = {disabled}/>);
 
         table.push(<div id = "final" className="col-sm">{children}</div>);
@@ -265,7 +265,7 @@ export default class Table extends Component {
                     <br></br>
                     {this.state.champ}
                     <br></br>
-                    <img src={`images/${this.state.champ}.png`}/>
+                    <img src={`images/${this.state.champ}_escúdo.png`}/>
                 </div>
         else return <div className="myDiv champDiv col-sm">
                 <img src={'images/copasudamericana.png'}/>
