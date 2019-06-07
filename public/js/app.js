@@ -66195,7 +66195,7 @@ function (_Component) {
         }
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
@@ -66203,13 +66203,17 @@ function (_Component) {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Actual: ".concat(this.state.name)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-dark",
-        onClick: this.clear
-      }, "Limpiar"), "\xA0\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-dark",
         onClick: this["new"]
       }, "Nuevo prode"), "\xA0\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-dark",
+        onClick: this.clear
+      }, "Limpiar"), "\xA0\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-dark",
         onClick: this.save
       }, "Guardar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66227,13 +66231,13 @@ function (_Component) {
       }, "Modificacion"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.prodes.map(function (prode, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, "Prode ".concat(i + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, prode.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-          scope: "row"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "text-white",
           id: prode.id,
           onClick: _this2.search
-        }, "Editar"), "\xA0 \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, "Prode ".concat(i + 1))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, prode.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          scope: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "text-white",
           id: prode.id,
           onClick: _this2["delete"]
@@ -66454,7 +66458,7 @@ function (_Component) {
           self.setState({
             prodes: response.data,
             id: response.data[response.data.length - 1]['id'],
-            name: response.data[response.data.length - 1]['created_at']
+            name: "Prode ".concat(response.data.length)
           });
         })["catch"](function (error) {
           console.log(error);
@@ -66472,6 +66476,7 @@ function (_Component) {
     value: function search(e) {
       var id = e.target.id;
       var self = this;
+      var name = $(e.target).text();
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/teams/' + id).then(function (response) {
         var octavos = response.data[0]['octavos'].split(',');
         var cuartos = response.data[0]['cuartos'].split(',');
@@ -66480,7 +66485,6 @@ function (_Component) {
         var _final = response.data[0]['final'].split(',');
 
         var champ = response.data[0]['champ'];
-        var name = response.data[0]['created_at'];
         self.setState({
           octavos: octavos,
           cuartos: cuartos,

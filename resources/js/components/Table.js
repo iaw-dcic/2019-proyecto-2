@@ -80,6 +80,7 @@ export default class Table extends Component {
         }
         return (
             <div>
+                <br></br>
                 <div className="container">
                     <div className="row">
                         {this.createTableOctavos()}
@@ -91,9 +92,14 @@ export default class Table extends Component {
                 </div>
                 <div className="container">
                     <div className="row justify-content-center">
-                        <button className="btn btn-dark" onClick={this.clear}>Limpiar</button>
-                        &nbsp;&nbsp;
+                        <h1>{`Actual: ${this.state.name}`}</h1>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="row justify-content-center">
                         <button className="btn btn-dark" onClick={this.new}>Nuevo prode</button>
+                        &nbsp;&nbsp;
+                        <button className="btn btn-dark" onClick={this.clear}>Limpiar</button>
                         &nbsp;&nbsp;
                         <button className="btn btn-dark" onClick={this.save}>Guardar</button>
                     </div>
@@ -113,24 +119,22 @@ export default class Table extends Component {
                                 {this.state.prodes.map((prode, i) =>
                                         <tr>
                                             <th scope="row">
-                                                {`Prode ${i+1}`}
-                                            </th>
-                                            <td>{prode.created_at}</td>
-                                            <th scope="row">
-                                                <Link
+                                            <Link
                                                 className="text-white"
                                                 id = {prode.id} 
                                                 onClick={this.search}>
-                                                        {`Editar`}
+                                                        {`Prode ${i+1}`}
                                                 </Link>
-                                                &nbsp; &nbsp;
+                                            </th>
+                                            <td>{prode.created_at}</td>
+                                            <td scope="row">
                                                 <Link
                                                 className="text-white"
                                                 id = {prode.id} 
                                                 onClick={this.delete}>
                                                         {`Borrar`}
                                                 </Link>
-                                            </th>
+                                            </td>
                                         </tr>
                                 )}
                             </tbody>
@@ -326,7 +330,7 @@ export default class Table extends Component {
                 self.setState({
                     prodes: response.data,
                     id: response.data[response.data.length-1]['id'],
-                    name: response.data[response.data.length-1]['created_at']
+                    name: `Prode ${response.data.length}`
                 });
             }).catch(function (error) {
               console.log(error);
@@ -346,6 +350,7 @@ export default class Table extends Component {
     search(e){
         var id = e.target.id;
         var self = this;
+        var name = $(e.target).text()
         axios.get('/api/teams/'+id)
          .then(function (response) {
             var octavos = response.data[0]['octavos'].split(',');
@@ -353,7 +358,6 @@ export default class Table extends Component {
             var semis = response.data[0]['semis'].split(',');
             var final = response.data[0]['final'].split(',');
             var champ = response.data[0]['champ'];
-            var name = response.data[0]['created_at'];
 
             self.setState({
                 octavos: octavos,
