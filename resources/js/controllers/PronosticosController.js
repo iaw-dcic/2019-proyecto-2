@@ -2,9 +2,9 @@ import PronosticoModel from '../models/PronosticoModel';
 
 export default class PronosticosController{
 
-    constructor(user){
-        this.user = user;
-        this.pronosticosModel = new PronosticoModel(this.user);
+    constructor(api_token){
+        this.api_token = api_token;
+        this.pronosticosModel = new PronosticoModel(this.api_token);
     }
 
     async loadProdes(){
@@ -14,7 +14,7 @@ export default class PronosticosController{
     }
 
     async createProde(){
-        let prode = await this.pronosticosModel.createProde(this.user.id);
+        let prode = await this.pronosticosModel.createProde(this.api_token);
         this.pronosticosModel.saveProdeOnLocalStorage(prode);
         return prode;
     }

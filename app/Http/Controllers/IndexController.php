@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use JWTFactory;
+use JWTAuth;
+use App\User;
 
 class IndexController extends Controller{
     
-    public function index(){
-        $user = Auth::user();
-        return view('react')->with('user', $user);
+    public function index(Request $request){
+        return view('react');
     }
 }

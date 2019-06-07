@@ -6,9 +6,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @if(isset($user) && $user != null)
-        <meta name="user" id="user" content="{{$user}}">
-    @endif()
+    @auth
+        <meta name="api-token" content="{{ Auth::user()->api_token }}">
+        <meta name="username" content="{{ Auth::user()->username }}">
+    @endauth
 
     <title>Protonóstico</title>
 

@@ -10,7 +10,7 @@
 
           <div class="card-body">
             <h5 class="card-title text-center">Registro</h5>
-            <form id="form-register" action="/register" method="POST" class="form-signin">
+            <form id="form-register" class="form-signin"  action="/register" method="POST">
             @csrf
               <div class="form-label-group">
                 <input type="text" id="validationServerUsername" class="form-control" placeholder="Nombre de usuario" name="username" required autofocus>

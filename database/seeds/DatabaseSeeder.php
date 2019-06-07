@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder{
                         ['Suecia', 'SE'], ['Suiza', 'CH'],
                         ['Colombia', 'CO'], ['Inglaterra', 'GB']);
 
+        /*
         factory(\App\User::class, 1)->create([
             'name' => 'Dylan Barbona',
             'username' => 'dylanbarbona',
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder{
             'email' => 'dylanbarbona97@gmail.com',
             'password' => \Hash::make('27069706636/f'),
         ]);
+        */
 
         foreach($equipos as $equipo){
             $url = 'https://www.countryflags.io/'.$equipo[1].'/flat/64.png';
@@ -47,6 +49,7 @@ class DatabaseSeeder extends Seeder{
             ]);
         }
 
+        /*
         factory(\App\Prode::class, 2)->create()->each(function (Prode $prode){
             $prode->getUsers()->attach(1);
         });
@@ -75,5 +78,6 @@ class DatabaseSeeder extends Seeder{
                 $partido->getProdes()->attach(2);
             });
         }
+        */
     }
 }

@@ -12,20 +12,13 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProdeController extends Controller{
-
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
+    
     /**
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id){
-        if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => '401 Unauthorized'], 401);
-        $user = Auth::user();
-
+    public function index(){
+        $user = auth('api')->user();
         $prodes = $user->getProdes()->get();
         $prodes_user = [];
         $partidos_prodes = [];
@@ -45,14 +38,10 @@ class ProdeController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $user_id){
-        if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => '401 Unauthorized'], 401);
-        $user = Auth::user();
-
+    public function store(Request $request){
         DB::beginTransaction();
         try{
-            $user = User::find($user_id);
+            $user = Auth()->user();
             $partidos = $request->partidos;
             
             $partidosDB = [];
@@ -94,12 +83,8 @@ class ProdeController extends Controller{
      * @param  \App\Prode  $prode
      * @return \Illuminate\Http\Response
      */
-    public function show($user_id, $prode_id){
-        if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => '401 Unauthorized'], 401);
+    public function show($prode_id){
         $user = Auth::user();
-
-        $user = User::find($user_id);   //Borrar y reemplazar por el comentario de arriba
         $prode = $user->getProdes()->find($prode_id);
         $partidos_prode = [];
         $partidos = $prode->getPartidos()->get();
@@ -124,12 +109,10 @@ class ProdeController extends Controller{
      * @param  \App\Prode  $prode
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id, $prode_id){
-        if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => false], 401);
-        $user = Auth::user();
+    public function destroy($prode_id){
         DB::beginTransaction();
         try{
+            $user = Auth()->user();
             $prode = $user->getProdes()->find($prode_id);
             $partidos = $prode->getPartidos()->get();
             foreach($partidos as $partido)

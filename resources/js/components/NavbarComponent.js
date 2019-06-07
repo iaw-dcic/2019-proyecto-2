@@ -7,7 +7,7 @@ export default class NavbarComponent extends Component {
 
     constructor(props){
         super(props);
-        this.user = this.props.user;
+        this.api_token = this.props.api_token;
     }
 
     render() {
@@ -29,7 +29,7 @@ export default class NavbarComponent extends Component {
     }
 
     mostrarBotones(){
-        if(this.user == null){
+        if(this.api_token == null){
             return(
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -61,7 +61,7 @@ export default class NavbarComponent extends Component {
     }
 
     logout(event){
-        axios.post('logout')
+        axios.post('logout', this.api_token)
             .then(response => window.location.replace("/"))
             .catch(error => console.log(error));
     }

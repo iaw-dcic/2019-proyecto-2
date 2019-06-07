@@ -11,17 +11,8 @@ use Illuminate\Http\Request;
 
 class PartidosController extends Controller{
 
-    public function __construct(){
-        $this->middleware('auth')
-    }
-
-    public function getPartidos($user_id, $prode_id){
-        if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => '401 Unauthorized'], 401);
-        $user = Auth::user();
-
-        $prode = $user->getProdes()->find($prode_id);
-        $partidos = $prode->getPartidos()->get();
+    public function getPartidos(){
+        $partidos = Partido::all();
         foreach($partidos as $partido)
             $partido = $this->crearPartido($partido);
         if($partidos == null)
@@ -29,24 +20,16 @@ class PartidosController extends Controller{
         return Response()->json($partidos, 200);
     }
 
-    public function getPartido($user_id, $prode_id, $match_id){
-        if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => '401 Unauthorized'], 401);
-        $user = Auth::user();
-
-        $prode = $user->getProdes()->find($prode_id);
-        $partido = $prode->getPartidos()->find($match_id);
+    public function getPartido($math_id){
+        $partido = Partido::find($match_id);
         $partido = $this->crearPartido($partido);
         if($partido == null)
             return Response()->json(['error' => '404 not found'], 404);
         return Response()->json($partido, 200);
     }
 
-    public function getPartidosPorGrupos($user_id, $prode_id){
-        if(Auth::user()->id != $user_id)
-            return Response()->json(['error' => '401 Unauthorized'], 401);
-        $user = Auth::user();
-        
+    public function getPartidosPorGrupos($prode_id){
+        $user = Auth()->user();
         $prode = $user->getProdes()->find($prode_id);
         $grupos = $prode->getPartidos()->get()->groupBy('fase');
         foreach($grupos as $grupo)

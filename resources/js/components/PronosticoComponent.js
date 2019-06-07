@@ -18,10 +18,10 @@ export default class PronosticoComponent extends Component {
         this.actualizarProdes = this.props.actualizarProdes;
 
         this.prode = this.props.prode;
-        this.user = this.props.user;
-        this.state = {user: this.user, prode: this.prode};
+        this.api_token = this.props.api_token;
+        this.state = {api_token: this.api_token, prode: this.prode};
 
-        this.pronosticoController = new PronosticoController(this.user);
+        this.pronosticoController = new PronosticoController(this.api_token);
     }
 
     render() {
@@ -130,7 +130,7 @@ export default class PronosticoComponent extends Component {
     refreshProde(prode){
         if(prode != null){
             this.setState({
-                user: this.user,
+                api_token: this.api_token,
                 prode
             });
             this.actualizarProdes();

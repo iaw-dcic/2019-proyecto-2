@@ -13,12 +13,11 @@ export default class App extends Component{
         super();
 
         //Obtengo el usuario de los metadatos
-        let data = document.getElementById('user');
-        if(data != null){
-            let user = JSON.parse(data.content);
-            this.state = { isLoggedIn: true, user };
-        }else
-            this.state = { isLoggedIn: false, user: null };
+        let api_token = document.querySelector('meta[name="api-token"]');
+        if(api_token != null)
+            this.state = { isLoggedIn: true, api_token: api_token.content };
+        else
+            this.state = { isLoggedIn: false, api_token: null }
     }
 
     render(){
@@ -26,7 +25,7 @@ export default class App extends Component{
             <BrowserRouter>
                 <Switch>
                     <Route path="/">
-                        <NavbarComponent user={this.state.user} />
+                        <NavbarComponent api_token={this.state.api_token} />
                         <div id="inicio" className="intro route bg-image">
                             <IndexComponent/>
                         </div>
@@ -54,7 +53,7 @@ export default class App extends Component{
         if(this.state.isLoggedIn){
             return (
                 <section id="pronosticos" className="pronosticos route mb-4">
-                    <PronosticosComponent user={this.state.user}/>
+                    <PronosticosComponent api_token={this.state.api_token}/>
                 </section>
             );
         }

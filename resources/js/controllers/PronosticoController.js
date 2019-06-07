@@ -4,9 +4,9 @@ import PronosticoModel from '../models/PronosticoModel';
 export default class PronosticoController{
 
     //Paso la vista para actualizar los datos
-    constructor(user){
-        this.user = user;
-        this.pronosticoModel = new PronosticoModel(this.user);
+    constructor(api_token){
+        this.api_token = api_token;
+        this.pronosticoModel = new PronosticoModel(this.api_token);
     }
 
     async saveProde(prode){

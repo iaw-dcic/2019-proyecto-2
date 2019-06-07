@@ -11,9 +11,9 @@ export default class PronosticosComponent extends Component {
         this.createProde = this.createProde.bind(this);
         this.actualizarProdes = this.actualizarProdes.bind(this);
         this.cerrarProde = this.cerrarProde.bind(this);
-        this.state = { user: this.props.user, prodes: [] };
+        this.state = { api_token: this.props.api_token, prodes: [] };
 
-        this.pronosticosController = new PronosticosController(this.state.user);
+        this.pronosticosController = new PronosticosController(this.state.api_token);
     }
 
     render() {
@@ -50,7 +50,7 @@ export default class PronosticosComponent extends Component {
 
     actualizarProdes(){
         this.pronosticosController.loadProdes()
-            .then(prodes => this.setState({ user: this.state.user, prodes }))
+            .then(prodes => this.setState({ api_token: this.state.api_token, prodes }))
             .catch(error => console.log(error));
     }   
 
@@ -63,7 +63,7 @@ export default class PronosticosComponent extends Component {
     seleccionarProde(prode){
         this.cerrarProde();
         let viewProde = document.getElementById('viewProde');
-        ReactDOM.render(<PronosticoComponent user={this.state.user} prode={prode} cerrarProde={this.cerrarProde} actualizarProdes={this.actualizarProdes} />, viewProde);
+        ReactDOM.render(<PronosticoComponent api_token={this.state.api_token} prode={prode} cerrarProde={this.cerrarProde} actualizarProdes={this.actualizarProdes} />, viewProde);
     }
 
     cerrarProde(){

@@ -34400,19 +34400,14 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this)); //Obtengo el usuario de los metadatos
 
-    var data = document.getElementById('user');
-
-    if (data != null) {
-      var user = JSON.parse(data.content);
-      _this.state = {
-        isLoggedIn: true,
-        user: user
-      };
-    } else _this.state = {
+    var api_token = document.querySelector('meta[name="api-token"]');
+    if (api_token != null) _this.state = {
+      isLoggedIn: true,
+      api_token: api_token.content
+    };else _this.state = {
       isLoggedIn: false,
-      user: null
+      api_token: null
     };
-
     return _this;
   }
 
@@ -34422,7 +34417,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavbarComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        user: this.state.user
+        api_token: this.state.api_token
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "inicio",
         className: "intro route bg-image"
@@ -34453,7 +34448,7 @@ function (_Component) {
           id: "pronosticos",
           className: "pronosticos route mb-4"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PronosticosComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          user: this.state.user
+          api_token: this.state.api_token
         }));
       }
     }
@@ -34706,7 +34701,7 @@ function (_Component) {
     _classCallCheck(this, NavbarComponent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavbarComponent).call(this, props));
-    _this.user = _this.props.user;
+    _this.api_token = _this.props.api_token;
     return _this;
   }
 
@@ -34737,7 +34732,7 @@ function (_Component) {
   }, {
     key: "mostrarBotones",
     value: function mostrarBotones() {
-      if (this.user == null) {
+      if (this.api_token == null) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "navbar-nav"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -34781,7 +34776,7 @@ function (_Component) {
   }, {
     key: "logout",
     value: function logout(event) {
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('logout').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('logout', this.api_token).then(function (response) {
         return window.location.replace("/");
       })["catch"](function (error) {
         return console.log(error);
@@ -34975,12 +34970,12 @@ function (_Component) {
     _this.cerrarProde = _this.props.cerrarProde;
     _this.actualizarProdes = _this.props.actualizarProdes;
     _this.prode = _this.props.prode;
-    _this.user = _this.props.user;
+    _this.api_token = _this.props.api_token;
     _this.state = {
-      user: _this.user,
+      api_token: _this.api_token,
       prode: _this.prode
     };
-    _this.pronosticoController = new _controllers_PronosticoController__WEBPACK_IMPORTED_MODULE_3__["default"](_this.user);
+    _this.pronosticoController = new _controllers_PronosticoController__WEBPACK_IMPORTED_MODULE_3__["default"](_this.api_token);
     return _this;
   }
 
@@ -35106,7 +35101,7 @@ function (_Component) {
     value: function refreshProde(prode) {
       if (prode != null) {
         this.setState({
-          user: this.user,
+          api_token: this.api_token,
           prode: prode
         });
         this.actualizarProdes();
@@ -35199,10 +35194,10 @@ function (_Component) {
     _this.actualizarProdes = _this.actualizarProdes.bind(_assertThisInitialized(_this));
     _this.cerrarProde = _this.cerrarProde.bind(_assertThisInitialized(_this));
     _this.state = {
-      user: _this.props.user,
+      api_token: _this.props.api_token,
       prodes: []
     };
-    _this.pronosticosController = new _controllers_PronosticosController__WEBPACK_IMPORTED_MODULE_3__["default"](_this.state.user);
+    _this.pronosticosController = new _controllers_PronosticosController__WEBPACK_IMPORTED_MODULE_3__["default"](_this.state.api_token);
     return _this;
   }
 
@@ -35249,7 +35244,7 @@ function (_Component) {
 
       this.pronosticosController.loadProdes().then(function (prodes) {
         return _this2.setState({
-          user: _this2.state.user,
+          api_token: _this2.state.api_token,
           prodes: prodes
         });
       })["catch"](function (error) {
@@ -35273,7 +35268,7 @@ function (_Component) {
       this.cerrarProde();
       var viewProde = document.getElementById('viewProde');
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PronosticoComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        user: this.state.user,
+        api_token: this.state.api_token,
         prode: prode,
         cerrarProde: this.cerrarProde,
         actualizarProdes: this.actualizarProdes
@@ -35344,11 +35339,11 @@ var PronosticoController =
 /*#__PURE__*/
 function () {
   //Paso la vista para actualizar los datos
-  function PronosticoController(user) {
+  function PronosticoController(api_token) {
     _classCallCheck(this, PronosticoController);
 
-    this.user = user;
-    this.pronosticoModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_2__["default"](this.user);
+    this.api_token = api_token;
+    this.pronosticoModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_2__["default"](this.api_token);
   }
 
   _createClass(PronosticoController, [{
@@ -35499,11 +35494,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var PronosticosController =
 /*#__PURE__*/
 function () {
-  function PronosticosController(user) {
+  function PronosticosController(api_token) {
     _classCallCheck(this, PronosticosController);
 
-    this.user = user;
-    this.pronosticosModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_1__["default"](this.user);
+    this.api_token = api_token;
+    this.pronosticosModel = new _models_PronosticoModel__WEBPACK_IMPORTED_MODULE_1__["default"](this.api_token);
   }
 
   _createClass(PronosticosController, [{
@@ -35551,7 +35546,7 @@ function () {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return this.pronosticosModel.createProde(this.user.id);
+                return this.pronosticosModel.createProde(this.api_token);
 
               case 2:
                 prode = _context2.sent;
@@ -35593,8 +35588,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PronosticoModel; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -35607,25 +35600,37 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-
+//import Axios from 'axios';
+var Axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 var PronosticoModel =
 /*#__PURE__*/
 function () {
-  function PronosticoModel(user) {
+  function PronosticoModel(api_token) {
     _classCallCheck(this, PronosticoModel);
 
-    this.user = user;
+    this.api_token = api_token;
     this.fases = {
       'octavos': 0,
       'cuartos': 1,
       'semis': 2,
       'final': 3,
       'tercer_puesto': 3
-    };
+    }; //this.setTokens();
   }
 
   _createClass(PronosticoModel, [{
+    key: "setTokens",
+    value: function setTokens() {
+      var token = document.head.querySelector('meta[name="csrf-token"]').content;
+      var api_token = document.head.querySelector('meta[name="api-token"]').content;
+      Axios.defaults.headers.common = {
+        'X-CSRF-TOKEN': token,
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + api_token
+      };
+    }
+  }, {
     key: "loadProdes",
     value: function () {
       var _loadProdes = _asyncToGenerator(
@@ -35639,11 +35644,11 @@ function () {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/user/".concat(this.user.id, "/prodes"));
+                return Axios.get("/api/prodes");
 
               case 2:
                 response = _context.sent;
-                console.log(response.data);
+                console.log(response);
                 return _context.abrupt("return", response.data.map(function (prode) {
                   return _this.transformarDatosDesdeServidor(prode);
                 }));
@@ -35653,7 +35658,7 @@ function () {
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee);
       }));
 
       function loadProdes() {
@@ -35675,7 +35680,7 @@ function () {
               case 0:
                 pronostico = this.transformarDatosHaciaServidor(prode);
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/user/".concat(this.user.id, "/prodes"), pronostico);
+                return Axios.post("/api/prodes", pronostico);
 
               case 3:
                 response = _context2.sent;
@@ -35759,7 +35764,7 @@ function () {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/teams');
+                return Axios.get('/api/teams');
 
               case 2:
                 response = _context4.sent;
@@ -35836,7 +35841,7 @@ function () {
             switch (_context6.prev = _context6.next) {
               case 0:
                 _context6.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("/api/user/".concat(prode.user_id, "/prodes/").concat(prode.id));
+                return Axios["delete"]("/api/prodes/".concat(prode.id));
 
               case 2:
                 response = _context6.sent;

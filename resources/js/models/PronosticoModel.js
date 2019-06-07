@@ -1,21 +1,34 @@
-import Axios from 'axios';
+//import Axios from 'axios';
+var Axios = require('axios');
 
 export default class PronosticoModel{
 
-    constructor(user){
-        this.user = user;
+    constructor(api_token){
+        this.api_token = api_token;
         this.fases = {'octavos': 0, 'cuartos': 1, 'semis': 2, 'final': 3, 'tercer_puesto': 3};
+        //this.setTokens();
+    }
+
+    setTokens(){
+        let token = document.head.querySelector('meta[name="csrf-token"]').content;
+        let api_token = document.head.querySelector('meta[name="api-token"]').content;
+        
+        Axios.defaults.headers.common = {
+            'X-CSRF-TOKEN': token,
+            'X-Requested-With': 'XMLHttpRequest',
+            'Authorization': 'Bearer ' + api_token,
+        };
     }
 
     async loadProdes(){
-        let response = await Axios.get(`/api/user/${this.user.id}/prodes`);
-        console.log(response.data);
+        let response = await Axios.get(`/api/prodes`);
+        console.log(response);
         return response.data.map(prode => this.transformarDatosDesdeServidor(prode));
     }
 
     async saveProde(prode){
         let pronostico = this.transformarDatosHaciaServidor(prode);
-        let response = await Axios.post(`/api/user/${this.user.id}/prodes`, pronostico);
+        let response = await Axios.post(`/api/prodes`, pronostico);
         let prodeDB = this.transformarDatosDesdeServidor(response.data);
         return prodeDB;
     }
@@ -42,7 +55,7 @@ export default class PronosticoModel{
     } 
 
     async deleteProde(prode){
-        let response = await Axios.delete(`/api/user/${prode.user_id}/prodes/${prode.id}`);
+        let response = await Axios.delete(`/api/prodes/${prode.id}`);
         return response.data.resultado;
     }
 
