@@ -16,9 +16,9 @@ export default class Header extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
+                                <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/teams">Prodes</Link>
                             </li>
                             <li className="nav-item">

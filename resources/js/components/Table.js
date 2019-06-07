@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Game from './Game'
 import axios from 'axios';
 
@@ -24,9 +25,15 @@ export default class Table extends Component {
         this.search = this.search.bind(this);
         this.new = this.new.bind(this);
         this.clear = this.clear.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
     componentDidMount(){
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         var self = this;
 
@@ -57,6 +64,7 @@ export default class Table extends Component {
                 mount: 1
             });
         }
+        //this.new();
     }
 
     render() {
@@ -72,19 +80,62 @@ export default class Table extends Component {
             }
         }
         return (
-            <div className="container">
-                <div className="row">
-                    {this.createTableOctavos()}
-                    {this.createTableCuartos()}
-                    {this.createTableSemis()}
-                    {this.createTableFinal()}
-                    {this.createChampion()}
+            <div>
+                <div className="container">
+                    <div className="row">
+                        {this.createTableOctavos()}
+                        {this.createTableCuartos()}
+                        {this.createTableSemis()}
+                        {this.createTableFinal()}
+                        {this.createChampion()}
+                    </div>
                 </div>
-                <div className="row">
-                    <div className="col-sm justify-content-center">
-                        <button className="btn btn-dark mb-2 mr-2" onClick={this.save}>Guardar</button>
-                        <button className="btn btn-dark mb-2 mr-2" onClick={this.new}>Nuevo prode</button>
-                        <button className="btn btn-dark mb-2 mr-2" onClick={this.clear}>Limpiar</button>
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <button className="btn btn-dark" onClick={this.clear}>Limpiar</button>
+                        &nbsp;&nbsp;
+                        <button className="btn btn-dark" onClick={this.new}>Nuevo prode</button>
+                        &nbsp;&nbsp;
+                        <button className="btn btn-dark" onClick={this.save}>Guardar</button>
+                    </div>
+                </div>
+                <br></br>
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <table className="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mis Prodes</th>
+                                    <th scope="col">Creacion</th>
+                                    <th scope="col">Modificacion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.prodes.map((prode, i) =>
+                                        <tr>
+                                            <th scope="row">
+                                                {`Prode ${prode.id}`}
+                                            </th>
+                                            <td>{prode.created_at}</td>
+                                            <th scope="row">
+                                                <Link
+                                                className="text-white"
+                                                id = {prode.id} 
+                                                onClick={this.search}>
+                                                        {`Editar`}
+                                                </Link>
+                                                &nbsp; &nbsp;
+                                                <Link
+                                                className="text-white"
+                                                id = {prode.id} 
+                                                onClick={this.delete}>
+                                                        {`Borrar`}
+                                                </Link>
+                                            </th>
+                                        </tr>
+                                )}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -104,12 +155,18 @@ export default class Table extends Component {
                 disabled = "disabled";
             else disabled = "";
 
-            let child = <Game teamA = {this.state.octavos[i]} teamB = {this.state.octavos[i+1]} 
+            let child = <Game teamA = {this.state.octavos[i]} teamB = {this.state.octavos[i+1]}
+                        iconA = {`./images/${this.state.octavos[i]}.png`}
+                        iconB = {`./images/${this.state.octavos[i+1]}.png`}
                         id1 = {i} id2 = {i+1}  onClick = {this.onClickOctavos} 
                         create = {this.create} disable = {disabled}/>
             children.push(child);
             i = i + 2;
         }
+        children.push(
+            <div className="spacerOctavos"></div>
+        );
+        i = i + 2;
 
         table.push(<div id = "octavos" className="col-sm">{children}</div>);
         return table;
@@ -124,7 +181,6 @@ export default class Table extends Component {
         children.push(<h1 className="myTitle cuartos">Cuartos</h1>)
 
         while (i < 8) {
-
             if (this.state.cuartos[i] == "" || this.state.cuartos[i+1] == "" ||
                 this.state.semis[Math.floor(i/2)] != "")
                 disabled = "disabled";
@@ -132,10 +188,14 @@ export default class Table extends Component {
 
             children.push(<Game teamA = {this.state.cuartos[i]} 
                                 teamB = {this.state.cuartos[i+1]}
+                                iconA = {`./images/${this.state.cuartos[i]}.png`}
+                                iconB = {`./images/${this.state.cuartos[i+1]}.png`}
                         id1 = {i} id2 = {i+1}  onClick = {this.onClickCuartos} disable = {disabled}/>);
 
+            children.push(
+                <div className="spacerCuartos"></div>
+            );
             i = i + 2;
-
         }
         table.push(<div id = "cuartos" className="col-sm">{children}</div>);
         return table;
@@ -157,7 +217,14 @@ export default class Table extends Component {
 
             children.push(<Game teamA = {this.state.semis[i]} 
                                 teamB = {this.state.semis[i+1]}
+                                iconA = {`./images/${this.state.semis[i]}.png`}
+                                iconB = {`./images/${this.state.semis[i+1]}.png`}
                         id1 = {i} id2 = {i+1}  onClick = {this.onClickSemis} disable = {disabled}/>);
+
+            children.push(
+                <div className="spacerSemis"></div>
+            );
+
             i = i + 2;
         }
         table.push(<div id = "semis" className="col-sm">{children}</div>);
@@ -180,6 +247,8 @@ export default class Table extends Component {
                 disabled = "disabled";
         
         children.push(<Game teamA = {this.state.final[i]} teamB = {this.state.final[i+1]} 
+            iconA = {`./images/${this.state.final[i]}.png`}
+            iconB = {`./images/${this.state.final[i+1]}.png`}
             id1 = "0" id2 = "1"  onClick = {this.onClickFinal} disable = {disabled}/>);
 
         table.push(<div id = "final" className="col-sm">{children}</div>);
@@ -190,10 +259,13 @@ export default class Table extends Component {
         if (this.state.champ != "empty")
             return <div className="myDiv champDiv col-sm">
                     <img src={'images/copasudamericana.png'}/>
-                    Campeón: {this.state.champ}
+                    <br></br>
+                    {this.state.champ}
+                    <br></br>
+                    <img src={`images/${this.state.champ}.png`}/>
                 </div>
         else return <div className="myDiv champDiv col-sm">
-                Campeón: sin seleccionar
+                <img src={'images/copasudamericana.png'}/>
             </div>
     }
 
@@ -249,7 +321,6 @@ export default class Table extends Component {
     save(){
         var self = this;
         if (this.state.id == 0){
-
             axios.post('/api/teams', {
                 data: this.state
             }).then(function (response) {
@@ -318,5 +389,19 @@ export default class Table extends Component {
             final: ["", ""],
             champ: 'empty',
         });
+    }
+
+    delete(e){
+        var id = e.target.id;
+        axios.delete('/api/teams/'+id)
+        .then(function (response) {
+            self.setState({
+                prodes: response.data
+            });
+        }).catch(function (error) {
+          console.log(error);
+        });
+        this.componentDidMount();
+        this.new();
     }
 }

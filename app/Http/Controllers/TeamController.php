@@ -16,7 +16,7 @@ class TeamController extends Controller
         
         for ($i = 0; $i < 16; $i++) {
             $octavosToRet[$i] = $octavos[$i]->name;    
-        }   
+        }
         return response()->json($octavosToRet);
     }
     /**
@@ -114,6 +114,9 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prode = Prode::find($id);
+        $prode->delete();
+        $prodes = Prode::where('user_id', auth('api')->user()->id)->select('created_at', 'id')->get();
+        return response()->json($prodes);
     }
 }

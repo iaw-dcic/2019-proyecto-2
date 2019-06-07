@@ -17,7 +17,7 @@ class CreateProdesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('octavos');
+            $table->string('octavos',500);
             $table->string('cuartos');
             $table->string('semis');
             $table->string('final');

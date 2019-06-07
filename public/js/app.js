@@ -65853,18 +65853,24 @@ function (_Component) {
   _createClass(Game, [{
     key: "render",
     value: function render() {
-      var child1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      var child1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img",
+        src: this.props.iconA
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "list-group-item list-group-item-action myButton",
         id: this.props.id1,
         onClick: this.props.onClick,
         disabled: this.props.disable
-      }, this.props.teamA);
-      var child2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.props.teamA));
+      var child2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img",
+        src: this.props.iconB
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "list-group-item list-group-item-action myButton",
         id: this.props.id2,
         onClick: this.props.onClick,
         disabled: this.props.disable
-      }, this.props.teamB);
+      }, this.props.teamB));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65957,9 +65963,9 @@ function (_Component) {
         className: "nav-link",
         to: "/"
       }, "Home ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "sr-only"
+        className: "sr-only"
       }, "(current)"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "nav-item"
+        className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "nav-link",
         to: "/teams"
@@ -65968,7 +65974,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "nav-link",
         to: "/about"
-      }, "About"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      }, "Acerca de"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/",
         component: _Home__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -66072,9 +66078,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Table; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Game__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Game */ "./resources/js/components/Game.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Game */ "./resources/js/components/Game.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66092,6 +66099,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66127,14 +66135,20 @@ function (_Component) {
     _this.search = _this.search.bind(_assertThisInitialized(_this));
     _this["new"] = _this["new"].bind(_assertThisInitialized(_this));
     _this.clear = _this.clear.bind(_assertThisInitialized(_this));
+    _this["delete"] = _this["delete"].bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Table, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/teams').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/teams').then(function (response) {
         self.setState({
           prodes: response.data
         });
@@ -66143,7 +66157,7 @@ function (_Component) {
       });
 
       if (localStorage.length == 0) {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/octavos').then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/octavos').then(function (response) {
           self.setState({
             octavos: response.data
           });
@@ -66162,11 +66176,14 @@ function (_Component) {
           champ: localStorage.getItem('champ'),
           mount: 1
         });
-      }
+      } //this.new();
+
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (this.state.mount != 0) {
         if (this.state.id != 0) {
           localStorage.clear();
@@ -66179,24 +66196,50 @@ function (_Component) {
         }
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
-      }, this.createTableOctavos(), this.createTableCuartos(), this.createTableSemis(), this.createTableFinal(), this.createChampion()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+      }, this.createTableOctavos(), this.createTableCuartos(), this.createTableSemis(), this.createTableFinal(), this.createChampion())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm justify-content-center"
+        className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-dark mb-2 mr-2",
-        onClick: this.save
-      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-dark mb-2 mr-2",
-        onClick: this["new"]
-      }, "Nuevo prode"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-dark mb-2 mr-2",
+        className: "btn btn-dark",
         onClick: this.clear
-      }, "Limpiar"))));
+      }, "Limpiar"), "\xA0\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-dark",
+        onClick: this["new"]
+      }, "Nuevo prode"), "\xA0\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-dark",
+        onClick: this.save
+      }, "Guardar"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-dark"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Mis Prodes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Creacion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Modificacion"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.prodes.map(function (prode, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, "Prode ".concat(prode.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, prode.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "text-white",
+          id: prode.id,
+          onClick: _this2.search
+        }, "Editar"), "\xA0 \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "text-white",
+          id: prode.id,
+          onClick: _this2["delete"]
+        }, "Borrar")));
+      }))))));
     }
   }, {
     key: "createTableOctavos",
@@ -66211,9 +66254,11 @@ function (_Component) {
 
       while (i < 16) {
         if (this.state.cuartos[Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
-        var child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        var child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.octavos[i],
           teamB: this.state.octavos[i + 1],
+          iconA: "./images/".concat(this.state.octavos[i], ".png"),
+          iconB: "./images/".concat(this.state.octavos[i + 1], ".png"),
           id1: i,
           id2: i + 1,
           onClick: this.onClickOctavos,
@@ -66224,6 +66269,10 @@ function (_Component) {
         i = i + 2;
       }
 
+      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "spacerOctavos"
+      }));
+      i = i + 2;
       table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "octavos",
         className: "col-sm"
@@ -66243,13 +66292,18 @@ function (_Component) {
 
       while (i < 8) {
         if (this.state.cuartos[i] == "" || this.state.cuartos[i + 1] == "" || this.state.semis[Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
-        children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.cuartos[i],
           teamB: this.state.cuartos[i + 1],
+          iconA: "./images/".concat(this.state.cuartos[i], ".png"),
+          iconB: "./images/".concat(this.state.cuartos[i + 1], ".png"),
           id1: i,
           id2: i + 1,
           onClick: this.onClickCuartos,
           disable: disabled
+        }));
+        children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "spacerCuartos"
         }));
         i = i + 2;
       }
@@ -66273,13 +66327,18 @@ function (_Component) {
 
       while (i < 4) {
         if (this.state.semis[i] == "" || this.state.semis[i + 1] == "" || this.state["final"][Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
-        children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
           teamA: this.state.semis[i],
           teamB: this.state.semis[i + 1],
+          iconA: "./images/".concat(this.state.semis[i], ".png"),
+          iconB: "./images/".concat(this.state.semis[i + 1], ".png"),
           id1: i,
           id2: i + 1,
           onClick: this.onClickSemis,
           disable: disabled
+        }));
+        children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "spacerSemis"
         }));
         i = i + 2;
       }
@@ -66302,9 +66361,11 @@ function (_Component) {
       }, "Final"));
       if (this.state["final"][i] == "" || this.state["final"][i + 1] == "") disabled = "disabled";else disabled = "";
       if (this.state.champ != "empty") disabled = "disabled";
-      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Game__WEBPACK_IMPORTED_MODULE_2__["default"], {
         teamA: this.state["final"][i],
         teamB: this.state["final"][i + 1],
+        iconA: "./images/".concat(this.state["final"][i], ".png"),
+        iconB: "./images/".concat(this.state["final"][i + 1], ".png"),
         id1: "0",
         id2: "1",
         onClick: this.onClickFinal,
@@ -66323,9 +66384,13 @@ function (_Component) {
         className: "myDiv champDiv col-sm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: 'images/copasudamericana.png'
-      }), "Campe\xF3n: ", this.state.champ);else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.champ, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "images/".concat(this.state.champ, ".png")
+      }));else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "myDiv champDiv col-sm"
-      }, "Campe\xF3n: sin seleccionar");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: 'images/copasudamericana.png'
+      }));
     }
   }, {
     key: "onClickOctavos",
@@ -66384,7 +66449,7 @@ function (_Component) {
       var self = this;
 
       if (this.state.id == 0) {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/teams', {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/teams', {
           data: this.state
         }).then(function (response) {
           self.setState({
@@ -66396,7 +66461,7 @@ function (_Component) {
           console.log(error);
         });
       } else {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.put('/api/teams/' + this.state.id, {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('/api/teams/' + this.state.id, {
           data: this.state
         }).then(function (response) {})["catch"](function (error) {
           console.log(error);
@@ -66408,7 +66473,7 @@ function (_Component) {
     value: function search(e) {
       var id = e.target.id;
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/teams/' + id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/teams/' + id).then(function (response) {
         var octavos = response.data[0]['octavos'].split(',');
         var cuartos = response.data[0]['cuartos'].split(',');
         var semis = response.data[0]['semis'].split(',');
@@ -66451,6 +66516,20 @@ function (_Component) {
         "final": ["", ""],
         champ: 'empty'
       });
+    }
+  }, {
+    key: "delete",
+    value: function _delete(e) {
+      var id = e.target.id;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]('/api/teams/' + id).then(function (response) {
+        self.setState({
+          prodes: response.data
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.componentDidMount();
+      this["new"]();
     }
   }]);
 

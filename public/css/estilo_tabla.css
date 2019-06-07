@@ -8,6 +8,11 @@
 	color:white;
 }
 
+.img{
+	width: 20px;
+	height: 20px;
+}
+
 .myDiv{
 	width: 230px;
 }
@@ -32,18 +37,30 @@
 }
 
 .semis{
-	margin-bottom: 180px;
+	margin-bottom: 240px;
 }
 
 .final{
-	margin-bottom: 210px;
+	margin-bottom: 420px;
 }
 
 .champDiv{
-	margin-top: 220px;
+	margin-top: 360px;
 	margin-bottom: 280px;
 	font-size: 30px;
 	text-align: center;
 	width: 70px;
-	border-block-color: black;
 }
+
+.spacerOctavos{
+	height:20px;
+}
+
+.spacerCuartos{
+	height:100px;
+}
+
+.spacerSemis{
+	height:200px;
+}
+
