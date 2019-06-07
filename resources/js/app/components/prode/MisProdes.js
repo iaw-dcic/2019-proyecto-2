@@ -13,7 +13,7 @@ export default class MisProdes extends React.Component {
 
     armarPanel(){
 
-        let prodesAux = this.props.prodes.slice();
+        let prodesAux = this.props.prodes;
 
         let Prodes = prodesAux.map((prode) =>
             <Button
@@ -41,7 +41,8 @@ export default class MisProdes extends React.Component {
             <hr/>
 
             {
-                this.props.prodes.length === 0  ?
+
+                this.props.prodes === null  ?
                     <div className="container text-center p-5">
                         <h5>No tienes prodes</h5>
                     </div>

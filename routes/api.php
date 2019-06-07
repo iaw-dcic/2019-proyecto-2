@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::post('login', 'PassportController@login')->name('loginAPI');
 Route::post('register', 'PassportController@register');
 
+
 Route::middleware('auth:api')->group(function () {
 
     // User Routes
@@ -35,6 +36,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/prode/delete', 'ProdeController@delete');
 
     // Todos los Prode del usuario autenticado.
+
     Route::get('/prode/user', 'ProdeController@getProdes');
+
 
 });

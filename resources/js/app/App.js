@@ -8,9 +8,10 @@ import NuevoProde from "./components/prode/NuevoProde";
 import Libertadores from "./components/prode/Libertadores";
 import MisProdes from './components/prode/MisProdes';
 
-import { createProde , getPartidos , getProdes , saveProde , deleteProde } from "./api/ApiUtils";
+import { createProde , saveProde , deleteProde ,getProdes , getPartidos } from "./api/ApiUtils";
 
 import localStorage from 'local-storage'
+import axios from "axios";
 
 export default class App extends Component {
 
@@ -18,7 +19,8 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            isLoading: true,
+            isLoadingProdes: true,
+            isLoadingLlaves: true,
             isAuthenticated : false ,
             showingAlert: false,
             alertMessage: "",
@@ -61,7 +63,7 @@ export default class App extends Component {
 
             if(llavesCache.length !== 0){
                 this.setState({ llaves : llavesCache });
-                this.setState({ isLoading : false });
+                this.setState({ isLoadingLlaves : false });
             }
 
             this.setState({ isAuthenticated : true });
@@ -84,51 +86,72 @@ export default class App extends Component {
     }
 
     /* Obtiene el panel de prodes del usuario activo. */
-    async getProdes(token){
+    getProdes(token){
 
-        let prodes = await getProdes(token);
-        this.setState({ prodes : prodes })
+        this.setState({ isLoadingProdes : true } );
+
+        getProdes(token).then((response) => {
+            console.log('HOLA');
+            this.setState({ prodes: response.data });
+            this.setState({ isLoadingProdes : false } );
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
     }
 
-    async chooseProde(id_prode,nombre){
+    chooseProde(id_prode,nombre){
 
-        let llaves = await getPartidos(id_prode,this.state.token);
-        this.setState({llaves : llaves});
+        this.setState({ isLoadingLlaves : true });
+
+        getPartidos(id_prode,this.state.token)
+            .then((response) => {
+                let llaves = response.data;
+                this.setState({llaves : llaves});
+                this.setState({ isLoadingLlaves : false });
+                localStorage.set('llaves',this.state.llaves);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
         this.setState({id_prode : id_prode});
         this.setState({nombre : nombre});
 
         localStorage.set('id_prode',id_prode);
         localStorage.set('nombre',nombre);
-        localStorage.set('llaves',llaves);
 
     }
 
-    async newProde(nombre){
+    newProde(nombre){
 
         let token = this.state.token;
 
-        let id_prode = await createProde(nombre,token);
-        this.setState( {id_prode : id_prode });
+        createProde(nombre,token)
+            .then((response) => {
+                let id_prode = response.data;
 
-        this.setState( {nombre : nombre });
+                this.setState( {id_prode : id_prode });
+                this.setState( {nombre : nombre });
 
-        let llaves = await getPartidos(await id_prode,this.state.token);
-        this.setState( {llaves : llaves });
-
-        await this.getProdes(token);
-
+                this.chooseProde(id_prode,nombre);
+                this.getProdes(token);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
-    async deleteProde(){
+    deleteProde(){
 
         let id_prode = this.state.id_prode;
         let token = this.state.token;
 
-        await deleteProde(id_prode,token);
+        deleteProde(id_prode,token);
 
-        await this.getProdes(token);
+        this.setState({ isLoadingProdes : true });
+        this.setState({ isLoadingLlaves : true });
 
         this.setState({llaves : []});
         this.setState({ id_prode : null });
@@ -138,18 +161,20 @@ export default class App extends Component {
         localStorage.set('id_prode', null);
         localStorage.set('nombre', "");
 
+        this.getProdes(token);
+
         let message = 'Éxito - Prode eliminado correctamente';
         this.showAlert(message);
 
     }
 
-    async saveProde() {
+    saveProde() {
 
         let llaves = this.state.llaves;
         let id_prode = this.state.id_prode;
         let token = this.state.token;
 
-        await saveProde(id_prode,llaves,token);
+        saveProde(id_prode,llaves,token);
 
         let message = 'Éxito -  Prode guardado correctamente';
         this.showAlert(message);
@@ -239,28 +264,44 @@ export default class App extends Component {
                         <Row>
                             <Col md={6}/>
                             <Col md={6} style={nombreStyle} className="text-right">
-                                <Button onClick={this.saveProde} className="m-1">{iconGuardar} Guardar Estado </Button>
-                                <Button onClick={modalOpen} className="m-1">{ iconNuevo } Nuevo Prode</Button>
-                                <Button onClick={this.deleteProde} >{iconBorrar} Borrar Prode </Button>
+                                <Button onClick={this.saveProde} disabled={this.state.isLoadingLlaves} className='m-1'>{iconGuardar} Guardar Estado </Button>
+                                <Button onClick={modalOpen}  className="m-1">{ iconNuevo } Nuevo Prode</Button>
+                                <Button onClick={this.deleteProde} disabled={this.state.isLoadingLlaves} >{iconBorrar} Borrar Prode </Button>
                             </Col>
                         </Row>
                     </Container>
                     <Row>
                         <Col className="mr-2 text-center">
 
-                            <MisProdes
-                                prodes={this.state.prodes}
-                                seleccionar={this.chooseProde}
-                            />
+
+                            {
+                                this.state.isLoadingProdes ?
+                                    <div className="text-center">
+                                        Cargando..
+                                    </div>
+                                    :
+                                    <MisProdes
+                                        prodes={this.state.prodes}
+                                        seleccionar={this.chooseProde}
+                                    />
+                            }
+
 
                         </Col>
                         <Col style={llavesStyle} md={10}>
 
-                            <Libertadores
-                                nombre ={this.state.nombre}
-                                ganador={this.setGanador}
-                                llaves={this.state.llaves}
-                            />
+                            {
+                                this.state.isLoadingLlaves ?
+                                    <div className="text-center p-5">
+                                        <h2>Seleccione o cree un nuevo prode</h2>
+                                    </div>
+                                    :
+                                    <Libertadores
+                                        nombre={this.state.nombre}
+                                        ganador={this.setGanador}
+                                        llaves={this.state.llaves}
+                                    />
+                            }
 
                         </Col>
                     </Row>
