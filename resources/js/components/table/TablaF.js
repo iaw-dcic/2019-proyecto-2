@@ -85,7 +85,6 @@ export default class TablaS extends React.Component {
 
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
-                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
                 <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} onClick={() => { {this.campeon(event,this.props.final[0])};this.props.ganadorF(event, this.props.final[0]) }} color="warning">{this.props.final[0].name}({this.props.final[0].pais})</Button></Card></td></tr>
                 <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[1]} onClick={() => { {this.campeon(event,this.props.final[1])};this.props.ganadorF(event, this.props.final[1]) }} color="warning">{this.props.final[1].name}({this.props.final[1].pais})</Button></Card></td></tr>
                 {this.renderCampeon()}

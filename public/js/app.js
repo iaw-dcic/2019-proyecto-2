@@ -85554,10 +85554,6 @@ function (_React$Component) {
         hidden: "false"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        hidden: "false"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
