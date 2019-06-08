@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Container from './Container';
+import { Link } from 'react-router-dom';
+
 export default class MisDiseños extends Component {
 
     constructor() {
@@ -77,6 +79,9 @@ export default class MisDiseños extends Component {
                                                             <p className="card-text">Talle :{item.talle}</p>
                                                             <p className="card-text">Tela :{item.tela}</p>
                                                             <button type="button" onClick={(e) => this.borrarRemera(e, item.id)} className="btn btn-outline-danger">Borrar</button>
+                                                            <br></br>
+                                                            <Link to="/home" className="btn btn-outline-primary" >Editar</Link>
+
                                                         </div>
                                                     </div>
                                                 </div>

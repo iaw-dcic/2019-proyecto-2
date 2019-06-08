@@ -195,12 +195,12 @@ export default class ShirtImage extends Component {
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-lg-3">
                             <PanelDerecho talleActual={this.state.talle} telaActual={this.state.tela} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela} cambiarColorRemera={this.cambiarColorRemera}/>
                         </div>
                     </div>
                 </div>
+               
                 <hr width="100%"></hr>
         
                 <div className="container">

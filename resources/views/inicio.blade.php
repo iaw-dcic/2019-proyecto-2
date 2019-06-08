@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('style')
-<link href="{{ asset('css/styleinicio.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 <div class="container">
   <div class="row no-gutter">

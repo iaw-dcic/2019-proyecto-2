@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 
 export default class Container extends Component {
-
  
     render() {
         return (
@@ -15,9 +14,7 @@ export default class Container extends Component {
                         <NavLink to="/home" className="nav-link active">Crear</NavLink>
                     </li>
                 </ul>
-                
-            </div>
-
+           </div>
         );
     }
 }
