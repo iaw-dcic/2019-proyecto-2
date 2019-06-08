@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStampasTable extends Migration
+class CreateSizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateStampasTable extends Migration
      */
     public function up()
     {
-        Schema::create('stampas', function (Blueprint $table) {
-            $table->string('url');
+        Schema::create('sizes', function (Blueprint $table) {
+
             $table->timestamp('created_at')->nullable();
-            $table->primary('url');
+            $table->string('size');
+            $table->primary('size');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateStampasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stampas');
+        Schema::dropIfExists('sizes');
     }
 }

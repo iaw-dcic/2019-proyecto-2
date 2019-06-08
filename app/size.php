@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Shirt extends Model
+class size extends Model
 {
     protected $fillable = [
-        'name', 'stampa_id', 'colour','user_id', 'size'
+        'size'
     ];
 }

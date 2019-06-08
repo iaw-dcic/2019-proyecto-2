@@ -11,7 +11,6 @@ class remeraController extends Controller
     {
         $this->middleware('auth:api');
     }
-
     
     public function getRemeras(){
         //aca tengo que devolver todas las remeras del usuario logeado.
@@ -22,15 +21,25 @@ class remeraController extends Controller
         return response()->json(['remeras' => 'success']);
     }
 
-    public function guardar(){
-        $remera = Shirt::create([
-            'user_id' => auth('api')->user()->id,
-            'name'=> request('currentColour'),
-            'stampa_id' => request('currentStampa'),
-            'colour' => request()
+    public function guardar(Request $request){
+
+        $data = $request->all();
+
+        $request->validate([
+            'colour' => ['required', 'string', 'exists:colours', 'max:255'],
+            'stampa' => ['nullable', 'string', 'exists:stampas', 'max:255'],
+            'size' => ['nullable', 'string', 'exists:size', 'max:3'],
         ]);
 
-        return;
+        $nueva = new Remera;
+        $nueva->stampa = $data['stampa'];
+        $nueva->colour = $data['colour'];
+        $nueva->size = $data['size'];
+        $nueva->user_id = auth('api')->user()->id;
+
+        $nueva->save();
+
+        return response()->json([$request->all()]);
     }
 
     public function eliminar($id){

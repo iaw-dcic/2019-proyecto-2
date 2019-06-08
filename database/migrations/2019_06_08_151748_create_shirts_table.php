@@ -18,13 +18,15 @@ class CreateShirtsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamp('created_at')->nullable();
 
-            $table->unsignedBigInteger('stampa_id')->nullable();
-            $table->unsignedBigInteger('colour_id')->nullable();
+            $table->string('stampa')->nullable();
+            $table->string('colour')->nullable();
+            $table->string('size')->nullable();
             $table->unsignedBigInteger('user_id');
             
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('stampa_id')->references('id')->on('stampas');
-            $table->foreign('colour_id')->references('id')->on('colours');
+            $table->foreign('stampa')->references('url')->on('stampas');
+            $table->foreign('colour')->references('url')->on('colours');
+            $table->foreign('size')->references('size')->on('sizes');
 
         });
     }
