@@ -3,6 +3,7 @@ import axios from 'axios';
 import Logos from './Logos';
 import PanelDerecho from './PanelDerecho'
 import ListadoEditar from './ListadoEditar';
+import Container from './Container';
 
 export default class ShirtImage extends Component {
 
@@ -161,8 +162,10 @@ export default class ShirtImage extends Component {
 
     render() {
         return (
+                    
             <section className="pricing py-5">
-                <div className="container">
+                <Container/>
+               <div className="container"> 
                     <div className="row">
                         <div className="col-lg-3">
                             <Logos addLogo={this.addLogo} />

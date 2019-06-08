@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Container from './Container';
 export default class MisDiseños extends Component {
 
     constructor() {
@@ -50,6 +50,7 @@ export default class MisDiseños extends Component {
     render() {
         return (
             <section className="pricing py-5">
+                <Container/>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">

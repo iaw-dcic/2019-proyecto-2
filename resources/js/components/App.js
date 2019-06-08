@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Container from './Container'
+import MisDiseños from './MisDiseños'
+import ShirtImage from './ShirtImage';
 
 
 class App extends Component {
@@ -14,7 +16,8 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                      <Container />
+                      <Route exact path="/home" component={ShirtImage}></Route>
+                      <Route path="/misDiseños" component={MisDiseños}></Route>
                 </Switch>
             </BrowserRouter>
         )
