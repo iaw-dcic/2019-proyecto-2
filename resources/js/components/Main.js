@@ -16,17 +16,17 @@ export default class Main extends Component {
          }
     }
     componentWillMount () {
-            axios.get('/predictions').then(response => {
+      window.axios = require('axios');
+      let api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+            axios.get('/api/predictions').then(response => {
               predictions: response.data;
             }).catch(error => {
               console.log("this is error", error);
         });
-
     }
 
     renderPredictions() {
-
-
        return this.state.predictions.map(prediction => {
            return (
                /* When using list you need to specify a key
@@ -41,10 +41,8 @@ export default class Main extends Component {
 
   render() {
         console.log(this.state.predictions);
-
                 return (
                     <React.Fragment>
-
                         <main role="main" className="container">
                         <div className="row mt-5">
                         <div className="col-md-4">
@@ -52,14 +50,12 @@ export default class Main extends Component {
                              <div className='card-header'>Pronosticos</div>
                              <div className='card-body'>
                                <ul className='list-group list-group-flush'>
-
                                  {this.state.predictions.map((prediction) => (
                                    <Link
                                      className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
                                      key={prediction.id}
                                    >
                                      {prediction.name}
-
                                    </Link>
                                  ))}
                                </ul>

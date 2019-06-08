@@ -13,21 +13,21 @@ use Illuminate\Http\Request;
 |
 */
 
-/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-*/
+
 
 Route::get('teams', 'TeamController@index'); //muestra el listado de equipos que juegan los playoffs
 
 Route::get('matches/{ronda}', 'MatchController@index'); //muestra el listado de equipos que juegan los playoffs
-
 
 Route::view('/{path?}', 'react')->middleware('auth');
 
 Route::get('/user', 'UserController@user');//->middleware('auth');
 Route::get('/users', 'UserController@index');//->middleware('auth');
 
+Route::get('predictions', 'PredictionController@index'); //muestra el listado de predicciones de un usuario
+Route::post('predictions','PredictionController@store')->middleware("auth:api"); //cuando creo una nueva prediccion
+
 //Route::get('/predictions', 'PredictionController@index'); //muestra el listado de predicciones de un usuario
-Route::post('/predictions','PredictionController@store')->middleware('auth'); //cuando creo una nueva prediccion

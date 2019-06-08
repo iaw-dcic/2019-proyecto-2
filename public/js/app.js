@@ -79728,11 +79728,14 @@ function (_Component) {
       var _this2 = this;
 
       event.preventDefault();
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       var history = this.props.history;
       var prediction = {
         name: this.state.name
       };
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/predictions', prediction).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/predictions', prediction).then(function (response) {
         // redirect to the homepage
         history.push('/pronostico');
         console.log(response);
@@ -80031,6 +80034,8 @@ function (_Component) {
       this.setState({
         cuartos: cuartos
       }); //update the value
+      //    if(this.state.semifinal[i]!="")
+      //  onClick2(event, newcuartos, i); controlar si en semi hay algo sino borrar.
     }
   }, {
     key: "onClick2",
@@ -80105,13 +80110,13 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this4.onClick2(e, _this4.state.cuartos[2], 1);
         }
-      }, "  ", this.state.cuartos[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.cuartos[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-info",
         onClick: function onClick(e) {
           return _this4.onClick2(e, _this4.state.cuartos[3], 1);
         }
-      }, "  ", this.state.cuartos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, this.state.cuartos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "team-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -80119,13 +80124,13 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this4.onClick2(e, _this4.state.cuartos[4], 2);
         }
-      }, "    ", this.state.cuartos[4]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.cuartos[4]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-info",
         onClick: function onClick(e) {
           return _this4.onClick2(e, _this4.state.cuartos[5], 2);
         }
-      }, "    ", this.state.cuartos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, this.state.cuartos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "team-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -80133,13 +80138,13 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this4.onClick2(e, _this4.state.cuartos[6], 3);
         }
-      }, "    ", this.state.cuartos[6]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.cuartos[6]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-info",
         onClick: function onClick(e) {
           return _this4.onClick2(e, _this4.state.cuartos[7], 3);
         }
-      }, "      ", this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "bracket bracket-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "team-item"
@@ -80155,7 +80160,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this4.onClick3(e, _this4.state.semifinal[1], 0);
         }
-      }, "    ", this.state.semifinal[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, " ", this.state.semifinal[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "team-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -80163,13 +80168,13 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this4.onClick3(e, _this4.state.semifinal[2], 1);
         }
-      }, "      ", this.state.semifinal[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state.semifinal[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-info",
         onClick: function onClick(e) {
           return _this4.onClick3(e, _this4.state.semifinal[3], 1);
         }
-      }, "    ", this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "bracket bracket-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "team-item"
@@ -80179,7 +80184,7 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this4.onClick4(e, _this4.state["final"][0]);
         }
-      }, "    ", this.state["final"][0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.state["final"][0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-info",
         onClick: function onClick(e) {
@@ -80480,7 +80485,10 @@ function (_Component) {
   _createClass(Main, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/predictions').then(function (response) {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/api/predictions').then(function (response) {
         predictions: response.data;
       })["catch"](function (error) {
         console.log("this is error", error);

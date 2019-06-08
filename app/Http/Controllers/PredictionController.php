@@ -12,7 +12,8 @@ class PredictionController extends Controller
     public function index()
     {
        $user_id = Auth::user()->id;
-      return Prediction::where('user_id', $user_id)->get();
+       $prediccion= Prediction::where('user_id', $user_id)->get();
+      return  response()->json($prediccion);
     }
 
     public function show($id)

@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import axios from 'axios'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Navigation from './Navigation'
@@ -27,12 +27,16 @@ export default class AddPronostico extends Component{
        handleCreateNewProject (event) {
          event.preventDefault()
 
+        window.axios = require('axios');
+     		let api_token = document.querySelector('meta[name="api-token"]');
+     		if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
          const { history } = this.props
          const prediction = {
            name: this.state.name,
          }
 
-       Axios.post('/predictions', prediction)
+       axios.post('/api/predictions', prediction)
          .then(response => {
            // redirect to the homepage
            history.push('/pronostico')
@@ -67,7 +71,7 @@ export default class AddPronostico extends Component{
 
   return(
     <div>
-  
+
 
 
     <div className='container py-4'>

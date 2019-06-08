@@ -7,7 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SpoCtor') }}</title>
+    <!-- API Token -->
+     @auth
+        <meta name="api-token" content="{{ Auth::user()->api_token }}">
+        <meta name="username" content="{{ Auth::user()->name}}">
+    @endauth
+
+    <title>SpoCtor</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

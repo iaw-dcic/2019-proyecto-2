@@ -58,7 +58,6 @@ export default class Cuadro extends Component {
 
                   <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.id-1)}>{match.team1_id}</button>
                     <time>vs</time>
-
                   <button  id={match.team2_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team2_id,match.id-1)} type="button">{match.team2_id}</button>
 
             </li>
@@ -73,6 +72,9 @@ export default class Cuadro extends Component {
       let cuartos = [...this.state.cuartos];     // create the copy of state array
       cuartos[i] = newcuartos;                  //new value //mas mal q la mierda
       this.setState({ cuartos });            //update the value
+
+  //    if(this.state.semifinal[i]!="")
+      //  onClick2(event, newcuartos, i); controlar si en semi hay algo sino borrar.
   }
 
   onClick2(event, newsemi, i){
@@ -117,63 +119,51 @@ export default class Cuadro extends Component {
 
                     <ul className="bracket bracket-2">
                         <li className="team-item">
-
                             <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[0], 0)}>{this.state.cuartos[0]}</button>
                         <time>vs</time>
                             <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[1], 0)}>
                               {this.state.cuartos[1]}</button>
                         </li>
 
-
                       <li className="team-item">
-
-                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[2], 1)}>  {this.state.cuartos[2]}</button>
+                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[2], 1)}>{this.state.cuartos[2]}</button>
                       <time>vs</time>
-
-                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[3], 1)}>  {this.state.cuartos[3]}</button>
+                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[3], 1)}>{this.state.cuartos[3]}</button>
                       </li>
 
 
                       <li className="team-item">
 
-                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[4], 2)}>    {this.state.cuartos[4]}</button>
+                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[4], 2)}>{this.state.cuartos[4]}</button>
                         <time>vs</time>
-
-                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[5], 2)}>    {this.state.cuartos[5]}</button>
+                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[5], 2)}>{this.state.cuartos[5]}</button>
                       </li>
 
 
                         <li className="team-item">
-
-                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[6], 3)}>    {this.state.cuartos[6]}</button>
+                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[6], 3)}>{this.state.cuartos[6]}</button>
                           <time>vs</time>
-
-                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[7], 3)}>      {this.state.cuartos[7]}</button>
+                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos[7], 3)}>{this.state.cuartos[7]}</button>
                         </li>
                     </ul>
 
                 <ul className="bracket bracket-3">
                  <li className="team-item">
-
                       <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal[0], 0)}>{this.state.semifinal[0]}</button>
                       <time>vs</time>
-
-                        <button type="button"className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal[1], 0)}>    {this.state.semifinal[1]}</button>
+                        <button type="button"className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal[1], 0)}> {this.state.semifinal[1]}</button>
                   </li>
 
                   <li className="team-item">
-
-                      <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal[2], 1)}>      {this.state.semifinal[2]}</button>
+                      <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal[2], 1)}>{this.state.semifinal[2]}</button>
                     <time>vs</time>
-
-                      <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal[3], 1)}>    {this.state.semifinal[3]}</button>
+                      <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal[3], 1)}>{this.state.semifinal[3]}</button>
                   </li>
                 </ul>
 
                   <ul className="bracket bracket-4">
                     <li className="team-item">
-
-                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final[0])}>    {this.state.final[0]}</button>
+                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final[0])}>{this.state.final[0]}</button>
                       <time>vs</time>
                         <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final[1])}>
                           {this.state.final[1]}</button>
