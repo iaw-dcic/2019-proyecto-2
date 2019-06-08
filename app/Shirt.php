@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Shirt extends Model
 {
     protected $fillable = [
-        'name', 'stampa_id', 'colour','user_id', 'size'
+        'stampa_id', 'colour','size','user_id'
     ];
 }

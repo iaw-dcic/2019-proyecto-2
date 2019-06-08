@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Shirt;
 
 class remeraController extends Controller
 {
@@ -25,13 +26,13 @@ class remeraController extends Controller
 
         $data = $request->all();
 
-        $request->validate([
+        /*$request->validate([
             'colour' => ['required', 'string', 'exists:colours', 'max:255'],
             'stampa' => ['nullable', 'string', 'exists:stampas', 'max:255'],
-            'size' => ['nullable', 'string', 'exists:size', 'max:3'],
-        ]);
+            'size' => ['nullable', 'string', 'exists:size', 'max:255'],
+        ]);*/
 
-        $nueva = new Remera;
+        $nueva = new Shirt;
         $nueva->stampa = $data['stampa'];
         $nueva->colour = $data['colour'];
         $nueva->size = $data['size'];
@@ -44,7 +45,7 @@ class remeraController extends Controller
 
     public function eliminar($id){
 
-        $remera = Remera::findOrFail($id);
+        $remera = Shirt::findOrFail($id);
         if( auth('api')->user()->id == $remera->user_id ){
             $remera->delete();
             return response()->json(['result' => 'success']);

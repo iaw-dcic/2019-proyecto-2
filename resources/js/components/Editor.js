@@ -23,17 +23,15 @@ export default class Editor extends Component {
     }
     /*
    componentDidMount = () =>{
-        window.axios = require('axios');
-        try{
-            const response = axios.get('/images')
-            .then(res => {
-                this.setState({stampas : res.data});
-            }
 
-            );
-        }catch(e){
-            console.log('axios failed:',e);
-        }
+         window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
+        axios.get('/api/getRemeras').then(response => {
+            this.setState({ remeras: response.data })
+            console.log(response.data);
+        })
     }*/
 
     //eliminarRemera = (remera) => {}
@@ -56,7 +54,7 @@ export default class Editor extends Component {
         })
     }
 
-    guardarRemera = (e) => {
+    guardarRemera = () => {
 
         axios.post('/api/guardar', {
             colour: this.state.colorActual,
@@ -72,7 +70,7 @@ export default class Editor extends Component {
         return (
             <div className="container">
 
-                <button className="btn btn-dark" onClick={(e) => this.guardarRemera(e)}> Guardar Remera </button>
+                <button className="btn btn-dark" onClick={this.guardarRemera()}> Guardar Remera </button>
                 
                 <div className="row">
 

@@ -77648,7 +77648,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "guardarRemera", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "guardarRemera", function () {
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.post('/api/guardar', {
         colour: _this.state.colorActual,
         stampa: _this.state.stampaActual,
@@ -77668,16 +77668,13 @@ function (_Component) {
   }
   /*
   componentDidMount = () =>{
-      window.axios = require('axios');
-      try{
-          const response = axios.get('/images')
-          .then(res => {
-              this.setState({stampas : res.data});
-          }
-            );
-      }catch(e){
-          console.log('axios failed:',e);
-      }
+         window.axios = require('axios');
+      let api_token = document.querySelector('meta[name="api-token"]');
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+        axios.get('/api/getRemeras').then(response => {
+          this.setState({ remeras: response.data })
+          console.log(response.data);
+      })
   }*/
   //eliminarRemera = (remera) => {}
 
@@ -77685,15 +77682,11 @@ function (_Component) {
   _createClass(Editor, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-dark",
-        onClick: function onClick(e) {
-          return _this2.guardarRemera(e);
-        }
+        onClick: this.guardarRemera()
       }, " Guardar Remera "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
