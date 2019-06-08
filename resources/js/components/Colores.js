@@ -34,11 +34,11 @@ export default class Colores extends Component {
 
                     {
                         this.state.colores.map((item) => (
-                            <div key={item.url} className="col-md-3 col-sm-6 mb-4" >
-                                <a onClick={(e) => this.setColor(e,item.url)}>
+                            <div key={item.colour} className="col-md-3 col-sm-6 mb-4" >
+                                <a onClick={(e) => this.setColor(e,item.colour)}>
                                     <img
                                         className="img-fluid"
-                                        src={"/" + item.url}
+                                        src={"/" + item.colour}
                                         width="50" height="70"
                                     ></img>
                                 </a>

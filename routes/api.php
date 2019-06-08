@@ -31,4 +31,4 @@ Route::get('/talles','ElementosController@getTalles');
 
 
 //Este es para mostrar las remeras guardadas del usuario.
-Route::get('/remerasGuardadas','RemeraController@getRemeras')->middleware('auth:api');
+Route::get('/getRemeras','RemeraController@getRemeras')->middleware('auth:api');

@@ -17,20 +17,20 @@ class remeraController extends Controller
         //aca tengo que devolver todas las remeras del usuario logeado.
         $user = auth('api')->user();
 
-        $remeras = $user->misRemeras()->getResults();
+        $remeras = Shirt::where('user_id',$user->id)->get();
 
-        return response()->json(['remeras' => 'success']);
+        return response()->json($remeras,200);
     }
 
     public function guardar(Request $request){
 
         $data = $request->all();
 
-        /*$request->validate([
+        $request->validate([
             'colour' => ['required', 'string', 'exists:colours', 'max:255'],
             'stampa' => ['nullable', 'string', 'exists:stampas', 'max:255'],
-            'size' => ['nullable', 'string', 'exists:size', 'max:255'],
-        ]);*/
+            'size' => ['nullable', 'string', 'exists:sizes', 'max:255'],
+        ]);
 
         $nueva = new Shirt;
         $nueva->stampa = $data['stampa'];

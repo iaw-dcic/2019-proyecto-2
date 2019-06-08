@@ -10,7 +10,7 @@ export default class MisRemeras extends Component {
         }
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
 
         window.axios = require('axios');
         let api_token = document.querySelector('meta[name="api-token"]');
@@ -20,7 +20,7 @@ export default class MisRemeras extends Component {
             this.setState({ remeras: response.data })
             console.log(response.data);
         })
-    }
+    }*/
 
     eliminar(e, remera) {
         this.props.eliminarRemera(remera);

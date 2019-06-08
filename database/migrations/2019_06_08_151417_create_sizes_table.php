@@ -14,8 +14,6 @@ class CreateSizesTable extends Migration
     public function up()
     {
         Schema::create('sizes', function (Blueprint $table) {
-
-            $table->timestamp('created_at')->nullable();
             $table->string('size');
             $table->primary('size');
         });

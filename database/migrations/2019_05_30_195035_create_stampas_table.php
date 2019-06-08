@@ -14,9 +14,8 @@ class CreateStampasTable extends Migration
     public function up()
     {
         Schema::create('stampas', function (Blueprint $table) {
-            $table->string('url');
-            $table->timestamp('created_at')->nullable();
-            $table->primary('url');
+            $table->string('stampa');
+            $table->primary('stampa');
         });
     }
 

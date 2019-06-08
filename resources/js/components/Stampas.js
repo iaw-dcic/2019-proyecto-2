@@ -34,11 +34,11 @@ export default class Stampas extends Component {
 
                     {
                         this.state.stampas.map((item) => (
-                            <div key={item.url} className="col-md-3 col-sm-6 mb-4" >
-                                <a onClick={(e) => this.setStampa(e, item.url)}>
+                            <div key={item.stampa} className="col-md-3 col-sm-6 mb-4" >
+                                <a onClick={(e) => this.setStampa(e, item.stampa)}>
                                     <img
                                         className="img-fluid"
-                                        src={"/" + item.url}
+                                        src={"/" + item.stampa}
                                         width="50" height="70"
                                     ></img>
                                 </a>

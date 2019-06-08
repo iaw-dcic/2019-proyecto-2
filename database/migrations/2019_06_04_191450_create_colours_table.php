@@ -14,9 +14,8 @@ class CreateColoursTable extends Migration
     public function up()
     {
         Schema::create('colours', function (Blueprint $table) {
-            $table->string('url');
-            $table->timestamp('created_at')->nullable();
-            $table->primary('url');
+            $table->string('colour');
+            $table->primary('colour');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateColoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shirts');
+        Schema::dropIfExists('colours');
     }
 }

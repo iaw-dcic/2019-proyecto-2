@@ -16,7 +16,7 @@ class CreateShirtsTable extends Migration
         Schema::create('shirts', function (Blueprint $table) {
 
             $table->bigIncrements('id');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
 
             $table->string('stampa')->nullable();
             $table->string('colour')->nullable();
@@ -24,8 +24,8 @@ class CreateShirtsTable extends Migration
             $table->unsignedBigInteger('user_id');
             
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('stampa')->references('url')->on('stampas');
-            $table->foreign('colour')->references('url')->on('colours');
+            $table->foreign('stampa')->references('stampa')->on('stampas');
+            $table->foreign('colour')->references('colour')->on('colours');
             $table->foreign('size')->references('size')->on('sizes');
 
         });

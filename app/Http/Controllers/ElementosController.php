@@ -15,10 +15,10 @@ class ElementosController extends Controller{
     }
     
     public function getColores(){
-        $colores = Colour::get('url');
+        $colores = Colour::get('colour');
         $arreglo = [];
         foreach($colores as $color){
-            $arreglo[] = ['url' => $color->url];
+            $arreglo[] = ['colour' => $color->colour];
         }
         if ($arreglo != null)
             return response()->json($arreglo, 200);
@@ -28,10 +28,10 @@ class ElementosController extends Controller{
     
 
     public function getStampas(){
-        $stampas = Stampa::get('url');
+        $stampas = Stampa::get('stampa');
         $arreglo = [];
         foreach($stampas as $stampa){
-            $arreglo[] = ['url' => $stampa->url];
+            $arreglo[] = ['stampa' => $stampa->stampa];
         }
         if ($arreglo != null)
             return response()->json($arreglo, 200);
