@@ -71,17 +71,16 @@ export default class Generador extends Component {
             
                 <div className="row">    
                     <div className="col-sm">    
-                        <h1>{this.state.name}</h1>
+                        <h1 className="text-secondary">{this.state.name}</h1>
                     <div className="col-sm">
                      
                     <br/>
-                     <table class="table table-borderless">
+                    <ul class="list-group list-group-horizontal">
                      
-                      <tbody>
+                    
                        {this.GenerarOctavos()}
                     
-                      </tbody>
-                    </table>
+                    </ul>
                    
                     <br/>
                      <table class="table table-borderless">
@@ -112,19 +111,18 @@ export default class Generador extends Component {
                    
                     <br/>
                  </div>
-                        <button className="btn btn-primary mb-2 mr-2" >guardar </button>
-                        <button className="btn btn-primary mb-2 mr-2" >nuevo</button>
-                        <button className="btn btn-primary mb-2 mr-2" >limpiar</button>
-                    
-
+                 
+                  <button  className="btn btn-outline-danger mb-2 mr-2" >Guardar </button>
+                  <button  className="btn btn-outline-danger mb-2 mr-2" >Borrar </button>
+                  <button  className="btn btn-outline-danger mb-2 mr-2" >Nuevo</button>
+                
+                        
                   
                 </div>
-                <div className="row">
-                    
-
+                
                     
                   
-                </div>
+               
             </div>
         );
     }
@@ -135,7 +133,7 @@ export default class Generador extends Component {
         let children = [];
         let disabled = "";
 
-        children.push(<h1 >Octavos</h1>)
+        children.push(<h1 className="text-danger">Octavos :</h1>)
 
         while (i < 16) {
             if (this.state.cuartos[Math.floor(i/2)] != "")
@@ -158,7 +156,7 @@ export default class Generador extends Component {
         let children = [];
         let disabled;
 
-        children.push(<h1 >Cuartos</h1>)
+        children.push(<h1 className="text-danger" >Cuartos :</h1>)
 
         while (i < 8) {
 
@@ -183,7 +181,7 @@ export default class Generador extends Component {
         let children = [];
         let disabled;
 
-        children.push(<h1 >Semifinales</h1>)
+        children.push(<h1 className="text-danger" >Semifinales :</h1>)
 
         while (i < 4) {
             if (this.state.semis[i] == "" || this.state.semis[i+1] == "" ||
@@ -207,7 +205,7 @@ export default class Generador extends Component {
         let children = [];
         let disabled;
 
-        children.push(<h1 >Final</h1>)
+        children.push(<h1 className="text-danger" >Final :</h1>)
 
         if (this.state.final[i] == "" || this.state.final[i+1] == "")
             disabled = "disabled";

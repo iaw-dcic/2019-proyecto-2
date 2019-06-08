@@ -12,18 +12,18 @@ class App extends Component {
     return (
       <Router>
       <div>
-      <Header/>
         <ul>
+        <br/>
           <li>
-            <Link className='btn btn-primary' to="/">Home</Link>
+            <Link className="btn btn-danger" to="/">Home</Link>
           </li>
           <hr/>
           <li>
-            <Link className='btn btn-primary' to="/About">About</Link>
+            <Link  className="btn btn-danger" to="/About">About</Link>
           </li>
            <hr/>
             <li>
-            <Link className='btn btn-primary' to="/Generador">TusProdes</Link>
+            <Link  className="btn btn-danger" to="/Generador">TusProdes</Link>
           </li>
          
         </ul>

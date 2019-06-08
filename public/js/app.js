@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65733,13 +65733,11 @@ function (_Component) {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Informaci\xF3n personal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header text-white bg-dark"
+      }, "Informacion Personal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Informacion personal:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Integrantes: Gaston reyes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "LU: 106878"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Materia: INGENIER\xCDA DE APLICACIONES WEB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "A\xF1o: 2019")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Herramientas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Laravel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "React")))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Integrantes: Gaston reyes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "LU: 106878"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Materia: INGENIER\xCDA DE APLICACIONES WEB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "A\xF1o: 2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Se realizo con :"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Laravel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "React")))))));
     }
   }]);
 
@@ -65809,14 +65807,14 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "btn btn-primary",
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-danger",
         to: "/"
       }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "btn btn-primary",
+        className: "btn btn-danger",
         to: "/About"
       }, "About")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "btn btn-primary",
+        className: "btn btn-danger",
         to: "/Generador"
       }, "TusProdes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
@@ -65899,10 +65897,10 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Bienvenido Prodemerica"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header text-white bg-dark"
+      }, "Bienvenidos a Prodemerica"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
-      }, "Cree sus prodes y seleccionelo para apostar")))));
+      }, "Apuesta y gana !")))));
     }
   }]);
 
@@ -66031,25 +66029,25 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "text-secondary"
+      }, this.state.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        "class": "table table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.GenerarOctavos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        "class": "list-group list-group-horizontal"
+      }, this.GenerarOctavos()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         "class": "table table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.GenerarCuartos())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         "class": "table table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.GenerarSemis())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         "class": "table table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.GenerarFinal())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary mb-2 mr-2"
-      }, "guardar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary mb-2 mr-2"
-      }, "nuevo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary mb-2 mr-2"
-      }, "limpiar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }));
+        className: "btn btn-outline-danger mb-2 mr-2"
+      }, "Guardar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-danger mb-2 mr-2"
+      }, "Borrar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-danger mb-2 mr-2"
+      }, "Nuevo")));
     }
   }, {
     key: "GenerarOctavos",
@@ -66058,7 +66056,9 @@ function (_Component) {
       var i = 0;
       var children = [];
       var disabled = "";
-      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Octavos"));
+      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "text-danger"
+      }, "Octavos :"));
 
       while (i < 16) {
         if (this.state.cuartos[Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
@@ -66083,7 +66083,9 @@ function (_Component) {
       var i = 0;
       var children = [];
       var disabled;
-      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Cuartos"));
+      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "text-danger"
+      }, "Cuartos :"));
 
       while (i < 8) {
         if (this.state.cuartos[i] == "" || this.state.cuartos[i + 1] == "" || this.state.semis[Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
@@ -66108,7 +66110,9 @@ function (_Component) {
       var i = 0;
       var children = [];
       var disabled;
-      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Semifinales"));
+      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "text-danger"
+      }, "Semifinales :"));
 
       while (i < 4) {
         if (this.state.semis[i] == "" || this.state.semis[i + 1] == "" || this.state["final"][Math.floor(i / 2)] != "") disabled = "disabled";else disabled = "";
@@ -66133,7 +66137,9 @@ function (_Component) {
       var i = 0;
       var children = [];
       var disabled;
-      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Final"));
+      children.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "text-danger"
+      }, "Final :"));
       if (this.state["final"][i] == "" || this.state["final"][i + 1] == "") disabled = "disabled";else disabled = "";
       if (this.state.champ != "empty") disabled = "disabled";
       var child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Manejo__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -66241,7 +66247,9 @@ function (_Component) {
       var child2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "list-group-item list-group-item-action myButton"
       }, this.props.teamB);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, child1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "VS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, child2));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, child1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "p-3 mb-2 bg-dark text-white"
+      }, "VS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, child2));
     }
   }]);
 
