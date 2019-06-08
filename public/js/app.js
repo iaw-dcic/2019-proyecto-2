@@ -84979,12 +84979,14 @@ function (_React$Component) {
       if (this.props.e.id < 9) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+          className: "text-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
           onClick: function onClick() {
             _this.props.ganadorO(event, _this.props.e);
           },
-          color: "secondary"
-        }, this.props.e.name, "(", this.props.e.pais, ")"))));
+          color: "dark"
+        }, this.props.e.name, "(", this.props.e.pais, ")")))));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null);
       }
@@ -85054,13 +85056,7 @@ function (_React$Component) {
       visibility: [false, false, false, false]
     };
     return _this;
-  } // shouldComponentUpdate(){
-  //     if (this.props.cuartos[0]===0)
-  //         return false;
-  //     else
-  //         return true;
-  // }
-
+  }
 
   _createClass(TablaC, [{
     key: "cambiarEstado",
@@ -85103,49 +85099,312 @@ function (_React$Component) {
       this.cambiarEstado();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         hidden: !this.state.visibility[0],
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[0]);
         },
-        color: "secondary"
-      }, this.props.cuartos[0].name, "(", this.props.cuartos[0].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        color: "danger"
+      }, this.props.cuartos[0].name, "(", this.props.cuartos[0].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         hidden: !this.state.visibility[1],
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[1]);
         },
-        color: "secondary"
-      }, this.props.cuartos[1].name, "(", this.props.cuartos[1].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        color: "danger"
+      }, this.props.cuartos[1].name, "(", this.props.cuartos[1].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         hidden: !this.state.visibility[2],
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[2]);
         },
-        color: "secondary"
-      }, this.props.cuartos[2].name, "(", this.props.cuartos[2].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        color: "danger"
+      }, this.props.cuartos[2].name, "(", this.props.cuartos[2].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         hidden: !this.state.visibility[3],
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[3]);
         },
-        color: "secondary"
-      }, this.props.cuartos[3].name, "(", this.props.cuartos[3].pais, ")"))));
+        color: "danger"
+      }, this.props.cuartos[3].name, "(", this.props.cuartos[3].pais, ")")))));
     }
   }]);
 
   return TablaC;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/table/TablaCD.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/table/TablaCD.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaCD; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../card/Tarjeta2 */ "./resources/js/components/card/Tarjeta2.js");
+/* harmony import */ var _card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../card/Tarjeta */ "./resources/js/components/card/Tarjeta.js");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabla.css */ "./resources/js/components/table/tabla.css");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tabla_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var TablaCD =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TablaCD, _React$Component);
+
+  function TablaCD(props) {
+    var _this;
+
+    _classCallCheck(this, TablaCD);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TablaCD).call(this, props));
+    _this.state = {
+      visibility: [false, false, false, false]
+    };
+    return _this;
+  } // shouldComponentUpdate(){
+  //     if (this.props.cuartos[0]===0)
+  //         return false;
+  //     else
+  //         return true;
+  // }
+
+
+  _createClass(TablaCD, [{
+    key: "cambiarEstado",
+    value: function cambiarEstado() {
+      var visibility = this.state.visibility;
+
+      if (this.props.cuartos[4].id > 0) {
+        visibility[0] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.cuartos[5].id > 0) {
+        visibility[1] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.cuartos[6].id > 0) {
+        visibility[2] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.cuartos[7].id > 0) {
+        visibility[3] = true;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      this.cambiarEstado();
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[0],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[4]);
+        },
+        color: "danger"
+      }, this.props.cuartos[4].name, "(", this.props.cuartos[4].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[1],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[5]);
+        },
+        color: "danger"
+      }, this.props.cuartos[5].name, "(", this.props.cuartos[5].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[2],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[6]);
+        },
+        color: "danger"
+      }, this.props.cuartos[6].name, "(", this.props.cuartos[6].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[3],
+        onClick: function onClick() {
+          _this2.props.ganadorC(event, _this2.props.cuartos[7]);
+        },
+        color: "danger"
+      }, this.props.cuartos[7].name, "(", this.props.cuartos[7].pais, ")")))));
+    }
+  }]);
+
+  return TablaCD;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/table/TablaD.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/table/TablaD.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaD; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabla.css */ "./resources/js/components/table/tabla.css");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tabla_css__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var TablaD =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TablaD, _React$Component);
+
+  function TablaD(props) {
+    _classCallCheck(this, TablaD);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TablaD).call(this, props));
+  }
+
+  _createClass(TablaD, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      if (this.props.e.id >= 9) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          className: "size"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+          className: "text-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+          onClick: function onClick() {
+            _this.props.ganadorO(event, _this.props.e);
+          },
+          color: "dark"
+        }, this.props.e.name, "(", this.props.e.pais, ")")))));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null);
+      }
+    }
+  }]);
+
+  return TablaD;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
@@ -85205,7 +85464,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TablaS).call(this, props));
     _this.state = {
-      visibility: [false]
+      visibility: [false, false],
+      campeon: [""]
     };
     return _this;
   } // shouldComponentUpdate(){
@@ -85227,6 +85487,56 @@ function (_React$Component) {
           visibility: visibility
         };
       }
+
+      if (this.props["final"][1].id > 0) {
+        visibility[1] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+    }
+  }, {
+    key: "campeon",
+    value: function campeon(event, equipo) {
+      event.preventDefault();
+      var campeon = this.state.campeon;
+      campeon[0] = equipo;
+      this.setState = {
+        campeon: campeon
+      };
+    }
+  }, {
+    key: "renderCampeon",
+    value: function renderCampeon() {
+      if (this.state.campeon.length > 0) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "Card-borderless"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardImg"], {
+        top: true,
+        width: "100%",
+        className: "rounded",
+        src: "./trofeo.png",
+        alt: "Card image cap"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardTitle"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "badge badge-primary"
+      }, "Campe\xF3n"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardSubtitle"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "badge badge-warning"
+      }, this.state.campeon[0].name)))));else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "Card-borderless"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardImg"], {
+        top: true,
+        width: "100%",
+        className: "rounded",
+        src: "./trofeo.png",
+        alt: "Card image cap"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardTitle"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "badge badge-warning"
+      }, "Campe\xF3n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardSubtitle"], null)));
     }
   }, {
     key: "render",
@@ -85236,27 +85546,47 @@ function (_React$Component) {
       this.cambiarEstado();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         hidden: !this.state.visibility[0],
         onClick: function onClick() {
+          {
+            _this2.campeon(event, _this2.props["final"][0]);
+          }
+          ;
+
           _this2.props.ganadorF(event, _this2.props["final"][0]);
         },
-        color: "secondary"
-      }, this.props["final"][0].name, "(", this.props["final"][0].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        color: "warning"
+      }, this.props["final"][0].name, "(", this.props["final"][0].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[1],
+        onClick: function onClick() {
+          {
+            _this2.campeon(event, _this2.props["final"][1]);
+          }
+          ;
+
+          _this2.props.ganadorF(event, _this2.props["final"][1]);
+        },
+        color: "warning"
+      }, this.props["final"][1].name, "(", this.props["final"][1].pais, ")")))), this.renderCampeon());
     }
   }]);
 
@@ -85454,37 +85784,197 @@ function (_React$Component) {
       this.cambiarEstado();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         hidden: !this.state.visibility[0],
         onClick: function onClick() {
           _this2.props.ganadorS(event, _this2.props.semis[0]);
         },
-        color: "secondary"
-      }, this.props.semis[0].name, "(", this.props.semis[0].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        color: "success"
+      }, this.props.semis[0].name, "(", this.props.semis[0].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         hidden: !this.state.visibility[1],
         onClick: function onClick() {
           _this2.props.ganadorS(event, _this2.props.semis[1]);
         },
-        color: "secondary"
-      }, this.props.semis[1].name, "(", this.props.semis[1].pais, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        color: "success"
+      }, this.props.semis[1].name, "(", this.props.semis[1].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
     }
   }]);
 
   return TablaS;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/table/TablaSD.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/table/TablaSD.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaSD; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../card/Tarjeta2 */ "./resources/js/components/card/Tarjeta2.js");
+/* harmony import */ var _card_Tarjeta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../card/Tarjeta */ "./resources/js/components/card/Tarjeta.js");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabla.css */ "./resources/js/components/table/tabla.css");
+/* harmony import */ var _tabla_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tabla_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var TablaSD =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TablaSD, _React$Component);
+
+  function TablaSD(props) {
+    var _this;
+
+    _classCallCheck(this, TablaSD);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TablaSD).call(this, props));
+    _this.state = {
+      visibility: [false, false]
+    };
+    return _this;
+  } // shouldComponentUpdate(){
+  //     if (this.props.cuartos[0]===0)
+  //         return false;
+  //     else
+  //         return true;
+  // }
+
+
+  _createClass(TablaSD, [{
+    key: "cambiarEstado",
+    value: function cambiarEstado() {
+      var visibility = this.state.visibility;
+
+      if (this.props.semis[2].id > 0) {
+        visibility[0] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+
+      if (this.props.semis[3].id > 0) {
+        visibility[1] = visibility;
+        this.setState = {
+          visibility: visibility
+        };
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      this.cambiarEstado();
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[0],
+        onClick: function onClick() {
+          _this2.props.ganadorS(event, _this2.props.semis[2]);
+        },
+        color: "success"
+      }, this.props.semis[2].name, "(", this.props.semis[2].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        hidden: !this.state.visibility[1],
+        onClick: function onClick() {
+          _this2.props.ganadorS(event, _this2.props.semis[3]);
+        },
+        color: "success"
+      }, this.props.semis[3].name, "(", this.props.semis[3].pais, ")")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        hidden: "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card_Tarjeta2__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+    }
+  }]);
+
+  return TablaSD;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
@@ -85789,14 +86279,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_table_Tabla__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/table/Tabla */ "./resources/js/components/table/Tabla.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _components_table_Tabla__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/table/Tabla */ "./resources/js/components/table/Tabla.js");
 /* harmony import */ var _components_table_TablaC__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/table/TablaC */ "./resources/js/components/table/TablaC.js");
 /* harmony import */ var _components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/table/TablaS */ "./resources/js/components/table/TablaS.js");
 /* harmony import */ var _components_table_TablaF__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/table/TablaF */ "./resources/js/components/table/TablaF.js");
 /* harmony import */ var _components_table_TablaG__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/table/TablaG */ "./resources/js/components/table/TablaG.js");
-/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/table/tabla.css */ "./resources/js/components/table/tabla.css");
-/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_table_tabla_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_table_TablaD__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/table/TablaD */ "./resources/js/components/table/TablaD.js");
+/* harmony import */ var _components_table_TablaCD__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/table/TablaCD */ "./resources/js/components/table/TablaCD.js");
+/* harmony import */ var _components_table_TablaSD__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/table/TablaSD */ "./resources/js/components/table/TablaSD.js");
+/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/table/tabla.css */ "./resources/js/components/table/tabla.css");
+/* harmony import */ var _components_table_tabla_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_table_tabla_css__WEBPACK_IMPORTED_MODULE_11__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85816,6 +86309,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -85983,6 +86479,31 @@ function (_Component) {
           console.log('error');
       }
     }
+  }, {
+    key: "ganadorF",
+    value: function ganadorF(e, equipo) {
+      e.preventDefault();
+      var _final2 = this.state["final"]; // this.setState({valores: valores});
+
+      switch (true) {
+        case equipo.id <= 8:
+          _final2[0] = equipo;
+          this.setState({
+            "final": _final2
+          });
+          break;
+
+        case equipo.id >= 9 && equipo.id < 17:
+          _final2[1] = equipo;
+          this.setState({
+            "final": _final2
+          });
+          break;
+
+        default:
+          console.log('error');
+      }
+    }
     /**Cuando monte el componente que me liste los equipos */
 
   }, {
@@ -86010,11 +86531,23 @@ function (_Component) {
       var _this3 = this;
 
       return this.state.equipos.map(function (e, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tabla__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tabla__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: i,
           e: e,
-          r: _this3.state.r,
           ganadorO: _this3.ganadorO.bind(_this3)
+        });
+      });
+    }
+  }, {
+    key: "pintar_equipos2",
+    value: function pintar_equipos2() {
+      var _this4 = this;
+
+      return this.state.equipos.map(function (e, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaD__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          key: i,
+          e: e,
+          ganadorO: _this4.ganadorO.bind(_this4)
         });
       });
     }
@@ -86030,66 +86563,81 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaC__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaC__WEBPACK_IMPORTED_MODULE_4__["default"], {
         cuartos: this.state.cuartos,
         ganadorC: this.ganadorC.bind(this)
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__["default"], {
         semis: this.state.semis,
         ganadorS: this.ganadorS.bind(this)
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaF__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        "final": this.state["final"]
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaF__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        "final": this.state["final"],
+        ganadorF: this.ganadorF.bind(this)
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaSD__WEBPACK_IMPORTED_MODULE_10__["default"], {
         semis: this.state.semis,
         ganadorS: this.ganadorS.bind(this)
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaC__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaCD__WEBPACK_IMPORTED_MODULE_9__["default"], {
         cuartos: this.state.cuartos,
         ganadorC: this.ganadorC.bind(this)
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos()))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "text-center"
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos2()))))));
     }
   }]);
 

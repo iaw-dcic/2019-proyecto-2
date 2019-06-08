@@ -3,7 +3,7 @@ import Tarjeta2 from '../card/Tarjeta2';
 import Tarjeta from '../card/Tarjeta';
 import './tabla.css';
 import {
-    Button
+    Button, Card
 } from 'reactstrap';
 
 
@@ -15,12 +15,7 @@ export default class TablaC extends React.Component {
         }
     }
 
-    // shouldComponentUpdate(){
-    //     if (this.props.cuartos[0]===0)
-    //         return false;
-    //     else
-    //         return true;
-    // }
+
     cambiarEstado() {
 
         var visibility = this.state.visibility;
@@ -51,15 +46,15 @@ export default class TablaC extends React.Component {
         this.cambiarEstado()
         return (
             <tbody>
-                <tr className="size"><td><Tarjeta2 /></td></tr>
+                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
-                <tr className="size"><td><Button hidden={!this.state.visibility[0]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[0]) }} color="secondary">{this.props.cuartos[0].name}({this.props.cuartos[0].pais})</Button></td></tr>
-                <tr className="size"><td><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Button hidden={!this.state.visibility[1]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[1]) }} color="secondary">{this.props.cuartos[1].name}({this.props.cuartos[1].pais})</Button></td></tr>
-                <tr className="size"><td><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Button hidden={!this.state.visibility[2]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[2]) }} color="secondary">{this.props.cuartos[2].name}({this.props.cuartos[2].pais})</Button></td></tr>
-                <tr className="size"><td><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Button hidden={!this.state.visibility[3]}onClick={() => { this.props.ganadorC(event, this.props.cuartos[3]) }} color="secondary">{this.props.cuartos[3].name}({this.props.cuartos[3].pais})</Button></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[0]) }} color="danger">{this.props.cuartos[0].name}({this.props.cuartos[0].pais})</Button></Card></td></tr>
+                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[1]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[1]) }} color="danger">{this.props.cuartos[1].name}({this.props.cuartos[1].pais})</Button></Card></td></tr>
+                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[2]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[2]) }} color="danger">{this.props.cuartos[2].name}({this.props.cuartos[2].pais})</Button></Card></td></tr>
+                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[3]}onClick={() => { this.props.ganadorC(event, this.props.cuartos[3]) }} color="danger">{this.props.cuartos[3].name}({this.props.cuartos[3].pais})</Button></Card></td></tr>
             </tbody>
         );
     }

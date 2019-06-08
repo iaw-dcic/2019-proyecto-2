@@ -3,7 +3,8 @@ import Tarjeta2 from '../card/Tarjeta2';
 import Tarjeta from '../card/Tarjeta';
 import './tabla.css';
 import {
-    Button
+    Button, Card,  CardImg, CardBody,
+    CardTitle, CardSubtitle,
 } from 'reactstrap';
 
 
@@ -11,7 +12,8 @@ export default class TablaS extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            visibility: [false]
+            visibility: [false,false],
+            campeon: [""],
         }
     }
 
@@ -30,24 +32,63 @@ export default class TablaS extends React.Component {
                 visibility: visibility
             }
         }
+        if (this.props.final[1].id > 0) {
+            visibility[1] = visibility;
+            this.setState = {
+                visibility: visibility
+            }
+        }
     }
+
+
+
+
+    campeon(event,equipo){
+        event.preventDefault();
+        var campeon= this.state.campeon;
+        campeon[0]=equipo;
+        this.setState = {
+            campeon:campeon,
+        }
+    }
+    renderCampeon(){
+        if(this.state.campeon.length>0)
+        return(
+            < Card className="Card-borderless">
+            <CardImg top width="100%" className="rounded" src="./trofeo.png" alt="Card image cap" />
+            <CardBody>
+                <CardTitle className= "text-center"><h4><span className="badge badge-primary">Campeón</span></h4></CardTitle>
+                    <CardSubtitle className= "text-center"><h3><span className="badge badge-warning">{this.state.campeon[0].name}</span></h3></CardSubtitle>
+
+            </CardBody>
+            </Card >
+        );
+        else return(
+            < Card className="Card-borderless">
+            <CardImg top width="100%" className="rounded" src="./trofeo.png" alt="Card image cap" />
+            <CardBody>
+                <CardTitle className= "text-center"><span className="badge badge-warning">Campeón</span></CardTitle>
+                    <CardSubtitle></CardSubtitle>
+
+            </CardBody>
+            </Card >
+
+        );
+    }
+
     render() {
 
         this.cambiarEstado()
         return (
             <tbody>
-                <tr className="size"><td><Tarjeta2 /></td></tr>
+                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
-                <tr className="size"><td><Tarjeta2 /></td></tr>
+                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
-                <tr className="size"><td><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Button hidden={!this.state.visibility[0]} onClick={() => { this.props.ganadorF(event, this.props.final[0]) }} color="secondary">{this.props.final[0].name}({this.props.final[0].pais})</Button></td></tr>
-
-                <tr className="size"><td><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Tarjeta2 /></td></tr>
-
-                <tr className="size"><td><Tarjeta2 /></td></tr>
+                <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} onClick={() => { {this.campeon(event,this.props.final[0])};this.props.ganadorF(event, this.props.final[0]) }} color="warning">{this.props.final[0].name}({this.props.final[0].pais})</Button></Card></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[1]} onClick={() => { {this.campeon(event,this.props.final[1])};this.props.ganadorF(event, this.props.final[1]) }} color="warning">{this.props.final[1].name}({this.props.final[1].pais})</Button></Card></td></tr>
+                {this.renderCampeon()}
             </tbody>
         );    }
 
