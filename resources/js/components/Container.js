@@ -12,7 +12,7 @@ export default class Container extends Component {
                         <NavLink to="/misDiseños"className="nav-link active"  >Mis diseños</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/home" span className="nav-link active">Crear</NavLink>
+                        <NavLink to="/home" className="nav-link active">Crear</NavLink>
                     </li>
                 </ul>
                 
