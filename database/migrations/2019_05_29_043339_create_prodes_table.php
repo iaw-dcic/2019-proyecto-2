@@ -19,7 +19,8 @@ class CreateProdesTable extends Migration
             $table->string('cuartos');
             $table->string('semis');
             $table->string('final');
-            $table->string('champ');
+            $table->string('camp');
+            $table->string('name');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
    
-   
+     @auth
+    <meta name="api-token" content="{{Auth::user()->api_token}}">
+    @endauth
    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -22,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!--   {{ config('app.name', 'Hola') }} -->

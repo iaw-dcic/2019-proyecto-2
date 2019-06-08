@@ -17,5 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+
 Route::get('octavos', 'EquipoController@getOctavos');
-Route::get('Equipos', 'EquipoController@index')->middleware('auth:api');
+Route::get('equipos', 'EquipoController@index')->middleware('auth:api');
+Route::post('equipos', 'EquipoController@store')->middleware('auth:api');
+Route::get('equipos/{prode}', 'EquipoController@show')->middleware('auth:api');
+Route::put('equipos/{prode}', 'EquipoController@update')->middleware('auth:api');

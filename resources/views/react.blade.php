@@ -7,6 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @auth
+    <meta name="api-token" content="{{Auth::user()->api_token}}">
+    @endauth
+
     <title>{{ __('ProdeMerica') }}</title>
 
     <!-- Scripts -->
@@ -56,15 +60,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right text-white bg-dark" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item text-white bg-dark" href="{{ url('users/'.Auth::user()->id) }}">
-                                        {{ __('Mi Perfil') }}
-                                    </a>
+                                   
                                     <a class="dropdown-item text-white bg-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                      <a class="dropdown-item text-white bg-dark" href="{{ route('users.edit',Auth::user()->id) }}">
+                                        {{ __('Editar') }}
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

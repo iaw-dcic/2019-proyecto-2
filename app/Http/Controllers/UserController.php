@@ -39,7 +39,7 @@ class UserController extends Controller
         if($userLog->id != $id)
             abort(403, 'Usuario no autorizado');
         $user=User::find($id);
-        return view('/auth/perfilEditor')->with('user',$user);
+        return view('/auth/edit')->with('user',$user);
     }
 
     /**
@@ -70,12 +70,12 @@ class UserController extends Controller
             $user->name=$request->name;
         }
         //Lastname
-        if($request->lastname==null){
+       /* if($request->lastname==null){
             $user->lastname=$apelDefault;
         }
         else{
             $user->lastname=$request->lastname;
-        }
+        }*/
         //Mail
         foreach ($mailUsados as $email)
         {
@@ -88,6 +88,6 @@ class UserController extends Controller
             $user->save();
         }
         
-        return view('/auth/perfil')->with('user',$user);
+        return view('/react')->with('user',$user);
     }
 }

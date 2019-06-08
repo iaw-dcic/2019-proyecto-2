@@ -12,17 +12,60 @@ export default class Generador extends Component {
             semis: ["", "", "", ""],
             final: ["", ""],
             prodes: [],
-            camp: 'empty',
+            camp: 'vacio',
             id: 0,
-            name: 'Tu Prode',
-            mount: 0
+            name: 'Nuevo Prode',
+            bandera: 0,
+            editar: 0,
+            errors: []
         }
 
        
+        this.onClickOctavos = this.onClickOctavos.bind(this);
+        this.onClickCuartos = this.onClickCuartos.bind(this);
+        this.onClickSemis = this.onClickSemis.bind(this);
+        this.onClickFinal = this.onClickFinal.bind(this);
+ 
+        this.buscar = this.buscar.bind(this);
+        this.nuevo = this.nuevo.bind(this);
+        this.limpiar = this.limpiar.bind(this);
+         this.save = this.save.bind(this);
+        this.handleFieldChange=this.handleFieldChange.bind(this);
+        this.hasErrorFor = this.hasErrorFor.bind(this);
+        this.renderErrorFor = this.renderErrorFor.bind(this);
     }
 
-    componentDidMount(){
-        
+  handleFieldChange (event) {
+    this.setState({
+      name: event.target.value
+    })
+  }
+
+ 
+   
+
+  hasErrorFor (field) {
+    return !!this.state.errors[field]
+  }
+
+  renderErrorFor (field) {
+    if (this.hasErrorFor(field)) {
+      return (
+        <span className='invalid-feedback'>
+          <strong>{this.state.errors[field][0]}</strong>
+        </span>
+      )
+    }
+  }
+
+
+    componentDidMount() {
+
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         var self = this;
 
@@ -42,21 +85,21 @@ export default class Generador extends Component {
             .catch(function (error) {
                console.log(error);
             });
-            self.setState({mount: 1});
+            self.setState({bandera: 1});
         } else {
             self.setState({
                 octavos: localStorage.getItem('octavos').split(','),
                 cuartos: localStorage.getItem('cuartos').split(','),
                 semis: localStorage.getItem('semis').split(','),
                 final: localStorage.getItem('final').split(','),
-                camp: localStorage.getItem('champ'),
-                mount: 1
+                camp: localStorage.getItem('camp'),
+                bandera: 1
             });
         }
     }
 
     render() {
-        if (this.state.mount != 0){
+        if (this.state.bandera != 0){
             if (this.state.id != 0){
                 localStorage.clear();
             } else {
@@ -64,7 +107,7 @@ export default class Generador extends Component {
                 localStorage.setItem('cuartos', this.state.cuartos);
                 localStorage.setItem('semis', this.state.semis);
                 localStorage.setItem('final', this.state.final);
-                localStorage.setItem('champ', this.state.champ);
+                localStorage.setItem('camp', this.state.camp);
             }
         }
         return (
@@ -75,7 +118,8 @@ export default class Generador extends Component {
                     <div className="col-sm">
                      
                     <br/>
-                    <ul class="list-group list-group-horizontal">
+                  
+                    <ul className="list-group list-group-horizontal">
                      
                     
                        {this.GenerarOctavos()}
@@ -83,49 +127,106 @@ export default class Generador extends Component {
                     </ul>
                    
                     <br/>
-                     <table class="table table-borderless">
+                     <ul className="list-group list-group-horizontal">
                      
-                      <tbody>
+                      
                        {this.GenerarCuartos()}
-                    
-                      </tbody>
-                    </table>
+                      </ul>
                     
                     <br/>
-                     <table class="table table-borderless">
+                    <ul className="list-group list-group-horizontal">
                      
-                      <tbody>
-                      {this.GenerarSemis()}
-                    
-                      </tbody>
-                    </table>
+                      
+                       {this.GenerarSemis()}
+                      </ul>
                     
                     <br/>
-                     <table class="table table-borderless">
+                    <ul className="list-group list-group-horizontal">
                      
-                      <tbody>
-                        {this.GenerarFinal()}
-                    
-                      </tbody>
-                    </table>
+                      
+                       {this.GenerarFinal()}
+                      </ul>
+                  <br/>
+                
+
+   
+                    <ul className="list-group list-group-horizontal">
+                     
+                      
+                        {this.crearCampion()}
+                      </ul>
+                     
+                  </div>
+
+                        <div className="row">
+                            <div className="col-sm  ">
+                                <div className="list-group dark">
+
+                                    <div className=" card-header list-group-item list-group-item-action  text-white bg-dark">Mis prodes :</div>
+                                    {this.state.prodes.map((prode, i) =>
+                                        <button type="button"
+                                        id = {prode.id} 
+                                        className="list-group-item list-group-item-dark" 
+                                        onClick={this.buscar}>
+                                            {prode.name}
+                                        </button>
+                                    )}
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div className='card-body'>
+
+                    </div>
+                    <div className="card-header text-white bg-dark">Nombre del prode</div>
+                        <div className="card-body">
+                            <div className="form-group mb-2 ">
+                                <input
+                                  id='name'
+                                  type='text'
+                                  className={`form-control ${this.hasErrorFor('name') ? 'is-invalid' : ''}`}
+                                  name='name'
+                                  value={this.state.name}
+                                  onChange={this.handleFieldChange}
+                                />
+                            {this.renderErrorFor('name')}
+                         </div>
+                            </div>
+
                    
-                    <br/>
-                 </div>
-                 
-                  <button  className="btn btn-outline-danger mb-2 mr-2" >Guardar </button>
-                  <button  className="btn btn-outline-danger mb-2 mr-2" >Borrar </button>
-                  <button  className="btn btn-outline-danger mb-2 mr-2" >Nuevo</button>
+               
+                        <div className='card-body'>
+
+                
+
+              </div>
+                  
+
+                
+               
+
+            
+
+                
+               
+                 <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.save}> guardar</button>
+                  <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.limpiar}>Borrar </button>
+                  <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.nuevo} >Nuevo</button>
                 
                         
                   
-                </div>
-                
-                    
-                  
+               
+                    </div>
                
             </div>
         );
     }
+
+  
 
     GenerarOctavos(){
         let table = [];
@@ -140,7 +241,11 @@ export default class Generador extends Component {
                 disabled = "disabled";
             else disabled = "";
 
-            let child = <Manejo teamA = {this.state.octavos[i]}  teamB = {this.state.octavos[i+1]} />
+            let child = <Manejo  EquipoA = {this.state.octavos[i]}  EquipoB = {this.state.octavos[i+1]} 
+            id1 = {i} id2 = {i+1}  onClick = {this.onClickOctavos} 
+                        create = {this.crear} disable = {disabled}/>
+
+            
             children.push(child);
             i = i + 2;
         }
@@ -164,8 +269,9 @@ export default class Generador extends Component {
                 this.state.semis[Math.floor(i/2)] != "")
                 disabled = "disabled";
             else disabled = "";
-            let child=<Manejo teamA = {this.state.cuartos[i]} 
-                                teamB = {this.state.cuartos[i+1]}/>
+            let child=<Manejo  EquipoA = {this.state.cuartos[i]} EquipoB = {this.state.cuartos[i+1]}
+            id1 = {i} id2 = {i+1}  onClick = {this.onClickCuartos} 
+                        create = {this.crear} disable = {disabled}/>
             children.push(child);
 
             i = i + 2;
@@ -189,8 +295,9 @@ export default class Generador extends Component {
                 disabled = "disabled";
             else disabled = "";
 
-              let child=<Manejo teamA = {this.state.semis[i]} 
-                                teamB = {this.state.semis[i+1]}/>
+              let child=<Manejo  EquipoA = {this.state.semis[i]}  EquipoB = {this.state.semis[i+1]}
+              id1 = {i} id2 = {i+1}  onClick = {this.onClickSemis} 
+                        create = {this.crear} disable = {disabled}/>
             children.push(child);
           
             i = i + 2;
@@ -211,16 +318,150 @@ export default class Generador extends Component {
             disabled = "disabled";
         else disabled = "";
 
-        if (this.state.champ != "empty")
+        if (this.state.camp != "vacio")
                 disabled = "disabled";
         
-         let child=<Manejo teamA = {this.state.final[i]} 
-                         teamB = {this.state.final[i+1]}/>
+         let child=<Manejo  EquipoA = {this.state.final[i]} EquipoB= {this.state.final[i+1]}
+         id1 = {i} id2 = {i+1}  onClick = {this.onClickFinal} 
+                        create = {this.crear} disable = {disabled}/>
             children.push(child);
 
         table.push(<div id = "final" className="col-sm">{children}</div>);
         return table;
     }
 
-   
+     crearCampion(){
+        if (this.state.camp != "vacio")
+            return <div className="Ganador">Tu Campeón es: {this.state.camp}</div>
+        
+    }
+
+    onClickOctavos(e){
+        var equipo = e.target.innerHTML;
+        var index = Math.floor(e.target.id/2);
+        var equipos = this.state.cuartos;
+        equipos[index] = equipo;
+
+        this.setState({
+            cuartos: equipos
+        })
+    }
+
+    onClickCuartos(e){
+        var equipo = e.target.innerHTML;
+        if (equipo != ""){
+            var index = Math.floor(e.target.id/2);
+            var equipos = this.state.semis;
+            equipos[index] = equipo;
+
+            this.setState({
+                semis: equipos
+            })
+        }
+    }
+
+    onClickSemis(e){
+        var equipo = e.target.innerHTML;
+        var index = Math.floor(e.target.id/2);
+        var equipos = this.state.final;
+        equipos[index] = equipo;
+
+        this.setState({
+            final: equipos
+        })
+    }
+
+    onClickFinal(e){
+        var equipo = e.target.innerHTML;
+
+        this.setState({
+            camp: equipo
+        })
+    }
+
+    crear(e){
+        var hijos = e.target.getElementsByTagName('BUTTON');
+        hijos[0].disabled = false;
+        hijos[1].disabled = false;
+    }
+
+     save (event){
+        var self = this;
+        if (this.state.id == 0){
+      
+            axios.post('/api/equipos', {
+                data: this.state
+            }).then(function (response) {
+                self.setState({
+                    prodes: response.data,
+                    id: response.data[response.data.length-1]['id'],
+                    name: response.data[response.data.length-1]['name'],
+                    editar: 1
+                });
+            }).catch(function (error) {
+              console.log(error);
+            });
+     
+        } else {
+            axios.put('/api/equipos/'+this.state.id, {
+                data: this.state
+            }).then(function (response) {
+            }).catch(function (error) {
+              console.log(error);
+            });
+
+        }
+    }
+
+    buscar(e){
+        var id = e.target.id;
+        var self = this;
+        axios.get('/api/equipos/'+id)
+         .then(function (response) {
+            var octavos = response.data[0]['octavos'].split(',');
+            var cuartos = response.data[0]['cuartos'].split(',');
+            var semis = response.data[0]['semis'].split(',');
+            var final = response.data[0]['final'].split(',');
+            var camp = response.data[0]['camp'];
+            var name = response.data[0]['name'];
+
+            self.setState({
+                octavos: octavos,
+                cuartos: cuartos,
+                semis: semis,
+                final: final,
+                camp: camp,
+                id: id,
+                name: name
+            });
+         })
+        .catch(function (error) {
+           console.log(error);
+        });
+    }
+
+    nuevo(){
+        this.setState({
+            cuartos: ["", "", "", "", "", "", "", ""],
+            semis: ["", "", "", ""],
+            final: ["", ""],
+            camp: 'vacio',
+            id: 0,
+            name: "Nuevo prode",
+            editar: 0
+        });
+    }
+
+    limpiar(){
+        this.setState({
+            cuartos: ["", "", "", "", "", "", "", ""],
+            semis: ["", "", "", ""],
+            final: ["", ""],
+            camp: 'vacio',
+        });
+    
+    }
 }
+
+   
+

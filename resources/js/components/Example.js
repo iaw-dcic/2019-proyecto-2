@@ -8,9 +8,12 @@ export default class Example extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
+                        
                             <div className="card-header text-white bg-dark">Bienvenidos a Prodemerica</div>
-                            <div className="card-body">Apuesta y gana ! 
+                            <div className="card-body">
+                            Recuerda que el nombre de tu prode por defecto sera "nuevo prode"
                             </div>
+
                         </div>
                     </div>
                 </div>
