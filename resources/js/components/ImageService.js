@@ -93,7 +93,7 @@ export default class ImageService{
         let image;
 
         switch(estampaId){
-            case 0:{image=require('./images/estampas/sin-estampa.png'); break;}
+            case 10:{image=require('./images/estampas/sin-estampa.png'); break;}
             case 6:{image=require('./images/estampas/girl.png'); break;}
             case 2:{image=require('./images/estampas/cat.png'); break;}
             case 9:{image=require('./images/estampas/stitch.png'); break;}

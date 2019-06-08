@@ -4,7 +4,6 @@ import '../../../public/css/layout.css';
 import Colors from './Colors';
 import CaseOptions from './CaseOptions';
 import Images from './Images';
-import Save from './Save';
 import ImageService from './ImageService';
 import Modal from './Modal'
 import Axios from 'axios';
@@ -84,12 +83,17 @@ export default class MainSection extends Component {
     }
 
     addNewProduct() {
+      window.axios = require('axios');
+      let api_token = document.querySelector('meta[name="api-token"]');
+  
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
       const product={
         'id_color': this.state.colorIndex,
         'id_case':this.state.caseIndex,
         'id_image':this.state.estampaIndex
       };
-      Axios.post('/products',product)
+      Axios.post('/api/products',product)
       .then(response => {
         console.log(response)
           alert("Funda creada correctamente");
