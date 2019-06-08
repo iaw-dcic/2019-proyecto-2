@@ -65763,7 +65763,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Pronostico_Pronostico__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pronostico/Pronostico */ "./resources/js/components/Pronostico/Pronostico.js");
 /* harmony import */ var _Playoff_Playoff__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Playoff/Playoff */ "./resources/js/components/Playoff/Playoff.js");
-/* harmony import */ var _Readme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Readme */ "./resources/js/components/Readme.js");
+/* harmony import */ var _Readme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Readme */ "./resources/js/components/Readme.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65800,7 +65800,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
     _this.state = {
-      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Readme__WEBPACK_IMPORTED_MODULE_5__["default"], null)
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Readme__WEBPACK_IMPORTED_MODULE_4__["default"], null)
     };
     return _this;
   }
@@ -65945,8 +65945,8 @@ function (_Component) {
       });
     }
   }, {
-    key: "handleChange",
-    value: function handleChange(event) {
+    key: "handlePlayoffSelected",
+    value: function handlePlayoffSelected(event) {
       var id_playoffAux = '';
       var finalAux = [];
       var semifinalAux = [];
@@ -66014,6 +66014,30 @@ function (_Component) {
     value: function render() {
       var _this5 = this;
 
+      var headTable = [];
+      headTable.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        id: "titleTableTorneo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")));
+      var arrOctavos = [];
+
+      for (var i = 1; i <= 16; i = i + 2) {
+        arrOctavos.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname' + i]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname' + (i + 1)])));
+      }
+
+      var arrCuartos = [];
+
+      for (var _i = 1; _i <= 8; _i = _i + 2) {
+        arrCuartos.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname' + _i]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname' + (_i + 1)])));
+      }
+
+      var arrSemifinal = [];
+
+      for (var _i2 = 1; _i2 <= 4; _i2 = _i2 + 2) {
+        arrSemifinal.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname' + _i2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname' + (_i2 + 1)])));
+      }
+
+      var arrFinal = [];
+      arrFinal.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname2'])));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66031,9 +66055,9 @@ function (_Component) {
           className: "btn-playoff btn-playoff1 btn-playoff2 mr-2",
           key: id,
           onClick: function onClick(event) {
-            return _this5.handleChange(id);
+            return _this5.handlePlayoffSelected(id);
           }
-        }, " Playoff ", id + 1);
+        }, "Playoff ", id + 1);
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-deshacer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -66053,27 +66077,35 @@ function (_Component) {
         className: "mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableFinal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state["final"]['teamname2']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, headTable.map(function (head) {
+        return head;
+      }), arrFinal.map(function (fila) {
+        return fila;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Semifinal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableSemifinal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.semifinal['teamname4']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, headTable.map(function (head) {
+        return head;
+      }), arrSemifinal.map(function (fila) {
+        return fila;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Cuartos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableCuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname4'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname5']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname6'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname7']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.cuartos['teamname8']))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, headTable.map(function (head) {
+        return head;
+      }), arrCuartos.map(function (fila) {
+        return fila;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableOctavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname1']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname2'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname3']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname4'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname5']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname6'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname7']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname8'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname9']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname10'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname11']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname12'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname13']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname14'])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname15']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.octavos['teamname16'])))));
+      }, headTable.map(function (head) {
+        return head;
+      }), arrOctavos.map(function (fila) {
+        return fila;
+      }))));
     }
   }]);
 
@@ -66326,6 +66358,74 @@ function (_Component) {
           return octavos.push(team.name);
         });
       }
+      var headTable = [];
+      headTable.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        id: "titleTableTorneo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")));
+      var arrOctavos = [];
+
+      var _loop = function _loop(i) {
+        arrOctavos.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          onClick: function onClick(event) {
+            return _this3.handleChangeOctavos(octavos[i], i);
+          }
+        }, octavos[i]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          onClick: function onClick(event) {
+            return _this3.handleChangeOctavos(octavos[i + 1], i + 1);
+          }
+        }, octavos[i + 1])));
+      };
+
+      for (var i = 0; i < 16; i = i + 2) {
+        _loop(i);
+      }
+
+      var arrCuartos = [];
+
+      var _loop2 = function _loop2(i) {
+        arrCuartos.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          onClick: function onClick(event) {
+            return _this3.handleChangeCuartos(_this3.state.cuartos[i], i);
+          }
+        }, _this3.state.cuartos[i]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          onClick: function onClick(event) {
+            return _this3.handleChangeCuartos(_this3.state.cuartos[i + 1], i + 1);
+          }
+        }, _this3.state.cuartos[i + 1])));
+      };
+
+      for (var i = 0; i < 8; i = i + 2) {
+        _loop2(i);
+      }
+
+      var arrSemifinal = [];
+
+      var _loop3 = function _loop3(i) {
+        arrSemifinal.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          onClick: function onClick(event) {
+            return _this3.handleChangeSemifinal(_this3.state.semifinal[i], i);
+          }
+        }, _this3.state.semifinal[i]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          onClick: function onClick(event) {
+            return _this3.handleChangeSemifinal(_this3.state.semifinal[i + 1], i + 1);
+          }
+        }, _this3.state.semifinal[i + 1])));
+      };
+
+      for (var i = 0; i < 4; i = i + 2) {
+        _loop3(i);
+      }
+
+      var arrFinal = [];
+      arrFinal.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeFinal(_this3.state["final"][0], 0);
+        }
+      }, this.state["final"][0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        onClick: function onClick(event) {
+          return _this3.handleChangeFinal(_this3.state["final"][1], 1);
+        }
+      }, this.state["final"][1])));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66338,73 +66438,11 @@ function (_Component) {
         className: "mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " Octavos de final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableOctavos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[0], 0);
-        }
-      }, octavos[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[1], 1);
-        }
-      }, octavos[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[2], 2);
-        }
-      }, octavos[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[3], 3);
-        }
-      }, octavos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[4], 4);
-        }
-      }, octavos[4]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[5], 5);
-        }
-      }, octavos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[6], 6);
-        }
-      }, octavos[6]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[7], 7);
-        }
-      }, octavos[7])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[8], 8);
-        }
-      }, octavos[8]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[9], 9);
-        }
-      }, octavos[9])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[10], 10);
-        }
-      }, octavos[10]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[11], 11);
-        }
-      }, octavos[11])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[12], 12);
-        }
-      }, octavos[12]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[13], 13);
-        }
-      }, octavos[13])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[14], 14);
-        }
-      }, octavos[14]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeOctavos(octavos[15], 15);
-        }
-      }, octavos[15]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, headTable.map(function (head) {
+        return head;
+      }), arrOctavos.map(function (fila) {
+        return fila;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
@@ -66419,41 +66457,11 @@ function (_Component) {
         }
       }, "Deshacer \u21B6"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableCuartos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[0], 0);
-        }
-      }, this.state.cuartos[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[1], 1);
-        }
-      }, this.state.cuartos[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[2], 2);
-        }
-      }, this.state.cuartos[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[3], 3);
-        }
-      }, this.state.cuartos[3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[4], 4);
-        }
-      }, this.state.cuartos[4]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[5], 5);
-        }
-      }, this.state.cuartos[5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[6], 6);
-        }
-      }, this.state.cuartos[6]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(_this3.state.cuartos[7], 7);
-        }
-      }, this.state.cuartos[7]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, headTable.map(function (head) {
+        return head;
+      }), arrCuartos.map(function (fila) {
+        return fila;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
@@ -66468,25 +66476,11 @@ function (_Component) {
         }
       }, "Deshacer \u21B6"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableSemifinal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemifinal(_this3.state.semifinal[0], 0);
-        }
-      }, this.state.semifinal[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemifinal(_this3.state.semifinal[1], 1);
-        }
-      }, this.state.semifinal[1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemifinal(_this3.state.semifinal[2], 2);
-        }
-      }, this.state.semifinal[2]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemifinal(_this3.state.semifinal[3], 3);
-        }
-      }, this.state.semifinal[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, headTable.map(function (head) {
+        return head;
+      }), arrSemifinal.map(function (fila) {
+        return fila;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
@@ -66497,21 +66491,15 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-deshacer",
         onClick: function onClick(event) {
-          return _this3.handleChangeBorrarFinal(_this3.state["final"]);
+          return _this3.handleChangeBorrarFinal();
         }
       }, "Deshacer \u21B6"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tablefinal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        id: "titleTableTorneo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Local"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "vs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Visitante ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeFinal(_this3.state["final"][0]);
-        }
-      }, this.state["final"][0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        onClick: function onClick(event) {
-          return _this3.handleChangeFinal(_this3.state["final"][1]);
-        }
-      }, this.state["final"][1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, headTable.map(function (head) {
+        return head;
+      }), arrFinal.map(function (fila) {
+        return fila;
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header mt-1 card-header2"
@@ -66619,8 +66607,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Lucas\Doumentos\GitHub\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Tincho\Escritorio\Lucas\Lucas IaW\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
