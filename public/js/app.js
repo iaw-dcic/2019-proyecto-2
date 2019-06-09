@@ -66454,7 +66454,8 @@ function (_Component) {
       });
       localStorage.setItem('decoracionImagen', this.img.getDecoracionURL(decoracionId));
       localStorage.setItem('glaseadoImagen', this.img.getGlaseadoURL(glaseadoId));
-      localStorage.setItem('saborImagen', this.img.getSaborURL(saborId)); //	this.componentDidMount();
+      localStorage.setItem('saborImagen', this.img.getSaborURL(saborId));
+      this.componentDidMount();
     }
   }, {
     key: "addDonut",

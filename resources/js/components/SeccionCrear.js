@@ -74,7 +74,7 @@ class SeccionCrear extends Component {
 		localStorage.setItem('glaseadoImagen', this.img.getGlaseadoURL(glaseadoId));
 		localStorage.setItem('saborImagen', this.img.getSaborURL(saborId));
 
-	//	this.componentDidMount();
+		this.componentDidMount();
 	}
 
 	addDonut() {
