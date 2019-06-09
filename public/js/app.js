@@ -67182,383 +67182,6 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/ImageService.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/ImageService.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageService; });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var ImageService =
-/*#__PURE__*/
-function () {
-  function ImageService() {
-    _classCallCheck(this, ImageService);
-  }
-
-  _createClass(ImageService, [{
-    key: "getColorCase",
-    value: function getColorCase(caseId, colorId) {
-      var image;
-
-      if (caseId == 1) {
-        //Id 1 corresponde a iPhone 7-8
-        switch (colorId) {
-          case 0:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8.png");
-              break;
-            }
-
-          case 1:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8-coral.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8-coral.png");
-              break;
-            }
-
-          case 2:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8-amarillo.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8-amarillo.png");
-              break;
-            }
-
-          case 3:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8-verde.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8-verde.png");
-              break;
-            }
-
-          case 4:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8-teal.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8-teal.png");
-              break;
-            }
-
-          case 5:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8-blue.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8-blue.png");
-              break;
-            }
-
-          case 6:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8-indigo.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8-indigo.png");
-              break;
-            }
-
-          default:
-            {
-              image = __webpack_require__(/*! ./images/iPhone7-8/iPhone7-8.png */ "./resources/js/components/images/iPhone7-8/iPhone7-8.png");
-              break;
-            }
-        }
-      }
-
-      if (caseId == 2) {
-        //Id 2 corresponde a iPhone X
-        switch (colorId) {
-          case 0:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX.png */ "./resources/js/components/images/iPhoneX/IphoneX.png");
-              break;
-            }
-
-          case 1:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX-coral.png */ "./resources/js/components/images/iPhoneX/IphoneX-coral.png");
-              break;
-            }
-
-          case 2:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX-amarillo.png */ "./resources/js/components/images/iPhoneX/IphoneX-amarillo.png");
-              break;
-            }
-
-          case 3:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX-verde.png */ "./resources/js/components/images/iPhoneX/IphoneX-verde.png");
-              break;
-            }
-
-          case 4:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX-teal.png */ "./resources/js/components/images/iPhoneX/IphoneX-teal.png");
-              break;
-            }
-
-          case 5:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX-blue.png */ "./resources/js/components/images/iPhoneX/IphoneX-blue.png");
-              break;
-            }
-
-          case 6:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX-indigo.png */ "./resources/js/components/images/iPhoneX/IphoneX-indigo.png");
-              break;
-            }
-
-          default:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneX/IphoneX.png */ "./resources/js/components/images/iPhoneX/IphoneX.png");
-              break;
-            }
-        }
-      }
-
-      if (caseId == 3) {
-        //Id 3 correspone a iPhone XR
-        switch (colorId) {
-          case 0:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR.png");
-              break;
-            }
-
-          case 1:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR-coral.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR-coral.png");
-              break;
-            }
-
-          case 2:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR-amarillo.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR-amarillo.png");
-              break;
-            }
-
-          case 3:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR-verde.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR-verde.png");
-              break;
-            }
-
-          case 4:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR-teal.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR-teal.png");
-              break;
-            }
-
-          case 5:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR-blue.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR-blue.png");
-              break;
-            }
-
-          case 6:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR-indigo.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR-indigo.png");
-              break;
-            }
-
-          default:
-            {
-              image = __webpack_require__(/*! ./images/iPhoneXR/iPhoneXR-coral.png */ "./resources/js/components/images/iPhoneXR/iPhoneXR-coral.png");
-              break;
-            }
-        }
-      }
-
-      if (caseId == 4) {
-        //Id 4 corresponde a SamsungS8
-        switch (colorId) {
-          case 0:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8.png */ "./resources/js/components/images/samsungS8/SamsungS8.png");
-              break;
-            }
-
-          case 1:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8-coral.png */ "./resources/js/components/images/samsungS8/SamsungS8-coral.png");
-              break;
-            }
-
-          case 2:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8-amarillo.png */ "./resources/js/components/images/samsungS8/SamsungS8-amarillo.png");
-              break;
-            }
-
-          case 3:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8-verde.png */ "./resources/js/components/images/samsungS8/SamsungS8-verde.png");
-              break;
-            }
-
-          case 4:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8-teal.png */ "./resources/js/components/images/samsungS8/SamsungS8-teal.png");
-              break;
-            }
-
-          case 5:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8-blue.png */ "./resources/js/components/images/samsungS8/SamsungS8-blue.png");
-              break;
-            }
-
-          case 6:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8-indigo.png */ "./resources/js/components/images/samsungS8/SamsungS8-indigo.png");
-              break;
-            }
-
-          default:
-            {
-              image = __webpack_require__(/*! ./images/samsungS8/SamsungS8-coral.png */ "./resources/js/components/images/samsungS8/SamsungS8-coral.png");
-              break;
-            }
-        }
-      }
-
-      if (caseId == 5) {
-        //Id 5 corresponde a Xiaomi F1
-        switch (colorId) {
-          case 0:
-            {
-              image = __webpack_require__(/*! ./images/Xiaomi-F1/Xiaomi-F1.png */ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1.png");
-              break;
-            }
-
-          case 1:
-            {
-              image = __webpack_require__(/*! ./images/Xiaomi-F1/Xiaomi-F1-coral.png */ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-coral.png");
-              break;
-            }
-
-          case 2:
-            {
-              image = __webpack_require__(/*! ./images/Xiaomi-F1/Xiaomi-F1-amarillo.png */ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-amarillo.png");
-              break;
-            }
-
-          case 3:
-            {
-              image = __webpack_require__(/*! ./images/Xiaomi-F1/Xiaomi-F1-verde.png */ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-verde.png");
-              break;
-            }
-
-          case 4:
-            {
-              image = __webpack_require__(/*! ./images/Xiaomi-F1/Xiaomi-F1-teal.png */ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-teal.png");
-              break;
-            }
-
-          case 5:
-            {
-              image = __webpack_require__(/*! ./images/Xiaomi-F1/Xiaomi-F1-blue.png */ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-blue.png");
-              break;
-            }
-
-          case 6:
-            {
-              image = __webpack_require__(/*! ./images/Xiaomi-F1/Xiaomi-F1-indigo.png */ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-indigo.png");
-              break;
-            }
-        }
-      }
-
-      return image;
-    } // getCaseColor(caseId, colorId){
-    //   return  fetch(`/api/colorcase/${caseId}/${colorId}`).then(
-    //         response =>{
-    //             return response.json();
-    //         }   
-    //     )
-    //     .then(image => {
-    //         return this.getColorCase(caseId, colorId)
-    //     });
-    // }
-
-  }, {
-    key: "getEstampa",
-    value: function getEstampa(estampaId) {
-      var image;
-
-      switch (estampaId) {
-        case 10:
-          {
-            image = __webpack_require__(/*! ./images/estampas/sin-estampa.png */ "./resources/js/components/images/estampas/sin-estampa.png");
-            break;
-          }
-
-        case 6:
-          {
-            image = __webpack_require__(/*! ./images/estampas/girl.png */ "./resources/js/components/images/estampas/girl.png");
-            break;
-          }
-
-        case 2:
-          {
-            image = __webpack_require__(/*! ./images/estampas/cat.png */ "./resources/js/components/images/estampas/cat.png");
-            break;
-          }
-
-        case 9:
-          {
-            image = __webpack_require__(/*! ./images/estampas/stitch.png */ "./resources/js/components/images/estampas/stitch.png");
-            break;
-          }
-
-        case 8:
-          {
-            image = __webpack_require__(/*! ./images/estampas/palmeras.png */ "./resources/js/components/images/estampas/palmeras.png");
-            break;
-          }
-
-        case 3:
-          {
-            image = __webpack_require__(/*! ./images/estampas/cobra.png */ "./resources/js/components/images/estampas/cobra.png");
-            break;
-          }
-
-        case 4:
-          {
-            image = __webpack_require__(/*! ./images/estampas/elephant-mandala.png */ "./resources/js/components/images/estampas/elephant-mandala.png");
-            break;
-          }
-
-        case 7:
-          {
-            image = __webpack_require__(/*! ./images/estampas/minion.png */ "./resources/js/components/images/estampas/minion.png");
-            break;
-          }
-
-        case 5:
-          {
-            image = __webpack_require__(/*! ./images/estampas/girl-poweer.png */ "./resources/js/components/images/estampas/girl-poweer.png");
-            break;
-          }
-
-        case 1:
-          {
-            image = __webpack_require__(/*! ./images/estampas/abortolegal.png */ "./resources/js/components/images/estampas/abortolegal.png");
-            break;
-          }
-      }
-
-      return image;
-    }
-  }]);
-
-  return ImageService;
-}();
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/Images.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Images.js ***!
@@ -67683,10 +67306,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Colors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Colors */ "./resources/js/components/Colors.js");
 /* harmony import */ var _CaseOptions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CaseOptions */ "./resources/js/components/CaseOptions.js");
 /* harmony import */ var _Images__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Images */ "./resources/js/components/Images.js");
-/* harmony import */ var _ImageService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ImageService */ "./resources/js/components/ImageService.js");
-/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Modal */ "./resources/js/components/Modal.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modal */ "./resources/js/components/Modal.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67714,7 +67336,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var MainSection =
 /*#__PURE__*/
 function (_Component) {
@@ -67726,63 +67347,55 @@ function (_Component) {
     _classCallCheck(this, MainSection);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MainSection).call(this));
-    _this.imageService = new _ImageService__WEBPACK_IMPORTED_MODULE_6__["default"]();
     _this.state = {
       caseIndex: 1,
-      colorIndex: 0,
+      colorIndex: 7,
       estampaIndex: 1,
-      //casePath:""
+      fundaURL: null,
+      estampaURL: null,
       modal: false
     };
     _this.setCaseImage = _this.setCaseImage.bind(_assertThisInitialized(_this));
     _this.setCaseColor = _this.setCaseColor.bind(_assertThisInitialized(_this));
     _this.setEstampa = _this.setEstampa.bind(_assertThisInitialized(_this));
+    _this.setFundaURL = _this.setFundaURL.bind(_assertThisInitialized(_this));
+    _this.setEstampaURL = _this.setEstampaURL.bind(_assertThisInitialized(_this));
+    _this.showFunda = _this.showFunda.bind(_assertThisInitialized(_this));
+    _this.showEstampa = _this.showEstampa.bind(_assertThisInitialized(_this));
     _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
     _this.addNewProduct = _this.addNewProduct.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentWillMount() {
-  //   this.getCaseImage();
-  // }
-
+  }
 
   _createClass(MainSection, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      if (localStorage.hasOwnProperty('id_color')) {
-        this.setState({
-          colorIndex: localStorage.getItem('id_color'),
-          caseIndex: localStorage.getItem('id_case'),
-          estampaIndex: localStorage.getItem('id_image')
-        });
-      } else {
-        this.setState({
-          colorIndex: 0,
-          caseIndex: 1,
-          estampaIndex: 1
-        });
-      }
+    key: "setFundaURL",
+    value: function setFundaURL(url) {
+      this.setState({
+        fundaURL: url
+      });
+    }
+  }, {
+    key: "setEstampaURL",
+    value: function setEstampaURL(url) {
+      this.setState({
+        estampaURL: url
+      });
     }
   }, {
     key: "setCaseImage",
     value: function setCaseImage(caseId) {
       this.setState({
         caseIndex: caseId
-      }); // this.getCaseImage()
-
-      localStorage.setItem('id_case', caseId);
-      localStorage.setItem('id_color', this.state.colorIndex);
-      localStorage.setItem('id_image', this.state.estampaIndex);
+      });
+      this.showFunda(caseId, this.state.colorIndex);
     }
   }, {
     key: "setCaseColor",
     value: function setCaseColor(colorId) {
       this.setState({
         colorIndex: colorId
-      }); //this.getCaseImage()
-
-      localStorage.setItem('id_color', colorId);
-      localStorage.setItem('id_case', this.state.caseIndex);
-      localStorage.setItem('id_image', this.state.estampaIndex);
+      });
+      this.showFunda(this.state.caseIndex, colorId);
     }
   }, {
     key: "setEstampa",
@@ -67790,9 +67403,31 @@ function (_Component) {
       this.setState({
         estampaIndex: estampaId
       });
-      localStorage.setItem('id_image', estampaId);
-      localStorage.setItem('id_color', this.state.colorIndex);
-      localStorage.setItem('id_case', this.state.caseIndex);
+      this.showEstampa(estampaId);
+    }
+  }, {
+    key: "showFunda",
+    value: function showFunda(caseId, colorId) {
+      var _this2 = this;
+
+      var path = "/api/colorcase/" + caseId + "/" + colorId;
+      fetch(path).then(function (response) {
+        return response.json();
+      }).then(function (image) {
+        _this2.setFundaURL(image[0].path);
+      });
+    }
+  }, {
+    key: "showEstampa",
+    value: function showEstampa(estampaId) {
+      var _this3 = this;
+
+      var path = "/api/image/" + estampaId;
+      fetch(path).then(function (response) {
+        return response.json();
+      }).then(function (image) {
+        _this3.setEstampaURL(image[0].path);
+      });
     }
   }, {
     key: "selectModal",
@@ -67812,18 +67447,10 @@ function (_Component) {
         'id_case': this.state.caseIndex,
         'id_image': this.state.estampaIndex
       };
-      axios__WEBPACK_IMPORTED_MODULE_8___default.a.post('/api/products', product).then(function (response) {
-        console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post('/api/products', product).then(function (response) {
         alert("Funda creada correctamente");
       });
-    } // getCaseImage(){
-    //   this.imageService.getCaseColor(this.state.caseIndex,this.state.colorIndex).then(
-    //     path => {
-    //       this.setState({casePath:path})
-    //     }
-    //   );
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -67832,10 +67459,10 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "features-image"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.imageService.getColorCase(this.state.caseIndex, this.state.colorIndex)
+        src: this.state.fundaURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "estampa-style",
-        src: this.imageService.getEstampa(this.state.estampaIndex)
+        src: this.state.estampaURL
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "features-list list-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67874,7 +67501,7 @@ function (_Component) {
         type: "button",
         className: "btn-changes btn btn-primary",
         onClick: this.selectModal
-      }, "Mis fundas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }, "Mis fundas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
         displayModal: this.state.modal,
         closeModal: this.selectModal
       }))));
@@ -67930,501 +67557,6 @@ var Modal = function Modal(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Modal);
-
-/***/ }),
-
-/***/ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-amarillo.png":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-amarillo.png ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Xiaomi-F1-amarillo.png?816c70f2a0ae6a41b38f3ecc29062b85";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-blue.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-blue.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Xiaomi-F1-blue.png?98d8c42ce12a15a818c5d8cf18f02644";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-coral.png":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-coral.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Xiaomi-F1-coral.png?475d98e1f056b51d093e8b05400b0df4";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-indigo.png":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-indigo.png ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Xiaomi-F1-indigo.png?b32b5f0e240b81a1a4e6fd8a86808247";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-teal.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-teal.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Xiaomi-F1-teal.png?b02e7d98358b23d6608b5b612cae681a";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-verde.png":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/images/Xiaomi-F1/Xiaomi-F1-verde.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Xiaomi-F1-verde.png?0688d3f3afc302e802c32efd868e98fc";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/Xiaomi-F1/Xiaomi-F1.png":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/images/Xiaomi-F1/Xiaomi-F1.png ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Xiaomi-F1.png?ac68027835aeb99bca41639d9b2a7503";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/abortolegal.png":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/images/estampas/abortolegal.png ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/abortolegal.png?a622233cde26e2a7330a1495c4cdee83";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/cat.png":
-/*!*********************************************************!*\
-  !*** ./resources/js/components/images/estampas/cat.png ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/cat.png?e2928f9ddba2a39f5db99627c2f449ba";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/cobra.png":
-/*!***********************************************************!*\
-  !*** ./resources/js/components/images/estampas/cobra.png ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/cobra.png?6f1aa5a181dff43297a92ddc0ef57bb2";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/elephant-mandala.png":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/images/estampas/elephant-mandala.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/elephant-mandala.png?be24a78d602308949af8332c2a063662";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/girl-poweer.png":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/images/estampas/girl-poweer.png ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/girl-poweer.png?163bdbd1acd472fddb0e757179b26add";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/girl.png":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/images/estampas/girl.png ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/girl.png?66d0a0c44067fe1fdde681596f1d727e";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/minion.png":
-/*!************************************************************!*\
-  !*** ./resources/js/components/images/estampas/minion.png ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/minion.png?742bd9da5136dc3f560acdb813a81ee5";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/palmeras.png":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/images/estampas/palmeras.png ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/palmeras.png?6e4466928cb28110b19a26491fb317b8";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/sin-estampa.png":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/images/estampas/sin-estampa.png ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/sin-estampa.png?b55c0a25569a9f4af205189b108b7244";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/estampas/stitch.png":
-/*!************************************************************!*\
-  !*** ./resources/js/components/images/estampas/stitch.png ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/stitch.png?82eaa603762b00ad3abeafffaa07d625";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhone7-8/iPhone7-8-amarillo.png":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/images/iPhone7-8/iPhone7-8-amarillo.png ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhone7-8-amarillo.png?dd10083f0a92a62f41ab0805337eaec0";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhone7-8/iPhone7-8-blue.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/iPhone7-8/iPhone7-8-blue.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhone7-8-blue.png?d138e1eac2de2cb378ba6bb10fdc05fc";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhone7-8/iPhone7-8-coral.png":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/images/iPhone7-8/iPhone7-8-coral.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhone7-8-coral.png?1107b1eba6751e5c76dd4cffb502ede1";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhone7-8/iPhone7-8-indigo.png":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/images/iPhone7-8/iPhone7-8-indigo.png ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhone7-8-indigo.png?b1d96584e236237fe0132e4623ceb742";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhone7-8/iPhone7-8-teal.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/iPhone7-8/iPhone7-8-teal.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhone7-8-teal.png?1e11f7762cb2c0cffce3a2ecb02edbe9";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhone7-8/iPhone7-8-verde.png":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/images/iPhone7-8/iPhone7-8-verde.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhone7-8-verde.png?9220320f5e78b969f8ef2fc35c18eb76";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhone7-8/iPhone7-8.png":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/images/iPhone7-8/iPhone7-8.png ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhone7-8.png?3090464660461e565feb4aa28c78d595";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneX/IphoneX-amarillo.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneX/IphoneX-amarillo.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/IphoneX-amarillo.png?f90e16e2ab0c59e1082aeb395a2820b2";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneX/IphoneX-blue.png":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneX/IphoneX-blue.png ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/IphoneX-blue.png?21301aed4a0562c2a48e6b822824232e";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneX/IphoneX-coral.png":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneX/IphoneX-coral.png ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/IphoneX-coral.png?8acca798eee8e176e260cf64c37054c6";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneX/IphoneX-indigo.png":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneX/IphoneX-indigo.png ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/IphoneX-indigo.png?bb35305c80e0c7b57a2170b10752b0cc";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneX/IphoneX-teal.png":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneX/IphoneX-teal.png ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/IphoneX-teal.png?cb487c0365badc4be30a071209fae8b7";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneX/IphoneX-verde.png":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneX/IphoneX-verde.png ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/IphoneX-verde.png?783fe48a88b30c1795c29ab36ea30dd7";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneX/IphoneX.png":
-/*!************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneX/IphoneX.png ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/IphoneX.png?e8e6bdb699bb72e3cc28fc0406310f71";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneXR/iPhoneXR-amarillo.png":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneXR/iPhoneXR-amarillo.png ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhoneXR-amarillo.png?7ea8d7e2e665feb5cb893df67abd3e25";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneXR/iPhoneXR-blue.png":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneXR/iPhoneXR-blue.png ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhoneXR-blue.png?44ef33f3885698461f2fe8359329f0b4";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneXR/iPhoneXR-coral.png":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneXR/iPhoneXR-coral.png ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhoneXR-coral.png?56636a49ae42c05001070ad22080e316";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneXR/iPhoneXR-indigo.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneXR/iPhoneXR-indigo.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhoneXR-indigo.png?b59d8792532a855b7ffb6ca4b9354f36";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneXR/iPhoneXR-teal.png":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneXR/iPhoneXR-teal.png ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhoneXR-teal.png?f846bc469ee73283f6a10e8ce1ccd291";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneXR/iPhoneXR-verde.png":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneXR/iPhoneXR-verde.png ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhoneXR-verde.png?f999fc135a183dc9d80abc46390d8ebb";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/iPhoneXR/iPhoneXR.png":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/images/iPhoneXR/iPhoneXR.png ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/iPhoneXR.png?b0c6c6d7f1885a69f4a6c6bb973541b8";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/samsungS8/SamsungS8-amarillo.png":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/images/samsungS8/SamsungS8-amarillo.png ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/SamsungS8-amarillo.png?ff4a796e607c7110d7846838fe547344";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/samsungS8/SamsungS8-blue.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/samsungS8/SamsungS8-blue.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/SamsungS8-blue.png?0d0f5194befdcc2c088df7d7e677dfe1";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/samsungS8/SamsungS8-coral.png":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/images/samsungS8/SamsungS8-coral.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/SamsungS8-coral.png?86dde48bb76b9a70c71526b68e6f7e1b";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/samsungS8/SamsungS8-indigo.png":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/images/samsungS8/SamsungS8-indigo.png ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/SamsungS8-indigo.png?fd18aba3769d1b9b9e84cf82e1143f90";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/samsungS8/SamsungS8-teal.png":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/images/samsungS8/SamsungS8-teal.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/SamsungS8-teal.png?d29300e4e1f61bb3ed1d1cc53b5103ac";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/samsungS8/SamsungS8-verde.png":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/images/samsungS8/SamsungS8-verde.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/SamsungS8-verde.png?19e76f198ba5e91be54386e88966deef";
-
-/***/ }),
-
-/***/ "./resources/js/components/images/samsungS8/SamsungS8.png":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/images/samsungS8/SamsungS8.png ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/SamsungS8.png?60d0f31a62092e9624a1f3266115d6a0";
 
 /***/ }),
 

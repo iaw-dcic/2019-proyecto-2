@@ -4,7 +4,6 @@ import '../../../public/css/layout.css';
 import Colors from './Colors';
 import CaseOptions from './CaseOptions';
 import Images from './Images';
-import ImageService from './ImageService';
 import Modal from './Modal'
 import Axios from 'axios';
 
@@ -12,70 +11,78 @@ export default class MainSection extends Component {
     constructor(){
       super()
 
-      this.imageService=new ImageService();
-
-
       this.state={
         caseIndex:1,
-        colorIndex:0,
+        colorIndex:7,
         estampaIndex:1,
-        //casePath:""
+        fundaURL:null,
+        estampaURL:null,
         modal: false
       }
 
       this.setCaseImage=this.setCaseImage.bind(this)
       this.setCaseColor=this.setCaseColor.bind(this)
       this.setEstampa=this.setEstampa.bind(this)
+      this.setFundaURL=this.setFundaURL.bind(this)
+      this.setEstampaURL=this.setEstampaURL.bind(this)
+
+      this.showFunda=this.showFunda.bind(this)
+      this.showEstampa=this.showEstampa.bind(this)
       this.selectModal=this.selectModal.bind(this)
       this.addNewProduct=this.addNewProduct.bind(this)
+
     }
 
-    // componentWillMount() {
-    //   this.getCaseImage();
-    // }
-
-    componentWillMount(){
-      if(localStorage.hasOwnProperty('id_color')){
-        this.setState({
-          colorIndex: localStorage.getItem('id_color'),
-          caseIndex: localStorage.getItem('id_case'),
-          estampaIndex: localStorage.getItem('id_image'),
-        })
-      }else{
-        this.setState({
-          colorIndex: 0,
-          caseIndex: 1,
-          estampaIndex: 1,
-        })
-      }
-  
+     setFundaURL(url){
+      this.setState({fundaURL: url})
     }
-  
+
+    setEstampaURL(url){
+      this.setState({estampaURL: url})
+    }
 
     setCaseImage(caseId){
         this.setState({caseIndex:caseId})
-        // this.getCaseImage()
-
-        localStorage.setItem('id_case',caseId)
-        localStorage.setItem('id_color',this.state.colorIndex)
-        localStorage.setItem('id_image',this.state.estampaIndex)
+        this.showFunda(caseId,this.state.colorIndex)     
     }
 
     setCaseColor(colorId){
       this.setState({colorIndex:colorId})
-       //this.getCaseImage()
-
-       localStorage.setItem('id_color',colorId)
-       localStorage.setItem('id_case',this.state.caseIndex)
-       localStorage.setItem('id_image',this.state.estampaIndex)
+      this.showFunda(this.state.caseIndex,colorId)
+    
     }
 
     setEstampa(estampaId){
       this.setState({estampaIndex:estampaId})
+      this.showEstampa(estampaId)
+    }
 
-      localStorage.setItem('id_image',estampaId)
-      localStorage.setItem('id_color',this.state.colorIndex)
-      localStorage.setItem('id_case',this.state.caseIndex)
+    showFunda(caseId,colorId){
+      const path="/api/colorcase/"+caseId+"/"+colorId;
+  
+      fetch(path).then(
+           (response)=>{
+               return response.json();
+           }   )
+       .then(image => {
+         this.setFundaURL(image[0].path)
+  
+       });
+  
+    }
+
+    showEstampa(estampaId){
+      const path="/api/image/"+estampaId;
+
+      fetch(path).then(
+        (response)=>{
+            return response.json();
+        }   )
+    .then(image => {
+      this.setEstampaURL(image[0].path)
+
+    });
+
     }
 
     selectModal(info){
@@ -95,27 +102,17 @@ export default class MainSection extends Component {
       };
       Axios.post('/api/products',product)
       .then(response => {
-        console.log(response)
           alert("Funda creada correctamente");
       });
       
       }
-    
-
-    // getCaseImage(){
-    //   this.imageService.getCaseColor(this.state.caseIndex,this.state.colorIndex).then(
-    //     path => {
-    //       this.setState({casePath:path})
-    //     }
-    //   );
-    // }
 
     render() {
         return (
                 <div className="features-inner">
                   <div className="features-image">
-                    <img src={this.imageService.getColorCase(this.state.caseIndex,this.state.colorIndex)}/>
-                    <img className="estampa-style" src={this.imageService.getEstampa(this.state.estampaIndex)}/>
+                    <img src={this.state.fundaURL}/>
+                    <img className="estampa-style" src={this.state.estampaURL}/>
                   </div>
                   <ul className="features-list list-1">
                     <li className="case-options">

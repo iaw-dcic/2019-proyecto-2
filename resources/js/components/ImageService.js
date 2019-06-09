@@ -1,7 +1,7 @@
 export default class ImageService{
 
 
-    getColorCase(caseId, colorId){
+    /*getColorCase(caseId, colorId){
 
         let image;
 
@@ -74,20 +74,20 @@ export default class ImageService{
         }
         
         return image;
-    }
+    }*/
 
-    // getCaseColor(caseId, colorId){
-    //   return  fetch(`/api/colorcase/${caseId}/${colorId}`).then(
-    //         response =>{
-    //             return response.json();
-    //         }   
-    //     )
-    //     .then(image => {
-    //         return this.getColorCase(caseId, colorId)
-    //     });
+     getCaseColor(caseId, colorId){
+       return  fetch(`/api/colorcase/${caseId}/${colorId}`).then(
+             response =>{
+                 return response.json();
+             }   
+         )
+         .then(image => {
 
-  
-    // }
+            
+         });
+
+     }
 
     getEstampa(estampaId){
         let image;

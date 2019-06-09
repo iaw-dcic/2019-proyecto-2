@@ -31,6 +31,8 @@ Route::get('colors', 'ColorsController@index');
 
 Route::get('images', 'ImagesController@index');
 
+Route::get('image/{id_image}','ImagesController@show');
+
 Route::get('fundas', 'FundasController@index');
 
 Route::get('colorcase/{id_case}/{id_color}', 'ColorCasesController@show');

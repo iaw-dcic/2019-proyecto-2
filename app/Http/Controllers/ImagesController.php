@@ -13,4 +13,13 @@ class ImagesController extends Controller
 
         return $images->toJson();
     }
+
+    public function show($id_image)
+    {
+        $image = Image::where([
+            ['id', '=', $id_image],
+        ])->get();
+
+        return $image->toJson();
+    }
 }
