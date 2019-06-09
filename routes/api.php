@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('teams', 'TeamController')->middleware('auth:api');
 Route::resource('prode', "ProdeController")->middleware('auth:api');
+Route::get('alias', "TeamController@indexAlias")->middleware('auth:api');

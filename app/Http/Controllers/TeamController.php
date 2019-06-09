@@ -23,6 +23,17 @@ class TeamController extends Controller
         return response()->json($octavosToRet);
     }
 
+    public function indexAlias()
+    {
+        $aliasToRet = [];
+        $alias = Team::select('alias')->get();
+        
+        for ($i = 0; $i < 16; $i++) {
+            $aliasToRet[$i] = $alias[$i]->alias;    
+        }
+        return response()->json($aliasToRet);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
