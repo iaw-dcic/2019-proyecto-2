@@ -18,6 +18,7 @@ class Product extends Model
         'id_user',
         'id_case_color',
         'id_image',
+        'name',
     ];
 
 

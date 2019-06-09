@@ -11,7 +11,7 @@ body {
 }
 
 .features-inner {
-  padding: 2rem;
+  padding: 1rem;
 }
 @media (min-width: 600px) {
   .features-inner {
@@ -91,6 +91,10 @@ body {
 
 .case-options{
   margin-top: 20px;
+}
+
+.nombre-funda{
+  margin-top:20px;
 }
 
 .colors{

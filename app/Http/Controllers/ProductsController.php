@@ -13,7 +13,11 @@ class ProductsController extends Controller
  
     public function index()
     {
-        $products=Product::all();
+        $user=Auth::user();
+
+        $products=Product::where([
+            ['id_user', '=', $user->id]
+        ])->get();
 
         return $products->toJson();
     }
@@ -41,6 +45,7 @@ class ProductsController extends Controller
         $product->id_user=$user->id;
         $product->id_case_color=$colorCase[0]['id'];
         $product->id_image=$data['id_image'];
+        $product->name=$data['name'];
 
         $product->save();
 

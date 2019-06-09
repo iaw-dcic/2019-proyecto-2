@@ -17,15 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('products','ProductsController@index');
+Route::get('products','ProductsController@index')->middleware('auth:api');
 
 Route::post('products','ProductsController@store')->middleware('auth:api');
 
-Route::get('products/{id}','ProductsController@show');
+Route::get('products/{id_case}','ProductsController@show');
 
-Route::put('products/{id}','ProductsController@update');
+Route::put('products/{id_case}','ProductsController@update');
 
-Route::delete('products/{id}','ProductsController@delete');
+Route::delete('products/{id_case}','ProductsController@delete');
 
 Route::get('colors', 'ColorsController@index');
 

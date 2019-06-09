@@ -6577,7 +6577,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:400,400i,700);", ""]);
 
 // module
-exports.push([module.i, "body {\r\n  font-family: Montserrat, sans-serif;\r\n}\r\n\r\n#features {\r\n  background: #ECE9E6;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n  padding: 3rem 0;\r\n}\r\n\r\n.features-inner {\r\n  padding: 2rem;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-inner {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    grid-row-gap: 0;\r\n  }\r\n}\r\n@media (min-width: 800px) {\r\n  .features-inner {\r\n    grid-template-columns: 1fr 2fr;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-inner {\r\n    grid-template-columns: repeat(3, 1fr);\r\n    max-width: 1000px;\r\n    margin: 0 auto;\r\n  }\r\n}\r\n\r\n.features-image {\r\n  text-align: center;\r\n  margin-bottom: 2rem;\r\n  position: relative;\r\n}\r\n\r\n.estampa-style {\r\n  position: absolute;\r\n  bottom: 90px;\r\n  left: 100px;\r\n  width: 120px;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-image {\r\n    grid-row: 1/span 2;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-image {\r\n    grid-column: 2;\r\n  }\r\n}\r\n.features-image img {\r\n  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n          filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n}\r\n\r\n.features-list {\r\n  list-style: none;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.features-item {\r\n  transition: opacity 200ms ease;\r\n}\r\n.features-item:hover {\r\n  opacity: 0.7;\r\n  cursor: pointer;\r\n}\r\n\r\n.features-item-header,\r\n.features-item-text {\r\n  color: black;\r\n}\r\n\r\n.features-item-header {\r\n  margin-bottom: 0;\r\n  margin-top: 30px;\r\n  font-size: 1.4rem;\r\n}\r\n\r\n.features-item-text {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.case-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.colors{\r\n  margin-top: 20px;\r\n}\r\n\r\n.images-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.save-changes{\r\n  margin-top: 20px;\r\n}\r\n\r\n.btn-changes {\r\n  margin: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n  .list-1 {\r\n    text-align: right;\r\n  }\r\n}\r\n@media (min-width: 600px) {\r\n  .list-2 {\r\n    grid-column: 2;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 0;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .list-2 {\r\n    grid-column: 3;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 1.45rem;\r\n  }\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n  font-family: Montserrat, sans-serif;\r\n}\r\n\r\n#features {\r\n  background: #ECE9E6;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n  padding: 3rem 0;\r\n}\r\n\r\n.features-inner {\r\n  padding: 1rem;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-inner {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    grid-row-gap: 0;\r\n  }\r\n}\r\n@media (min-width: 800px) {\r\n  .features-inner {\r\n    grid-template-columns: 1fr 2fr;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-inner {\r\n    grid-template-columns: repeat(3, 1fr);\r\n    max-width: 1000px;\r\n    margin: 0 auto;\r\n  }\r\n}\r\n\r\n.features-image {\r\n  text-align: center;\r\n  margin-bottom: 2rem;\r\n  position: relative;\r\n}\r\n\r\n.estampa-style {\r\n  position: absolute;\r\n  bottom: 90px;\r\n  left: 100px;\r\n  width: 120px;\r\n}\r\n@media (min-width: 600px) {\r\n  .features-image {\r\n    grid-row: 1/span 2;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .features-image {\r\n    grid-column: 2;\r\n  }\r\n}\r\n.features-image img {\r\n  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n          filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\r\n}\r\n\r\n.features-list {\r\n  list-style: none;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.features-item {\r\n  transition: opacity 200ms ease;\r\n}\r\n.features-item:hover {\r\n  opacity: 0.7;\r\n  cursor: pointer;\r\n}\r\n\r\n.features-item-header,\r\n.features-item-text {\r\n  color: black;\r\n}\r\n\r\n.features-item-header {\r\n  margin-bottom: 0;\r\n  margin-top: 30px;\r\n  font-size: 1.4rem;\r\n}\r\n\r\n.features-item-text {\r\n  margin-top: 2rem;\r\n}\r\n\r\n.case-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.nombre-funda{\r\n  margin-top:20px;\r\n}\r\n\r\n.colors{\r\n  margin-top: 20px;\r\n}\r\n\r\n.images-options{\r\n  margin-top: 20px;\r\n}\r\n\r\n.save-changes{\r\n  margin-top: 20px;\r\n}\r\n\r\n.btn-changes {\r\n  margin: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\n@media (min-width: 900px) {\r\n  .list-1 {\r\n    text-align: right;\r\n  }\r\n}\r\n@media (min-width: 600px) {\r\n  .list-2 {\r\n    grid-column: 2;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 0;\r\n  }\r\n}\r\n@media (min-width: 900px) {\r\n  .list-2 {\r\n    grid-column: 3;\r\n  }\r\n  .list-2 .features-item-header:first-child {\r\n    margin-top: 1.45rem;\r\n  }\r\n}\r\n", ""]);
 
 // exports
 
@@ -67241,10 +67241,6 @@ function (_Component) {
     };
     return _this;
   }
-  /* buttonClick(id){
-       this.props.onClick(id)
-   }*/
-
 
   _createClass(Images, [{
     key: "componentWillMount",
@@ -67311,6 +67307,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -67351,15 +67349,20 @@ function (_Component) {
       caseIndex: 1,
       colorIndex: 7,
       estampaIndex: 1,
+      name: '',
       fundaURL: null,
       estampaURL: null,
-      modal: false
+      modal: false,
+      fundaid: null,
+      fundas: []
     };
     _this.setCaseImage = _this.setCaseImage.bind(_assertThisInitialized(_this));
     _this.setCaseColor = _this.setCaseColor.bind(_assertThisInitialized(_this));
     _this.setEstampa = _this.setEstampa.bind(_assertThisInitialized(_this));
     _this.setFundaURL = _this.setFundaURL.bind(_assertThisInitialized(_this));
     _this.setEstampaURL = _this.setEstampaURL.bind(_assertThisInitialized(_this));
+    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
+    _this.setFundaID = _this.setFundaID.bind(_assertThisInitialized(_this));
     _this.showFunda = _this.showFunda.bind(_assertThisInitialized(_this));
     _this.showEstampa = _this.showEstampa.bind(_assertThisInitialized(_this));
     _this.saveState = _this.saveState.bind(_assertThisInitialized(_this));
@@ -67369,8 +67372,8 @@ function (_Component) {
   }
 
   _createClass(MainSection, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       if (localStorage.hasOwnProperty('caseIndex')) {
         this.setState({
           caseIndex: localStorage.getItem('caseIndex'),
@@ -67395,6 +67398,14 @@ function (_Component) {
       localStorage.setItem('estampaIndex', imageId);
       localStorage.setItem('fundaURL', this.state.fundaURL);
       localStorage.setItem('estampaURL', this.state.estampaURL);
+    }
+  }, {
+    key: "setFundaID",
+    value: function setFundaID(id) {
+      this.setState({
+        fundaid: id
+      });
+      console.log(this.state.fundaid);
     }
   }, {
     key: "setFundaURL",
@@ -67438,6 +67449,11 @@ function (_Component) {
       this.saveState(this.state.caseIndex, this.state.colorIndex, estampaId);
     }
   }, {
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
     key: "showFunda",
     value: function showFunda(caseId, colorId) {
       var _this2 = this;
@@ -67477,10 +67493,25 @@ function (_Component) {
       var product = {
         'id_color': this.state.colorIndex,
         'id_case': this.state.caseIndex,
-        'id_image': this.state.estampaIndex
+        'id_image': this.state.estampaIndex,
+        'name': this.state.name
       };
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.post('/api/products', product).then(function (response) {
         alert("Funda creada correctamente");
+      });
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this4 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios.get('/api/products').then(function (response) {
+        _this4.setState({
+          fundas: response.data
+        });
       });
     }
   }, {
@@ -67498,6 +67529,18 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "features-list list-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nombre-funda"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "name",
+        type: "text",
+        className: "form-control",
+        name: "name",
+        placeholder: "Nombre de la funda",
+        value: this.state.name,
+        onChange: this.handleFieldChange,
+        required: true,
+        autofocus: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "case-options"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "features-item-header"
@@ -67534,8 +67577,10 @@ function (_Component) {
         className: "btn-changes btn btn-primary",
         onClick: this.selectModal
       }, "Mis fundas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        allfundas: this.state.fundas,
         displayModal: this.state.modal,
-        closeModal: this.selectModal
+        closeModal: this.selectModal,
+        onClick: this.setFundaID
       }))));
     }
   }]);
@@ -67585,7 +67630,14 @@ var Modal = function Modal(props) {
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
     className: "close",
     onClick: closeModal
-  }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", null, "Boton 1"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", null, "Boton 2")));
+  }, "\xD7"), props.allfundas.map(function (funda) {
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      className: "btn btn-style",
+      onClick: function onClick() {
+        return props.onClick(funda.id);
+      }
+    }, funda.name, " ");
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Modal);

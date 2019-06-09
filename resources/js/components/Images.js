@@ -10,10 +10,6 @@ export default class Images extends Component {
 
         this.state={images:[]}
     }
-    
-   /* buttonClick(id){
-        this.props.onClick(id)
-    }*/
 
     componentWillMount(){
         this.loadImages();

@@ -15,9 +15,13 @@ export default class MainSection extends Component {
         caseIndex:1,
         colorIndex:7,
         estampaIndex:1,
+        name:'',
         fundaURL:null,
         estampaURL:null,
-        modal: false
+        modal: false,
+        fundaid:null,
+
+        fundas: []
       }
 
       this.setCaseImage=this.setCaseImage.bind(this)
@@ -25,6 +29,8 @@ export default class MainSection extends Component {
       this.setEstampa=this.setEstampa.bind(this)
       this.setFundaURL=this.setFundaURL.bind(this)
       this.setEstampaURL=this.setEstampaURL.bind(this)
+      this.handleFieldChange=this.handleFieldChange.bind(this)
+      this.setFundaID=this.setFundaID.bind(this)
 
       this.showFunda=this.showFunda.bind(this)
       this.showEstampa=this.showEstampa.bind(this)
@@ -34,7 +40,7 @@ export default class MainSection extends Component {
 
     }
 
-    componentWillMount(){
+    componentDidMount(){
       if(localStorage.hasOwnProperty('caseIndex')){
         this.setState({
           caseIndex: localStorage.getItem('caseIndex'),
@@ -58,6 +64,11 @@ export default class MainSection extends Component {
       localStorage.setItem('estampaIndex',imageId)
       localStorage.setItem('fundaURL',this.state.fundaURL)
       localStorage.setItem('estampaURL', this.state.estampaURL)
+    }
+
+    setFundaID(id){
+      this.setState({fundaid: id})
+      console.log(this.state.fundaid)
     }
 
      setFundaURL(url){
@@ -85,6 +96,12 @@ export default class MainSection extends Component {
       this.setState({estampaIndex:estampaId})
       this.showEstampa(estampaId)
       this.saveState(this.state.caseIndex,this.state.colorIndex,estampaId)  
+    }
+
+    handleFieldChange (event) {
+      this.setState({
+        [event.target.name]: event.target.value
+      })
     }
 
     showFunda(caseId,colorId){
@@ -128,13 +145,28 @@ export default class MainSection extends Component {
       const product={
         'id_color': this.state.colorIndex,
         'id_case':this.state.caseIndex,
-        'id_image':this.state.estampaIndex
+        'id_image':this.state.estampaIndex,
+        'name':this.state.name
       };
       Axios.post('/api/products',product)
       .then(response => {
           alert("Funda creada correctamente");
       });
       
+      }
+
+      componentWillMount(){
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+    
+        if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+  
+        axios.get('/api/products')
+        .then((response) => {
+          this.setState({
+            fundas: response.data
+          });
+        });
       }
 
     render() {
@@ -145,6 +177,18 @@ export default class MainSection extends Component {
                     <img className="estampa-style" src={this.state.estampaURL}/>
                   </div>
                   <ul className="features-list list-1">
+                    <li className="nombre-funda">
+                      <input
+                          id='name'
+                          type='text'
+                          className="form-control"
+                          name='name'
+                          placeholder="Nombre de la funda"
+                          value={this.state.name}
+                          onChange={this.handleFieldChange}
+                          required autofocus
+                        />
+                    </li>
                     <li className="case-options">
                       <h3 className="features-item-header">Seleccione el tipo de funda a personalizar</h3>
                     </li>
@@ -169,8 +213,10 @@ export default class MainSection extends Component {
                       <button type="submit" onClick={this.addNewProduct} className="btn-changes btn btn-primary">Guardar</button>
                       <button type="button" className="btn-changes btn btn-primary" onClick={ this.selectModal }>Mis fundas</button>      
                       <Modal
+                        allfundas={this.state.fundas}
                         displayModal={this.state.modal}
                         closeModal={this.selectModal}
+                        onClick={this.setFundaID}
                       />
                     </li>
                   </ul>
