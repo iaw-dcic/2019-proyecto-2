@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import BotonSabor from './BotonSabor';
 import BotonGlaseado from './BotonGlaseado';
 import BotonDecoracion from './BotonDecoracion';
-import SeccionEditar from './SeccionEditar';
 import ImageDonut from './ImageDonut';
 import axios from 'axios';
 import MostrarDonut from './MostrarDonut';
@@ -92,7 +91,7 @@ class SeccionCrear extends Component {
 				console.log('Donut creada', response);
 			});
 
-			this.componentWillMount();		
+		this.componentWillMount();
 	}
 
 	componentWillMount() {
@@ -153,13 +152,13 @@ class SeccionCrear extends Component {
 				<br />
 
 				<div className="row fondo">
-					{this.state.donuts.map((donut) => 
-						<MostrarDonut 
-							key={donut.id} 
-							donut={donut} 
+					{this.state.donuts.map((donut) => (
+						<MostrarDonut
+							key={donut.id}
+							donut={donut}
 							// onClick={this.updateDonut}
-						/>)
-					}
+						/>
+					))}
 				</div>
 			</div>
 		);

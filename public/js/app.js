@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66353,11 +66353,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BotonSabor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BotonSabor */ "./resources/js/components/BotonSabor.js");
 /* harmony import */ var _BotonGlaseado__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BotonGlaseado */ "./resources/js/components/BotonGlaseado.js");
 /* harmony import */ var _BotonDecoracion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BotonDecoracion */ "./resources/js/components/BotonDecoracion.js");
-/* harmony import */ var _SeccionEditar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SeccionEditar */ "./resources/js/components/SeccionEditar.js");
-/* harmony import */ var _ImageDonut__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ImageDonut */ "./resources/js/components/ImageDonut.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _MostrarDonut__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./MostrarDonut */ "./resources/js/components/MostrarDonut.js");
+/* harmony import */ var _ImageDonut__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ImageDonut */ "./resources/js/components/ImageDonut.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _MostrarDonut__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./MostrarDonut */ "./resources/js/components/MostrarDonut.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66375,7 +66374,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -66412,7 +66410,7 @@ function (_Component) {
     _this.setDecoracion = _this.setDecoracion.bind(_assertThisInitialized(_this));
     _this.addDonut = _this.addDonut.bind(_assertThisInitialized(_this));
     _this.updateDonut = _this.addDonut.bind(_assertThisInitialized(_this));
-    _this.img = new _ImageDonut__WEBPACK_IMPORTED_MODULE_7__["default"]();
+    _this.img = new _ImageDonut__WEBPACK_IMPORTED_MODULE_6__["default"]();
     return _this;
   }
 
@@ -66464,7 +66462,7 @@ function (_Component) {
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      axios__WEBPACK_IMPORTED_MODULE_8___default.a.post('/api/donuts', {
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post('/api/donuts', {
         sabor_id: this.state.sabor,
         glaseado_id: this.state.glaseado,
         decorado_id: this.state.decoracion
@@ -66478,7 +66476,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_8___default.a.get('/api/donuts').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.get('/api/donuts').then(function (response) {
         _this2.setState({
           donuts: response.data
         });
@@ -66543,7 +66541,7 @@ function (_Component) {
       }, "Edita tu Devil Donut"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row fondo"
       }, this.state.donuts.map(function (donut) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_8__["default"], {
           key: donut.id,
           donut: donut // onClick={this.updateDonut}
 
@@ -66556,92 +66554,6 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (SeccionCrear);
-
-/***/ }),
-
-/***/ "./resources/js/components/SeccionEditar.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/SeccionEditar.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _MostrarDonut__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MostrarDonut */ "./resources/js/components/MostrarDonut.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var SeccionEditar =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(SeccionEditar, _Component);
-
-  function SeccionEditar() {
-    var _this;
-
-    _classCallCheck(this, SeccionEditar);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SeccionEditar).call(this));
-    _this.state = {
-      donuts: []
-    };
-    return _this;
-  }
-
-  _createClass(SeccionEditar, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/donuts').then(function (response) {
-        _this2.setState({
-          donuts: response.data
-        });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row fondo"
-      }, this.state.donuts.map(function (donut) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          key: donut.id,
-          donut: donut // onClick={() => this.props.onClick(donut.decorado_id, donut.glaseado_id, donut.sabor_id)}
-
-        });
-      }));
-    }
-  }]);
-
-  return SeccionEditar;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (SeccionEditar);
 
 /***/ }),
 
