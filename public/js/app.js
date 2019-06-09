@@ -67604,7 +67604,7 @@ function (_Component) {
         value: this.state.name,
         onChange: this.handleFieldChange,
         required: true,
-        autofocus: true
+        autoFocus: true
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "case-options"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {

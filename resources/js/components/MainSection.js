@@ -250,7 +250,7 @@ export default class MainSection extends Component {
                           placeholder="Nombre de la funda"
                           value={this.state.name}
                           onChange={this.handleFieldChange}
-                          required autofocus
+                          required autoFocus
                         />
                     </li>
                     <li className="case-options">
