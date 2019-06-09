@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
+import Main from '../Main';
 
 export default class Playoff extends Component {
 
@@ -143,59 +144,65 @@ export default class Playoff extends Component {
             </tr>
         );
         return ( 
-        <>
-            <div className="card mt-3">
-                <div className="card-header card-header2">
-                        <h1 className="center">Mis pronósticos</h1>
-                </div>
-                <div className="card-body center">
-                    <div className='row'> 
-                        <div className="d-flex flex-row buttonsSelectPlayoff style-8"  >
-                        { this.state.playoffs.map((name,id) => 
-                            ( <button className="btn-playoff btn-playoff1 btn-playoff2 mr-2" 
-                            key = {id} onClick={(event) => this.handlePlayoffSelected(id)}> 
-                            Playoff {id+1}</button> ))
-                        }
+        <>  <Main/>
+         <div className="container">
+             <div className="row justify-content-center">
+                <div className="col-md-8">
+                <div className="card mt-3">
+                    <div className="card-header card-header2">
+                            <h1 className="center">Mis pronósticos</h1>
+                    </div>
+                    <div className="card-body center">
+                        <div className='row'> 
+                            <div className="d-flex flex-row buttonsSelectPlayoff style-8"  >
+                            { this.state.playoffs.map((name,id) => 
+                                ( <button className="btn-playoff btn-playoff1 btn-playoff2 mr-2" 
+                                key = {id} onClick={(event) => this.handlePlayoffSelected(id)}> 
+                                Playoff {id+1}</button> ))
+                            }
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="container-deshacer"><button className="btn-deshacer btn-eliminar" onClick={(event) => this.handleDelete()}>Eliminar playoff</button></div>
-            <div className="container mt-3">
-                 <div className="card-header mt-3">
-                    <div className="card">
-                        <h1>🏆 Copa Libertadores 🏆</h1>
+                <div className="container-deshacer"><button className="btn-deshacer btn-eliminar" onClick={(event) => this.handleDelete()}>Eliminar playoff</button></div>
+                    <div className="container mt-3">
+                        <div className="card-header mt-3">
+                            <div className="card">
+                                <h1>🏆 Copa Libertadores 🏆</h1>
+                            </div>
+                        </div>
+
+                        <div className="card-header mt-3 card-header2">
+                            <h1>Campeón :<b> {this.state.ganador}</b></h1>
+                        </div>
+
+                        <h2 className="mt-3"><b> Final</b></h2>
+                        <table id='tableFinal'>
+                            {headTable.map((head) => (head))}
+                            {arrFinal.map((fila) => (fila))}   
+                        </table>
+
+                        <h2 className="mt-3"><b> Semifinal</b></h2>
+                        <table id='tableSemifinal'>
+                            {headTable.map((head) => (head))}
+                            {arrSemifinal.map((fila) => (fila))}    
+                        </table>
+
+                        <h2 className="mt-3"><b> Cuartos de final</b></h2>
+                        <table id='tableCuartos'>
+                            {headTable.map((head) => (head))}
+                            {arrCuartos.map((fila) => (fila))}    
+                        </table>
+
+                        <h2 className="mt-3"><b> Octavos de final</b></h2>
+                        <table id='tableOctavos'>
+                            {headTable.map((head) => (head))}
+                            {arrOctavos.map((fila) => (fila))}    
+                        </table>
                     </div>
                 </div>
-
-                <div className="card-header mt-3 card-header2">
-                    <h1>Campeón :<b> {this.state.ganador}</b></h1>
-                </div>
-
-                <h2 className="mt-3"><b> Final</b></h2>
-                <table id='tableFinal'>
-                    {headTable.map((head) => (head))}
-                    {arrFinal.map((fila) => (fila))}   
-                </table>
-
-                <h2 className="mt-3"><b> Semifinal</b></h2>
-                <table id='tableSemifinal'>
-                    {headTable.map((head) => (head))}
-                    {arrSemifinal.map((fila) => (fila))}    
-                </table>
-
-                <h2 className="mt-3"><b> Cuartos de final</b></h2>
-                <table id='tableCuartos'>
-                    {headTable.map((head) => (head))}
-                    {arrCuartos.map((fila) => (fila))}    
-                </table>
-
-                <h2 className="mt-3"><b> Octavos de final</b></h2>
-                <table id='tableOctavos'>
-                    {headTable.map((head) => (head))}
-                    {arrOctavos.map((fila) => (fila))}    
-                </table>
             </div>
+          </div>  
         </>
         );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
+import Main from '../Main';
 
 export default class Pronostico extends Component {
 
@@ -238,58 +239,64 @@ export default class Pronostico extends Component {
         );
 
         return (
+            <> <Main/>
             <div className="container">
-                <div className="card-header mt-3">
-                    <div className="card">
-                        <h1>🏆 Copa Libertadores 🏆</h1>
+             <div className="row justify-content-center">
+                <div className="col-md-8">
+                    <div className="card-header mt-3">
+                        <div className="card">
+                            <h1>🏆 Copa Libertadores 🏆</h1>
+                        </div>
                     </div>
-                </div>
-                
-                    <div className="fase-deshacer">
-                        <h2 className="mt-3"><b> Octavos de final</b></h2>
-                    </div>
-                        <table id='tableOctavos'>
-                            {headTable.map((head) => (head))}  
-                            {arrOctavos.map((fila) => (fila))}       
+                    
+                        <div className="fase-deshacer">
+                            <h2 className="mt-3"><b> Octavos de final</b></h2>
+                        </div>
+                            <table id='tableOctavos'>
+                                {headTable.map((head) => (head))}  
+                                {arrOctavos.map((fila) => (fila))}       
+                            </table>
+
+                        <div className="row">
+                            <div className="column"><h2 className="mt-3"><b> Cuartos de final</b></h2></div>
+                            <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarCuartos()}>Deshacer ↶</button></div>
+                        </div>                   
+                        <table id='tableCuartos'>                        
+                                {headTable.map((head) => (head))}  
+                                {arrCuartos.map((fila) => (fila))} 
                         </table>
 
-                    <div className="row">
-                        <div className="column"><h2 className="mt-3"><b> Cuartos de final</b></h2></div>
-                        <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarCuartos()}>Deshacer ↶</button></div>
-                    </div>                   
-                    <table id='tableCuartos'>                        
-                            {headTable.map((head) => (head))}  
-                            {arrCuartos.map((fila) => (fila))} 
-                    </table>
-
-                    <div className="row">
-                        <div className="column"><h2 className="mt-3"><b> Semifinal</b></h2></div>
-                        <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarSemifinal()}>Deshacer ↶</button></div>
-                    </div>
-                    <table id='tableSemifinal'>
-                            {headTable.map((head) => (head))}  
-                            {arrSemifinal.map((fila) => (fila))} 
-                    </table>
+                        <div className="row">
+                            <div className="column"><h2 className="mt-3"><b> Semifinal</b></h2></div>
+                            <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarSemifinal()}>Deshacer ↶</button></div>
+                        </div>
+                        <table id='tableSemifinal'>
+                                {headTable.map((head) => (head))}  
+                                {arrSemifinal.map((fila) => (fila))} 
+                        </table>
+                        
+                        <div className="row">
+                            <div className="column"><h2 className="mt-3"><b> FINAL</b></h2></div> 
+                            <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarFinal()}>Deshacer ↶</button></div> 
+                        </div> 
+                        <table id='tablefinal'>
+                                {headTable.map((head) => (head))}  
+                                {arrFinal.map((fila) => (fila))} 
+                        </table>
                     
-                    <div className="row">
-                        <div className="column"><h2 className="mt-3"><b> FINAL</b></h2></div> 
-                        <div className="column"><button className="btn btn-deshacer" onClick={(event) => this.handleChangeBorrarFinal()}>Deshacer ↶</button></div> 
-                    </div> 
-                    <table id='tablefinal'>
-                            {headTable.map((head) => (head))}  
-                            {arrFinal.map((fila) => (fila))} 
-                    </table>
-                
 
-                <div className="card mt-3">
-                    <div className="card-header mt-1 card-header2">
-                        <h1 className="mt-1">Campeón 🏆:<b> {this.state.ganador}</b></h1>
-                    </div>
-                    <div className="card-body center">
-                         <button className="btn-playoff btn-playoff1 mt-2" onClick={(event) => this.handleChangeGuardar(event)}>Guardar pronóstico 💾</button>
+                    <div className="card mt-3">
+                        <div className="card-header mt-1 card-header2">
+                            <h1 className="mt-1">Campeón 🏆:<b> {this.state.ganador}</b></h1>
+                        </div>
+                        <div className="card-body center">
+                            <button className="btn-playoff btn-playoff1 mt-2" onClick={(event) => this.handleChangeGuardar(event)}>Guardar pronóstico 💾</button>
+                        </div>
                     </div>
                 </div>
+             </div>
             </div>
+            </>
         );
     }
 }

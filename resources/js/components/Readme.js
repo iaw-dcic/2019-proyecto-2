@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+import Main from './Main';
 
 export default class Readme extends Component {
     
     render () {
         return (
-            <>
+            <> <Main />
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        
+            
             <div class="card-header"><h1>Bienvenidos a <i>Prode Libertadores!</i></h1></div>
 
                 <div class="card-body card card-readme">               
@@ -19,6 +25,9 @@ export default class Readme extends Component {
                     <p> <i>Contacto:</i> <a href="http://monzon.lucas4@gmail.com"> monzon.lucas4@gmail.com</a></p>
 
                 </div> 
+                </div>
+                </div>
+            </div>
             </>      
         )
     }

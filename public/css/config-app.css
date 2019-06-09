@@ -170,3 +170,11 @@ table {
  .card-readme {
    font-size: 18px;
  }
+
+ .dropdown-item:hover{
+  color: #16181b;
+  text-decoration: none;
+  background-color: rgba(133, 114, 8, 0.486);
+ }
+
+

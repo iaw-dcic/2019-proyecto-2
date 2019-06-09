@@ -1,56 +1,26 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Pronostico from './Pronostico/Pronostico'
-import Playoff from './Playoff/Playoff'
-import Readme from './Readme'
+import { NavLink } from 'react-router-dom'
 
 export default class Example extends Component {
-    
-    constructor() {
-        super()
-        this.state = {
-            content: <Readme />
-        }
-    }
-
-    handleChangePronostico() {
-        this.setState({
-            content: <Pronostico />
-        });
-    }
-
-    handleChangePlayoff() {
-        this.setState({
-            content: <Playoff />
-        });
-    }
 
     render() { 
         return (
+            <>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
                             <div className="card-header"><b>Bienvenido al pronostico de la Copa Libertadores!</b></div>
                             <div className="card-body">
-                                <button className="btn-playoff btn-playoff1 mr-2" onClick={(event) => this.handleChangePronostico()} >Iniciar pronóstico</button>         
-                                <button className="btn-playoff btn-playoff1" onClick={(event) => this.handleChangePlayoff()} >Mis pronósticos</button>
+                                <NavLink to="/pronosticoInit" className="btn-playoff btn-playoff1 mr-2">Iniciar pronóstico</NavLink>
+                                <NavLink to="/myPlayoffs" className="btn-playoff btn-playoff1">Mis Pronósticos</NavLink>     
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-md-8">
-                                <section id="bracket">
-                                    <div className="container">
-                                        {this.state.content}
-                                    </div>
-                                </section>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </>
         );
     }
 }
