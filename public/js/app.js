@@ -67354,6 +67354,7 @@ function (_Component) {
       estampaURL: null,
       modal: false,
       fundaid: null,
+      userid: null,
       fundas: []
     };
     _this.setCaseImage = _this.setCaseImage.bind(_assertThisInitialized(_this));
@@ -67363,11 +67364,14 @@ function (_Component) {
     _this.setEstampaURL = _this.setEstampaURL.bind(_assertThisInitialized(_this));
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     _this.setFundaID = _this.setFundaID.bind(_assertThisInitialized(_this));
+    _this.setName = _this.setName.bind(_assertThisInitialized(_this));
     _this.showFunda = _this.showFunda.bind(_assertThisInitialized(_this));
     _this.showEstampa = _this.showEstampa.bind(_assertThisInitialized(_this));
     _this.saveState = _this.saveState.bind(_assertThisInitialized(_this));
     _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
     _this.addNewProduct = _this.addNewProduct.bind(_assertThisInitialized(_this));
+    _this.getFundaToEdit = _this.getFundaToEdit.bind(_assertThisInitialized(_this));
+    _this.getProductToEdit = _this.getProductToEdit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -67405,7 +67409,8 @@ function (_Component) {
       this.setState({
         fundaid: id
       });
-      console.log(this.state.fundaid);
+      this.getFundaToEdit(id);
+      this.getProductToEdit(id);
     }
   }, {
     key: "setFundaURL",
@@ -67419,6 +67424,13 @@ function (_Component) {
     value: function setEstampaURL(url) {
       this.setState({
         estampaURL: url
+      });
+    }
+  }, {
+    key: "setName",
+    value: function setName(value) {
+      this.setState({
+        name: value
       });
     }
   }, {
@@ -67501,15 +67513,49 @@ function (_Component) {
       });
     }
   }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "getFundaToEdit",
+    value: function getFundaToEdit(id_funda) {
       var _this4 = this;
 
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      var path = "/api/product/getfunda/" + id_funda;
+      axios.get(path).then(function (response) {
+        _this4.setCaseImage(response.data.id_case);
+
+        _this4.setCaseColor(response.data.id_color);
+      });
+    }
+  }, {
+    key: "getProductToEdit",
+    value: function getProductToEdit(id_funda) {
+      var _this5 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      var path = "/api/product/" + id_funda;
+      axios.get(path).then(function (response) {
+        _this5.setEstampa(response.data.id_image);
+
+        _this5.setName(response.data.name);
+
+        console.log(response.data);
+        console.log(_this5.state.fundaid);
+        console.log(_this5.state.name);
+      });
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this6 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       axios.get('/api/products').then(function (response) {
-        _this4.setState({
+        _this6.setState({
           fundas: response.data
         });
       });

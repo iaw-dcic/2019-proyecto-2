@@ -28,6 +28,17 @@ class ProductsController extends Controller
 
         return $product;
     }
+
+    public function getFunda($id)
+    {
+        $product=Product::find($id);
+
+        $colorCase=ColorCase::where([
+            ['id','=',$product['id_case_color']],
+        ])->get();
+
+        return $colorCase[0];
+    }
  
     public function store()
     {

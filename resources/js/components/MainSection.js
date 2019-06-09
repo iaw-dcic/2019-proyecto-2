@@ -20,6 +20,7 @@ export default class MainSection extends Component {
         estampaURL:null,
         modal: false,
         fundaid:null,
+        userid:null,
 
         fundas: []
       }
@@ -31,12 +32,15 @@ export default class MainSection extends Component {
       this.setEstampaURL=this.setEstampaURL.bind(this)
       this.handleFieldChange=this.handleFieldChange.bind(this)
       this.setFundaID=this.setFundaID.bind(this)
+      this.setName=this.setName.bind(this)
 
       this.showFunda=this.showFunda.bind(this)
       this.showEstampa=this.showEstampa.bind(this)
       this.saveState=this.saveState.bind(this)
       this.selectModal=this.selectModal.bind(this)
       this.addNewProduct=this.addNewProduct.bind(this)
+      this.getFundaToEdit=this.getFundaToEdit.bind(this)
+      this.getProductToEdit=this.getProductToEdit.bind(this)
 
     }
 
@@ -68,7 +72,8 @@ export default class MainSection extends Component {
 
     setFundaID(id){
       this.setState({fundaid: id})
-      console.log(this.state.fundaid)
+      this.getFundaToEdit(id)
+      this.getProductToEdit(id)
     }
 
      setFundaURL(url){
@@ -77,6 +82,10 @@ export default class MainSection extends Component {
 
     setEstampaURL(url){
       this.setState({estampaURL: url})
+    }
+
+    setName(value){
+      this.setState({name:value})
     }
 
     setCaseImage(caseId){
@@ -153,6 +162,39 @@ export default class MainSection extends Component {
           alert("Funda creada correctamente");
       });
       
+      }
+
+      getFundaToEdit(id_funda){
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+    
+        if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+  
+        const path="/api/product/getfunda/"+id_funda;
+
+        axios.get(path)
+        .then((response) => {
+          this.setCaseImage(response.data.id_case)
+          this.setCaseColor(response.data.id_color)
+        });
+      }
+
+      getProductToEdit(id_funda){
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+    
+        if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+  
+        const path="/api/product/"+id_funda;
+
+        axios.get(path)
+        .then((response) => {
+          this.setEstampa(response.data.id_image)
+          this.setName(response.data.name)
+          console.log(response.data)
+          console.log(this.state.fundaid)
+          console.log(this.state.name)
+        });
       }
 
       componentWillMount(){

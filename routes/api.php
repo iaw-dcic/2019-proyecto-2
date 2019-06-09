@@ -21,7 +21,9 @@ Route::get('products','ProductsController@index')->middleware('auth:api');
 
 Route::post('products','ProductsController@store')->middleware('auth:api');
 
-Route::get('products/{id_case}','ProductsController@show');
+Route::get('product/getfunda/{id_case}','ProductsController@getFunda');
+
+Route::get('product/{id_case}','ProductsController@show');
 
 Route::put('products/{id_case}','ProductsController@update');
 
