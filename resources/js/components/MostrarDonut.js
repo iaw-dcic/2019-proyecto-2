@@ -9,11 +9,11 @@ class MostrarDonut extends React.Component {
 		this.img = new ImageDonut();
 	}
 
-	handleClick = (e) => {
-		console.log(e.currentTarget.value);
-		console.log();
-		this.props.onClick(e.currentTarget.value, e.currentTarget.value1, e.currentTarget.value2);
-	};
+	// handleClick = (e) => {
+	// 	console.log(e.currentTarget.value);
+	// 	console.log();
+	// 	this.props.onClick(e.currentTarget.value, e.currentTarget.value1, e.currentTarget.value2);
+	// };
 
 	render() {
 		return (

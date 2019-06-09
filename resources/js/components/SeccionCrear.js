@@ -60,23 +60,6 @@ class SeccionCrear extends Component {
 		localStorage.setItem('decoracionImagen', decoracionImage);
 	}
 
-	updateDonut(decoracionId, glaseadoId, saborId) {
-		this.setState({
-			decoracion: decoracionId,
-			decoracionImg: this.img.getDecoracionURL(decoracionId),
-			glaseado: glaseadoId,
-			glaseadoImg: this.img.getGlaseadoURL(glaseadoId),
-			sabor: saborId,
-			saborImg: this.img.getSaborURL(saborId)
-		});
-
-		localStorage.setItem('decoracionImagen', this.img.getDecoracionURL(decoracionId));
-		localStorage.setItem('glaseadoImagen', this.img.getGlaseadoURL(glaseadoId));
-		localStorage.setItem('saborImagen', this.img.getSaborURL(saborId));
-
-		this.componentDidMount();
-	}
-
 	addDonut() {
 		window.axios = require('axios');
 		let api_token = document.querySelector('meta[name="api-token"]');
@@ -158,7 +141,6 @@ class SeccionCrear extends Component {
 						<MostrarDonut
 							key={donut.id}
 							donut={donut}
-							//onClick={this.updateDonut}
 						/>
 					))}
 				</div>

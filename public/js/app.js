@@ -66269,15 +66269,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -66294,17 +66292,14 @@ function (_React$Component) {
     _classCallCheck(this, MostrarDonut);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MostrarDonut).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
-      console.log(e.currentTarget.value);
-      console.log();
-
-      _this.props.onClick(e.currentTarget.value, e.currentTarget.value1, e.currentTarget.value2);
-    });
-
     _this.img = new _ImageDonut__WEBPACK_IMPORTED_MODULE_2__["default"]();
     return _this;
-  }
+  } // handleClick = (e) => {
+  // 	console.log(e.currentTarget.value);
+  // 	console.log();
+  // 	this.props.onClick(e.currentTarget.value, e.currentTarget.value1, e.currentTarget.value2);
+  // };
+
 
   _createClass(MostrarDonut, [{
     key: "render",
@@ -66442,22 +66437,6 @@ function (_Component) {
       localStorage.setItem('decoracionImagen', decoracionImage);
     }
   }, {
-    key: "updateDonut",
-    value: function updateDonut(decoracionId, glaseadoId, saborId) {
-      this.setState({
-        decoracion: decoracionId,
-        decoracionImg: this.img.getDecoracionURL(decoracionId),
-        glaseado: glaseadoId,
-        glaseadoImg: this.img.getGlaseadoURL(glaseadoId),
-        sabor: saborId,
-        saborImg: this.img.getSaborURL(saborId)
-      });
-      localStorage.setItem('decoracionImagen', this.img.getDecoracionURL(decoracionId));
-      localStorage.setItem('glaseadoImagen', this.img.getGlaseadoURL(glaseadoId));
-      localStorage.setItem('saborImagen', this.img.getSaborURL(saborId));
-      this.componentDidMount();
-    }
-  }, {
     key: "addDonut",
     value: function addDonut() {
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -66544,8 +66523,7 @@ function (_Component) {
       }, this.state.donuts.map(function (donut) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_8__["default"], {
           key: donut.id,
-          donut: donut //onClick={this.updateDonut}
-
+          donut: donut
         });
       })));
     }
