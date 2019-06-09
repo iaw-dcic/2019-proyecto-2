@@ -73,6 +73,8 @@ class SeccionCrear extends Component {
 		localStorage.setItem('decoracionImagen', this.img.getDecoracionURL(decoracionId));
 		localStorage.setItem('glaseadoImagen', this.img.getGlaseadoURL(glaseadoId));
 		localStorage.setItem('saborImagen', this.img.getSaborURL(saborId));
+
+	//	this.componentDidMount();
 	}
 
 	addDonut() {
@@ -91,10 +93,10 @@ class SeccionCrear extends Component {
 				console.log('Donut creada', response);
 			});
 
-		this.componentWillMount();
+		this.componentDidMount();
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		axios.get('/api/donuts').then((response) => {
 			this.setState({
 				donuts: response.data
@@ -156,7 +158,7 @@ class SeccionCrear extends Component {
 						<MostrarDonut
 							key={donut.id}
 							donut={donut}
-							// onClick={this.updateDonut}
+							//onClick={this.updateDonut}
 						/>
 					))}
 				</div>

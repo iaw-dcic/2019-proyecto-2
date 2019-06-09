@@ -66454,7 +66454,7 @@ function (_Component) {
       });
       localStorage.setItem('decoracionImagen', this.img.getDecoracionURL(decoracionId));
       localStorage.setItem('glaseadoImagen', this.img.getGlaseadoURL(glaseadoId));
-      localStorage.setItem('saborImagen', this.img.getSaborURL(saborId));
+      localStorage.setItem('saborImagen', this.img.getSaborURL(saborId)); //	this.componentDidMount();
     }
   }, {
     key: "addDonut",
@@ -66469,11 +66469,11 @@ function (_Component) {
       }).then(function (response) {
         console.log('Donut creada', response);
       });
-      this.componentWillMount();
+      this.componentDidMount();
     }
   }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.get('/api/donuts').then(function (response) {
@@ -66543,7 +66543,7 @@ function (_Component) {
       }, this.state.donuts.map(function (donut) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MostrarDonut__WEBPACK_IMPORTED_MODULE_8__["default"], {
           key: donut.id,
-          donut: donut // onClick={this.updateDonut}
+          donut: donut //onClick={this.updateDonut}
 
         });
       })));
