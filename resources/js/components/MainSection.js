@@ -41,7 +41,7 @@ export default class MainSection extends Component {
       this.addNewProduct=this.addNewProduct.bind(this)
       this.getFundaToEdit=this.getFundaToEdit.bind(this)
       this.getProductToEdit=this.getProductToEdit.bind(this)
-
+      this.editProduct=this.editProduct.bind(this)
     }
 
     componentDidMount(){
@@ -197,6 +197,28 @@ export default class MainSection extends Component {
         });
       }
 
+      editProduct(){
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+    
+        if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+  
+        const product={
+          'id':this.state.fundaid,
+          'id_color': this.state.colorIndex,
+          'id_case':this.state.caseIndex,
+          'id_image':this.state.estampaIndex,
+          'name':this.state.name
+        };
+
+        const path="/api/product/"+this.state.fundaid;
+
+        Axios.put(path,product)
+        .then(response => {
+            alert("Funda editada !")
+        });
+      }
+
       componentWillMount(){
         window.axios = require('axios');
         let api_token = document.querySelector('meta[name="api-token"]');
@@ -260,6 +282,7 @@ export default class MainSection extends Component {
                         closeModal={this.selectModal}
                         onClick={this.setFundaID}
                       />
+                      <button type="submit" onClick={this.editProduct} className="btn-changes btn btn-primary">Editar</button>
                     </li>
                   </ul>
                 </div>

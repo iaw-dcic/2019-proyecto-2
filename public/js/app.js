@@ -6596,7 +6596,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".modal {\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Overlay effect: translucent background: black w/ partial opacity */\r\n    z-index: 1; /* Overlay effect: positioned over other containers */\r\n    width: 100%; /* Full width */\r\n    height: 100%; /* Full height */\r\n    position: fixed; /* Fix position on the top-left corner*/\r\n    top: 0;\r\n    left: 0;\r\n    overflow: auto; /* Enable scroll if needed */\r\n    padding-top: 80px; /* Location of the content container */\r\n}\r\n/* Modal content */\r\n.modal-content {\r\n    background-color: white;\r\n    width: 70%; /* Width in proportion to its parent container*/\r\n    max-width: 640px; /* Max width where it stops expanding */\r\n    height: 70%; /* Height in proportion to its parent container */\r\n    margin: auto; /* Auto margin according to the element width */\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 20px; /* Optional. Rounds container corners */\r\n}\r\n/* Close button */\r\n.close {\r\n   color: #aaaaaa;\r\n   float: right; /* Positioned to the right of the parent container whichever size it is */\r\n   font-size: 25px;\r\n   font-weight: bold;\r\n}\r\n.close:hover, \r\n.close:focus {\r\n    color: #000;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}", ""]);
+exports.push([module.i, ".modal {\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Overlay effect: translucent background: black w/ partial opacity */\r\n    z-index: 1; /* Overlay effect: positioned over other containers */\r\n    width: 100%; /* Full width */\r\n    height: 100%; /* Full height */\r\n    position: fixed; /* Fix position on the top-left corner*/\r\n    top: 0;\r\n    left: 0;\r\n    overflow: scroll; /* Enable scroll if needed */\r\n    padding-top: 80px; /* Location of the content container */\r\n\r\n}\r\n/* Modal content */\r\n.modal-content {\r\n    background-color: white;\r\n    width: 70%; /* Width in proportion to its parent container*/\r\n    max-width: 640px; /* Max width where it stops expanding */\r\n    height: 70%; /* Height in proportion to its parent container */\r\n    margin: auto; /* Auto margin according to the element width */\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 20px; /* Optional. Rounds container corners */\r\n}\r\n/* Close button */\r\n.close {\r\n   color: #aaaaaa;\r\n   float: right; /* Positioned to the right of the parent container whichever size it is */\r\n   font-size: 25px;\r\n   font-weight: bold;\r\n}\r\n.close:hover, \r\n.close:focus {\r\n    color: #000;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}", ""]);
 
 // exports
 
@@ -67372,6 +67372,7 @@ function (_Component) {
     _this.addNewProduct = _this.addNewProduct.bind(_assertThisInitialized(_this));
     _this.getFundaToEdit = _this.getFundaToEdit.bind(_assertThisInitialized(_this));
     _this.getProductToEdit = _this.getProductToEdit.bind(_assertThisInitialized(_this));
+    _this.editProduct = _this.editProduct.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -67547,6 +67548,24 @@ function (_Component) {
       });
     }
   }, {
+    key: "editProduct",
+    value: function editProduct() {
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      var product = {
+        'id': this.state.fundaid,
+        'id_color': this.state.colorIndex,
+        'id_case': this.state.caseIndex,
+        'id_image': this.state.estampaIndex,
+        'name': this.state.name
+      };
+      var path = "/api/product/" + this.state.fundaid;
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.put(path, product).then(function (response) {
+        alert("Funda editada !");
+      });
+    }
+  }, {
     key: "componentWillMount",
     value: function componentWillMount() {
       var _this6 = this;
@@ -67627,7 +67646,11 @@ function (_Component) {
         displayModal: this.state.modal,
         closeModal: this.selectModal,
         onClick: this.setFundaID
-      }))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        onClick: this.editProduct,
+        className: "btn-changes btn btn-primary"
+      }, "Editar"))));
     }
   }]);
 

@@ -14,9 +14,9 @@ const Modal = props => {
 
      return (
        <div 
-         className="modal"
+         className="modal" 
          onClick={ closeModal }
-         style={divStyle} >
+         style={divStyle}>
           <div className="modal-content" onClick={ e => e.stopPropagation() } >            
              <span className="close" onClick={ closeModal }>&times;</span>
              {

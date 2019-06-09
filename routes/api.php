@@ -25,7 +25,7 @@ Route::get('product/getfunda/{id_case}','ProductsController@getFunda');
 
 Route::get('product/{id_case}','ProductsController@show');
 
-Route::put('products/{id_case}','ProductsController@update');
+Route::put('product/{id_case}','ProductsController@update')->middleware('auth:api');
 
 Route::delete('products/{id_case}','ProductsController@delete');
 

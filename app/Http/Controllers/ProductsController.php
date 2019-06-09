@@ -70,10 +70,15 @@ class ProductsController extends Controller
         $product=Product::find($id);
 
         $data=request()->all();
+ 
+        $colorCase = ColorCase::where([
+            ['id_color', '=', $data['id_color']],
+            ['id_case', '=', $data['id_case']],
+        ])->get();
 
         $product->update([
-            'id_case'=>$data['id_case'],
-            'id_color'=>$data['id_color'],
+            'name'=>$data['name'],
+            'id_case_color'=>$colorCase[0]['id'],
             'id_image'=>$data['id_image'],
         ]);
  

@@ -7,8 +7,9 @@
     position: fixed; /* Fix position on the top-left corner*/
     top: 0;
     left: 0;
-    overflow: auto; /* Enable scroll if needed */
+    overflow: scroll; /* Enable scroll if needed */
     padding-top: 80px; /* Location of the content container */
+
 }
 /* Modal content */
 .modal-content {
