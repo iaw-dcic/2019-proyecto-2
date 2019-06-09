@@ -67362,12 +67362,41 @@ function (_Component) {
     _this.setEstampaURL = _this.setEstampaURL.bind(_assertThisInitialized(_this));
     _this.showFunda = _this.showFunda.bind(_assertThisInitialized(_this));
     _this.showEstampa = _this.showEstampa.bind(_assertThisInitialized(_this));
+    _this.saveState = _this.saveState.bind(_assertThisInitialized(_this));
     _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
     _this.addNewProduct = _this.addNewProduct.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(MainSection, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      if (localStorage.hasOwnProperty('caseIndex')) {
+        this.setState({
+          caseIndex: localStorage.getItem('caseIndex'),
+          colorIndex: localStorage.getItem('colorIndex'),
+          estampaIndex: localStorage.getItem('estampaIndex')
+        });
+        this.showFunda(localStorage.getItem('caseIndex'), localStorage.getItem('colorIndex'));
+        this.showEstampa(localStorage.getItem('estampaIndex'));
+      } else {
+        this.setState({
+          caseIndex: 1,
+          colorIndex: 7,
+          estampaIndex: 1
+        });
+      }
+    }
+  }, {
+    key: "saveState",
+    value: function saveState(caseId, colorId, imageId) {
+      localStorage.setItem('caseIndex', caseId);
+      localStorage.setItem('colorIndex', colorId);
+      localStorage.setItem('estampaIndex', imageId);
+      localStorage.setItem('fundaURL', this.state.fundaURL);
+      localStorage.setItem('estampaURL', this.state.estampaURL);
+    }
+  }, {
     key: "setFundaURL",
     value: function setFundaURL(url) {
       this.setState({
@@ -67388,6 +67417,7 @@ function (_Component) {
         caseIndex: caseId
       });
       this.showFunda(caseId, this.state.colorIndex);
+      this.saveState(caseId, this.state.colorIndex, this.state.estampaIndex);
     }
   }, {
     key: "setCaseColor",
@@ -67396,6 +67426,7 @@ function (_Component) {
         colorIndex: colorId
       });
       this.showFunda(this.state.caseIndex, colorId);
+      this.saveState(this.state.caseIndex, colorId, this.state.estampaIndex);
     }
   }, {
     key: "setEstampa",
@@ -67404,6 +67435,7 @@ function (_Component) {
         estampaIndex: estampaId
       });
       this.showEstampa(estampaId);
+      this.saveState(this.state.caseIndex, this.state.colorIndex, estampaId);
     }
   }, {
     key: "showFunda",

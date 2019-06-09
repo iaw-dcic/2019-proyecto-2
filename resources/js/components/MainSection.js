@@ -28,9 +28,36 @@ export default class MainSection extends Component {
 
       this.showFunda=this.showFunda.bind(this)
       this.showEstampa=this.showEstampa.bind(this)
+      this.saveState=this.saveState.bind(this)
       this.selectModal=this.selectModal.bind(this)
       this.addNewProduct=this.addNewProduct.bind(this)
 
+    }
+
+    componentWillMount(){
+      if(localStorage.hasOwnProperty('caseIndex')){
+        this.setState({
+          caseIndex: localStorage.getItem('caseIndex'),
+          colorIndex: localStorage.getItem('colorIndex'),
+          estampaIndex: localStorage.getItem('estampaIndex'),
+        })
+        this.showFunda(localStorage.getItem('caseIndex'),localStorage.getItem('colorIndex'))
+        this.showEstampa(localStorage.getItem('estampaIndex'))
+      }else{
+        this.setState({
+          caseIndex: 1,
+          colorIndex: 7,
+          estampaIndex: 1,
+        })
+      }
+    }
+
+    saveState(caseId,colorId,imageId){
+      localStorage.setItem('caseIndex',caseId)
+      localStorage.setItem('colorIndex',colorId)
+      localStorage.setItem('estampaIndex',imageId)
+      localStorage.setItem('fundaURL',this.state.fundaURL)
+      localStorage.setItem('estampaURL', this.state.estampaURL)
     }
 
      setFundaURL(url){
@@ -43,18 +70,21 @@ export default class MainSection extends Component {
 
     setCaseImage(caseId){
         this.setState({caseIndex:caseId})
-        this.showFunda(caseId,this.state.colorIndex)     
+        this.showFunda(caseId,this.state.colorIndex)   
+        this.saveState(caseId,this.state.colorIndex,this.state.estampaIndex)  
     }
 
     setCaseColor(colorId){
       this.setState({colorIndex:colorId})
       this.showFunda(this.state.caseIndex,colorId)
+      this.saveState(this.state.caseIndex,colorId,this.state.estampaIndex)  
     
     }
 
     setEstampa(estampaId){
       this.setState({estampaIndex:estampaId})
       this.showEstampa(estampaId)
+      this.saveState(this.state.caseIndex,this.state.colorIndex,estampaId)  
     }
 
     showFunda(caseId,colorId){
