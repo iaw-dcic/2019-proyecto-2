@@ -1,17 +1,32 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Listar from '../pages/teams/Listar';
+// import '../components/table/tabla.css';
+import HorizontalScroll from 'react-scroll-horizontal'
+import GuardarProde from '../pages/prode/GuardarProde';
+
 
 class Home extends Component {
 
-    url = "/api/index";
 
-    render(){
+    render() {
         return (
-            <div>
-                <Listar/>
+            <div className="row text-center">
+
+                <div className="col-xl">
+                    <Listar />
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+
+
             </div>
+
+
         );
+
     }
 }
-
 export default Home;

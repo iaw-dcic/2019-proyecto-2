@@ -10,6 +10,9 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
+    /**
+     * Como es una interfaz tengo que poner todos los metodos de esa interfaz.
+     */
     use Notifiable;
 
     /**
@@ -18,7 +21,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_verified'
+        'name', 'email', 'password','api_token', 'is_verified'
     ];
 
     /**
@@ -27,7 +30,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token'
     ];
 
     /**

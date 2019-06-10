@@ -1,49 +1,120 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import axios from 'axios';
+import { url, TOKEN } from '../../components/config/config';
+
+const ProdeSchema = Yup.object().shape({
+    nombre: Yup.string()
+        .max(60, 'Too Long!')
+        .required('Required'),
+
+
+});
+
 
 
 class GuardarProde extends React.Component {
 
+    /**Necesitamos alguien que maneje los valores que vamos a utilizar
+     * Creamos un objeto Prode
+    */
+    prode = {
+        nombre: '',
+    }
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal: false
+        };
+
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
+    /**Este método no se ejecutará una vez se monte el componente,
+     * si no que se esperará a recibir nuevas props de un componente padre
+     * para ejecutarse. Tiene como parámetro las futuras propiedades que va
+     * tener nuestro componente.
+     */
+    componentWillReceiveProps(nextProps) {
+        this.setState(prevState => ({
+            modal: nextProps.abrir_modal
+        }));
+    }
+
+
+    guardar(value) {
+        axios({
+            method: 'post',
+            url: `${url}/prode`,
+            headers: {
+                "Authorization": "bearer " + TOKEN
+            },
+            data: value + this.props.cuartos + this.props.semis + this.props.final + this.props.ganador
+        }).then(respuesta => {
+            let datos = respuesta.data;
+            if (datos.ok) {
+               console.log("exito");
+            } else {
+                console.log("error");
+            }
+        });
+
+    }
+
     render() {
         return (
             <div>
-                <h1>Any place in your app!</h1>
-                <Formik
-                    initialValues={{ email: '', password: '' }}
-                    validate={values => {
-                        let errors = {};
-                        if (!values.email) {
-                            errors.email = 'Required';
-                        } else if (
-                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                        ) {
-                            errors.email = 'Invalid email address';
-                        }
-                        return errors;
-                    }}
-                    onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(false);
-                        }, 400);
-                    }}
-                >
-                    {({ isSubmitting }) => (
-                        <Form>
-                            <Field type="email" name="email" />
-                            <ErrorMessage name="email" component="div" />
-                            <Field type="password" name="password" />
-                            <ErrorMessage name="password" component="div" />
-                            <button type="submit" disabled={isSubmitting}>
-                                Submit
-                    </button>
-                        </Form>
-                    )}
-                </Formik>
-            </div>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>GuardarProde</ModalHeader>
+
+                    <ModalBody>
+                        <div>
+                        <Formik
+                            initialValues={this.prode}
+                            validationSchema={ProdeSchema}
+                            onSubmit={value => { this.guardar(value); }}
+                        >
+
+                            {({ errors, touched, values, handleChange }) => (
+                                <Form>
+                                    <div className="row">
+                                        <label>Nombre</label>
+
+                                        <Field name="nombre" className="form-control" />
+                                        {errors.nombre && touched.nombre ? (
+                                            <div className="text-danger">{errors.nombre}</div>
+                                        ) : null}
+                                    </div>
+
+                                    <Button type="submit" color="primary" onClick={() => { this.toggle() }}> Guardar</Button>
+
+                                    <Button color="secondary" color="danger" onClick={this.toggle}>Cancel</Button>
+
+
+                                </Form>
+                            )}
+
+                        </Formik>
+
+                    </div>
+
+                    </ModalBody>
+
+
+                </Modal>
+            </div >
         );
     }
-
 }
 
 export default GuardarProde;

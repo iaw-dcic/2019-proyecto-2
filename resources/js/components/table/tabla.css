@@ -14,12 +14,18 @@ row > .col-xs-3 {
     -webkit-flex-wrap: nowrap!important;
     -ms-flex-wrap: nowrap!important;
     flex-wrap: nowrap!important;
+    /* overflow-x: scroll; */
+
 }
 .flex-row {
     display:flex;
+    justify-content:center!important;
     -webkit-box-orient: horizontal!important;
     -webkit-box-direction: normal!important;
     -webkit-flex-direction: row!important;
     -ms-flex-direction: row!important;
     flex-direction: row!important;
 }
+/* The heart of the matter*/
+
+

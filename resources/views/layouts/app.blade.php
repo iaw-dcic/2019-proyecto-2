@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div class="app"id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark stycky-top">
                 {{-- collapse --}}
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
@@ -72,17 +72,19 @@
 
 
 
-                </div>
+
         </nav>
-
-
-
+        <br>
     <br>
-    <br>
-
         <div>
             @yield('content')
         </div>
+    </div>
+
+
+
+
+
 </div>
 </body>
 </html>

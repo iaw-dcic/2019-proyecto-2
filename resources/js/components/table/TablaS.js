@@ -36,22 +36,32 @@ export default class TablaS extends React.Component {
             }
         }
     }
+
+    estanTodos(){
+        if(this.state.visibility[0] && this.state.visibility[1])
+            return false;
+        else
+            return true;
+    }
+
+
     render() {
 
         this.cambiarEstado()
+
         return (
             <tbody>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} onClick={() => { this.props.ganadorS(event, this.props.semis[0]) }} color="success">{this.props.semis[0].name}({this.props.semis[0].pais})</Button></Card></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} disabled={this.estanTodos()}onClick={() => { this.props.ganadorS(event, this.props.semis[0]) }} color="success">{this.props.semis[0].name}({this.props.semis[0].pais})</Button></Card></td></tr>
 
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[1]} onClick={() => { this.props.ganadorS(event, this.props.semis[1]) }} color="success">{this.props.semis[1].name}({this.props.semis[1].pais})</Button></Card></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[1]}  disabled={this.estanTodos()}onClick={() => { this.props.ganadorS(event, this.props.semis[1]) }} color="success">{this.props.semis[1].name}({this.props.semis[1].pais})</Button></Card></td></tr>
 
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
             </tbody>

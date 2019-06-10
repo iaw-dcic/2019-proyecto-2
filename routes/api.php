@@ -1,29 +1,27 @@
 <?php
-Route::post('register', 'AuthController@register');
 
-Route::post('login', 'AuthController@login');
-
-//Recuperar contraseña
-Route::post('recover', 'AuthController@recover');
 
 
 Route::get('/index','TeamController@index')->name('indexTeam');
 
+
 /**
- * Rutas que estan dentro de un grupo, todas las rutas que estan aca adentro
- * tienen que pasar por la validacion jwt.auth
- * Esto valida que venga un token con la peticion
- * Si no viene un token el no lo deja entrar a la ruta
+ * Esta ruta de ejemplo lo que hace es devolvernos al usuario que actualmente esta
+ * haciendo la peticion.
+ * Vemos que tenemos el mismo middleware auth que tenemos para proteger las rutas
+ * habitualmente, en este caso usamos el middleware auth con el parametro api(auth:api)
  */
-Route::group(['middleware' => ['jwt.auth']], function() {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/vistaGuardar', 'ProdeController@vistaGuardar');
 
-    Route::get('logout', 'AuthController@logout');
+Route::resource('/prode', 'ProdeController');
 
 
-    Route::get('test', function(){
-        return response()->json(['foo'=>'bar']);
-    });
+Route::group( ['middleware' => 'auth:api' ], function(){
 
-    //Me va a crear todas las rutas para el controlador ProdeController
-    Route::resource('/prode', 'ProdeController');
+
+    // Route::resource('/Guardar', 'Api\EjemploController');
+
 });

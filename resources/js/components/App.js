@@ -15,7 +15,7 @@ class App extends Component {
     return (
 
 
-          <div className="container-fluid">
+          <div>
             <Routes/>
           </div>
 

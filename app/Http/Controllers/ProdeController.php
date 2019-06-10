@@ -42,8 +42,9 @@ class ProdeController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        dd('desde prodecontroller.store');
 
+        $input = $request->all();
         try{
           Prode::create($input);
           return response()->json([

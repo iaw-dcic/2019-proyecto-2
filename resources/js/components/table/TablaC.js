@@ -11,7 +11,7 @@ export default class TablaC extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            visibility: [false, false, false, false]
+            visibility: [false, false, false, false],
         }
     }
 
@@ -41,20 +41,27 @@ export default class TablaC extends React.Component {
             }
         }
     }
-    render() {
 
+    estanTodos(){
+        if(this.state.visibility[0] && this.state.visibility[1] && this.state.visibility[2] && this.state.visibility[3])
+            return false;
+        else
+            return true;
+    }
+    render() {
+        const actualizaciones = 0;
         this.cambiarEstado()
         return (
             <tbody>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
-                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[0]) }} color="danger">{this.props.cuartos[0].name}({this.props.cuartos[0].pais})</Button></Card></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[0]) }} color="danger">{this.props.cuartos[0].name}({this.props.cuartos[0].pais})</Button></Card></td></tr>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[1]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[1]) }} color="danger">{this.props.cuartos[1].name}({this.props.cuartos[1].pais})</Button></Card></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[1]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[1]) }} color="danger">{this.props.cuartos[1].name}({this.props.cuartos[1].pais})</Button></Card></td></tr>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[2]} onClick={() => { this.props.ganadorC(event, this.props.cuartos[2]) }} color="danger">{this.props.cuartos[2].name}({this.props.cuartos[2].pais})</Button></Card></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[2]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[2]) }} color="danger">{this.props.cuartos[2].name}({this.props.cuartos[2].pais})</Button></Card></td></tr>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[3]}onClick={() => { this.props.ganadorC(event, this.props.cuartos[3]) }} color="danger">{this.props.cuartos[3].name}({this.props.cuartos[3].pais})</Button></Card></td></tr>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[3]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[3]) }} color="danger">{this.props.cuartos[3].name}({this.props.cuartos[3].pais})</Button></Card></td></tr>
             </tbody>
         );
     }
