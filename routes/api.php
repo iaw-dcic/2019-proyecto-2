@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/torneoPred', 'TorneosController@pred');
+Route::get('/torneos', 'TorneosController@show')->middleware('auth:api');
+Route::post('/torneos', 'TorneosController@save')->middleware('auth:api');
+Route::get('/torneos/{torneoId}', 'TorneosController@getTorneo')->middleware('auth:api');
+Route::put('/torneos/{torneoId}', 'TorneosController@updateTorneo')->middleware('auth:api');
+Route::delete('/torneos/{torneoId}', 'TorneosController@deleteTorneo')->middleware('auth:api');
