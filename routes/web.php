@@ -26,7 +26,7 @@ Route::get('/avatar/caracteristicas-con-opciones', 'AvatarController@caracterist
 // Imagen del avatar
 Route::get('/avatar', 'AvatarController@foto');
 // User
-Route::get('/user/avatar', 'UserController@getAvatar');
+Route::get('/user/avatars', 'UserController@getAvatars');
 Route::put('/user/avatar', 'UserController@updateAvatar');
 //---------------------------------------------------------------------------------
 

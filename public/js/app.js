@@ -65617,8 +65617,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Example */ "./resources/js/components/Example.js");
-/* harmony import */ var _avatarForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./avatarForm */ "./resources/js/components/avatarForm.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65640,8 +65639,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-
+ // import AvatarForm from './avatarForm';
 
 var App =
 /*#__PURE__*/
@@ -65659,7 +65657,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_avatarForm__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Home__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }]);
 
@@ -65734,20 +65732,20 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
+/***/ "./resources/js/components/Home.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Home.js ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Example; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Home; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _avatarForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./avatarForm */ "./resources/js/components/avatarForm.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65769,37 +65767,99 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Example =
+
+var Home =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Example, _Component);
+  _inherits(Home, _Component);
 
-  function Example() {
-    _classCallCheck(this, Example);
+  function Home(props) {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Example).apply(this, arguments));
+    _classCallCheck(this, Home);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
+    _this.state = {
+      avatars: [],
+      // [{'id', 'features:{'feature1':'option', 'feature2':'option', ... }}, {...}, ...]
+      isAvatarUpdate: false // para saber si se trata de una actualizacion de un avatar. Sino es uno nuevo.
+
+    };
+    return _this;
   }
 
-  _createClass(Example, [{
+  _createClass(Home, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios.get('/user/avatars').then(function (res) {
+        var avatars = res.data;
+        console.log(avatars);
+
+        _this2.setState({
+          avatars: avatars
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "armarImgUrl",
+    value: function armarImgUrl(features) {
+      console.log(features);
+      var imgBaseUrl = window.location.origin + "/avatar?";
+      var url = imgBaseUrl;
+
+      if (Object.values(features).length == 0) {
+        url = imgBaseUrl + "wait=loading";
+        return url;
+      }
+
+      var aux;
+      var optionsKeys = Object.keys(features);
+
+      for (var i = 0; i < optionsKeys.length; i++) {
+        var _aux = optionsKeys[i] + "=" + features[optionsKeys[i]] + "&";
+
+        url += _aux;
+      }
+
+      url = encodeURI(url);
+      console.log("Url: ", url);
+      return url;
+    }
+  }, {
+    key: "editAvatar",
+    value: function editAvatar(avatarId, avatarOptions) {}
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Test Component!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, "I'm an test component!")))));
+      var _this3 = this;
+
+      var avatars = this.state.avatars;
+      var avatarImgs = [];
+      avatars.forEach(function (element) {
+        avatarImgs.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-md-3",
+          key: element.id,
+          onClick: function onClick() {
+            return editAvatar(element.id, element.features);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: _this3.armarImgUrl(element.features),
+          className: "mx-auto d-block w-75"
+        })));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_avatarForm__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: ""
+      }, "Mis avatares"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, avatarImgs));
     }
   }]);
 
-  return Example;
+  return Home;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -65960,8 +66020,14 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AvatarForm).call(this, props));
     _this.state = {
       features: [],
-      // con las opciones
-      current_options: {},
+      // [{'feature': '', options: ['','',...]}, {...}, ...]
+      current_options: {
+        "Piel": "Clara",
+        "Pelo": "Corto",
+        "Color del pelo": "Rubio",
+        "Ropa": "Buzo",
+        "Color de la ropa": "Negro"
+      },
       // {'feature1':'current_option', 'feature2':'current_option', ... }
       alert_message: ''
     };
@@ -65994,17 +66060,15 @@ function (_React$Component) {
         });
       })["catch"](function (error) {
         console.log(error);
-      });
-      axios.get('user/avatar').then(function (res) {
-        var current_options = res.data;
-
-        _this3.setState({
-          current_options: current_options
-        }); // console.log("axios current_options",current_options);
-
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      }); // axios.get('user/avatar')
+      //   .then((res) => {
+      //     const current_options = res.data;
+      //     this.setState({ current_options });
+      //     // console.log("axios current_options",current_options);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   })
     }
   }, {
     key: "handleChange",
@@ -66025,6 +66089,7 @@ function (_React$Component) {
 
       // console.log(this.state.current_options);
       axios.put('/user/avatar', {
+        avatar_id: 1,
         data: this.state.current_options
       }).then(function (response) {
         _this4.setState({

@@ -27,7 +27,13 @@ export default class AvatarForm extends React.Component {
     super(props);
     this.state = {
       features: [], // [{'feature': '', options: ['','',...]}, {...}, ...]
-      current_options: {}, // {'feature1':'current_option', 'feature2':'current_option', ... }
+      current_options: {
+        "Piel":"Clara",
+        "Pelo":"Corto",
+        "Color del pelo":"Rubio",
+        "Ropa":"Buzo",
+        "Color de la ropa":"Negro"
+    }, // {'feature1':'current_option', 'feature2':'current_option', ... }
       alert_message: '',
     };
 
@@ -53,15 +59,15 @@ export default class AvatarForm extends React.Component {
         console.log(error);
       });
 
-    axios.get('user/avatar')
-      .then((res) => {
-        const current_options = res.data;
-        this.setState({ current_options });
-        // console.log("axios current_options",current_options);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+    // axios.get('user/avatar')
+    //   .then((res) => {
+    //     const current_options = res.data;
+    //     this.setState({ current_options });
+    //     // console.log("axios current_options",current_options);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
   }
 
   handleChange(event) {
@@ -75,7 +81,7 @@ export default class AvatarForm extends React.Component {
 
   handleSubmit(event) {
     // console.log(this.state.current_options);
-    axios.put('/user/avatar', { data: this.state.current_options })
+    axios.put('/user/avatar', { avatar_id: 1, data: this.state.current_options })
       .then(response => {
         this.setState({ alert_message: "success" });
         // this.delayAlertState();

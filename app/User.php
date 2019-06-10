@@ -19,6 +19,7 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -42,13 +43,18 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $attributes = [
-        'avatar' => '{
-            "Piel":"Clara",
-            "Pelo":"Corto",
-            "Color del pelo":"Rubio",
-            "Ropa":"Buzo",
-            "Color de la ropa":"Negro"
-        }'
-    ];
+    // protected $attributes = [
+    //     'avatar' => '{
+    //         "Piel":"Clara",
+    //         "Pelo":"Corto",
+    //         "Color del pelo":"Rubio",
+    //         "Ropa":"Buzo",
+    //         "Color de la ropa":"Negro"
+    //     }'
+    // ];
+
+    public function avatars(){
+        return $this->hasMany('App\Avatar');
+        // return $this->hasMany('App\Avatar', 'avatar_feature', 'feature_name');
+    }
 }
