@@ -41,9 +41,10 @@ class TorneosController extends Controller
             $partido->equipo2       = $request->input('data.octavos.'.$i.'.1');
             $partido->jugado        = $request->input('data.octavos.'.$i.'.2');
             $partido->estado        = 0;    //Octavos
+            $partido->ganador       = $request->input('data.octavos.'.$i.'.4');
 
             $partido->posicion_en_tablero = $i;
-
+            
             $partido->save();
         }
 
@@ -55,6 +56,7 @@ class TorneosController extends Controller
             $partido->equipo2       = $request->input('data.cuartos.'.$i.'.1');
             $partido->jugado        = $request->input('data.cuartos.'.$i.'.2');
             $partido->estado        = 1;    //Cuartos
+            $partido->ganador       = $request->input('data.cuartos.'.$i.'.4');
 
             $partido->posicion_en_tablero = $i;
 
@@ -69,6 +71,7 @@ class TorneosController extends Controller
             $partido->equipo2       = $request->input('data.semifinales.'.$i.'.1');
             $partido->jugado        = $request->input('data.semifinales.'.$i.'.2');
             $partido->estado        = 2;    //Cuartos
+            $partido->ganador       = $request->input('data.semifinales.'.$i.'.4');
 
             $partido->posicion_en_tablero = $i;
 
@@ -130,6 +133,7 @@ class TorneosController extends Controller
             $p->equipo1       = $request->input('data.octavos.'.$i.'.0');
             $p->equipo2       = $request->input('data.octavos.'.$i.'.1');
             $p->jugado        = $request->input('data.octavos.'.$i.'.2');
+            $p->ganador       = $request->input('data.octavos.'.$i.'.4');
 
             $p->save();
             $i++;
@@ -143,6 +147,7 @@ class TorneosController extends Controller
             $p->equipo1       = $request->input('data.cuartos.'.$i.'.0');
             $p->equipo2       = $request->input('data.cuartos.'.$i.'.1');
             $p->jugado        = $request->input('data.cuartos.'.$i.'.2');
+            $p->ganador       = $request->input('data.cuartos.'.$i.'.4');
 
             $p->save();
             $i++;
@@ -156,6 +161,7 @@ class TorneosController extends Controller
             $p->equipo1       = $request->input('data.semifinales.'.$i.'.0');
             $p->equipo2       = $request->input('data.semifinales.'.$i.'.1');
             $p->jugado        = $request->input('data.semifinales.'.$i.'.2');
+            $p->ganador       = $request->input('data.semifinales.'.$i.'.4');
 
             $p->save();
             $i++;

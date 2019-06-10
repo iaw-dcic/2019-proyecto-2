@@ -1,4 +1,4 @@
-import { POR_JUGAR, HIGHLIGHT, OFF } from './Torneo'
+import { POR_JUGAR, HIGHLIGHT, OFF, NO_GANADOR } from './Torneo'
 import { EQUIPO_ND } from './Torneo'
 import { OCTAVOS } from './Torneo'
 
@@ -20,14 +20,14 @@ export default class BrowserStorage {
     }
 
     getOctavosFromDB(response) {
-        var oct = [ ["", "", POR_JUGAR, OFF], 
-                    ["", "", POR_JUGAR, OFF],
-                    ["", "", POR_JUGAR, OFF],
-                    ["", "", POR_JUGAR, OFF],
-                    ["", "", POR_JUGAR, OFF],
-                    ["", "", POR_JUGAR, OFF],
-                    ["", "", POR_JUGAR, OFF],
-                    ["", "", POR_JUGAR, OFF],] 
+        var oct = [ ["", "", POR_JUGAR, OFF, NO_GANADOR], 
+                    ["", "", POR_JUGAR, OFF, NO_GANADOR],
+                    ["", "", POR_JUGAR, OFF, NO_GANADOR],
+                    ["", "", POR_JUGAR, OFF, NO_GANADOR],
+                    ["", "", POR_JUGAR, OFF, NO_GANADOR],
+                    ["", "", POR_JUGAR, OFF, NO_GANADOR],
+                    ["", "", POR_JUGAR, OFF, NO_GANADOR],
+                    ["", "", POR_JUGAR, OFF, NO_GANADOR],] 
 
         var i = 0, j = 0
         for (var equipo of response.data) {
@@ -51,10 +51,10 @@ export default class BrowserStorage {
                 partido[HIGHLIGHT] = OFF
              });
         } else {
-            cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF]]
+            cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF, NO_GANADOR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF, NO_GANADOR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF, NO_GANADOR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF, NO_GANADOR]]
 
             localStorage.cuartos = JSON.stringify(cuar)
         }
@@ -71,8 +71,8 @@ export default class BrowserStorage {
                 partido[HIGHLIGHT] = OFF
              });
         } else {
-            semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF]]
+            semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF, NO_GANADOR],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF, NO_GANADOR]]
 
             localStorage.semifinales = JSON.stringify(semi)
         }

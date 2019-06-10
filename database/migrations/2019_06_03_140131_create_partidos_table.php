@@ -30,6 +30,8 @@ class CreatePartidosTable extends Migration
             $table->unsignedInteger('posicion_en_tablero');
             $table->boolean('jugado');
             $table->unsignedInteger('estado');
+            $table->integer('ganador')
+                    ->nullable();
             
             $table->timestamps();
         });

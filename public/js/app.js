@@ -65818,7 +65818,7 @@ function () {
   }, {
     key: "getOctavosFromDB",
     value: function getOctavosFromDB(response) {
-      var oct = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]]];
+      var oct = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]]];
       var i = 0,
           j = 0;
       var _iteratorNormalCompletion = true;
@@ -65863,7 +65863,7 @@ function () {
           partido[_Torneo__WEBPACK_IMPORTED_MODULE_0__["HIGHLIGHT"]] = _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"];
         });
       } else {
-        cuar = [[_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]]];
+        cuar = [[_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]]];
         localStorage.cuartos = JSON.stringify(cuar);
       }
 
@@ -65880,7 +65880,7 @@ function () {
           partido[_Torneo__WEBPACK_IMPORTED_MODULE_0__["HIGHLIGHT"]] = _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"];
         });
       } else {
-        semi = [[_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"]]];
+        semi = [[_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], [_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]]];
         localStorage.semifinales = JSON.stringify(semi);
       }
 
@@ -66117,7 +66117,8 @@ function (_Component) {
         type: "button",
         id: this.props.id,
         style: {
-          width: "110px"
+          width: "110px",
+          color: this.props.ganador == 1 ? "yellow" : "white"
         },
         onClick: this.props.handlerClick,
         onMouseOver: this.props.handlerMouseOver,
@@ -66132,7 +66133,8 @@ function (_Component) {
         type: "button",
         id: this.props.id,
         style: {
-          width: "110px"
+          width: "110px",
+          color: this.props.ganador == 1 ? "yellow" : "white"
         },
         onClick: this.props.handler,
         onMouseOver: this.props.handlerMouseOver,
@@ -66290,6 +66292,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_1__["default"], {
         nombre: this.props.equipo1,
         id: this.props.id,
+        ganador: this.props.ganador == 0 ? 1 : 0,
         habilitado: this.props.habilitado,
         handlerClick: this.props.handlerClick,
         handlerMouseOver: this.props.handlerMouseOver,
@@ -66297,6 +66300,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_1__["default"], {
         nombre: this.props.equipo2,
         id: this.props.id,
+        ganador: this.props.ganador == 1 ? 1 : 0,
         habilitado: this.props.habilitado,
         handlerClick: this.props.handlerClick,
         handlerMouseOver: this.props.handlerMouseOver,
@@ -66316,7 +66320,7 @@ function (_Component) {
 /*!*******************************************!*\
   !*** ./resources/js/components/Torneo.js ***!
   \*******************************************/
-/*! exports provided: OCTAVOS, CUARTOS, SEMIFINALES, FINAL, EQUIPO1, EQUIPO2, ESTADO, HIGHLIGHT, ON, OFF, JUGADO, POR_JUGAR, EQUIPO_ND, NO_ID, storage, traductor, default */
+/*! exports provided: OCTAVOS, CUARTOS, SEMIFINALES, FINAL, EQUIPO1, EQUIPO2, ESTADO, HIGHLIGHT, GANADOR, ON, OFF, JUGADO, POR_JUGAR, EQUIPO_ND, NO_ID, NO_GANADOR, storage, traductor, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66329,12 +66333,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EQUIPO2", function() { return EQUIPO2; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ESTADO", function() { return ESTADO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HIGHLIGHT", function() { return HIGHLIGHT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GANADOR", function() { return GANADOR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON", function() { return ON; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OFF", function() { return OFF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUGADO", function() { return JUGADO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "POR_JUGAR", function() { return POR_JUGAR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EQUIPO_ND", function() { return EQUIPO_ND; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NO_ID", function() { return NO_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NO_GANADOR", function() { return NO_GANADOR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storage", function() { return storage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "traductor", function() { return traductor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Torneo; });
@@ -66380,12 +66386,14 @@ var OCTAVOS = 0,
     EQUIPO2 = 1,
     ESTADO = 2,
     HIGHLIGHT = 3,
+    GANADOR = 4,
     ON = 1,
     OFF = 0,
     JUGADO = 0,
     POR_JUGAR = 1,
     EQUIPO_ND = "",
     NO_ID = -1,
+    NO_GANADOR = -1,
     storage = new _BrowserStorage__WEBPACK_IMPORTED_MODULE_4__["default"](),
     traductor = new _TraductorJSON__WEBPACK_IMPORTED_MODULE_5__["default"]();
 
@@ -66485,6 +66493,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           equipo1: partido[EQUIPO1],
           equipo2: partido[EQUIPO2],
+          ganador: partido[GANADOR],
           id: index,
           highlight: partido[HIGHLIGHT],
           handlerClick: _this2.handleClickOctavos,
@@ -66511,6 +66520,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           equipo1: partido[EQUIPO1],
           equipo2: partido[EQUIPO2],
+          ganador: partido[GANADOR],
           id: index,
           highlight: partido[HIGHLIGHT],
           handlerClick: _this3.handleClickCuartos,
@@ -66539,6 +66549,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_1__["default"], {
           equipo1: partido[EQUIPO1],
           equipo2: partido[EQUIPO2],
+          ganador: partido[GANADOR],
           id: index,
           highlight: partido[HIGHLIGHT],
           handlerClick: _this4.handleClickSemifis,
@@ -66602,6 +66613,7 @@ function (_Component) {
       var posEnCuartos = Math.floor(nroPartido / 2);
       cuar[posEnCuartos][EQUIPO1] == EQUIPO_ND ? cuar[posEnCuartos][EQUIPO1] = equipoGanador : cuar[posEnCuartos][EQUIPO2] = equipoGanador;
       oct[nroPartido][ESTADO] = JUGADO;
+      oct[nroPartido][GANADOR] = equipoGanador == oct[nroPartido][EQUIPO1] ? EQUIPO1 : EQUIPO2;
       var nuevaEtapa = CUARTOS;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -66650,6 +66662,7 @@ function (_Component) {
       var posEnSemis = Math.floor(nroPartido / 2);
       semi[posEnSemis][EQUIPO1] == EQUIPO_ND ? semi[posEnSemis][EQUIPO1] = equipoGanador : semi[posEnSemis][EQUIPO2] = equipoGanador;
       cuar[nroPartido][ESTADO] = JUGADO;
+      cuar[nroPartido][GANADOR] = equipoGanador == cuar[nroPartido][EQUIPO1] ? EQUIPO1 : EQUIPO2;
       var nuevaEtapa = SEMIFINALES;
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
@@ -66697,6 +66710,7 @@ function (_Component) {
       var nroPartido = e.target.id;
       fin[EQUIPO1] == EQUIPO_ND ? fin[EQUIPO1] = equipoGanador : fin[EQUIPO2] = equipoGanador;
       semi[nroPartido][ESTADO] = JUGADO;
+      semi[nroPartido][GANADOR] = equipoGanador == semi[nroPartido][EQUIPO1] ? EQUIPO1 : EQUIPO2;
       var nuevaEtapa = FINAL;
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
@@ -66918,7 +66932,7 @@ function () {
   _createClass(TraductorJSON, [{
     key: "traducirOctavos",
     value: function traducirOctavos(octavosJson) {
-      var oct = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
+      var oct = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]]];
       var i = 0;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -66930,6 +66944,7 @@ function () {
           oct[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO1"]] = partido.equipo1 ? partido.equipo1 : _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
           oct[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO2"]] = partido.equipo2 ? partido.equipo2 : _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
           oct[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["ESTADO"]] = partido.jugado;
+          oct[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["GANADOR"]] = partido.ganador;
           i++;
         }
       } catch (err) {
@@ -66952,7 +66967,7 @@ function () {
   }, {
     key: "traducirCuartos",
     value: function traducirCuartos(cuartosJson) {
-      var cuart = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
+      var cuart = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]]];
       var i = 0;
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
@@ -66964,6 +66979,7 @@ function () {
           cuart[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO1"]] = partido.equipo1 ? partido.equipo1 : _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
           cuart[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO2"]] = partido.equipo2 ? partido.equipo2 : _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
           cuart[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["ESTADO"]] = partido.jugado;
+          cuart[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["GANADOR"]] = partido.ganador;
           i++;
         }
       } catch (err) {
@@ -66986,7 +67002,7 @@ function () {
   }, {
     key: "traducirSemifinales",
     value: function traducirSemifinales(semifinalesJson) {
-      var semi = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"]]];
+      var semi = [["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]], ["", "", _Torneo__WEBPACK_IMPORTED_MODULE_0__["POR_JUGAR"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["OFF"], _Torneo__WEBPACK_IMPORTED_MODULE_0__["NO_GANADOR"]]];
       var i = 0;
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
@@ -66998,6 +67014,7 @@ function () {
           semi[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO1"]] = partido.equipo1 ? partido.equipo1 : _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
           semi[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO2"]] = partido.equipo2 ? partido.equipo2 : _Torneo__WEBPACK_IMPORTED_MODULE_0__["EQUIPO_ND"];
           semi[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["ESTADO"]] = partido.jugado;
+          semi[i][_Torneo__WEBPACK_IMPORTED_MODULE_0__["GANADOR"]] = partido.ganador;
           i++;
         }
       } catch (err) {

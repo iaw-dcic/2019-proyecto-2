@@ -14,6 +14,7 @@ export default class Partido extends Component {
                 <div className="btn-group">
                     <Equipo nombre={this.props.equipo1} 
                             id={this.props.id} 
+                            ganador={this.props.ganador==0? 1:0}
                             habilitado={this.props.habilitado} 
                             handlerClick={this.props.handlerClick}
                             handlerMouseOver={this.props.handlerMouseOver}
@@ -21,6 +22,7 @@ export default class Partido extends Component {
 
                     <Equipo nombre={this.props.equipo2} 
                             id={this.props.id} 
+                            ganador={this.props.ganador==1? 1:0}
                             habilitado={this.props.habilitado} 
                             handlerClick={this.props.handlerClick}
                             handlerMouseOver={this.props.handlerMouseOver}

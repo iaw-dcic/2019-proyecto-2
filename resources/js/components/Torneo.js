@@ -14,12 +14,14 @@ export const OCTAVOS       = 0,
              EQUIPO2       = 1,
              ESTADO        = 2,
              HIGHLIGHT     = 3,
+             GANADOR       = 4,
              ON            = 1,
              OFF           = 0,
              JUGADO        = 0,
              POR_JUGAR     = 1,
              EQUIPO_ND     = "",
              NO_ID         = -1,
+             NO_GANADOR    = -1,
              storage       = new BrowserStorage(),
              traductor     = new TraductorJSON();
 
@@ -120,6 +122,7 @@ export default class Torneo extends Component {
             <div key={index} style={{marginTop: index%2==0 && index!=0?"12.3%":"0%"}}>    
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]} 
+                         ganador={partido[GANADOR]}
                          id={index}
                          highlight = {partido[HIGHLIGHT]}
                          handlerClick={this.handleClickOctavos} 
@@ -143,6 +146,7 @@ export default class Torneo extends Component {
             <div key={index} style={{marginTop:index!=0?"35%":"0%"}}>    
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]} 
+                         ganador={partido[GANADOR]}
                          id={index} 
                          highlight={partido[HIGHLIGHT]}
                          handlerClick={this.handleClickCuartos} 
@@ -164,6 +168,7 @@ export default class Torneo extends Component {
             <div key={index} style={{marginTop:index==0?"40%":"100%"}}>    
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]}  
+                         ganador={partido[GANADOR]}
                          id={index} 
                          highlight={partido[HIGHLIGHT]}
                          handlerClick={this.handleClickSemifis} 
@@ -230,6 +235,7 @@ export default class Torneo extends Component {
                                                   cuar[posEnCuartos][EQUIPO2] = equipoGanador
 
         oct[nroPartido][ESTADO] = JUGADO
+        oct[nroPartido][GANADOR] = equipoGanador==oct[nroPartido][EQUIPO1]? EQUIPO1 : EQUIPO2
 
         var nuevaEtapa = CUARTOS
         for (const partido of oct) {
@@ -262,6 +268,7 @@ export default class Torneo extends Component {
                                                 semi[posEnSemis][EQUIPO2] = equipoGanador
 
         cuar[nroPartido][ESTADO] = JUGADO
+        cuar[nroPartido][GANADOR] = equipoGanador==cuar[nroPartido][EQUIPO1]? EQUIPO1 : EQUIPO2
 
         var nuevaEtapa = SEMIFINALES
         for (const partido of cuar) {
@@ -293,6 +300,7 @@ export default class Torneo extends Component {
                                    fin[EQUIPO2] = equipoGanador
 
         semi[nroPartido][ESTADO] = JUGADO
+        semi[nroPartido][GANADOR] = equipoGanador==semi[nroPartido][EQUIPO1]? EQUIPO1 : EQUIPO2
 
         var nuevaEtapa = FINAL
         for (const partido of semi) {
