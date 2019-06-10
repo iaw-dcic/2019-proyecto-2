@@ -5,7 +5,8 @@ import Pronostico from './Pronostico.js';
 import Octavos from './Octavos.js';
 import Cuartos from './Cuartos.js';
 import Semis from './Semis.js';
-import Final from './Final.js';
+import FinalyCampeon from './FinalyCampeon.js';
+
 export default class Perfil extends Component {
     constructor(props) {
         super(props)
@@ -74,8 +75,6 @@ export default class Perfil extends Component {
         }
         this.verLocalStorageC();
     }
-
-
     semis = (semi) => {
         for (var i = 0; i <= 1; i++) {
             this.setState({
@@ -84,8 +83,6 @@ export default class Perfil extends Component {
         }
         this.verLocalStorageS();
     }
-
-
 
     final = (fi) => {
         if (localStorage.hasOwnProperty("f")) {
@@ -123,11 +120,6 @@ export default class Perfil extends Component {
 
 
     render() {
-
-        var camp = "";
-        if (this.state.champion != null && this.state.champion.jugador_uno != null) {
-            camp = this.state.champion.jugador_uno;
-        }
         return <div id="contenedor">
             <Pronostico setPronostico={this.setPronostico} agregarProno={this.props.agregaProno}
                 octavos={this.octavos}
@@ -139,7 +131,7 @@ export default class Perfil extends Component {
 
             <div className="container-fluid">
                 <div className="row table-responsive">
-                    < table className="table-borderless ">
+                    <table className="table-striped ">
                         <thead className="thead-dark" >
                             <tr>
                                 <th scope="col">Octavos</th>
@@ -230,34 +222,15 @@ export default class Perfil extends Component {
                                 <td >   {this.state.pronostico && < Octavos i={7} setJugador={this.handleOc} />}
                                 </td>
                             </tr >
-
-
                         </tbody>
                     </table>
                 </div>
-                <div className="row   texto-final justify-content-center align-items-center minh-100">
-                    <h3> FINAL MASTER 1000 </h3>
-                </div>
-                <div className="row justify-content-center align-items-center minh-100">
+                <FinalyCampeon campeon={this.state.champion.jugador_uno}
+                    j1={this.state.f.jugador_uno} j2={this.state.f.jugador_dos} setJugador={this.handleCampeon} />
 
-                    <div className="col-2"></div>
-
-                    {this.state.f.jugador_uno && <Final jugadorFinal1={this.state.f.jugador_uno} jugadorFinal2={this.state.f.jugador_dos} setJugador={this.handleCampeon} />}
-
-                    <div className="col-2"></div>
-
-
-                </div>
-                <div className="row   texto-final justify-content-center align-items-center minh-100">
-                    <h3> CAMPEON </h3>
-                </div>
-                <div className="row texto-final justify-content-center align-items-center minh-100">
-                    <h4> {camp.nombre} </h4>
-                </div>
 
             </div>
             <div className="row">
-
                 {this.state.cuartos[0] && <button className="btn btn-primary" onClick={(e) => this.actualizar(e)}>Guardar</button>}
                 {this.state.cuartos[0] && <button className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Eliminar</button>}
             </div >
@@ -402,7 +375,7 @@ export default class Perfil extends Component {
         localStorage.setItem("cuartos" + j, JSON.stringify(final));
     }
 
-    async actualizar(e) {
+    tokens() {
 
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
@@ -412,6 +385,19 @@ export default class Perfil extends Component {
             window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
             window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
         }
+    }
+    resetear() {
+        for (let key in this.state) {
+            for (var i = 0; i <= 3; i++)
+                if (localStorage.hasOwnProperty(key + i))
+                    localStorage.removeItem(key + i);
+
+        }
+
+        this.setState(this.baseState);
+    }
+    async actualizar(e) {
+        this.tokens();
         try {
             const response = await axios.post('/pr2/api/actualizar', {
                 c0: this.state.cuartos[0],
@@ -423,13 +409,7 @@ export default class Perfil extends Component {
                 f: this.state.f,
                 campeon: this.state.champion,
             });
-            for (let key in this.state) {
-                for (var i = 0; i <= 3; i++)
-                    if (localStorage.hasOwnProperty(key + i))
-                        localStorage.removeItem(key + i);
-
-            }
-            this.setState(this.baseState);
+            this.resetear();
             alert("Su pronostico se guardo correctamente");
         } catch (e) {
             console.log('axios request failed:', e);
@@ -437,12 +417,7 @@ export default class Perfil extends Component {
     }
 
     async eliminar(e) {
-        let api_token = document.querySelector('meta[name="api-token"]');
-        let token = document.head.querySelector('meta[name="csrf-token"]');
-        if (token && api_token) {
-            window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-            window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-        }
+        this.tokens();
 
         try {
             const response = await axios.post('/pr2/api/eliminarpronostico', {
@@ -456,13 +431,7 @@ export default class Perfil extends Component {
                 f: this.state.f.id,
                 campeon: this.state.champion.id,
             });
-            for (let key in this.state) {
-                for (var i = 0; i <= 3; i++)
-                    if (localStorage.hasOwnProperty(key + i))
-                        localStorage.removeItem(key + i);
-
-            }
-            this.setState(this.baseState);
+            this.resetear();
             localStorage.setItem("use", "false");
             alert("Se elimino correctamente");
         } catch (e) {

@@ -2,3 +2,16 @@ tr td{
     padding: 1rem !important;
     margin: 2rem !important;
   }
+
+td .border{
+    border: 0px solid   !important;
+}
+.header{
+    border: 0px solid ;
+    margin-bottom:1rem;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  
+}

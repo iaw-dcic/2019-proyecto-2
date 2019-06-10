@@ -6551,7 +6551,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n.texto-final > h3{\r\n    text-align:center;\r\n}\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\nimg{\r\n    width: 35px;\r\n    height:35px;\r\n}\r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }\r\n\r\n.border {\r\n    border: 1px solid lightblue !important;\r\n}\r\n.header{\r\n    border: 2px solid  #3490dc;\r\n    margin-bottom:1rem;\r\n}", ""]);
+exports.push([module.i, "#contenedor{\r\n    margin-top:4rem;\r\n}\r\n\r\n.draws-matches .match-combine {\r\n    padding-right: 260px;\r\n    position: relative;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n.draws-matches .match tr.winner td.player-name {\r\n    border-left: 3px solid #75c5c0;\r\n    font-weight: 700;\r\n}\r\n.draws-matches .match td.player-name {\r\n    width: auto;\r\n    text-align: left;\r\n}\r\n.draws-matches .match td {\r\n    border: 1px solid #f0f0f0;\r\n        border-left-color: rgb(240, 240, 240);\r\n        border-left-style: solid;\r\n        border-left-width: 1px;\r\n    padding: 4px 10px;\r\n    font: 16px/22px Barlow,sans-serif;\r\n        font-weight: normal;\r\n    width: 10px;\r\n    text-align: center;\r\n    color: #333;\r\n}\r\n.texto-final > h3{\r\n    text-align:center;\r\n}\r\nhr{\r\n    border: 2px;\r\n    color:black;\r\n}\r\nimg{\r\n    width: 35px;\r\n    height:35px;\r\n}\r\n.btn-primary-outline {\r\n    background-color: transparent;\r\n    \r\n  }\r\n\r\n@media  only screen and (max-width: 767px) {\r\n    .jugador{\r\n    display:none;\r\n    }\r\n    .jugadorabre{\r\n        display:visible;\r\n    }\r\n    .flex-column{\r\n        display:none;\r\n    }\r\n    .navIzq{\r\n        display:visible;\r\n    }\r\n    }\r\n\r\n \r\n\r\n    @media  only screen and (min-width: 767px) {\r\n        .jugador{\r\n        display:visible;\r\n        }\r\n        .jugadorabre{\r\n            display:none;\r\n        }\r\n        .navIzq{\r\n            display:none;\r\n        }\r\n        }\r\n\r\n.border {\r\n    border: 1px solid lightblue !important;\r\n}\r\n.header{\r\n    border: 2px solid  #3490dc;\r\n    margin-bottom:1rem;\r\n}", ""]);
 
 // exports
 
@@ -6570,7 +6570,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "tr td{\r\n    padding: 1rem !important;\r\n    margin: 2rem !important;\r\n  }", ""]);
+exports.push([module.i, "tr td{\r\n    padding: 1rem !important;\r\n    margin: 2rem !important;\r\n  }\r\n\r\ntd .border{\r\n    border: 0px solid   !important;\r\n}\r\n.header{\r\n    border: 0px solid ;\r\n    margin-bottom:1rem;\r\n}\r\n\r\n.btn-primary-outline {\r\n  background-color: transparent;\r\n  \r\n}", ""]);
 
 // exports
 
@@ -67168,8 +67168,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Cuartos; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67187,7 +67185,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -67381,6 +67378,81 @@ function (_Component) {
   }]);
 
   return Final;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/FinalyCampeon.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/FinalyCampeon.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FinalyCampeon; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Final_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Final.js */ "./resources/js/components/Final.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var FinalyCampeon =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(FinalyCampeon, _Component);
+
+  function FinalyCampeon() {
+    _classCallCheck(this, FinalyCampeon);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FinalyCampeon).apply(this, arguments));
+  }
+
+  _createClass(FinalyCampeon, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row  texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      }), this.props.j1 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Final_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        jugadorFinal1: this.props.j1,
+        jugadorFinal2: this.props.j2,
+        setJugador: this.props.setJugador
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-2"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row  texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row texto-final justify-content-center align-items-center minh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ", this.props.campeon && this.props.campeon.nombre, "  ")));
+    }
+  }]);
+
+  return FinalyCampeon;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -67802,8 +67874,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67823,7 +67893,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -67893,13 +67962,13 @@ function (_Component) {
           className: "col-10 jugador"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
-          className: "btn btn-light jugador",
+          className: "btn   btn-primary-outline jugador",
           onClick: function onClick(e) {
             return _this3.handleClick(a[i], Number(_this3.props.i), e);
           }
         }, a[i].nombre && a[i].nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
-          className: "btn btn-light jugadorabre",
+          className: "btn  btn-primary-outline jugadorabre",
           onClick: function onClick(e) {
             return _this3.handleClick(a[i], Number(_this3.props.i), e);
           }
@@ -67941,7 +68010,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Octavos_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Octavos.js */ "./resources/js/components/Octavos.js");
 /* harmony import */ var _Cuartos_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Cuartos.js */ "./resources/js/components/Cuartos.js");
 /* harmony import */ var _Semis_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Semis.js */ "./resources/js/components/Semis.js");
-/* harmony import */ var _Final_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Final.js */ "./resources/js/components/Final.js");
+/* harmony import */ var _FinalyCampeon_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./FinalyCampeon.js */ "./resources/js/components/FinalyCampeon.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -68260,12 +68329,6 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var camp = "";
-
-      if (this.state.champion != null && this.state.champion.jugador_uno != null) {
-        camp = this.state.champion.jugador_uno;
-      }
-
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         id: "contenedor"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Pronostico_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -68281,7 +68344,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
-        className: "table-borderless "
+        className: "table-striped "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", {
         className: "thead-dark"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
@@ -68350,23 +68413,12 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "   ", this.state.pronostico && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         i: 7,
         setJugador: this.handleOc
-      })))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row   texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
-      }), this.state.f.jugador_uno && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        jugadorFinal1: this.state.f.jugador_uno,
-        jugadorFinal2: this.state.f.jugador_dos,
+      })))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_FinalyCampeon_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        campeon: this.state.champion.jugador_uno,
+        j1: this.state.f.jugador_uno,
+        j2: this.state.f.jugador_dos,
         setJugador: this.handleCampeon
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row   texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, " ", camp.nombre, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row"
       }, this.state.cuartos[0] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary",
@@ -68420,26 +68472,41 @@ function (_Component) {
       }, "Si"), " ")))));
     }
   }, {
+    key: "tokens",
+    value: function tokens() {
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+
+      if (token && api_token) {
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      }
+    }
+  }, {
+    key: "resetear",
+    value: function resetear() {
+      for (var key in this.state) {
+        for (var i = 0; i <= 3; i++) {
+          if (localStorage.hasOwnProperty(key + i)) localStorage.removeItem(key + i);
+        }
+      }
+
+      this.setState(this.baseState);
+    }
+  }, {
     key: "actualizar",
     value: function () {
       var _actualizar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
-        var api_token, token, response, key, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                api_token = document.querySelector('meta[name="api-token"]');
-                token = document.head.querySelector('meta[name="csrf-token"]');
-
-                if (token && api_token) {
-                  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-                  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-                }
-
-                _context.prev = 3;
-                _context.next = 6;
+                this.tokens();
+                _context.prev = 1;
+                _context.next = 4;
                 return axios.post('/pr2/api/actualizar', {
                   c0: this.state.cuartos[0],
                   c1: this.state.cuartos[1],
@@ -68451,31 +68518,24 @@ function (_Component) {
                   campeon: this.state.champion
                 });
 
-              case 6:
+              case 4:
                 response = _context.sent;
-
-                for (key in this.state) {
-                  for (i = 0; i <= 3; i++) {
-                    if (localStorage.hasOwnProperty(key + i)) localStorage.removeItem(key + i);
-                  }
-                }
-
-                this.setState(this.baseState);
+                this.resetear();
                 alert("Su pronostico se guardo correctamente");
-                _context.next = 15;
+                _context.next = 12;
                 break;
 
-              case 12:
-                _context.prev = 12;
-                _context.t0 = _context["catch"](3);
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](1);
                 console.log('axios request failed:', _context.t0);
 
-              case 15:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 12]]);
+        }, _callee, this, [[1, 9]]);
       }));
 
       function actualizar(_x) {
@@ -68490,21 +68550,14 @@ function (_Component) {
       var _eliminar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
-        var api_token, token, response, key, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                api_token = document.querySelector('meta[name="api-token"]');
-                token = document.head.querySelector('meta[name="csrf-token"]');
-
-                if (token && api_token) {
-                  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-                  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-                }
-
-                _context2.prev = 3;
-                _context2.next = 6;
+                this.tokens();
+                _context2.prev = 1;
+                _context2.next = 4;
                 return axios.post('/pr2/api/eliminarpronostico', {
                   pronostico: this.state.pronostico,
                   c0: this.state.cuartos[0].id,
@@ -68517,33 +68570,26 @@ function (_Component) {
                   campeon: this.state.champion.id
                 });
 
-              case 6:
+              case 4:
                 response = _context2.sent;
-
-                for (key in this.state) {
-                  for (i = 0; i <= 3; i++) {
-                    if (localStorage.hasOwnProperty(key + i)) localStorage.removeItem(key + i);
-                  }
-                }
-
-                this.setState(this.baseState);
+                this.resetear();
                 localStorage.setItem("use", "false");
                 alert("Se elimino correctamente");
-                _context2.next = 17;
+                _context2.next = 14;
                 break;
 
-              case 13:
-                _context2.prev = 13;
-                _context2.t0 = _context2["catch"](3);
+              case 10:
+                _context2.prev = 10;
+                _context2.t0 = _context2["catch"](1);
                 alert("Hubo problema no se pudo eliminar,intente nuevamente");
                 console.log('axios request failed:', _context2.t0);
 
-              case 17:
+              case 14:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[3, 13]]);
+        }, _callee2, this, [[1, 10]]);
       }));
 
       function eliminar(_x2) {
@@ -68578,7 +68624,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Octavos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Octavos */ "./resources/js/components/Octavos.js");
 /* harmony import */ var _Cuartos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Cuartos */ "./resources/js/components/Cuartos.js");
 /* harmony import */ var _Semis__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Semis */ "./resources/js/components/Semis.js");
-/* harmony import */ var _Final__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Final */ "./resources/js/components/Final.js");
+/* harmony import */ var _FinalyCampeon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FinalyCampeon */ "./resources/js/components/FinalyCampeon.js");
 /* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
 /* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_6__);
 
@@ -68627,103 +68673,21 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Playoffs).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "setJugador", function (newjugador, i) {
-      if (i == 0) {
-        _this.setState({
-          c0j1: newjugador
-        });
+      var arreglo = ["c0j1", "c1j1", "c0j2", "c1j2", "c2j1", "c3j1", "c2j2", "c3j2"];
+      var nombre = arreglo[i];
 
-        localStorage.setItem("c0j1", JSON.stringify(newjugador));
-      }
+      _this.setState(_defineProperty({}, nombre, newjugador));
 
-      if (i == 2) {
-        _this.setState({
-          c0j2: newjugador
-        });
-
-        localStorage.setItem("c0j2", JSON.stringify(newjugador));
-      }
-
-      if (i == 3) {
-        _this.setState({
-          c1j2: newjugador
-        });
-
-        localStorage.setItem("c1j2", JSON.stringify(newjugador));
-      }
-
-      if (i == 1) {
-        _this.setState({
-          c1j1: newjugador
-        });
-
-        localStorage.setItem("c1j1", JSON.stringify(newjugador));
-      }
-
-      if (i == 4) {
-        _this.setState({
-          c2j1: newjugador
-        });
-
-        localStorage.setItem("c2j1", JSON.stringify(newjugador));
-      }
-
-      if (i == 5) {
-        _this.setState({
-          c3j1: newjugador
-        });
-
-        localStorage.setItem("c3j1", JSON.stringify(newjugador));
-      }
-
-      if (i == 6) {
-        _this.setState({
-          c2j2: newjugador
-        });
-
-        localStorage.setItem("c2j2", JSON.stringify(newjugador));
-      }
-
-      if (i == 7) {
-        _this.setState({
-          c3j2: newjugador
-        });
-
-        localStorage.setItem("c3j2", JSON.stringify(newjugador));
-      }
+      localStorage.setItem(nombre, JSON.stringify(newjugador));
     });
 
     _defineProperty(_assertThisInitialized(_this), "setJugadorSemi", function (newjugador, i) {
-      if (i == 0) {
-        _this.setState({
-          s1j1: newjugador
-        });
+      var arreglo = ["s1j1", "s2j1", "s1j2", "s2j2"];
+      var nombre = arreglo[i];
 
-        localStorage.setItem("s1j1", JSON.stringify(newjugador));
-      }
+      _this.setState(_defineProperty({}, nombre, newjugador));
 
-      if (i == 2) {
-        _this.setState({
-          s1j2: newjugador
-        });
-
-        localStorage.setItem("s1j2", JSON.stringify(newjugador));
-      }
-
-      if (i == 3) {
-        _this.setState({
-          s2j2: newjugador
-        });
-
-        localStorage.setItem("s2j2", JSON.stringify(newjugador));
-      }
-
-      if (i == 1) {
-        _this.setState({
-          s2j1: newjugador
-        });
-
-        localStorage.setItem("s2j1", JSON.stringify(newjugador));
-      }
+      localStorage.setItem(nombre, JSON.stringify(newjugador));
     });
 
     _defineProperty(_assertThisInitialized(_this), "setJugadorFinal", function (newjugador, i) {
@@ -68834,7 +68798,7 @@ function (_Component) {
         className: "partido row "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 0,
@@ -68852,7 +68816,7 @@ function (_Component) {
         setJugador: this.setJugadorSemi
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
@@ -68904,7 +68868,7 @@ function (_Component) {
         className: "partido row "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Cuartos__WEBPACK_IMPORTED_MODULE_3__["default"], {
         i: 2,
@@ -68922,7 +68886,7 @@ function (_Component) {
         setJugador: this.setJugadorSemi
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, " "))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "partido row "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
@@ -68934,23 +68898,12 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Octavos__WEBPACK_IMPORTED_MODULE_2__["default"], {
         i: 7,
         setJugador: this.setJugador
-      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row  texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " FINAL MASTER 1000 ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        jugadorFinal1: this.state.j1,
-        jugadorFinal2: this.state.j2,
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_FinalyCampeon__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        campeon: this.state.campeon,
+        j1: this.state.j1,
+        j2: this.state.j2,
         setJugador: this.setCampeon
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-2"
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row  texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, " CAMPEON ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row texto-final justify-content-center align-items-center minh-100"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, " ", this.state.campeon.nombre, "  ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "button",
@@ -69656,8 +69609,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Semis; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partidos.css */ "./resources/js/components/partidos.css");
-/* harmony import */ var _partidos_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partidos_css__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69677,7 +69628,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 

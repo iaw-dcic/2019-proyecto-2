@@ -2,27 +2,18 @@ import React, { Component } from 'react';
 import Octavos from './Octavos';
 import Cuartos from './Cuartos';
 import Semis from './Semis';
-import Final from './Final';
+import FinalyCampeon from './FinalyCampeon';
 import './partidos.css'
 export default class Playoffs extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            c0j1: [],
-            c0j2: [],
-            c1j1: [],
-            c1j2: [],
-
-            c2j1: [],
-            c2j2: [],
-            c3j1: [],
-            c3j2: [],
-
-            s1j1: [],
-            s1j2: [],
-            s2j1: [],
-            s2j2: [],
-
+            c0j1: [], c0j2: [],
+            c1j1: [], c1j2: [],
+            c2j1: [], c2j2: [],
+            c3j1: [], c3j2: [],
+            s1j1: [], s1j2: [],
+            s2j1: [], s2j2: [],
             j1: [], j2: [],
             campeon: [],
             user: [],
@@ -64,7 +55,6 @@ export default class Playoffs extends Component {
             </div> </>
 
         return <div>
-
             <div className="row " >
                 <div className="col-2 header">
                     <p>8vos</p>
@@ -82,8 +72,6 @@ export default class Playoffs extends Component {
                     <p>8vos</p>
                 </div>
             </div>
-
-
             <div className="partido row " >
                 <div className="col-2 octavos">
                     <Octavos i={0} setJugador={this.setJugador} />
@@ -92,14 +80,10 @@ export default class Playoffs extends Component {
                 <div className="col-2 octavos">
                     <Octavos i={1} setJugador={this.setJugador} />
                 </div>
-
             </div>
 
-
             <div className="partido row " >
-                <div className="col-2 octavos">
-                    <p> </p>
-                </div>
+                <div className="col-2 octavos"></div>
                 <div className="col-2 cuartos">
                     <Cuartos i={0} jugador1={this.state.c0j1} jugador2={this.state.c0j2} setJugador={this.setJugadorSemi} />
                 </div>
@@ -107,13 +91,8 @@ export default class Playoffs extends Component {
                 <div className="col-2 cuartos">
                     <Cuartos i={1} jugador1={this.state.c1j1} jugador2={this.state.c1j2} setJugador={this.setJugadorSemi} />
                 </div>
-                <div className="col-2 octavos">
-                    <p> </p>
-                </div>
-
+                <div className="col-2 octavos"> </div>
             </div>
-
-
             <div className="partido row " >
                 <div className="col-2 octavos">
                     <Octavos i={2} setJugador={this.setJugador} />
@@ -123,8 +102,6 @@ export default class Playoffs extends Component {
                     <Octavos i={3} setJugador={this.setJugador} />
                 </div>
             </div>
-
-
 
             <div className="partido row " >
                 <div className="col-2 octavos"> </div>
@@ -149,9 +126,7 @@ export default class Playoffs extends Component {
             </div>
 
             <div className="partido row " >
-                <div className="col-2 octavos">
-                    <p> </p>
-                </div>
+                <div className="col-2 octavos"> </div>
                 <div className="col-2 cuartos">
                     <Cuartos i={2} jugador1={this.state.c2j1} jugador2={this.state.c2j2} setJugador={this.setJugadorSemi} />
                 </div>
@@ -160,9 +135,7 @@ export default class Playoffs extends Component {
                     <Cuartos i={3} jugador1={this.state.c3j1} jugador2={this.state.c3j2} setJugador={this.setJugadorSemi} />
                 </div>
 
-                <div className="col-2 octavos">
-                    <p> </p>
-                </div>
+                <div className="col-2 octavos"></div>
             </div>
 
             <div className="partido row " >
@@ -174,21 +147,9 @@ export default class Playoffs extends Component {
                     <Octavos i={7} setJugador={this.setJugador} />
                 </div>
             </div>
-            <div className="row  texto-final justify-content-center align-items-center minh-100">
-                <h3> FINAL MASTER 1000 </h3>
-            </div>
-            <div className="row justify-content-center align-items-center minh-100">
-                <div className="col-2"></div>
-                <Final jugadorFinal1={this.state.j1} jugadorFinal2={this.state.j2} setJugador={this.setCampeon} />
-                <div className="col-2"></div>
-            </div>
+            <FinalyCampeon campeon={this.state.campeon}
+                j1={this.state.j1} j2={this.state.j2} setJugador={this.setCampeon} />
 
-            <div className="row  texto-final justify-content-center align-items-center minh-100">
-                <h3> CAMPEON </h3>
-            </div>
-            <div className="row texto-final justify-content-center align-items-center minh-100">
-                <h4> {this.state.campeon.nombre}  </h4>
-            </div>
             <div className="row">
                 <button type="button" className="btn btn-primary"
                     onClick={(e) => this.handleCuartos()}>
@@ -200,86 +161,25 @@ export default class Playoffs extends Component {
     }
 
     setJugador = (newjugador, i) => {
+        var arreglo = ["c0j1", "c1j1", "c0j2", "c1j2", "c2j1", "c3j1", "c2j2", "c3j2"];
 
-        if (i == 0) {
-            this.setState({
-                c0j1: newjugador
-            });
-            localStorage.setItem("c0j1", JSON.stringify(newjugador));
-        }
-        if (i == 2) {
-            this.setState({
-                c0j2: newjugador
-            });
-            localStorage.setItem("c0j2", JSON.stringify(newjugador));
-        }
-        if (i == 3) {
-            this.setState({
-                c1j2: newjugador
-            });
-            localStorage.setItem("c1j2", JSON.stringify(newjugador));
-        }
-        if (i == 1) {
-            this.setState({
-                c1j1: newjugador
-            });
-            localStorage.setItem("c1j1", JSON.stringify(newjugador));
-        }
-        if (i == 4) {
-            this.setState({
-                c2j1: newjugador
-            });
-            localStorage.setItem("c2j1", JSON.stringify(newjugador));
-
-        }
-        if (i == 5) {
-            this.setState({
-                c3j1: newjugador
-            });
-            localStorage.setItem("c3j1", JSON.stringify(newjugador));
-
-        }
-        if (i == 6) {
-            this.setState({
-                c2j2: newjugador
-            });
-            localStorage.setItem("c2j2", JSON.stringify(newjugador));
-        }
-        if (i == 7) {
-            this.setState({
-                c3j2: newjugador
-            });
-            localStorage.setItem("c3j2", JSON.stringify(newjugador));
-
-        }
+        var nombre = arreglo[i];
+        this.setState({
+            [nombre]: newjugador
+        });
+        localStorage.setItem(nombre, JSON.stringify(newjugador));
     }
+
     setJugadorSemi = (newjugador, i) => {
-
-        if (i == 0) {
-            this.setState({
-                s1j1: newjugador
-            });
-            localStorage.setItem("s1j1", JSON.stringify(newjugador));
-        }
-        if (i == 2) {
-            this.setState({
-                s1j2: newjugador
-            });
-            localStorage.setItem("s1j2", JSON.stringify(newjugador));
-        }
-        if (i == 3) {
-            this.setState({
-                s2j2: newjugador
-            });
-            localStorage.setItem("s2j2", JSON.stringify(newjugador));
-        }
-        if (i == 1) {
-            this.setState({
-                s2j1: newjugador
-            });
-            localStorage.setItem("s2j1", JSON.stringify(newjugador));
-        }
+        var arreglo = ["s1j1", "s2j1", "s1j2", "s2j2"];
+        var nombre = arreglo[i];
+        this.setState({
+            [nombre]: newjugador
+        });
+        localStorage.setItem(nombre, JSON.stringify(newjugador));
     }
+
+
     setJugadorFinal = (newjugador, i) => {
 
         if (i == 1) {

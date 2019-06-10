@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import './partidos.css'
 export default class Cuartos extends Component {
     constructor(props) {
         super(props);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import './partidos.css'
 export default class Semis extends Component {
     state = {
         item: []

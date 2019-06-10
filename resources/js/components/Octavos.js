@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './partidos.css'
+
 export default class Octavos extends Component {
     state = {
         jugador_uno: [],
@@ -32,12 +32,12 @@ export default class Octavos extends Component {
                     {a[i].pais && <img src={"banderas/" + a[i].pais + ".png"}></img>}
                 </div>
                 <div className="col-10 jugador">
-                    <button type="button" className="btn btn-light jugador"
+                    <button type="button" className="btn   btn-primary-outline jugador"
                         onClick={(e) => this.handleClick(a[i], (Number(this.props.i)), e)}>
                         {a[i].nombre && a[i].nombre}
                     </button>
                 </div>
-                <button type="button" className="btn btn-light jugadorabre"
+                <button type="button" className="btn  btn-primary-outline jugadorabre"
                     onClick={(e) => this.handleClick(a[i], (Number(this.props.i)), e)}>
                     {a[i].abrev && a[i].abrev}
                 </button>
