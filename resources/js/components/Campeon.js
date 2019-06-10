@@ -23,7 +23,7 @@ export default class Campeon extends Component {
 
     render() {
         return (
-            <h2>
+            <h2 align="center">
                 Campeon: <p style={{color:this.state.color}}>
                             {this.props.nombre == EQUIPO_ND? "No se sabe":this.props.nombre}
                         </p>

@@ -1,4 +1,4 @@
-import { POR_JUGAR } from './Torneo'
+import { POR_JUGAR, HIGHLIGHT, OFF } from './Torneo'
 import { EQUIPO_ND } from './Torneo'
 import { OCTAVOS } from './Torneo'
 
@@ -6,25 +6,28 @@ export default class BrowserStorage {
     getOctavos(response) {
         var oct
         
-        if (sessionStorage.octavos)
-            oct = JSON.parse(sessionStorage.octavos)
-        else {
+        if (localStorage.octavos) {
+            oct = JSON.parse(localStorage.octavos)
+            oct.forEach(partido => {
+               partido[HIGHLIGHT] = OFF
+            });
+        } else {
             oct = this.getOctavosFromDB(response)
-            sessionStorage.octavos = JSON.stringify(oct)
+            localStorage.octavos = JSON.stringify(oct)
         }
 
         return oct
     }
 
     getOctavosFromDB(response) {
-        var oct = [ ["", "", POR_JUGAR], 
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],
-                    ["", "", POR_JUGAR],] 
+        var oct = [ ["", "", POR_JUGAR, OFF], 
+                    ["", "", POR_JUGAR, OFF],
+                    ["", "", POR_JUGAR, OFF],
+                    ["", "", POR_JUGAR, OFF],
+                    ["", "", POR_JUGAR, OFF],
+                    ["", "", POR_JUGAR, OFF],
+                    ["", "", POR_JUGAR, OFF],
+                    ["", "", POR_JUGAR, OFF],] 
 
         var i = 0, j = 0
         for (var equipo of response.data) {
@@ -42,15 +45,18 @@ export default class BrowserStorage {
     getCuartos() {
         var cuar
 
-        if (sessionStorage.cuartos)
-            cuar = JSON.parse(sessionStorage.cuartos)
-        else {
-            cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]]
+        if (localStorage.cuartos) {
+            cuar = JSON.parse(localStorage.cuartos)
+            cuar.forEach(partido => {
+                partido[HIGHLIGHT] = OFF
+             });
+        } else {
+            cuar = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF]]
 
-            sessionStorage.cuartos = JSON.stringify(cuar)
+            localStorage.cuartos = JSON.stringify(cuar)
         }
 
         return cuar
@@ -59,13 +65,16 @@ export default class BrowserStorage {
     getSemis() {
         var semi
 
-        if (sessionStorage.semifinales)
-            semi = JSON.parse(sessionStorage.semifinales)
-        else {
-            semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR],
-                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]]
+        if (localStorage.semifinales) {
+            semi = JSON.parse(localStorage.semifinales)
+            semi.forEach(partido => {
+                partido[HIGHLIGHT] = OFF
+             });
+        } else {
+            semi = [[EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF],
+                    [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF]]
 
-            sessionStorage.semifinales = JSON.stringify(semi)
+            localStorage.semifinales = JSON.stringify(semi)
         }
 
         return semi
@@ -74,59 +83,60 @@ export default class BrowserStorage {
     getFinal() {
         var fin
         
-        if (sessionStorage.final)
-            fin = JSON.parse(sessionStorage.final)
-        else {
-            fin = [EQUIPO_ND, EQUIPO_ND, POR_JUGAR]
+        if (localStorage.final) {
+            fin = JSON.parse(localStorage.final)
+            fin[HIGHLIGHT] = OFF
+        } else {
+            fin = [EQUIPO_ND, EQUIPO_ND, POR_JUGAR, OFF]
 
-            sessionStorage.final = JSON.stringify(fin)
+            localStorage.final = JSON.stringify(fin)
         }
 
         return fin
     }
 
     getCampeon() {
-        if (sessionStorage.campeon)
-            return sessionStorage.campeon
+        if (localStorage.campeon)
+            return localStorage.campeon
 
-        sessionStorage.campeon = EQUIPO_ND
+        localStorage.campeon = EQUIPO_ND
         return EQUIPO_ND
     }
 
     getEtapa() {
-        if (sessionStorage.etapa) {
-            return parseInt(sessionStorage.etapa, 10)
+        if (localStorage.etapa) {
+            return parseInt(localStorage.etapa, 10)
         }
 
-        sessionStorage.etapa = OCTAVOS
+        localStorage.etapa = OCTAVOS
         return OCTAVOS
     }
 
     saveOctavos(octavos) {
-        sessionStorage.octavos =  JSON.stringify(octavos)
+        localStorage.octavos =  JSON.stringify(octavos)
     }
 
     saveCuartos(cuartos) {
-        sessionStorage.cuartos = JSON.stringify(cuartos)
+        localStorage.cuartos = JSON.stringify(cuartos)
     }
 
     saveSemis(semifinales) {
-        sessionStorage.semifinales = JSON.stringify(semifinales)
+        localStorage.semifinales = JSON.stringify(semifinales)
     }
 
     saveFinal(final) {
-        sessionStorage.final = JSON.stringify(final)
+        localStorage.final = JSON.stringify(final)
     }
 
     saveCampeon(campeon) {
-        sessionStorage.campeon = campeon
+        localStorage.campeon = campeon
     }
 
     saveEtapa(etapa) {
-        sessionStorage.etapa = etapa
+        localStorage.etapa = etapa
     }
 
     borrarMemoria() {
-        sessionStorage.clear()
+        localStorage.clear()
     }
 }

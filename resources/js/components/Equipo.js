@@ -17,7 +17,10 @@ export default class Equipo extends Component {
         return (
             <button type="button" 
                 id={this.props.id}
-                onClick={this.props.handler}
+                style={{width: "110px"}}
+                onClick={this.props.handlerClick}
+                onMouseOver={this.props.handlerMouseOver}
+                onMouseOut={this.props.handlerMouseOut}
                 className="btn btn-success mr-1">
                     {this.props.nombre==EQUIPO_ND? "No Definido":this.props.nombre}
             </button>
@@ -28,7 +31,10 @@ export default class Equipo extends Component {
         return (
             <button type="button" 
                 id={this.props.id}
+                style={{width: "110px"}}
                 onClick={this.props.handler}
+                onMouseOver={this.props.handlerMouseOver}
+                onMouseOut={this.props.handlerMouseOut}
                 className="btn btn-success mr-1 disabled"
                 disabled>
                     {this.props.nombre==EQUIPO_ND? "No Definido":this.props.nombre}

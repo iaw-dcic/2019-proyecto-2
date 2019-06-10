@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Equipo from './Equipo';
+import { ON } from './Torneo';
 
 export default class Partido extends Component {
     constructor(props) {
@@ -8,17 +9,22 @@ export default class Partido extends Component {
 
     render() {
         return ( 
-            <div className="container">
-                <div className="btn-toolbar">
+            <div className="container" style={{backgroundColor: this.props.highlight==ON? "#457DDA":"white",
+            borderRadius: "100%"}}>
+                <div className="btn-group">
                     <Equipo nombre={this.props.equipo1} 
                             id={this.props.id} 
                             habilitado={this.props.habilitado} 
-                            handler={this.props.handler}/>
+                            handlerClick={this.props.handlerClick}
+                            handlerMouseOver={this.props.handlerMouseOver}
+                            handlerMouseOut={this.props.handlerMouseOut}/>
 
                     <Equipo nombre={this.props.equipo2} 
                             id={this.props.id} 
                             habilitado={this.props.habilitado} 
-                            handler={this.props.handler}/>
+                            handlerClick={this.props.handlerClick}
+                            handlerMouseOver={this.props.handlerMouseOver}
+                            handlerMouseOut={this.props.handlerMouseOut}/>
                 </div>
             </div>
         )

@@ -13,6 +13,9 @@ export const OCTAVOS       = 0,
              EQUIPO1       = 0,
              EQUIPO2       = 1,
              ESTADO        = 2,
+             HIGHLIGHT     = 3,
+             ON            = 1,
+             OFF           = 0,
              JUGADO        = 0,
              POR_JUGAR     = 1,
              EQUIPO_ND     = "",
@@ -45,6 +48,8 @@ export default class Torneo extends Component {
         this.handleClickCargarTorneo   = this.handleClickCargarTorneo.bind(this)
         this.handleClickEliminarTorneo = this.handleClickEliminarTorneo.bind(this)
         this.handleClickNuevo          = this.handleClickNuevo.bind(this)
+        this.highlight                 = this.highlight.bind(this)
+        this.unhighlight                 = this.unhighlight.bind(this)
     }
 
     componentDidMount() {
@@ -75,7 +80,7 @@ export default class Torneo extends Component {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <h1>{this.state.id==NO_ID? "Nuevo Torneo":"Torneo "+this.state.id}</h1>
+                        <h1 align="center">{this.state.id==NO_ID? "Nuevo Torneo":"Torneo "+this.state.id}</h1>
                         <Campeon nombre={this.state.campeon}/>
                     </div>
                 </div>
@@ -116,7 +121,10 @@ export default class Torneo extends Component {
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]} 
                          id={index}
-                         handler={this.handleClickOctavos} 
+                         highlight = {partido[HIGHLIGHT]}
+                         handlerClick={this.handleClickOctavos} 
+                         handlerMouseOver={this.highlight}
+                         handlerMouseOut={this.unhighlight}
                          habilitado={this.state.etapa == OCTAVOS && partido[ESTADO] == POR_JUGAR? "true":"false"}/>
                 <br/>
             </div>
@@ -136,7 +144,8 @@ export default class Torneo extends Component {
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]} 
                          id={index} 
-                         handler={this.handleClickCuartos} 
+                         highlight={partido[HIGHLIGHT]}
+                         handlerClick={this.handleClickCuartos} 
                          habilitado={this.state.etapa == CUARTOS && partido[ESTADO] == POR_JUGAR? "true":"false"}/>
                 <br/>
             </div>
@@ -156,7 +165,8 @@ export default class Torneo extends Component {
                 <Partido equipo1={partido[EQUIPO1]} 
                          equipo2={partido[EQUIPO2]}  
                          id={index} 
-                         handler={this.handleClickSemifis} 
+                         highlight={partido[HIGHLIGHT]}
+                         handlerClick={this.handleClickSemifis} 
                          habilitado={this.state.etapa == SEMIFINALES && partido[ESTADO] == POR_JUGAR? "true":"false"}/>
                 <br/>
             </div>
@@ -178,7 +188,8 @@ export default class Torneo extends Component {
                 <Partido equipo1={this.state.final[EQUIPO1]} 
                          equipo2={this.state.final[EQUIPO2]}  
                          id={0} 
-                         handler={this.handleClickFinal} 
+                         highlight={this.state.final[HIGHLIGHT]}
+                         handlerClick={this.handleClickFinal} 
                          habilitado={this.state.etapa == FINAL && this.state.final[ESTADO] == POR_JUGAR? "true":"false"}/>
                 </div>
                 <br/>
@@ -407,5 +418,49 @@ export default class Torneo extends Component {
                     etapa :         storage.getEtapa()
                 })
             })
+    }
+
+    highlight(e) {
+        var id = e.target.id
+        var posEnCuartos = Math.floor(id/2)
+        var posEnSemis = Math.floor(posEnCuartos/2)
+
+        var oct = this.state.octavos
+        oct[id][HIGHLIGHT] = ON
+        var cuar = this.state.cuartos
+        cuar[posEnCuartos][HIGHLIGHT] = ON
+        var semi = this.state.semifinales
+        semi[posEnSemis][HIGHLIGHT] = ON
+        var fin = this.state.final
+        fin[HIGHLIGHT] = ON
+
+        this.setState({
+            octavos: oct,
+            cuartos: cuar,
+            semifinales :semi,
+            final: fin
+        })
+    }
+
+    unhighlight(e) {
+        var id = e.target.id
+        var posEnCuartos = Math.floor(id/2)
+        var posEnSemis = Math.floor(posEnCuartos/2)
+
+        var oct = this.state.octavos
+        oct[id][HIGHLIGHT] = OFF
+        var cuar = this.state.cuartos
+        cuar[posEnCuartos][HIGHLIGHT] = OFF
+        var semi = this.state.semifinales
+        semi[posEnSemis][HIGHLIGHT] = OFF
+        var fin = this.state.final
+        fin[HIGHLIGHT] = OFF
+
+        this.setState({
+            octavos: oct,
+            cuartos: cuar,
+            semifinales :semi,
+            final: fin
+        })
     }
 }
