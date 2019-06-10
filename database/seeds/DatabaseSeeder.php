@@ -6,7 +6,7 @@ use App\Equipo;
 use App\Partido;
 use App\User;
 use App\Prode;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder{
     /**
@@ -23,16 +23,13 @@ class DatabaseSeeder extends Seeder{
                         ['Suecia', 'SE'], ['Suiza', 'CH'],
                         ['Colombia', 'CO'], ['Inglaterra', 'GB']);
 
-        /*
         factory(\App\User::class, 1)->create([
             'name' => 'Dylan Barbona',
             'username' => 'dylanbarbona',
-            'image_url' => 'NO_IMAGE',
-            'image_id' => 'NO_IMAGE',
             'email' => 'dylanbarbona97@gmail.com',
+            'api_token' => Str::random(60),
             'password' => \Hash::make('27069706636/f'),
         ]);
-        */
 
         foreach($equipos as $equipo){
             $url = 'https://www.countryflags.io/'.$equipo[1].'/flat/64.png';
@@ -49,7 +46,6 @@ class DatabaseSeeder extends Seeder{
             ]);
         }
 
-        /*
         factory(\App\Prode::class, 2)->create()->each(function (Prode $prode){
             $prode->getUsers()->attach(1);
         });
@@ -78,6 +74,5 @@ class DatabaseSeeder extends Seeder{
                 $partido->getProdes()->attach(2);
             });
         }
-        */
     }
 }

@@ -25951,7 +25951,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34776,7 +34776,14 @@ function (_Component) {
   }, {
     key: "logout",
     value: function logout(event) {
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('logout', this.api_token).then(function (response) {
+      var token = document.head.querySelector('meta[name="csrf-token"]').content;
+      var api_token = document.head.querySelector('meta[name="api-token"]').content;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.headers.common = {
+        'X-CSRF-TOKEN': token,
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + api_token
+      };
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('logout').then(function (response) {
         return window.location.replace("/");
       })["catch"](function (error) {
         return console.log(error);
@@ -35643,12 +35650,12 @@ function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                this.setTokens();
+                _context.next = 3;
                 return Axios.get("/api/prodes");
 
-              case 2:
+              case 3:
                 response = _context.sent;
-                console.log(response);
                 return _context.abrupt("return", response.data.map(function (prode) {
                   return _this.transformarDatosDesdeServidor(prode);
                 }));
@@ -35658,7 +35665,7 @@ function () {
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, this);
       }));
 
       function loadProdes() {
@@ -35678,16 +35685,17 @@ function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                this.setTokens();
                 pronostico = this.transformarDatosHaciaServidor(prode);
-                _context2.next = 3;
+                _context2.next = 4;
                 return Axios.post("/api/prodes", pronostico);
 
-              case 3:
+              case 4:
                 response = _context2.sent;
                 prodeDB = this.transformarDatosDesdeServidor(response.data);
                 return _context2.abrupt("return", prodeDB);
 
-              case 6:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -35732,7 +35740,6 @@ function () {
                 teams = _context3.t0;
                 results = prode.results != null ? this.resetResults(prode.results) : [[[], [], [], []]];
                 return _context3.abrupt("return", {
-                  user_id: prode.user_id,
                   id: prode.id,
                   teams: teams,
                   results: results
@@ -35763,10 +35770,11 @@ function () {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
+                this.setTokens();
+                _context4.next = 3;
                 return Axios.get('/api/teams');
 
-              case 2:
+              case 3:
                 response = _context4.sent;
                 equipos = response.data;
                 partidos = [];
@@ -35777,12 +35785,12 @@ function () {
 
                 return _context4.abrupt("return", partidos);
 
-              case 7:
+              case 8:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4);
+        }, _callee4, this);
       }));
 
       function getEquipos() {
@@ -35796,7 +35804,7 @@ function () {
     value: function () {
       var _createProde = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(user_id) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         var id, prode;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
@@ -35805,7 +35813,6 @@ function () {
                 id = this.getMaxIndice();
                 _context5.next = 3;
                 return this.resetProde({
-                  user_id: user_id,
                   id: null,
                   teams: null,
                   results: null
@@ -35823,7 +35830,7 @@ function () {
         }, _callee5, this);
       }));
 
-      function createProde(_x3) {
+      function createProde() {
         return _createProde.apply(this, arguments);
       }
 
@@ -35840,22 +35847,23 @@ function () {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                _context6.next = 2;
+                this.setTokens();
+                _context6.next = 3;
                 return Axios["delete"]("/api/prodes/".concat(prode.id));
 
-              case 2:
+              case 3:
                 response = _context6.sent;
                 return _context6.abrupt("return", response.data.resultado);
 
-              case 4:
+              case 5:
               case "end":
                 return _context6.stop();
             }
           }
-        }, _callee6);
+        }, _callee6, this);
       }));
 
-      function deleteProde(_x4) {
+      function deleteProde(_x3) {
         return _deleteProde.apply(this, arguments);
       }
 
@@ -35935,7 +35943,6 @@ function () {
       var id = prode.id,
           partidos = prode.partidos;
       var newProde = {
-        user_id: this.user.id,
         id: id,
         results: [[], [], [], []],
         teams: []

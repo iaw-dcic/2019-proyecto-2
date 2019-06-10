@@ -61,7 +61,15 @@ export default class NavbarComponent extends Component {
     }
 
     logout(event){
-        axios.post('logout', this.api_token)
+        let token = document.head.querySelector('meta[name="csrf-token"]').content;
+        let api_token = document.head.querySelector('meta[name="api-token"]').content;
+        
+        axios.defaults.headers.common = {
+            'X-CSRF-TOKEN': token,
+            'X-Requested-With': 'XMLHttpRequest',
+            'Authorization': 'Bearer ' + api_token,
+        };
+        axios.post('logout')
             .then(response => window.location.replace("/"))
             .catch(error => console.log(error));
     }

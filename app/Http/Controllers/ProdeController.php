@@ -12,7 +12,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProdeController extends Controller{
-    
+
     /**
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
@@ -43,7 +43,7 @@ class ProdeController extends Controller{
         try{
             $user = Auth()->user();
             $partidos = $request->partidos;
-            
+
             $partidosDB = [];
 
             foreach($partidos as $partido){
@@ -57,9 +57,9 @@ class ProdeController extends Controller{
                 array_push($partidosDB, $partidoDB);
             }
 
-            if($request->id != null)
+            if($request->id != null){
                 $prode = Prode::find($request->id);
-            else{
+            }else{
                 $prode = new Prode();
                 $prode->save();
                 $user->getProdes()->attach($prode->id);
@@ -145,6 +145,6 @@ class ProdeController extends Controller{
 
     public function getNewId(){
         $id = Prode::all()->max()->id;
-        return Response()->json(['id' => $id+1]);
+        return Response()->json(['id' => $id+10]);
     }
 }

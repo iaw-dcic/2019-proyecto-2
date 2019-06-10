@@ -21,12 +21,13 @@ export default class PronosticoModel{
     }
 
     async loadProdes(){
+        this.setTokens();
         let response = await Axios.get(`/api/prodes`);
-        console.log(response);
         return response.data.map(prode => this.transformarDatosDesdeServidor(prode));
     }
 
     async saveProde(prode){
+        this.setTokens();
         let pronostico = this.transformarDatosHaciaServidor(prode);
         let response = await Axios.post(`/api/prodes`, pronostico);
         let prodeDB = this.transformarDatosDesdeServidor(response.data);
@@ -36,10 +37,11 @@ export default class PronosticoModel{
     async resetProde(prode){
         let teams = prode.teams != null ? prode.teams : await this.getEquipos();
         let results = prode.results != null ? this.resetResults(prode.results) : [[[],[],[],[]]];
-        return {user_id: prode.user_id, id: prode.id, teams, results};
+        return { id: prode.id, teams, results};
     }
 
     async getEquipos(){
+        this.setTokens();
         let response = await Axios.get('/api/teams');
         let equipos = response.data;
         let partidos = [];
@@ -48,13 +50,14 @@ export default class PronosticoModel{
         return partidos;
     }
 
-    async createProde(user_id){
+    async createProde(){
         let id = this.getMaxIndice();
-        let prode = await this.resetProde({ user_id, id: null, teams: null, results: null });
+        let prode = await this.resetProde({ id: null, teams: null, results: null });
         return prode;
     } 
 
     async deleteProde(prode){
+        this.setTokens();
         let response = await Axios.delete(`/api/prodes/${prode.id}`);
         return response.data.resultado;
     }
@@ -88,7 +91,6 @@ export default class PronosticoModel{
     saveProdeOnLocalStorage(prode){
         let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
         if(prode.id != null){
-            
             prodes[this.getIndice(prodes, prode.id)] = prode;
         }else{
             prode.id = this.getMaxIndice();
@@ -119,7 +121,7 @@ export default class PronosticoModel{
 
     transformarDatosDesdeServidor(prode){
         let { id, partidos } = prode;
-        let newProde = {user_id: this.user.id, id, results: [[],[],[],[]], teams: []};
+        let newProde = { id, results: [[],[],[],[]], teams: []};
         partidos.map((partido, i) => {
             let local = partido.local.nombre;
             let local_id = partido.local.id;
