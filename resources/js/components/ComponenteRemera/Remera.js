@@ -4,7 +4,7 @@ import ListaColores from '../ComponenteColor/ListaColores'
 import {ConsumidorLogica} from '../Logica'
 import ListaTipo from '../ComponenteTipo/ListaTipo';
 import ListaCuello from '../ComponenteCuello/ListaCuello';
-
+ 
 export default class Remera extends Component{
       render () {
         return (

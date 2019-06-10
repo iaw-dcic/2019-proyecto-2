@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Remera from './ComponenteRemera/Remera'
-import NavBar from './NavBar'
+import Header from './Header'
 import ListaCreaciones from './ComponenteCreaciones/ListaCreaciones'
 import {ProovedorLogica} from './Logica'
 import Default from './ComponenteDefault/Default'
@@ -13,6 +13,7 @@ class App extends Component {
             <ProovedorLogica>
                 <React.Fragment>
                     <BrowserRouter>
+                         <Header />
                         <Switch>
                             <Route exact path="/" component={Remera} />
                             <Route path="/misCreaciones" component={ListaCreaciones}/>

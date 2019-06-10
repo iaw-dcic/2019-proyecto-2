@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import Axios from 'axios';
 
 const ContextoLogica= React.createContext();
 
@@ -28,11 +28,30 @@ class ProovedorLogica extends Component {
   
     guardarRemera =event=> {
         event.preventDefault();
-        axios.post('/remeras', {
+        
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+    
+        if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
+        Axios.post('/api/remeras', {
             color_remera: this.state.color,
             tipo_remera: this.state.tipo,
             cuello_remera: this.state.cuello
-        }).then (res=> {console.log(res); console.log(res.data)});
+        }).then (res=> {console.log(res); console.log(res.data)
+        });
+    }
+
+    eliminarRemera=(id)=>{
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+    
+        if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
+        Axios.post(`/api/eliminarRemera/${id}`, {
+           id_remera: id,
+        }).then (res=> {console.log(res); console.log(res.data)
+        });
     }
 
     render() {
@@ -42,7 +61,8 @@ class ProovedorLogica extends Component {
                 cambiarColor:this.cambiarColor,
                 cambiarCuello:this.cambiarCuello,
                 cambiarTipo:this.cambiarTipo,
-                guardarRemera:this.guardarRemera
+                guardarRemera:this.guardarRemera,
+                eliminarRemera:this.eliminarRemera
             }}>
                 {this.props.children}
             </ContextoLogica.Provider>
