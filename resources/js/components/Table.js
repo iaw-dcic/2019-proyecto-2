@@ -119,21 +119,21 @@ export default class Table extends Component {
                                 {this.state.prodes.map((prode, i) =>
                                         <tr>
                                             <th scope="row">
-                                            <Link
+                                            <a
                                                 className="text-white"
                                                 id = {prode.id} 
                                                 onClick={this.search}>
                                                         {`Prode ${i+1}`}
-                                                </Link>
+                                                </a>
                                             </th>
                                             <td>{prode.created_at}</td>
                                             <td scope="row">
-                                                <Link
+                                                <a
                                                 className="text-white"
                                                 id = {prode.id} 
                                                 onClick={this.delete}>
                                                         {`Borrar`}
-                                                </Link>
+                                                </a>
                                             </td>
                                         </tr>
                                 )}
@@ -395,16 +395,21 @@ export default class Table extends Component {
     }
 
     delete(e){
+        let self = this;
         var id = e.target.id;
         axios.delete('/api/teams/'+id)
         .then(function (response) {
             self.setState({
-                prodes: response.data
+                prodes: response.data,
+                cuartos: ["", "", "", "", "", "", "", ""],
+                semis: ["", "", "", ""],
+                final: ["", ""],
+                champ: 'empty',
+                id: 0,
+                name: "Nuevo prode"
             });
         }).catch(function (error) {
           console.log(error);
         });
-        this.render();
-        this.new();
     }
 }

@@ -66231,13 +66231,13 @@ function (_Component) {
       }, "Modificacion"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.prodes.map(function (prode, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "text-white",
           id: prode.id,
           onClick: _this2.search
         }, "Prode ".concat(i + 1))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, prode.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           scope: "row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "text-white",
           id: prode.id,
           onClick: _this2["delete"]
@@ -66523,16 +66523,21 @@ function (_Component) {
   }, {
     key: "delete",
     value: function _delete(e) {
+      var self = this;
       var id = e.target.id;
       axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]('/api/teams/' + id).then(function (response) {
         self.setState({
-          prodes: response.data
+          prodes: response.data,
+          cuartos: ["", "", "", "", "", "", "", ""],
+          semis: ["", "", "", ""],
+          "final": ["", ""],
+          champ: 'empty',
+          id: 0,
+          name: "Nuevo prode"
         });
       })["catch"](function (error) {
         console.log(error);
       });
-      this.componentDidMount();
-      this["new"]();
     }
   }]);
 
