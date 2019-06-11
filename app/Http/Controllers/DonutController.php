@@ -14,9 +14,12 @@ class DonutController extends Controller
         // $user = Auth::user();
         // $donuts = Donut::where('user_id', $user->id)->get();
         
-        // $user = Auth::user();
-        // $id = $user->id;
+        // $id = auth('api')->user()->id;
         // $donuts = Donut::where('user_id', $id)->get();
+
+        //$user = auth()->id();
+       // $donuts = Donut::where('user_id', $user)->get();
+        //$donuts= Donut::all()->where('user_id',$user);
 
         $donuts = Donut::all();
         return $donuts->toJson();
