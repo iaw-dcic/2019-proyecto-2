@@ -5,7 +5,7 @@ export default class EditProde extends Component {
     constructor(props){
         super(props);
         this.state = {
-            nombre: ""
+            nombre: this.props.location.state.prode.nombre
         }
     }
 
@@ -46,11 +46,11 @@ export default class EditProde extends Component {
                 <div >
                     <label>
                         Nuevo nombre del Prode:
-                        <input type="text" defaultValue={this.props.location.state.prode.nombre} onChange={this.nombreProde.bind(this)}/>
+                        <input type="text" defaultValue={this.state.nombre} onChange={this.nombreProde.bind(this)}/>
                     </label>
-                    <br/> <br/>
-                    <button className="btn btn-success" onClick={this.modificar.bind(this)}>Guardar Cambios</button>
                 </div>
+                
+                <button className="btn btn-success btnNuevoProde" onClick={this.modificar.bind(this)}>Guardar Cambios</button>
             </div>
         )
     }

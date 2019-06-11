@@ -34,17 +34,11 @@ export default class Home extends Component {
     render() {
         return (
             <div className="container" >
- <div className="card-body">
-                  
-                 <br/>   
-               <button className="btn btn-success"  onClick={this.routeChange}> Crear Nuevo Prode</button>
                    
-                <br/>   
-                <br/>   
-                <br/>   
-                <br/>   
-                <h1>Bienvenido!</h1>
-                </div>
+            <button className="btn btn-success btnNuevoProde"  onClick={this.routeChange}> Crear Nuevo Prode</button>
+                    
+            <h1 className="msjBienvenida">Bienvenido!</h1>
+               
             </div>
         )
     }

@@ -1,329 +1,48 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
-
-
-.row-layout .container .content-item {
-    list-style-type: none;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    min-height: 141px;
-    float: left;
-}
-ul li:last-child, ol li:last-child {
-    margin-right: 0;
-}
-ul li, ol li {
-    margin-right: 15px;
-}
-ul li {
-    list-style-type: none;
-}
-
-*, ::before, ::after {
-    box-sizing: inherit;
+.cuartos1{
+    margin-top: 77px;
+    height:131px;
 }
 
 
-.recursos-deportivos .jor.agendas.cuadro.enfrentado {
-    width: 100%;
+.cuartos2{
+    margin-top: 127px;
 }
-.recursos-deportivos .jor.agendas.cuadro {
-    background: url('https://e00-marca.uecdn.es/assets/v14/img/estaticas/futbol/cuadro-fase-final/fondo-cuadro.png') no-repeat left top;
-    width: 100%;
+
+.btnGuardar {
+    margin-top: 47px;
+    margin-bottom: 40px;
 }
-.recursos-deportivos .jor {
-    margin-bottom: 4ex;
-    width: 100%;
-}
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-    margin: 0;
-    margin-bottom: 0px;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
+
+.table thead th {
+    padding-left: 42px;
 }
 
 
-ul, ol {
-    font-size: 12px;
-    overflow: hidden;
-    list-style-type: none;
+.semifinal{
+    margin-top: 200px;
+}
+
+.final{
+    margin-top: 180px;
+}
+
+.btnNuevoProde{
+    margin-top: 15px;
+}
+.msjBienvenida{
+    margin-top: 77px;
+}
+
+.marginBottom{
+    padding-bottom: 40px;
+}
+
+.marginItem{
     margin-bottom: 20px;
 }
 
-.recursos-deportivos .jor.agendas.cuadro.enfrentado .ronda {
-        padding: 0 10px;
-        width: calc(100% / 7);
+.setAncho{
+    column-width: 30px;
+    table-layout: fixed;
 }
-    .recursos-deportivos .jor.agendas.cuadro .ronda {
-        float: left;
-        margin-right: 0;
-        padding: 0 20px;
-        width: calc(100% / 4);
-    }
-    .recursos-deportivos .jor.agendas.cuadro .ronda {
-        margin-right: 0;
-    }
-    ul li, ol li {
-        margin-right: 15px;
-    }
-    ul li {
-        list-style-type: none;
-    }
-    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-        margin: 0;
-            margin-right: 0px;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-    }
-    *, ::before, ::after {
-        box-sizing: inherit;
-    }
-
-
-    .recursos-deportivos .jor.agendas.cuadro.enfrentado .ronda:nth-child(2n+1) ul {
-        margin-bottom: 20px;
-    }
-    ul, ol {
-        font-size: 12px;
-        overflow: hidden;
-        list-style-type: none;
-        margin-bottom: 20px;
-    }
-
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria {
-        height: 97px;
-        margin: 0 0 30px 0;
-    }
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria {
-        margin-right: 0;
-    }
-    ul li, ol li {
-        margin-right: 15px;
-    }
-    ul li {
-        list-style-type: none;
-    }
-    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-    }
-
-
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table {
-        position: relative;
-    }
-    .recursos-deportivos .jor.agendas.cuadro table {
-        width: 100%;
-    }
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
-    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-    }
-    *, ::before, ::after {
-        box-sizing: inherit;
-    }
-
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table tr:first-child td {
-        border-top: 0;
-    }
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table td.local, .recursos-deportivos .jor.agendas.cuadro .eliminatoria table td.visitante {
-        display: block;
-        height: 40px;
-        line-height: 40px;
-        padding: 0;
-        position: absolute;
-        text-align: left;
-        top: 0;
-        white-space: nowrap;
-        width: 80%;
-    }
-    .recursos-deportivos .jor.agendas tbody tr:first-child td {
-        border-top: 2px solid #000;
-    }
-    .recursos-deportivos .jor.agendas td.local {
-        padding-left: 37px;
-    }
-    .recursos-deportivos .jor.agendas td.local {
-        padding-left: 36px;
-        text-align: left;
-    }
-    .recursos-deportivos .jor.agendas td.local, .recursos-deportivos .jor.agendas td.visitante {
-        width: 40%;
-    }
-    .recursos-deportivos .jor.agendas td {
-        font-size: 16px;
-    }
-    .recursos-deportivos .jor.agendas td {
-        font-family: "robotoRegular",Arial,sans-serif,helvetica;
-        font-size: 14px;
-        padding: 0;
-        position: relative;
-        text-align: center;
-        width: 1px;
-    }
-    .recursos-deportivos .jor td.local, .recursos-deportivos .jor td.visitante {
-        padding-left: 4px;
-        width: 40%;
-    }
-    .recursos-deportivos .jor td {
-        font-size: 16px;
-    }
-    .recursos-deportivos .jor td {
-        background-color: #fff;
-        border-bottom: 1px solid #e2e2e2;
-        color: #161616;
-        font-size: 14px;
-        height: 64px;
-        padding: 0 2px;
-        vertical-align: middle;
-    }
-
-
-
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table tr:first-child td {
-        border-top: 0;
-    }
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table td.resultado, .recursos-deportivos .jor.agendas.cuadro .eliminatoria table td.marcador {
-        background-color: #f7f7f7;
-        height: 80px;
-        line-height: 40px;
-        position: absolute;
-        right: 0;
-        text-align: center;
-        top: 0;
-        width: 20%;
-    }
-
-    
-    .recursos-deportivos .jor.agendas td {
-        font-size: 16px;
-    }
-
-    .recursos-deportivos .jor.agendas td.resultado .resultado-partido {
-        font-size: 20px;
-        padding: 5px 4px;
-    }
-    .recursos-deportivos .jor.agendas td.resultado .resultado-partido {
-        background-color: #f7f7f7;
-        border-radius: 4px;
-        font-family: "robotoBold",Arial,helvetica;
-        font-size: 16px;
-        display: block;
-        padding: 8px 4px;
-        white-space: nowrap;
-    }
-    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-            background-color: transparent;
-    }
-
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table tr:first-child td {
-        border-top: 0;
-    }
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table td.visitante {
-        left: 0;
-        top: 40px;
-    }
-    .recursos-deportivos .jor.agendas.cuadro .eliminatoria table td.local, .recursos-deportivos .jor.agendas.cuadro .eliminatoria table td.visitante {
-        display: block;
-        height: 40px;
-        line-height: 40px;
-        padding: 0;
-        position: absolute;
-        text-align: left;
-        top: 0;
-        white-space: nowrap;
-        width: 80%;
-    }
-    .recursos-deportivos .jor.agendas tbody tr:first-child td {
-        border-top: 2px solid #000;
-    }
-    .recursos-deportivos .jor.agendas td.visitante {
-        padding-right: 37px;
-    }
-    .recursos-deportivos .jor.agendas td.visitante {
-        text-align: right;
-        padding-right: 36px;
-    }
-    .recursos-deportivos .jor.agendas td.local, .recursos-deportivos .jor.agendas td.visitante {
-        width: 40%;
-    }
-    .recursos-deportivos .jor.agendas td {
-        font-size: 16px;
-    }
-    .recursos-deportivos .jor.agendas td {
-        font-family: "robotoRegular",Arial,sans-serif,helvetica;
-        font-size: 14px;
-        padding: 0;
-        position: relative;
-        text-align: center;
-        width: 1px;
-    }
-    .recursos-deportivos .jor td.local, .recursos-deportivos .jor td.visitante {
-        padding-left: 4px;
-        width: 40%;
-    }
-    .recursos-deportivos .jor td {
-        font-size: 16px;
-    }
-    .recursos-deportivos .jor td {
-        background-color: #fff;
-        border-bottom: 1px solid #e2e2e2;
-        color: #161616;
-        font-size: 14px;
-        height: 64px;
-        padding: 0 2px;
-        vertical-align: middle;
-    }
-    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-            border-top-color: currentcolor;
-            border-top-style: none;
-            border-top-width: 0px;
-            border-bottom-color: currentcolor;
-            border-bottom-style: none;
-            border-bottom-width: 0px;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-            background-color: transparent;
-    }
-
-
-
-
-
-

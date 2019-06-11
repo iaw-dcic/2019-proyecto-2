@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {getProdes} from './getProdes'
+import {getProdes} from './getProdes';
+
 
 export default class MisProdes extends Component {
 
@@ -67,28 +68,26 @@ export default class MisProdes extends Component {
               })
             });
     }
+//acomodar home con ccss para la vista
 
+//minimizar el indexProde acomodando eliminatorias...con  for
 
     render() {
         return (
             <div className="container">
                 <h1>Mis prodes</h1>
-                <ul>
+                <ul  className="marginBottom">
                     {this.state.prodes.map((prode) => 
                         <div key={prode.id}>
-                            <br/>
-                            <li >
+                            <li  className="marginItem">
                                 <td>
                                     <h3> {prode.nombre}</h3> 
                                    
-
                                     <button className="btn btn-secondary" onClick={()=> this.irAProde(prode)}>
                                         Acceder
                                     </button>
                                   
                                    
-
-
                                     <button className="btn btn-light"  onClick={() => this.editarProde(prode)}>
                                         <img src="https://img.icons8.com/material/16/000000/edit.png"/>
                                     </button>
@@ -103,7 +102,6 @@ export default class MisProdes extends Component {
                         </div>
                         )}
                 </ul>
-                <br/><br/><br/>
             </div>
         )
     }

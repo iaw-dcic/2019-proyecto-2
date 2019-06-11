@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Eliminatoria from './Eliminatoria';
 
-
 export default class IndexProde extends Component {
     constructor(props){
         super(props);
@@ -56,13 +55,11 @@ export default class IndexProde extends Component {
         <div>
          {this.state.eliminatorias.length > 0 ? 
             <div >
-                    <br/>
                     <div className="container"  >
-                        <button onClick={() => this.guardarProde()} className="btn btn-primary"> Guardar Prode</button>
-                        <br/> <br/>
+                        <button onClick={() => this.guardarProde()} className="btn btn-primary btnGuardar"> Guardar Prode</button>
                         <h1>Prode: {this.props.location.state.prode.nombre}</h1>
                     </div>
-                    <table className="table">
+                    <table className="table setAncho">
                             <thead>
                             <tr>
                             <th scope="col">Octavos</th>
@@ -71,13 +68,22 @@ export default class IndexProde extends Component {
                             <th scope="col">Final</th>
                             <th scope="col">Semifinal</th>                            
                             <th scope="col">Cuartos</th>                            
-                            <th textAlign="right" scope="col">Octavos</th>                            
+                            <th scope="col">Octavos</th>                            
 
                             </tr>
                             </thead>
                         <tbody>
-                           < td>
+                           <td className="octavos">
                            
+
+                {//aqui el componente Eliminatoria se repite muchas veces. Hubiese sido mejor
+                 // usar alguna estructura iterativa como el for. Pero dado que los indices 
+                 // van cambiando continuamente, como asi las llamadas a los atributos
+                 // (por ejemplo a id_A o a id_Pasa), se opto por dejarlo asi.
+
+                 //Ademas que de esta forma el codigo respeta la estructura de llaves de la vista del fixture.
+                }
+
                             <Eliminatoria 
                                             id_A={ this.state.eliminatorias[0].id_A}
                                             id_B={ this.state.eliminatorias[0].id_B}
@@ -106,81 +112,90 @@ export default class IndexProde extends Component {
 
                              {//CUARTOS
                            }
-                           <td>
-                               <br/><br/><br/>
+                           <td >
+                               <div className="cuartos1">
+                               
                            <Eliminatoria 
                                            id_A={ this.state.eliminatorias[0].id_pasa}
                                            id_B={ this.state.eliminatorias[1].id_pasa}
                                            setGanador={this.setGanador}
                                            indice={9}
                             />
-                            <br/><br/><br/><br/><br/>
+                            </div>
+                            <div className="cuartos2">
                             <Eliminatoria 
                                            id_A={ this.state.eliminatorias[2].id_pasa}
                                            id_B={ this.state.eliminatorias[3].id_pasa}
                                            setGanador={this.setGanador}
                                            indice={10}
                             />
+                            </div>
                            </td>
 
                              {//Semifinal
                            }
                            <td>
-                           <br/><br/><br/><br/><br/><br/><br/><br/>
+                               <div  className="semifinal">
                            <Eliminatoria 
                                            id_A={ this.state.eliminatorias[9].id_pasa}
                                            id_B={ this.state.eliminatorias[10].id_pasa}
                                            setGanador={this.setGanador}
                                            indice={13}
                             />
+                                </div>
                            </td>
 
                             {//final
                            }
                            <td>
-                           <br/><br/><br/><br/><br/><br/>
+                               <div className="final">
+                          
                            <Eliminatoria 
                                            id_A={ this.state.eliminatorias[13].id_pasa}
                                            id_B={ this.state.eliminatorias[14].id_pasa}
                                            setGanador={this.setGanador}
                                            indice={15}
-                            />   
+                            />  
+                                </div> 
                            </td>
 
                               {//Semifinal
                            }
-                           <td>
-                            <br/><br/><br/><br/><br/><br/><br/><br/>       
+                           <td >
+                               <div className="semifinal">
                            <Eliminatoria 
                                             id_A={ this.state.eliminatorias[11].id_pasa}
                                             id_B={ this.state.eliminatorias[12].id_pasa}
                                             setGanador={this.setGanador}
                                             indice={14}
-                            />           
+                            />  
+                                </div>         
                            </td>
 
                               {//Cuartos
                            }
                            <td>
-                            <br/><br/><br/>     
+                               <div  className="cuartos1">
                            <Eliminatoria 
                                             id_A={ this.state.eliminatorias[4].id_pasa}
                                             id_B={ this.state.eliminatorias[5].id_pasa}
                                             setGanador={this.setGanador}
                                             indice={11}
                             />
-                            <br/><br/> <br/><br/><br/>
+                            </div>
+                            <div class="cuartos2">
                             <Eliminatoria 
                                             id_A={ this.state.eliminatorias[6].id_pasa}
                                             id_B={ this.state.eliminatorias[7].id_pasa}
                                             setGanador={this.setGanador}
                                             indice={12}
                             />   
+                            </div>
                            </td>
 
                               {//octavos
                            }
-                           <td>
+                           <td className="octavos"> 
                           <Eliminatoria 
                                              id_A={ this.state.eliminatorias[4].id_A}
                                              id_B={ this.state.eliminatorias[4].id_B}
@@ -214,7 +229,7 @@ export default class IndexProde extends Component {
             <h1>:)</h1>
         </div>
             }
-             <br/> <br/> <br/> <br/>
+           
     </div>
     );
   }
