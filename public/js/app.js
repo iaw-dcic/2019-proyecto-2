@@ -65943,8 +65943,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Colores__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Colores */ "./resources/js/components/Colores.js");
 /* harmony import */ var _Stampas__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Stampas */ "./resources/js/components/Stampas.js");
 /* harmony import */ var _Talles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Talles */ "./resources/js/components/Talles.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _MisRemeras__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MisRemeras */ "./resources/js/components/MisRemeras.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65972,6 +65973,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var Editor =
 /*#__PURE__*/
 function (_Component) {
@@ -65989,7 +65991,7 @@ function (_Component) {
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/api/getRemeras').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get('/api/getRemeras').then(function (response) {
         _this.setState({
           remerasGuardadas: response.data
         });
@@ -66028,7 +66030,7 @@ function (_Component) {
   _createClass(Editor, [{
     key: "guardarRemera",
     value: function guardarRemera(e) {
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.post('/api/guardar', {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post('/api/guardar', {
         colour: this.state.colorActual,
         stampa: this.state.stampaActual,
         size: this.state.talleActual
@@ -66043,18 +66045,23 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-dark",
-        onClick: function onClick(e) {
-          return _this2.guardarRemera(e);
-        }
-      }, " Guardar Remera "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-dark row",
+        onClick: function onClick(e) {
+          return _this2.guardarRemera(e);
+        }
+      }, " Guardar Remera "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
         color: this.state.colorActual,
-        stampa: this.state.stampaActual
+        stampa: this.state.stampaActual,
+        widthR: "550",
+        heightR: "500",
+        widthS: "150",
+        heightS: "500",
+        size: "big"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Colores__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -66063,11 +66070,94 @@ function (_Component) {
         cambiarStampa: this.cambiarStampa
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Talles__WEBPACK_IMPORTED_MODULE_4__["default"], {
         cambiarTalle: this.cambiarTalle
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MisRemeras__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        misremeras: this.state.remerasGuardadas
       }))));
     }
   }]);
 
   return Editor;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MisRemeras.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/MisRemeras.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MisRemeras; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Remera__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Remera */ "./resources/js/components/Remera.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var MisRemeras =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MisRemeras, _Component);
+
+  function MisRemeras() {
+    _classCallCheck(this, MisRemeras);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MisRemeras).apply(this, arguments));
+  }
+
+  _createClass(MisRemeras, [{
+    key: "render",
+
+    /*
+    eliminar(e, remera) {
+        this.props.eliminarRemera(remera);
+    }*/
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row flex-row flex-nowrap"
+      }, this.props.misremeras.map(function (item) {
+        return (//ESTO  NO ANDA
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            key: item.id,
+            color: item.colour,
+            stampa: item.stampa,
+            widthR: "60",
+            heightR: "70",
+            widthS: "30",
+            heightS: "70",
+            size: "small"
+          })
+        );
+      })));
+    }
+  }]);
+
+  return MisRemeras;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -66123,16 +66213,16 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-fluid remera",
+        className: "img-fluid remera-" + this.props.size,
         src: this.props.color,
-        width: "550",
-        height: "500",
+        width: this.props.widthR,
+        height: this.props.heightR,
         alt: ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "img-fluid stampa",
+        className: "img-fluid stampa-" + this.props.size,
         src: this.props.stampa,
-        width: "150",
-        height: "500",
+        width: this.props.widthS,
+        height: this.props.heightS,
         alt: ""
       }));
     }

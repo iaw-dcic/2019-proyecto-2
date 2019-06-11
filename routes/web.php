@@ -13,6 +13,7 @@
 
 
 Auth::routes();
+
 Route::view('/{path?}', 'react')->middleware('auth');
 
 Auth::routes();

@@ -3,6 +3,7 @@ import Remera from './Remera';
 import Colores from './Colores';
 import Stampas from './Stampas';
 import Talles from './Talles';
+import MisRemeras from './MisRemeras';
 import axios from 'axios';
 
 export default class Editor extends Component {
@@ -69,24 +70,24 @@ export default class Editor extends Component {
         return (
             <div className="container">
 
-                <button className="btn btn-dark" onClick={(e) => this.guardarRemera(e)}> Guardar Remera </button>
-                
                 <div className="row">
-
                     <div className="col-md-8">
+                        <button className="btn btn-dark row" onClick={(e) => this.guardarRemera(e)}> Guardar Remera </button>
                         <Remera
                             color={this.state.colorActual}
                             stampa={this.state.stampaActual}
+                            widthR="550" heightR="500"
+                            widthS="150" heightS="500"
+                            size = "big"
                         />
                     </div>
-
                     <div className="col-md-4">
                         <Colores cambiarColor={this.cambiarColor} />
                         <Stampas cambiarStampa={this.cambiarStampa} />
                         <Talles cambiarTalle={this.cambiarTalle}/>
+                        <MisRemeras misremeras = {this.state.remerasGuardadas}/>
                     </div>
-
-                </div>
+                </div>                
 
             </div>
         );

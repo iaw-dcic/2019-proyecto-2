@@ -1,4 +1,4 @@
-.stampa{
+.stampa-big{
     position:absolute;
     height:150px;
     width:200px;
@@ -7,10 +7,24 @@
     z-index: 1;
   }
   
-  .remera
-  {
+  .remera-big{
     position:absolute;
     width:550px;
     height:500px;
+    z-index: -1;
+  }
+
+  .stampa-small{
+    position:relative;
+    height:70px;
+    width:70px;
+    z-index: 1;
+  }
+  
+  .remera-small{
+    position: relative;
+    width:70px;
+    height:70px;
+    margin: 20px;
     z-index: -1;
   }
