@@ -67143,7 +67143,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "",
+        path: "/",
         component: _Ppal__WEBPACK_IMPORTED_MODULE_3__["default"]
       })));
     }
@@ -67623,7 +67623,7 @@ function (_Component) {
           'Authorization': 'Bearer ' + api_token.content
         }
       };
-      fetch('/pr2/api/user', miInit).then(function (res) {
+      fetch('/api/user', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this2.setState({
@@ -67929,7 +67929,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('/pr2/api/octavos/' + this.props.i).then(function (res) {
+      fetch('/api/octavos/' + this.props.i).then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -68509,7 +68509,7 @@ function (_Component) {
                 this.tokens();
                 _context.prev = 1;
                 _context.next = 4;
-                return axios.post('/pr2/api/actualizar', {
+                return axios.post('/api/actualizar', {
                   c0: this.state.cuartos[0],
                   c1: this.state.cuartos[1],
                   c2: this.state.cuartos[2],
@@ -68560,7 +68560,7 @@ function (_Component) {
                 this.tokens();
                 _context2.prev = 1;
                 _context2.next = 4;
-                return axios.post('/pr2/api/eliminarpronostico', {
+                return axios.post('/api/eliminarpronostico', {
                   pronostico: this.state.pronostico,
                   c0: this.state.cuartos[0].id,
                   c1: this.state.cuartos[1].id,
@@ -68914,7 +68914,7 @@ function (_Component) {
 
                 _context.prev = 5;
                 _context.next = 8;
-                return axios.post('/pr2/api/insert', {
+                return axios.post('/api/insert', {
                   pronostico: pro,
                   c0j1: this.state.c0j1.id,
                   c0j2: this.state.c0j2.id,
@@ -69000,7 +69000,7 @@ function (_Component) {
 
                 _context2.prev = 7;
                 _context2.next = 10;
-                return axios.post('/pr2/api/insertpronostico');
+                return axios.post('/api/insertpronostico');
 
               case 10:
                 response = _context2.sent;
@@ -69221,7 +69221,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('/pr2/api/partidos/32').then(function (res) {
+      fetch('/api/partidos/32').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
@@ -69331,7 +69331,7 @@ function (_Component) {
             'Authorization': 'Bearer ' + api_token.content
           }
         };
-        fetch('/pr2/api/cantidadpronosticos', miInit).then(function (res) {
+        fetch('/api/cantidadpronosticos', miInit).then(function (res) {
           return res.json();
         }).then(function (json) {
           if (json != null) _this.setState({
@@ -69359,7 +69359,7 @@ function (_Component) {
           'Authorization': 'Bearer ' + api_token.content
         }
       };
-      fetch('/pr2/api/cantidadpronosticos', miInit).then(function (res) {
+      fetch('/api/cantidadpronosticos', miInit).then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json != null) _this2.setState({
@@ -69387,22 +69387,22 @@ function (_Component) {
                 this.props.setPronostico(selectedValue); //   console.log(this.state.pronostico);
 
                 if (this.state.pronostico != -1 && selectedValue != '') {
-                  fetch('/pr2/api/pronostico/4/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/4/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.cuartos(json.items);
                   });
-                  fetch('/pr2/api/pronostico/2/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/2/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.semis(json.items);
                   });
-                  fetch('/pr2/api/pronostico/1/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/1/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props["final"](json.items[0]);
                   });
-                  fetch('/pr2/api/pronostico/0/' + selectedValue).then(function (res) {
+                  fetch('/api/pronostico/0/' + selectedValue).then(function (res) {
                     return res.json();
                   }).then(function (json) {
                     _this3.props.campeon(json.items[0]);
@@ -69535,7 +69535,7 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('/pr2/api/partidos/16').then(function (res) {
+      fetch('/api/partidos/16').then(function (res) {
         return res.json();
       }).then(function (json) {
         _this2.setState({
