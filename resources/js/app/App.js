@@ -143,25 +143,34 @@ export default class App extends Component {
             });
     }
 
+    // Los tiempos de heroku son altos , mejorar este metodo.
+    // Va a eliminar y se obtienen primero los prodes.
     deleteProde(){
 
         let id_prode = this.state.id_prode;
         let token = this.state.token;
 
-        deleteProde(id_prode,token);
+        deleteProde(id_prode,token)
+            .then( () => {
 
-        this.setState({ isLoadingProdes : true });
-        this.setState({ isLoadingLlaves : true });
+            this.getProdes(token);
 
-        this.setState({llaves : []});
-        this.setState({ id_prode : null });
-        this.setState({ nombre : "" });
+            this.setState({ isLoadingProdes : true });
+            this.setState({ isLoadingLlaves : true });
 
-        localStorage.set('llaves', []);
-        localStorage.set('id_prode', null);
-        localStorage.set('nombre', "");
+            this.setState({llaves : []});
+            this.setState({ id_prode : null });
+            this.setState({ nombre : "" });
 
-        this.getProdes(token);
+            localStorage.set('llaves', []);
+            localStorage.set('id_prode', null);
+            localStorage.set('nombre', "");
+
+
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
 
         let message = 'Éxito - Prode eliminado correctamente';
         this.showAlert(message);

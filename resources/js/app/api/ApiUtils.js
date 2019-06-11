@@ -109,9 +109,7 @@ export async function deleteProde(id,token){
             }
         };
 
-        let response = await axios.post('/api/prode/delete', {id : id } , axiosConfig );
-
-        return response.status;
+        return await axios.post('/api/prode/delete', {id : id } , axiosConfig );
 
     } catch (e) {
         console.log(`Error API , POST de deleteProde: ${e}`);

@@ -30,7 +30,7 @@ export default class Libertadores extends React.Component {
                 {
                     this.props.llaves === null ?
                         <div className="container text-center p-5">
-                            <h3>No ningún prode cargado</h3>
+                            <h3>No hay ningún prode cargado</h3>
                         </div>
                         :
                         <>

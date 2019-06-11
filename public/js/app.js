@@ -87724,34 +87724,47 @@ function (_Component) {
       })["catch"](function (error) {
         console.log(error);
       });
-    }
+    } // Los tiempos de heroku son altos , mejorar este metodo.
+    // Va a eliminar y se obtienen primero los prodes.
+
   }, {
     key: "deleteProde",
     value: function deleteProde() {
+      var _this6 = this;
+
       var id_prode = this.state.id_prode;
       var token = this.state.token;
 
-      Object(_api_ApiUtils__WEBPACK_IMPORTED_MODULE_7__["deleteProde"])(id_prode, token);
+      Object(_api_ApiUtils__WEBPACK_IMPORTED_MODULE_7__["deleteProde"])(id_prode, token).then(function () {
+        _this6.getProdes(token);
 
-      this.setState({
-        isLoadingProdes: true
+        _this6.setState({
+          isLoadingProdes: true
+        });
+
+        _this6.setState({
+          isLoadingLlaves: true
+        });
+
+        _this6.setState({
+          llaves: []
+        });
+
+        _this6.setState({
+          id_prode: null
+        });
+
+        _this6.setState({
+          nombre: ""
+        });
+
+        local_storage__WEBPACK_IMPORTED_MODULE_8___default.a.set('llaves', []);
+        local_storage__WEBPACK_IMPORTED_MODULE_8___default.a.set('id_prode', null);
+        local_storage__WEBPACK_IMPORTED_MODULE_8___default.a.set('nombre', "");
+      })["catch"](function (error) {
+        console.log(error);
       });
-      this.setState({
-        isLoadingLlaves: true
-      });
-      this.setState({
-        llaves: []
-      });
-      this.setState({
-        id_prode: null
-      });
-      this.setState({
-        nombre: ""
-      });
-      local_storage__WEBPACK_IMPORTED_MODULE_8___default.a.set('llaves', []);
-      local_storage__WEBPACK_IMPORTED_MODULE_8___default.a.set('id_prode', null);
-      local_storage__WEBPACK_IMPORTED_MODULE_8___default.a.set('nombre', "");
-      this.getProdes(token);
+
       var message = 'Éxito - Prode eliminado correctamente';
       this.showAlert(message);
     }
@@ -87810,16 +87823,16 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
 
       var modalClose = function modalClose() {
-        return _this6.setState({
+        return _this7.setState({
           modalShow: false
         });
       };
 
       var modalOpen = function modalOpen() {
-        return _this6.setState({
+        return _this7.setState({
           modalShow: true
         });
       };
@@ -88066,9 +88079,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
- //const endpoint = 'https://prode-iaw.herokuapp.com';
 
-var endpoint = 'http://127.0.0.1:8000';
 function login(_x, _x2) {
   return _login.apply(this, arguments);
 }
@@ -88278,7 +88289,7 @@ function _deleteProde() {
   _deleteProde = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id, token) {
-    var axiosConfig, response;
+    var axiosConfig;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
@@ -88296,20 +88307,19 @@ function _deleteProde() {
             }, axiosConfig);
 
           case 4:
-            response = _context6.sent;
-            return _context6.abrupt("return", response.status);
+            return _context6.abrupt("return", _context6.sent);
 
-          case 8:
-            _context6.prev = 8;
+          case 7:
+            _context6.prev = 7;
             _context6.t0 = _context6["catch"](0);
             console.log("Error API , POST de deleteProde: ".concat(_context6.t0));
 
-          case 11:
+          case 10:
           case "end":
             return _context6.stop();
         }
       }
-    }, _callee6, null, [[0, 8]]);
+    }, _callee6, null, [[0, 7]]);
   }));
   return _deleteProde.apply(this, arguments);
 }
@@ -88475,7 +88485,7 @@ function (_React$Component) {
         style: fixedSize
       }, this.props.llaves === null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container text-center p-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No ning\xFAn prode cargado")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["Container"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No hay ning\xFAn prode cargado")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["Container"], {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherContainer"], {
         strokeColor: "black"
