@@ -42,7 +42,7 @@ export default class PronosticosComponent extends Component {
                 </div>
             </div>
         );
-    }      
+    }
 
     componentDidMount() {
         this.actualizarProdes();
@@ -52,12 +52,13 @@ export default class PronosticosComponent extends Component {
         this.pronosticosController.loadProdes()
             .then(prodes => this.setState({ api_token: this.state.api_token, prodes }))
             .catch(error => console.log(error));
-    }   
+    }
 
     createProde(event){
+        event.preventDefault();
         this.pronosticosController.createProde()
             .then(prode => this.seleccionarProde(prode))
-            .catch(error => console.log(`Error: ${error}`)); 
+            .catch(error => console.log(`Error: ${error}`));
     }
 
     seleccionarProde(prode){
@@ -69,7 +70,6 @@ export default class PronosticosComponent extends Component {
     cerrarProde(){
         let viewProde = document.getElementById('viewProde');
         ReactDOM.unmountComponentAtNode(viewProde);
-        this.actualizarProdes();
     }
 
     cargarLista(){
@@ -80,5 +80,5 @@ export default class PronosticosComponent extends Component {
                 </button>
             )
         });
-    } 
+    }
 }

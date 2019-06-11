@@ -7,7 +7,6 @@ use Illuminate\Http\Response;
 use App\Prode;
 use App\Partido;
 use App\Equipo;
-use App\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -56,11 +55,10 @@ class ProdeController extends Controller{
                 $partidoDB->save();
                 array_push($partidosDB, $partidoDB);
             }
-
-            if($request->id != null){
-                $prode = Prode::find($request->id);
-            }else{
+            $prode = $user->getProdes()->find($request->id) ?: null;
+            if($prode == null){
                 $prode = new Prode();
+                $prode->id = $request->id;
                 $prode->save();
                 $user->getProdes()->attach($prode->id);
             }
@@ -144,7 +142,7 @@ class ProdeController extends Controller{
     }
 
     public function getNewId(){
-        $id = Prode::all()->max()->id;
-        return Response()->json(['id' => $id+10]);
+        $id = Prode::all()->count()*10+1;
+        return Response()->json($id, 200);
     }
 }

@@ -1,4 +1,3 @@
-//import Axios from 'axios';
 var Axios = require('axios');
 
 export default class PronosticoModel{
@@ -12,7 +11,7 @@ export default class PronosticoModel{
     setTokens(){
         let token = document.head.querySelector('meta[name="csrf-token"]').content;
         let api_token = document.head.querySelector('meta[name="api-token"]').content;
-        
+
         Axios.defaults.headers.common = {
             'X-CSRF-TOKEN': token,
             'X-Requested-With': 'XMLHttpRequest',
@@ -30,8 +29,17 @@ export default class PronosticoModel{
         this.setTokens();
         let pronostico = this.transformarDatosHaciaServidor(prode);
         let response = await Axios.post(`/api/prodes`, pronostico);
+        console.log(response);
         let prodeDB = this.transformarDatosDesdeServidor(response.data);
         return prodeDB;
+    }
+
+    async createProde(){
+        this.setTokens();
+        let response = await Axios.get('/api/create_prode');
+        let id = response.data;
+        let prode = await this.resetProde({ id, teams: null, results: null });
+        return prode;
     }
 
     async resetProde(prode){
@@ -49,12 +57,6 @@ export default class PronosticoModel{
             partidos.push([equipos[i].nombre, equipos[i+1].nombre, equipos[i].id, equipos[i+1].id])
         return partidos;
     }
-
-    async createProde(){
-        let id = this.getMaxIndice();
-        let prode = await this.resetProde({ id: null, teams: null, results: null });
-        return prode;
-    } 
 
     async deleteProde(prode){
         this.setTokens();
@@ -90,23 +92,22 @@ export default class PronosticoModel{
 
     saveProdeOnLocalStorage(prode){
         let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
-        if(prode.id != null){
-            prodes[this.getIndice(prodes, prode.id)] = prode;
-        }else{
-            prode.id = this.getMaxIndice();
+        let indice = this.getIndice(prodes, prode.id);
+        if(indice != -1)
+            prodes[indice] = prode;
+        else
             prodes.push(prode);
-        }
         localStorage.setItem('lista_prodes', JSON.stringify(prodes));
     }
 
     getIndice(prodes, id){
-        let i = 0;
+        let i = -1;
         prodes.find((prode, index) => {
-            i = index;
-            return prode.id == id;
+            if(prode.id == id)
+                i = index;
         });
         return i;
-    }   
+    }
 
     getMaxIndice(){
         let prodes = JSON.parse(localStorage.getItem('lista_prodes'));
@@ -164,7 +165,7 @@ export default class PronosticoModel{
                 try{
                     let partido_1 = prode_nuevo.partidos[posiciones[indice]].resultado;
                     let partido_2 = prode_nuevo.partidos[posiciones[indice]+1].resultado;
-                    
+
                     local = partido_1.perdedor.equipo;
                     visitante = partido_2.perdedor.equipo;
                     local_id = partido_1.perdedor.id;
@@ -177,7 +178,7 @@ export default class PronosticoModel{
                 try{
                     let partido_1 = prode_nuevo.partidos[posiciones[indice]].resultado;
                     let partido_2 = prode_nuevo.partidos[posiciones[indice]+1].resultado;
-                    
+
                     local = partido_1.ganador.equipo;
                     visitante = partido_2.ganador.equipo;
                     local_id = partido_1.ganador.id;

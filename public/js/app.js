@@ -25951,7 +25951,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34784,7 +34784,8 @@ function (_Component) {
         'Authorization': 'Bearer ' + api_token
       };
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('logout').then(function (response) {
-        return window.location.replace("/");
+        localStorage.clear();
+        window.location.replace("/");
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -34999,7 +35000,9 @@ function (_Component) {
         className: "w-75 d-flex justify-content-end mb-3 boton-volver"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         onClick: function onClick() {
-          return _this2.cerrarProde();
+          _this2.cerrarProde();
+
+          _this2.actualizarProdes();
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-times"
@@ -35041,6 +35044,8 @@ function (_Component) {
       event.preventDefault();
       this.pronosticoController.saveProde(this.prode).then(function (prode) {
         _this3.refreshProde(prode);
+
+        _this3.actualizarProdes();
 
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Prode creado correctamente!', 'Presiona OK para continuar', 'success');
       })["catch"](function (error) {
@@ -35086,6 +35091,10 @@ function (_Component) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Deleted!', 'Your file has been deleted.', 'success');
 
               _this5.refreshProde(null);
+
+              _this5.cerrarProde();
+
+              _this5.actualizarProdes();
             } else {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
                 type: 'error',
@@ -35111,7 +35120,6 @@ function (_Component) {
           api_token: this.api_token,
           prode: prode
         });
-        this.actualizarProdes();
       }
     }
   }, {
@@ -35263,6 +35271,7 @@ function (_Component) {
     value: function createProde(event) {
       var _this3 = this;
 
+      event.preventDefault();
       this.pronosticosController.createProde().then(function (prode) {
         return _this3.seleccionarProde(prode);
       })["catch"](function (error) {
@@ -35286,7 +35295,6 @@ function (_Component) {
     value: function cerrarProde() {
       var viewProde = document.getElementById('viewProde');
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(viewProde);
-      this.actualizarProdes();
     }
   }, {
     key: "cargarLista",
@@ -35607,7 +35615,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-//import Axios from 'axios';
 var Axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 var PronosticoModel =
@@ -35692,10 +35699,11 @@ function () {
 
               case 4:
                 response = _context2.sent;
+                console.log(response);
                 prodeDB = this.transformarDatosDesdeServidor(response.data);
                 return _context2.abrupt("return", prodeDB);
 
-              case 7:
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -35710,36 +35718,79 @@ function () {
       return saveProde;
     }()
   }, {
-    key: "resetProde",
+    key: "createProde",
     value: function () {
-      var _resetProde = _asyncToGenerator(
+      var _createProde = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(prode) {
-        var teams, results;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response, id, prode;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
+                this.setTokens();
+                _context3.next = 3;
+                return Axios.get('/api/create_prode');
+
+              case 3:
+                response = _context3.sent;
+                id = response.data;
+                _context3.next = 7;
+                return this.resetProde({
+                  id: id,
+                  teams: null,
+                  results: null
+                });
+
+              case 7:
+                prode = _context3.sent;
+                return _context3.abrupt("return", prode);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function createProde() {
+        return _createProde.apply(this, arguments);
+      }
+
+      return createProde;
+    }()
+  }, {
+    key: "resetProde",
+    value: function () {
+      var _resetProde = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(prode) {
+        var teams, results;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
                 if (!(prode.teams != null)) {
-                  _context3.next = 4;
+                  _context4.next = 4;
                   break;
                 }
 
-                _context3.t0 = prode.teams;
-                _context3.next = 7;
+                _context4.t0 = prode.teams;
+                _context4.next = 7;
                 break;
 
               case 4:
-                _context3.next = 6;
+                _context4.next = 6;
                 return this.getEquipos();
 
               case 6:
-                _context3.t0 = _context3.sent;
+                _context4.t0 = _context4.sent;
 
               case 7:
-                teams = _context3.t0;
+                teams = _context4.t0;
                 results = prode.results != null ? this.resetResults(prode.results) : [[[], [], [], []]];
-                return _context3.abrupt("return", {
+                return _context4.abrupt("return", {
                   id: prode.id,
                   teams: teams,
                   results: results
@@ -35747,10 +35798,10 @@ function () {
 
               case 10:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, this);
+        }, _callee4, this);
       }));
 
       function resetProde(_x2) {
@@ -35764,18 +35815,18 @@ function () {
     value: function () {
       var _getEquipos = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         var response, equipos, partidos, i;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 this.setTokens();
-                _context4.next = 3;
+                _context5.next = 3;
                 return Axios.get('/api/teams');
 
               case 3:
-                response = _context4.sent;
+                response = _context5.sent;
                 equipos = response.data;
                 partidos = [];
 
@@ -35783,46 +35834,9 @@ function () {
                   partidos.push([equipos[i].nombre, equipos[i + 1].nombre, equipos[i].id, equipos[i + 1].id]);
                 }
 
-                return _context4.abrupt("return", partidos);
+                return _context5.abrupt("return", partidos);
 
               case 8:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, this);
-      }));
-
-      function getEquipos() {
-        return _getEquipos.apply(this, arguments);
-      }
-
-      return getEquipos;
-    }()
-  }, {
-    key: "createProde",
-    value: function () {
-      var _createProde = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var id, prode;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                id = this.getMaxIndice();
-                _context5.next = 3;
-                return this.resetProde({
-                  id: null,
-                  teams: null,
-                  results: null
-                });
-
-              case 3:
-                prode = _context5.sent;
-                return _context5.abrupt("return", prode);
-
-              case 5:
               case "end":
                 return _context5.stop();
             }
@@ -35830,11 +35844,11 @@ function () {
         }, _callee5, this);
       }));
 
-      function createProde() {
-        return _createProde.apply(this, arguments);
+      function getEquipos() {
+        return _getEquipos.apply(this, arguments);
       }
 
-      return createProde;
+      return getEquipos;
     }()
   }, {
     key: "deleteProde",
@@ -35903,23 +35917,16 @@ function () {
     key: "saveProdeOnLocalStorage",
     value: function saveProdeOnLocalStorage(prode) {
       var prodes = JSON.parse(localStorage.getItem('lista_prodes'));
-
-      if (prode.id != null) {
-        prodes[this.getIndice(prodes, prode.id)] = prode;
-      } else {
-        prode.id = this.getMaxIndice();
-        prodes.push(prode);
-      }
-
+      var indice = this.getIndice(prodes, prode.id);
+      if (indice != -1) prodes[indice] = prode;else prodes.push(prode);
       localStorage.setItem('lista_prodes', JSON.stringify(prodes));
     }
   }, {
     key: "getIndice",
     value: function getIndice(prodes, id) {
-      var i = 0;
+      var i = -1;
       prodes.find(function (prode, index) {
-        i = index;
-        return prode.id == id;
+        if (prode.id == id) i = index;
       });
       return i;
     }

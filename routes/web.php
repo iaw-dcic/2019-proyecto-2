@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Str;
+use App\Prode;
 
 Auth::routes();
 Route::get('/home', 'IndexController@index')->name('home')->middleware('auth');

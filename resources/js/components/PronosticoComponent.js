@@ -9,7 +9,7 @@ export default class PronosticoComponent extends Component {
         super(props);
 
         this.saveProde = this.saveProde.bind(this);
-        this.resetProde = this.resetProde.bind(this); 
+        this.resetProde = this.resetProde.bind(this);
         this.deleteProde = this.deleteProde.bind(this);
         this.refreshProde = this.refreshProde.bind(this);
         this.guardardatos = this.guardarDatos.bind(this);
@@ -26,15 +26,18 @@ export default class PronosticoComponent extends Component {
 
     render() {
         return (
-            <div className="col-12">          
+            <div className="col-12">
                 <div className="row justify-content-center">
                     <div className="w-75 d-flex justify-content-end mb-3 boton-volver">
-                        <a onClick={() => this.cerrarProde()}>
+                        <a onClick={() => {
+                            this.cerrarProde();
+                            this.actualizarProdes();
+                        }}>
                             <i className="fas fa-times"></i>
                         </a>
-                    </div>  
+                    </div>
                     <div className="col-12">
-                        <div id="tablero-pronosticos" className="mb-5 d-flex justify-content-center align-items-center">                            
+                        <div id="tablero-pronosticos" className="mb-5 d-flex justify-content-center align-items-center">
                         </div>
                     </div>
                     <div className="col-12 d-flex w-100 justify-content-center align-items-center">
@@ -53,7 +56,7 @@ export default class PronosticoComponent extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        this.crearTablero();      
+        this.crearTablero();
     }
 
     //Guarda los datos en el servidor
@@ -62,6 +65,7 @@ export default class PronosticoComponent extends Component {
         this.pronosticoController.saveProde(this.prode)
             .then(prode => {
                 this.refreshProde(prode);
+                this.actualizarProdes();
                 Swal.fire(
                     'Prode creado correctamente!',
                     'Presiona OK para continuar',
@@ -108,6 +112,8 @@ export default class PronosticoComponent extends Component {
                                 'success'
                             );
                             this.refreshProde(null);
+                            this.cerrarProde();
+                            this.actualizarProdes();
                         }else{
                             Swal.fire({
                                 type: 'error',
@@ -133,7 +139,6 @@ export default class PronosticoComponent extends Component {
                 api_token: this.api_token,
                 prode
             });
-            this.actualizarProdes();
         }
     }
 
