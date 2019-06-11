@@ -34,6 +34,11 @@ protected $casts = [
     'email_verified_at' => 'datetime',
 ];
 
+public function prediction(){
+       return $this->hasMany(Prediction::class);
+   }
+
+
 public function generateToken()
 {
     $this->api_token = str_random(60);

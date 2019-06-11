@@ -5,9 +5,9 @@ import Navigation from './Navigation'
 /* Main Component */
 export default class Equipo extends Component {
 
-  constructor() {
+  constructor(props) {
 
-    super();
+    super(props);
     //Initialize the state in the constructor
     this.state = {
         teams: [],
@@ -28,44 +28,12 @@ export default class Equipo extends Component {
        });
   }
 
- renderProducts() {
-    return this.state.teams.map(team => {
-        return (
-            /* When using list you need to specify a key
-             * attribute that is unique for each list item
-            */
-            <li key={team.id} >
-                { team.name }
-            </li>
-        );
-    })
+  setName(){
+
   }
-
-getName(i){
-  let cuartos = [...this.state.teams];     // create the copy of state array
-  teams[i] = newteam;                  //new value
-  return teams[i].name;
-}
-
 
   render() {
    /* Some css code has been removed for brevity */
-    return (
-              <React.Fragment>
-
-                  <main role="main" className="container">
-                  <div className="row mt-5">
-                  <div className="col-md-4">
-                  <div className="card">
-                      <h3> Equipos </h3>
-                      <ul>
-                        { this.renderProducts() }
-                      </ul>
-                  </div>
-                  </div>
-                  </div>
-                  </main>
-                </React.Fragment>
-    );
+    
   }
 }

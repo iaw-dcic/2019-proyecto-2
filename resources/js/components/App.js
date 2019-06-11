@@ -8,6 +8,8 @@ import Equipo from './Equipo'
 import Cuadro from './Cuadro'
 import AddPronostico from './AddPronostico'
 
+import { Link } from 'react-router-dom'
+
 //background:
 class App extends Component {
 
@@ -18,11 +20,7 @@ class App extends Component {
 
       <BrowserRouter>
         <div>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/home" component={Main} />
-              <Route exact path="/teams" component={Equipo} />
-              <Route exact path="/new" component={AddPronostico} />
-              <Route exact path="/pronostico" component={Cuadro} />
+          <Cuadro />
         </div>
        </BrowserRouter>
     )

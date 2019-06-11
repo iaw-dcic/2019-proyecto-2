@@ -5,6 +5,15 @@ class Prediction extends Model
 {
   protected $fillable = [
      'user_id',
-     'name',
+     'name'
  ];
+
+   public function partidos(){
+       return $this->hasMany(Match::class);
+   }
+
+   public function user(){
+     return $this->belongsTo(User::class);
+   }
+
 }
