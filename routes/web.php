@@ -27,7 +27,9 @@ Route::get('/avatar/caracteristicas-con-opciones', 'AvatarController@caracterist
 Route::get('/avatar', 'AvatarController@foto');
 // User
 Route::get('/user/avatars', 'UserController@getAvatars');
-Route::put('/user/avatar', 'UserController@updateAvatar');
+Route::post('/user/avatar', 'UserController@storeAvatar');
+Route::put('/user/avatar/{avatar}', 'UserController@updateAvatar');
+Route::delete('/user/avatar/{avatar}', 'UserController@destroyAvatar');
 //---------------------------------------------------------------------------------
 
 

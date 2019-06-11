@@ -65719,9 +65719,10 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        ref: "alert",
         className: "alert alert-error",
         role: "alert"
-      }, "Ocurrio un error al guardar tu avatar.");
+      }, this.props.message);
     }
   }]);
 
@@ -65746,6 +65747,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _avatarForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./avatarForm */ "./resources/js/components/avatarForm.js");
+/* harmony import */ var _SuccessAlert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SuccessAlert */ "./resources/js/components/SuccessAlert.js");
+/* harmony import */ var _ErrorAlert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ErrorAlert */ "./resources/js/components/ErrorAlert.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65768,6 +65771,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var Home =
 /*#__PURE__*/
 function (_Component) {
@@ -65780,10 +65785,18 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
     _this.state = {
+      features: [],
+      // [{'feature': '', options: ['','',...]}, {...}, ...]
       avatars: [],
       // [{'id', 'features:{'feature1':'option', 'feature2':'option', ... }}, {...}, ...]
-      isAvatarUpdate: false // para saber si se trata de una actualizacion de un avatar. Sino es uno nuevo.
-
+      current_avatar: {
+        'id': null,
+        'options': {}
+      },
+      isAvatarUpdate: false,
+      // para saber si se trata de una actualizacion de un avatar. Sino es uno nuevo.
+      alert_message_type: '',
+      alert_message: ''
     };
     return _this;
   }
@@ -65793,9 +65806,20 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      axios.get('/avatar/caracteristicas-con-opciones').then(function (res) {
+        var features = res.data;
+
+        var current_avatar = _this2.defaultAvatar(features);
+
+        _this2.setState({
+          features: features,
+          current_avatar: current_avatar
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
       axios.get('/user/avatars').then(function (res) {
-        var avatars = res.data;
-        console.log(avatars);
+        var avatars = res.data; // console.log(avatars);
 
         _this2.setState({
           avatars: avatars
@@ -65805,9 +65829,22 @@ function (_Component) {
       });
     }
   }, {
+    key: "defaultAvatar",
+    value: function defaultAvatar(features) {
+      var defaultAvatar = {
+        'id': null,
+        'options': {}
+      }; // const features = this.state.features;
+
+      features.forEach(function (element) {
+        defaultAvatar.options[element.feature] = element.options[0];
+      });
+      return defaultAvatar;
+    }
+  }, {
     key: "armarImgUrl",
     value: function armarImgUrl(features) {
-      console.log(features);
+      // console.log(features);
       var imgBaseUrl = window.location.origin + "/avatar?";
       var url = imgBaseUrl;
 
@@ -65825,33 +65862,177 @@ function (_Component) {
         url += _aux;
       }
 
-      url = encodeURI(url);
-      console.log("Url: ", url);
+      url = encodeURI(url); // console.log("Url: ", url);
+
       return url;
     }
   }, {
     key: "editAvatar",
-    value: function editAvatar(avatarId, avatarOptions) {}
+    value: function editAvatar(avatarId, avatarOptions) {
+      console.log("editando...");
+      var current_avatar = {
+        'id': avatarId,
+        'options': JSON.parse(JSON.stringify(avatarOptions)) // 'options': avatarOptions
+
+      };
+      var isAvatarUpdate = true;
+      this.setState({
+        current_avatar: current_avatar,
+        isAvatarUpdate: isAvatarUpdate
+      });
+    }
+  }, {
+    key: "deleteAvatar",
+    value: function deleteAvatar(avatarId) {
+      var _this3 = this;
+
+      axios["delete"]('/user/avatar/' + avatarId).then(function (response) {
+        _this3.getAvatars();
+
+        _this3.setState({
+          alert_message_type: "success",
+          alert_message: "Avatar eliminado con exito."
+        });
+      })["catch"](function (error) {
+        _this3.setState({
+          alert_message_type: "error",
+          alert_message: "Ocurrio un error al eliminar el avatar."
+        });
+      });
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      var target = event.target;
+      var option = target.value;
+      var feature = target.name;
+      var current_avatar = this.state.current_avatar;
+      current_avatar.options[feature] = option;
+      this.setState({
+        current_avatar: current_avatar
+      });
+    }
+  }, {
+    key: "getAvatars",
+    value: function getAvatars() {
+      var _this4 = this;
+
+      axios.get('/user/avatars').then(function (res) {
+        var avatars = res.data;
+
+        _this4.setState({
+          avatars: avatars
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      var _this5 = this;
+
+      event.preventDefault();
+      console.log("handleSubmit", this.state.current_avatar);
+      var current_avatar = this.state.current_avatar;
+
+      if (this.state.isAvatarUpdate) {
+        axios.put('/user/avatar/' + current_avatar.id, {
+          data: current_avatar.options
+        }).then(function (response) {
+          _this5.getAvatars();
+
+          _this5.setState({
+            alert_message_type: "success",
+            alert_message: "Avatar actualizado con exito."
+          });
+        })["catch"](function (error) {
+          _this5.setState({
+            alert_message_type: "error",
+            alert_message: "Ocurrio un error al actualizar el avatar."
+          });
+        });
+      } else {
+        axios.post('/user/avatar', {
+          data: current_avatar.options
+        }).then(function (response) {
+          _this5.getAvatars();
+
+          _this5.setState({
+            alert_message_type: "success",
+            alert_message: "Avatar creado con exito."
+          });
+        })["catch"](function (error) {
+          _this5.setState({
+            alert_message_type: "error",
+            alert_message: "Ocurrio un error al guardar el avatar."
+          });
+        });
+      }
+    }
+  }, {
+    key: "handleEndUpdate",
+    value: function handleEndUpdate(event) {
+      event.preventDefault();
+      console.log("Finalizar edicion"); // const current_avatar = this.defaultAvatar(this.state.features);
+
+      var isAvatarUpdate = false;
+      this.setState({
+        isAvatarUpdate: isAvatarUpdate
+      });
+    }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this6 = this;
 
       var avatars = this.state.avatars;
       var avatarImgs = [];
       avatars.forEach(function (element) {
         avatarImgs.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-md-3",
-          key: element.id,
-          onClick: function onClick() {
-            return editAvatar(element.id, element.features);
-          }
+          key: element.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: _this3.armarImgUrl(element.features),
+          src: _this6.armarImgUrl(element.features),
           className: "mx-auto d-block w-75"
-        })));
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_avatarForm__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-center mt-3"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-primary mr-2",
+          onClick: function onClick() {
+            return _this6.editAvatar(element.id, element.features);
+          }
+        }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-danger",
+          onClick: function onClick() {
+            return _this6.deleteAvatar(element.id);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-trash"
+        })))));
+      }); // if (this.state.alert_message_type != "") {
+      //   document.body.scrollTop = 0;
+      //   document.documentElement.scrollTop = 0;
+      // }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.alert_message_type == 'success' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SuccessAlert__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        message: this.state.alert_message
+      }) : null, this.state.alert_message_type == 'error' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ErrorAlert__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        message: this.state.alert_message
+      }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_avatarForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        features: this.state.features,
+        current_options: this.state.current_avatar.options,
+        isAvatarUpdate: this.state.isAvatarUpdate,
+        onClickEndUpdate: function onClickEndUpdate(e) {
+          return _this6.handleEndUpdate(e);
+        },
+        onSubmit: function onSubmit(e) {
+          return _this6.handleSubmit(e);
+        },
+        onChange: function onChange(e) {
+          return _this6.handleChange(e);
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: ""
       }, "Mis avatares"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
@@ -65916,7 +66097,7 @@ function (_Component) {
         ref: "alert",
         className: "alert alert-success",
         role: "alert"
-      }, "Tu avatar se guardo con exito.");
+      }, this.props.message);
     }
   }]);
 
@@ -65959,8 +66140,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api */ "./resources/js/components/api.js");
-/* harmony import */ var _SuccessAlert__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SuccessAlert */ "./resources/js/components/SuccessAlert.js");
-/* harmony import */ var _ErrorAlert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ErrorAlert */ "./resources/js/components/ErrorAlert.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65971,15 +66150,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
  // import axios from 'axios';
@@ -66013,110 +66190,74 @@ function (_React$Component) {
   _inherits(AvatarForm, _React$Component);
 
   function AvatarForm(props) {
-    var _this;
-
     _classCallCheck(this, AvatarForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AvatarForm).call(this, props));
-    _this.state = {
-      features: [],
-      // [{'feature': '', options: ['','',...]}, {...}, ...]
-      current_options: {
-        "Piel": "Clara",
-        "Pelo": "Corto",
-        "Color del pelo": "Rubio",
-        "Ropa": "Buzo",
-        "Color de la ropa": "Negro"
-      },
-      // {'feature1':'current_option', 'feature2':'current_option', ... }
-      alert_message: ''
-    };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+    return _possibleConstructorReturn(this, _getPrototypeOf(AvatarForm).call(this, props)); // this.state = {
+    //   current_options: props.current_options, // {'feature1':'current_option', 'feature2':'current_option', ... }
+    // };
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  } // componentDidUpdate(prevProps) {
+  //   if (this.props.current_options !== prevProps.current_options) {
+  //     this.setState({ 'current_options': this.props.current_options});
+  //   }
+  // }
+  // componentDidMount() {
+  //   axios.get('/avatar/caracteristicas-con-opciones')
+  //     .then(res => {
+  //       const features = res.data;
+  //       this.setState({ features });
+  //       this.defaultOptions();
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  //   // axios.get('user/avatar')
+  //   //   .then((res) => {
+  //   //     const current_options = res.data;
+  //   //     this.setState({ current_options });
+  //   //     // console.log("axios current_options",current_options);
+  //   //   })
+  //   //   .catch(function (error) {
+  //   //     console.log(error);
+  //   //   })
+  // }
+  // handleChange(event) {
+  //   const target = event.target;
+  //   const option = target.value;
+  //   const feature = target.name;
+  //   const current_options = this.state.current_options;
+  //   current_options[feature] = option;
+  //   this.setState({ current_options })
+  // }
+  // handleSubmit(event) {
+  //   // console.log(this.state.current_options);
+  //   axios.put('/user/avatar', { avatar_id: 1, data: this.state.current_options })
+  //     .then(response => {
+  //       this.setState({ alert_message: "success" });
+  //       // this.delayAlertState();
+  //     })
+  //     .catch(error => {
+  //       // console.log(error);
+  //       this.setState({ alert_message: "error" })
+  //     });
+  //   event.preventDefault();
+  // }
+
 
   _createClass(AvatarForm, [{
-    key: "delayAlertState",
-    value: function delayAlertState() {
-      var _this2 = this;
-
-      setTimeout(function () {
-        _this2.setState({
-          alert_message: false
-        });
-      }, 2000);
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this3 = this;
-
-      axios.get('/avatar/caracteristicas-con-opciones').then(function (res) {
-        var features = res.data;
-
-        _this3.setState({
-          features: features
-        });
-      })["catch"](function (error) {
-        console.log(error);
-      }); // axios.get('user/avatar')
-      //   .then((res) => {
-      //     const current_options = res.data;
-      //     this.setState({ current_options });
-      //     // console.log("axios current_options",current_options);
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   })
-    }
-  }, {
-    key: "handleChange",
-    value: function handleChange(event) {
-      var target = event.target;
-      var option = target.value;
-      var feature = target.name;
-      var current_options = this.state.current_options;
-      current_options[feature] = option;
-      this.setState({
-        current_options: current_options
-      });
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      var _this4 = this;
-
-      // console.log(this.state.current_options);
-      axios.put('/user/avatar', {
-        avatar_id: 1,
-        data: this.state.current_options
-      }).then(function (response) {
-        _this4.setState({
-          alert_message: "success"
-        }); // this.delayAlertState();
-
-      })["catch"](function (error) {
-        // console.log(error);
-        _this4.setState({
-          alert_message: "error"
-        });
-      });
-      event.preventDefault();
-    }
-  }, {
     key: "armarImgUrl",
     value: function armarImgUrl() {
       var imgBaseUrl = window.location.origin + "/avatar?";
-      var options = this.state.current_options;
+      var options = this.props.current_options;
       var url = imgBaseUrl;
 
       if (Object.values(options).length == 0) {
+        // if (options == null) {
         url = imgBaseUrl + "wait=loading";
         return url;
       }
 
-      var features = this.state.features;
       var aux;
       var optionsKeys = Object.keys(options);
 
@@ -66133,18 +66274,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this = this;
 
-      var features = this.state.features;
+      var features = this.props.features;
       var formRows = [];
+      var current_options = this.props.current_options;
       features.forEach(function (element) {
         formRows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RenderFormRow, {
           feature: element.feature,
           key: element.feature,
-          current_option: _this5.state.current_options[element.feature],
+          current_option: current_options[element.feature],
           options: element.options,
           onChange: function onChange(e) {
-            return _this5.handleChange(e);
+            return _this.props.onChange(e);
           }
         }));
       }); // Por ultimo se agrega el boton de submit
@@ -66154,11 +66296,14 @@ function (_React$Component) {
           key: "button",
           className: "form-group row"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-9 offset-sm-3"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "ml-auto pr-3"
+        }, this.props.isAvatarUpdate ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-secondary",
+          onClick: this.props.onClickEndUpdate
+        }, "Finalizar edici\xF3n") : '', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "submit",
           value: "Guardar",
-          className: "btn btn-primary"
+          className: "btn btn-success ml-2"
         }))));
       }
 
@@ -66168,15 +66313,10 @@ function (_React$Component) {
         }, "Cargando..."));
       }
 
-      if (this.state.alert_message != "") {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.alert_message == 'success' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SuccessAlert__WEBPACK_IMPORTED_MODULE_2__["default"], null) : null, this.state.alert_message == 'error' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ErrorAlert__WEBPACK_IMPORTED_MODULE_3__["default"], null) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: ""
       }, "Personaliza tu avatar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "row pb-0 mb-0"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -66185,7 +66325,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
+        onSubmit: this.props.onSubmit,
         className: "pt-4"
       }, formRows))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }

@@ -30,23 +30,41 @@ class UserController extends Controller{
 
     }
 
-    public function updateAvatar(Request $req){
+
+    public function storeAvatar(Request $req){
         // dd($req);
         $user = Auth::user();
-        $avatar_id = $req->input('avatar_id');
-        if( $avatar_id == -1){
-            // nuevo avatar
-            $avatar = new Avatar();
-            $avatar->features = json_encode($req->input('data'));
-            $avatar->user_id = $user->id;
+        $avatar = new Avatar();
+        $avatar->features = ($req->input('data'));
+        $avatar->user_id = $user->id;
+        $avatar->save();
+        // return ($user->avatar);
+    }
+
+    public function updateAvatar(Request $req, Avatar $avatar){
+        // dd($req);
+        $user = Auth::user();
+        // $avatar_id = $req->input('avatar_id');
+        if($avatar->user_id ==  $user->id){
+            $avatar->features = ($req->input('data'));
             $avatar->save();
         }
         else{
-            $avatar = Avatar::find($avatar_id);
-            $avatar->features = json_encode($req->input('data'));
-            $avatar->user_id = $user->id;
-            $avatar->save();
+            abort(401);
         }
-        // return ($user->avatar);
     }
+
+    public function destroyAvatar(Request $req, Avatar $avatar){
+        // dd($req);
+        $user = Auth::user();
+        // $avatar_id = $req->input('avatar_id');
+        if($avatar->user_id ==  $user->id){
+            $avatar->delete();
+        }
+        else{
+            abort(401);
+        }
+    }
+
+
 }
