@@ -25,6 +25,7 @@ Route::get('product/getfunda/{id_case}','ProductsController@getFunda');
 
 Route::get('product/{id_case}','ProductsController@show')->middleware('auth:api');
 
+
 Route::put('product/{id_case}','ProductsController@update')->middleware('auth:api');
 
 Route::get('colors', 'ColorsController@index');
