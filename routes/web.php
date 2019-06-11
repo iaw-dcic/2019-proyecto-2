@@ -11,6 +11,30 @@
 |
 */
 
+use Illuminate\Http\Request;
+use App\Avatar;
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+
+// --------------------------------- API ------------------------------------------
+// Todas las caracteristicas
+Route::get('/avatar/caracteristicas', 'AvatarController@getCaracteristicas');
+// Opciones de una caracteristica
+Route::get('/avatar/caracteristicas/{caracteristica}', 'AvatarController@getOpciones');
+// Todas las caracteristicas con sus respectivas opciones
+Route::get('/avatar/caracteristicas-con-opciones', 'AvatarController@caracteristicasConOpciones');
+// Imagen del avatar
+Route::get('/avatar', 'AvatarController@foto');
+// User
+Route::get('/user/avatars', 'UserController@getAvatars');
+Route::post('/user/avatar', 'UserController@storeAvatar');
+Route::put('/user/avatar/{avatar}', 'UserController@updateAvatar');
+Route::delete('/user/avatar/{avatar}', 'UserController@destroyAvatar');
+//---------------------------------------------------------------------------------
+
+
+Route::view('/readme', 'readme')->name('readme');
+Route::view('/{path?}', 'home')->name('home')->middleware('auth');
+
+
+

@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import Home from './Home';
+// import AvatarForm from './avatarForm';
 
 class App extends Component {
-    render () {
+  render() {
     return (
-        <BrowserRouter>
-        <div>
-            <Example />
+      <BrowserRouter>
+        <div className="container">
+          <Home />
+          {/* <AvatarForm /> */}
         </div>
-        </BrowserRouter>
+      </BrowserRouter>
     )
-    }
+  }
 }
 
-ReactDOM.render(<App />, document.getElementById('react-app'))
+const element = document.getElementById('react-app');
+if(element){
+  ReactDOM.render(<App />, element)
+}
