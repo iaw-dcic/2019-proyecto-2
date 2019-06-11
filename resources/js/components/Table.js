@@ -403,7 +403,7 @@ export default class Table extends Component {
             if(response.data!=null && response.data!=[])
                 prodes = response.data;
             self.setState({
-                prodes,
+                prodes: prodes,
                 cuartos: ["", "", "", "", "", "", "", ""],
                 semis: ["", "", "", ""],
                 final: ["", ""],
