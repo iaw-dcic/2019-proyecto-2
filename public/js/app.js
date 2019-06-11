@@ -66526,8 +66526,10 @@ function (_Component) {
       var self = this;
       var id = e.target.id;
       axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]('/api/teams/' + id).then(function (response) {
+        var prodes = [];
+        if (response.data != null && response.data != []) prodes = response.data;
         self.setState({
-          prodes: response.data,
+          prodes: prodes,
           cuartos: ["", "", "", "", "", "", "", ""],
           semis: ["", "", "", ""],
           "final": ["", ""],

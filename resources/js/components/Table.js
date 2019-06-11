@@ -399,8 +399,11 @@ export default class Table extends Component {
         var id = e.target.id;
         axios.delete('/api/teams/'+id)
         .then(function (response) {
+            let prodes = [];
+            if(response.data!=null && response.data!=[])
+                prodes = response.data;
             self.setState({
-                prodes: response.data,
+                prodes,
                 cuartos: ["", "", "", "", "", "", "", ""],
                 semis: ["", "", "", ""],
                 final: ["", ""],
