@@ -66796,10 +66796,11 @@ function (_Component) {
     key: "newAvatares",
     value: function newAvatares(ID) {
       var avatares = [];
-      var i = 0;
 
-      for (var _i = 0; _i < this.state.AllAvatars.length; _i++) {
-        if (this.state.AllAvatars[_i].id != ID) avatares[_i] = this.state.AllAvatars[_i];
+      for (var i = 0; i < this.state.AllAvatars.length; i++) {
+        if (this.state.AllAvatars[i].id != undefined) {
+          if (this.state.AllAvatars[i].id != ID) avatares[i] = this.state.AllAvatars[i];
+        }
       }
 
       console.log(avatares);
@@ -66837,17 +66838,16 @@ function (_Component) {
           //asumo que avatarID != -1
           //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(function (res) {
-            _this3.setState({
-              AllAvatars: _this3.newAvatares(_this3.state.avatarID)
-            });
+            var a = _this3.newAvatares(_this3.state.avatarID);
 
-            console.log(_this3.state.AllAvatars);
+            _this3.setState({
+              AllAvatars: a
+            });
 
             _this3.setState({
               AllAvatars: _this3.state.AllAvatars.concat(avatar)
             });
 
-            console.log(_this3.state.AllAvatars);
             alert("tu avatar ha sido modificado con exito");
           });
         } //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
@@ -67572,8 +67572,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! G:\Pablo\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! G:\Pablo\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

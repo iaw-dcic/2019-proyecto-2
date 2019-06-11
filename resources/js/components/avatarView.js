@@ -126,10 +126,13 @@ export default class AvatarView extends Component{
     
     newAvatares(ID){
         let avatares = []
-        let i = 0;
         for(let i = 0; i < this.state.AllAvatars.length; i++){
-            if(this.state.AllAvatars[i].id != ID)
-                avatares[i] = this.state.AllAvatars[i]
+            if(this.state.AllAvatars[i].id != undefined){
+                if(this.state.AllAvatars[i].id != ID)
+                avatares[i] = this.state.AllAvatars[i]    
+            }
+         
+
         }
         
         console.log(avatares);
@@ -165,17 +168,19 @@ export default class AvatarView extends Component{
             else{//asumo que avatarID != -1
                 //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
                 axios.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(res =>{
+                    let a = this.newAvatares(this.state.avatarID);
+                   
                     this.setState({
-                        AllAvatars : this.newAvatares(this.state.avatarID)
+                        AllAvatars : a
+                        
                     })
-                    console.log(this.state.AllAvatars)
+                  
                     this.setState({
                         AllAvatars : this.state.AllAvatars.concat(avatar)
                     })
-                    console.log(this.state.AllAvatars)
+               
                     alert("tu avatar ha sido modificado con exito")
                 })
-
             } 
             //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
            
