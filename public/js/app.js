@@ -66798,6 +66798,9 @@ function (_Component) {
       var avatares = [];
 
       for (var i = 0; i < this.state.AllAvatars.length; i++) {
+        console.log(this.state.AllAvatars[i]);
+        console.log(this.state.AllAvatars[i].avatarID + " , " + ID);
+
         if (this.state.AllAvatars[i].id != undefined) {
           if (this.state.AllAvatars[i].id != ID) avatares[i] = this.state.AllAvatars[i];
         }
@@ -66838,18 +66841,15 @@ function (_Component) {
           //asumo que avatarID != -1
           //el avatar es uno que debo modificar en la BD, hago un PUT por axios a un metodo Update en el controlador
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('api/' + this.state.userID + '/avatars/' + this.state.avatarID, avatar).then(function (res) {
-            var a = _this3.newAvatares(_this3.state.avatarID);
-
-            _this3.setState({
-              AllAvatars: a
+            axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/' + _this3.state.userID + '/avatars').then(function (response) {
+              if (response.data.length != 0) {
+                _this3.setState({
+                  AllAvatars: response.data
+                });
+              }
             });
-
-            _this3.setState({
-              AllAvatars: _this3.state.AllAvatars.concat(avatar)
-            });
-
-            alert("tu avatar ha sido modificado con exito");
           });
+          alert("tu avatar se ha modificado con exito");
         } //el then(...) es lo que hace la página una vez que el pedido AJAX vuelve con al respuesta (recordar que esto se hace en background)
 
       }
