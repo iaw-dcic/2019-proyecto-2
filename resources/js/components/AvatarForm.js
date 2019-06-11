@@ -121,8 +121,8 @@ export default class AvatarForm extends React.Component {
         (
           <div key="button" className="form-group row">
             <div className="ml-auto pr-3">
-              { this.props.isAvatarUpdate ? (<button className="btn btn-secondary" onClick={this.props.onClickEndUpdate}>Finalizar edición</button>) : ''}
-              <input type="submit" value="Guardar" className="btn btn-success ml-2" />
+              { this.props.isAvatarUpdate ? (<button className="btn btn-secondary mr-2" onClick={this.props.onClickEndUpdate}>Finalizar edición</button>) : ''}
+              <input type="submit" value={ this.props.isAvatarUpdate ? 'Guardar cambios' : 'Crear avatar'} className={this.props.isAvatarUpdate ? 'btn btn-primary' : 'btn btn-success'} />
             </div>
           </div>
         )

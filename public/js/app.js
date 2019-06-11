@@ -66304,12 +66304,12 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "ml-auto pr-3"
         }, this.props.isAvatarUpdate ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn btn-secondary",
+          className: "btn btn-secondary mr-2",
           onClick: this.props.onClickEndUpdate
         }, "Finalizar edici\xF3n") : '', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "submit",
-          value: "Guardar",
-          className: "btn btn-success ml-2"
+          value: this.props.isAvatarUpdate ? 'Guardar cambios' : 'Crear avatar',
+          className: this.props.isAvatarUpdate ? 'btn btn-primary' : 'btn btn-success'
         }))));
       }
 
