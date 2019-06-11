@@ -59,8 +59,12 @@ class ProdeController extends Controller
 
         $prode = new Prode;
         $prode->name = $name;
-
-        $prode->user_id = auth('api')->user()->id;
+        if (Auth::check()){
+            $id = auth('api')->user()->id;
+            $prode->user_id = $id;
+        }else {
+            $prode->user_id = 0;
+        }
         $prode->cuartos = $cuartos;
         $prode->semis = $semis;
         $prode->final = $final;
@@ -73,7 +77,6 @@ class ProdeController extends Controller
 
             "ok" => true,
             "message" => "Tu prode ha sido guardado exitosamente",
-
         ]);
     }
 

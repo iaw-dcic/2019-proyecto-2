@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
-import { url, TOKEN } from '../../components/config/config';
+import { url } from '../../components/config/config';
 import Home from '../../components/Home';
 
 
@@ -60,22 +60,25 @@ class GuardarProde extends React.Component {
 
     guardar(value) {
 
-        axios.post(`${url}/prode`,
+        axios({
+        method: 'post',
+            url: `api/prode`,
 
-        {
-            'name' : value.name,
-            'cuartos': [this.props.cuartos[0].id,this.props.cuartos[1].id,this.props.cuartos[2].id,this.props.cuartos[3].id,this.props.cuartos[4].id,this.props.cuartos[5].id,this.props.cuartos[6].id,this.props.cuartos[7].id],
-            'semis': [this.props.semis[0].id,this.props.cuartos[1].id,this.props.semis[2].id,this.props.semis[3].id],
-            'final': [this.props.final[0].id,this.props.final[1].id],
-            'campeon': [this.props.campeon[0].id],
-            'user_id' : this.state.user_id,
+            data : {
+                'name' : value.name,
+                'cuartos': [this.props.cuartos[0].id,this.props.cuartos[1].id,this.props.cuartos[2].id,this.props.cuartos[3].id,this.props.cuartos[4].id,this.props.cuartos[5].id,this.props.cuartos[6].id,this.props.cuartos[7].id],
+                'semis': [this.props.semis[0].id,this.props.cuartos[1].id,this.props.semis[2].id,this.props.semis[3].id],
+                'final': [this.props.final[0].id,this.props.final[1].id],
+                'campeon': [this.props.campeon[0].id],
 
+            }
         }).then(function (response) {
             console.log(response);
-            alert(response);
+            alert(response.data.message);
         }).catch(function (error) {
           console.log(error);
         });
+
         this.props.new();
 
     }

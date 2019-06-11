@@ -188,14 +188,15 @@ class Listar extends Component {
 
     /**Cuando monte el componente que me liste los equipos */
     componentDidMount() {
-        var axios = require('axios');
+        window.axios = require('axios');
 
 
         let api_token = document.querySelector('meta[name="api-token"]');
+        localStorage.setItem("api_token",api_token);
         let token = document.head.querySelector('meta[name="csrf-token"]');
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token;
+        window.axios.defaults.headers.common['Authorization'] =api_token.content;
         axios({
             method: 'get',
             url: this.url

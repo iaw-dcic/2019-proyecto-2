@@ -25,17 +25,6 @@ class PanelBotones extends Component {
         });
 
     }
-    componentDidMount(){
-        var axios = require('axios');
-
-
-        let api_token = document.querySelector('meta[name="api-token"]');
-        let token = document.head.querySelector('meta[name="csrf-token"]');
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token;
-    }
-
 
 
     render() {
