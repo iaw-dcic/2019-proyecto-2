@@ -35047,6 +35047,8 @@ function (_Component) {
 
         _this3.actualizarProdes();
 
+        _this3.cerrarProde();
+
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Prode creado correctamente!', 'Presiona OK para continuar', 'success');
       })["catch"](function (error) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
@@ -35088,19 +35090,21 @@ function (_Component) {
         if (result.value) {
           _this5.pronosticoController.deleteProde(_this5.prode).then(function (resultado) {
             if (resultado == true) {
-              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Deleted!', 'Your file has been deleted.', 'success');
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Eliminado!', 'El prode fue eliminado correctamente', 'success');
 
               _this5.refreshProde(null);
 
-              _this5.cerrarProde();
-
               _this5.actualizarProdes();
+
+              _this5.cerrarProde();
             } else {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
                 type: 'error',
                 title: 'Oops...',
                 text: 'Error, intente nuevamente en unos momentos!'
               });
+
+              _this5.cerrarProde();
             }
           })["catch"](function (error) {
             sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({

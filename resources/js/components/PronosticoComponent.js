@@ -66,6 +66,7 @@ export default class PronosticoComponent extends Component {
             .then(prode => {
                 this.refreshProde(prode);
                 this.actualizarProdes();
+                this.cerrarProde();
                 Swal.fire(
                     'Prode creado correctamente!',
                     'Presiona OK para continuar',
@@ -107,19 +108,20 @@ export default class PronosticoComponent extends Component {
                     .then(resultado => {
                         if(resultado == true){
                              Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Eliminado!',
+                                'El prode fue eliminado correctamente',
                                 'success'
                             );
                             this.refreshProde(null);
-                            this.cerrarProde();
                             this.actualizarProdes();
+                            this.cerrarProde();
                         }else{
                             Swal.fire({
                                 type: 'error',
                                 title: 'Oops...',
                                 text: 'Error, intente nuevamente en unos momentos!'
                             });
+                            this.cerrarProde();
                         }
                     })
                     .catch(error => {
