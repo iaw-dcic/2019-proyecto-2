@@ -9,6 +9,8 @@ use App\Partido;
 use App\Equipo;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use App\ProdeUser;
+use App\PartidoProde;
 
 class ProdeController extends Controller{
 
@@ -113,9 +115,13 @@ class ProdeController extends Controller{
             $user = Auth()->user();
             $prode = $user->getProdes()->find($prode_id);
             $partidos = $prode->getPartidos()->get();
-            foreach($partidos as $partido)
+            foreach($partidos as $partido){
+                PartidoProde::where(['prode_id' => $prode->id, 'partido_id' => $partido->id])->get()->first()->delete();
                 $partido->delete();
+            }
+            ProdeUser::where(['prode_id' => $prode->id, 'user_id' => $user->id])->get()->first()->delete();
             $prode->delete();
+
             DB::commit();
             return Response()->json(['resultado' => true], 200);
         }catch(\Exception $ex){

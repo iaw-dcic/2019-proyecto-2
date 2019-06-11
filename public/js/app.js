@@ -35043,8 +35043,7 @@ function (_Component) {
 
       event.preventDefault();
       this.pronosticoController.saveProde(this.prode).then(function (prode) {
-        _this3.refreshProde(prode);
-
+        //this.refreshProde(prode);
         _this3.actualizarProdes();
 
         _this3.cerrarProde();
@@ -35381,10 +35380,9 @@ function () {
 
               case 2:
                 prodeDB = _context.sent;
-                this.saveOnLocalStorage(prodeDB);
                 return _context.abrupt("return", prodeDB);
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -35565,7 +35563,7 @@ function () {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return this.pronosticosModel.createProde(this.api_token);
+                return this.pronosticosModel.createProde();
 
               case 2:
                 prode = _context2.sent;
@@ -35704,11 +35702,10 @@ function () {
 
               case 4:
                 response = _context2.sent;
-                console.log(response);
                 prodeDB = this.transformarDatosDesdeServidor(response.data);
                 return _context2.abrupt("return", prodeDB);
 
-              case 8:
+              case 7:
               case "end":
                 return _context2.stop();
             }

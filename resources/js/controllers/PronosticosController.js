@@ -14,7 +14,7 @@ export default class PronosticosController{
     }
 
     async createProde(){
-        let prode = await this.pronosticosModel.createProde(this.api_token);
+        let prode = await this.pronosticosModel.createProde();
         this.pronosticosModel.saveProdeOnLocalStorage(prode);
         return prode;
     }

@@ -64,7 +64,7 @@ export default class PronosticoComponent extends Component {
         event.preventDefault();
         this.pronosticoController.saveProde(this.prode)
             .then(prode => {
-                this.refreshProde(prode);
+                //this.refreshProde(prode);
                 this.actualizarProdes();
                 this.cerrarProde();
                 Swal.fire(

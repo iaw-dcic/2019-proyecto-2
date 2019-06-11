@@ -10,11 +10,11 @@ export default class PronosticoController{
     }
 
     async saveProde(prode){
-        let prodeDB = await this.pronosticoModel.saveProde(prode); 
-        this.saveOnLocalStorage(prodeDB);
+        let prodeDB = await this.pronosticoModel.saveProde(prode);
+        //this.saveOnLocalStorage(prodeDB);
         return prodeDB;
     }
-    
+
     async resetProde(prode){
         let newProde = await this.pronosticoModel.resetProde(prode);
         this.saveOnLocalStorage(newProde);

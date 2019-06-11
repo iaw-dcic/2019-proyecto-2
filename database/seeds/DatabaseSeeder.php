@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder{
             ]);
         }
 
+        /*
         factory(\App\Prode::class, 2)->create()->each(function (Prode $prode){
             $prode->getUsers()->attach(1);
         });
@@ -74,5 +75,6 @@ class DatabaseSeeder extends Seeder{
                 $partido->getProdes()->attach(2);
             });
         }
+        */
     }
 }
