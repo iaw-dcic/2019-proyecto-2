@@ -399,7 +399,7 @@ export default class Perfil extends Component {
     async actualizar(e) {
         this.tokens();
         try {
-            const response = await axios.post('/pr2/api/actualizar', {
+            const response = await axios.post('/api/actualizar', {
                 c0: this.state.cuartos[0],
                 c1: this.state.cuartos[1],
                 c2: this.state.cuartos[2],
@@ -420,7 +420,7 @@ export default class Perfil extends Component {
         this.tokens();
 
         try {
-            const response = await axios.post('/pr2/api/eliminarpronostico', {
+            const response = await axios.post('/api/eliminarpronostico', {
                 pronostico: this.state.pronostico,
                 c0: this.state.cuartos[0].id,
                 c1: this.state.cuartos[1].id,

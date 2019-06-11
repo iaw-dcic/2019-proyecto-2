@@ -9,7 +9,7 @@ export default class Octavos extends Component {
     };
 
     componentWillMount() {
-        fetch('/pr2/api/octavos/' + this.props.i)
+        fetch('/api/octavos/' + this.props.i)
             .then(res => res.json())
             .then(json => {
                 this.setState({

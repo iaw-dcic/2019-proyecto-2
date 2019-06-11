@@ -17,7 +17,7 @@ export default class Pronostico extends Component {
             }
         }
 
-        fetch('/pr2/api/cantidadpronosticos', miInit)
+        fetch('/api/cantidadpronosticos', miInit)
             .then(res => res.json())
             .then(json => {
                 if (json != null)
@@ -40,7 +40,7 @@ export default class Pronostico extends Component {
                 }
             }
 
-            fetch('/pr2/api/cantidadpronosticos', miInit)
+            fetch('/api/cantidadpronosticos', miInit)
                 .then(res => res.json())
                 .then(json => {
                     if (json != null)
@@ -63,24 +63,24 @@ export default class Pronostico extends Component {
         if (this.state.pronostico != -1 && selectedValue != '') {
 
 
-            fetch('/pr2/api/pronostico/4/' + selectedValue)
+            fetch('/api/pronostico/4/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
                     this.props.cuartos(json.items)
                 });
-            fetch('/pr2/api/pronostico/2/' + selectedValue)
+            fetch('/api/pronostico/2/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
                     this.props.semis(json.items)
 
                 });
-            fetch('/pr2/api/pronostico/1/' + selectedValue)
+            fetch('/api/pronostico/1/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
                     this.props.final(json.items[0])
 
                 });
-            fetch('/pr2/api/pronostico/0/' + selectedValue)
+            fetch('/api/pronostico/0/' + selectedValue)
                 .then(res => res.json())
                 .then(json => {
 
