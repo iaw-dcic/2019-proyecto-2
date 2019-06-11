@@ -27,7 +27,7 @@ class UserController extends Controller{
         $avatars = $avatars->sortBy('id');
         // dd($avatars);
         // return ($avatars->toJson());
-        return $avatars->toJson();
+        return $avatars->values()->toJson();
 
     }
 
