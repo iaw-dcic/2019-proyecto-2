@@ -1,0 +1,48 @@
+
+.cuartos1{
+    margin-top: 77px;
+    height:131px;
+}
+
+
+.cuartos2{
+    margin-top: 127px;
+}
+
+.btnGuardar {
+    margin-top: 47px;
+    margin-bottom: 40px;
+}
+
+.table thead th {
+    padding-left: 42px;
+}
+
+
+.semifinal{
+    margin-top: 200px;
+}
+
+.final{
+    margin-top: 180px;
+}
+
+.btnNuevoProde{
+    margin-top: 15px;
+}
+.msjBienvenida{
+    margin-top: 77px;
+}
+
+.marginBottom{
+    padding-bottom: 40px;
+}
+
+.marginItem{
+    margin-bottom: 20px;
+}
+
+.setAncho{
+    column-width: 30px;
+    table-layout: fixed;
+}
