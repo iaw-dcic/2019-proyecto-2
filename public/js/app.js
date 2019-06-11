@@ -65886,6 +65886,12 @@ function (_Component) {
     value: function deleteAvatar(avatarId) {
       var _this3 = this;
 
+      if (avatarId == this.state.current_avatar.id) {
+        this.setState({
+          'isAvatarUpdate': false
+        });
+      }
+
       axios["delete"]('/user/avatar/' + avatarId).then(function (response) {
         _this3.getAvatars();
 

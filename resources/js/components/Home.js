@@ -90,6 +90,9 @@ export default class Home extends Component {
   }
 
   deleteAvatar(avatarId){
+    if(avatarId == this.state.current_avatar.id){
+      this.setState({ 'isAvatarUpdate': false });
+    }
     axios.delete('/user/avatar/' + avatarId)
         .then(response => {
           this.getAvatars();
