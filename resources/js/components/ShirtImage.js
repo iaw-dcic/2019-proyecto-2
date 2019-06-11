@@ -14,7 +14,7 @@ export default class ShirtImage extends Component {
             talle: "XS",
             tela: "Algodon",
             logo: "",
-            edit: false,
+            editar: false,
             idRemeraEditar: ""
 
         }
@@ -27,7 +27,17 @@ export default class ShirtImage extends Component {
 
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
         window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-     
+
+
+        if (this.props.match.params.id != null) {
+            this.setState({
+                idRemeraEditar: this.props.match.params.id,
+                editar:true
+            });
+            this.editarRemera(this.props.match.params.id);
+        }
+
+
 
         if (localStorage.hasOwnProperty('remera')) {
             var remeraAux = localStorage.getItem('remera');
@@ -88,24 +98,39 @@ export default class ShirtImage extends Component {
         }
     }
 
+    editarRemera(idRemera) {
 
+        try {
+            axios.get('/api/misDiseños/' + idRemera).then(response => {
+                this.setState({
+                    remera: response.data.color,
+                    talle: response.data.talle,
+                    tela: response.data.tela,
+                    logo: response.data.logo,
+                })
+            });
+        }
+        catch (e) {
+            console.log('Error Axios', e);
+        }
+    }
     addLogo = (src) => {
         this.setState({ logo: src });
         localStorage.setItem("logo", JSON.stringify(src));
     }
 
-    cambiarColorRemera = (newId) =>{
+    cambiarColorRemera = (newId) => {
         this.setState({ remera: newId });
         localStorage.setItem("remera", JSON.stringify(newId));
     }
 
-   
-    cambiarTalle = (newTalle) =>{
-       
+
+    cambiarTalle = (newTalle) => {
+
         this.setState({ talle: newTalle });
         localStorage.setItem("talle", JSON.stringify(newTalle));
     }
-    
+
 
     cambiarTela = (newTela) => {
         this.setState({ tela: newTela });
@@ -119,7 +144,7 @@ export default class ShirtImage extends Component {
         }
     }
 
-   
+
     crearDiseño(e) {
         axios.post('/api/crearDiseño', {
             color: this.state.remera,
@@ -132,13 +157,14 @@ export default class ShirtImage extends Component {
         })
     }
 
-    setearEdit = (valor) =>{
-        this.setState({edit:valor });
+    setearEdit = (valor) => {
+        this.setState({ edit: valor });
     }
 
-    setearEditIdRemeraEditar = (valor) =>{
-        this.setState({idRemeraEditar: valor});
+    setearEditIdRemeraEditar = (valor) => {
+        this.setState({ idRemeraEditar: valor });
     }
+
 
 
     actualizarDiseño() {
@@ -150,7 +176,7 @@ export default class ShirtImage extends Component {
                 tela: this.state.tela,
             }).then(response => {
                 this.setState({
-                    edit: false
+                    editar: false
                 });
 
             });
@@ -162,10 +188,10 @@ export default class ShirtImage extends Component {
 
     render() {
         return (
-                    
+
             <section className="pricing py-5">
-                <Container/>
-               <div className="container"> 
+                <Container />
+                <div className="container">
                     <div className="row">
                         <div className="col-lg-3">
                             <Logos addLogo={this.addLogo} />
@@ -184,10 +210,10 @@ export default class ShirtImage extends Component {
                                             this.state.logo != "" &&
                                             <img height="100" src={"/images/logos/" + this.state.logo + ".png"} id="imagenLogo"></img>
                                         }
-                                        {this.state.edit == false &&
+                                        {this.state.editar == false &&
                                             <a className="btn btn-block btn-secondary text-uppercase" onClick={(e) => this.crearDiseño(e)} >Crear diseño</a>}
                                         {
-                                            this.state.edit == true &&
+                                            this.state.editar == true &&
                                             <a className="btn btn-block btn-secondary text-uppercase" onClick={(e) => this.actualizarDiseño(e)}  >Guardar Cambios</a>
 
                                         }
@@ -196,15 +222,15 @@ export default class ShirtImage extends Component {
                             </div>
                         </div>
                         <div className="col-lg-3">
-                            <PanelDerecho talleActual={this.state.talle} telaActual={this.state.tela} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela} cambiarColorRemera={this.cambiarColorRemera}/>
+                            <PanelDerecho talleActual={this.state.talle} telaActual={this.state.tela} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela} cambiarColorRemera={this.cambiarColorRemera} />
                         </div>
                     </div>
                 </div>
-               
+
                 <hr width="100%"></hr>
-        
+
                 <div className="container">
-                    <ListadoEditar addLogo={this.addLogo} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela}cambiarColorRemera={this.cambiarColorRemera} setearEdit = {this.setearEdit} setearEditIdRemeraEditar ={this.setearEditIdRemeraEditar}/>
+                    <ListadoEditar addLogo={this.addLogo} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela} cambiarColorRemera={this.cambiarColorRemera} setearEdit={this.setearEdit} setearEditIdRemeraEditar={this.setearEditIdRemeraEditar} />
                 </div>
             </section>
 

@@ -47,8 +47,8 @@ export default class MisDiseños extends Component {
         });
     }
 
-
-
+    
+    
     render() {
         return (
             <section className="pricing py-5">
@@ -80,7 +80,7 @@ export default class MisDiseños extends Component {
                                                             <p className="card-text">Tela :{item.tela}</p>
                                                             <button type="button" onClick={(e) => this.borrarRemera(e, item.id)} className="btn btn-outline-danger">Borrar</button>
                                                             <br></br>
-                                                            <Link to="/home" className="btn btn-outline-primary" >Editar</Link>
+                                                            <Link to={"/home/"+ item.id} className="btn btn-outline-primary">Editar</Link>
 
                                                         </div>
                                                     </div>

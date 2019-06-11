@@ -65745,6 +65745,9 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/misDise\xF1os",
         component: _MisDise_os__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/home/:id",
+        component: _ShirtImage__WEBPACK_IMPORTED_MODULE_4__["default"]
       })));
     }
   }]);
@@ -66252,7 +66255,7 @@ function (_Component) {
           },
           className: "btn btn-outline-danger"
         }, "Borrar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/home",
+          to: "/home/" + item.id,
           className: "btn btn-outline-primary"
         }, "Editar"))));
       }))))))));
@@ -66550,7 +66553,7 @@ function (_Component) {
       talle: "XS",
       tela: "Algodon",
       logo: "",
-      edit: false,
+      editar: false,
       idRemeraEditar: ""
     };
     return _this;
@@ -66564,6 +66567,14 @@ function (_Component) {
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
+      if (this.props.match.params.id != null) {
+        this.setState({
+          idRemeraEditar: this.props.match.params.id,
+          editar: true
+        });
+        this.editarRemera(this.props.match.params.id);
+      }
 
       if (localStorage.hasOwnProperty('remera')) {
         var remeraAux = localStorage.getItem('remera');
@@ -66626,6 +66637,24 @@ function (_Component) {
       }
     }
   }, {
+    key: "editarRemera",
+    value: function editarRemera(idRemera) {
+      var _this2 = this;
+
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/misDiseños/' + idRemera).then(function (response) {
+          _this2.setState({
+            remera: response.data.color,
+            talle: response.data.talle,
+            tela: response.data.tela,
+            logo: response.data.logo
+          });
+        });
+      } catch (e) {
+        console.log('Error Axios', e);
+      }
+    }
+  }, {
     key: "eliminarLogo",
     value: function eliminarLogo(e) {
       if (this.state.logo != "") {
@@ -66650,7 +66679,7 @@ function (_Component) {
   }, {
     key: "actualizarDise\xF1o",
     value: function actualizarDiseO() {
-      var _this2 = this;
+      var _this3 = this;
 
       try {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('/api/editarRemera/' + this.state.idRemeraEditar, {
@@ -66659,8 +66688,8 @@ function (_Component) {
           talle: this.state.talle,
           tela: this.state.tela
         }).then(function (response) {
-          _this2.setState({
-            edit: false
+          _this3.setState({
+            editar: false
           });
         });
       } catch (e) {
@@ -66670,7 +66699,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pricing py-5"
@@ -66702,15 +66731,15 @@ function (_Component) {
         height: "100",
         src: "/images/logos/" + this.state.logo + ".png",
         id: "imagenLogo"
-      }), this.state.edit == false && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), this.state.editar == false && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase",
         onClick: function onClick(e) {
-          return _this3.crearDiseño(e);
+          return _this4.crearDiseño(e);
         }
-      }, "Crear dise\xF1o"), this.state.edit == true && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Crear dise\xF1o"), this.state.editar == true && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-block btn-secondary text-uppercase",
         onClick: function onClick(e) {
-          return _this3.actualizarDiseño(e);
+          return _this4.actualizarDiseño(e);
         }
       }, "Guardar Cambios"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-3"

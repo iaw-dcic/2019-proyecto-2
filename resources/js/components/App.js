@@ -17,10 +17,10 @@ class App extends Component {
                 <Switch>
                       <Route exact path="/home" component={ShirtImage}></Route>
                       <Route path="/misDiseños" component={MisDiseños}></Route>
+                      <Route path="/home/:id" component={ShirtImage}></Route>
                 </Switch>
             </BrowserRouter>
         )
     }
 }
-
 ReactDOM.render(<App />, document.getElementById('react-app'))
