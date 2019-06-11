@@ -8,8 +8,8 @@ export default class Semis extends Component {
 
 
     handleClick(param, i, e) {
-
-        this.props.setJugador(param, i);
+        var arreglo = ["j1", "j2"];
+        this.props.setJugador(param, i, arreglo);
     }
     render() {
         let a = [this.props.jugador1, this.props.jugador2];

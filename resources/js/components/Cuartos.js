@@ -10,8 +10,8 @@ export default class Cuartos extends Component {
     }
 
     handleClick(param, i, e) {
-
-        this.props.setJugador(param, i);
+        var arreglo = ["s1j1", "s2j1", "s1j2", "s2j2"];
+        this.props.setJugador(param, i, arreglo);
 
 
     }

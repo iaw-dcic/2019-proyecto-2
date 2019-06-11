@@ -60898,7 +60898,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67209,7 +67209,8 @@ function (_Component) {
   _createClass(Cuartos, [{
     key: "handleClick",
     value: function handleClick(param, i, e) {
-      this.props.setJugador(param, i);
+      var arreglo = ["s1j1", "s2j1", "s1j2", "s2j2"];
+      this.props.setJugador(param, i, arreglo);
     }
   }, {
     key: "render",
@@ -67940,7 +67941,8 @@ function (_Component) {
   }, {
     key: "handleClick",
     value: function handleClick(param, i, e) {
-      this.props.setJugador(param, i);
+      var arreglo = ["c0j1", "c1j1", "c0j2", "c1j2", "c2j1", "c3j1", "c2j2", "c3j2"];
+      this.props.setJugador(param, i, arreglo);
     }
   }, {
     key: "render",
@@ -68672,40 +68674,12 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Playoffs).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "setJugador", function (newjugador, i) {
-      var arreglo = ["c0j1", "c1j1", "c0j2", "c1j2", "c2j1", "c3j1", "c2j2", "c3j2"];
+    _defineProperty(_assertThisInitialized(_this), "setJugador", function (newjugador, i, arreglo) {
       var nombre = arreglo[i];
 
       _this.setState(_defineProperty({}, nombre, newjugador));
 
       localStorage.setItem(nombre, JSON.stringify(newjugador));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "setJugadorSemi", function (newjugador, i) {
-      var arreglo = ["s1j1", "s2j1", "s1j2", "s2j2"];
-      var nombre = arreglo[i];
-
-      _this.setState(_defineProperty({}, nombre, newjugador));
-
-      localStorage.setItem(nombre, JSON.stringify(newjugador));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "setJugadorFinal", function (newjugador, i) {
-      if (i == 1) {
-        _this.setState({
-          j1: newjugador
-        });
-
-        localStorage.setItem("j1", JSON.stringify(newjugador));
-      }
-
-      if (i == 2) {
-        _this.setState({
-          j2: newjugador
-        });
-
-        localStorage.setItem("j2", JSON.stringify(newjugador));
-      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "setCampeon", function (newjugador) {
@@ -68804,7 +68778,7 @@ function (_Component) {
         i: 0,
         jugador1: this.state.c0j1,
         jugador2: this.state.c0j2,
-        setJugador: this.setJugadorSemi
+        setJugador: this.setJugador
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
       }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -68813,7 +68787,7 @@ function (_Component) {
         i: 1,
         jugador1: this.state.c1j1,
         jugador2: this.state.c1j2,
-        setJugador: this.setJugadorSemi
+        setJugador: this.setJugador
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
       }, " ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -68837,17 +68811,17 @@ function (_Component) {
       }, "  "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        i: 1,
+        i: 0,
         jugador1: this.state.s1j1,
         jugador2: this.state.s1j2,
-        setJugador: this.setJugadorFinal
+        setJugador: this.setJugador
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Semis__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        i: 2,
+        i: 1,
         jugador1: this.state.s2j1,
         jugador2: this.state.s2j2,
-        setJugador: this.setJugadorFinal
+        setJugador: this.setJugador
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 cuartos"
       }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -68874,7 +68848,7 @@ function (_Component) {
         i: 2,
         jugador1: this.state.c2j1,
         jugador2: this.state.c2j2,
-        setJugador: this.setJugadorSemi
+        setJugador: this.setJugador
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-4 semis"
       }, " "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -68883,7 +68857,7 @@ function (_Component) {
         i: 3,
         jugador1: this.state.c3j1,
         jugador2: this.state.c3j2,
-        setJugador: this.setJugadorSemi
+        setJugador: this.setJugador
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-2 octavos"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -69659,7 +69633,8 @@ function (_Component) {
   _createClass(Semis, [{
     key: "handleClick",
     value: function handleClick(param, i, e) {
-      this.props.setJugador(param, i);
+      var arreglo = ["j1", "j2"];
+      this.props.setJugador(param, i, arreglo);
     }
   }, {
     key: "render",

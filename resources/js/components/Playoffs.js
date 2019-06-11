@@ -85,11 +85,11 @@ export default class Playoffs extends Component {
             <div className="partido row " >
                 <div className="col-2 octavos"></div>
                 <div className="col-2 cuartos">
-                    <Cuartos i={0} jugador1={this.state.c0j1} jugador2={this.state.c0j2} setJugador={this.setJugadorSemi} />
+                    <Cuartos i={0} jugador1={this.state.c0j1} jugador2={this.state.c0j2} setJugador={this.setJugador} />
                 </div>
                 <div className="col-4 semis"> </div>
                 <div className="col-2 cuartos">
-                    <Cuartos i={1} jugador1={this.state.c1j1} jugador2={this.state.c1j2} setJugador={this.setJugadorSemi} />
+                    <Cuartos i={1} jugador1={this.state.c1j1} jugador2={this.state.c1j2} setJugador={this.setJugador} />
                 </div>
                 <div className="col-2 octavos"> </div>
             </div>
@@ -107,10 +107,10 @@ export default class Playoffs extends Component {
                 <div className="col-2 octavos"> </div>
                 <div className="col-2 cuartos">  </div>
                 <div className="col-2">
-                    <Semis i={1} jugador1={this.state.s1j1} jugador2={this.state.s1j2} setJugador={this.setJugadorFinal} />
+                    <Semis i={0} jugador1={this.state.s1j1} jugador2={this.state.s1j2} setJugador={this.setJugador} />
                 </div>
                 <div className="col-2">
-                    <Semis i={2} jugador1={this.state.s2j1} jugador2={this.state.s2j2} setJugador={this.setJugadorFinal} />
+                    <Semis i={1} jugador1={this.state.s2j1} jugador2={this.state.s2j2} setJugador={this.setJugador} />
                 </div>
                 <div className="col-2 cuartos"> </div>
                 <div className="col-2 octavos">  </div>
@@ -128,11 +128,11 @@ export default class Playoffs extends Component {
             <div className="partido row " >
                 <div className="col-2 octavos"> </div>
                 <div className="col-2 cuartos">
-                    <Cuartos i={2} jugador1={this.state.c2j1} jugador2={this.state.c2j2} setJugador={this.setJugadorSemi} />
+                    <Cuartos i={2} jugador1={this.state.c2j1} jugador2={this.state.c2j2} setJugador={this.setJugador} />
                 </div>
                 <div className="col-4 semis"> </div>
                 <div className="col-2 cuartos">
-                    <Cuartos i={3} jugador1={this.state.c3j1} jugador2={this.state.c3j2} setJugador={this.setJugadorSemi} />
+                    <Cuartos i={3} jugador1={this.state.c3j1} jugador2={this.state.c3j2} setJugador={this.setJugador} />
                 </div>
 
                 <div className="col-2 octavos"></div>
@@ -160,40 +160,13 @@ export default class Playoffs extends Component {
 
     }
 
-    setJugador = (newjugador, i) => {
-        var arreglo = ["c0j1", "c1j1", "c0j2", "c1j2", "c2j1", "c3j1", "c2j2", "c3j2"];
+    setJugador = (newjugador, i, arreglo) => {
 
         var nombre = arreglo[i];
         this.setState({
             [nombre]: newjugador
         });
         localStorage.setItem(nombre, JSON.stringify(newjugador));
-    }
-
-    setJugadorSemi = (newjugador, i) => {
-        var arreglo = ["s1j1", "s2j1", "s1j2", "s2j2"];
-        var nombre = arreglo[i];
-        this.setState({
-            [nombre]: newjugador
-        });
-        localStorage.setItem(nombre, JSON.stringify(newjugador));
-    }
-
-
-    setJugadorFinal = (newjugador, i) => {
-
-        if (i == 1) {
-            this.setState({
-                j1: newjugador
-            });
-            localStorage.setItem("j1", JSON.stringify(newjugador));
-        }
-        if (i == 2) {
-            this.setState({
-                j2: newjugador
-            });
-            localStorage.setItem("j2", JSON.stringify(newjugador));
-        }
     }
 
     setCampeon = (newjugador) => {

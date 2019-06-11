@@ -20,7 +20,8 @@ export default class Octavos extends Component {
     }
 
     handleClick(param, i, e) {
-        this.props.setJugador(param, i);
+        var arreglo = ["c0j1", "c1j1", "c0j2", "c1j2", "c2j1", "c3j1", "c2j2", "c3j2"];
+        this.props.setJugador(param, i, arreglo);
     }
     render() {
         let a = [this.state.jugador_uno, this.state.jugador_dos];
