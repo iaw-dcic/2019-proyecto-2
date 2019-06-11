@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller{
     //
     public function __construct(){
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function getAvatar(){
@@ -24,6 +24,7 @@ class UserController extends Controller{
     public function getAvatars(){
         $user = Auth::user();
         $avatars =  $user->avatars;
+        $avatars = $avatars->sortBy('id');
         // dd($avatars);
         // return ($avatars->toJson());
         return $avatars->toJson();
