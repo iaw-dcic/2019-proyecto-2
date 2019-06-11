@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Prode;
 
 //TODO LO QUE SEA PROPIO TENEMOS QUE LLAMARLO SIEMPRE CON APP
-use App\Models\Prode;
-use Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+
+
+
+use App\Team;
+
+
 
 class ProdeController extends Controller
 {
@@ -20,7 +27,7 @@ class ProdeController extends Controller
         $prodes = Prode::all();
         return response()->json([
             "ok" => true,
-            "data" => $prodes
+            "data" => $prodes,
         ]);
     }
 
@@ -42,23 +49,50 @@ class ProdeController extends Controller
      */
     public function store(Request $request)
     {
-        dd('desde prodecontroller.store');
 
-        $input = $request->all();
-        try{
-          Prode::create($input);
-          return response()->json([
-              "ok"=> true,
-              "message"=>"Se regitró con éxito"
-          ]);
-        }catch(\Exception $ex){
-            return response()->json([
-                "ok"=>false,
-                "error"=>$ex->getMessage()
-            ]);
-        }
+        $name = $request->name;
+        $cuartos = implode(',', $request->cuartos);
+        $semis = implode(',', $request->semis);
+        $final = implode(',', $request->final);
+        $campeon = implode(',', $request->campeon);
 
-     }
+
+        $prode = new Prode;
+        $prode->name = $name;
+
+        $prode->user_id = auth('api')->user()->id;
+        $prode->cuartos = $cuartos;
+        $prode->semis = $semis;
+        $prode->final = $final;
+        $prode->campeon = $campeon;
+
+        // $prode->user_id = auth('api')->user()->id;
+
+        $prode->save();
+        return response()->json([
+
+            "ok" => true,
+            "message" => "Tu prode ha sido guardado exitosamente",
+
+        ]);
+    }
+
+
+        // try {
+        //     $prode->save();
+
+        //     return response()->json([
+        //         "ok" => true,
+        //         "message" => "Se regitró con éxito",
+        //     ]);
+        // } catch (\Exception $ex) {
+
+        //     return response()->json([
+        //         "ok" => false,
+        //         "error" => $ex->getMessage(),
+        //     ]);
+        // }
+
 
     /**
      * Display the specified resource.
@@ -68,10 +102,10 @@ class ProdeController extends Controller
      */
     public function show($id)
     {
-        $prode = Prode::where('id',$id)->first();
+        $prode = Prode::where('id', $id)->first();
         return response()->json([
             "ok" => true,
-            "data" => $prode
+            "data" => $prode,
         ]);
     }
 

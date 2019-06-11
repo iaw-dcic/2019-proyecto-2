@@ -4,14 +4,17 @@ import * as Yup from 'yup';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 import { url, TOKEN } from '../../components/config/config';
+import Home from '../../components/Home';
+
 
 const ProdeSchema = Yup.object().shape({
-    nombre: Yup.string()
+    name: Yup.string()
         .max(60, 'Too Long!')
         .required('Required'),
 
 
 });
+
 
 
 
@@ -21,18 +24,21 @@ class GuardarProde extends React.Component {
      * Creamos un objeto Prode
     */
     prode = {
-        nombre: '',
+        name: '',
     }
 
 
     constructor(props) {
         super(props);
         this.state = {
-            modal: false
+            modal: false,
+            user_id: 0,
         };
 
         this.toggle = this.toggle.bind(this);
     }
+
+
 
     toggle() {
         this.setState(prevState => ({
@@ -53,21 +59,24 @@ class GuardarProde extends React.Component {
 
 
     guardar(value) {
-        axios({
-            method: 'post',
-            url: `${url}/prode`,
-            headers: {
-                "Authorization": "bearer " + TOKEN
-            },
-            data: value + this.props.cuartos + this.props.semis + this.props.final + this.props.ganador
-        }).then(respuesta => {
-            let datos = respuesta.data;
-            if (datos.ok) {
-               console.log("exito");
-            } else {
-                console.log("error");
-            }
+
+        axios.post(`${url}/prode`,
+
+        {
+            'name' : value.name,
+            'cuartos': [this.props.cuartos[0].id,this.props.cuartos[1].id,this.props.cuartos[2].id,this.props.cuartos[3].id,this.props.cuartos[4].id,this.props.cuartos[5].id,this.props.cuartos[6].id,this.props.cuartos[7].id],
+            'semis': [this.props.semis[0].id,this.props.cuartos[1].id,this.props.semis[2].id,this.props.semis[3].id],
+            'final': [this.props.final[0].id,this.props.final[1].id],
+            'campeon': [this.props.campeon[0].id],
+            'user_id' : this.state.user_id,
+
+        }).then(function (response) {
+            console.log(response);
+            alert(response);
+        }).catch(function (error) {
+          console.log(error);
         });
+        this.props.new();
 
     }
 
@@ -90,9 +99,9 @@ class GuardarProde extends React.Component {
                                     <div className="row">
                                         <label>Nombre</label>
 
-                                        <Field name="nombre" className="form-control" />
-                                        {errors.nombre && touched.nombre ? (
-                                            <div className="text-danger">{errors.nombre}</div>
+                                        <Field name="name" className="form-control" />
+                                        {errors.name && touched.name ? (
+                                            <div className="text-danger">{errors.name}</div>
                                         ) : null}
                                     </div>
 

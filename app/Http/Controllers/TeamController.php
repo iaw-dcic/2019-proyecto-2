@@ -12,6 +12,7 @@ class TeamController extends Controller
      * Va a mandar un json con todos los equipos
      */
      public function index(){
+
         $teams = Team::all();
         return response()->json([
             "ok" => true,

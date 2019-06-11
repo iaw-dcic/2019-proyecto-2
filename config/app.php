@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+
+    'name' => 'Prode Libertadores',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +170,6 @@ return [
         /*
          * Application Service Providers...
          */
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
@@ -229,8 +229,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
 
     ],
 

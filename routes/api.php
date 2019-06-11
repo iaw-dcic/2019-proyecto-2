@@ -16,8 +16,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::middleware('auth:api')->get('/vistaGuardar', 'ProdeController@vistaGuardar');
 
-Route::resource('/prode', 'ProdeController');
+// Route::get('/{prode}', 'TeamController@show')->middleware('auth:api');
 
+
+Route::get('prode', 'ProdeController@index')->middleware('auth:api');
+Route::post('prode', 'ProdeController@store')->middleware('auth:api');
+// Route::get('prode/{prode}', 'TeamController@show')->middleware('auth:api');
+// Route::put('prode/{prode}', 'TeamController@store')->middleware('auth:api');
 
 Route::group( ['middleware' => 'auth:api' ], function(){
 

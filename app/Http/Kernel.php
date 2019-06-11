@@ -66,10 +66,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        // es el que permite validar el token
-        'jwt.auth' => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-        // Me va a permitir refrescar el token
-        'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class,
+
     ];
 
     /**

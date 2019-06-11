@@ -8,6 +8,7 @@ import Usuario from './../pages/Usuario'
 import Home from './Home';
 import GuardarProde from '../pages/prode/GuardarProde';
 import EditarProde from '../pages/prode/EditarProde';
+import MisProdes from './MisProdes';
 
 
 class Routes extends Component {
@@ -20,6 +21,7 @@ class Routes extends Component {
 
              <Route exact path="/usuarios" component={Usuario} />
              <Route exact path="/guardar" component={GuardarProde} />
+             <Route exact path="/misprodes" component={MisProdes} />
              <Route exact path="/modificar" component={EditarProde}  />
              <Route exact path="" component={Home}  />
 

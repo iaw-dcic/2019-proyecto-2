@@ -18,9 +18,19 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    <!-- API Token -->
+    @auth
+    <meta name="api-token" content="{{Auth::user()->api_token}}">
+    @endauth
+
 </head>
 <body>
-    <div class="app"id="app">
+    <div class="app" id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark stycky-top">
                 {{-- collapse --}}
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">

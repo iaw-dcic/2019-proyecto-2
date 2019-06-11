@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 
 import Tabla from '../../components/table/Tabla';
 import TablaC from '../../components/table/TablaC';
@@ -31,6 +31,8 @@ class Listar extends Component {
             final: ["", ""],
             campeon: [""],
             guardar: false,
+            reset: false,
+
         }
     }
 
@@ -186,6 +188,14 @@ class Listar extends Component {
 
     /**Cuando monte el componente que me liste los equipos */
     componentDidMount() {
+        var axios = require('axios');
+
+
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token;
         axios({
             method: 'get',
             url: this.url
@@ -214,11 +224,27 @@ class Listar extends Component {
 
 
 
+    new(){
+        //Recarga la pagina
+        // window.location.reload();
+    }
+
+    reiniciar(){
+        this.setState({
+            cuartos: ["", "", "", "", "", "", "", ""],
+            semis: ["", "", "", ""],
+            final: ["", ""],
+            campeon: [""],
+            reset:true
+        });
+    }
+
     render() {
         const { cuartos } = this.state.cuartos;
         let guardar;
-        if(this.state.guardar)
-            guardar = <PanelBotones cuartos={this.state.cuartos} semis={this.state.semis} final={this.state.final} campeon={this.state.campeon}  />;
+        if(this.state.guardar && document.querySelector('meta[name="api-token"]')!=null){
+            guardar = <PanelBotones cuartos={this.state.cuartos} semis={this.state.semis} final={this.state.final} campeon={this.state.campeon}  new={this.new.bind(this)} />;
+        }
 
 
         return (
@@ -248,7 +274,7 @@ class Listar extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TablaC cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
+                                    <TablaC reset={this.state.reset}cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
                                 </tbody>
                             </Table>
                         </div>
@@ -326,7 +352,12 @@ class Listar extends Component {
 
 
                 </div>
+                <div className="btn-group btn-group-justified">
+                <Button color="primary" onClick={() => { {this.reiniciar(event)} }}>Reiniciar </Button>
                 {guardar}
+
+                 </div>
+
 
             </div>
 
