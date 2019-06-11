@@ -80,13 +80,18 @@ class SeccionCrear extends Component {
 	}
 
 	componentDidMount() {
+		window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+    
+		if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+		
 		axios.get('/api/donuts').then((response) => {
 			this.setState({
 				donuts: response.data
 			});
 		});
 	}
-
+  
 	render() {
 		return (
 			<div>
