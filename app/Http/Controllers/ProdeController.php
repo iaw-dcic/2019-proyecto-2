@@ -116,8 +116,8 @@ class ProdeController extends Controller{
             foreach($partidos as $partido)
                 $partido->delete();
             $prode->delete();
-            return Response()->json(['resultado' => true], 200);
             DB::commit();
+            return Response()->json(['resultado' => true], 200);
         }catch(\Exception $ex){
             DB::rollback();
             return Response()->json(['resultado' => false], 400);

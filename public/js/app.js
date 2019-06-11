@@ -35667,11 +35667,12 @@ function () {
 
               case 3:
                 response = _context.sent;
+                localStorage.clear();
                 return _context.abrupt("return", response.data.map(function (prode) {
                   return _this.transformarDatosDesdeServidor(prode);
                 }));
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -35871,9 +35872,10 @@ function () {
 
               case 3:
                 response = _context6.sent;
+                console.log(response.data);
                 return _context6.abrupt("return", response.data.resultado);
 
-              case 5:
+              case 6:
               case "end":
                 return _context6.stop();
             }

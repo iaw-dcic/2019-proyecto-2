@@ -22,6 +22,7 @@ export default class PronosticoModel{
     async loadProdes(){
         this.setTokens();
         let response = await Axios.get(`/api/prodes`);
+        localStorage.clear();
         return response.data.map(prode => this.transformarDatosDesdeServidor(prode));
     }
 
@@ -61,6 +62,7 @@ export default class PronosticoModel{
     async deleteProde(prode){
         this.setTokens();
         let response = await Axios.delete(`/api/prodes/${prode.id}`);
+        console.log(response.data);
         return response.data.resultado;
     }
 
