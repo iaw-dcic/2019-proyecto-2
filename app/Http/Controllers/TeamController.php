@@ -104,7 +104,7 @@ class TeamController extends Controller
         $prode->final = $final;
         $prode->champ = $champ;
         $prode->save();
-        return response()->json($semis);
+        return response()->json($prodes);
     }
     /**
      * Remove the specified resource from storage.

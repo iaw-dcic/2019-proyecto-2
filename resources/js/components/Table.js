@@ -404,7 +404,7 @@ export default class Table extends Component {
         }).catch(function (error) {
           console.log(error);
         });
-        this.componentDidMount();
+        this.render();
         this.new();
     }
 }
