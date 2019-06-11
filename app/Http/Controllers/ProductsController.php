@@ -24,9 +24,14 @@ class ProductsController extends Controller
  
     public function show($id)
     {
+        $user=Auth::user();
+
         $product=Product::find($id);
 
-        return $product;
+        if($product['id_user']==$user['id'])
+            return $product;
+        else
+            return redirect('/login');
     }
 
     public function getFunda($id)
