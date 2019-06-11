@@ -11,11 +11,15 @@ export default class MainSection extends Component {
     constructor(){
       super()
 
+      var tempDate = new Date();
+      var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate();
+      const str="Funda nueva "+date;
+
       this.state={
         caseIndex:1,
         colorIndex:7,
         estampaIndex:1,
-        name:'',
+        name:str,
         fundaURL:null,
         estampaURL:null,
         modal: false,
@@ -160,6 +164,7 @@ export default class MainSection extends Component {
       Axios.post('/api/products',product)
       .then(response => {
           alert("Funda creada correctamente");
+          this.componentWillMount();
       });
       
       }
@@ -191,9 +196,6 @@ export default class MainSection extends Component {
         .then((response) => {
           this.setEstampa(response.data.id_image)
           this.setName(response.data.name)
-          console.log(response.data)
-          console.log(this.state.fundaid)
-          console.log(this.state.name)
         });
       }
 
@@ -215,7 +217,8 @@ export default class MainSection extends Component {
 
         Axios.put(path,product)
         .then(response => {
-            alert("Funda editada !")
+            alert("Funda editada !");
+            this.setFundaID(null)
         });
       }
 
@@ -242,6 +245,7 @@ export default class MainSection extends Component {
                   </div>
                   <ul className="features-list list-1">
                     <li className="nombre-funda">
+                      <h3 className="features-item-header">Asignale un nombre a tu funda</h3>
                       <input
                           id='name'
                           type='text'
@@ -250,7 +254,7 @@ export default class MainSection extends Component {
                           placeholder="Nombre de la funda"
                           value={this.state.name}
                           onChange={this.handleFieldChange}
-                          required autoFocus
+                          required
                         />
                     </li>
                     <li className="case-options">
@@ -274,7 +278,7 @@ export default class MainSection extends Component {
                       <Images onClick={this.setEstampa}/>
                     </li>
                     <li className="save-changes">
-                      <button type="submit" onClick={this.addNewProduct} className="btn-changes btn btn-primary">Guardar</button>
+                      <button type="submit" onClick={this.addNewProduct} className="btn-changes btn btn-primary" disabled = {this.state.fundaid != null}>Guardar</button>
                       <button type="button" className="btn-changes btn btn-primary" onClick={ this.selectModal }>Mis fundas</button>      
                       <Modal
                         allfundas={this.state.fundas}
@@ -282,7 +286,7 @@ export default class MainSection extends Component {
                         closeModal={this.selectModal}
                         onClick={this.setFundaID}
                       />
-                      <button type="submit" onClick={this.editProduct} className="btn-changes btn btn-primary">Editar</button>
+                      <button type="submit" onClick={this.editProduct} className="btn-changes btn btn-primary" disabled = {this.state.fundaid== null}>Editar</button>
                     </li>
                   </ul>
                 </div>

@@ -23,11 +23,9 @@ Route::post('products','ProductsController@store')->middleware('auth:api');
 
 Route::get('product/getfunda/{id_case}','ProductsController@getFunda');
 
-Route::get('product/{id_case}','ProductsController@show');
+Route::get('product/{id_case}','ProductsController@show')->middleware('auth:api');
 
 Route::put('product/{id_case}','ProductsController@update')->middleware('auth:api');
-
-Route::delete('products/{id_case}','ProductsController@delete');
 
 Route::get('colors', 'ColorsController@index');
 

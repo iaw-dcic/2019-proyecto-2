@@ -60905,7 +60905,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66826,6 +66826,7 @@ function (_Component) {
         className: "hover-btn"
       }, this.state.fundas.map(function (funda) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CaseButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          key: funda.id,
           funda: funda,
           onClick: function onClick() {
             return _this3.props.onClick(funda.id);
@@ -67011,6 +67012,7 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.colors.map(function (color) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ColorButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          key: color.id,
           color: color,
           onClick: function onClick() {
             return _this3.props.onClick(color.id);
@@ -67079,7 +67081,7 @@ function (_Component) {
   _createClass(Head, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("head", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
         name: "csrf-token",
         content: "{{ csrf_token() }}"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
@@ -67267,6 +67269,7 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.images.map(function (image) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImageButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          key: image.id,
           image: image,
           onClick: function onClick() {
             return _this3.props.onClick(image.id);
@@ -67345,11 +67348,14 @@ function (_Component) {
     _classCallCheck(this, MainSection);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MainSection).call(this));
+    var tempDate = new Date();
+    var date = tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-' + tempDate.getDate();
+    var str = "Funda nueva " + date;
     _this.state = {
       caseIndex: 1,
       colorIndex: 7,
       estampaIndex: 1,
-      name: '',
+      name: str,
       fundaURL: null,
       estampaURL: null,
       modal: false,
@@ -67500,6 +67506,8 @@ function (_Component) {
   }, {
     key: "addNewProduct",
     value: function addNewProduct() {
+      var _this4 = this;
+
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
@@ -67511,45 +67519,45 @@ function (_Component) {
       };
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.post('/api/products', product).then(function (response) {
         alert("Funda creada correctamente");
+
+        _this4.componentWillMount();
       });
     }
   }, {
     key: "getFundaToEdit",
     value: function getFundaToEdit(id_funda) {
-      var _this4 = this;
+      var _this5 = this;
 
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       var path = "/api/product/getfunda/" + id_funda;
       axios.get(path).then(function (response) {
-        _this4.setCaseImage(response.data.id_case);
+        _this5.setCaseImage(response.data.id_case);
 
-        _this4.setCaseColor(response.data.id_color);
+        _this5.setCaseColor(response.data.id_color);
       });
     }
   }, {
     key: "getProductToEdit",
     value: function getProductToEdit(id_funda) {
-      var _this5 = this;
+      var _this6 = this;
 
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       var path = "/api/product/" + id_funda;
       axios.get(path).then(function (response) {
-        _this5.setEstampa(response.data.id_image);
+        _this6.setEstampa(response.data.id_image);
 
-        _this5.setName(response.data.name);
-
-        console.log(response.data);
-        console.log(_this5.state.fundaid);
-        console.log(_this5.state.name);
+        _this6.setName(response.data.name);
       });
     }
   }, {
     key: "editProduct",
     value: function editProduct() {
+      var _this7 = this;
+
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
@@ -67563,18 +67571,20 @@ function (_Component) {
       var path = "/api/product/" + this.state.fundaid;
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.put(path, product).then(function (response) {
         alert("Funda editada !");
+
+        _this7.setFundaID(null);
       });
     }
   }, {
     key: "componentWillMount",
     value: function componentWillMount() {
-      var _this6 = this;
+      var _this8 = this;
 
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       axios.get('/api/products').then(function (response) {
-        _this6.setState({
+        _this8.setState({
           fundas: response.data
         });
       });
@@ -67595,7 +67605,9 @@ function (_Component) {
         className: "features-list list-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nombre-funda"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "features-item-header"
+      }, "Asignale un nombre a tu funda"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "name",
         type: "text",
         className: "form-control",
@@ -67603,8 +67615,7 @@ function (_Component) {
         placeholder: "Nombre de la funda",
         value: this.state.name,
         onChange: this.handleFieldChange,
-        required: true,
-        autoFocus: true
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "case-options"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
@@ -67636,7 +67647,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         onClick: this.addNewProduct,
-        className: "btn-changes btn btn-primary"
+        className: "btn-changes btn btn-primary",
+        disabled: this.state.fundaid != null
       }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn-changes btn btn-primary",
@@ -67649,7 +67661,8 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         onClick: this.editProduct,
-        className: "btn-changes btn btn-primary"
+        className: "btn-changes btn btn-primary",
+        disabled: this.state.fundaid == null
       }, "Editar"))));
     }
   }]);
@@ -67702,6 +67715,7 @@ var Modal = function Modal(props) {
   }, "\xD7"), props.allfundas.map(function (funda) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
       className: "btn btn-style",
+      key: funda.id,
       onClick: function onClick() {
         return props.onClick(funda.id);
       }

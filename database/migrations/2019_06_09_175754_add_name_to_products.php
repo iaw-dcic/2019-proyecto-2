@@ -14,7 +14,7 @@ class AddNameToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('name')->unique()->nullable();
+            $table->string('name');
         });
     }
 

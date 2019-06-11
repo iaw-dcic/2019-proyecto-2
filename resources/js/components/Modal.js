@@ -21,7 +21,7 @@ const Modal = props => {
              <span className="close" onClick={ closeModal }>&times;</span>
              {
                    props.allfundas.map(funda =>  
-                     <button className="btn btn-style" onClick={() =>props.onClick(funda.id)}>{funda.name} </button>
+                     <button className="btn btn-style" key={funda.id} onClick={() =>props.onClick(funda.id)}>{funda.name} </button>
                      )
             }     
           </div>

@@ -29,7 +29,7 @@ export default class Images extends Component {
         return (
             <div>
                 {
-                this.state.images.map(image => <ImageButton image={image} onClick={() => this.props.onClick(image.id)}/>)
+                this.state.images.map(image => <ImageButton key={image.id} image={image} onClick={() => this.props.onClick(image.id)}/>)
                 }
             </div>
         );

@@ -14,11 +14,11 @@ class CreateCasesColorTable extends Migration
     public function up()
     {
         Schema::create('cases_color', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
-            $table->unsignedBigInteger('id_color');
+            $table->unsignedInteger('id_color');
             $table->foreign('id_color')->references('id')->on('colors');
-            $table->unsignedBigInteger('id_case');
+            $table->unsignedInteger('id_case');
             $table->foreign('id_case')->references('id')->on('cases');
             $table->string('path');
         });

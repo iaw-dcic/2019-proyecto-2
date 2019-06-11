@@ -30,7 +30,7 @@ export default class CaseOptions extends Component {
             <div className="hover-btn">
                            
                 {
-                   this.state.fundas.map(funda => <CaseButton funda={funda} onClick={() => this.props.onClick(funda.id)}/>)
+                   this.state.fundas.map(funda => <CaseButton key={funda.id} funda={funda} onClick={() => this.props.onClick(funda.id)}/>)
                 }
             </div>
         );

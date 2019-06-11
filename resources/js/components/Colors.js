@@ -30,7 +30,7 @@ export default class Colors extends Component {
         return (
             <div>
                 {
-                    this.state.colors.map(color => <ColorButton color={color} onClick={() => this.props.onClick(color.id)}/>)
+                    this.state.colors.map(color => <ColorButton key={color.id} color={color} onClick={() => this.props.onClick(color.id)}/>)
                 }
             </div>
         );
