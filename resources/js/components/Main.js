@@ -12,41 +12,14 @@ export default class Main extends Component {
          super(props)
          this.state = {
          }
-         this.buttonClick=this.buttonClick.bind(this);
          this.showClick=this.showClick.bind(this);
-         this.coleccionPredictions= this.coleccionPredictions.bind(this);
     }
 
-    buttonClick(response){
-        this.props.onClickA(response);
-    }
 
     showClick(id){
       this.props.onClickB(id);
        window.scrollTo(0, 0);
     }
-
-    componentDidMount(){
-           this.coleccionPredictions();
-       }
-
-    coleccionPredictions(){
-         let api_token = document.querySelector('meta[name="api-token"]');
-        let token = document.head.querySelector('meta[name="csrf-token"]');
-
-         var header = {
-                    headers: {
-                        'X-CSRF-TOKEN': token.content,
-                        'Authorization': 'Bearer ' + api_token.content
-                    }
-                }
-
-         axios.get('/api/predictions', header)
-            .then((response) => {
-                console.log('predictions',response);
-              this.buttonClick(response.data);
-            });
-       }
 
 
   render() {

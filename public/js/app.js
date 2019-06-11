@@ -80643,7 +80643,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./css/cuadro.scss */ "./resources/js/components/css/cuadro.scss");
 /* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Equipo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Equipo */ "./resources/js/components/Equipo.js");
+/* harmony import */ var _Final__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Final */ "./resources/js/components/Final.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -80669,6 +80671,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -80719,10 +80723,17 @@ function (_Component) {
     _this.addNewProduct = _this.addNewProduct.bind(_assertThisInitialized(_this));
     _this.todos = _this.todos.bind(_assertThisInitialized(_this));
     _this.octavos = _this.octavos.bind(_assertThisInitialized(_this));
+    _this.cuartos = _this.cuartos.bind(_assertThisInitialized(_this));
+    _this["final"] = _this["final"].bind(_assertThisInitialized(_this));
+    _this.semis = _this.semis.bind(_assertThisInitialized(_this));
     _this.setPronostico = _this.setPronostico.bind(_assertThisInitialized(_this));
     _this.getEditProductToEdit = _this.getEditProductToEdit.bind(_assertThisInitialized(_this));
     _this.editProduct = _this.editProduct.bind(_assertThisInitialized(_this));
-    _this.initToken = _this.initToken.bind(_assertThisInitialized(_this));
+    _this.onClick1 = _this.onClick1.bind(_assertThisInitialized(_this));
+    _this.onClick2 = _this.onClick2.bind(_assertThisInitialized(_this));
+    _this.onClick3 = _this.onClick3.bind(_assertThisInitialized(_this));
+    _this.onClick4 = _this.onClick4.bind(_assertThisInitialized(_this));
+    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -80730,6 +80741,8 @@ function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       //LOCAL STORAGE
+      this.todos();
+
       for (var key in this.state) {
         if (localStorage.hasOwnProperty(key)) {
           var value = localStorage.getItem(key);
@@ -80757,7 +80770,7 @@ function (_Component) {
         _this2.setState({
           matches: matches
         });
-      }); //       this.todos();
+      });
     }
   }, {
     key: "initToken",
@@ -80900,6 +80913,8 @@ function (_Component) {
   }, {
     key: "editProduct",
     value: function editProduct() {
+      var _this5 = this;
+
       this.initToken();
       var prediction = {
         cuartos0: this.state.cuartos0,
@@ -80920,20 +80935,22 @@ function (_Component) {
       };
       var path = "/api/predictions/" + this.state.pronosticoActual;
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.put(path, prediction).then(function (response) {
+        _this5.todos();
+
         alert("pronostico editado !");
       }); //    window.location.reload();
     }
   }, {
     key: "todos",
     value: function todos() {
-      var _this5 = this;
+      var _this6 = this;
 
       //TODOS LOS PRONOSTICOS
       this.initToken();
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/predictions').then(function (response) {
         console.log('predictions', response);
 
-        _this5.setState({
+        _this6.setState({
           predictions: response.data
         });
       });
@@ -80966,6 +80983,7 @@ function (_Component) {
   }, {
     key: "onClick4",
     value: function onClick4(event, winner) {
+      console.log(event.target.id);
       this.setState({
         ganador: winner
       });
@@ -80974,7 +80992,7 @@ function (_Component) {
   }, {
     key: "octavos",
     value: function octavos() {
-      var _this6 = this;
+      var _this7 = this;
 
       return this.state.matches.map(function (match) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -80985,42 +81003,92 @@ function (_Component) {
           type: "button",
           className: "btn btn-info",
           onClick: function onClick(e) {
-            return _this6.onClick1(e, match.team1_id, match.id - 1);
+            return _this7.onClick1(e, match.team1_id, match.id - 1);
           }
         }, match.team1_id), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", _defineProperty({
           id: match.team2_id,
           type: "button",
           className: "btn btn-info",
           onClick: function onClick(e) {
-            return _this6.onClick1(e, match.team2_id, match.id - 1);
+            return _this7.onClick1(e, match.team2_id, match.id - 1);
           }
         }, "type", "button"), match.team2_id));
       });
     }
   }, {
+    key: "cuartos",
+    value: function cuartos() {
+      //para optimizar
+      var arregloConTodos = [this.state.cuartos0, this.state.cuartos1, this.state.cuartos2, this.state.cuartos3, this.state.cuartos4, this.state.cuartos5, this.state.cuartos6, this.state.cuartos7];
+      var i = 0;
+      var semis = [];
+      var j = 0;
+
+      while (i < 8) {
+        semis.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          team1: arregloConTodos[i],
+          team2: arregloConTodos[i + 1],
+          it: j,
+          id1: i,
+          id2: i + 1,
+          onClick2: this.onClick2
+        }));
+        i = i + 2;
+        j = j + 1;
+      }
+
+      return semis;
+    }
+  }, {
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      this.setState({
+        name: event.target.value
+      });
+    }
+  }, {
     key: "semis",
     value: function semis() {
-      var _this7 = this;
+      var arregloConTodos = [this.state.semifinal0, this.state.semifinal1, this.state.semifinal2, this.state.semifinal3, this.state.semifinal4];
+      var i = 0;
+      var finales = [];
+      var j = 0;
 
-      var arregloConTodos = ["cuartos0", "cuartos1", "cuartos2", "cuartos3", "cuartos4", "cuartos5", "cuartos6", "cuartos7"];
-      return this.arregloConTodos.map(function (match) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-          key: match.id,
-          className: "team-item"
-        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-          type: "button",
-          className: "btn btn-info",
-          onClick: function onClick(e) {
-            return _this7.onClick2(e, match.id, match.id);
-          }
-        }, match.id), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", _defineProperty({
-          type: "button",
-          className: "btn btn-info",
-          onClick: function onClick(e) {
-            return _this7.onClick2(e, match.id, match.id);
-          }
-        }, "type", "button"), match.id));
-      });
+      while (i < 4) {
+        finales.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          team1: arregloConTodos[i],
+          team2: arregloConTodos[i + 1],
+          it: j,
+          id1: i,
+          id2: i + 1,
+          onClick2: this.onClick3
+        }));
+        i = i + 2;
+        j = j + 1;
+      }
+
+      return finales;
+    }
+  }, {
+    key: "final",
+    value: function final() {
+      var arregloConTodos = [this.state.final0, this.state.final1];
+      var i = 0;
+      var finales = [];
+
+      while (i < 2) {
+        finales.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Final__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          team1: arregloConTodos[i],
+          team2: arregloConTodos[i + 1],
+          it: j,
+          id1: i,
+          id2: i + 1,
+          onClick2: this.onClick4
+        }));
+        i = i + 2;
+      }
+
+      return finales;
     }
   }, {
     key: "render",
@@ -81037,93 +81105,9 @@ function (_Component) {
         className: "bracket bracket-1"
       }, this.octavos()), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "bracket bracket-2"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "team-item"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos0, 0);
-        }
-      }, this.state.cuartos0), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos1, 0);
-        }
-      }, this.state.cuartos1)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "team-item"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos2, 1);
-        }
-      }, this.state.cuartos2), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos3, 1);
-        }
-      }, this.state.cuartos3)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "team-item"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos4, 2);
-        }
-      }, this.state.cuartos4), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos5, 2);
-        }
-      }, this.state.cuartos5)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "team-item"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos6, 3);
-        }
-      }, this.state.cuartos6), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick2(e, _this8.state.cuartos7, 3);
-        }
-      }, this.state.cuartos7))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, this.cuartos()), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "bracket bracket-3"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "team-item"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick3(e, _this8.state.semifinal0, 0);
-        }
-      }, this.state.semifinal0), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick3(e, _this8.state.semifinal1, 0);
-        }
-      }, " ", this.state.semifinal1)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "team-item"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick3(e, _this8.state.semifinal2, 1);
-        }
-      }, this.state.semifinal2), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-info",
-        onClick: function onClick(e) {
-          return _this8.onClick3(e, _this8.state.semifinal3, 1);
-        }
-      }, this.state.semifinal3))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, this.semis()), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "bracket bracket-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "team-item"
@@ -81151,7 +81135,7 @@ function (_Component) {
         type: "submit",
         onClick: this.editProduct,
         className: "btn-changes btn btn-primary"
-      }, "Editar")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Main__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, "Grabar")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Main__WEBPACK_IMPORTED_MODULE_5__["default"], {
         predictions: this.state.predictions,
         onClickA: this.setPronostico,
         onClickB: this.getEditProductToEdit
@@ -81180,7 +81164,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navigation */ "./resources/js/components/Navigation.js");
+/* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/cuadro.scss */ "./resources/js/components/css/cuadro.scss");
+/* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_cuadro_scss__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -81202,7 +81187,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-/* Main Component */
 
 var Equipo =
 /*#__PURE__*/
@@ -81210,48 +81194,124 @@ function (_Component) {
   _inherits(Equipo, _Component);
 
   function Equipo(props) {
-    var _this;
-
     _classCallCheck(this, Equipo);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Equipo).call(this, props)); //Initialize the state in the constructor
-
-    _this.state = {
-      teams: []
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(Equipo).call(this, props));
   }
-  /*componentDidMount() is a lifecycle method
-   * that gets called after the component is rendered
-   */
-
 
   _createClass(Equipo, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      /* fetch API in action */
-      fetch('/api/teams').then(function (response) {
-        return response.json();
-      }).then(function (teams) {
-        //Fetched product is stored in the state
-        _this2.setState({
-          teams: teams
-        });
-      });
+    key: "onClickEquipo",
+    value: function onClickEquipo(e, newc, id) {
+      this.props.onClick2(e, newc, id);
     }
-  }, {
-    key: "setName",
-    value: function setName() {}
   }, {
     key: "render",
     value: function render() {
-      /* Some css code has been removed for brevity */
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-info",
+        id: this.props.id1,
+        onClick: function onClick(e) {
+          return _this.onClickEquipo(e, _this.props.team1, _this.props.it);
+        }
+      }, this.props.team1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-info",
+        id: this.props.id2,
+        onClick: function onClick(e) {
+          return _this.onClickEquipo(e, _this.props.team2, _this.props.it);
+        }
+      }, this.props.team2));
     }
   }]);
 
   return Equipo;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Final.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Final.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Final; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/cuadro.scss */ "./resources/js/components/css/cuadro.scss");
+/* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_cuadro_scss__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Final =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Final, _Component);
+
+  function Final(props) {
+    _classCallCheck(this, Final);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Final).call(this, props));
+  }
+
+  _createClass(Final, [{
+    key: "onClickEquipo",
+    value: function onClickEquipo(e, newc, id) {
+      this.props.onClick2(e, newc);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-info",
+        id: this.props.id1,
+        onClick: function onClick(e) {
+          return _this.onClickEquipo(e, _this.props.teamA);
+        }
+      }, this.props.teamA), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-info",
+        id: this.props.id2,
+        onClick: function onClick(e) {
+          return _this.onClickEquipo(e, _this.props.teamB);
+        }
+      }, this.props.teamB));
+    }
+  }]);
+
+  return Final;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -81394,51 +81454,20 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Main).call(this, props));
     _this.state = {};
-    _this.buttonClick = _this.buttonClick.bind(_assertThisInitialized(_this));
     _this.showClick = _this.showClick.bind(_assertThisInitialized(_this));
-    _this.coleccionPredictions = _this.coleccionPredictions.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Main, [{
-    key: "buttonClick",
-    value: function buttonClick(response) {
-      this.props.onClickA(response);
-    }
-  }, {
     key: "showClick",
     value: function showClick(id) {
       this.props.onClickB(id);
       window.scrollTo(0, 0);
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.coleccionPredictions();
-    }
-  }, {
-    key: "coleccionPredictions",
-    value: function coleccionPredictions() {
-      var _this2 = this;
-
-      var api_token = document.querySelector('meta[name="api-token"]');
-      var token = document.head.querySelector('meta[name="csrf-token"]');
-      var header = {
-        headers: {
-          'X-CSRF-TOKEN': token.content,
-          'Authorization': 'Bearer ' + api_token.content
-        }
-      };
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/api/predictions', header).then(function (response) {
-        console.log('predictions', response);
-
-        _this2.buttonClick(response.data);
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
         role: "main",
@@ -81462,7 +81491,7 @@ function (_Component) {
         }, prediction.id, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick(e) {
-            return _this3.showClick(prediction.id);
+            return _this2.showClick(prediction.id);
           },
           className: "btn btn-info"
         }, "Ver"));

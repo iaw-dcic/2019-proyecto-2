@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import axios from 'axios'
 import  "./css/cuadro.scss";
 import Main from './Main'
+import Equipo from './Equipo'
+import Final from './Final'
 import { Link } from 'react-router-dom'
 
 /* Main Component */
@@ -31,17 +33,23 @@ export default class Cuadro extends Component {
 
            final0: [],
            final1: [],
-
            pronosticoActual :null,
   }
 
   this.addNewProduct=this.addNewProduct.bind(this);
   this.todos=this.todos.bind(this);
   this.octavos=this.octavos.bind(this);
+  this.cuartos=this.cuartos.bind(this);
+  this.final=this.final.bind(this);
+  this.semis=this.semis.bind(this);
   this.setPronostico=this.setPronostico.bind(this);
   this.getEditProductToEdit=this.getEditProductToEdit.bind(this);
   this.editProduct=this.editProduct.bind(this);
-  this.initToken= this.initToken.bind(this);
+  this.onClick1= this.onClick1.bind(this);
+  this.onClick2= this.onClick2.bind(this);
+  this.onClick3= this.onClick3.bind(this);
+  this.onClick4= this.onClick4.bind(this);
+  this.handleFieldChange = this.handleFieldChange.bind(this);
 }
 
 setPronostico = (pronost) => {
@@ -51,6 +59,9 @@ setPronostico = (pronost) => {
    }
 
 componentWillMount() { //LOCAL STORAGE
+
+this.todos();
+
       for (let key in this.state) {
           if (localStorage.hasOwnProperty(key)) {
               let value = localStorage.getItem(key);
@@ -74,7 +85,8 @@ componentWillMount() { //LOCAL STORAGE
              //Fetched product is stored in the state
              this.setState({ matches });
          });
-  //       this.todos();
+
+
 
   }
 
@@ -198,8 +210,12 @@ componentWillMount() { //LOCAL STORAGE
 
       axios.put(path,prediction)
         .then(response => {
-            alert("pronostico editado !")
-        });
+            this.todos();
+            alert("pronostico editado !");
+
+
+        })
+
 
     //    window.location.reload();
 
@@ -249,7 +265,8 @@ componentWillMount() { //LOCAL STORAGE
 
 
   onClick4(event, winner){
-  this.setState({
+      console.log(event.target.id);
+      this.setState({
           ganador: winner
       });
       localStorage.setItem("ganador", JSON.stringify(winner));
@@ -268,19 +285,57 @@ componentWillMount() { //LOCAL STORAGE
       })
     }
 
-  semis(){
-    let arregloConTodos= ["cuartos0", "cuartos1", "cuartos2", "cuartos3", "cuartos4", "cuartos5", "cuartos6", "cuartos7"];
+  cuartos(){ //para optimizar
+    let arregloConTodos= [this.state.cuartos0, this.state.cuartos1, this.state.cuartos2, this.state.cuartos3, this.state.cuartos4, this.state.cuartos5, this.state.cuartos6, this.state.cuartos7];
+    let i=0;
+    let semis =[];
+    let j=0;
+    while (i < 8) {
+               semis.push(<Equipo team1 = {arregloConTodos[i]}
+                       team2 = {arregloConTodos[i+1]} it={j}
+                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick2}/>)
+               i = i + 2;
+              j =j+1;
+           }
 
-    return this.arregloConTodos.map(match => {
-     return(
-            <li key={match.id}  className="team-item">
-                  <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e,match.id, match.id)}>{match.id}</button>
-                    <time>vs</time>
-                  <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e,match.id,match.id)} type="button">{match.id}</button>
-            </li>
-        );
-    }
-  )}
+           return semis;
+  }
+
+  handleFieldChange (event) {
+         this.setState({
+          name: event.target.value
+         })
+       }
+
+  semis(){
+    let arregloConTodos= [this.state.semifinal0, this.state.semifinal1, this.state.semifinal2, this.state.semifinal3, this.state.semifinal4];
+    let i=0;
+    let finales =[];
+    let j=0;
+    while (i < 4) {
+               finales.push(<Equipo team1 = {arregloConTodos[i]}
+                       team2 = {arregloConTodos[i+1]} it={j}
+                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick3}/>)
+               i = i + 2;
+              j =j+1;
+           }
+
+           return finales;
+  }
+
+  final(){
+    let arregloConTodos= [this.state.final0, this.state.final1];
+    let i=0;
+    let finales =[];
+    while (i < 2) {
+               finales.push(<Final team1 = {arregloConTodos[i]}
+                       team2 = {arregloConTodos[i+1]} it={j}
+                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick4}/>)
+               i = i + 2;
+           }
+
+           return finales;
+  }
 
         render() {
 
@@ -300,47 +355,15 @@ componentWillMount() { //LOCAL STORAGE
                   </ul>
 
                     <ul className="bracket bracket-2">
-                      <li className="team-item">
-                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos0, 0)}>{this.state.cuartos0}</button>
-                      <time>vs</time>
-                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos1, 0)}>{this.state.cuartos1}</button>
-                      </li>
-
-                      <li className="team-item">
-                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos2, 1)}>{this.state.cuartos2}</button>
-                      <time>vs</time>
-                            <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos3, 1)}>{this.state.cuartos3}</button>
-                      </li>
-
-                      <li className="team-item">
-                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos4, 2)}>{this.state.cuartos4}</button>
-                        <time>vs</time>
-                          <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos5, 2)}>{this.state.cuartos5}</button>
-                      </li>
-
-                        <li className="team-item">
-                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos6, 3)}>{this.state.cuartos6}</button>
-                          <time>vs</time>
-                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick2(e, this.state.cuartos7, 3)}>{this.state.cuartos7}</button>
-                        </li>
+                      {this.cuartos()}
                     </ul>
 
                 <ul className="bracket bracket-3">
-                 <li className="team-item">
-                      <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal0, 0)}>{this.state.semifinal0}</button>
-                      <time>vs</time>
-                        <button type="button"className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal1, 0)}> {this.state.semifinal1}</button>
-                  </li>
-
-                  <li className="team-item">
-                      <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal2, 1)}>{this.state.semifinal2}</button>
-                    <time>vs</time>
-                      <button type="button" className= "btn btn-info" onClick={(e) => this.onClick3(e, this.state.semifinal3, 1)}>{this.state.semifinal3}</button>
-                  </li>
+                      {this.semis()}
                 </ul>
 
                   <ul className="bracket bracket-4">
-                    <li className="team-item">
+                  <li className="team-item">
                         <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final0)}>{this.state.final0}</button>
                       <time>vs</time>
                         <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final1)}>
@@ -352,8 +375,9 @@ componentWillMount() { //LOCAL STORAGE
                       <li className="team-item">
                       {this.state.ganador}
                       </li>
+
                       <button type="submit" onClick={this.addNewProduct} className="btn-changes btn btn-primary">Guardar nuevo</button>
-                      <button type="submit" onClick={this.editProduct} className="btn-changes btn btn-primary">Editar</button>
+                      <button type="submit" onClick={this.editProduct} className="btn-changes btn btn-primary">Grabar</button>
                     </ul>
             </div>
             </div>

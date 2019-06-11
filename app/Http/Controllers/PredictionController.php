@@ -29,10 +29,16 @@ class PredictionController extends Controller
     }
 
     public function addPronostico(){ //creo el pronostico
+  //    $validatedData = $request->validate([
+  //        'name' => 'required',
+  //      ]);
+
         $user=Auth::user();
         $pronostico= new Prediction();
+    //    $pronostico->name = $validatedData['name'];
+        $pronostico->name = "prueba";
         $pronostico->user_id=$user->id;
-        $pronostico->name="proof";
+
         $pronostico->save();
 
             return response()->json($pronostico->id, 201);
@@ -109,8 +115,8 @@ class PredictionController extends Controller
     public function update(Request $request,  $id)
     {
         $prediction=Prediction::find($id);
-  //      $data=request()->all();
-        $partidos= Match::where('prediction', $prediction->id)->get(['team1_id', 'team2_id']);
+        $data=request()->all();
+        $partidos= Match::where('prediction', $prediction->id)->get();
 
         $partidos[0]->update([
             'team1_id'=> $request->get('cuartos0'),
