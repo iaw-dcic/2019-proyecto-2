@@ -99,7 +99,6 @@ export default class ShirtImage extends Component {
     }
 
     editarRemera(idRemera) {
-
         try {
             axios.get('/api/misDiseños/' + idRemera).then(response => {
                 this.setState({
@@ -114,28 +113,6 @@ export default class ShirtImage extends Component {
             console.log('Error Axios', e);
         }
     }
-    addLogo = (src) => {
-        this.setState({ logo: src });
-        localStorage.setItem("logo", JSON.stringify(src));
-    }
-
-    cambiarColorRemera = (newId) => {
-        this.setState({ remera: newId });
-        localStorage.setItem("remera", JSON.stringify(newId));
-    }
-
-
-    cambiarTalle = (newTalle) => {
-
-        this.setState({ talle: newTalle });
-        localStorage.setItem("talle", JSON.stringify(newTalle));
-    }
-
-
-    cambiarTela = (newTela) => {
-        this.setState({ tela: newTela });
-        localStorage.setItem("tela", JSON.stringify(newTela));
-    }
 
     eliminarLogo(e) {
         if (this.state.logo != "") {
@@ -143,7 +120,6 @@ export default class ShirtImage extends Component {
             localStorage.setItem("logo", JSON.stringify(""));
         }
     }
-
 
     crearDiseño(e) {
         axios.post('/api/crearDiseño', {
@@ -156,16 +132,6 @@ export default class ShirtImage extends Component {
             console.log(response.data)
         })
     }
-
-    setearEdit = (valor) => {
-        this.setState({ edit: valor });
-    }
-
-    setearEditIdRemeraEditar = (valor) => {
-        this.setState({ idRemeraEditar: valor });
-    }
-
-
 
     actualizarDiseño() {
         try {
@@ -228,10 +194,6 @@ export default class ShirtImage extends Component {
                 </div>
 
                 <hr width="100%"></hr>
-
-                <div className="container">
-                    <ListadoEditar addLogo={this.addLogo} cambiarTalle={this.cambiarTalle} cambiarTela={this.cambiarTela} cambiarColorRemera={this.cambiarColorRemera} setearEdit={this.setearEdit} setearEditIdRemeraEditar={this.setearEditIdRemeraEditar} />
-                </div>
             </section>
 
         );

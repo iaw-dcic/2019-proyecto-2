@@ -66475,15 +66475,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -66503,51 +66501,6 @@ function (_Component) {
     _classCallCheck(this, ShirtImage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShirtImage).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "addLogo", function (src) {
-      _this.setState({
-        logo: src
-      });
-
-      localStorage.setItem("logo", JSON.stringify(src));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "cambiarColorRemera", function (newId) {
-      _this.setState({
-        remera: newId
-      });
-
-      localStorage.setItem("remera", JSON.stringify(newId));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "cambiarTalle", function (newTalle) {
-      _this.setState({
-        talle: newTalle
-      });
-
-      localStorage.setItem("talle", JSON.stringify(newTalle));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "cambiarTela", function (newTela) {
-      _this.setState({
-        tela: newTela
-      });
-
-      localStorage.setItem("tela", JSON.stringify(newTela));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "setearEdit", function (valor) {
-      _this.setState({
-        edit: valor
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "setearEditIdRemeraEditar", function (valor) {
-      _this.setState({
-        idRemeraEditar: valor
-      });
-    });
-
     _this.state = {
       remera: "colorBlanco",
       talle: "XS",
@@ -66751,16 +66704,7 @@ function (_Component) {
         cambiarColorRemera: this.cambiarColorRemera
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ListadoEditar__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        addLogo: this.addLogo,
-        cambiarTalle: this.cambiarTalle,
-        cambiarTela: this.cambiarTela,
-        cambiarColorRemera: this.cambiarColorRemera,
-        setearEdit: this.setearEdit,
-        setearEditIdRemeraEditar: this.setearEditIdRemeraEditar
-      })));
+      }));
     }
   }]);
 
