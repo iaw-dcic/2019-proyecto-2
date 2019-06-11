@@ -61098,7 +61098,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65899,7 +65899,7 @@ function (_Component) {
         className: "col-sm text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Eastern Conference"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
-      }, this.createTeamsA(), this.createQuarTeamsA(), this.createSemiTeamsA(), this.createFinal(), this.createSemiTeamsB(), this.createQuarTeamsB(), this.createTeamsB()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.createTeams(0), this.createQuarTeams(0), this.createSemiTeams(0), this.createFinal(), this.createSemiTeams(2), this.createQuarTeams(4), this.createTeams(8)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm Content border-success"
@@ -65921,11 +65921,13 @@ function (_Component) {
     key: "save",
     value: function save() {
       var self = this;
+      console.log("ENTRE AL SAVE CON ID= ", self.state.id);
 
       if (self.state.id == 0) {
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/prode', {
           data: self.state
         }).then(function (response) {
+          console.log(response);
           self.setState({
             fixtures: response.data,
             id: response.data[response.data.length - 1]['id'],
@@ -65935,6 +65937,7 @@ function (_Component) {
           console.log("ERROR EN SAVE 1: " + error);
         });
       } else {
+        console.log("entre al save2");
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.put('/api/teams/' + this.state.id, {
           data: this.state
         }).then(function (response) {})["catch"](function (error) {
@@ -65975,21 +65978,22 @@ function (_Component) {
         semiTeams: ["", "", "", ""],
         finalTeams: ["", ""],
         championTeam: "none",
-        fixtureId: 0,
+        id: 0,
         fixtureName: "New Fixture"
       });
     }
   }, {
-    key: "createTeamsA",
-    value: function createTeamsA() {
+    key: "createTeams",
+    value: function createTeams(ind) {
+      console.log(ind);
       var disabled1 = "";
       var disabled2 = "";
       var disabled3 = "";
       var disabled4 = "";
-      if (this.state.quarTeams[0] != "") disabled1 = "disabled";
-      if (this.state.quarTeams[1] != "") disabled2 = "disabled";
-      if (this.state.quarTeams[2] != "") disabled3 = "disabled";
-      if (this.state.quarTeams[3] != "") disabled4 = "disabled";
+      if (this.state.quarTeams[Math.floor(ind / 2)] != "") disabled1 = "disabled";
+      if (this.state.quarTeams[Math.floor((ind + 2) / 2)] != "") disabled2 = "disabled";
+      if (this.state.quarTeams[Math.floor((ind + 4) / 2)] != "") disabled3 = "disabled";
+      if (this.state.quarTeams[Math.floor((ind + 6) / 2)] != "") disabled4 = "disabled";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm",
         id: "teamsA"
@@ -65998,34 +66002,34 @@ function (_Component) {
         key: "teams1",
         disabled: disabled1,
         teams: this.state.teams,
-        index: 0
+        index: ind
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onClick: this.handleToQuart,
         key: "teams2",
         disabled: disabled2,
         teams: this.state.teams,
-        index: 2
+        index: ind + 2
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onClick: this.handleToQuart,
         key: "teams3",
         disabled: disabled3,
         teams: this.state.teams,
-        index: 4
+        index: ind + 4
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onClick: this.handleToQuart,
         key: "teams4",
         disabled: disabled4,
         teams: this.state.teams,
-        index: 6
+        index: ind + 6
       }));
     }
   }, {
-    key: "createQuarTeamsA",
-    value: function createQuarTeamsA() {
+    key: "createQuarTeams",
+    value: function createQuarTeams(ind) {
       var disabled1 = "";
       var disabled2 = "";
-      if (this.state.quarTeams[0] == "" || this.state.quarTeams[1] == "" || this.state.semiTeams[0] != "") disabled1 = "disabled";
-      if (this.state.quarTeams[2] == "" || this.state.quarTeams[3] == "" || this.state.semiTeams[1] != "") disabled2 = "disabled";
+      if (this.state.quarTeams[ind] == "" || this.state.quarTeams[ind + 1] == "" || this.state.semiTeams[ind / 2] != "") disabled1 = "disabled";
+      if (this.state.quarTeams[ind + 2] == "" || this.state.quarTeams[ind + 3] == "" || this.state.semiTeams[(ind + 2) / 2] != "") disabled2 = "disabled";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm",
         id: "cuartosA"
@@ -66034,20 +66038,20 @@ function (_Component) {
         key: "cuartos1",
         disabled: disabled1,
         teams: this.state.quarTeams,
-        index: 0
+        index: ind
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onClick: this.handleToSemi,
         key: "cuartos2",
         disabled: disabled2,
         teams: this.state.quarTeams,
-        index: 2
+        index: ind + 2
       }));
     }
   }, {
-    key: "createSemiTeamsA",
-    value: function createSemiTeamsA() {
+    key: "createSemiTeams",
+    value: function createSemiTeams(ind) {
       var disabled1 = "";
-      if (this.state.semiTeams[0] == "" || this.state.semiTeams[1] == "" || this.state.finalTeams[0] != "") disabled1 = "disabled";
+      if (this.state.semiTeams[ind] == "" || this.state.semiTeams[ind + 1] == "" || this.state.finalTeams[ind / 2] != "") disabled1 = "disabled";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm",
         id: "semifinalesA"
@@ -66056,7 +66060,7 @@ function (_Component) {
         key: "semifinal1",
         disabled: disabled1,
         teams: this.state.semiTeams,
-        index: 0
+        index: ind
       }));
     }
   }, {
@@ -66083,86 +66087,48 @@ function (_Component) {
         onClick: this["new"]
       }, "New Fixture"));
     }
-  }, {
-    key: "createSemiTeamsB",
-    value: function createSemiTeamsB() {
-      var disabled1 = "";
-      if (this.state.semiTeams[2] == "" || this.state.semiTeams[3] == "" || this.state.finalTeams[1] != "") disabled1 = "disabled";
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm",
-        id: "semifinalesB"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        onClick: this.handleToFinal,
-        key: "semifinal2",
-        disabled: disabled1,
-        teams: this.state.semiTeams,
-        index: 2
-      }));
-    }
-  }, {
-    key: "createQuarTeamsB",
-    value: function createQuarTeamsB() {
-      var disabled1 = "";
-      var disabled2 = "";
-      if (this.state.quarTeams[4] == "" || this.state.quarTeams[5] == "" || this.state.semiTeams[2] != "") disabled1 = "disabled";
-      if (this.state.quarTeams[6] == "" || this.state.quarTeams[7] == "" || this.state.semiTeams[3] != "") disabled2 = "disabled";
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm",
-        id: "cuartosB"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        onClick: this.handleToSemi,
-        key: "cuartos3",
-        disabled: disabled1,
-        teams: this.state.quarTeams,
-        index: 4
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        onClick: this.handleToSemi,
-        key: "cuartos4",
-        disabled: disabled2,
-        teams: this.state.quarTeams,
-        index: 6
-      }));
-    }
-  }, {
-    key: "createTeamsB",
-    value: function createTeamsB() {
-      var disabled1 = "";
-      var disabled2 = "";
-      var disabled3 = "";
-      var disabled4 = "";
-      if (this.state.quarTeams[4] != "") disabled1 = "disabled";
-      if (this.state.quarTeams[5] != "") disabled2 = "disabled";
-      if (this.state.quarTeams[6] != "") disabled3 = "disabled";
-      if (this.state.quarTeams[7] != "") disabled4 = "disabled";
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm",
-        id: "teamsB"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        onClick: this.handleToQuart,
-        key: "teams5",
-        disabled: disabled1,
-        teams: this.state.teams,
-        index: 8
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        onClick: this.handleToQuart,
-        key: "teams6",
-        disabled: disabled2,
-        teams: this.state.teams,
-        index: 10
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        onClick: this.handleToQuart,
-        key: "teams7",
-        disabled: disabled3,
-        teams: this.state.teams,
-        index: 12
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureGame__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        onClick: this.handleToQuart,
-        key: "teams8",
-        disabled: disabled4,
-        teams: this.state.teams,
-        index: 14
-      }));
-    }
+    /*index
+      createSemiTeamsB(){
+        var disabled1="";
+        if (this.state.semiTeams[2] == "" || this.state.semiTeams[3] == "" || this.state.finalTeams[1] != "") disabled1="disabled";
+        return(
+        <div className="col-sm" id="semifinalesB" >
+              <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        <FixtureGame onClick={this.handleToFinal} key="semifinal2" disabled={disabled1} teams={ this.state.semiTeams} index={2} ></FixtureGame>
+      </div>);
+      }
+    
+      createQuarTeamsB(){
+        var disabled1="";     var disabled2="";     
+        
+        if (this.state.quarTeams[4] == "" || this.state.quarTeams[5] == "" || this.state.semiTeams[2] != "") disabled1="disabled";
+        if (this.state.quarTeams[6] == "" || this.state.quarTeams[7] == "" || this.state.semiTeams[3] != "") disabled2="disabled";
+    
+        return(
+        <div className="col-sm" id="cuartosB" >
+            <br></br><br></br><br></br>
+          <FixtureGame onClick={this.handleToSemi} key="cuartos3" disabled={disabled1} teams={ this.state.quarTeams} index={4} ></FixtureGame>
+          <br></br><br></br><br></br><br></br><br></br>
+          <FixtureGame onClick={this.handleToSemi} key="cuartos4" disabled={disabled2} teams={ this.state.quarTeams} index={6} ></FixtureGame>
+        </div> );
+      }
+    
+      createTeamsB(){
+        var disabled1="";     var disabled2="";     var disabled3="";     var disabled4="";
+    
+        if(this.state.quarTeams[4]!="" ) disabled1="disabled";
+        if(this.state.quarTeams[5]!="" ) disabled2="disabled";
+        if(this.state.quarTeams[6]!="" ) disabled3="disabled";
+        if(this.state.quarTeams[7]!="" ) disabled4="disabled";
+        return(
+        <div className="col-sm" id="teamsB" >
+        <FixtureGame  onClick={this.handleToQuart} key="teams5" disabled={disabled1} teams={ this.state.teams} index={8} ></FixtureGame><br></br>
+        <FixtureGame  onClick={this.handleToQuart} key="teams6" disabled={disabled2} teams={ this.state.teams} index={10} ></FixtureGame><br></br>
+        <FixtureGame  onClick={this.handleToQuart} key="teams7" disabled={disabled3} teams={ this.state.teams} index={12} ></FixtureGame><br></br>
+        <FixtureGame  onClick={this.handleToQuart} key="teams8" disabled={disabled4} teams={ this.state.teams} index={14} ></FixtureGame>
+        </div>  );
+      }*/
+
   }]);
 
   return FixtureApp;

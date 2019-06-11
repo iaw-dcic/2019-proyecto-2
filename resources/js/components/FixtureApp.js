@@ -248,12 +248,13 @@ export default class FixtureApp extends Component {
 
 
   createTeams(ind){
+    console.log(ind );
     var disabled1="";     var disabled2="";     var disabled3="";     var disabled4="";
 
-    if(this.state.quarTeams[ind]!="" ) disabled1="disabled";
-    if(this.state.quarTeams[ind+1]!="" ) disabled2="disabled";
-    if(this.state.quarTeams[ind+2]!="" ) disabled3="disabled";
-    if(this.state.quarTeams[ind+3]!="" ) disabled4="disabled";
+    if(this.state.quarTeams[Math.floor(ind/2)]!="" ) disabled1="disabled";
+    if(this.state.quarTeams[Math.floor((ind+2)/2)]!="" ) disabled2="disabled";
+    if(this.state.quarTeams[Math.floor((ind+4)/2)]!="" ) disabled3="disabled";
+    if(this.state.quarTeams[Math.floor((ind+6)/2)]!="" ) disabled4="disabled";
 
     return (<div className="col-sm" id="teamsA" >
     <FixtureGame  onClick={this.handleToQuart} key="teams1" disabled={disabled1} teams={ this.state.teams} index={ind} ></FixtureGame><br></br>
@@ -266,8 +267,8 @@ export default class FixtureApp extends Component {
   createQuarTeams(ind){
     var disabled1="";     var disabled2="";     
     
-    if (this.state.quarTeams[ind] == "" || this.state.quarTeams[ind+1] == "" || this.state.semiTeams[ind] != "") disabled1="disabled";
-    if (this.state.quarTeams[ind+2] == "" || this.state.quarTeams[ind+3] == "" || this.state.semiTeams[ind+1] != "") disabled2="disabled";
+    if (this.state.quarTeams[ind] == "" || this.state.quarTeams[ind+1] == "" || this.state.semiTeams[ind/2] != "") disabled1="disabled";
+    if (this.state.quarTeams[ind+2] == "" || this.state.quarTeams[ind+3] == "" || this.state.semiTeams[(ind+2)/2] != "") disabled2="disabled";
 
     return(
     <div className="col-sm" id="cuartosA" >
@@ -277,9 +278,9 @@ export default class FixtureApp extends Component {
     <FixtureGame onClick={this.handleToSemi} key="cuartos2" disabled={disabled2}  teams={ this.state.quarTeams} index={ind+2} ></FixtureGame></div>);
   }
 
-  createSemiTeams(){
+  createSemiTeams(ind){
     var disabled1="";
-    if (this.state.semiTeams[ind] == "" || this.state.semiTeams[ind+1] == "" || this.state.finalTeams[ind] != "") disabled1="disabled";
+    if (this.state.semiTeams[ind] == "" || this.state.semiTeams[ind+1] == "" || this.state.finalTeams[ind/2] != "") disabled1="disabled";
 
     return(
       <div className="col-sm" id="semifinalesA" >
