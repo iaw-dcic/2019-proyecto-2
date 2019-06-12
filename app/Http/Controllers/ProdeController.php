@@ -18,13 +18,23 @@ use App\Team;
 class ProdeController extends Controller
 {
     /**
-     * Se encarga de listar todos los prodes.
+     * Se encarga de listar todos los prodes del usuario autenticado.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $prodes = Prode::all();
+        $id=auth('api')->user()->id;
+        $prodes = Prode::where('user_id',$id);
+        return response()->json([
+            "ok" => true,
+            "data" => $prodes,
+            "user_id" => auth('api')->user()->id,
+        ]);
+    }
+    public function indexUsuario($id)
+    {
+        $prodes = Prode::where('user_id',$id)->get();
         return response()->json([
             "ok" => true,
             "data" => $prodes,
@@ -59,11 +69,10 @@ class ProdeController extends Controller
 
         $prode = new Prode;
         $prode->name = $name;
+        $id=0;
         if (Auth::check()){
             $id = auth('api')->user()->id;
             $prode->user_id = $id;
-        }else {
-            $prode->user_id = 0;
         }
         $prode->cuartos = $cuartos;
         $prode->semis = $semis;
@@ -77,6 +86,7 @@ class ProdeController extends Controller
 
             "ok" => true,
             "message" => "Tu prode ha sido guardado exitosamente",
+            "datos" => $id,
         ]);
     }
 

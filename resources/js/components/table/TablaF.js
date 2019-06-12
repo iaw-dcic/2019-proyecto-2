@@ -26,6 +26,9 @@ export default class TablaS extends React.Component {
     cambiarEstado() {
 
         var visibility = this.state.visibility;
+        visibility[0]=false
+        visibility[1]=false
+
         if (this.props.final[0].id > 0) {
             visibility[0] = visibility;
             this.setState = {
@@ -58,7 +61,7 @@ export default class TablaS extends React.Component {
             <CardImg top width="100%" className="rounded" src="./trofeo.png" alt="Card image cap" />
             <CardBody>
                 <CardTitle className= "text-center"><h4><span className="badge badge-primary">Campeón</span></h4></CardTitle>
-                    <CardSubtitle className= "text-center"><h3><span className="badge badge-warning">{this.state.campeon[0].name}</span></h3></CardSubtitle>
+                    <CardSubtitle className= "text-center"><h3><span className="badge badge-warning">{this.props.campeon[0].name}</span></h3></CardSubtitle>
 
             </CardBody>
             </Card >

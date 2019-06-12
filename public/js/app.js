@@ -95089,32 +95089,11 @@ function (_Component) {
   _createClass(Home, [{
     key: "render",
     value: function render() {
-      var mensaje;
-
-      if (document.querySelector('meta[name="api-token"]') == null) {
-        mensaje = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card bg-light mb-3"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "card-body"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "card-text"
-        }, "Para poder guardar sus prodes y consultarlos por favor inicie sesi\xF3n si tiene usuario registrado o registrese si a\xFAn no lo hizo."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "card-text"
-        }, "Haga click en el equipo que usted considera que ganar\xE1 ese partido."))));
-      } else mensaje = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-light",
-        href: "/misProdes"
-      }, "Ver mis prodes guardados"));
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row text-center"
-      }, mensaje, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xl"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_teams_Listar__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_teams_Listar__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 
@@ -95161,24 +95140,48 @@ var MisProdes =
 function (_Component) {
   _inherits(MisProdes, _Component);
 
-  function MisProdes() {
+  function MisProdes(props) {
+    var _this;
+
     _classCallCheck(this, MisProdes);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MisProdes).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MisProdes).call(this, props));
+    _this.state = {
+      prodes: []
+    };
+    return _this;
   }
 
   _createClass(MisProdes, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
-      console.log(api_token);
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = api_token.content;
+      axios({
+        method: 'get',
+        url: 'api/prode'
+      }).then(function (respuesta) {
+        var r = respuesta.data;
+        console.log(r.data);
+
+        _this2.setState({
+          prodes: r.data
+        });
+      })["catch"](function (error) {
+        alert("Error");
+      });
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "App"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, document.querySelector('meta[name="api-token"]').content));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.prodes[0].name));
     }
   }]);
 
@@ -95661,23 +95664,27 @@ function (_React$Component) {
     key: "cambiarEstado",
     value: function cambiarEstado() {
       var visibility = this.state.visibility;
+      visibility[0] = false;
+      visibility[1] = false;
+      visibility[2] = false;
+      visibility[3] = false;
 
       if (this.props.cuartos[0].id > 0) {
-        visibility[0] = visibility;
+        visibility[0] = true;
         this.setState = {
           visibility: visibility
         };
       }
 
       if (this.props.cuartos[1].id > 0) {
-        visibility[1] = visibility;
+        visibility[1] = true;
         this.setState = {
           visibility: visibility
         };
       }
 
       if (this.props.cuartos[2].id > 0) {
-        visibility[2] = visibility;
+        visibility[2] = true;
         this.setState = {
           visibility: visibility
         };
@@ -95710,7 +95717,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
-        hidden: !this.state.visibility[0] && !this.props.reset,
+        hidden: !this.state.visibility[0],
         disabled: this.estanTodos(),
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[0]);
@@ -95725,7 +95732,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
-        hidden: !this.state.visibility[1] && !this.props.reset,
+        hidden: !this.state.visibility[1],
         disabled: this.estanTodos(),
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[1]);
@@ -95740,7 +95747,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
-        hidden: !this.state.visibility[2] && !this.props.reset,
+        hidden: !this.state.visibility[2],
         disabled: this.estanTodos(),
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[2]);
@@ -95755,7 +95762,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
-        hidden: !this.state.visibility[3] && !this.props.reset,
+        hidden: !this.state.visibility[3],
         disabled: this.estanTodos(),
         onClick: function onClick() {
           _this2.props.ganadorC(event, _this2.props.cuartos[3]);
@@ -95840,23 +95847,27 @@ function (_React$Component) {
     key: "cambiarEstado",
     value: function cambiarEstado() {
       var visibility = this.state.visibility;
+      visibility[0] = false;
+      visibility[1] = false;
+      visibility[2] = false;
+      visibility[3] = false;
 
       if (this.props.cuartos[4].id > 0) {
-        visibility[0] = visibility;
+        visibility[0] = true;
         this.setState = {
           visibility: visibility
         };
       }
 
       if (this.props.cuartos[5].id > 0) {
-        visibility[1] = visibility;
+        visibility[1] = true;
         this.setState = {
           visibility: visibility
         };
       }
 
       if (this.props.cuartos[6].id > 0) {
-        visibility[2] = visibility;
+        visibility[2] = true;
         this.setState = {
           visibility: visibility
         };
@@ -96097,6 +96108,8 @@ function (_React$Component) {
     key: "cambiarEstado",
     value: function cambiarEstado() {
       var visibility = this.state.visibility;
+      visibility[0] = false;
+      visibility[1] = false;
 
       if (this.props["final"][0].id > 0) {
         visibility[0] = visibility;
@@ -96141,7 +96154,7 @@ function (_React$Component) {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "badge badge-warning"
-      }, this.state.campeon[0].name)))));else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+      }, this.props.campeon[0].name)))));else return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Card"], {
         className: "Card-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CardImg"], {
         top: true,
@@ -96285,6 +96298,8 @@ function (_React$Component) {
     key: "cambiarEstado",
     value: function cambiarEstado() {
       var visibility = this.state.visibility;
+      visibility[0] = false;
+      visibility[1] = false;
 
       if (this.props.semis[0].id > 0) {
         visibility[0] = visibility;
@@ -96436,6 +96451,8 @@ function (_React$Component) {
     key: "cambiarEstado",
     value: function cambiarEstado() {
       var visibility = this.state.visibility;
+      visibility[0] = false;
+      visibility[1] = false;
 
       if (this.props.semis[2].id > 0) {
         visibility[0] = visibility;
@@ -96949,7 +96966,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Listar).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "url", "/api/index");
+    _defineProperty(_assertThisInitialized(_this), "url", "/api");
 
     _this.state = {
       octavos: [],
@@ -96958,6 +96975,8 @@ function (_Component) {
       semis: ["", "", "", ""],
       "final": ["", ""],
       campeon: [""],
+      id: 0,
+      prodes: [],
       guardar: false,
       reset: false
     };
@@ -97118,10 +97137,40 @@ function (_Component) {
       localStorage.setItem("api_token", api_token);
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-      window.axios.defaults.headers.common['Authorization'] = api_token.content;
+      window.axios.defaults.headers.common['Authorization'] = api_token.content; //Request del usuario
+
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'get',
-        url: this.url
+        url: this.url + '/user'
+      }).then(function (respuesta) {
+        var r = respuesta.data;
+        var id = r.data;
+
+        _this2.setState({
+          id: id
+        });
+
+        console.log(r.data); //Request de prodes del usuario
+
+        axios__WEBPACK_IMPORTED_MODULE_1___default()({
+          method: 'get',
+          url: _this2.url + '/prode/usuario/' + _this2.state.id
+        }).then(function (respuesta) {
+          var r = respuesta.data;
+
+          _this2.setState({
+            prodes: r.data
+          });
+        })["catch"](function (error) {
+          alert("Error");
+        });
+      })["catch"](function (error) {
+        alert("Error");
+      }); //Request de equipos
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default()({
+        method: 'get',
+        url: this.url + '/index'
       }).then(function (respuesta) {
         var r = respuesta.data;
 
@@ -97161,8 +97210,25 @@ function (_Component) {
     }
   }, {
     key: "new",
-    value: function _new() {//Recarga la pagina
+    value: function _new() {
+      var _this5 = this;
+
+      this.reiniciar(); //recarga la pagina
       // window.location.reload();
+      //Request de prodes del usuario
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default()({
+        method: 'get',
+        url: this.url + '/prode/usuario/' + this.state.id
+      }).then(function (respuesta) {
+        var r = respuesta.data;
+
+        _this5.setState({
+          prodes: r.data
+        });
+      })["catch"](function (error) {
+        alert("Error");
+      });
     }
   }, {
     key: "reiniciar",
@@ -97172,15 +97238,71 @@ function (_Component) {
         semis: ["", "", "", ""],
         "final": ["", ""],
         campeon: [""],
-        reset: true
+        guardar: false
       });
+    }
+  }, {
+    key: "seleccionarProde",
+    value: function seleccionarProde(e) {
+      this.reiniciar();
+      var cuartos = e.cuartos.split(',');
+      var semis = e.semis.split(',');
+
+      var _final2 = e["final"].split(',');
+
+      var campeon = e.campeon.split(',');
+      console.log('antes del for', cuartos);
+      var c;
+
+      for (c = 0; c <= 8; c++) {
+        this.state.equipos.map(function (e, i) {
+          if (cuartos[c] == e.id) {
+            cuartos[c] = e;
+          }
+
+          if (c < 4 && semis[c] == e.id) {
+            semis[c] = e;
+          }
+
+          if (c < 2 && _final2[c] == e.id) {
+            _final2[c] = e;
+          }
+
+          if (campeon[0] == e.id) {
+            campeon[0] = e;
+          }
+        });
+      }
+
+      this.setState({
+        cuartos: cuartos,
+        semis: semis,
+        "final": _final2,
+        campeon: campeon
+      });
+      console.log('despues del for', this.state.campeon);
+    }
+  }, {
+    key: "misProdes",
+    value: function misProdes() {
+      var _this6 = this;
+
+      if (this.state.prodes.length > 0) {
+        return this.state.prodes.map(function (e, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "dropdown-item",
+            onClick: function onClick() {
+              _this6.seleccionarProde(e);
+            }
+          }, e.name);
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this7 = this;
 
-      var cuartos = this.state.cuartos.cuartos;
       var guardar;
 
       if (this.state.guardar && document.querySelector('meta[name="api-token"]') != null) {
@@ -97196,6 +97318,16 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "btn-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-danger dropdown-toggle",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Mis Prodes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu"
+      }, this.misProdes())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "text-center row flex-row flex-nowrap"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
@@ -97231,8 +97363,7 @@ function (_Component) {
         className: "text-center"
       }, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__["default"], {
         semis: this.state.semis,
-        ganadorS: this.ganadorS.bind(this),
-        dibujar: this.state.dibujar
+        ganadorS: this.ganadorS.bind(this)
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97244,6 +97375,7 @@ function (_Component) {
         className: "text-center"
       }, "Final"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaF__WEBPACK_IMPORTED_MODULE_6__["default"], {
         "final": this.state["final"],
+        campeon: this.state.campeon,
         ganadorF: this.ganadorF.bind(this)
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
@@ -97284,7 +97416,7 @@ function (_Component) {
         color: "primary",
         onClick: function onClick() {
           {
-            _this5.reiniciar(event);
+            _this7.reiniciar(event);
           }
         }
       }, "Reiniciar "), guardar));

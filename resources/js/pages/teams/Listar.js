@@ -19,7 +19,7 @@ import config from '../../components/config/config';
 class Listar extends Component {
 
 
-    url = "/api/index";
+    url = "/api";
 
     constructor(props) {
         super(props);
@@ -30,6 +30,8 @@ class Listar extends Component {
             semis: ["", "", "", ""],
             final: ["", ""],
             campeon: [""],
+            id: 0,
+            prodes: [],
             guardar: false,
             reset: false,
 
@@ -180,10 +182,11 @@ class Listar extends Component {
         ganador[0] = equipo;
 
         this.setState({
-            campeon : ganador,
-            guardar : true
+            campeon: ganador,
+            guardar: true
         });
     }
+
 
 
     /**Cuando monte el componente que me liste los equipos */
@@ -192,19 +195,52 @@ class Listar extends Component {
 
 
         let api_token = document.querySelector('meta[name="api-token"]');
-        localStorage.setItem("api_token",api_token);
+        localStorage.setItem("api_token", api_token);
         let token = document.head.querySelector('meta[name="csrf-token"]');
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = api_token.content;
 
-        window.axios.defaults.headers.common['Authorization'] =api_token.content;
+        //Request del usuario
         axios({
             method: 'get',
-            url: this.url
+            url: this.url + '/user',
+        }).then(respuesta => {
+            let r = respuesta.data;
+            var id = r.data
+            this.setState({
+                id: id,
+            });
+            console.log(r.data)
+            //Request de prodes del usuario
+            axios({
+                method: 'get',
+                url: this.url + '/prode/usuario/' + this.state.id
+            }).then(respuesta => {
+                let r = respuesta.data;
+                this.setState({
+                    prodes: r.data,
+                });
+            }).catch(error => {
+                alert("Error")
+            });
+
+        }).catch(error => {
+            alert("Error")
+        });
+
+
+
+
+
+        //Request de equipos
+        axios({
+            method: 'get',
+            url: this.url + '/index',
         }).then(respuesta => {
             let r = respuesta.data;
             this.setState({
                 equipos: r.data,
-                octavos: r.data
+                octavos: r.data,
             });
         }).catch(error => {
             alert("Error")
@@ -225,32 +261,98 @@ class Listar extends Component {
 
 
 
-    new(){
-        //Recarga la pagina
+    new() {
+        this.reiniciar();
+        //recarga la pagina
         // window.location.reload();
+        //Request de prodes del usuario
+        axios({
+            method: 'get',
+            url: this.url + '/prode/usuario/' + this.state.id
+        }).then(respuesta => {
+            let r = respuesta.data;
+            this.setState({
+                prodes: r.data,
+            });
+        }).catch(error => {
+            alert("Error")
+        });
     }
 
-    reiniciar(){
+    reiniciar() {
         this.setState({
             cuartos: ["", "", "", "", "", "", "", ""],
             semis: ["", "", "", ""],
             final: ["", ""],
             campeon: [""],
-            reset:true
+            guardar:false,
         });
     }
 
+    seleccionarProde(e) {
+        this.reiniciar();
+        let cuartos = e.cuartos.split(',');
+        let semis = e.semis.split(',');
+        let final = e.final.split(',');
+        let campeon = e.campeon.split(',');
+        console.log('antes del for',cuartos);
+        var c;
+        for(c=0; c<=8; c++){
+            this.state.equipos.map((e, i) =>
+            {
+                if(cuartos[c]==e.id){
+                    cuartos[c]=e;
+                }
+                if(c<4 && semis[c]==e.id){
+                    semis[c]=e;
+                }
+                if(c<2 && final[c]==e.id){
+                    final[c]=e;
+                }
+                if(campeon[0]==e.id){
+                    campeon[0]=e;
+                }
+            });
+        }
+        this.setState({
+            cuartos:cuartos,
+            semis:semis,
+            final:final,
+            campeon:campeon,
+        });
+        console.log('despues del for',this.state.campeon)
+    }
+
+    misProdes() {
+        if (this.state.prodes.length>0) {
+            return this.state.prodes.map((e, i) =>
+                <button className="dropdown-item" onClick={() => { this.seleccionarProde(e) }}>{e.name}</button>
+            );
+        }
+    }
+
     render() {
-        const { cuartos } = this.state.cuartos;
         let guardar;
-        if(this.state.guardar && document.querySelector('meta[name="api-token"]')!=null){
-            guardar = <PanelBotones cuartos={this.state.cuartos} semis={this.state.semis} final={this.state.final} campeon={this.state.campeon}  new={this.new.bind(this)} />;
+        if (this.state.guardar && document.querySelector('meta[name="api-token"]') != null) {
+            guardar = <PanelBotones cuartos={this.state.cuartos} semis={this.state.semis} final={this.state.final} campeon={this.state.campeon} new={this.new.bind(this)} />;
         }
 
 
         return (
 
+
             <div className="container-fluid">
+
+                <div className="btn-group">
+                    <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mis Prodes
+                    </button>
+                    <div className="dropdown-menu">
+                        {this.misProdes()}
+                    </div>
+                </div>
+
+
                 <div className="text-center row flex-row flex-nowrap">
                     <div className="row">
                         <div className="col-xs-4">
@@ -267,7 +369,7 @@ class Listar extends Component {
                         </div>
                     </div>
                     <div className="row">
-                    <div className="col">
+                        <div className="col">
                             <Table responsive className="table-borderless">
                                 <thead>
                                     <tr>
@@ -275,13 +377,13 @@ class Listar extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TablaC reset={this.state.reset}cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
+                                    <TablaC reset={this.state.reset} cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
                                 </tbody>
                             </Table>
                         </div>
                     </div>
                     <div className="row">
-                    <div className="col">
+                        <div className="col">
                             <Table responsive className="table-borderless">
                                 <thead>
                                     <tr>
@@ -289,13 +391,13 @@ class Listar extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TablaS semis={this.state.semis} ganadorS={this.ganadorS.bind(this)} dibujar={this.state.dibujar} />
+                                    <TablaS semis={this.state.semis} ganadorS={this.ganadorS.bind(this)} />
                                 </tbody>
                             </Table>
                         </div>
                     </div>
                     <div className="row">
-                    <div className="col">
+                        <div className="col">
                             <Table responsive className="table-borderless">
                                 <thead>
                                     <tr>
@@ -303,13 +405,13 @@ class Listar extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TablaF final={this.state.final} ganadorF={this.ganadorF.bind(this)} />
+                                    <TablaF final={this.state.final} campeon={this.state.campeon}ganadorF={this.ganadorF.bind(this)} />
                                 </tbody>
                             </Table>
                         </div>
                     </div>
                     <div className="row">
-                    <div className="col">
+                        <div className="col">
                             <Table responsive className="table-borderless">
                                 <thead>
                                     <tr>
@@ -323,7 +425,7 @@ class Listar extends Component {
                         </div>
                     </div>
                     <div className="row">
-                    <div className="col">
+                        <div className="col">
                             <Table responsive className="table-borderless">
                                 <thead>
                                     <tr>
@@ -331,13 +433,13 @@ class Listar extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TablaCD cuartos={this.state.cuartos}  ganadorC={this.ganadorC.bind(this)} />
+                                    <TablaCD cuartos={this.state.cuartos} ganadorC={this.ganadorC.bind(this)} />
                                 </tbody>
                             </Table>
                         </div>
                     </div>
                     <div className="row">
-                    <div className="col">
+                        <div className="col">
                             <Table responsive className="table-borderless">
                                 <thead>
                                     <tr>
@@ -354,10 +456,10 @@ class Listar extends Component {
 
                 </div>
                 <div className="btn-group btn-group-justified">
-                <Button color="primary" onClick={() => { {this.reiniciar(event)} }}>Reiniciar </Button>
-                {guardar}
+                    <Button color="primary" onClick={() => { { this.reiniciar(event) } }}>Reiniciar </Button>
+                    {guardar}
 
-                 </div>
+                </div>
 
 
             </div>

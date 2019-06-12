@@ -29,8 +29,8 @@
     @endauth
 
 </head>
-<body>
-    <div class="app" id="app">
+<body class="app">
+    <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark stycky-top">
                 {{-- collapse --}}
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">

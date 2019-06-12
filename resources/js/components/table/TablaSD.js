@@ -24,6 +24,9 @@ export default class TablaSD extends React.Component {
     cambiarEstado() {
 
         var visibility = this.state.visibility;
+        visibility[0]=false
+        visibility[1]=false
+
         if (this.props.semis[2].id > 0) {
             visibility[0] = visibility;
             this.setState = {

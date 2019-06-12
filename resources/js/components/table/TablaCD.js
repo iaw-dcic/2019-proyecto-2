@@ -22,20 +22,23 @@ export default class TablaCD extends React.Component {
     //         return true;
     // }
     cambiarEstado() {
-
         var visibility = this.state.visibility;
+        visibility[0]=false
+        visibility[1]=false
+        visibility[2]=false
+        visibility[3]=false
         if (this.props.cuartos[4].id > 0) {
-            visibility[0] = visibility;
+            visibility[0] = true;
             this.setState = {
                 visibility: visibility
             }
         }if (this.props.cuartos[5].id > 0) {
-            visibility[1] = visibility;
+            visibility[1] = true;
             this.setState = {
                 visibility: visibility
             }
         }if (this.props.cuartos[6].id > 0) {
-            visibility[2] = visibility;
+            visibility[2] = true;
             this.setState = {
                 visibility: visibility,
             }
