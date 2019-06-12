@@ -81019,7 +81019,6 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         onClick: this.addNewProduct,
-        disabled: this.state.pronosticoActual != null,
         className: "btn-changes btn btn-success"
       }, "Guardar nuevo"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",

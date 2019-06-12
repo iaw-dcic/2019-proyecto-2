@@ -397,7 +397,7 @@ componentWillMount() { //LOCAL STORAGE
               onChange={this.handleFieldChange}
             />
             </div>
-            <button type="submit" onClick={this.addNewProduct} disabled = {this.state.pronosticoActual != null} className="btn-changes btn btn-success">Guardar nuevo</button>
+            <button type="submit" onClick={this.addNewProduct}  className="btn-changes btn btn-success">Guardar nuevo</button>
 
 
             <button type="submit" onClick={this.editProduct} disabled = {this.state.pronosticoActual== null} className="btn-changes btn btn-success">Grabar</button>
