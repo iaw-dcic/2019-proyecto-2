@@ -125,12 +125,13 @@ componentWillMount() { //LOCAL STORAGE
       console.log(response);
     });
 
+        window.location.reload(); //refresh
+
     for (let key in this.state) { //para que me limpie el pronostico dsp de que agrego uno nuevo
      if (localStorage.hasOwnProperty(key))
        localStorage.removeItem(key);
      }
 
-    window.location.reload(); //refresh
   }
 
   async addPronostico(){

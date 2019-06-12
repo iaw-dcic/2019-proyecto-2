@@ -80659,12 +80659,12 @@ function (_Component) {
                 });
 
               case 6:
+                window.location.reload(); //refresh
+
                 for (key in this.state) {
                   //para que me limpie el pronostico dsp de que agrego uno nuevo
                   if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
                 }
-
-                window.location.reload(); //refresh
 
               case 8:
               case "end":
