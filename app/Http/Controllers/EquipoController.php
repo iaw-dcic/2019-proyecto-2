@@ -112,7 +112,9 @@ class EquipoController extends Controller
         $prode->name=$name;
         $prode->save();
 
-        return response()->json($final);
+        $prodes2 = Prode::where('user_id', auth('api')->user()->id)->select('name','id')->get();
+        return response()->json($prodes2);
+        //return response()->json($name);
     }
     /**
      * Remove the specified resource from storage.
@@ -122,6 +124,12 @@ class EquipoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+    
+
+       $prodes = Prode::find($id);
+       $prodes->delete();
+       $prodes2 = Prode::where('user_id', auth('api')->user()->id)->select('name', 'id')->get();
+        return response()->json($prodes2);
     }
 }

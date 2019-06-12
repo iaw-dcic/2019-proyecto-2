@@ -29,10 +29,11 @@ export default class Generador extends Component {
         this.buscar = this.buscar.bind(this);
         this.nuevo = this.nuevo.bind(this);
         this.limpiar = this.limpiar.bind(this);
-         this.save = this.save.bind(this);
+         this.guardarEditar = this.guardarEditar.bind(this);
         this.handleFieldChange=this.handleFieldChange.bind(this);
         this.hasErrorFor = this.hasErrorFor.bind(this);
         this.renderErrorFor = this.renderErrorFor.bind(this);
+        this.eliminar=this.eliminar.bind(this)
     }
 
   handleFieldChange (event) {
@@ -213,10 +214,10 @@ export default class Generador extends Component {
 
                 
                
-                 <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.save}> guardar</button>
-                  <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.limpiar}>Borrar </button>
-                  <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.nuevo} >Nuevo</button>
-                
+                <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.guardarEditar}> guardar</button>
+                <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.limpiar}>Limpiar </button>
+                <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.nuevo} >Nuevo</button>
+                <button  className="btn btn-outline-danger mb-2 mr-2" onClick={this.eliminar}> EliminarProde</button>
                         
                   
                
@@ -243,7 +244,7 @@ export default class Generador extends Component {
 
             let child = <Manejo  EquipoA = {this.state.octavos[i]}  EquipoB = {this.state.octavos[i+1]} 
             id1 = {i} id2 = {i+1}  onClick = {this.onClickOctavos} 
-                        create = {this.crear} disable = {disabled}/>
+                         disable = {disabled}/>
 
             
             children.push(child);
@@ -271,7 +272,7 @@ export default class Generador extends Component {
             else disabled = "";
             let child=<Manejo  EquipoA = {this.state.cuartos[i]} EquipoB = {this.state.cuartos[i+1]}
             id1 = {i} id2 = {i+1}  onClick = {this.onClickCuartos} 
-                        create = {this.crear} disable = {disabled}/>
+                         disable = {disabled}/>
             children.push(child);
 
             i = i + 2;
@@ -297,7 +298,7 @@ export default class Generador extends Component {
 
               let child=<Manejo  EquipoA = {this.state.semis[i]}  EquipoB = {this.state.semis[i+1]}
               id1 = {i} id2 = {i+1}  onClick = {this.onClickSemis} 
-                        create = {this.crear} disable = {disabled}/>
+                         disable = {disabled}/>
             children.push(child);
           
             i = i + 2;
@@ -323,7 +324,7 @@ export default class Generador extends Component {
         
          let child=<Manejo  EquipoA = {this.state.final[i]} EquipoB= {this.state.final[i+1]}
          id1 = {i} id2 = {i+1}  onClick = {this.onClickFinal} 
-                        create = {this.crear} disable = {disabled}/>
+                         disable = {disabled}/>
             children.push(child);
 
         table.push(<div id = "final" className="col-sm">{children}</div>);
@@ -379,13 +380,34 @@ export default class Generador extends Component {
         })
     }
 
-    crear(e){
-        var hijos = e.target.getElementsByTagName('BUTTON');
-        hijos[0].disabled = false;
-        hijos[1].disabled = false;
+   
+
+     eliminar(e){
+        var id = this.state.id;
+        let self = this;
+        let prodes;
+        axios.delete('/api/equipos/'+id)
+        .then(function (response) {
+            
+            if(response.data==null && response.data==[])
+                prodes =[];
+            else
+                prodes = response.data;
+            self.setState({
+                prodes: prodes,
+                cuartos: ["", "", "", "", "", "", "", ""],
+                semis: ["", "", "", ""],
+                final: ["", ""],
+                camp: 'vacio',
+                id: 0,
+                name: "Nuevo prode"
+            });
+        }).catch(function (error) {
+          console.log(error);
+        });
     }
 
-     save (event){
+     guardarEditar (event){
         var self = this;
         if (this.state.id == 0){
       
@@ -406,6 +428,11 @@ export default class Generador extends Component {
             axios.put('/api/equipos/'+this.state.id, {
                 data: this.state
             }).then(function (response) {
+                  self.setState({
+                    prodes: response.data,
+                    name: response.data[response.data.length-1]['name'],
+                    
+                });
             }).catch(function (error) {
               console.log(error);
             });
@@ -454,13 +481,17 @@ export default class Generador extends Component {
 
     limpiar(){
         this.setState({
-            cuartos: ["", "", "", "", "", "", "", ""],
-            semis: ["", "", "", ""],
-            final: ["", ""],
-            camp: 'vacio',
-        });
+                        cuartos: ["", "", "", "", "", "", "", ""],
+                        semis: ["", "", "", ""],
+                        final: ["", ""],
+                        camp: 'vacio',
+                    });
     
     }
+     
+
+
+
 }
 
    

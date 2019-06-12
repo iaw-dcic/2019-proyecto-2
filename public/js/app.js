@@ -65982,10 +65982,11 @@ function (_Component) {
     _this.buscar = _this.buscar.bind(_assertThisInitialized(_this));
     _this.nuevo = _this.nuevo.bind(_assertThisInitialized(_this));
     _this.limpiar = _this.limpiar.bind(_assertThisInitialized(_this));
-    _this.save = _this.save.bind(_assertThisInitialized(_this));
+    _this.guardarEditar = _this.guardarEditar.bind(_assertThisInitialized(_this));
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
     _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
+    _this.eliminar = _this.eliminar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -66118,14 +66119,17 @@ function (_Component) {
         className: "card-body"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-danger mb-2 mr-2",
-        onClick: this.save
+        onClick: this.guardarEditar
       }, " guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-danger mb-2 mr-2",
         onClick: this.limpiar
-      }, "Borrar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Limpiar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-outline-danger mb-2 mr-2",
         onClick: this.nuevo
-      }, "Nuevo")));
+      }, "Nuevo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-danger mb-2 mr-2",
+        onClick: this.eliminar
+      }, " EliminarProde")));
     }
   }, {
     key: "GenerarOctavos",
@@ -66146,7 +66150,6 @@ function (_Component) {
           id1: i,
           id2: i + 1,
           onClick: this.onClickOctavos,
-          create: this.crear,
           disable: disabled
         });
         children.push(child);
@@ -66178,7 +66181,6 @@ function (_Component) {
           id1: i,
           id2: i + 1,
           onClick: this.onClickCuartos,
-          create: this.crear,
           disable: disabled
         });
         children.push(child);
@@ -66210,7 +66212,6 @@ function (_Component) {
           id1: i,
           id2: i + 1,
           onClick: this.onClickSemis,
-          create: this.crear,
           disable: disabled
         });
         children.push(child);
@@ -66241,7 +66242,6 @@ function (_Component) {
         id1: i,
         id2: i + 1,
         onClick: this.onClickFinal,
-        create: this.crear,
         disable: disabled
       });
       children.push(child);
@@ -66303,15 +66303,29 @@ function (_Component) {
       });
     }
   }, {
-    key: "crear",
-    value: function crear(e) {
-      var hijos = e.target.getElementsByTagName('BUTTON');
-      hijos[0].disabled = false;
-      hijos[1].disabled = false;
+    key: "eliminar",
+    value: function eliminar(e) {
+      var id = this.state.id;
+      var self = this;
+      var prodes;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]('/api/equipos/' + id).then(function (response) {
+        if (response.data == null && response.data == []) prodes = [];else prodes = response.data;
+        self.setState({
+          prodes: prodes,
+          cuartos: ["", "", "", "", "", "", "", ""],
+          semis: ["", "", "", ""],
+          "final": ["", ""],
+          camp: 'vacio',
+          id: 0,
+          name: "Nuevo prode"
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }, {
-    key: "save",
-    value: function save(event) {
+    key: "guardarEditar",
+    value: function guardarEditar(event) {
       var self = this;
 
       if (this.state.id == 0) {
@@ -66330,7 +66344,12 @@ function (_Component) {
       } else {
         axios__WEBPACK_IMPORTED_MODULE_3___default.a.put('/api/equipos/' + this.state.id, {
           data: this.state
-        }).then(function (response) {})["catch"](function (error) {
+        }).then(function (response) {
+          self.setState({
+            prodes: response.data,
+            name: response.data[response.data.length - 1]['name']
+          });
+        })["catch"](function (error) {
           console.log(error);
         });
       }

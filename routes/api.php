@@ -25,3 +25,4 @@ Route::get('equipos', 'EquipoController@index')->middleware('auth:api');
 Route::post('equipos', 'EquipoController@store')->middleware('auth:api');
 Route::get('equipos/{prode}', 'EquipoController@show')->middleware('auth:api');
 Route::put('equipos/{prode}', 'EquipoController@update')->middleware('auth:api');
+Route::delete('equipos/{id}', 'EquipoController@destroy')->middleware('auth:api');

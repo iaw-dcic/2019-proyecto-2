@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <!--   {{ config('app.name', 'Hola') }} -->
+                    
                      {{ __('Home') }}
                      
                 </a>
