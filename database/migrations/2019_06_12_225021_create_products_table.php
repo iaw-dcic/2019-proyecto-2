@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->foreign('id_case_color')->references('id')->on('cases_color');
             $table->unsignedInteger('id_image');
             $table->foreign('id_image')->references('id')->on('images');
+            $table->string('name');
         });
     }
 
