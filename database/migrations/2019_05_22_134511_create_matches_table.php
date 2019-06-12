@@ -19,7 +19,7 @@ class CreateMatchesTable extends Migration
             $table->unsignedBigInteger('team1_id');
             $table->unsignedBigInteger('team2_id');
             $table->unsignedBigInteger('prediction')->nullable();
-            $table->integer('ronda'); //16-8-4-2
+            $table->integer('ronda');
         });
 
         Schema::table('matches', function (Blueprint $table) {

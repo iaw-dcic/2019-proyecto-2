@@ -80426,7 +80426,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- //background:
+
 
 var App =
 /*#__PURE__*/
@@ -80441,8 +80441,6 @@ function (_Component) {
 
   _createClass(App, [{
     key: "render",
-    // esto va en return       <Route exact path="/" component={HomePage} />
-    //     <Route path="/user/predictions" component={Main} />
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuadro__WEBPACK_IMPORTED_MODULE_6__["default"], null)));
     }
@@ -80475,10 +80473,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./css/cuadro.scss */ "./resources/js/components/css/cuadro.scss");
 /* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modal */ "./resources/js/components/Modal.js");
-/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
-/* harmony import */ var _Equipo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Equipo */ "./resources/js/components/Equipo.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
+/* harmony import */ var _Equipo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Equipo */ "./resources/js/components/Equipo.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -80504,7 +80501,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -80600,7 +80596,6 @@ function (_Component) {
       fetch('api/matches/16').then(function (response) {
         return response.json();
       }).then(function (matches) {
-        //Fetched product is stored in the state
         _this2.setState({
           matches: matches
         });
@@ -80619,7 +80614,7 @@ function (_Component) {
     value: function selectModal(info) {
       this.setState({
         show: !this.state.show
-      }); // true/false toggle
+      });
     }
   }, {
     key: "addNewProduct",
@@ -80657,12 +80652,12 @@ function (_Component) {
                 };
                 _context.next = 6;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/predictions/partidos', prediction).then(function (response) {
-                  console.log(response); //      alert("Partidos agregados correctamente");
+                  console.log(response);
                 });
 
               case 6:
-                //   this.todos();
                 for (key in this.state) {
+                  //para que me limpie el pronostico dsp de que agrego uno nuevo
                   if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
                 }
 
@@ -80695,7 +80690,6 @@ function (_Component) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                //necesito crearlo primero pq no puedo tener el id!!!!!!!!!!!
                 this.initToken();
                 nombre = {
                   name: this.state.name
@@ -80706,7 +80700,6 @@ function (_Component) {
                     pronosticoActual: response.data
                   });
 
-                  console.log('el id es', response);
                   alert("Pronostico creado correctamente");
                 });
 
@@ -80784,7 +80777,6 @@ function (_Component) {
       };
       var path = "/api/predictions/" + this.state.pronosticoActual;
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.put(path, prediction).then(function (response) {
-        //      this.todos();
         alert("pronostico editado !");
       });
       window.location.reload();
@@ -80874,12 +80866,10 @@ function (_Component) {
       var j = 0;
 
       while (i < 8) {
-        semis.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        semis.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_6__["default"], {
           team1: arregloConTodos[i],
           team2: arregloConTodos[i + 1],
           it: j,
-          id1: i,
-          id2: i + 1,
           onClick2: this.onClick2,
           nombreop: this.getName
         }));
@@ -80890,13 +80880,6 @@ function (_Component) {
       return semis;
     }
   }, {
-    key: "handleFieldChange",
-    value: function handleFieldChange(event) {
-      this.setState({
-        name: event.target.value
-      });
-    }
-  }, {
     key: "semis",
     value: function semis() {
       var arregloConTodos = [this.state.semifinal0, this.state.semifinal1, this.state.semifinal2, this.state.semifinal3, this.state.semifinal4];
@@ -80905,12 +80888,10 @@ function (_Component) {
       var j = 0;
 
       while (i < 4) {
-        finales.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        finales.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_6__["default"], {
           team1: arregloConTodos[i],
           team2: arregloConTodos[i + 1],
           it: j,
-          id1: i,
-          id2: i + 1,
           onClick2: this.onClick3,
           nombreop: this.getName
         }));
@@ -80919,6 +80900,13 @@ function (_Component) {
       }
 
       return finales;
+    }
+  }, {
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      this.setState({
+        name: event.target.value
+      });
     }
   }, {
     key: "render",
@@ -80957,7 +80945,7 @@ function (_Component) {
         className: "bracket bracket-5"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "team-item"
-      }, this.state.ganador), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+      }, this.state.ganador), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "name"
       }, "Nombre identificador de tu pron\xF3stico "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         id: "name",
@@ -80966,7 +80954,7 @@ function (_Component) {
         placeholder: "Inserte nombre",
         value: this.state.name,
         onChange: this.handleFieldChange
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         onClick: this.addNewProduct,
         disabled: this.state.pronosticoActual != null,
@@ -80980,7 +80968,7 @@ function (_Component) {
         type: "button",
         className: "btn-changes btn btn-primary",
         onClick: this.selectModal
-      }, "Mis pronosticos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, "Mis pronosticos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Main__WEBPACK_IMPORTED_MODULE_5__["default"], {
         displayModal: this.state.show,
         closeModal: this.selectModal,
         predictions: this.state.predictions,
@@ -81070,13 +81058,11 @@ function (_Component) {
         className: "team-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-info",
-        id: this.props.id1,
         onClick: function onClick(e) {
           return _this2.onClickEquipo(e, _this2.props.team1, _this2.props.it);
         }
       }, this.props.team1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-info",
-        id: this.props.id2,
         onClick: function onClick(e) {
           return _this2.onClickEquipo(e, _this2.props.team2, _this2.props.it);
         }
@@ -81178,111 +81164,6 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Cuadro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Cuadro */ "./resources/js/components/Cuadro.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-var Main =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Main, _Component);
-
-  function Main(props) {
-    var _this;
-
-    _classCallCheck(this, Main);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Main).call(this, props));
-    _this.showClick = _this.showClick.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Main, [{
-    key: "showClick",
-    value: function showClick(id) {
-      this.props.onClickB(id);
-      window.scrollTo(0, 0);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
-        role: "main",
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row mt-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Mis pronosticos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-group list-group-flush"
-      }, this.props.predictions.map(function (prediction) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
-          key: prediction.id
-        }, prediction.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          onClick: function onClick(e) {
-            return _this2.showClick(prediction.id);
-          },
-          className: "btn btn-info"
-        }, "Ver"));
-      }))))))));
-    }
-  }]);
-
-  return Main;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/Modal.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_modal_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/modal.css */ "./resources/js/components/css/modal.css");
 /* harmony import */ var _css_modal_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_modal_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -81290,7 +81171,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Modal = function Modal(props) {
+var Main = function Main(props) {
   var divStyle = {
     display: props.displayModal ? 'block' : 'none'
   };
@@ -81331,7 +81212,7 @@ var Modal = function Modal(props) {
   })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Modal);
+/* harmony default export */ __webpack_exports__["default"] = (Main);
 
 /***/ }),
 

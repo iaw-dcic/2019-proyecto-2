@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
 import  "./css/cuadro.scss"
-import Modal from './Modal'
 import Main from './Main'
 import Equipo from './Equipo'
 import { Link } from 'react-router-dom'
@@ -33,7 +32,7 @@ export default class Cuadro extends Component {
 
            final0: [],
            final1: [],
-show: false,
+           show: false,
            pronosticoActual :null,
   }
 
@@ -50,8 +49,7 @@ show: false,
   this.onClick3= this.onClick3.bind(this);
   this.onClick4= this.onClick4.bind(this);
   this.handleFieldChange = this.handleFieldChange.bind(this);
-
-        this.selectModal=this.selectModal.bind(this)
+  this.selectModal=this.selectModal.bind(this)
 }
 
 setPronostico = (pronost) => {
@@ -61,9 +59,7 @@ setPronostico = (pronost) => {
    }
 
 componentWillMount() { //LOCAL STORAGE
-
-this.todos();
-
+      this.todos();
       for (let key in this.state) {
           if (localStorage.hasOwnProperty(key)) {
               let value = localStorage.getItem(key);
@@ -74,18 +70,14 @@ this.todos();
                   this.setState({ [key]: value });
               }
       }}
-
-
   }
 
   componentDidMount() { //LOS PARTIDOS DE OCTAVOS
-
       fetch('api/matches/16')
       .then(response => {
              return response.json();
          })
          .then(matches => {
-             //Fetched product is stored in the state
              this.setState({ matches });
          });
   }
@@ -97,8 +89,8 @@ this.todos();
   }
 
   selectModal(info){
-      this.setState({show: !this.state.show}) // true/false toggle
-    }
+      this.setState({show: !this.state.show})
+  }
 
   async addNewProduct() { //CREAR NUEVO PRONOSTICO
     await this.addPronostico();
@@ -127,161 +119,137 @@ this.todos();
 
     await axios.post('/api/predictions/partidos', prediction)
     .then(response => {
-
       console.log(response);
-      //      alert("Partidos agregados correctamente");
     });
-  //   this.todos();
 
-
-    for (let key in this.state) {
-
+    for (let key in this.state) { //para que me limpie el pronostico dsp de que agrego uno nuevo
      if (localStorage.hasOwnProperty(key))
        localStorage.removeItem(key);
-  }
+     }
 
     window.location.reload(); //refresh
   }
 
-  async addPronostico(){ //necesito crearlo primero pq no puedo tener el id!!!!!!!!!!!
+  async addPronostico(){
     this.initToken();
 
-    const nombre={
-      name: this.state.name,
-    }
+    const nombre={name: this.state.name,}
 
     await axios.post('/api/predictions/add', nombre)
       .then(response => {
         this.setState({
           pronosticoActual: response.data
         });
-        console.log('el id es', response);
-              alert("Pronostico creado correctamente");
+        alert("Pronostico creado correctamente");
       });
 
      localStorage.setItem("pronosticoActual", JSON.stringify(this.state.pronosticoActual));
   }
 
   getEditProductToEdit(pronost_id){
-       this.initToken();
-       const path="/api/predictions/"+pronost_id;
+     this.initToken();
+     const path="/api/predictions/"+pronost_id;
 
-       axios.get('/api/predictions/'+pronost_id+'/nombre')
-       .then((response) =>{
-         this.setState({
-          name: response.data
-         })
-       });
+     axios.get('/api/predictions/'+pronost_id+'/nombre')
+     .then((response) =>{
+       this.setState({
+        name: response.data
+       })
+     });
 
-       axios.get(path)
-       .then((response) => {
-         this.setState({
-           pronosticoActual: pronost_id,
-           cuartos0: response.data[0]['team1_id'],
-           cuartos1: response.data[0]['team2_id'],
-           cuartos2: response.data[1]['team1_id'],
-           cuartos3: response.data[1]['team2_id'],
-           cuartos4: response.data[2]['team1_id'],
-           cuartos5: response.data[2]['team2_id'],
-           cuartos6: response.data[3]['team1_id'],
-           cuartos7: response.data[3]['team2_id'],
-           semifinal0: response.data[4]['team1_id'],
-           semifinal1: response.data[4]['team2_id'],
-           semifinal2: response.data[5]['team1_id'],
-           semifinal3: response.data[5]['team2_id'],
-           final0: response.data[6]['team1_id'],
-           final1: response.data[6]['team2_id'],
-           ganador: response.data[7]['team1_id']
-         })
-       });
-
+     axios.get(path)
+     .then((response) => {
+       this.setState({
+         pronosticoActual: pronost_id,
+         cuartos0: response.data[0]['team1_id'],
+         cuartos1: response.data[0]['team2_id'],
+         cuartos2: response.data[1]['team1_id'],
+         cuartos3: response.data[1]['team2_id'],
+         cuartos4: response.data[2]['team1_id'],
+         cuartos5: response.data[2]['team2_id'],
+         cuartos6: response.data[3]['team1_id'],
+         cuartos7: response.data[3]['team2_id'],
+         semifinal0: response.data[4]['team1_id'],
+         semifinal1: response.data[4]['team2_id'],
+         semifinal2: response.data[5]['team1_id'],
+         semifinal3: response.data[5]['team2_id'],
+         final0: response.data[6]['team1_id'],
+         final1: response.data[6]['team2_id'],
+         ganador: response.data[7]['team1_id']
+       })
+     });
   }
 
   editProduct(){
-      this.initToken();
+    this.initToken();
+      const prediction={
+        name: this.state.name,
+        cuartos0: this.state.cuartos0,
+        cuartos1: this.state.cuartos1,
+        cuartos2: this.state.cuartos2,
+        cuartos3: this.state.cuartos3,
+        cuartos4: this.state.cuartos4,
+        cuartos5: this.state.cuartos5,
+        cuartos6: this.state.cuartos6,
+        cuartos7: this.state.cuartos7,
 
-        const prediction={
-          name: this.state.name,
-          cuartos0: this.state.cuartos0,
-          cuartos1: this.state.cuartos1,
-          cuartos2: this.state.cuartos2,
-          cuartos3: this.state.cuartos3,
-          cuartos4: this.state.cuartos4,
-          cuartos5: this.state.cuartos5,
-          cuartos6: this.state.cuartos6,
-          cuartos7: this.state.cuartos7,
+        semifinal0: this.state.semifinal0,
+        semifinal1: this.state.semifinal1,
+        semifinal2: this.state.semifinal2,
+        semifinal3: this.state.semifinal3,
 
-          semifinal0: this.state.semifinal0,
-          semifinal1: this.state.semifinal1,
-          semifinal2: this.state.semifinal2,
-          semifinal3: this.state.semifinal3,
+        final0:  this.state.final0,
+        final1: this.state.final1,
+        ganador: this.state.ganador,
+      };
 
-          final0:  this.state.final0,
-          final1: this.state.final1,
-          ganador: this.state.ganador,
-        };
+      const path="/api/predictions/"+this.state.pronosticoActual;
 
-        const path="/api/predictions/"+this.state.pronosticoActual;
-
-      axios.put(path,prediction)
-        .then(response => {
-      //      this.todos();
-            alert("pronostico editado !");
-        })
-
-      window.location.reload();
-
-      }
+    axios.put(path,prediction)
+      .then(response => {
+          alert("pronostico editado !");
+      })
+    window.location.reload();
+  }
 
   todos(){ //TODOS LOS PRONOSTICOS
-      this.initToken();
+    this.initToken();
 
-        axios.get('/api/predictions')
-           .then((response) => {
-             console.log('predictions',response);
-             this.setState({
-               predictions: response.data
-             });
+      axios.get('/api/predictions')
+         .then((response) => {
+           console.log('predictions',response);
+           this.setState({
+             predictions: response.data
            });
-      }
+         });
+    }
 
   onClick1(event, newcuartos, i){
-      console.log(event.target.id);
-      let arregloConTodos= ["cuartos0", "cuartos1", "cuartos2", "cuartos3", "cuartos4", "cuartos5", "cuartos6", "cuartos7"];
-      var indice = arregloConTodos[i];
-       this.setState({
-           [indice]: newcuartos
-       });
-
-       localStorage.setItem(indice, JSON.stringify(newcuartos));
+    console.log(event.target.id);
+    let arregloConTodos= ["cuartos0", "cuartos1", "cuartos2", "cuartos3", "cuartos4", "cuartos5", "cuartos6", "cuartos7"];
+    var indice = arregloConTodos[i];
+    this.setState({[indice]: newcuartos });
+    localStorage.setItem(indice, JSON.stringify(newcuartos));
   }
 
   onClick2(event, newsemi, i){
     let arregloConTodos= ["semifinal0", "semifinal1", "semifinal2", "semifinal3"];
     var indice = arregloConTodos[i];
-     this.setState({
-         [indice]: newsemi
-     });
-
-     localStorage.setItem(indice, JSON.stringify(newsemi));
+    this.setState({ [indice]: newsemi});
+    localStorage.setItem(indice, JSON.stringify(newsemi));
   }
 
   onClick3(event, newfinal, i){
     let arregloConTodos= ["final0", "final1"];
     var indice = arregloConTodos[i];
-     this.setState({
-         [indice]: newfinal
-     });
-     localStorage.setItem(indice, JSON.stringify(newfinal));
+    this.setState({ [indice]: newfinal });
+    localStorage.setItem(indice, JSON.stringify(newfinal));
   }
 
-
   onClick4(event, winner){
-      console.log(event.target.id);
-      this.setState({
-          ganador: winner
-      });
-      localStorage.setItem("ganador", JSON.stringify(winner));
+    console.log(event.target.id);
+    this.setState({ ganador: winner });
+    localStorage.setItem("ganador", JSON.stringify(winner));
   }
 
   octavos(){
@@ -298,104 +266,90 @@ this.todos();
 
   cuartos(){ //para optimizar
     let arregloConTodos= [this.state.cuartos0, this.state.cuartos1, this.state.cuartos2, this.state.cuartos3, this.state.cuartos4, this.state.cuartos5, this.state.cuartos6, this.state.cuartos7];
-    let i=0;
-    let semis =[];
-    let j=0;
+    let i=0; let semis=[]; let j=0;
+
     while (i < 8) {
-               semis.push(<Equipo team1 = {arregloConTodos[i]}
-                       team2 = {arregloConTodos[i+1]} it={j}
-                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick2} nombreop={this.getName}/>)
-               i=i+2;
-               j=j+1;
-           }
-
-           return semis;
+       semis.push(<Equipo team1={arregloConTodos[i]} team2={arregloConTodos[i+1]} it={j} onClick2={this.onClick2} nombreop={this.getName}/>)
+       i=i+2; j=j+1;
+    }
+    return semis;
   }
-
-  handleFieldChange (event) {
-         this.setState({
-          name: event.target.value
-         })
-       }
 
   semis(){
     let arregloConTodos= [this.state.semifinal0, this.state.semifinal1, this.state.semifinal2, this.state.semifinal3, this.state.semifinal4];
-    let i=0;
-    let finales =[];
-    let j=0;
-    while (i < 4) {
-               finales.push(<Equipo team1 = {arregloConTodos[i]}
-                       team2 = {arregloConTodos[i+1]} it={j}
-                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick3} nombreop={this.getName}/>)
-               i=i+2;
-              j=j+1;
-           }
+    let i=0; let finales=[]; let j=0;
 
-           return finales;
+    while (i < 4) {
+       finales.push(<Equipo team1={arregloConTodos[i]} team2={arregloConTodos[i+1]} it={j} onClick2={this.onClick3} nombreop={this.getName}/>)
+       i=i+2; j=j+1;
+   }
+   return finales;
   }
 
+  handleFieldChange (event) {
+     this.setState({
+      name: event.target.value
+     })
+ }
 
-        render() {
+  render() {
+    return <div>
+    <div className="tournament-container">
+      <div className="tournament-headers">
+      <h3>Ronda de 16</h3>
+      <h3>Cuartos de Final</h3>
+      <h3>Semi-Finales</h3>
+      <h3>Final</h3>
+      <h3>Ganador</h3>
+      </div>
 
-          return <div>
-          <div className="tournament-container">
-            <div className="tournament-headers">
-            <h3>Ronda de 16</h3>
-            <h3>Cuartos de Final</h3>
-            <h3>Semi-Finales</h3>
-            <h3>Final</h3>
-            <h3>Ganador</h3>
+        <div className="tournament-brackets">
+            <ul className="bracket bracket-1">
+              {this.octavos()}
+            </ul>
+
+            <ul className="bracket bracket-2">
+              {this.cuartos()}
+            </ul>
+
+            <ul className="bracket bracket-3">
+              {this.semis()}
+            </ul>
+
+            <ul className="bracket bracket-4">
+            <li className="team-item">
+                  <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final0)}>{this.state.final0}</button>
+                <time>vs</time>
+                  <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final1)}>
+                    {this.state.final1}</button>
+              </li>
+            </ul>
+
+            <ul className="bracket bracket-5">
+              <li className="team-item">
+                {this.state.ganador}
+            </li>
+
+            <div>
+            <label htmlFor='name'>Nombre identificador de tu pronóstico </label>
+            <input
+              id='name'
+              type='text'
+              name='name'
+              placeholder="Inserte nombre"
+              value={this.state.name}
+              onChange={this.handleFieldChange}
+            />
             </div>
-
-              <div className="tournament-brackets">
-                  <ul className="bracket bracket-1">
-                    {this.octavos()}
-                  </ul>
-
-                    <ul className="bracket bracket-2">
-                      {this.cuartos()}
-                    </ul>
-
-                <ul className="bracket bracket-3">
-                      {this.semis()}
-                </ul>
-
-                  <ul className="bracket bracket-4">
-                  <li className="team-item">
-                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final0)}>{this.state.final0}</button>
-                      <time>vs</time>
-                        <button type="button" className= "btn btn-info" onClick={(e) => this.onClick4(e, this.state.final1)}>
-                          {this.state.final1}</button>
-                    </li>
-                  </ul>
-
-                    <ul className="bracket bracket-5">
-                      <li className="team-item">
-                      {this.state.ganador}
-                      </li>
-
-                      <label htmlFor='name'>Nombre identificador de tu pronóstico </label>
-                      <input
-                        id='name'
-                        type='text'
-                        name='name'
-                        placeholder="Inserte nombre"
-                        value={this.state.name}
-                        onChange={this.handleFieldChange}
-                      />
-                      <button type="submit" onClick={this.addNewProduct} disabled = {this.state.pronosticoActual != null} className="btn-changes btn btn-success">Guardar nuevo</button>
-                      <button type="submit" onClick={this.editProduct} disabled = {this.state.pronosticoActual== null} className="btn-changes btn btn-success">Grabar</button>
-                      <button type="button" className="btn-changes btn btn-primary" onClick={ this.selectModal }>Mis pronosticos</button>
-                      <Modal displayModal={this.state.show} closeModal={this.selectModal} predictions={this.state.predictions} onClickA={this.setPronostico} onClickB={this.getEditProductToEdit}  />
-                    </ul>
-
-            </div>
-            </div>
+            <button type="submit" onClick={this.addNewProduct} disabled = {this.state.pronosticoActual != null} className="btn-changes btn btn-success">Guardar nuevo</button>
 
 
-            </div>
-
-
-      }
-
+            <button type="submit" onClick={this.editProduct} disabled = {this.state.pronosticoActual== null} className="btn-changes btn btn-success">Grabar</button>
+            <button type="button" className="btn-changes btn btn-primary" onClick={ this.selectModal }>Mis pronosticos</button>
+            <Main displayModal={this.state.show} closeModal={this.selectModal} predictions={this.state.predictions} onClickA={this.setPronostico} onClickB={this.getEditProductToEdit}  />
+          </ul>
+      </div>
+      </div>
+      </div>
+    }
   }

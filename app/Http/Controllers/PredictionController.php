@@ -10,51 +10,41 @@ use App\Team;
 class PredictionController extends Controller
 {
 
-    public function indice()
+    public function indice() //pronosticos del usuario registrado
     {
       $user=Auth::user();
-             $predictions=Prediction::where([
-                 ['user_id', '=', $user->id]
-             ])->get();
-             return $predictions->toJson();
-
+      $predictions=Prediction::where([ ['user_id', '=', $user->id] ])->get();
+      return $predictions->toJson();
     }
 
-    public function nombre($id) //obtengo los partidos del pronostico
+    public function nombre($id) //obtengo el nombre del pronostico asi lo puedo mostrar
     {
       $prediccion= Prediction::where('id', $id)->first();
       $nombre= $prediccion->name;
-
-       return response()->json($nombre, 201);
+      return response()->json($nombre, 201);
     }
 
     public function show($id) //obtengo los partidos del pronostico
     {
        $prediccion=Prediction::find($id);
        $nombre=  $prediccion->get('name');
-
        $partidos= Match::where('prediction', $prediccion->id)->get(['team1_id', 'team2_id']);;
-
        return response()->json($partidos, 201);
     }
 
-    public function addPronostico(Request $request){ //creo el pronostico
-      $validatedData = $request->validate([
+    public function addPronostico(Request $request){ //creo el pronostico y dsp agrego los partidos porque para agregar los partidos necesito el id del pronostico D:
+        $validatedData = $request->validate([
           'name' => 'required',
         ]);
-
         $user=Auth::user();
         $pronostico= new Prediction();
         $pronostico->name= $validatedData['name'];
         $pronostico->user_id=$user->id;
-
         $pronostico->save();
-
-            return response()->json($pronostico->id, 201);
+        return response()->json($pronostico->id, 201);
        }
 
     public function storeCuadro(Request $request){ //guardo los partidos en el pronostico
-
       $cuartos1= Match::create([
               'team1_id'=> $request->get('cuartos0'),
               'team2_id'=>$request->get('cuartos1'),
@@ -95,19 +85,18 @@ class PredictionController extends Controller
                'team1_id'=> $request->get('final0'),
                'team2_id'=> $request->get('final1'),
                'prediction' =>   $request->get('pronostico'),
-                'ronda' => '1',
+               'ronda' => '1',
           ]);
           $ganador= Match::create([
                 'team1_id'=> $request->get('ganador'),
                 'team2_id'=> $request->get('ganador'),
                 'prediction' =>    $request->get('pronostico'),
-                 'ronda' => '0',
+                'ronda' => '0',
            ]);
-
          return response()->json('se agregaron los dopartios');
   }
 
-    public function update(Request $request,  $id)
+    public function update(Request $request,  $id) //updateo los partidos y nombre
     {
         $prediction=Prediction::find($id);
         $data=request()->all();
@@ -121,75 +110,51 @@ class PredictionController extends Controller
             'team1_id'=> $request->get('cuartos0'),
             'team2_id'=> $request->get('cuartos1'),
         ]);
-
         $partidos[0]->save();
-//        $prediction->save();
 
         $partidos[1]->update([
             'team1_id'=>$request->get('cuartos2'),
             'team2_id'=>$request->get('cuartos3'),
         ]);
-
         $partidos[1]->save();
-//        $prediction->save();
 
         $partidos[2]->update([
             'team1_id'=>$request->get('cuartos4'),
             'team2_id'=>$request->get('cuartos5'),
         ]);
-
         $partidos[2]->save();
-  //      $prediction->save();
 
         $partidos[3]->update([
             'team1_id'=>$request->get('cuartos6'),
             'team2_id'=>$request->get('cuartos7'),
         ]);
-
         $partidos[3]->save();
-    //    $prediction->save();
 
         $partidos[4]->update([
             'team1_id'=>$request->get('semifinal0'),
             'team2_id'=>$request->get('semifinal1'),
         ]);
-
         $partidos[4]->save();
-//        $prediction->save();
 
         $partidos[5]->update([
             'team1_id'=>$request->get('semifinal2'),
             'team2_id'=>$request->get('semifinal3'),
         ]);
-
         $partidos[5]->save();
-  //      $prediction->save();
 
         $partidos[6]->update([
             'team1_id'=>$request->get('final0'),
             'team2_id'=>$request->get('final1'),
         ]);
-
         $partidos[6]->save();
-  //          $prediction->save();
 
         $partidos[7]->update([
             'team1_id'=>$request->get('ganador'),
             'team2_id'=>$request->get('ganador'),
         ]);
-
         $partidos[7]->save();
-        $prediction->save();
 
+        $prediction->save();
         return response()->json($partidos, 200);
     }
-
-
-    public function delete(Prediction $prediction)
-    {
-      $prediccion=Prediction::find($id);
-      $prediccion->delete();
-      return response()->json($prediccion);
-    }
-
 }
