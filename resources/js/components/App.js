@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Navigation from './Navigation'
 import HomePage from './HomePage'
 import Main from './Main'
 import Equipo from './Equipo'
@@ -21,6 +20,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Cuadro />
+          <Route path="/indice" component={Main} />
         </div>
        </BrowserRouter>
     )

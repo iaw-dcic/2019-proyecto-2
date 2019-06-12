@@ -27,7 +27,8 @@ Route::post('predictions','PredictionController@store')->middleware('auth:api');
 Route::post('predictions/partidos','PredictionController@storeCuadro')->middleware('auth:api'); //cuando creo una nueva prediccion
 Route::post('predictions/add','PredictionController@addPronostico')->middleware('auth:api'); //cuando creo una nueva prediccion
 
-Route::get('predictions/{id}','PredictionController@show');
+Route::get('predictions/{id}','PredictionController@show')->middleware('auth:api');
+Route::get('predictions/{id}/nombre','PredictionController@nombre')->middleware('auth:api');
 Route::put('predictions/{id}', 'PredictionController@update')->middleware('auth:api');
 
 

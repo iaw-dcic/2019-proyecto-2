@@ -4,7 +4,6 @@ import axios from 'axios'
 import  "./css/cuadro.scss";
 import Main from './Main'
 import Equipo from './Equipo'
-import Final from './Final'
 import { Link } from 'react-router-dom'
 
 /* Main Component */
@@ -13,7 +12,7 @@ export default class Cuadro extends Component {
   constructor(){
          super();
           this.state = {
-
+           name: '',
            matches: [],
            predictions: [],
            ganador: "",
@@ -33,6 +32,7 @@ export default class Cuadro extends Component {
 
            final0: [],
            final1: [],
+
            pronosticoActual :null,
   }
 
@@ -40,7 +40,6 @@ export default class Cuadro extends Component {
   this.todos=this.todos.bind(this);
   this.octavos=this.octavos.bind(this);
   this.cuartos=this.cuartos.bind(this);
-  this.final=this.final.bind(this);
   this.semis=this.semis.bind(this);
   this.setPronostico=this.setPronostico.bind(this);
   this.getEditProductToEdit=this.getEditProductToEdit.bind(this);
@@ -50,6 +49,7 @@ export default class Cuadro extends Component {
   this.onClick3= this.onClick3.bind(this);
   this.onClick4= this.onClick4.bind(this);
   this.handleFieldChange = this.handleFieldChange.bind(this);
+
 }
 
 setPronostico = (pronost) => {
@@ -72,30 +72,29 @@ this.todos();
                   this.setState({ [key]: value });
               }
       }}
+
+
   }
 
   componentDidMount() { //LOS PARTIDOS DE OCTAVOS
 
       fetch('api/matches/16')
       .then(response => {
-        console.log('teams',response);
              return response.json();
          })
          .then(matches => {
              //Fetched product is stored in the state
              this.setState({ matches });
          });
-
-
-
   }
-
 
   initToken(){ //para no reescribir mil veces
       window.axios = require('axios');
       let api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
   }
+
+
 
   async addNewProduct() { //CREAR NUEVO PRONOSTICO
     await this.addPronostico();
@@ -143,7 +142,11 @@ this.todos();
   async addPronostico(){ //necesito crearlo primero pq no puedo tener el id!!!!!!!!!!!
     this.initToken();
 
-    await axios.post('/api/predictions/add')
+    const nombre={
+      name: this.state.name,
+    }
+
+    await axios.post('/api/predictions/add', nombre)
       .then(response => {
         this.setState({
           pronosticoActual: response.data
@@ -158,6 +161,13 @@ this.todos();
   getEditProductToEdit(pronost_id){
        this.initToken();
        const path="/api/predictions/"+pronost_id;
+
+       axios.get('/api/predictions/'+pronost_id+'/nombre')
+       .then((response) =>{
+         this.setState({
+          name: response.data
+         })
+       });
 
        axios.get(path)
        .then((response) => {
@@ -177,7 +187,7 @@ this.todos();
            semifinal3: response.data[5]['team2_id'],
            final0: response.data[6]['team1_id'],
            final1: response.data[6]['team2_id'],
-           ganador: response.data[7]['team1_id'],
+           ganador: response.data[7]['team1_id']
          })
        });
 
@@ -187,6 +197,7 @@ this.todos();
       this.initToken();
 
         const prediction={
+          name: this.state.name,
           cuartos0: this.state.cuartos0,
           cuartos1: this.state.cuartos1,
           cuartos2: this.state.cuartos2,
@@ -210,14 +221,11 @@ this.todos();
 
       axios.put(path,prediction)
         .then(response => {
-            this.todos();
+      //      this.todos();
             alert("pronostico editado !");
-
-
         })
 
-
-    //    window.location.reload();
+      window.location.reload();
 
       }
 
@@ -272,7 +280,6 @@ this.todos();
       localStorage.setItem("ganador", JSON.stringify(winner));
   }
 
-
   octavos(){
       return this.state.matches.map(match => {
        return(
@@ -293,9 +300,9 @@ this.todos();
     while (i < 8) {
                semis.push(<Equipo team1 = {arregloConTodos[i]}
                        team2 = {arregloConTodos[i+1]} it={j}
-                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick2}/>)
-               i = i + 2;
-              j =j+1;
+                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick2} nombreop={this.getName}/>)
+               i=i+2;
+               j=j+1;
            }
 
            return semis;
@@ -315,28 +322,13 @@ this.todos();
     while (i < 4) {
                finales.push(<Equipo team1 = {arregloConTodos[i]}
                        team2 = {arregloConTodos[i+1]} it={j}
-                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick3}/>)
-               i = i + 2;
-              j =j+1;
+                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick3} nombreop={this.getName}/>)
+               i=i+2;
+              j=j+1;
            }
 
            return finales;
   }
-
-  final(){
-    let arregloConTodos= [this.state.final0, this.state.final1];
-    let i=0;
-    let finales =[];
-    while (i < 2) {
-               finales.push(<Final team1 = {arregloConTodos[i]}
-                       team2 = {arregloConTodos[i+1]} it={j}
-                        id1 = {i} id2 = {i+1}  onClick2 = {this.onClick4}/>)
-               i = i + 2;
-           }
-
-           return finales;
-  }
-
         render() {
 
           return <div>
@@ -376,8 +368,18 @@ this.todos();
                       {this.state.ganador}
                       </li>
 
-                      <button type="submit" onClick={this.addNewProduct} className="btn-changes btn btn-primary">Guardar nuevo</button>
-                      <button type="submit" onClick={this.editProduct} className="btn-changes btn btn-primary">Grabar</button>
+                      <label htmlFor='name'>Nombre identificador de tu pronóstico </label>
+                      <input
+                        id='name'
+                        type='text'
+                        name='name'
+                        placeholder="Inserte nombre"
+                        value={this.state.name}
+                        onChange={this.handleFieldChange}
+                      />
+                      <button type="submit" onClick={this.addNewProduct} disabled = {this.state.pronosticoActual != null} className="btn-changes btn btn-success">Guardar nuevo</button>
+                      <button type="submit" onClick={this.editProduct} disabled = {this.state.pronosticoActual== null} className="btn-changes btn btn-success">Grabar</button>
+                    
                     </ul>
             </div>
             </div>

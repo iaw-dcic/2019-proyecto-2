@@ -12,11 +12,17 @@ class TeamController extends Controller
 //EL usuario solo podrá ver la lista de equipos y cada equipo en detalle, no puede eliminar ni insertar ni editar.
     public function index()
     {
-      $team = Team::all();
-      return response()->json($team, 200);
-    }
+
+      $team = Team::select('name')->get();
+      $devolver=[];
+      for($i=0; $i<16; $i++){
+        $devolver[$i]= $team[$i]->name;
+}
+
+        return response()->json($devolver);
 
 
+}
 
     public function show(Team $team)
     {

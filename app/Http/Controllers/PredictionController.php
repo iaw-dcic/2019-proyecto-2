@@ -20,23 +20,32 @@ class PredictionController extends Controller
 
     }
 
+    public function nombre($id) //obtengo los partidos del pronostico
+    {
+      $prediccion= Prediction::where('id', $id)->first();
+      $nombre= $prediccion->name;
+
+       return response()->json($nombre, 201);
+    }
+
     public function show($id) //obtengo los partidos del pronostico
     {
        $prediccion=Prediction::find($id);
+       $nombre=  $prediccion->get('name');
+
        $partidos= Match::where('prediction', $prediccion->id)->get(['team1_id', 'team2_id']);;
 
        return response()->json($partidos, 201);
     }
 
-    public function addPronostico(){ //creo el pronostico
-  //    $validatedData = $request->validate([
-  //        'name' => 'required',
-  //      ]);
+    public function addPronostico(Request $request){ //creo el pronostico
+      $validatedData = $request->validate([
+          'name' => 'required',
+        ]);
 
         $user=Auth::user();
         $pronostico= new Prediction();
-    //    $pronostico->name = $validatedData['name'];
-        $pronostico->name = "prueba";
+        $pronostico->name= $validatedData['name'];
         $pronostico->user_id=$user->id;
 
         $pronostico->save();
@@ -64,7 +73,7 @@ class PredictionController extends Controller
               'prediction' => $request->get('pronostico'),
               'ronda' => '4',
         ]);
-         $cuartos3= Match::create([
+         $cuartos4= Match::create([
              'team1_id'=> $request->get('cuartos6'),
              'team2_id'=> $request->get('cuartos7'),
              'prediction' =>  $request->get('pronostico'),
@@ -98,25 +107,15 @@ class PredictionController extends Controller
          return response()->json('se agregaron los dopartios');
   }
 
-    public function store(Request $request){
-  //    return(Auth::id());
-          $validatedData = $request->validate([
-              'name' => 'required',
-            ]);
-
-            $project = Prediction::create([
-              'name' => $validatedData['name'],
-              'user_id' => Auth::id(),
-            ]);
-
-            return response()->json('Prediction created!');
-    }
-
     public function update(Request $request,  $id)
     {
         $prediction=Prediction::find($id);
         $data=request()->all();
         $partidos= Match::where('prediction', $prediction->id)->get();
+
+        $prediction->update([
+          'name' => $request->get('name'),
+        ]);
 
         $partidos[0]->update([
             'team1_id'=> $request->get('cuartos0'),

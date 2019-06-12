@@ -7,12 +7,18 @@ export default class Equipo extends Component {
 
 constructor(props){
   super(props);
+  this.onClickEquipo = this.onClickEquipo.bind(this);
+  this.getNombre = this.getNombre.bind(this);
+
 }
 
 onClickEquipo(e, newc, id){
   this.props.onClick2(e, newc, id);
 }
 
+getNombre(id){
+  this.props.nombreop(id);
+}
 
       render() {
           return (

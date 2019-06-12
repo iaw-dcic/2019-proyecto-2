@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Navigation from './Navigation'
 import { Link } from 'react-router-dom'
 import Cuadro from './Cuadro'
 import axios from 'axios'
@@ -33,13 +32,13 @@ export default class Main extends Component {
                    <div className='card-body'>
                      <ul className='list-group list-group-flush'>
                        {this.props.predictions.map((prediction) => (
-                         <h1
+                         <p
                            className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
                            key={prediction.id}
                          >
-                           {prediction.id}
+                           {prediction.name}
                            <button type="button" onClick={(e) => this.showClick(prediction.id)} className= "btn btn-info">Ver</button>
-                           </h1>
+                           </p>
                        ))}
                      </ul>
                    </div>
