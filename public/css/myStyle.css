@@ -15,16 +15,35 @@
   }
 
   .stampa-small{
-    position:relative;
-    height:70px;
-    width:70px;
+    position:absolute;
+    height:50px;
+    width:50px;
     z-index: 1;
+    margin-left: 75px;
+    margin-top: 50px
   }
   
   .remera-small{
-    position: relative;
-    width:70px;
-    height:70px;
+    position: absolute;
+    width:150px;
     margin: 20px;
     z-index: -1;
+  }
+
+  .container-absolute{
+    margin-right: 190px;
+    margin-bottom: 190px; 
+  }
+
+  .boton-eliminar{
+    margin-left: 100px;
+  }
+
+  .remera{
+    margin-bottom:350px;
+    margin-top: 20px;
+  }
+
+  .align-center{
+    text-align: center;
   }

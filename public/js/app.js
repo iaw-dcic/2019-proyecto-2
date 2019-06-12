@@ -66018,6 +66018,18 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "eliminarRemera", function (e, id) {
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_6___default.a["delete"]('/api/delete/' + id).then(function (response) {
+          console.log(response.data);
+
+          _this.refresh();
+        });
+      } catch (e) {
+        console.log('Error axios', e);
+      }
+    });
+
     _this.state = {
       colorActual: 'images/negra.jpg',
       stampaActual: 'images/design2.png',
@@ -66030,31 +66042,52 @@ function (_Component) {
   _createClass(Editor, [{
     key: "guardarRemera",
     value: function guardarRemera(e) {
+      var _this2 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_6___default.a.post('/api/guardar', {
         colour: this.state.colorActual,
         stampa: this.state.stampaActual,
         size: this.state.talleActual
       }).then(function (response) {
         console.log(response.data);
+
+        _this2.refresh();
+      });
+    }
+  }, {
+    key: "refresh",
+    value: function refresh() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get('/api/getRemeras').then(function (response) {
+        _this3.setState({
+          remerasGuardadas: response.data
+        });
+
+        console.log(response.data);
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this4 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+        className: "row align-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-dark row",
+        className: "btn btn-dark",
         onClick: function onClick(e) {
-          return _this2.guardarRemera(e);
+          return _this4.guardarRemera(e);
         }
-      }, " Guardar Remera "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, " Guardar Remera "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8 remera"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
         color: this.state.colorActual,
         stampa: this.state.stampaActual,
         widthR: "550",
@@ -66070,9 +66103,12 @@ function (_Component) {
         cambiarStampa: this.cambiarStampa
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Talles__WEBPACK_IMPORTED_MODULE_4__["default"], {
         cambiarTalle: this.cambiarTalle
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MisRemeras__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        misremeras: this.state.remerasGuardadas
-      }))));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Mis remeras:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MisRemeras__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        misremeras: this.state.remerasGuardadas,
+        eliminar: this.eliminarRemera
+      })));
     }
   }]);
 
@@ -66129,28 +66165,25 @@ function (_Component) {
   }
 
   _createClass(MisRemeras, [{
+    key: "eliminar",
+    value: function eliminar(e, remera) {
+      this.props.eliminar(e, remera);
+    }
+  }, {
     key: "render",
-
-    /*componentDidMount = () =>{
-          window.axios = require('axios');
-        let api_token = document.querySelector('meta[name="api-token"]');
-        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-          axios.get('/MisRemeras/{remera_id}').then(response => { //IMPLEMENTAR ACA ESTO IMPORTANTE.
-            console.log(response.data);
-        })
-    }*/
-
-    /*eliminar(e, remera) {
-        this.props.eliminarRemera(remera);
-    }*/
     value: function render() {
+      var _this = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row flex-row flex-nowrap"
       }, this.props.misremeras.map(function (item) {
         return (//ESTO  NO ANDA
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "button-container",
+            key: item.id
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
             key: item.id,
             color: item.colour,
             stampa: item.stampa,
@@ -66159,8 +66192,12 @@ function (_Component) {
             widthS: "30",
             heightS: "70",
             size: "small"
-          }) //<button onclick={(e) => this.eliminar(e,item.id)}>X</button>
-
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "boton-eliminar",
+            onClick: function onClick(e) {
+              return _this.eliminar(e, item.id);
+            }
+          }, "X"))
         );
       })));
     }
@@ -66220,7 +66257,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "container container-absolute"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img-fluid remera-" + this.props.size,
         src: this.props.color,
