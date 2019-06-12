@@ -55,6 +55,6 @@
     margin-left: 5px;
 }
 
-.texto{
-    color: antiquewhite;
+.ocultar{
+    display: none;
 }

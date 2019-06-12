@@ -9,21 +9,20 @@ export default class Card extends Component {
     }
 
     render() {
+        var url="img/"+this.props.codigo +".jpg";
       return (
         <div className="card tamanio">
             <div className="row">
                 <div className="col-md-4">
-                    <img className="card-img tamanio-img" src={this.state.urlImagen}></img>
+                    <img className="card-img tamanio-img" src={url}></img>
                     
                 </div>
-                <div className="col-md-5">
-                    <p className="centrar">{this.state.seleccionNombre}</p>
-                </div>
-                <div className="col-md-3">
-                    <input type="text" className="form-control flotar" id="seleccion1"></input>
+                <div className="col-md-8">
+                    <p className="centrar">{this.props.nombre}</p>
                 </div>
             </div>
         </div>
       );
     }
+    
   }

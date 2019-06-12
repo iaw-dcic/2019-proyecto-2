@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Card from './Card';
 
-export default class Partido extends Component {
+export default class PartidoSemi extends Component {
 
     state ={
         instancia: "",
@@ -26,10 +26,10 @@ export default class Partido extends Component {
     render() {
       return (
         <div className="jumbotron">
-            <button className="btn" id={this.state.seleccion1.nombre} onClick={(e)=>this.handleGanador1()}>
+            <button className="btn" id="tercero1" onClick={(e)=>this.handleGanador1()}>
                 <Card nombre={this.state.seleccion1.nombre} codigo={this.state.seleccion1.codigo}/>
             </button>
-            <button className="btn" id={this.state.seleccion2.nombre} onClick={(e)=>this.handleGanador2()}>
+            <button className="btn" id="tercero2" onClick={(e)=>this.handleGanador2()}>
                 <Card nombre={this.state.seleccion2.nombre} codigo={this.state.seleccion2.codigo}/>
             </button>
         </div>
@@ -37,27 +37,31 @@ export default class Partido extends Component {
     }
 
     async componentWillReceiveProps(newProps){
-        if(newProps.partido != null){
-        this.setState({
-            instancia: newProps.insta,
-            id: newProps.partido.id,
-            seleccion1: {
-                nombre: newProps.partido.seleccion_A.name,
-                codigo: newProps.partido.seleccion_A.codigo,
-                goles: newProps.partido.seleccion_A.goles
-            },
-            seleccion2: {
-                nombre: newProps.partido.seleccion_B.name,
-                codigo: newProps.partido.seleccion_B.codigo,
-                goles: newProps.partido.seleccion_B.goles
-            }
-        });
+        if(newProps.seleccion1 != null){
+            this.setState({
+                seleccion1: {
+                    nombre: newProps.seleccion1.nombre,
+                    codigo: newProps.seleccion1.codigo,
+                    goles: newProps.seleccion1.goles
+                }
+            });
+        }
+        if(newProps.seleccion2 != null){
+            this.setState({
+                seleccion2: {
+                    nombre: newProps.seleccion2.nombre,
+                    codigo: newProps.seleccion2.codigo,
+                    goles: newProps.seleccion2.goles,
+                }
+            });
+        }
     }
-}
+
+    
 
     async handleGanador1(){
-        document.getElementById(this.state.seleccion1.nombre).setAttribute("disabled","");
-        document.getElementById(this.state.seleccion2.nombre).setAttribute("disabled","");
+        document.getElementById('tercero1').setAttribute("disabled","");
+        document.getElementById('tercero2').setAttribute("disabled","");
         this.setState({
             instancia: this.state.instancia,
             id: this.state.id,
@@ -77,8 +81,8 @@ export default class Partido extends Component {
     }
     
    async handleGanador2(){
-        document.getElementById(this.state.seleccion1.nombre).setAttribute("disabled","");
-        document.getElementById(this.state.seleccion2.nombre).setAttribute("disabled","");
+        document.getElementById('tercero1').setAttribute("disabled","");
+        document.getElementById('tercero2').setAttribute("disabled","");
         this.setState({
             instancia: this.state.instancia,
             id: this.state.id,

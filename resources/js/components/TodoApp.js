@@ -1,23 +1,43 @@
 import React, { Component } from 'react'
-import TodoList from './TodoList'
-import TodoAdd from './TodoAdd'
 import Navbar from './Navbar'
 import Pronostico from './Pronostico'
 
 export default class TodoApp extends Component {
 
     state = { 
+        isLoading: true,
         pronosticos: [],
+        pronoSeleccionado: 0
     };
 
+    constructor(props){
+        super(props);
+        this.state = {
+            isLoading: true,
+            pronosticos: [],
+            pronoSeleccionado: -1
+        }
+    }
+
     render() {
+        if(this.state.isLoading){
+            return (
+                <div>
+                    <Navbar />
+                    <div className="container text-center">
+                        Cargando..
+                    </div>
+                </div>
+
+            )
+        }else{
         var i = "";
-        var { pronosticos } = this.state;
-        if (pronosticos != null) {
+        var listaPronos= this.state.pronosticos;
+        if (listaPronos != null) {
             {
-                i = pronosticos.map((pronostico, i) => (
+                i = listaPronos.map((pronostico, i) => (
                     <option key={i}>
-                        {pronostico.id}
+                        Pronostico #{pronostico.id}
                     </option>
                 ))
             }
@@ -28,32 +48,35 @@ export default class TodoApp extends Component {
         <div>
             <Navbar />
             
-            <div className="container">
-            <button type="button" className="btn btn-outline-primary btn-block" onClick={(e) => this.getPronosticos()} > Ver Pronosticos</button>
+            <div className="container colorFondo" id="listaPronosticos">
                 <div className="form-group">
-                    <label className="texto">Selecciona el pronóstico a ver:</label>
-                    <select className="form-control" id="selectBox" onClick={(e) => this.getPronosticos()}>
-                        <option> </option>
+                    <label className="text-center">Selecciona el pronóstico a ver</label>
+                    <select className="form-control" id="selectBox">
                         {i}
-
                     </select>
                 </div>
+                <button type="button" className="btn btn-outline-primary btn-block" onClick={(e) => this.handlePronostico()} >Cargar Pronostico</button>
                 <button type="button" className="btn btn-outline-primary btn-block" onClick={(e) => this.handleClick()} >Crear Nuevo Pronostico</button>
             </div>
+
+            <div className="container ocultar colorFondo" id="pronosticoSeleccionado">
+                <Pronostico idPronostico={this.state.pronoSeleccionado}/>
+            </div>
         </div>
-      );
+        );}
     }
 
-    getPronosticos = (e) => {
+    componentDidMount() {
         fetch('http://127.0.0.1:8000/api/getPronosticos')
             .then(response => response.json())
             .then(json => {
-                if(json != null)
+                if(json != null){
                     this.setState({
-                        pronosticos: json.pronosticos
+                        isLoading: false,
+                        pronosticos: json.item
                      });
+                    }
             });
-            console.log(this.state.pronosticos);
     }
     handleClick = (e) => {
         fetch('http://127.0.0.1:8000/api/newPronostico')
@@ -61,26 +84,19 @@ export default class TodoApp extends Component {
             .then(json => {
                 if(json != null)
                     this.setState({
-                        pronosticos: json.pronosticos
+                        isLoading: false,
+                        pronosticos: json.item
                     });
             });
-            console.log(this.state.pronosticos);
         
     }
-/*
-    componentWillMount() {
-        fetch('http://127.0.0.1:8000/api/selecciones')
-            .then(response => response.json())
-            .then(json => {
-                this.setState({
-                    items: json.items
-                })
-            });
-        }
-*/
-    addItem = (newItem) => {
-      this.setState(state => ({
-        items: state.items.concat(newItem)
-      }));
-    }
+
+    async handlePronostico() {
+        var selectBox = document.getElementById("selectBox");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].index;
+        this.setState({
+                pronoSeleccionado: this.state.pronosticos[selectedValue].id
+        });
+        document.getElementById('pronosticoSeleccionado').classList.remove("ocultar");
+      }
   }
