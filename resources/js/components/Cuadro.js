@@ -125,7 +125,7 @@ componentWillMount() { //LOCAL STORAGE
       console.log(response);
     });
 
-        window.location.reload(); //refresh
+this.componentWillMount();
 
     for (let key in this.state) { //para que me limpie el pronostico dsp de que agrego uno nuevo
      if (localStorage.hasOwnProperty(key))
@@ -213,7 +213,7 @@ componentWillMount() { //LOCAL STORAGE
       .then(response => {
           alert("pronostico editado !");
       })
-    window.location.reload();
+    this.componentWillMount();
   }
 
   todos(){ //TODOS LOS PRONOSTICOS

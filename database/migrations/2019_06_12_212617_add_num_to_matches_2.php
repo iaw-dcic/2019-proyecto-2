@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNumToMatches extends Migration
+class AddNumToMatches2 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddNumToMatches extends Migration
     public function up()
     {
         Schema::table('matches', function (Blueprint $table) {
-            $table->integer('num')->nullable();
+          
         });
     }
 
@@ -25,6 +25,6 @@ class AddNumToMatches extends Migration
      */
     public function down()
     {
-      Schema::drop('add_num_to_matches');
+        Schema::drop('add_num_to_matches');
     }
 }

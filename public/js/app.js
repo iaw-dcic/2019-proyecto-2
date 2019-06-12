@@ -80659,7 +80659,7 @@ function (_Component) {
                 });
 
               case 6:
-                window.location.reload(); //refresh
+                this.componentWillMount();
 
                 for (key in this.state) {
                   //para que me limpie el pronostico dsp de que agrego uno nuevo
@@ -80782,7 +80782,7 @@ function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.put(path, prediction).then(function (response) {
         alert("pronostico editado !");
       });
-      window.location.reload();
+      this.componentWillMount();
     }
   }, {
     key: "todos",
