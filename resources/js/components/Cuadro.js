@@ -52,7 +52,7 @@ export default class Cuadro extends Component {
   this.selectModal=this.selectModal.bind(this);
   this.setArreglo=this.setArreglo.bind(this);
   this.controlar=this.controlar.bind(this);
-  this.controlarFinal=this.controlarFinal.bind(this); 
+  this.controlarFinal=this.controlarFinal.bind(this);
 }
 
 setPronostico = (pronost) => {
@@ -308,17 +308,19 @@ componentWillMount() { //LOCAL STORAGE
     localStorage.setItem("ganador", JSON.stringify(winner));
   }
 
+
   octavos(){
       return this.state.matches.map(match => {
        return(
-              <li key={match.id}  className="team-item">
-                    <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.id-1)}>{match.team1_id}</button>
+              <li key={match.num}  className="team-item">
+                    <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.num-1)}>{match.team1_id}</button>
                       <time>vs</time>
-                    <button  id={match.team2_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team2_id,match.id-1)} type="button">{match.team2_id}</button>
+                    <button  id={match.team2_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team2_id,match.num-1)} type="button">{match.team2_id}</button>
               </li>
           );
       })
     }
+
 
   cuartos(){ //para optimizar
     let arregloConTodos= [this.state.cuartos0, this.state.cuartos1, this.state.cuartos2, this.state.cuartos3, this.state.cuartos4, this.state.cuartos5, this.state.cuartos6, this.state.cuartos7];
