@@ -1,10 +1,8 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import axios from 'axios';
-import { url } from '../../components/config/config';
-import Home from '../../components/Home';
 
 
 const ProdeSchema = Yup.object().shape({
@@ -67,7 +65,7 @@ class GuardarProde extends React.Component {
             data : {
                 'name' : value.name,
                 'cuartos': [this.props.cuartos[0].id,this.props.cuartos[1].id,this.props.cuartos[2].id,this.props.cuartos[3].id,this.props.cuartos[4].id,this.props.cuartos[5].id,this.props.cuartos[6].id,this.props.cuartos[7].id],
-                'semis': [this.props.semis[0].id,this.props.cuartos[1].id,this.props.semis[2].id,this.props.semis[3].id],
+                'semis': [this.props.semis[0].id,this.props.semis[1].id,this.props.semis[2].id,this.props.semis[3].id],
                 'final': [this.props.final[0].id,this.props.final[1].id],
                 'campeon': [this.props.campeon[0].id],
 

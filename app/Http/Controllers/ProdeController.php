@@ -5,15 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Prode;
 
 //TODO LO QUE SEA PROPIO TENEMOS QUE LLAMARLO SIEMPRE CON APP
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
-
-
-
-use App\Team;
-
-
 
 class ProdeController extends Controller
 {
@@ -24,8 +18,8 @@ class ProdeController extends Controller
      */
     public function index()
     {
-        $id=auth('api')->user()->id;
-        $prodes = Prode::where('user_id',$id);
+        $id = auth('api')->user()->id;
+        $prodes = Prode::where('user_id', $id);
         return response()->json([
             "ok" => true,
             "data" => $prodes,
@@ -34,7 +28,7 @@ class ProdeController extends Controller
     }
     public function indexUsuario($id)
     {
-        $prodes = Prode::where('user_id',$id)->get();
+        $prodes = Prode::where('user_id', $id)->get();
         return response()->json([
             "ok" => true,
             "data" => $prodes,
@@ -66,11 +60,10 @@ class ProdeController extends Controller
         $final = implode(',', $request->final);
         $campeon = implode(',', $request->campeon);
 
-
         $prode = new Prode;
         $prode->name = $name;
-        $id=0;
-        if (Auth::check()){
+        $id = 0;
+        if (Auth::check()) {
             $id = auth('api')->user()->id;
             $prode->user_id = $id;
         }
@@ -86,26 +79,8 @@ class ProdeController extends Controller
 
             "ok" => true,
             "message" => "Tu prode ha sido guardado exitosamente",
-            "datos" => $id,
         ]);
     }
-
-
-        // try {
-        //     $prode->save();
-
-        //     return response()->json([
-        //         "ok" => true,
-        //         "message" => "Se regitró con éxito",
-        //     ]);
-        // } catch (\Exception $ex) {
-
-        //     return response()->json([
-        //         "ok" => false,
-        //         "error" => $ex->getMessage(),
-        //     ]);
-        // }
-
 
     /**
      * Display the specified resource.
@@ -142,7 +117,20 @@ class ProdeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cuartos = implode(',', $request->cuartos);
+        $semis = implode(',', $request->semis);
+        $final = implode(',', $request->final);
+        $campeon = implode(',', $request->campeon);
+        $prode = Prode::find($id);
+        $prode->cuartos = $cuartos;
+        $prode->semis = $semis;
+        $prode->final = $final;
+        $prode->campeon = $campeon;
+        $prode->save();
+        return response()->json([
+            "ok" => true,
+            "message" => "Tu prode ha sido actualizado correctamente",
+        ]);
     }
 
     /**
@@ -153,6 +141,11 @@ class ProdeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prode = Prode::find($id);
+        $prode->delete();
+        return response()->json([
+            "ok" => true,
+            "message" => "Tu prode ha sido eliminado",
+        ]);
     }
 }

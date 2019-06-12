@@ -1,6 +1,5 @@
 import React from 'react';
 import Tarjeta2 from '../card/Tarjeta2';
-import Tarjeta from '../card/Tarjeta';
 import './tabla.css';
 import {
     Button, Card

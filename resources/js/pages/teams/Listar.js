@@ -11,7 +11,6 @@ import TablaCD from '../../components/table/TablaCD';
 import TablaSD from '../../components/table/TablaSD';
 import '../../components/table/tabla.css';
 import PanelBotones from '../../components/PanelBotones';
-import config from '../../components/config/config';
 
 
 
@@ -33,8 +32,7 @@ class Listar extends Component {
             id: 0,
             prodes: [],
             guardar: false,
-            reset: false,
-
+            prode_id: 0,
         }
     }
 
@@ -285,7 +283,7 @@ class Listar extends Component {
             semis: ["", "", "", ""],
             final: ["", ""],
             campeon: [""],
-            guardar:false,
+            guardar: false,
         });
     }
 
@@ -295,59 +293,117 @@ class Listar extends Component {
         let semis = e.semis.split(',');
         let final = e.final.split(',');
         let campeon = e.campeon.split(',');
-        console.log('antes del for',cuartos);
+        console.log('antes del for', cuartos);
         var c;
-        for(c=0; c<=8; c++){
-            this.state.equipos.map((e, i) =>
-            {
-                if(cuartos[c]==e.id){
-                    cuartos[c]=e;
+        for (c = 0; c <= 8; c++) {
+            this.state.equipos.map((e, i) => {
+                if (cuartos[c] == e.id) {
+                    cuartos[c] = e;
                 }
-                if(c<4 && semis[c]==e.id){
-                    semis[c]=e;
+                if (c < 4 && semis[c] == e.id) {
+                    semis[c] = e;
                 }
-                if(c<2 && final[c]==e.id){
-                    final[c]=e;
+                if (c < 2 && final[c] == e.id) {
+                    final[c] = e;
                 }
-                if(campeon[0]==e.id){
-                    campeon[0]=e;
+                if (campeon[0] == e.id) {
+                    campeon[0] = e;
                 }
             });
         }
         this.setState({
-            cuartos:cuartos,
-            semis:semis,
-            final:final,
-            campeon:campeon,
+            prode_id: e.id,
+            cuartos: cuartos,
+            semis: semis,
+            final: final,
+            campeon: campeon,
         });
-        console.log('despues del for',this.state.campeon)
+        console.log('despues del for', this.state.campeon)
     }
 
+
+
     misProdes() {
-        if (this.state.prodes.length>0) {
+        if (this.state.prodes.length > 0) {
             return this.state.prodes.map((e, i) =>
-                <button className="dropdown-item" onClick={() => { this.seleccionarProde(e) }}>{e.name}</button>
+                <div className="row">
+                    <div className="col">
+                        <button className="dropdown-item" onClick={() => { this.seleccionarProde(e) }}>{e.name}</button>
+                    </div>
+                </div>
             );
+        }
+    }
+
+
+
+    editarProde() {
+        //Request de editar prode
+        axios({
+            method: 'put',
+            url: `api/prode/` + this.state.prode_id,
+
+            data: {
+                'cuartos': [this.state.cuartos[0].id, this.state.cuartos[1].id, this.state.cuartos[2].id, this.state.cuartos[3].id, this.state.cuartos[4].id, this.state.cuartos[5].id, this.state.cuartos[6].id, this.state.cuartos[7].id],
+                'semis': [this.state.semis[0].id, this.state.semis[1].id, this.state.semis[2].id, this.state.semis[3].id],
+                'final': [this.state.final[0].id, this.state.final[1].id],
+                'campeon': [this.state.campeon[0].id],
+            }
+        }).then(function (response) {
+            console.log(response);
+            alert(response.data.message);
+        }).catch(function (error) {
+            console.log(error);
+        });
+        this.new();
+
+    }
+
+    borrar() {
+        if (this.state.prode_id != 0)
+            return (
+                <button className="btn btn-danger" onClick={() => { this.eliminar() }}>Borrar prode seleccionado</button>
+            );
+    }
+
+    eliminar() {
+        let result = window.confirm("¿Esta seguro que desea borrar el prode seleccionado?");
+        if (result){
+            axios({
+                method: 'delete',
+                url: `api/prode/` + this.state.prode_id,
+            }).then(function (response) {
+                console.log(response);
+                alert(response.data.message);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        this.setState({
+            prode_id:0
+        });
+        this.new();
+
         }
     }
 
     render() {
         let guardar;
-        if (this.state.guardar && document.querySelector('meta[name="api-token"]') != null) {
-            guardar = <PanelBotones cuartos={this.state.cuartos} semis={this.state.semis} final={this.state.final} campeon={this.state.campeon} new={this.new.bind(this)} />;
+        if (this.state.guardar) {
+            if (this.state.prode_id == 0)
+                guardar = <PanelBotones cuartos={this.state.cuartos} semis={this.state.semis} final={this.state.final} campeon={this.state.campeon} new={this.new.bind(this)} />;
+            else
+                guardar = <Button color="danger" onClick={() => { this.editarProde() }}>Actualizar Prode</Button>;
         }
 
-
         return (
-
-
             <div className="container-fluid">
-
                 <div className="btn-group">
-                    <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" className="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mis Prodes
                     </button>
                     <div className="dropdown-menu">
+                        <button className="dropdown-item btn btn-dark" onClick={() => { this.reiniciar(); this.setState({ prode_id: 0 }) }}>Nuevo Prode</button>
+
                         {this.misProdes()}
                     </div>
                 </div>
@@ -377,7 +433,7 @@ class Listar extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TablaC reset={this.state.reset} cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
+                                    <TablaC cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
                                 </tbody>
                             </Table>
                         </div>
@@ -405,7 +461,7 @@ class Listar extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TablaF final={this.state.final} campeon={this.state.campeon}ganadorF={this.ganadorF.bind(this)} />
+                                    <TablaF final={this.state.final} campeon={this.state.campeon} ganadorF={this.ganadorF.bind(this)} />
                                 </tbody>
                             </Table>
                         </div>
@@ -458,7 +514,7 @@ class Listar extends Component {
                 <div className="btn-group btn-group-justified">
                     <Button color="primary" onClick={() => { { this.reiniciar(event) } }}>Reiniciar </Button>
                     {guardar}
-
+                    {this.borrar()}
                 </div>
 
 

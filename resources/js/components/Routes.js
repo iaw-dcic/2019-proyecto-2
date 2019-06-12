@@ -1,36 +1,25 @@
 
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch } from 'react-router-dom';
-// import Example from './Example';
-
-
-import Usuario from './../pages/Usuario'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Home';
-import GuardarProde from '../pages/prode/GuardarProde';
-import EditarProde from '../pages/prode/EditarProde';
-import MisProdes from './MisProdes';
 
 
 class Routes extends Component {
-    render () {
-    return (
+    render() {
+        return (
 
-        <div className="App">
-        <BrowserRouter>
-        <Switch>
+            <div className="App">
+                <BrowserRouter>
+                    <Switch>
 
-             <Route exact path="/usuarios" component={Usuario} />
-             <Route exact path="/guardar" component={GuardarProde} />
-             <Route exact path="/misprodes" component={MisProdes} />
-             <Route exact path="/modificar" component={EditarProde}  />
-             <Route exact path="" component={Home}  />
+                        <Route exact path="" component={Home} />
 
-        </Switch>
-        </BrowserRouter>
-        </div>
+                    </Switch>
+                </BrowserRouter>
+            </div>
 
 
-    );
+        );
     }
 }
 
