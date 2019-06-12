@@ -80565,6 +80565,9 @@ function (_Component) {
     _this.onClick4 = _this.onClick4.bind(_assertThisInitialized(_this));
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
+    _this.setArreglo = _this.setArreglo.bind(_assertThisInitialized(_this));
+    _this.controlar = _this.controlar.bind(_assertThisInitialized(_this));
+    _this.controlarFinal = _this.controlarFinal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -80797,12 +80800,67 @@ function (_Component) {
       });
     }
   }, {
+    key: "setArreglo",
+    value: function setArreglo(arregloconTodos, i) {
+      if ([arregloconTodos[i]] != []) {
+        this.setState(_defineProperty({}, arregloconTodos[i], []));
+      }
+    }
+  }, {
+    key: "controlar",
+    value: function controlar(i) {
+      var arregloConTodosSF = ["semifinal0", "semifinal1", "semifinal2", "semifinal3"];
+      var arregloConTodosF = ["final0", "final1"];
+
+      if (i == 0 || i == 1) {
+        this.setArreglo(arregloConTodosSF, 0);
+        this.setArreglo(arregloConTodosF, 0);
+      }
+
+      if (i == 2 || i == 3) {
+        this.setArreglo(arregloConTodosSF, 1);
+        this.setArreglo(arregloConTodosF, 0);
+      }
+
+      if (i == 4 || i == 5) {
+        this.setArreglo(arregloConTodosSF, 2);
+        this.setArreglo(arregloConTodosF, 1);
+      }
+
+      if (i == 6 || i == 7) {
+        this.setArreglo(arregloConTodosSF, 3);
+        this.setArreglo(arregloConTodosF, 1);
+      }
+
+      this.setState({
+        ganador: " "
+      });
+    }
+  }, {
+    key: "controlarFinal",
+    value: function controlarFinal(i) {
+      var arregloConTodosF = ["final0", "final1"];
+      this.setState({
+        ganador: " "
+      });
+
+      if (i == 0 || i == 1) {
+        this.setArreglo(arregloConTodosF, 0);
+      }
+
+      if (i == 2 || i == 3) {
+        this.setArreglo(arregloConTodosF, 1);
+      }
+    }
+  }, {
     key: "onClick1",
     value: function onClick1(event, newcuartos, i) {
       console.log(event.target.id);
       var arregloConTodos = ["cuartos0", "cuartos1", "cuartos2", "cuartos3", "cuartos4", "cuartos5", "cuartos6", "cuartos7"];
       var indice = arregloConTodos[i];
       this.setState(_defineProperty({}, indice, newcuartos));
+      this.controlar(i); //para actualizar semi, si se apreto otra opcion que se cambie
+
       localStorage.setItem(indice, JSON.stringify(newcuartos));
     }
   }, {
@@ -80811,6 +80869,7 @@ function (_Component) {
       var arregloConTodos = ["semifinal0", "semifinal1", "semifinal2", "semifinal3"];
       var indice = arregloConTodos[i];
       this.setState(_defineProperty({}, indice, newsemi));
+      this.controlarFinal(i);
       localStorage.setItem(indice, JSON.stringify(newsemi));
     }
   }, {
@@ -80819,6 +80878,9 @@ function (_Component) {
       var arregloConTodos = ["final0", "final1"];
       var indice = arregloConTodos[i];
       this.setState(_defineProperty({}, indice, newfinal));
+      if (this.state.ganador != "") this.setState({
+        ganador: ""
+      });
       localStorage.setItem(indice, JSON.stringify(newfinal));
     }
   }, {

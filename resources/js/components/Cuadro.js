@@ -49,7 +49,10 @@ export default class Cuadro extends Component {
   this.onClick3= this.onClick3.bind(this);
   this.onClick4= this.onClick4.bind(this);
   this.handleFieldChange = this.handleFieldChange.bind(this);
-  this.selectModal=this.selectModal.bind(this)
+  this.selectModal=this.selectModal.bind(this);
+  this.setArreglo=this.setArreglo.bind(this);
+  this.controlar=this.controlar.bind(this);
+  this.controlarFinal=this.controlarFinal.bind(this);
 }
 
 setPronostico = (pronost) => {
@@ -224,11 +227,59 @@ componentWillMount() { //LOCAL STORAGE
          });
     }
 
+  setArreglo(arregloconTodos, i){
+    if([arregloconTodos[i]]!=[]){
+      this.setState({[arregloconTodos[i]]: [] });
+    }
+  }
+
+  controlar(i){
+      let arregloConTodosSF= ["semifinal0", "semifinal1", "semifinal2", "semifinal3"];
+      let arregloConTodosF= ["final0", "final1"];
+
+
+      if(i==0 || i==1){
+        this.setArreglo(arregloConTodosSF, 0);
+        this.setArreglo(arregloConTodosF, 0);
+      }
+      if(i==2 || i==3){
+        this.setArreglo(arregloConTodosSF, 1);
+        this.setArreglo(arregloConTodosF, 0);
+      }
+      if(i==4 || i==5){
+        this.setArreglo(arregloConTodosSF, 2);
+        this.setArreglo(arregloConTodosF, 1);
+      }
+      if(i==6 || i==7){
+        this.setArreglo(arregloConTodosSF, 3);
+        this.setArreglo(arregloConTodosF, 1);
+      }
+
+      this.setState({ganador: " "});
+  }
+
+  controlarFinal(i){
+        let arregloConTodosF= ["final0", "final1"];
+
+       this.setState({ganador: " "});
+        if(i==0 || i==1){
+          this.setArreglo(arregloConTodosF, 0);
+        }
+        if(i==2 || i==3){
+          this.setArreglo(arregloConTodosF, 1);
+        }
+
+  }
+
+
   onClick1(event, newcuartos, i){
     console.log(event.target.id);
     let arregloConTodos= ["cuartos0", "cuartos1", "cuartos2", "cuartos3", "cuartos4", "cuartos5", "cuartos6", "cuartos7"];
     var indice = arregloConTodos[i];
     this.setState({[indice]: newcuartos });
+
+    this.controlar(i); //para actualizar semi, si se apreto otra opcion que se cambie
+
     localStorage.setItem(indice, JSON.stringify(newcuartos));
   }
 
@@ -236,6 +287,8 @@ componentWillMount() { //LOCAL STORAGE
     let arregloConTodos= ["semifinal0", "semifinal1", "semifinal2", "semifinal3"];
     var indice = arregloConTodos[i];
     this.setState({ [indice]: newsemi});
+
+    this.controlarFinal(i);
     localStorage.setItem(indice, JSON.stringify(newsemi));
   }
 
@@ -243,6 +296,9 @@ componentWillMount() { //LOCAL STORAGE
     let arregloConTodos= ["final0", "final1"];
     var indice = arregloConTodos[i];
     this.setState({ [indice]: newfinal });
+
+    if(this.state.ganador != "")
+      this.setState({ganador: ""});
     localStorage.setItem(indice, JSON.stringify(newfinal));
   }
 
@@ -267,7 +323,6 @@ componentWillMount() { //LOCAL STORAGE
   cuartos(){ //para optimizar
     let arregloConTodos= [this.state.cuartos0, this.state.cuartos1, this.state.cuartos2, this.state.cuartos3, this.state.cuartos4, this.state.cuartos5, this.state.cuartos6, this.state.cuartos7];
     let i=0; let semis=[]; let j=0;
-
     while (i < 8) {
        semis.push(<Equipo team1={arregloConTodos[i]} team2={arregloConTodos[i+1]} it={j} onClick2={this.onClick2} nombreop={this.getName}/>)
        i=i+2; j=j+1;
@@ -278,7 +333,6 @@ componentWillMount() { //LOCAL STORAGE
   semis(){
     let arregloConTodos= [this.state.semifinal0, this.state.semifinal1, this.state.semifinal2, this.state.semifinal3, this.state.semifinal4];
     let i=0; let finales=[]; let j=0;
-
     while (i < 4) {
        finales.push(<Equipo team1={arregloConTodos[i]} team2={arregloConTodos[i+1]} it={j} onClick2={this.onClick3} nombreop={this.getName}/>)
        i=i+2; j=j+1;
