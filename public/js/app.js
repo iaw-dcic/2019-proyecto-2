@@ -69039,8 +69039,8 @@ function (_Component) {
   }
 
   _createClass(Nuevo_pronostico, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -69048,7 +69048,21 @@ function (_Component) {
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/equipos').then(function (response) {
+      var g1 = "";
+      var g2 = "";
+      var g3 = "";
+      var g4 = "";
+      var g5 = "";
+      var g6 = "";
+      var g7 = "";
+      if (localStorage.hasOwnProperty('g1')) g1 = localStorage.getItem('g1');
+      if (localStorage.hasOwnProperty('g2')) g2 = localStorage.getItem('g2');
+      if (localStorage.hasOwnProperty('g3')) g3 = localStorage.getItem('g3');
+      if (localStorage.hasOwnProperty('g4')) g4 = localStorage.getItem('g4');
+      if (localStorage.hasOwnProperty('g5')) g5 = localStorage.getItem('g5');
+      if (localStorage.hasOwnProperty('g6')) g6 = localStorage.getItem('g6');
+      if (localStorage.hasOwnProperty('g7')) g7 = localStorage.getItem('g7');
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_equipos').then(function (response) {
         _this2.setState({
           equipos: response.data
         });
@@ -69056,45 +69070,6 @@ function (_Component) {
         console.log(response.data);
       });
     }
-    /*
-            var g1="";
-            var g2="";
-            var g3="";
-            var g4="";
-            var g5="";
-            var g6="";
-            var g7="";
-            if(localStorage.hasOwnProperty('g1'))
-                g1=localStorage.getItem('g1');
-            if(localStorage.hasOwnProperty('g2'))
-                g2=localStorage.getItem('g2');
-            
-            if(localStorage.hasOwnProperty('g3'))
-                g3=localStorage.getItem('g3');
-            
-            if(localStorage.hasOwnProperty('g4'))
-                g4=localStorage.getItem('g4');
-            
-            if(localStorage.hasOwnProperty('g5'))
-                g5=localStorage.getItem('g5');
-            
-            if(localStorage.hasOwnProperty('g6'))
-                g6=localStorage.getItem('g6');
-            
-            if(localStorage.hasOwnProperty('g7'))
-                g7=localStorage.getItem('g7');
-              
-    
-            axios.get('api/equipos')
-            .then(response => {
-                console.log(response.data);              
-    
-                }).catch(errors =>{
-                  console.log(errors);
-                })
-           } 
-    */
-
   }, {
     key: "handleChangeCuartos",
     value: function handleChangeCuartos(i) {

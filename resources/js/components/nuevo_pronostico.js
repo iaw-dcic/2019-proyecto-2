@@ -25,22 +25,18 @@ export default class Nuevo_pronostico extends Component {
 
 
 
+componentDidMount() {
 
-     componentWillMount() {
         window.axios = require('axios');
         let api_token = document.querySelector('meta[name="api-token"]');
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
         window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+     
 
-        axios.get('/api/equipos')
-                .then((response) => {
-                   this.setState({equipos:response.data});
-                console.log(response.data)
-        });
-}
-/*
+
+
         var g1="";
         var g2="";
         var g3="";
@@ -67,17 +63,17 @@ export default class Nuevo_pronostico extends Component {
         
         if(localStorage.hasOwnProperty('g7'))
             g7=localStorage.getItem('g7');
-          
-
-        axios.get('api/equipos')
-        .then(response => {
-            console.log(response.data);              
-
-            }).catch(errors =>{
-              console.log(errors);
+        
+          axios.get('/api/get_equipos').then(response => {
+            this.setState({
+                equipos: response.data,
             })
+            console.log(response.data)
+          });
+  
+
        } 
-*/
+
      handleChangeCuartos(i) { 
       switch (i) {
         case 0:          
@@ -160,13 +156,7 @@ export default class Nuevo_pronostico extends Component {
             console.log('Axios request failed',event);
         }
     }
-     
-    
-
-
-
-
-
+  
     render() {
         return (
           

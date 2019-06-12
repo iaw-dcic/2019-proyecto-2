@@ -15,15 +15,13 @@ class AddTorneoTable extends Migration
     {
         Schema::create('torneo', function (Blueprint $table) {
              $table->increments('id');
-            $table->String('nombre');
-            $table->String('descripcion');
-            $table->integer('partidos')->unsigned();
+            $table->String('nombre')->default('Copa America');
+            $table->String('descripcion')->default('Llaves de las instancias finales');;
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 
 
             $table->foreign('user_id')->references('id')->on ('users')->onDelete('cascade');
-            $table->foreign('partidos')->references('id')->on('partido')->onDelete('cascade');
         });
     }
 

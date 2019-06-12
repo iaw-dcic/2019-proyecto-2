@@ -20,9 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('equipos', 'PronosticoController@equipos')->middleware('auth:api');
-Route::get ('crear_pronostico' ,'PronosticoController@crear_pronostico')->middleware('auth:api');
-Route::post('crear_pronostico' ,'PronosticoController@crear_pronostico_BD')->middleware('auth:api');
+Route::get('get_equipos', 'PronosticoController@get_equipos');
+Route::get ('crear_pronostico' ,'PronosticoController@crear_pronostico');
+Route::post('crear_pronostico' ,'PronosticoController@crear_pronostico_BD');
 
 //Route::view('/Home', 'react');//->middleware('auth');
 //Route::view('/{path?}', 'inicio');//->middleware('auth');

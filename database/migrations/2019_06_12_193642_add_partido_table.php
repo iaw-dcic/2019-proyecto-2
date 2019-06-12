@@ -17,12 +17,14 @@ class AddPartidoTable extends Migration
              $table->increments('id')->unsigned();
             $table->integer('id_equipo_local')->unsigned();
             $table->integer('id_equipo_visitante')->unsigned();            
-            $table->integer('id_equipo_ganador')->unsigned();   
+            $table->integer('id_equipo_ganador')->unsigned();                
+            $table->integer('id_torneo')->unsigned();      
             $table->timestamps();
 
             $table->foreign('id_equipo_local')->references('id')->on('equipo');
             $table->foreign('id_equipo_visitante')->references('id')->on('equipo');            
             $table->foreign('id_equipo_ganador')->references('id')->on('equipo');  
+        $table->foreign('id_torneo')->references('id')->on('torneo')->onDelete('cascade');
         });
     }
 
