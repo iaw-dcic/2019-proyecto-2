@@ -3,7 +3,7 @@
     height:150px;
     width:200px;
     top: 150px;
-    left : 215px;
+    left : 200px;
     z-index: 1;
   }
   
@@ -19,8 +19,8 @@
     height:50px;
     width:50px;
     z-index: 1;
-    margin-left: 75px;
-    margin-top: 50px
+    margin-left:74px;
+    margin-top: 60px
   }
   
   .remera-small{
@@ -31,6 +31,7 @@
   }
 
   .container-absolute{
+    position:relative;
     margin-right: 190px;
     margin-bottom: 190px; 
   }
@@ -46,4 +47,9 @@
 
   .align-center{
     text-align: center;
+  }
+
+  .mis-remeras{
+    width: 100%;
+    overflow-x: scroll;
   }

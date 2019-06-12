@@ -12,17 +12,19 @@ class remeraController extends Controller
     {
         $this->middleware('auth:api');
     }
-    
-    public function getRemeras(){
+
+    public function getRemeras()
+    {
         //aca tengo que devolver todas las remeras del usuario logeado.
         $user = auth('api')->user();
 
-        $remeras = Shirt::where('user_id',$user->id)->get();
+        $remeras = Shirt::where('user_id', $user->id)->get();
 
-        return response()->json($remeras,200);
+        return response()->json($remeras, 200);
     }
 
-    public function guardar(Request $request){
+    public function guardar(Request $request)
+    {
 
         $data = $request->all();
 
@@ -43,10 +45,11 @@ class remeraController extends Controller
         return response()->json([$request->all()]);
     }
 
-    public function eliminar($id){
+    public function eliminar($id)
+    {
 
         $remera = Shirt::findOrFail($id);
-        if( auth('api')->user()->id == $remera->user_id ){
+        if (auth('api')->user()->id == $remera->user_id) {
             $remera->delete();
             return response()->json(['result' => 'success']);
         }

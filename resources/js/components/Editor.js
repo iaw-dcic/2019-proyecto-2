@@ -88,11 +88,7 @@ export default class Editor extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row align-center">
-                    <div className="col-md-8">
-                        <button className="btn btn-dark" onClick={(e) => this.guardarRemera(e)}> Guardar Remera </button>
-                    </div>
-                </div>
+                <button type="submit" className="btn btn-dark" onClick={(e) => this.guardarRemera(e)}> Guardar </button>
                 <div className="row">
                     <div className="col-md-8 remera">
                         <Remera

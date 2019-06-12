@@ -11,11 +11,11 @@ export default class MisRemeras extends Component {
     render() {
 
         return (
-            <div className="container">
+            <div className="container mis-remeras">
                 <div className="row flex-row flex-nowrap">
                     {
-                        this.props.misremeras.map((item) => ( //ESTO  NO ANDA
-                            <div className="button-container" key = {item.id}>
+                        this.props.misremeras.map((item) => ( 
+                            <div className="button-container" key={item.id}>
                                 <Remera
                                     key={item.id}
                                     color={item.colour}

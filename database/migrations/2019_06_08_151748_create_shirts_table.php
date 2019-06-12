@@ -17,7 +17,6 @@ class CreateShirtsTable extends Migration
 
             $table->bigIncrements('id');
             $table->timestamps();
-
             $table->string('stampa')->nullable();
             $table->string('colour')->nullable();
             $table->string('size')->nullable();

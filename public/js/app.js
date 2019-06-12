@@ -66074,16 +66074,13 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row align-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
         className: "btn btn-dark",
         onClick: function onClick(e) {
           return _this4.guardarRemera(e);
         }
-      }, " Guardar Remera "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, " Guardar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8 remera"
@@ -66175,30 +66172,28 @@ function (_Component) {
       var _this = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "container mis-remeras"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row flex-row flex-nowrap"
       }, this.props.misremeras.map(function (item) {
-        return (//ESTO  NO ANDA
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "button-container",
-            key: item.id
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            key: item.id,
-            color: item.colour,
-            stampa: item.stampa,
-            widthR: "60",
-            heightR: "70",
-            widthS: "30",
-            heightS: "70",
-            size: "small"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "boton-eliminar",
-            onClick: function onClick(e) {
-              return _this.eliminar(e, item.id);
-            }
-          }, "X"))
-        );
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "button-container",
+          key: item.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Remera__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: item.id,
+          color: item.colour,
+          stampa: item.stampa,
+          widthR: "60",
+          heightR: "70",
+          widthS: "30",
+          heightS: "70",
+          size: "small"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "boton-eliminar",
+          onClick: function onClick(e) {
+            return _this.eliminar(e, item.id);
+          }
+        }, "X"));
       })));
     }
   }]);
