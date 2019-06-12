@@ -32,6 +32,7 @@ export default class Page extends Component {
   componentWillMount(){
     if(localStorage.hasOwnProperty('colorid')){
       this.setState({
+        editid: localStorage.getItem('editid'),
         colorid: localStorage.getItem('colorid'),
         modelid: localStorage.getItem('modelid'),
         sizeid: localStorage.getItem('sizeid'),
@@ -39,6 +40,7 @@ export default class Page extends Component {
       this.updatepanel(localStorage.getItem('modelid'),localStorage.getItem('colorid'),localStorage.getItem('sizeid'),)
     }else{
       this.setState({
+        editid: null,
         colorid: 1,
         modelid: 1,
         sizeid: 1,
@@ -62,7 +64,7 @@ export default class Page extends Component {
       }
     );
       this.updatepanel(1,1,1);
-      this.savestate(1,1,1);
+      this.savestate(1,1,1,null);
 
   }
   cargarnotebook(Notebook){
@@ -80,6 +82,7 @@ export default class Page extends Component {
          modelid: note.modelid,
          sizeid:  note.sizeid,
        })
+       this.savestate(note.modelid,note.colorid,note.sizeid,Notebook.id)
 
      });
 
@@ -110,7 +113,18 @@ export default class Page extends Component {
              'Authentication': api_token.content,
            }),
           body: s,
-        });
+        }).then(
+             (response)=>{
+                 return response.json();
+             }   )
+         .then(nuevanote => {
+           this.setState(
+             {
+               editid: nuevanote.id,
+             }
+           )
+
+         });
       }else {
         const s2="modelid="+this.state.modelid+"&sizeid="+this.state.sizeid+"&colorid="+this.state.colorid;
         const path="/api/v1/notebookuser/"+this.state.editid
@@ -140,12 +154,13 @@ export default class Page extends Component {
       colorid: someValue
     })
     this.updatepanel(this.state.modelid,someValue,this.state.sizeid)
-    this.savestate(this.state.modelid,someValue,this.state.sizeid)
+    this.savestate(this.state.modelid,someValue,this.state.sizeid,this.state.editid)
 
 
 
   }
-  savestate(model,color,size){
+  savestate(model,color,size,edit){
+    localStorage.setItem('editid',edit)
     localStorage.setItem('modelid',model)
     localStorage.setItem('colorid',color)
     localStorage.setItem('sizeid',size)
@@ -156,7 +171,7 @@ export default class Page extends Component {
       modelid: someValue
     })
     this.updatepanel(someValue,this.state.colorid,this.state.sizeid)
-    this.savestate(someValue,this.state.colorid,this.state.sizeid)
+    this.savestate(someValue,this.state.colorid,this.state.sizeid,this.state.editid)
 
 
   }
@@ -165,7 +180,7 @@ export default class Page extends Component {
       sizeid: someValue
     })
     this.updatepanel(this.state.modelid,this.state.colorid,someValue)
-    this.savestate(this.state.modelid,this.state.colorid,someValue)
+    this.savestate(this.state.modelid,this.state.colorid,someValue,this.state.editid)
 
 
   }

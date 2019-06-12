@@ -38,7 +38,6 @@ class notebookuserController extends Controller
         if($notebook==null)
           return "Invalid Parameters";
         else{
-
           $n=notebookuser::create([
                 'userid' => $user->id,
                 'notebookid' => $notebook[0]->id,
@@ -51,9 +50,16 @@ class notebookuserController extends Controller
    return $n;
  }
  public function destroy($id){
-     $n=notebookuser::find($id);
-     $n->delete();
-     return response()->json($n);
+    $headertoken = request()->header('authentication');
+    $user =User::where([['api_token','=',$headertoken]])->get()->first();
+    $n=notebookuser::find($id);
+    if($n->userid==$user->id){
+      $n->delete();
+      return $n;
+    }else {
+      return "Unauthorized";
+    }
+    return response()->json($n);
  }
 
  public function update($id){
@@ -73,13 +79,18 @@ class notebookuserController extends Controller
      if($notebook==null)
        return "Invalid Parameters";
      else{
-       $n=notebookuser::find($id);
-       $n->userid=$user->id;
-       $n->notebookid=$notebook->id;
-       $n->stickerurl=$notebook->url;
-       $n->save();
 
+       $n=notebookuser::find($id);
+       if($n->userid==$user->id){
+         $n->userid=$user->id;
+         $n->notebookid=$notebook->id;
+         $n->stickerurl=$notebook->url;
+         $n->save();
          return $n;
+       }else {
+         return "Unauthorized";
+       }
+
        }
 
    }

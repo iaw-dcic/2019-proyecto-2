@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
           'modelid' => '2',
           'colorid' => '1',
           'sizeid' => '2',
-          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/dellxpsris15.webp',
+          'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/dellxpsgris15.webp',
         ]);
         //dellverde
         DB::table('notebooks')->insert([
@@ -207,11 +207,7 @@ class DatabaseSeeder extends Seeder
           'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/lenovoazul15.webp',
         ]);
 
-        DB::table('notebookusers')->insert([
-          'notebookid' => '3',
-          'userid' => '1',
-          'stickerurl' => 'https://iawbucket.s3.amazonaws.com/Iaw/pumas.webp',
-        ]);
+
 
 
     }

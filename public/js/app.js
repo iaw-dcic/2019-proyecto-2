@@ -66600,7 +66600,7 @@ function (_Component) {
     // Required step: always call the parent class' constructor
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ConfirmBtn).call(this));
     _this.state = {
-      msg: "Estas seguro que queres guardar tu nueva notebook?"
+      msg: "Estas seguro que queres guardar tu notebook?"
     };
     return _this;
   }
@@ -67376,6 +67376,7 @@ function (_Component) {
     value: function componentWillMount() {
       if (localStorage.hasOwnProperty('colorid')) {
         this.setState({
+          editid: localStorage.getItem('editid'),
           colorid: localStorage.getItem('colorid'),
           modelid: localStorage.getItem('modelid'),
           sizeid: localStorage.getItem('sizeid')
@@ -67383,6 +67384,7 @@ function (_Component) {
         this.updatepanel(localStorage.getItem('modelid'), localStorage.getItem('colorid'), localStorage.getItem('sizeid'));
       } else {
         this.setState({
+          editid: null,
           colorid: 1,
           modelid: 1,
           sizeid: 1
@@ -67407,7 +67409,7 @@ function (_Component) {
         sizeid: 1
       });
       this.updatepanel(1, 1, 1);
-      this.savestate(1, 1, 1);
+      this.savestate(1, 1, 1, null);
     }
   }, {
     key: "cargarnotebook",
@@ -67426,6 +67428,8 @@ function (_Component) {
           modelid: note.modelid,
           sizeid: note.sizeid
         });
+
+        _this2.savestate(note.modelid, note.colorid, note.sizeid, Notebook.id);
       });
     }
   }, {
@@ -67443,6 +67447,8 @@ function (_Component) {
   }, {
     key: "guardarnotebookpersonalizada",
     value: function guardarnotebookpersonalizada() {
+      var _this4 = this;
+
       console.log('pewpew');
       var api_token = document.querySelector('meta[name="api-token"]');
 
@@ -67456,6 +67462,12 @@ function (_Component) {
             'Authentication': api_token.content
           }),
           body: s
+        }).then(function (response) {
+          return response.json();
+        }).then(function (nuevanote) {
+          _this4.setState({
+            editid: nuevanote.id
+          });
         });
       } else {
         var s2 = "modelid=" + this.state.modelid + "&sizeid=" + this.state.sizeid + "&colorid=" + this.state.colorid;
@@ -67488,11 +67500,12 @@ function (_Component) {
         colorid: someValue
       });
       this.updatepanel(this.state.modelid, someValue, this.state.sizeid);
-      this.savestate(this.state.modelid, someValue, this.state.sizeid);
+      this.savestate(this.state.modelid, someValue, this.state.sizeid, this.state.editid);
     }
   }, {
     key: "savestate",
-    value: function savestate(model, color, size) {
+    value: function savestate(model, color, size, edit) {
+      localStorage.setItem('editid', edit);
       localStorage.setItem('modelid', model);
       localStorage.setItem('colorid', color);
       localStorage.setItem('sizeid', size);
@@ -67505,7 +67518,7 @@ function (_Component) {
         modelid: someValue
       });
       this.updatepanel(someValue, this.state.colorid, this.state.sizeid);
-      this.savestate(someValue, this.state.colorid, this.state.sizeid);
+      this.savestate(someValue, this.state.colorid, this.state.sizeid, this.state.editid);
     }
   }, {
     key: "sizehandler",
@@ -67514,7 +67527,7 @@ function (_Component) {
         sizeid: someValue
       });
       this.updatepanel(this.state.modelid, this.state.colorid, someValue);
-      this.savestate(this.state.modelid, this.state.colorid, someValue);
+      this.savestate(this.state.modelid, this.state.colorid, someValue, this.state.editid);
     }
   }, {
     key: "test",

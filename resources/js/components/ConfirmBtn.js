@@ -9,7 +9,7 @@ export default class ConfirmBtn extends Component{
       // Required step: always call the parent class' constructor
       super();
       this.state = {
-        msg: "Estas seguro que queres guardar tu nueva notebook?",
+        msg: "Estas seguro que queres guardar tu notebook?",
       }
     }
 
