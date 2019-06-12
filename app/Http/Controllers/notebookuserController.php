@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use Auth;
 use App\notebookuser;
 use App\notebook;
+use App\User;
 
 class notebookuserController extends Controller
 {
   public function index(){
-     $notebooks=notebookuser::all();
+    $headertoken = request()->header('authentication');
+    $user =User::where([['api_token','=',$headertoken]])->get()->first();
+    $notebooks=notebookuser::where([['userid','=',$user->id]])->get();
      return response()->json($notebooks);
  }
  public function show($id){
@@ -20,9 +23,11 @@ class notebookuserController extends Controller
  }
  public function store(){
       $n=null;
-      $user=Auth::user();
+      $headertoken = request()->header('authentication');
+      $user =User::where([['api_token','=',$headertoken]])->get()->first();
+
       if($user==null)
-        return "USERNULO";
+        return "Invalid Api Token";
       else{
         $datos = request()->all();
         $notebook=notebook::where([
@@ -31,7 +36,7 @@ class notebookuserController extends Controller
           ['colorid','=',$datos['colorid']],
         ])->get();
         if($notebook==null)
-          return "MERCA";
+          return "Invalid Parameters";
         else{
 
           $n=notebookuser::create([
@@ -51,9 +56,34 @@ class notebookuserController extends Controller
      return response()->json($n);
  }
 
- public function update(){
-     $equipos=Equipo::all();
-     return response()->json($equipos);
+ public function update($id){
+   $n=null;
+   $headertoken = request()->header('authentication');
+   $user =User::where([['api_token','=',$headertoken]])->get()->first();
+
+   if($user==null)
+     return "Invalid Api Token";
+   else{
+     $datos = request()->all();
+     $notebook=notebook::where([
+       ['modelid','=',$datos['modelid']],
+       ['sizeid','=',$datos['sizeid']],
+       ['colorid','=',$datos['colorid']],
+     ])->get()->first();
+     if($notebook==null)
+       return "Invalid Parameters";
+     else{
+       $n=notebookuser::find($id);
+       $n->userid=$user->id;
+       $n->notebookid=$notebook->id;
+       $n->stickerurl=$notebook->url;
+       $n->save();
+
+         return $n;
+       }
+
+   }
+   return $n;
  }
  public function edit(){
      $equipos=Equipo::all();

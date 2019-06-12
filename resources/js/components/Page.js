@@ -4,13 +4,15 @@ import Colores from './Colores';
 import Modelos from './Modelos';
 import Sizes from './Sizes';
 import ConfirmBtn from './ConfirmBtn';
+import LoadBtn from './LoadBtn';
+import NuevaNotebookBtn from './NuevaNotebookBtn'
 import './page.css'
 
 export default class Page extends Component {
   constructor(){
     super()
     this.state={
-      userid:null,
+      editid:null,
       modelid:1,
       sizeid:1,
       colorid:1,
@@ -23,6 +25,9 @@ export default class Page extends Component {
     this.guardarnotebookpersonalizada = this.guardarnotebookpersonalizada.bind(this)
     this.savestate = this.savestate.bind(this)
     this.seturl = this.seturl.bind(this)
+    this.getnotebooklist = this.getnotebooklist.bind(this)
+    this.cargarnotebook = this.cargarnotebook.bind(this)
+    this.nuevanotebook = this.nuevanotebook.bind(this)
   }
   componentWillMount(){
     if(localStorage.hasOwnProperty('colorid')){
@@ -38,12 +43,46 @@ export default class Page extends Component {
         modelid: 1,
         sizeid: 1,
       })
+      this.updatepanel(1,1,1);
     }
   }
   seturl(value){
     this.setState({
       url: value,
     })
+  }
+  nuevanotebook(){
+    this.setState(
+      {
+        colorid:1,
+        modelid:1,
+        editid:null,
+        sizeid:1,
+
+      }
+    );
+      this.updatepanel(1,1,1);
+      this.savestate(1,1,1);
+
+  }
+  cargarnotebook(Notebook){
+    alert("Se cargo tu notebook con exito");
+    const s="/api/v1/notebook/"+Notebook.notebookid;
+    fetch(s).then(
+         (response)=>{
+             return response.json();
+         }   )
+     .then(note => {
+       this.setState({
+         url: Notebook.stickerurl,
+         editid: Notebook.id,
+         colorid: note.colorid,
+         modelid: note.modelid,
+         sizeid:  note.sizeid,
+       })
+
+     });
+
   }
   updatepanel(model,color,size){
     const s="/api/v1/notebook/get/"+model+"/"+color+"/"+size;
@@ -60,17 +99,41 @@ export default class Page extends Component {
   }
   guardarnotebookpersonalizada(){
     console.log('pewpew');
+      let api_token = document.querySelector('meta[name="api-token"]');
+      if(this.state.editid==null){
+        const s="modelid="+this.state.modelid+"&sizeid="+this.state.sizeid+"&colorid="+this.state.colorid;
 
-      const s="modelid="+this.state.modelid+"&sizeid="+this.state.sizeid+"&colorid="+this.state.colorid;
+        fetch('/api/v1/notebookuser', {
+          method: 'post',
+          headers: new Headers({
+             'Content-Type': 'application/x-www-form-urlencoded', // <-- Specifying the Content-Type
+             'Authentication': api_token.content,
+           }),
+          body: s,
+        });
+      }else {
+        const s2="modelid="+this.state.modelid+"&sizeid="+this.state.sizeid+"&colorid="+this.state.colorid;
+        const path="/api/v1/notebookuser/"+this.state.editid
+        fetch(path, {
+          method: 'PUT',
+          headers: new Headers({
+             'Content-Type': 'application/x-www-form-urlencoded', // <-- Specifying the Content-Type
+             'Authentication': api_token.content,
+           }),
+          body: s2,
+        });
+      }
+
+  }
+  getnotebooklist(){
+      let api_token = document.querySelector('meta[name="api-token"]');
+
 
       fetch('/api/v1/notebookuser', {
-        method: 'post',
         headers: new Headers({
-           'Content-Type': 'application/x-www-form-urlencoded', // <-- Specifying the Content-Type
+           'Authentication': api_token.content,
          }),
-        body: s,
       });
-
   }
   colorhandler(someValue) {
     this.setState({
@@ -123,11 +186,9 @@ export default class Page extends Component {
                 <li className="features-item">
                   <Colores handler={this.colorhandler}/>
                 </li>
+
               </ul>
               <ul className="features-list list-2">
-
-
-
                 <li className="features-item">
                   <Modelos handler={this.modelohandler}/>
                 </li>
@@ -135,10 +196,14 @@ export default class Page extends Component {
                 <li className="features-item">
                   <Sizes handler={this.sizehandler}/>
                 </li>
-
-                <li>
-                  <ConfirmBtn handler={this.guardarnotebookpersonalizada}/>
+                <li className="features-item">
+                  <p className="titulo">Opciones</p>
+                  <NuevaNotebookBtn handler={this.nuevanotebook} />
+                  <LoadBtn handler={this.cargarnotebook} />
+                  <ConfirmBtn handler={this.guardarnotebookpersonalizada} />
                 </li>
+
+
               </ul>
             </div>
           </section>

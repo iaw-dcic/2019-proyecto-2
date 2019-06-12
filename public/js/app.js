@@ -6520,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:400,400i,700);", ""]);
 
 // module
-exports.push([module.i, "body {\n  font-family: 'Pacifico', cursive;\n}\nh1,h2,h3,h4,h5,h6{\n    font-family: 'Pacifico', cursive;\n}\n#features {\n  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0.7));\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  padding: 3rem 0;\n}\n\n.features-inner {\n  padding: 2rem;\n}\n@media (min-width: 600px) {\n  .features-inner {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-row-gap: 0;\n  }\n}\n@media (min-width: 800px) {\n  .features-inner {\n    grid-template-columns: 1fr 2fr;\n  }\n}\n@media (min-width: 900px) {\n  .features-inner {\n    grid-template-columns: repeat(2, 1fr);\n    max-width: 1000px;\n    margin: 0 auto;\n  }\n}\n\n.features-image {\n  text-align: center;\n  margin-bottom: 2rem;\n}\n@media (min-width: 600px) {\n  .features-image {\n    grid-row: 1/span 2;\n  }\n}\n@media (min-width: 900px) {\n  .features-image {\n    grid-column: 1;\n  }\n}\n.features-image img {\n  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\n          filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\n}\n\n.features-list {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\n.features-item {\n  transition: opacity 200ms ease;\n}\n\n\n.features-item-header,\n.features-item-text {\n  color: black;\n}\n\n.features-item-header {\n  margin-bottom: 0;\n  font-size: 1.4rem;\n}\n\n.features-item-text {\n  margin-top: 0.3rem;\n}\n\n@media (min-width: 900px) {\n  .list-1 {\n    text-align: right;\n    grid-column: 2;\n  }\n}\n@media (min-width: 600px) {\n  .list-2 {\n    grid-column: 2;\n  }\n  .list-2 .features-item-header:first-child {\n    margin-top: 0;\n  }\n}\n@media (min-width: 900px) {\n  .list-2 {\n    grid-column: 3;\n  }\n  .list-2 .features-item-header:first-child {\n    margin-top: 1.45rem;\n  }\n}\n\n\n\n\n\n.btn-circle {\n  width: 30px;\n  height: 30px;\n  text-align: center;\n  padding: 6px 0;\n  font-size: 12px;\n  line-height: 1.428571429;\n  border-radius: 15px;\n}\n.btn-circle.btn-lg {\n  width: 50px;\n  height: 50px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.33;\n  border-radius: 25px;\n}\n.btn-circle.btn-xl {\n  width: 70px;\n  height: 70px;\n  padding: 10px 16px;\n  font-size: 24px;\n  line-height: 1.33;\n  border-radius: 35px;\n}\n\n\n\n/* Button */\n .btn {\n     border-radius: 100px;\n     font-size: 13px;\n     font-weight: bold;\n     letter-spacing: 1px;\n     padding: 17px 39px;\n     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.14);\n     text-transform: uppercase;\n     box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.2);\n     margin: 4px;\n}\n .btn-primary {\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5a7ce2+0,8283e8+50,5c5de8+51,565bd8+71,575cdb+100 */\n     background: #5a7ce2;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #5a7ce2 0%,#8283e8 50%,#5c5de8 51%,#565bd8 71%,#575cdb 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a7ce2', endColorstr='#575cdb',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-outline-primary:hover {\n     background-color: #5a7ce2;\n     border-color: #5a7ce2;\n     color: #fff;\n}\n .btn-secondary{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#797b7f+0,b5b8bf+50,8e9397+51,8e9397+71,828589+100 */\n     background: #797b7f;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #797b7f 0%,#b5b8bf 50%,#8e9397 51%,#8e9397 71%,#828589 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#797b7f', endColorstr='#828589',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-success{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#05ac50+0,21dd72+50,05c44e+51,05ac50+71,05ac50+100 */\n     background: #05ac50;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #05ac50 0%,#21dd72 50%,#05c44e 51%,#05ac50 71%,#05ac50 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05ac50', endColorstr='#05ac50',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-danger{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e81216+0,f45355+50,f6290c+51,ed0e11+71,fc1b21+100 */\n     background: #e81216;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #e81216 0%,#f45355 50%,#f6290c 51%,#ed0e11 71%,#fc1b21 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e81216', endColorstr='#fc1b21',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-warning{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5ae09+0,ffd044+50,ffc107+51,fc9014+71,f1890b+100 */\n     background: #e5ae09;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #e5ae09 0%,#ffd044 50%,#ffc107 51%,#fc9014 71%,#f1890b 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5ae09', endColorstr='#f1890b',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n     color: #fff !important;\n}\n .btn-info{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#01a8c1+0,2adbf7+50,00b5d1+51,0aafc9+71,0599b1+100 */\n     background: #01a8c1;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #01a8c1 0%,#2adbf7 50%,#00b5d1 51%,#0aafc9 71%,#0599b1 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01a8c1', endColorstr='#0599b1',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-light{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+0,dddddd+50,ffffff+51,ffffff+71,f6f8fb+100 */\n     background: #f2f2f2;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #f2f2f2 0%,#dddddd 50%,#ffffff 51%,#ffffff 71%,#f6f8fb 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#f6f8fb',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     color: #3f345f !important;\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-dark{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#343a40+0,667584+50,4e5256+51,242a30+71,343a40+100 */\n     background: #343a40;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #343a40 0%,#667584 50%,#4e5256 51%,#242a30 71%,#343a40 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#343a40', endColorstr='#343a40',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n @-webkit-keyframes AnimationName {\n     0%{\n        background-position:0% 31%\n    }\n     50%{\n        background-position:100% 70%\n    }\n     100%{\n        background-position:0% 31%\n    }\n}\n @keyframes AnimationName {\n     0%{\n        background-position:0% 31%\n    }\n     50%{\n        background-position:100% 70%\n    }\n     100%{\n        background-position:0% 31%\n    }\n}\n .btn-outline-light:hover{\n     color: #3f345f;\n}\n .btn-outline-warning:hover{\n     color: #ffffff;\n}\n .btn-sm {\n     font-size: 12px;\n     padding: 11px 25px;\n}\n .elements-page-btn .btn {\n     margin: 6px 3px;\n}\n\n.titulo{\n  font-family: 'Pacifico', cursive;\n  font-size: 30px;\n}\n", ""]);
+exports.push([module.i, "body {\n  font-family: 'Pacifico', cursive;\n}\nh1,h2,h3,h4,h5,h6{\n    font-family: 'Pacifico', cursive;\n}\n#features {\n  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0.7));\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  padding: 3rem 0;\n}\n\n.features-inner {\n  padding: 2rem;\n}\n@media (min-width: 600px) {\n  .features-inner {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-row-gap: 0;\n  }\n}\n@media (min-width: 800px) {\n  .features-inner {\n    grid-template-columns: 1fr 2fr;\n  }\n}\n@media (min-width: 900px) {\n  .features-inner {\n    grid-template-columns: repeat(2, 1fr);\n    max-width: 1000px;\n    margin: 0 auto;\n  }\n}\n\n.features-image {\n  text-align: center;\n  margin-bottom: 2rem;\n}\n@media (min-width: 600px) {\n  .features-image {\n    grid-row: 1/span 2;\n  }\n}\n@media (min-width: 900px) {\n  .features-image {\n    grid-column: 1;\n  }\n}\n.features-image img {\n  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\n          filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.4));\n}\n\n.features-list {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\n.features-item {\n  text-align: center;\n  transition: opacity 200ms ease;\n}\n\n\n.features-item-header,\n.features-item-text {\n  color: black;\n}\n\n.features-item-header {\n  margin-bottom: 0;\n  font-size: 1.4rem;\n}\n\n.features-item-text {\n  margin-top: 0.3rem;\n}\n\n@media (min-width: 900px) {\n  .list-1 {\n    text-align: right;\n    grid-column: 2;\n  }\n}\n@media (min-width: 600px) {\n  .list-2 {\n    grid-column: 2;\n  }\n  .list-2 .features-item-header:first-child {\n    margin-top: 0;\n  }\n}\n@media (min-width: 900px) {\n  .list-2 {\n    grid-column: 3;\n  }\n  .list-2 .features-item-header:first-child {\n    margin-top: 1.45rem;\n  }\n}\n\n\n\n\n\n.btn-circle {\n  width: 30px;\n  height: 30px;\n  text-align: center;\n  padding: 6px 0;\n  font-size: 12px;\n  line-height: 1.428571429;\n  border-radius: 15px;\n}\n.btn-circle.btn-lg {\n  width: 50px;\n  height: 50px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.33;\n  border-radius: 25px;\n}\n.btn-circle.btn-xl {\n  width: 70px;\n  height: 70px;\n  padding: 10px 16px;\n  font-size: 24px;\n  line-height: 1.33;\n  border-radius: 35px;\n}\n\n\n\n/* Button */\n .btn {\n     border-radius: 100px;\n     font-size: 13px;\n     font-weight: bold;\n     letter-spacing: 1px;\n     padding: 17px 39px;\n     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.14);\n     text-transform: uppercase;\n     box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.2);\n     margin: 4px;\n}\n .btn-primary {\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5a7ce2+0,8283e8+50,5c5de8+51,565bd8+71,575cdb+100 */\n     background: #5a7ce2;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #5a7ce2 0%,#8283e8 50%,#5c5de8 51%,#565bd8 71%,#575cdb 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a7ce2', endColorstr='#575cdb',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-outline-primary:hover {\n     background-color: #5a7ce2;\n     border-color: #5a7ce2;\n     color: #fff;\n}\n .btn-secondary{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#797b7f+0,b5b8bf+50,8e9397+51,8e9397+71,828589+100 */\n     background: #797b7f;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #797b7f 0%,#b5b8bf 50%,#8e9397 51%,#8e9397 71%,#828589 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#797b7f', endColorstr='#828589',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-success{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#05ac50+0,21dd72+50,05c44e+51,05ac50+71,05ac50+100 */\n     background: #05ac50;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #05ac50 0%,#21dd72 50%,#05c44e 51%,#05ac50 71%,#05ac50 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05ac50', endColorstr='#05ac50',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-danger{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e81216+0,f45355+50,f6290c+51,ed0e11+71,fc1b21+100 */\n     background: #e81216;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #e81216 0%,#f45355 50%,#f6290c 51%,#ed0e11 71%,#fc1b21 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e81216', endColorstr='#fc1b21',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-warning{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5ae09+0,ffd044+50,ffc107+51,fc9014+71,f1890b+100 */\n     background: #e5ae09;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #e5ae09 0%,#ffd044 50%,#ffc107 51%,#fc9014 71%,#f1890b 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5ae09', endColorstr='#f1890b',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n     color: #fff !important;\n}\n .btn-info{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#01a8c1+0,2adbf7+50,00b5d1+51,0aafc9+71,0599b1+100 */\n     background: #01a8c1;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #01a8c1 0%,#2adbf7 50%,#00b5d1 51%,#0aafc9 71%,#0599b1 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01a8c1', endColorstr='#0599b1',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-light{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+0,dddddd+50,ffffff+51,ffffff+71,f6f8fb+100 */\n     background: #f2f2f2;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #f2f2f2 0%,#dddddd 50%,#ffffff 51%,#ffffff 71%,#f6f8fb 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#f6f8fb',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     color: #3f345f !important;\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n .btn-dark{\n    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#343a40+0,667584+50,4e5256+51,242a30+71,343a40+100 */\n     background: #343a40;\n    /* Old browsers */\n    /* FF3.6-15 */\n    /* Chrome10-25,Safari5.1-6 */\n     background: linear-gradient(135deg, #343a40 0%,#667584 50%,#4e5256 51%,#242a30 71%,#343a40 100%);\n    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#343a40', endColorstr='#343a40',GradientType=1 );\n    /* IE6-9 fallback on horizontal gradient */\n     background-size: 400% 400%;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     -webkit-animation: AnimationName 3s ease infinite;\n     animation: AnimationName 3s ease infinite;\n     border: medium none;\n}\n @-webkit-keyframes AnimationName {\n     0%{\n        background-position:0% 31%\n    }\n     50%{\n        background-position:100% 70%\n    }\n     100%{\n        background-position:0% 31%\n    }\n}\n @keyframes AnimationName {\n     0%{\n        background-position:0% 31%\n    }\n     50%{\n        background-position:100% 70%\n    }\n     100%{\n        background-position:0% 31%\n    }\n}\n .btn-outline-light:hover{\n     color: #3f345f;\n}\n .btn-outline-warning:hover{\n     color: #ffffff;\n}\n .btn-sm {\n     font-size: 12px;\n     padding: 11px 25px;\n}\n .elements-page-btn .btn {\n     margin: 6px 3px;\n}\n\n.titulo{\n  font-family: 'Pacifico', cursive;\n  font-size: 30px;\n}\n\n.thumbnailcentrado{\n  text-align: center;\n  padding-bottom: 15px;\n}\n.edit-thumbnail{\n  Width: 300px;\n}\n", ""]);
 
 // exports
 
@@ -66599,7 +66599,9 @@ function (_Component) {
 
     // Required step: always call the parent class' constructor
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ConfirmBtn).call(this));
-    _this.state = {};
+    _this.state = {
+      msg: "Estas seguro que queres guardar tu nueva notebook?"
+    };
     return _this;
   }
 
@@ -66607,9 +66609,40 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success btn-sm",
+        "data-toggle": "modal",
+        "data-target": "#exampleModal"
+      }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal fade",
+        id: "exampleModal",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "exampleModalLabel",
+        "aria-hidden": "true"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-dialog",
+        role: "document"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        "class": "modal-title",
+        id: "exampleModalLabel"
+      }, "Guarda Tu Notebook"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "close",
+        "data-dismiss": "modal",
+        "aria-label": "Close"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "aria-hidden": "true"
+      }, "\xD7"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-body"
+      }, this.state.msg, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-success",
-        onClick: this.props.handler
-      }, "Confirm"));
+        onClick: this.props.handler,
+        "data-dismiss": "modal"
+      }, "Guardar Notebook"))))));
     }
   }]);
 
@@ -66757,6 +66790,140 @@ function (_Component) {
   }]);
 
   return Header;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/LoadBtn.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/LoadBtn.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoadBtn; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Example */ "./resources/js/components/Example.js");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _NotebookThumbnail__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NotebookThumbnail */ "./resources/js/components/NotebookThumbnail.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+var LoadBtn =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(LoadBtn, _Component);
+
+  function LoadBtn() {
+    var _this;
+
+    _classCallCheck(this, LoadBtn);
+
+    // Required step: always call the parent class' constructor
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadBtn).call(this));
+    _this.state = {
+      not: []
+    };
+    _this.getlist = _this.getlist.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(LoadBtn, [{
+    key: "getlist",
+    value: function getlist() {
+      var _this2 = this;
+
+      var api_token = document.querySelector('meta[name="api-token"]');
+      fetch('/api/v1/notebookuser', {
+        headers: new Headers({
+          'Authentication': api_token.content
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (notebooks) {
+        _this2.setState({
+          not: notebooks
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "data-toggle": "modal",
+        "data-target": "#editModal",
+        "class": "btn btn-warning btn-sm",
+        onClick: this.getlist
+      }, " Cargar "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal fade",
+        id: "editModal",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "exampleModalLabel",
+        "aria-hidden": "true"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-dialog",
+        role: "document"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        "class": "modal-title",
+        id: "exampleModalLabel"
+      }, "Carga Tu Notebook"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "close",
+        "data-dismiss": "modal",
+        "aria-label": "Close"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "aria-hidden": "true"
+      }, "\xD7"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-body"
+      }, this.state.not.map(function (notebook) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NotebookThumbnail__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          valor: notebook,
+          handler: _this3.props.handler
+        });
+      }))))));
+    }
+  }]);
+
+  return LoadBtn;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -66933,6 +67100,196 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/NotebookThumbnail.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/NotebookThumbnail.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NotebookThumbnail; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Example */ "./resources/js/components/Example.js");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var NotebookThumbnail =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(NotebookThumbnail, _Component);
+
+  function NotebookThumbnail() {
+    _classCallCheck(this, NotebookThumbnail);
+
+    // Required step: always call the parent class' constructor
+    return _possibleConstructorReturn(this, _getPrototypeOf(NotebookThumbnail).call(this));
+  }
+
+  _createClass(NotebookThumbnail, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-sm thumbnailcentrado"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.props.valor.stickerurl,
+        "class": "img-thumbnail edit-thumbnail",
+        onClick: function onClick() {
+          return _this.props.handler(_this.props.valor);
+        },
+        "data-dismiss": "modal"
+      }));
+    }
+  }]);
+
+  return NotebookThumbnail;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/NuevaNotebookBtn.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/NuevaNotebookBtn.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NuevaNotebookBtn; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Example */ "./resources/js/components/Example.js");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var NuevaNotebookBtn =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(NuevaNotebookBtn, _Component);
+
+  function NuevaNotebookBtn() {
+    var _this;
+
+    _classCallCheck(this, NuevaNotebookBtn);
+
+    // Required step: always call the parent class' constructor
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NuevaNotebookBtn).call(this));
+    _this.state = {
+      msg: "Estas seguro que queres crear una nueva notebook?"
+    };
+    return _this;
+  }
+
+  _createClass(NuevaNotebookBtn, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-info btn-sm",
+        "data-toggle": "modal",
+        "data-target": "#nuevaModal"
+      }, "Nueva"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal fade",
+        id: "nuevaModal",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "exampleModalLabel",
+        "aria-hidden": "true"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-dialog",
+        role: "document"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        "class": "modal-title",
+        id: "exampleModalLabel"
+      }, "Crea Nueva Notebook"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        "class": "close",
+        "data-dismiss": "modal",
+        "aria-label": "Close"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "aria-hidden": "true"
+      }, "\xD7"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-body"
+      }, this.state.msg, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn",
+        onClick: this.props.handler,
+        "data-dismiss": "modal"
+      }, "Crear Nueva Notebook"))))));
+    }
+  }]);
+
+  return NuevaNotebookBtn;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Page.js":
 /*!*****************************************!*\
   !*** ./resources/js/components/Page.js ***!
@@ -66951,8 +67308,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modelos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Modelos */ "./resources/js/components/Modelos.js");
 /* harmony import */ var _Sizes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Sizes */ "./resources/js/components/Sizes.js");
 /* harmony import */ var _ConfirmBtn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ConfirmBtn */ "./resources/js/components/ConfirmBtn.js");
-/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
-/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _LoadBtn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadBtn */ "./resources/js/components/LoadBtn.js");
+/* harmony import */ var _NuevaNotebookBtn__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./NuevaNotebookBtn */ "./resources/js/components/NuevaNotebookBtn.js");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./page.css */ "./resources/js/components/page.css");
+/* harmony import */ var _page_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_page_css__WEBPACK_IMPORTED_MODULE_8__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66979,6 +67338,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var Page =
 /*#__PURE__*/
 function (_Component) {
@@ -66991,7 +67352,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Page).call(this));
     _this.state = {
-      userid: null,
+      editid: null,
       modelid: 1,
       sizeid: 1,
       colorid: 1,
@@ -67004,6 +67365,9 @@ function (_Component) {
     _this.guardarnotebookpersonalizada = _this.guardarnotebookpersonalizada.bind(_assertThisInitialized(_this));
     _this.savestate = _this.savestate.bind(_assertThisInitialized(_this));
     _this.seturl = _this.seturl.bind(_assertThisInitialized(_this));
+    _this.getnotebooklist = _this.getnotebooklist.bind(_assertThisInitialized(_this));
+    _this.cargarnotebook = _this.cargarnotebook.bind(_assertThisInitialized(_this));
+    _this.nuevanotebook = _this.nuevanotebook.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -67023,6 +67387,7 @@ function (_Component) {
           modelid: 1,
           sizeid: 1
         });
+        this.updatepanel(1, 1, 1);
       }
     }
   }, {
@@ -67033,29 +67398,87 @@ function (_Component) {
       });
     }
   }, {
+    key: "nuevanotebook",
+    value: function nuevanotebook() {
+      this.setState({
+        colorid: 1,
+        modelid: 1,
+        editid: null,
+        sizeid: 1
+      });
+      this.updatepanel(1, 1, 1);
+      this.savestate(1, 1, 1);
+    }
+  }, {
+    key: "cargarnotebook",
+    value: function cargarnotebook(Notebook) {
+      var _this2 = this;
+
+      alert("Se cargo tu notebook con exito");
+      var s = "/api/v1/notebook/" + Notebook.notebookid;
+      fetch(s).then(function (response) {
+        return response.json();
+      }).then(function (note) {
+        _this2.setState({
+          url: Notebook.stickerurl,
+          editid: Notebook.id,
+          colorid: note.colorid,
+          modelid: note.modelid,
+          sizeid: note.sizeid
+        });
+      });
+    }
+  }, {
     key: "updatepanel",
     value: function updatepanel(model, color, size) {
-      var _this2 = this;
+      var _this3 = this;
 
       var s = "/api/v1/notebook/get/" + model + "/" + color + "/" + size;
       fetch(s).then(function (response) {
         return response.json();
       }).then(function (estado) {
-        _this2.seturl(estado[0].url);
+        _this3.seturl(estado[0].url);
       });
     }
   }, {
     key: "guardarnotebookpersonalizada",
     value: function guardarnotebookpersonalizada() {
       console.log('pewpew');
-      var s = "modelid=" + this.state.modelid + "&sizeid=" + this.state.sizeid + "&colorid=" + this.state.colorid;
-      fetch('/api/v1/notebookuser', {
-        method: 'post',
-        headers: new Headers({
-          'Content-Type': 'application/x-www-form-urlencoded' // <-- Specifying the Content-Type
+      var api_token = document.querySelector('meta[name="api-token"]');
 
-        }),
-        body: s
+      if (this.state.editid == null) {
+        var s = "modelid=" + this.state.modelid + "&sizeid=" + this.state.sizeid + "&colorid=" + this.state.colorid;
+        fetch('/api/v1/notebookuser', {
+          method: 'post',
+          headers: new Headers({
+            'Content-Type': 'application/x-www-form-urlencoded',
+            // <-- Specifying the Content-Type
+            'Authentication': api_token.content
+          }),
+          body: s
+        });
+      } else {
+        var s2 = "modelid=" + this.state.modelid + "&sizeid=" + this.state.sizeid + "&colorid=" + this.state.colorid;
+        var path = "/api/v1/notebookuser/" + this.state.editid;
+        fetch(path, {
+          method: 'PUT',
+          headers: new Headers({
+            'Content-Type': 'application/x-www-form-urlencoded',
+            // <-- Specifying the Content-Type
+            'Authentication': api_token.content
+          }),
+          body: s2
+        });
+      }
+    }
+  }, {
+    key: "getnotebooklist",
+    value: function getnotebooklist() {
+      var api_token = document.querySelector('meta[name="api-token"]');
+      fetch('/api/v1/notebookuser', {
+        headers: new Headers({
+          'Authentication': api_token.content
+        })
       });
     }
   }, {
@@ -67129,7 +67552,15 @@ function (_Component) {
         className: "features-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sizes__WEBPACK_IMPORTED_MODULE_4__["default"], {
         handler: this.sizehandler
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmBtn__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "features-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "titulo"
+      }, "Opciones"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NuevaNotebookBtn__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        handler: this.nuevanotebook
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoadBtn__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        handler: this.cargarnotebook
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmBtn__WEBPACK_IMPORTED_MODULE_5__["default"], {
         handler: this.guardarnotebookpersonalizada
       })))));
     }

@@ -62,6 +62,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .features-item {
+  text-align: center;
   transition: opacity 200ms ease;
 }
 
@@ -372,4 +373,12 @@ h1,h2,h3,h4,h5,h6{
 .titulo{
   font-family: 'Pacifico', cursive;
   font-size: 30px;
+}
+
+.thumbnailcentrado{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.edit-thumbnail{
+  Width: 300px;
 }

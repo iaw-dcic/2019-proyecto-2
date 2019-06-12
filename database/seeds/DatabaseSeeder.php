@@ -207,8 +207,6 @@ class DatabaseSeeder extends Seeder
           'url' => 'https://iawbucket.s3.amazonaws.com/Iaw/lenovoazul15.webp',
         ]);
 
-
-
         DB::table('notebookusers')->insert([
           'notebookid' => '3',
           'userid' => '1',
