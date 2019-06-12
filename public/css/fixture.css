@@ -40,7 +40,8 @@ body {
   color: #858585;
   border-left: 0.25rem solid #858585;
   background: white;
-  width: 14rem;
+  /*width: 14rem;*/
+  width: 12rem;
   height: 3rem;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
 }
