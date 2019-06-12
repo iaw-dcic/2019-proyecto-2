@@ -88879,59 +88879,43 @@ function (_React$Component) {
   }
 
   _createClass(Cuartos, [{
+    key: "armarCuartos",
+    value: function armarCuartos() {
+      var proximoPartido = 12;
+      var nextPartido = 0;
+      var rows = [];
+
+      for (var i = 8; i < 12; i++) {
+        if (nextPartido === 2) {
+          nextPartido = 0;
+          proximoPartido++;
+        }
+
+        nextPartido++;
+        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: i,
+          style: cuartosStyle
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
+          id: "partido" + i,
+          relations: [{
+            targetId: "partido" + proximoPartido,
+            targetAnchor: 'left',
+            sourceAnchor: 'right'
+          }]
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          ganador: this.props.ganador,
+          partido: this.props.llaves[i]
+        }))));
+      }
+
+      return rows;
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoSegundaFase
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido8",
-        relations: [{
-          targetId: 'partido12',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[8]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoSegundaFase
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido9",
-        relations: [{
-          targetId: 'partido12',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[9]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoSegundaFase
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido10",
-        relations: [{
-          targetId: 'partido13',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[10]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoSegundaFase
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido11",
-        relations: [{
-          targetId: 'partido13',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[11]
-      }))));
+      }, this.armarCuartos());
     }
   }]);
 
@@ -88939,7 +88923,7 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Cuartos);
-var partidoSegundaFase = {
+var cuartosStyle = {
   marginTop: '60px',
   marginBottom: '110px',
   marginLeft: '70px'
@@ -89000,7 +88984,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoFinal
+        style: finalStyle
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
         id: "partido14"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -89014,7 +88998,7 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Final);
-var partidoFinal = {
+var finalStyle = {
   marginTop: '325px',
   marginLeft: '70px'
 };
@@ -89069,107 +89053,43 @@ function (_React$Component) {
   }
 
   _createClass(Octavos, [{
+    key: "armarOctavos",
+    value: function armarOctavos() {
+      var proximoPartido = 8;
+      var nextPartido = 0;
+      var rows = [];
+
+      for (var i = 0; i < 8; i++) {
+        if (nextPartido === 2) {
+          nextPartido = 0;
+          proximoPartido++;
+        }
+
+        nextPartido++;
+        rows.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: i,
+          style: octavosStyle
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
+          id: "partido" + i,
+          relations: [{
+            targetId: "partido" + proximoPartido,
+            targetAnchor: 'left',
+            sourceAnchor: 'right'
+          }]
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          ganador: this.props.ganador,
+          partido: this.props.llaves[i]
+        }))));
+      }
+
+      return rows;
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido0",
-        relations: [{
-          targetId: 'partido8',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[0]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido1",
-        relations: [{
-          targetId: 'partido8',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[1]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido2",
-        relations: [{
-          targetId: 'partido9',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[2]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido3",
-        relations: [{
-          targetId: 'partido9',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[3]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido4",
-        relations: [{
-          targetId: 'partido10',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[4]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido5",
-        relations: [{
-          targetId: 'partido10',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[5]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido6",
-        relations: [{
-          targetId: 'partido11',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[6]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoBaseStyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
-        id: "partido7",
-        relations: [{
-          targetId: 'partido11',
-          targetAnchor: 'left',
-          sourceAnchor: 'right'
-        }]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Partido__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        ganador: this.props.ganador,
-        partido: this.props.llaves[7]
-      }))));
+      }, this.armarOctavos());
     }
   }]);
 
@@ -89177,7 +89097,7 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Octavos);
-var partidoBaseStyle = {
+var octavosStyle = {
   marginTop: '20px'
 };
 
@@ -89236,7 +89156,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoTerceraFase
+        style: semifinalStyle
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
         id: "partido12",
         relations: [{
@@ -89248,7 +89168,7 @@ function (_React$Component) {
         ganador: this.props.ganador,
         partido: this.props.llaves[12]
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: partidoTerceraFase
+        style: semifinalStyle
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_archer__WEBPACK_IMPORTED_MODULE_1__["ArcherElement"], {
         id: "partido13",
         relations: [{
@@ -89267,7 +89187,7 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Semifinal);
-var partidoTerceraFase = {
+var semifinalStyle = {
   marginTop: '140px',
   marginBottom: '300px',
   marginLeft: '70px'

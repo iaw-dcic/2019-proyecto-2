@@ -11,7 +11,7 @@ class Final extends React.Component {
     render() {
         return (
             <div className="column">
-                <div style={partidoFinal}>
+                <div style={finalStyle}>
                     <ArcherElement id="partido14">
                         <Partido
                             ganador={this.props.ganador}
@@ -26,4 +26,4 @@ class Final extends React.Component {
 
 export default Final;
 
-const partidoFinal = {marginTop: '325px' , marginLeft: '70px'};
+const finalStyle = {marginTop: '325px' , marginLeft: '70px'};

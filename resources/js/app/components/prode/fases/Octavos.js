@@ -8,156 +8,52 @@ class Octavos extends React.Component {
         super(props);
     }
 
+    armarOctavos(){
+
+        var proximoPartido = 8;
+        var nextPartido=0;
+        var rows = [];
+
+        for (var i = 0; i < 8; i++) {
+
+            if(nextPartido === 2){
+                nextPartido = 0;
+                proximoPartido++;
+            }
+            nextPartido++;
+
+            rows.push(
+                <div key={i} style={octavosStyle}>
+                    <ArcherElement id={"partido"+i}
+                                   relations={
+                                       [{
+                                           targetId: "partido"+proximoPartido,
+                                           targetAnchor: 'left',
+                                           sourceAnchor: 'right',
+                                       }]
+                                   }
+                    >
+
+                        <Partido
+                            ganador={this.props.ganador}
+                            partido={this.props.llaves[i]}
+                        />
+
+                    </ArcherElement>
+                </div>
+            );
+        }
+
+        return rows;
+
+    }
+
     render() {
         return (
             <div className="column">
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido0"
-                        relations={
-                            [{
-                                targetId: 'partido8',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
 
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[0]}
-                        />
+                { this.armarOctavos() }
 
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido1"
-                        relations={
-                            [{
-                                targetId: 'partido8',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[1]}
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido2"
-                        relations={
-                            [{
-                                targetId: 'partido9',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[2]}
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido3"
-                        relations={
-                            [{
-                                targetId: 'partido9',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[3]}
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido4"
-                        relations={
-                            [{
-                                targetId: 'partido10',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[4]}
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido5"
-                        relations={
-                            [{
-                                targetId: 'partido10',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[5]}
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido6"
-                        relations={
-                            [{
-                                targetId: 'partido11',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[6]}
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoBaseStyle}>
-                    <ArcherElement id="partido7"
-                        relations={
-                            [{
-                                targetId: 'partido11',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[7]}
-                        />
-
-                    </ArcherElement>
-                </div>
             </div>
         );
     }
@@ -165,5 +61,5 @@ class Octavos extends React.Component {
 
 export default Octavos;
 
-const partidoBaseStyle = { marginTop: '20px' };
+const octavosStyle = { marginTop: '20px' };
 

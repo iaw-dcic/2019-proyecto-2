@@ -8,87 +8,51 @@ class Cuartos extends React.Component {
         super(props);
     }
 
+    armarCuartos(){
+
+        var proximoPartido = 12;
+        var nextPartido=0;
+        var rows = [];
+
+        for (var i = 8; i < 12; i++) {
+
+            if(nextPartido === 2){
+                nextPartido = 0;
+                proximoPartido++;
+            }
+            nextPartido++;
+
+            rows.push(
+                <div key={i} style={cuartosStyle}>
+                    <ArcherElement id={"partido"+i}
+                                   relations={
+                                       [{
+                                           targetId: "partido"+proximoPartido,
+                                           targetAnchor: 'left',
+                                           sourceAnchor: 'right',
+                                       }]
+                                   }
+                    >
+
+                        <Partido
+                            ganador={this.props.ganador}
+                            partido={this.props.llaves[i]}
+                        />
+
+                    </ArcherElement>
+                </div>
+            );
+        }
+
+        return rows;
+
+    }
+
     render() {
         return (
             <div className="column">
-                <div style={partidoSegundaFase}>
-                    <ArcherElement id="partido8"
-                        relations={
-                            [{
-                                targetId: 'partido12',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
 
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[8]}
-
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoSegundaFase}>
-                    <ArcherElement id="partido9"
-                        relations={
-                            [{
-                                targetId: 'partido12',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[9]}
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoSegundaFase}>
-                    <ArcherElement id="partido10"
-                        relations={
-                            [{
-                                targetId: 'partido13',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[10]}
-
-                        />
-
-                    </ArcherElement>
-                </div>
-
-                <div style={partidoSegundaFase}>
-                    <ArcherElement id="partido11"
-                        relations={
-                            [{
-                                targetId: 'partido13',
-                                targetAnchor: 'left',
-                                sourceAnchor: 'right',
-                            }]
-                        }
-                    >
-
-                        <Partido
-                            ganador={this.props.ganador}
-                            partido={this.props.llaves[11]}
-
-                        />
-
-                    </ArcherElement>
-                </div>
+                { this.armarCuartos() }
 
             </div>
         );
@@ -97,4 +61,4 @@ class Cuartos extends React.Component {
 
 export default Cuartos;
 
-const partidoSegundaFase = {marginTop: '60px' , marginBottom: '110px' , marginLeft: '70px'};
+const cuartosStyle = {marginTop: '60px' , marginBottom: '110px' , marginLeft: '70px'};

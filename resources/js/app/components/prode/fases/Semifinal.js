@@ -12,7 +12,7 @@ class Semifinal extends React.Component {
         return (
 
             <div className="column">
-                <div style={partidoTerceraFase}>
+                <div style={semifinalStyle}>
                     <ArcherElement id="partido12"
                         relations={
                             [{
@@ -32,7 +32,7 @@ class Semifinal extends React.Component {
                     </ArcherElement>
                 </div>
 
-                <div style={partidoTerceraFase}>
+                <div style={semifinalStyle}>
                     <ArcherElement id="partido13"
                         relations={
                             [{
@@ -58,4 +58,4 @@ class Semifinal extends React.Component {
 
 export default Semifinal;
 
-const partidoTerceraFase = {marginTop: '140px' ,marginBottom: '300px', marginLeft: '70px'};
+const semifinalStyle = {marginTop: '140px' ,marginBottom: '300px', marginLeft: '70px'};
