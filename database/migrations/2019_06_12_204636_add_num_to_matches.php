@@ -14,7 +14,7 @@ class AddNumToMatches extends Migration
     public function up()
     {
         Schema::table('matches', function (Blueprint $table) {
-            $table->integer('num');
+            $table->integer('num')->nullable();
         });
     }
 
