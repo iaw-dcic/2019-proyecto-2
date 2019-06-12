@@ -7072,6 +7072,25 @@ exports.push([module.i, ".contenedor{\r\n  background-color: #;\r\n}\r\n", ""]);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/css/modal.css":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/css/modal.css ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".modal {\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Overlay effect: translucent background: black w/ partial opacity */\r\n    z-index: 1; /* Overlay effect: positioned over other containers */\r\n    width: 100%; /* Full width */\r\n    height: 100%; /* Full height */\r\n    position: fixed; /* Fix position on the top-left corner*/\r\n    top: 0;\r\n    left: 0;\r\n    overflow: scroll; /* Enable scroll if needed */\r\n    padding-top: 80px; /* Location of the content container */\r\n\r\n}\r\n/* Modal content */\r\n.modal-content {\r\n    background-color: white;\r\n    width: 70%; /* Width in proportion to its parent container*/\r\n    max-width: 640px; /* Max width where it stops expanding */\r\n    height: 70%; /* Height in proportion to its parent container */\r\n    margin: auto; /* Auto margin according to the element width */\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 20px; /* Optional. Rounds container corners */\r\n}\r\n/* Close button */\r\n.close {\r\n   color: #aaaaaa;\r\n   float: right; /* Positioned to the right of the parent container whichever size it is */\r\n   font-size: 25px;\r\n   font-weight: bold;\r\n}\r\n.close:hover,\r\n.close:focus {\r\n    color: #000;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -80364,167 +80383,6 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/components/AddPronostico.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/AddPronostico.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AddPronostico; });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var AddPronostico =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(AddPronostico, _Component);
-
-  function AddPronostico(props) {
-    var _this;
-
-    _classCallCheck(this, AddPronostico);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddPronostico).call(this, props));
-    _this.state = {
-      name: '',
-      errors: []
-    };
-    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
-    _this.handleCreateNewProject = _this.handleCreateNewProject.bind(_assertThisInitialized(_this));
-    _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
-    _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(AddPronostico, [{
-    key: "handleFieldChange",
-    value: function handleFieldChange(event) {
-      this.setState({
-        name: event.target.value
-      });
-    }
-  }, {
-    key: "handleCreateNewProject",
-    value: function handleCreateNewProject(event) {
-      var _this2 = this;
-
-      event.preventDefault();
-      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-      var api_token = document.querySelector('meta[name="api-token"]');
-      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      var history = this.props.history;
-      var prediction = {
-        name: this.state.name
-      };
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/predictions', prediction).then(function (response) {
-        // redirect to the homepage
-        history.push('/pronostico');
-        console.log(response);
-      })["catch"](function (error) {
-        _this2.setState({
-          errors: error.response.data.errors
-        });
-      }); //  this.componentWillMount();
-    }
-    /*
-            componentWillMount () {
-                window.axios = require('axios');
-                let api_token = document.querySelector('meta[name="api-token"]');
-    
-                if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-    
-                axios.get('/api/predictions')
-                    .then((response) => {
-                      this.setState({
-                        predictions: response.data
-                      });
-                    console.log(response.data)
-            });
-          }
-    */
-
-  }, {
-    key: "hasErrorFor",
-    value: function hasErrorFor(field) {
-      return !!this.state.errors[field];
-    }
-  }, {
-    key: "renderErrorFor",
-    value: function renderErrorFor(field) {
-      if (this.hasErrorFor(field)) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
-          className: "invalid-feedback"
-        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, this.state.errors[field][0]));
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "container py-4"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-md-6"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-header"
-      }, "Nuevo pron\xF3stico"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.handleCreateNewProject
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "name"
-      }, "Nombre identificador de tu pron\xF3stico "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        id: "name",
-        type: "text",
-        name: "name",
-        value: this.state.name,
-        onChange: this.handleFieldChange
-      })), this.renderErrorFor('name'), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-primary"
-      }, "Crear"))))), "  ")));
-    }
-  }]);
-
-  return AddPronostico;
-}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/App.js":
 /*!****************************************!*\
   !*** ./resources/js/components/App.js ***!
@@ -80543,7 +80401,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
 /* harmony import */ var _Equipo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Equipo */ "./resources/js/components/Equipo.js");
 /* harmony import */ var _Cuadro__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Cuadro */ "./resources/js/components/Cuadro.js");
-/* harmony import */ var _AddPronostico__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AddPronostico */ "./resources/js/components/AddPronostico.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -80561,7 +80418,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -80588,10 +80444,7 @@ function (_Component) {
     // esto va en return       <Route exact path="/" component={HomePage} />
     //     <Route path="/user/predictions" component={Main} />
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuadro__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/indice",
-        component: _Main__WEBPACK_IMPORTED_MODULE_4__["default"]
-      })));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cuadro__WEBPACK_IMPORTED_MODULE_6__["default"], null)));
     }
   }]);
 
@@ -80622,9 +80475,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./css/cuadro.scss */ "./resources/js/components/css/cuadro.scss");
 /* harmony import */ var _css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_css_cuadro_scss__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
-/* harmony import */ var _Equipo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Equipo */ "./resources/js/components/Equipo.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modal */ "./resources/js/components/Modal.js");
+/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Main */ "./resources/js/components/Main.js");
+/* harmony import */ var _Equipo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Equipo */ "./resources/js/components/Equipo.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -80650,6 +80504,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -80697,6 +80552,7 @@ function (_Component) {
       semifinal3: [],
       final0: [],
       final1: [],
+      show: false,
       pronosticoActual: null
     };
     _this.addNewProduct = _this.addNewProduct.bind(_assertThisInitialized(_this));
@@ -80712,6 +80568,7 @@ function (_Component) {
     _this.onClick3 = _this.onClick3.bind(_assertThisInitialized(_this));
     _this.onClick4 = _this.onClick4.bind(_assertThisInitialized(_this));
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
+    _this.selectModal = _this.selectModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -80756,6 +80613,13 @@ function (_Component) {
       window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var api_token = document.querySelector('meta[name="api-token"]');
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+    }
+  }, {
+    key: "selectModal",
+    value: function selectModal(info) {
+      this.setState({
+        show: !this.state.show
+      }); // true/false toggle
     }
   }, {
     key: "addNewProduct",
@@ -81010,7 +80874,7 @@ function (_Component) {
       var j = 0;
 
       while (i < 8) {
-        semis.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        semis.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_7__["default"], {
           team1: arregloConTodos[i],
           team2: arregloConTodos[i + 1],
           it: j,
@@ -81041,7 +80905,7 @@ function (_Component) {
       var j = 0;
 
       while (i < 4) {
-        finales.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        finales.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Equipo__WEBPACK_IMPORTED_MODULE_7__["default"], {
           team1: arregloConTodos[i],
           team2: arregloConTodos[i + 1],
           it: j,
@@ -81112,11 +80976,17 @@ function (_Component) {
         onClick: this.editProduct,
         disabled: this.state.pronosticoActual == null,
         className: "btn-changes btn btn-success"
-      }, "Grabar")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Main__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, "Grabar"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        type: "button",
+        className: "btn-changes btn btn-primary",
+        onClick: this.selectModal
+      }, "Mis pronosticos"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        displayModal: this.state.show,
+        closeModal: this.selectModal,
         predictions: this.state.predictions,
         onClickA: this.setPronostico,
         onClickB: this.getEditProductToEdit
-      }));
+      })))));
     }
   }]);
 
@@ -81352,7 +81222,6 @@ function (_Component) {
     _classCallCheck(this, Main);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Main).call(this, props));
-    _this.state = {};
     _this.showClick = _this.showClick.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -81405,6 +81274,67 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Modal.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Modal.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _css_modal_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/modal.css */ "./resources/js/components/css/modal.css");
+/* harmony import */ var _css_modal_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_modal_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var Modal = function Modal(props) {
+  var divStyle = {
+    display: props.displayModal ? 'block' : 'none'
+  };
+
+  function closeModal(e) {
+    e.stopPropagation();
+    props.closeModal();
+  }
+
+  function showClick(id) {
+    this.props.onClickB(id);
+    window.scrollTo(0, 0);
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "modal",
+    onClick: closeModal,
+    style: divStyle
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "modal-content",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+    className: "close",
+    onClick: closeModal
+  }, "\xD7"), props.predictions.map(function (prediction) {
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+      className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
+      key: prediction.id
+    }, prediction.name, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      type: "button",
+      onClick: function onClick(e) {
+        return props.onClickB(prediction.id);
+      },
+      className: "btn btn-info"
+    }, "Ver"));
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Modal);
+
+/***/ }),
+
 /***/ "./resources/js/components/css/cuadro.scss":
 /*!*************************************************!*\
   !*** ./resources/js/components/css/cuadro.scss ***!
@@ -81444,6 +81374,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./hp.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/css/hp.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/components/css/modal.css":
+/*!***********************************************!*\
+  !*** ./resources/js/components/css/modal.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./modal.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/css/modal.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

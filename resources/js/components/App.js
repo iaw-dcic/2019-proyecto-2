@@ -5,7 +5,6 @@ import HomePage from './HomePage'
 import Main from './Main'
 import Equipo from './Equipo'
 import Cuadro from './Cuadro'
-import AddPronostico from './AddPronostico'
 
 import { Link } from 'react-router-dom'
 
@@ -20,7 +19,6 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Cuadro />
-          <Route path="/indice" component={Main} />
         </div>
        </BrowserRouter>
     )

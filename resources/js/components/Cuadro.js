@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
-import  "./css/cuadro.scss";
+import  "./css/cuadro.scss"
+import Modal from './Modal'
 import Main from './Main'
 import Equipo from './Equipo'
 import { Link } from 'react-router-dom'
@@ -32,7 +33,7 @@ export default class Cuadro extends Component {
 
            final0: [],
            final1: [],
-
+show: false,
            pronosticoActual :null,
   }
 
@@ -50,6 +51,7 @@ export default class Cuadro extends Component {
   this.onClick4= this.onClick4.bind(this);
   this.handleFieldChange = this.handleFieldChange.bind(this);
 
+        this.selectModal=this.selectModal.bind(this)
 }
 
 setPronostico = (pronost) => {
@@ -94,7 +96,9 @@ this.todos();
       if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
   }
 
-
+  selectModal(info){
+      this.setState({show: !this.state.show}) // true/false toggle
+    }
 
   async addNewProduct() { //CREAR NUEVO PRONOSTICO
     await this.addPronostico();
@@ -329,6 +333,8 @@ this.todos();
 
            return finales;
   }
+
+
         render() {
 
           return <div>
@@ -379,12 +385,13 @@ this.todos();
                       />
                       <button type="submit" onClick={this.addNewProduct} disabled = {this.state.pronosticoActual != null} className="btn-changes btn btn-success">Guardar nuevo</button>
                       <button type="submit" onClick={this.editProduct} disabled = {this.state.pronosticoActual== null} className="btn-changes btn btn-success">Grabar</button>
-                    
+                      <button type="button" className="btn-changes btn btn-primary" onClick={ this.selectModal }>Mis pronosticos</button>
+                      <Modal displayModal={this.state.show} closeModal={this.selectModal} predictions={this.state.predictions} onClickA={this.setPronostico} onClickB={this.getEditProductToEdit}  />
                     </ul>
+
             </div>
             </div>
 
-            <Main predictions={this.state.predictions} onClickA={this.setPronostico} onClickB={this.getEditProductToEdit}/>
 
             </div>
 
