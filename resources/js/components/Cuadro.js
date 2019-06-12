@@ -52,7 +52,7 @@ export default class Cuadro extends Component {
   this.selectModal=this.selectModal.bind(this);
   this.setArreglo=this.setArreglo.bind(this);
   this.controlar=this.controlar.bind(this);
-  this.controlarFinal=this.controlarFinal.bind(this);
+  this.controlarFinal=this.controlarFinal.bind(this); 
 }
 
 setPronostico = (pronost) => {
