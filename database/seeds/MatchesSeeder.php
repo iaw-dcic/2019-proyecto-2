@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MacthesSeeder extends Seeder
+class MatchesSeeder extends Seeder
 {
     /**
      * Seed the application's database.
