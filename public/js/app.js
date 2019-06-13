@@ -66285,20 +66285,18 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
-/***/ "./resources/js/components/Match.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/Match.js ***!
-  \******************************************/
+/***/ "./resources/js/components/Header.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Header.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Match; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Header; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66319,59 +66317,44 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-var Match =
+var Header =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Match, _Component);
+  _inherits(Header, _Component);
 
-  function Match() {
-    _classCallCheck(this, Match);
+  function Header() {
+    _classCallCheck(this, Header);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Match).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Header).apply(this, arguments));
   }
 
-  _createClass(Match, [{
+  _createClass(Header, [{
     key: "render",
     value: function render() {
-      var child1 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "score"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "",
-        width: "26px",
-        height: "26px",
-        alt: " ? "
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.props.onClick,
-        className: "button"
-      }, this.props.teamA));
-      var child2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "team team-bottom"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "score"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "",
-        width: "26px",
-        height: "26px",
-        alt: " ? "
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.props.onClick,
-        className: "button"
-      }, this.props.teamB));
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "matchup"
-      }, child1, child2);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "hero"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "hero-wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "intro",
+        id: "intro"
+      }, "-Conmebol-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "headline"
+      }, "Libertadores"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "year"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-star"
+      }), " 2019 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-star"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://www.directv.com.ar/Shared/Images/deportes/copa-libertadores/Copa-libertadores.png",
+        alt: "Copa Libertadores Logo"
+      })));
     }
   }]);
 
-  return Match;
+  return Header;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-/* 
-{this.getTeamImage(this.props.teamA)}
-{this.getTeamImage(this.props.teamB)} */
-
 
 
 
@@ -66423,7 +66406,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TournamentBracket_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_TournamentBracket_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Match__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Match */ "./resources/js/components/Match.js");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66477,7 +66460,6 @@ function (_Component) {
     _this.search = _this.search.bind(_assertThisInitialized(_this));
     _this.newProde = _this.newProde.bind(_assertThisInitialized(_this));
     _this["delete"] = _this["delete"].bind(_assertThisInitialized(_this));
-    _this.createTableOctavos1 = _this.createTableOctavos1.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -66512,28 +66494,6 @@ function (_Component) {
       })["catch"](function (error) {
         console.log(error);
       });
-
-      if (localStorage.length == 0) {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/teams').then(function (response) {
-          self.setState({
-            octavos: response.data
-          });
-        })["catch"](function (error) {
-          console.log(error);
-        });
-        self.setState({
-          mount: 1
-        });
-      } else {
-        self.setState({
-          octavos: localStorage.getItem('octavos').split(','),
-          cuartos: localStorage.getItem('cuartos').split(','),
-          semis: localStorage.getItem('semis').split(','),
-          "final": localStorage.getItem('final').split(','),
-          campeon: localStorage.getItem('campeon'),
-          mount: 1
-        });
-      }
     }
   }, {
     key: "search",
@@ -66617,7 +66577,15 @@ function (_Component) {
   }, {
     key: "getTeamImage",
     value: function getTeamImage(team) {
-      return "http://www.promiedos.com.ar/images/s64/" + team + ".png";
+      var alias = null;
+
+      for (var i = 0; i < 16; i++) {
+        if (this.state.octavos[i] == team) {
+          alias = this.state.alias[i];
+        }
+      }
+
+      return "http://www.promiedos.com.ar/images/s64/" + alias + ".png";
     }
   }, {
     key: "handleClickOctavos",
@@ -66669,106 +66637,11 @@ function (_Component) {
       });
     }
   }, {
-    key: "createTableOctavos1",
-    value: function createTableOctavos1() {
-      var table = [];
-      var i = 0;
-      var children = [];
-
-      while (i < 8) {
-        var child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Match__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          teamA: this.state.octavos[i],
-          teamB: this.state.octavos[i + 1],
-          onClick: this.onClickOctavos
-        });
-        children.push(child);
-        i = i + 2;
-      }
-
-      table.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, children));
-      return table;
-    }
-  }, {
-    key: "createOctavosTable2",
-    value: function createOctavosTable2() {
-      var _this2 = this;
-
-      for (i = 0; i < 4; i++) {
-        return;
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-          className: "matchup"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "team team-bottom"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "score"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: this.getTeamImage(this.state.alias[i]),
-          width: "26px",
-          height: "26px",
-          alt: " ? "
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: function onClick() {
-            return _this2.handleClickOctavos(i);
-          },
-          className: "button"
-        }, this.state.octavos[i])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "team team-bottom"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "score"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: this.getTeamImage(this.state.alias[i + 1]),
-          width: "26px",
-          height: "26px",
-          alt: " ? "
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: function onClick() {
-            return _this2.handleClickOctavos(i + 1);
-          },
-          className: "button"
-        }, this.state.octavos[i + 1])));
-      }
-    }
-  }, {
-    key: "createOctavosTable1",
-    value: function createOctavosTable1() {
-      for (i = 0; i < 8; i++) {}
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
-      if (this.state.mount != 0) {
-        if (this.state.prode_id != 0) {
-          localStorage.clear();
-        } else {
-          localStorage.setItem('octavos', this.state.octavos);
-          localStorage.setItem('cuartos', this.state.cuartos);
-          localStorage.setItem('semis', this.state.semis);
-          localStorage.setItem('final', this.state["final"]);
-          localStorage.setItem('campeon', this.state.campeon);
-        }
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-        className: "hero"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hero-wrap"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "intro",
-        id: "intro"
-      }, "-Conmebol-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "headline"
-      }, "Libertadores"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "year"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-star"
-      }), " 2019 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-star"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://www.directv.com.ar/Shared/Images/deportes/copa-libertadores/Copa-libertadores.png",
-        alt: "Copa Libertadores Logo"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "bracket"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "jumbotron"
@@ -66785,21 +66658,21 @@ function (_Component) {
           type: "button",
           id: prode.id,
           className: "list-group-item list-group-item-action",
-          onClick: _this3.search
+          onClick: _this2.search
         }, "Mi Pronostico, creado: ", prode.created_at, ", identificador: ", prode.id);
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.save();
+          return _this2.save();
         },
         className: "button .btn-success"
       }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3["delete"]();
+          return _this2["delete"]();
         },
         className: "button .btn-success"
       }, "Eliminar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.newProde();
+          return _this2.newProde();
         },
         className: "button .btn-success"
       }, "Nuevo Prode")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66816,7 +66689,127 @@ function (_Component) {
         className: "round-details"
       }, "Octavos de final", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "date"
-      })), this.createTableOctavos1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[0]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(0);
+        },
+        className: "button"
+      }, this.state.octavos[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[1]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(1);
+        },
+        className: "button"
+      }, this.state.octavos[1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[2]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(2);
+        },
+        className: "button"
+      }, this.state.octavos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[3]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(3);
+        },
+        className: "button"
+      }, this.state.octavos[3]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[4]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(4);
+        },
+        className: "button"
+      }, this.state.octavos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[5]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(5);
+        },
+        className: "button"
+      }, this.state.octavos[5]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[6]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(6);
+        },
+        className: "button"
+      }, this.state.octavos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "team team-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "score"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.getTeamImage(this.state.octavos[7]),
+        width: "26px",
+        height: "26px",
+        alt: " ? "
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.handleClickOctavos(7);
+        },
+        className: "button"
+      }, this.state.octavos[7])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round round-three"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "round-details"
@@ -66835,7 +66828,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(0);
+          return _this2.handleClickCuartos(0);
         },
         className: "button"
       }, this.state.cuartos[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -66849,7 +66842,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(1);
+          return _this2.handleClickCuartos(1);
         },
         className: "button"
       }, this.state.cuartos[1]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -66865,7 +66858,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(2);
+          return _this2.handleClickCuartos(2);
         },
         className: "button"
       }, this.state.cuartos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -66879,7 +66872,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(3);
+          return _this2.handleClickCuartos(3);
         },
         className: "button"
       }, this.state.cuartos[3]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66903,7 +66896,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickSemis(0);
+          return _this2.handleClickSemis(0);
         },
         className: "button"
       }, this.state.semis[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -66917,7 +66910,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickSemis(1);
+          return _this2.handleClickSemis(1);
         },
         className: "button"
       }, this.state.semis[1])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66945,7 +66938,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickFinal(0);
+          return _this2.handleClickFinal(0);
         },
         className: "button"
       }, this.state["final"][0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -66959,7 +66952,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickFinal(1);
+          return _this2.handleClickFinal(1);
         },
         className: "button"
       }, this.state["final"][1])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66983,7 +66976,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickSemis(2);
+          return _this2.handleClickSemis(2);
         },
         className: "button"
       }, this.state.semis[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -66997,7 +66990,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickSemis(3);
+          return _this2.handleClickSemis(3);
         },
         className: "button"
       }, this.state.semis[3])))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67021,7 +67014,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(4);
+          return _this2.handleClickCuartos(4);
         },
         className: "button"
       }, this.state.cuartos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67035,7 +67028,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(5);
+          return _this2.handleClickCuartos(5);
         },
         className: "button"
       }, this.state.cuartos[5]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -67051,7 +67044,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(6);
+          return _this2.handleClickCuartos(6);
         },
         className: "button"
       }, this.state.cuartos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67065,7 +67058,7 @@ function (_Component) {
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickCuartos(7);
+          return _this2.handleClickCuartos(7);
         },
         className: "button"
       }, this.state.cuartos[7])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67081,13 +67074,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[8]),
+        src: this.getTeamImage(this.state.octavos[8]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(8);
+          return _this2.handleClickOctavos(8);
         },
         className: "button"
       }, this.state.octavos[8])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67095,13 +67088,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[9]),
+        src: this.getTeamImage(this.state.octavos[9]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(9);
+          return _this2.handleClickOctavos(9);
         },
         className: "button"
       }, this.state.octavos[9]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -67111,13 +67104,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[10]),
+        src: this.getTeamImage(this.state.octavos[10]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(10);
+          return _this2.handleClickOctavos(10);
         },
         className: "button"
       }, this.state.octavos[10])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67125,13 +67118,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[11]),
+        src: this.getTeamImage(this.state.octavos[11]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(11);
+          return _this2.handleClickOctavos(11);
         },
         className: "button"
       }, this.state.octavos[11]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -67141,13 +67134,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[12]),
+        src: this.getTeamImage(this.state.octavos[12]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(12);
+          return _this2.handleClickOctavos(12);
         },
         className: "button"
       }, this.state.octavos[12])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67155,13 +67148,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[13]),
+        src: this.getTeamImage(this.state.octavos[13]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(13);
+          return _this2.handleClickOctavos(13);
         },
         className: "button"
       }, this.state.octavos[13]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -67171,13 +67164,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[14]),
+        src: this.getTeamImage(this.state.octavos[14]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(14);
+          return _this2.handleClickOctavos(14);
         },
         className: "button"
       }, this.state.octavos[14])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -67185,13 +67178,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "score"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.getTeamImage(this.state.alias[15]),
+        src: this.getTeamImage(this.state.octavos[15]),
         width: "26px",
         height: "26px",
         alt: " ? "
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.handleClickOctavos(15);
+          return _this2.handleClickOctavos(15);
         },
         className: "button"
       }, this.state.octavos[15]))))))));

@@ -17,6 +17,7 @@ class TeamController extends Controller
         $octavosToRet = [];
         $octavos = Team::select('name')->get();
         
+        
         for ($i = 0; $i < 16; $i++) {
             $octavosToRet[$i] = $octavos[$i]->name;    
         }   
@@ -27,10 +28,12 @@ class TeamController extends Controller
     {
         $aliasToRet = [];
         $alias = Team::select('alias')->get();
+    
         
         for ($i = 0; $i < 16; $i++) {
-            $aliasToRet[$i] = $alias[$i]->alias;    
+            $aliasToRet[$i] = $alias[$i]->alias;
         }
+
         return response()->json($aliasToRet);
     }
 
