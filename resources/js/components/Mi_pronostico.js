@@ -161,6 +161,7 @@ componentDidMount() {
             alert('Su pronostico fue modificado exitosamente');
           }
 
+        window.location.reload();  
         
     }
   

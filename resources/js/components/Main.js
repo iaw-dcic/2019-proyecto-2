@@ -14,7 +14,7 @@ export default class Example extends Component {
     constructor() {
         super()
         this.state = {
-            content: ""
+            content: <Nuevo_pronostico />
         }
         
     }
@@ -46,9 +46,12 @@ export default class Example extends Component {
                   <Row>  
                     <div className="container">
                         <div className="row justify-content-center">
-                            <div className="col-md-20">                                    
+                            <div className="col-md-4"> 
+                                                                  
                                     <button className="btn" onClick={(event) => this.Pronostico()} >Iniciar pronóstico </button>
-                                    <button className="btn" onClick={(event) => this.MisPronosticos()} >Mis pronósticos </button>
+                                                                                    
+                                    
+                                     <button className="btn" onClick={(event) => this.MisPronosticos()} >Mis pronósticos </button>
                                 
                             </div>
                         </div>
@@ -57,7 +60,7 @@ export default class Example extends Component {
                    
                   </Row>  
                    <br/>
-                   <br/>
+                   
                        
                     <Row>  
                             {this.state.content}

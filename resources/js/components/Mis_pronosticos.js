@@ -60,6 +60,7 @@ export default class Mis_pronosticos extends Component {
             catch (event) {
                 console.log('Axios request failed', event);
             }
+              window.location.reload();
         
     }
 
@@ -70,7 +71,7 @@ export default class Mis_pronosticos extends Component {
              PanelVisible:false,
             content: <Mi_pronostico />
         });
-    
+      
     }
 
     pintarPanel(){

@@ -68778,7 +68778,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
     _this.state = {
-      content: ""
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nuevo_pronostico__WEBPACK_IMPORTED_MODULE_2__["default"], null)
     };
     return _this;
   }
@@ -68811,7 +68811,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-20"
+        className: "col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn",
         onClick: function onClick(event) {
@@ -68822,7 +68822,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this2.MisPronosticos();
         }
-      }, "Mis pron\xF3sticos "))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_5__["Row"], null, this.state.content));
+      }, "Mis pron\xF3sticos "))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_5__["Row"], null, this.state.content));
     }
   }]);
 
@@ -69064,6 +69064,8 @@ function (_Component) {
       } else {
         alert('Su pronostico fue modificado exitosamente');
       }
+
+      window.location.reload();
     }
   }, {
     key: "render",
@@ -69512,6 +69514,8 @@ function (_Component) {
       } else {
         alert('Su pronostico fue modificado exitosamente');
       }
+
+      window.location.reload();
     }
   }, {
     key: "render",
@@ -69826,6 +69830,8 @@ function (_Component) {
       } catch (event) {
         console.log('Axios request failed', event);
       }
+
+      window.location.reload();
     }
   }, {
     key: "handleModificarPronostico",
