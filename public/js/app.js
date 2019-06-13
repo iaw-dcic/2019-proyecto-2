@@ -66672,6 +66672,11 @@ function (_Component) {
         className: "button .btn-success"
       }, "Eliminar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
+          return _this2.edit();
+        },
+        className: "button .btn-success"
+      }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
           return _this2.newProde();
         },
         className: "button .btn-success"

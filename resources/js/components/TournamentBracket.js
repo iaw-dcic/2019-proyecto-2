@@ -222,12 +222,11 @@ export default class TournamentBracket extends Component {
                         </div>
                         <button onClick={() => this.save()} className="button .btn-success">Guardar</button>
                         <button onClick={() => this.delete()} className="button .btn-success">Eliminar</button>
+                        <button onClick={() => this.edit()} className="button .btn-success">Editar</button>
                         <button onClick={() => this.newProde()} className="button .btn-success">Nuevo Prode</button>
                     </div>
         </div>
         </div>
-
-
         <div className="round-details">Mi Pronostico, identificador: {this.state.prode_id}<br/><span className="date"></span></div>  
         <div className="container">   
         
