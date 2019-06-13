@@ -19,6 +19,9 @@ class remeraController extends Controller
         $user = auth('api')->user();
 
         $remeras = Shirt::where('user_id', $user->id)->get();
+        if($remeras==null){
+            $remeras= [];
+        }
 
         return response()->json($remeras, 200);
     }
