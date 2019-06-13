@@ -113,7 +113,7 @@ class PronosticoController extends Controller
      public function get_equipos()
     {
         $eq=Equipo::all();
-        if(!$eq){ //Primera vez inicializo equipos
+        if($eq!=null){ //Primera vez inicializo equipos
          $equipo1= new Equipo();
          $equipo1->nombre="Brazil";
          $equipo1->save();
