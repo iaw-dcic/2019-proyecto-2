@@ -63663,7 +63663,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68643,6 +68643,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _nuevo_pronostico_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nuevo_pronostico.js */ "./resources/js/components/nuevo_pronostico.js");
+/* harmony import */ var _nuevo_pronostico_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_nuevo_pronostico_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _Mis_pronosticos_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mis_pronosticos.js */ "./resources/js/components/Mis_pronosticos.js");
 /* harmony import */ var _Mi_Pronostico_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Mi_Pronostico.js */ "./resources/js/components/Mi_Pronostico.js");
 /* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Main.js */ "./resources/js/components/Main.js");
@@ -68703,7 +68704,7 @@ function (_Component) {
         component: _Mis_pronosticos_js__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/crear_pronostico",
-        component: _nuevo_pronostico_js__WEBPACK_IMPORTED_MODULE_3__["default"]
+        component: _nuevo_pronostico_js__WEBPACK_IMPORTED_MODULE_3___default.a
       })));
     }
   }]);
@@ -68730,6 +68731,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _nuevo_pronostico__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nuevo_pronostico */ "./resources/js/components/nuevo_pronostico.js");
+/* harmony import */ var _nuevo_pronostico__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_nuevo_pronostico__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Mis_pronosticos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Mis_pronosticos */ "./resources/js/components/Mis_pronosticos.js");
 /* harmony import */ var _Mi_pronostico__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mi_pronostico */ "./resources/js/components/Mi_pronostico.js");
 /* harmony import */ var react_foundation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-foundation */ "./node_modules/react-foundation/lib/index.js");
@@ -68778,7 +68780,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
     _this.state = {
-      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nuevo_pronostico__WEBPACK_IMPORTED_MODULE_2__["default"], null)
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mi_pronostico__WEBPACK_IMPORTED_MODULE_4__["default"], null)
     };
     return _this;
   }
@@ -68788,7 +68790,7 @@ function (_Component) {
     value: function Pronostico() {
       console.log("MANEJADOR PRONOSTICO");
       this.setState({
-        content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nuevo_pronostico__WEBPACK_IMPORTED_MODULE_2__["default"], null)
+        content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mi_pronostico__WEBPACK_IMPORTED_MODULE_4__["default"], null)
       });
     }
   }, {
@@ -68892,7 +68894,8 @@ function (_Component) {
       ganador4: "",
       ganador5: "",
       ganador6: "",
-      ganador7: ""
+      ganador7: "",
+      modificar: ""
     };
     return _this;
   }
@@ -68914,21 +68917,25 @@ function (_Component) {
 
         console.log(response.data);
       });
-      var mod = localStorage.getItem('modificar');
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronostico/' + mod).then(function (response) {
-        _this2.setState({
-          ganador1: response.data[0] - 1,
-          ganador2: response.data[1] - 1,
-          ganador3: response.data[2] - 1,
-          ganador4: response.data[3] - 1,
-          ganador5: response.data[4] - 1,
-          ganador6: response.data[5] - 1,
-          ganador7: response.data[6] - 1
-        });
 
-        console.log(response.data);
-        console.log(_this2.state);
-      });
+      if (localStorage.getItem('modificar') != null) {
+        this.state.modificar = localStorage.getItem('modificar');
+        localStorage.clear();
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronostico/' + this.state.modificar).then(function (response) {
+          _this2.setState({
+            ganador1: response.data[0] - 1,
+            ganador2: response.data[1] - 1,
+            ganador3: response.data[2] - 1,
+            ganador4: response.data[3] - 1,
+            ganador5: response.data[4] - 1,
+            ganador6: response.data[5] - 1,
+            ganador7: response.data[6] - 1
+          });
+
+          console.log(response.data);
+          console.log(_this2.state);
+        });
+      }
     }
   }, {
     key: "handleChangeCuartos",
@@ -68989,14 +68996,14 @@ function (_Component) {
           this.setState({
             ganador6: this.state.ganador3
           });
-          localStorage.setItem('ganador5', this.state.ganador3);
+          localStorage.setItem('ganador6', this.state.ganador3);
           break;
 
         case 4:
           this.setState({
             ganador6: this.state.ganador4
           });
-          localStorage.setItem('ganador5', this.state.ganador4);
+          localStorage.setItem('ganador6', this.state.ganador4);
           break;
       }
     }
@@ -69034,7 +69041,15 @@ function (_Component) {
                     consistente = true;
 
                     try {
-                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/editar_pronostico', {
+                      var string = "";
+
+                      if (this.state.modificar != "") {
+                        string = 'editar_pronostico';
+                      } else {
+                        string = 'crear_pronostico';
+                      }
+
+                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/' + string, {
                         equipos: this.state.equipos,
                         ganador1: this.state.ganador1,
                         ganador2: this.state.ganador2,
@@ -69043,7 +69058,7 @@ function (_Component) {
                         ganador5: this.state.ganador5,
                         ganador6: this.state.ganador6,
                         ganador7: this.state.ganador7,
-                        mod: localStorage.getItem('modificar')
+                        mod: this.state.modificar
                       }).then(function (res) {
                         console.log(res);
                         console.log(res.data);
@@ -69062,7 +69077,7 @@ function (_Component) {
       if (!consistente) {
         alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
       } else {
-        alert('Su pronostico fue modificado exitosamente');
+        alert('Su pronostico fue guardado exitosamente');
       }
 
       window.location.reload();
@@ -69092,7 +69107,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(0);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Brazil")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69100,7 +69115,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(1);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Colombia")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[1])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "matchup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participants"
@@ -69112,7 +69127,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(2);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Chile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69120,7 +69135,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(3);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Paraguay"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[3]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "connector"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "merger"
@@ -69142,7 +69157,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(4);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Argentina")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69150,7 +69165,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(5);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Uruguay")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[5])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "matchup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participants"
@@ -69162,7 +69177,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(6);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Venezuela")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69170,7 +69185,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(7);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Peru"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[7]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "connector"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "merger"
@@ -69342,7 +69357,8 @@ function (_Component) {
       ganador4: "",
       ganador5: "",
       ganador6: "",
-      ganador7: ""
+      ganador7: "",
+      modificar: ""
     };
     return _this;
   }
@@ -69364,21 +69380,25 @@ function (_Component) {
 
         console.log(response.data);
       });
-      var mod = localStorage.getItem('modificar');
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronostico/' + mod).then(function (response) {
-        _this2.setState({
-          ganador1: response.data[0] - 1,
-          ganador2: response.data[1] - 1,
-          ganador3: response.data[2] - 1,
-          ganador4: response.data[3] - 1,
-          ganador5: response.data[4] - 1,
-          ganador6: response.data[5] - 1,
-          ganador7: response.data[6] - 1
-        });
 
-        console.log(response.data);
-        console.log(_this2.state);
-      });
+      if (localStorage.getItem('modificar') != null) {
+        this.state.modificar = localStorage.getItem('modificar');
+        localStorage.clear();
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronostico/' + this.state.modificar).then(function (response) {
+          _this2.setState({
+            ganador1: response.data[0] - 1,
+            ganador2: response.data[1] - 1,
+            ganador3: response.data[2] - 1,
+            ganador4: response.data[3] - 1,
+            ganador5: response.data[4] - 1,
+            ganador6: response.data[5] - 1,
+            ganador7: response.data[6] - 1
+          });
+
+          console.log(response.data);
+          console.log(_this2.state);
+        });
+      }
     }
   }, {
     key: "handleChangeCuartos",
@@ -69439,14 +69459,14 @@ function (_Component) {
           this.setState({
             ganador6: this.state.ganador3
           });
-          localStorage.setItem('ganador5', this.state.ganador3);
+          localStorage.setItem('ganador6', this.state.ganador3);
           break;
 
         case 4:
           this.setState({
             ganador6: this.state.ganador4
           });
-          localStorage.setItem('ganador5', this.state.ganador4);
+          localStorage.setItem('ganador6', this.state.ganador4);
           break;
       }
     }
@@ -69484,7 +69504,15 @@ function (_Component) {
                     consistente = true;
 
                     try {
-                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/editar_pronostico', {
+                      var string = "";
+
+                      if (this.state.modificar != "") {
+                        string = 'editar_pronostico';
+                      } else {
+                        string = 'crear_pronostico';
+                      }
+
+                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/' + string, {
                         equipos: this.state.equipos,
                         ganador1: this.state.ganador1,
                         ganador2: this.state.ganador2,
@@ -69493,7 +69521,7 @@ function (_Component) {
                         ganador5: this.state.ganador5,
                         ganador6: this.state.ganador6,
                         ganador7: this.state.ganador7,
-                        mod: localStorage.getItem('modificar')
+                        mod: this.state.modificar
                       }).then(function (res) {
                         console.log(res);
                         console.log(res.data);
@@ -69512,7 +69540,7 @@ function (_Component) {
       if (!consistente) {
         alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
       } else {
-        alert('Su pronostico fue modificado exitosamente');
+        alert('Su pronostico fue guardado exitosamente');
       }
 
       window.location.reload();
@@ -69542,7 +69570,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(0);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Brazil")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69550,7 +69578,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(1);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Colombia")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[1])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "matchup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participants"
@@ -69562,7 +69590,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(2);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Chile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[2])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69570,7 +69598,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(3);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Paraguay"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[3]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "connector"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "merger"
@@ -69592,7 +69620,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(4);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Argentina")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[4])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69600,7 +69628,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(5);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Uruguay")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[5])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "matchup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participants"
@@ -69612,7 +69640,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(6);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Venezuela")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[6])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "participant"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -69620,7 +69648,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this3.handleChangeCuartos(7);
         }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Peru"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[7]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "connector"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "merger"
@@ -69929,447 +69957,353 @@ function (_Component) {
 /*!*****************************************************!*\
   !*** ./resources/js/components/nuevo_pronostico.js ***!
   \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Nuevo_pronostico; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Main.js */ "./resources/js/components/Main.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/*import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+import Main from './Main.js';
+import { Link } from 'react-router-dom'
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+export default class Nuevo_pronostico extends Component {
+    constructor(){
+      super();
+      
+      this.state={
+        
+        equipos: [],        
+        ganador1:"",
+        ganador2:"",
+        ganador3:"",
+        ganador4:"",
+        ganador5:"",
+        ganador6:"",
+        ganador7:""
+      };
+    } 
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+   
 
 
 
+componentDidMount() {
+
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+     
 
 
 
+        var g1="";
+        var g2="";
+        var g3="";
+        var g4="";
+        var g5="";
+        var g6="";
+        var g7="";
+        if(localStorage.hasOwnProperty('g1'))
+            g1=localStorage.getItem('g1');
+        if(localStorage.hasOwnProperty('g2'))
+            g2=localStorage.getItem('g2');
+        
+        if(localStorage.hasOwnProperty('g3'))
+            g3=localStorage.getItem('g3');
+        
+        if(localStorage.hasOwnProperty('g4'))
+            g4=localStorage.getItem('g4');
+        
+        if(localStorage.hasOwnProperty('g5'))
+            g5=localStorage.getItem('g5');
+        
+        if(localStorage.hasOwnProperty('g6'))
+            g6=localStorage.getItem('g6');
+        
+        if(localStorage.hasOwnProperty('g7'))
+            g7=localStorage.getItem('g7');
+        
+          axios.get('/api/get_equipos').then(response => {
+            this.setState({
+                equipos: response.data,
+            })
+            console.log(response.data)
+          });
+  
 
-var Nuevo_pronostico =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Nuevo_pronostico, _Component);
+       } 
 
-  function Nuevo_pronostico() {
-    var _this;
-
-    _classCallCheck(this, Nuevo_pronostico);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Nuevo_pronostico).call(this));
-    _this.state = {
-      equipos: [],
-      ganador1: "",
-      ganador2: "",
-      ganador3: "",
-      ganador4: "",
-      ganador5: "",
-      ganador6: "",
-      ganador7: ""
-    };
-    return _this;
-  }
-
-  _createClass(Nuevo_pronostico, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-      var api_token = document.querySelector('meta[name="api-token"]');
-      var token = document.head.querySelector('meta[name="csrf-token"]');
-      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      var g1 = "";
-      var g2 = "";
-      var g3 = "";
-      var g4 = "";
-      var g5 = "";
-      var g6 = "";
-      var g7 = "";
-      if (localStorage.hasOwnProperty('g1')) g1 = localStorage.getItem('g1');
-      if (localStorage.hasOwnProperty('g2')) g2 = localStorage.getItem('g2');
-      if (localStorage.hasOwnProperty('g3')) g3 = localStorage.getItem('g3');
-      if (localStorage.hasOwnProperty('g4')) g4 = localStorage.getItem('g4');
-      if (localStorage.hasOwnProperty('g5')) g5 = localStorage.getItem('g5');
-      if (localStorage.hasOwnProperty('g6')) g6 = localStorage.getItem('g6');
-      if (localStorage.hasOwnProperty('g7')) g7 = localStorage.getItem('g7');
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_equipos').then(function (response) {
-        _this2.setState({
-          equipos: response.data
-        });
-
-        console.log(response.data);
-      });
-    }
-  }, {
-    key: "handleChangeCuartos",
-    value: function handleChangeCuartos(i) {
+     handleChangeCuartos(i) { 
       switch (i) {
-        case 0:
+        case 0:          
         case 1:
-          this.setState({
-            ganador1: i
-          });
-          localStorage.setItem('ganador1', i);
+           this.setState({ganador1:i})
+            localStorage.setItem('ganador1',i);
           break;
-
-        case 2:
+        case 2:          
         case 3:
-          this.setState({
-            ganador2: i
-          });
-          localStorage.setItem('ganador2', i);
+           this.setState({ganador2:i})           
+            localStorage.setItem('ganador2',i);
           break;
-
-        case 4:
+        case 4:          
         case 5:
-          this.setState({
-            ganador3: i
-          });
-          localStorage.setItem('ganador3', i);
+           this.setState({ganador3:i})
+            localStorage.setItem('ganador3',i);
           break;
-
-        case 6:
+        case 6:          
         case 7:
-          this.setState({
-            ganador4: i
-          });
-          localStorage.setItem('ganador4', i);
-          break;
+           this.setState({ganador4:i})
+            localStorage.setItem('ganador4',i);
+          break;    
+      
       }
     }
-  }, {
-    key: "handleChangeSemis",
-    value: function handleChangeSemis(i) {
+
+      handleChangeSemis(i) { 
       switch (i) {
         case 1:
-          this.setState({
-            ganador5: this.state.ganador1
-          });
-          localStorage.setItem('ganador5', this.state.ganador1);
-          break;
-
+          this.setState({ganador5:this.state.ganador1})
+            localStorage.setItem('ganador5',this.state.ganador1);
+          break;          
         case 2:
-          this.setState({
-            ganador5: this.state.ganador2
-          });
-          localStorage.setItem('ganador5', this.state.ganador2);
-          break;
-
-        case 3:
-          this.setState({
-            ganador6: this.state.ganador3
-          });
-          localStorage.setItem('ganador5', this.state.ganador3);
-          break;
-
+           this.setState({ganador5:this.state.ganador2})
+           localStorage.setItem('ganador5',this.state.ganador2);
+           break;
+        case 3: 
+            this.setState({ganador6:this.state.ganador3})
+            localStorage.setItem('ganador5',this.state.ganador3);
+            break;         
         case 4:
-          this.setState({
-            ganador6: this.state.ganador4
-          });
-          localStorage.setItem('ganador5', this.state.ganador4);
-          break;
+          this.setState({ganador6:this.state.ganador4})
+          localStorage.setItem('ganador5',this.state.ganador4);
+          break;    
+      
+        }
       }
-    }
-  }, {
-    key: "handleChangeFinal",
-    value: function handleChangeFinal(i) {
+
+      handleChangeFinal(i) { 
       switch (i) {
         case 5:
-          this.setState({
-            ganador7: this.state.ganador5
-          });
-          localStorage.setItem('ganador7', this.state.ganador5);
-          break;
-
+          this.setState({ganador7:this.state.ganador5})
+          localStorage.setItem('ganador7',this.state.ganador5);
+          break;          
         case 6:
-          this.setState({
-            ganador7: this.state.ganador6
-          });
-          localStorage.setItem('ganador7', this.state.ganador6);
+           this.setState({ganador7:this.state.ganador6})
+           localStorage.setItem('ganador7',this.state.ganador6);
           break;
       }
+
     }
-  }, {
-    key: "handleChangeGuardar",
-    value: function handleChangeGuardar(event) {
-      var consistente = false;
+      handleChangeGuardar(event) {
+        let consistente=false;
+        if(this.state.ganador1==0 | this.state.ganador1==1 ){
+          if(this.state.ganador2==2 | this.state.ganador2==3 ){
+            if(this.state.ganador3==4 | this.state.ganador3==5 ){
+               if(this.state.ganador4==6 | this.state.ganador4==7 ){
+                  if(this.state.ganador5==this.state.ganador1 | this.state.ganador5==this.state.ganador2 ){
+                    if(this.state.ganador6==this.state.ganador3 | this.state.ganador6==this.state.ganador4 ){
+                       if(this.state.ganador7==this.state.ganador5 | this.state.ganador7==this.state.ganador6 ){
+                        consistente=true; 
+                         try {
+                              axios.post('/api/crear_pronostico', {
+                                equipos: this.state.equipos,        
+                                ganador1:this.state.ganador1,
+                                ganador2:this.state.ganador2,
+                                ganador3:this.state.ganador3,
+                                ganador4:this.state.ganador4,
+                                ganador5:this.state.ganador5,
+                                ganador6:this.state.ganador6,
+                                ganador7:this.state.ganador7
 
-      if (this.state.ganador1 == 0 | this.state.ganador1 == 1) {
-        if (this.state.ganador2 == 2 | this.state.ganador2 == 3) {
-          if (this.state.ganador3 == 4 | this.state.ganador3 == 5) {
-            if (this.state.ganador4 == 6 | this.state.ganador4 == 7) {
-              if (this.state.ganador5 == this.state.ganador1 | this.state.ganador5 == this.state.ganador2) {
-                if (this.state.ganador6 == this.state.ganador3 | this.state.ganador6 == this.state.ganador4) {
-                  if (this.state.ganador7 == this.state.ganador5 | this.state.ganador7 == this.state.ganador6) {
-                    consistente = true;
-
-                    try {
-                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/crear_pronostico', {
-                        equipos: this.state.equipos,
-                        ganador1: this.state.ganador1,
-                        ganador2: this.state.ganador2,
-                        ganador3: this.state.ganador3,
-                        ganador4: this.state.ganador4,
-                        ganador5: this.state.ganador5,
-                        ganador6: this.state.ganador6,
-                        ganador7: this.state.ganador7
-                      }).then(function (res) {
-                        console.log(res);
-                        console.log(res.data);
-                      });
-                    } catch (event) {
-                      console.log('Axios request failed', event);
-                    }
-                  }
-                }
-              }
-            }
+                              }).then(res => {
+                                  console.log(res);
+                                  console.log(res.data);
+                              })
+                          }
+                          catch(event){
+                              console.log('Axios request failed',event);
+                          }
+        }}}}}}}
+          if(!consistente){
+          alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
           }
-        }
-      }
+          else {
+            alert('Su pronostico fue guardado exitosamente');
+          }
+        
 
-      if (!consistente) {
-        alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
-      } else {
-        alert('Su pronostico fue guardado exitosamente');
-      }
+
+
+
+       
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
+  
+    render() {
+        return (
+          
+                  
+                  <div className="bracket">
+                    <section className="round quarterfinals">
+                      <div className="winners">
+                        <div className="matchups">
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant">
+                                   
+                                  <button type="button" className="btn" onClick={(event) => this.handleChangeCuartos(0)}>GANA</button> 
+                                  <span>Brazil</span>
+                              </div>
+                              <div className="participant">
+                                <button type="button" className="btn" onClick={(event) => this.handleChangeCuartos(1)}>GANA</button>
+                              <span>Colombia</span></div>
+                            </div>
+                          </div>
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant">
+                                <button type="button" className="btn" onClick={(event) => this.handleChangeCuartos(2)}>GANA</button>
+                              <span>Chile</span></div>
+                              <div className="participant">
+                                  <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(3)}>GANA</button>
+                              <span>Paraguay</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="connector">
+                          <div className="merger"></div>
+                          <div className="line"></div>
+                        </div>
+                      </div>
+                      <div className="winners">
+                        <div className="matchups">
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant">
+                                <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(4)}>GANA</button>
+                              <span>Argentina</span></div>
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bracket"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "round quarterfinals"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(0);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Brazil")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(1);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Colombia")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(2);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Chile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(3);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Paraguay"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "connector"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "merger"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "line"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(4);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Argentina")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(5);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Uruguay")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(6);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Venezuela")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeCuartos(7);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Peru"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "connector"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "merger"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "line"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "round semifinals"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemis(1);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemis(2);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador2])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemis(3);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeSemis(4);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador4]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "connector"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "merger"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "line"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "round finals"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeFinal(5);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeFinal(6);
-        }
-      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador6]))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "round finals"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "winners"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchups"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "matchup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "participant winner"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador7]))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "btn",
-        onClick: function onClick(event) {
-          return _this3.handleChangeGuardar(event);
-        }
-      }, "GUARDAR"));
+                              <div className="participant">
+                                  <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(5)}>GANA</button>
+                              <span>Uruguay</span></div>
+                            </div>
+                          </div>
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant">
+                                  <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(6)}>GANA</button>
+                              <span>Venezuela</span></div>
+                              <div className="participant">
+                                    <button type="button" className="btn"   onClick={(event) => this.handleChangeCuartos(7)}>GANA</button>
+                              <span>Peru</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="connector">
+                          <div className="merger"></div>
+                          <div className="line"></div>
+                        </div>
+                      </div>
+                    </section>
+
+
+                    <section className="round semifinals">
+                      <div className="winners">
+                        <div className="matchups">
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant">
+                              <button type="button" className="btn"   onClick={(event) => this.handleChangeSemis(1)}>GANA</button>
+                              <span>
+                              {this.state.equipos[this.state.ganador1]}
+                              </span></div>
+                              <div className="participant">
+                              <button type="button" className="btn"   onClick={(event) => this.handleChangeSemis(2)}>GANA</button>
+                              <span>
+                              {this.state.equipos[this.state.ganador2]}
+                              </span></div>
+                            </div>
+                          </div>
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant">
+                              <button type="button" className="btn"   onClick={(event) => this.handleChangeSemis(3)}>GANA</button>
+                              <span>
+                              {this.state.equipos[this.state.ganador3]}
+                              </span></div>
+                              <div className="participant">
+                              <button type="button" className="btn"   onClick={(event) => this.handleChangeSemis(4)}>GANA</button>
+                              <span>
+                              {this.state.equipos[this.state.ganador4]}
+                              </span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="connector">
+                          <div className="merger"></div>
+                          <div className="line"></div>
+                        </div>
+                      </div>
+                    </section>
+                    
+
+                    <section className="round finals">
+                      <div className="winners">
+                        <div className="matchups">
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant">
+                              <button type="button" className="btn"   onClick={(event) => this.handleChangeFinal(5)}>GANA</button>
+                              <span>
+                              {this.state.equipos[this.state.ganador5]}
+                              </span></div>
+                              <div className="participant">
+                              <button type="button" className="btn"   onClick={(event) => this.handleChangeFinal(6)}>GANA</button>
+                              <span>
+                              {this.state.equipos[this.state.ganador6]}
+                              </span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                 
+
+                  <section className="round finals">
+                      <div className="winners">
+                        <div className="matchups">
+                          <div className="matchup">
+                            <div className="participants">
+                              <div className="participant winner">
+                              <span>
+                             {this.state.equipos[this.state.ganador7]}
+                              </span></div>
+                             
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+
+
+                  <button type="button" className="btn" onClick={(event) => this.handleChangeGuardar(event)}>GUARDAR</button> 
+
+                  </div>
+
+
+
+      
+
+            );
     }
-  }]);
-
-  return Nuevo_pronostico;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}
 
 
+
+*/
 
 /***/ }),
 

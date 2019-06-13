@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Main from './Main.js';
@@ -341,3 +341,4 @@ componentDidMount() {
 
 
 
+*/

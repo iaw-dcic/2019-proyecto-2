@@ -112,41 +112,11 @@ class PronosticoController extends Controller
 
      public function get_equipos()
     {
-        $eq=Equipo::all();
-        if($eq!=null){ //Primera vez inicializo equipos
-         $equipo1= new Equipo();
-         $equipo1->nombre="Brazil";
-         $equipo1->save();
-
-         $equipo2= new Equipo();
-         $equipo2->nombre="Colombia";
-         $equipo2->save();
-
-         $equipo3= new Equipo();
-         $equipo3->nombre="Chile";
-         $equipo3->save();
-
-         $equipo4= new Equipo();
-         $equipo4->nombre="Paraguay";
-         $equipo4->save();
-
-         $equipo5= new Equipo();
-         $equipo5->nombre="Argentina";
-         $equipo5->save();
-
-         $equipo6= new Equipo();
-         $equipo6->nombre="Uruguay";
-         $equipo6->save();
-
-         $equipo7= new Equipo();
-         $equipo7->nombre="Venezuela";
-         $equipo7->save();
-
-         $equipo8= new Equipo();
-         $equipo8->nombre="Peru";
-         $equipo8->save();
-         }
+       
+       
         $teams = Equipo::all();
+        
+
         $arr = [];
         foreach ($teams as $team) {
             $arr[] = $team->nombre;

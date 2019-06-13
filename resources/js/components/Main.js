@@ -14,7 +14,7 @@ export default class Example extends Component {
     constructor() {
         super()
         this.state = {
-            content: <Nuevo_pronostico />
+            content: <Mi_pronostico />
         }
         
     }
@@ -24,7 +24,7 @@ export default class Example extends Component {
     Pronostico() {
         console.log("MANEJADOR PRONOSTICO")
         this.setState({
-            content: <Nuevo_pronostico />
+            content: <Mi_pronostico />
         });
     }
 

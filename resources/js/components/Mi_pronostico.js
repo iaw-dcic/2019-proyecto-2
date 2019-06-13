@@ -17,7 +17,8 @@ export default class Mi_pronostico extends Component {
         ganador4:"",
         ganador5:"",
         ganador6:"",
-        ganador7:""
+        ganador7:"",
+        modificar:""
       };
     } 
 
@@ -40,21 +41,24 @@ componentDidMount() {
             console.log(response.data)
           });
           
-           var mod=localStorage.getItem('modificar');
-           axios.get('/api/get_pronostico/'+mod).then(response => {
-            this.setState({
-                ganador1:response.data[0]-1,
-                ganador2:response.data[1]-1,
-                ganador3:response.data[2]-1,
-                ganador4:response.data[3]-1,
-                ganador5:response.data[4]-1,
-                ganador6:response.data[5]-1,
-                ganador7:response.data[6]-1,
-                
-            })
-            console.log(response.data)
-            console.log(this.state)
-          });
+           if(localStorage.getItem('modificar')!=null){
+                 this.state.modificar= localStorage.getItem('modificar');
+                 localStorage.clear();
+                 axios.get('/api/get_pronostico/'+this.state.modificar).then(response => {
+                  this.setState({
+                      ganador1:response.data[0]-1,
+                      ganador2:response.data[1]-1,
+                      ganador3:response.data[2]-1,
+                      ganador4:response.data[3]-1,
+                      ganador5:response.data[4]-1,
+                      ganador6:response.data[5]-1,
+                      ganador7:response.data[6]-1,
+                      
+                  })
+                  console.log(response.data)
+                  console.log(this.state)
+                });
+            }     
   }
        
 
@@ -101,11 +105,11 @@ componentDidMount() {
            break;
         case 3: 
             this.setState({ganador6:this.state.ganador3})
-            localStorage.setItem('ganador5',this.state.ganador3);
+            localStorage.setItem('ganador6',this.state.ganador3);
             break;         
         case 4:
           this.setState({ganador6:this.state.ganador4})
-          localStorage.setItem('ganador5',this.state.ganador4);
+          localStorage.setItem('ganador6',this.state.ganador4);
           break;    
       
         }
@@ -135,7 +139,13 @@ componentDidMount() {
                        if(this.state.ganador7==this.state.ganador5 | this.state.ganador7==this.state.ganador6 ){
                          consistente=true; 
                         try {
-                            axios.post('/api/editar_pronostico', {
+                            var string="";
+                            if(this.state.modificar!=""){
+                                string='editar_pronostico';
+                            } else{
+                                string='crear_pronostico';    
+                             }   
+                            axios.post('/api/'+string, {
                               equipos: this.state.equipos,        
                               ganador1:this.state.ganador1,
                               ganador2:this.state.ganador2,
@@ -144,7 +154,7 @@ componentDidMount() {
                               ganador5:this.state.ganador5,
                               ganador6:this.state.ganador6,
                               ganador7:this.state.ganador7,
-                              mod:localStorage.getItem('modificar')
+                              mod:this.state.modificar
 
                             }).then(res => {
                                 console.log(res);
@@ -158,7 +168,7 @@ componentDidMount() {
           if(!consistente){
           alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
         }else{
-            alert('Su pronostico fue modificado exitosamente');
+            alert('Su pronostico fue guardado exitosamente');
           }
 
         window.location.reload();  
@@ -181,21 +191,21 @@ render() {
                               <div className="participant">
                                    
                                   <button type="button" className="btn" onClick={(event) => this.handleChangeCuartos(0)}>GANA</button> 
-                                  <span>Brazil</span>
+                                  <span>{this.state.equipos[0]}</span>
                               </div>
                               <div className="participant">
                                 <button type="button" className="btn" onClick={(event) => this.handleChangeCuartos(1)}>GANA</button>
-                              <span>Colombia</span></div>
+                              <span>{this.state.equipos[1]}</span></div>
                             </div>
                           </div>
                           <div className="matchup">
                             <div className="participants">
                               <div className="participant">
                                 <button type="button" className="btn" onClick={(event) => this.handleChangeCuartos(2)}>GANA</button>
-                              <span>Chile</span></div>
+                              <span>{this.state.equipos[2]}</span></div>
                               <div className="participant">
                                   <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(3)}>GANA</button>
-                              <span>Paraguay</span></div>
+                              <span>{this.state.equipos[3]}</span></div>
                             </div>
                           </div>
                         </div>
@@ -210,21 +220,21 @@ render() {
                             <div className="participants">
                               <div className="participant">
                                 <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(4)}>GANA</button>
-                              <span>Argentina</span></div>
+                              <span>{this.state.equipos[4]}</span></div>
 
                               <div className="participant">
                                   <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(5)}>GANA</button>
-                              <span>Uruguay</span></div>
+                              <span>{this.state.equipos[5]}</span></div>
                             </div>
                           </div>
                           <div className="matchup">
                             <div className="participants">
                               <div className="participant">
                                   <button type="button" className="btn"  onClick={(event) => this.handleChangeCuartos(6)}>GANA</button>
-                              <span>Venezuela</span></div>
+                              <span>{this.state.equipos[6]}</span></div>
                               <div className="participant">
                                     <button type="button" className="btn"   onClick={(event) => this.handleChangeCuartos(7)}>GANA</button>
-                              <span>Peru</span></div>
+                              <span>{this.state.equipos[7]}</span></div>
                             </div>
                           </div>
                         </div>
