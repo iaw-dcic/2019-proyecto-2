@@ -63,16 +63,10 @@ setPronostico = (pronost) => {
 
 componentWillMount() { //LOCAL STORAGE
       this.todos();
-      for (let key in this.state) {
-          if (localStorage.hasOwnProperty(key)) {
-              let value = localStorage.getItem(key);
-              try {
-                  value = JSON.parse(value);
-                  this.setState({ [key]: value });
-              } catch (e) {
-                  this.setState({ [key]: value });
-              }
-      }}
+      for (let key in this.state) { //para que me limpie el pronostico dsp de que agrego uno nuevo
+       if (localStorage.hasOwnProperty(key))
+         localStorage.removeItem(key);
+       }
   }
 
   componentDidMount() { //LOS PARTIDOS DE OCTAVOS
@@ -398,7 +392,7 @@ componentWillMount() { //LOCAL STORAGE
               onChange={this.handleFieldChange}
             />
             </div>
-            <button type="submit" onClick={this.addNewProduct}  disabled = {this.state.pronosticoActual!= null}  className="btn-changes btn btn-success">Guardar nuevo</button>
+            <button type="submit" onClick={this.addNewProduct}  className="btn-changes btn btn-success">Guardar nuevo</button>
 
 
             <button type="submit" onClick={this.editProduct} disabled = {this.state.pronosticoActual== null} className="btn-changes btn btn-success">Grabar</button>
