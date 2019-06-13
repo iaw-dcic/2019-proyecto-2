@@ -175,7 +175,7 @@ class PronosticoController extends Controller
 
     public function get_pronostico($id ){
         $user=Auth::user();
-        $t= Torneo::all();
+        $t= Torneo::where([ ['user_id', '=', $user->id] ])->get();
         $arr = $t[$id];
         $partidos=Partido::where([ ['id_torneo', '=', $arr->id] ])->get();
 
@@ -204,7 +204,7 @@ class PronosticoController extends Controller
         $ganador7 = $data['ganador7']+1;
         $modificar= $data['mod'];
 
-        $t= Torneo::all();
+        $t= Torneo::where([ ['user_id', '=', $user->id] ])->get();
         $torneo = $t[$modificar];
        
          $partidos=Partido::where([ ['id_torneo', '=', $torneo->id] ])->get();

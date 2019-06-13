@@ -136,25 +136,47 @@ componentDidMount() {
 
     }
       handleChangeGuardar(event) {
-        try {
-            axios.post('/api/crear_pronostico', {
-              equipos: this.state.equipos,        
-              ganador1:this.state.ganador1,
-              ganador2:this.state.ganador2,
-              ganador3:this.state.ganador3,
-              ganador4:this.state.ganador4,
-              ganador5:this.state.ganador5,
-              ganador6:this.state.ganador6,
-              ganador7:this.state.ganador7
+        let consistente=false;
+        if(this.state.ganador1==0 | this.state.ganador1==1 ){
+          if(this.state.ganador2==2 | this.state.ganador2==3 ){
+            if(this.state.ganador3==4 | this.state.ganador3==5 ){
+               if(this.state.ganador4==6 | this.state.ganador4==7 ){
+                  if(this.state.ganador5==this.state.ganador1 | this.state.ganador5==this.state.ganador2 ){
+                    if(this.state.ganador6==this.state.ganador3 | this.state.ganador6==this.state.ganador4 ){
+                       if(this.state.ganador7==this.state.ganador5 | this.state.ganador7==this.state.ganador6 ){
+                        consistente=true; 
+                         try {
+                              axios.post('/api/crear_pronostico', {
+                                equipos: this.state.equipos,        
+                                ganador1:this.state.ganador1,
+                                ganador2:this.state.ganador2,
+                                ganador3:this.state.ganador3,
+                                ganador4:this.state.ganador4,
+                                ganador5:this.state.ganador5,
+                                ganador6:this.state.ganador6,
+                                ganador7:this.state.ganador7
 
-            }).then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
-        }
-        catch(event){
-            console.log('Axios request failed',event);
-        }
+                              }).then(res => {
+                                  console.log(res);
+                                  console.log(res.data);
+                              })
+                          }
+                          catch(event){
+                              console.log('Axios request failed',event);
+                          }
+        }}}}}}}
+          if(!consistente){
+          alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
+          }
+          else {
+            alert('Su pronostico fue guardado exitosamente');
+          }
+        
+
+
+
+
+       
     }
   
     render() {

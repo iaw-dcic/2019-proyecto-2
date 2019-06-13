@@ -69022,23 +69022,47 @@ function (_Component) {
   }, {
     key: "handleChangeGuardar",
     value: function handleChangeGuardar(event) {
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/editar_pronostico', {
-          equipos: this.state.equipos,
-          ganador1: this.state.ganador1,
-          ganador2: this.state.ganador2,
-          ganador3: this.state.ganador3,
-          ganador4: this.state.ganador4,
-          ganador5: this.state.ganador5,
-          ganador6: this.state.ganador6,
-          ganador7: this.state.ganador7,
-          mod: localStorage.getItem('modificar')
-        }).then(function (res) {
-          console.log(res);
-          console.log(res.data);
-        });
-      } catch (event) {
-        console.log('Axios request failed', event);
+      var consistente = false;
+
+      if (this.state.ganador1 == 0 | this.state.ganador1 == 1) {
+        if (this.state.ganador2 == 2 | this.state.ganador2 == 3) {
+          if (this.state.ganador3 == 4 | this.state.ganador3 == 5) {
+            if (this.state.ganador4 == 6 | this.state.ganador4 == 7) {
+              if (this.state.ganador5 == this.state.ganador1 | this.state.ganador5 == this.state.ganador2) {
+                if (this.state.ganador6 == this.state.ganador3 | this.state.ganador6 == this.state.ganador4) {
+                  if (this.state.ganador7 == this.state.ganador5 | this.state.ganador7 == this.state.ganador6) {
+                    consistente = true;
+
+                    try {
+                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/editar_pronostico', {
+                        equipos: this.state.equipos,
+                        ganador1: this.state.ganador1,
+                        ganador2: this.state.ganador2,
+                        ganador3: this.state.ganador3,
+                        ganador4: this.state.ganador4,
+                        ganador5: this.state.ganador5,
+                        ganador6: this.state.ganador6,
+                        ganador7: this.state.ganador7,
+                        mod: localStorage.getItem('modificar')
+                      }).then(function (res) {
+                        console.log(res);
+                        console.log(res.data);
+                      });
+                    } catch (event) {
+                      console.log('Axios request failed', event);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      if (!consistente) {
+        alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
+      } else {
+        alert('Su pronostico fue modificado exitosamente');
       }
     }
   }, {
@@ -69446,23 +69470,47 @@ function (_Component) {
   }, {
     key: "handleChangeGuardar",
     value: function handleChangeGuardar(event) {
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/editar_pronostico', {
-          equipos: this.state.equipos,
-          ganador1: this.state.ganador1,
-          ganador2: this.state.ganador2,
-          ganador3: this.state.ganador3,
-          ganador4: this.state.ganador4,
-          ganador5: this.state.ganador5,
-          ganador6: this.state.ganador6,
-          ganador7: this.state.ganador7,
-          mod: localStorage.getItem('modificar')
-        }).then(function (res) {
-          console.log(res);
-          console.log(res.data);
-        });
-      } catch (event) {
-        console.log('Axios request failed', event);
+      var consistente = false;
+
+      if (this.state.ganador1 == 0 | this.state.ganador1 == 1) {
+        if (this.state.ganador2 == 2 | this.state.ganador2 == 3) {
+          if (this.state.ganador3 == 4 | this.state.ganador3 == 5) {
+            if (this.state.ganador4 == 6 | this.state.ganador4 == 7) {
+              if (this.state.ganador5 == this.state.ganador1 | this.state.ganador5 == this.state.ganador2) {
+                if (this.state.ganador6 == this.state.ganador3 | this.state.ganador6 == this.state.ganador4) {
+                  if (this.state.ganador7 == this.state.ganador5 | this.state.ganador7 == this.state.ganador6) {
+                    consistente = true;
+
+                    try {
+                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/editar_pronostico', {
+                        equipos: this.state.equipos,
+                        ganador1: this.state.ganador1,
+                        ganador2: this.state.ganador2,
+                        ganador3: this.state.ganador3,
+                        ganador4: this.state.ganador4,
+                        ganador5: this.state.ganador5,
+                        ganador6: this.state.ganador6,
+                        ganador7: this.state.ganador7,
+                        mod: localStorage.getItem('modificar')
+                      }).then(function (res) {
+                        console.log(res);
+                        console.log(res.data);
+                      });
+                    } catch (event) {
+                      console.log('Axios request failed', event);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      if (!consistente) {
+        alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
+      } else {
+        alert('Su pronostico fue modificado exitosamente');
       }
     }
   }, {
@@ -70061,22 +70109,46 @@ function (_Component) {
   }, {
     key: "handleChangeGuardar",
     value: function handleChangeGuardar(event) {
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/crear_pronostico', {
-          equipos: this.state.equipos,
-          ganador1: this.state.ganador1,
-          ganador2: this.state.ganador2,
-          ganador3: this.state.ganador3,
-          ganador4: this.state.ganador4,
-          ganador5: this.state.ganador5,
-          ganador6: this.state.ganador6,
-          ganador7: this.state.ganador7
-        }).then(function (res) {
-          console.log(res);
-          console.log(res.data);
-        });
-      } catch (event) {
-        console.log('Axios request failed', event);
+      var consistente = false;
+
+      if (this.state.ganador1 == 0 | this.state.ganador1 == 1) {
+        if (this.state.ganador2 == 2 | this.state.ganador2 == 3) {
+          if (this.state.ganador3 == 4 | this.state.ganador3 == 5) {
+            if (this.state.ganador4 == 6 | this.state.ganador4 == 7) {
+              if (this.state.ganador5 == this.state.ganador1 | this.state.ganador5 == this.state.ganador2) {
+                if (this.state.ganador6 == this.state.ganador3 | this.state.ganador6 == this.state.ganador4) {
+                  if (this.state.ganador7 == this.state.ganador5 | this.state.ganador7 == this.state.ganador6) {
+                    consistente = true;
+
+                    try {
+                      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/crear_pronostico', {
+                        equipos: this.state.equipos,
+                        ganador1: this.state.ganador1,
+                        ganador2: this.state.ganador2,
+                        ganador3: this.state.ganador3,
+                        ganador4: this.state.ganador4,
+                        ganador5: this.state.ganador5,
+                        ganador6: this.state.ganador6,
+                        ganador7: this.state.ganador7
+                      }).then(function (res) {
+                        console.log(res);
+                        console.log(res.data);
+                      });
+                    } catch (event) {
+                      console.log('Axios request failed', event);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      if (!consistente) {
+        alert('¡¡PRONOSTICO INCONSISTENTE!!  Reviselo y vuelva a guardar');
+      } else {
+        alert('Su pronostico fue guardado exitosamente');
       }
     }
   }, {
