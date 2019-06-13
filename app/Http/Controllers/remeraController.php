@@ -20,7 +20,7 @@ class remeraController extends Controller
 
         $remeras = Shirt::where('user_id', $user->id)->get();
 
-        return response()->json($remeras, 200);
+        return response()->json($remeras, 200); 
     }
 
     public function guardar(Request $request)
