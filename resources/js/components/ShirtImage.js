@@ -9,14 +9,14 @@ export default class ShirtImage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            remera: "colorBlanco",
+            remera: "colorNaranja",
             talle: "XS",
             tela: "Algodon",
             logo: "",
             editar: false,
             idRemeraEditar: ""
 
-        }
+        } 
     }
 
     componentDidMount() {

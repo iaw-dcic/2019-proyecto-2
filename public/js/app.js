@@ -66378,7 +66378,7 @@ function (_Component) {
     });
 
     _this.state = {
-      remera: "colorBlanco",
+      remera: "colorNaranja",
       talle: "XS",
       tela: "Algodon",
       logo: "",
