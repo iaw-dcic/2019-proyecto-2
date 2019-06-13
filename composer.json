@@ -11,7 +11,6 @@
         "php": "^7.3.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
@@ -58,9 +57,6 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-		"post-install-cmd": [ "php artisan clear-compiled", "php artisan optimize",
-		"chmod -R 777 storage", "php artisan passport:keys" 
-		]
+        ]
     }
 }
