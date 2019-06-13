@@ -17,8 +17,8 @@ export default class MainSection extends Component {
 
       this.state={
         caseIndex:1,
-        colorIndex:7,
-        estampaIndex:1,
+        colorIndex:61,
+        estampaIndex:0,
         name:str,
         fundaURL:null,
         estampaURL:null,
