@@ -1,0 +1,20 @@
+/* Button Style 5 (Size) */
+.hover-btn{
+    min-height: 20px;
+    line-height: 10px;
+}
+
+.hover-btn button{
+   margin:5px; 
+   color: black;
+}
+
+.hover-btn button:hover{
+    background:#b9b9b9;
+}
+
+.btn-style{
+    background: radial-gradient(#b9b9b9,#969595,#5a5a5a);
+}
+
+
