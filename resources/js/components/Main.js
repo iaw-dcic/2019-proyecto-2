@@ -23,7 +23,7 @@ const Main = props => {
          onClick={ closeModal }
          style={divStyle}>
           <div className="modal-content" onClick={ e => e.stopPropagation() } >
-             <span className="close" onClick={ closeModal }>&times;</span>
+             <span className="close" onClick={ closeModal }>&times;</span>  
              {props.predictions.map((prediction) => (
                <p
                  className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'

@@ -21,6 +21,8 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 20px; /* Optional. Rounds container corners */
+    overflow-y:auto;
+    max-height:90%;
 }
 /* Close button */
 .close {
