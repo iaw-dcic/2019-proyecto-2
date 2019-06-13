@@ -67354,7 +67354,7 @@ function (_Component) {
     _this.state = {
       caseIndex: 1,
       colorIndex: 61,
-      estampaIndex: 0,
+      estampaIndex: 91,
       name: str,
       fundaURL: null,
       estampaURL: null,
@@ -67396,8 +67396,8 @@ function (_Component) {
       } else {
         this.setState({
           caseIndex: 1,
-          colorIndex: 7,
-          estampaIndex: 1
+          colorIndex: 61,
+          estampaIndex: 91
         });
       }
     }
