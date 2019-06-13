@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Nuevo_pronostico from './nuevo_pronostico'
-import Inicial from './Inicial'
+import Mis_pronosticos from './Mis_pronosticos'
 import { Row, Column } from 'react-foundation';
 
 
@@ -13,7 +13,7 @@ export default class Example extends Component {
     constructor() {
         super()
         this.state = {
-            content: <Inicial />
+            content: <Mis_pronosticos />
         }
         
     }
@@ -31,7 +31,7 @@ export default class Example extends Component {
     MisPronosticos() {
         console.log("MANEJADOR MIS PRONOSTICO")
         this.setState({
-            content: <Inicial />
+            content: <Mis_pronosticos />
         });
     }
    

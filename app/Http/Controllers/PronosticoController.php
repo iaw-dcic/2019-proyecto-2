@@ -154,6 +154,20 @@ class PronosticoController extends Controller
         return Response::json($arr);
     }
 
+    public function get_pronosticos(){
+        $user=Auth::user();
+        $predicciones=Torneo::where([ ['user_id', '=', $user->id] ])->get();
+        return $predicciones->toJson();
+
+    }
+
+    public function eliminar_pronostico($id ){
+        $user=Auth::user();
+        $t= Torneo::find($id);
+        if($t->user_id==$user->id){
+             $lista=DB::table('torneo')->where('id','=',$id)->delete();         
+        } 
+    }
 
 
     
