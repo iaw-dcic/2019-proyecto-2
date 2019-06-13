@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Manejo from './Manejo'
+import Manejo from './Manejo';
+import ListaProdes from './ListaProdes';
 import axios from 'axios';
 
 export default class Generador extends Component {
@@ -159,26 +160,8 @@ export default class Generador extends Component {
                      
                   </div>
 
-                        <div className="row">
-                            <div className="col-sm  ">
-                                <div className="list-group dark">
-
-                                    <div className=" card-header list-group-item list-group-item-action  text-white bg-dark">Mis prodes :</div>
-                                    {this.state.prodes.map((prode, i) =>
-                                        <button type="button"
-                                        id = {prode.id} 
-                                        className="list-group-item list-group-item-dark" 
-                                        onClick={this.buscar}>
-                                            {prode.name}
-                                        </button>
-                                    )}
-                                </div>
-
-
-                            </div>
-
-
-                        </div>
+                       
+                         <ListaProdes  prodes={this.state.prodes} seleccionar={this.buscar}/>
 
                         <div className='card-body'>
 
