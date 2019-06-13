@@ -9,7 +9,7 @@ export default class ShirtImage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            remera: "colorNaranja",
+            remera: "colorBlanco",
             talle: "XS",
             tela: "Algodon",
             logo: "",
@@ -18,7 +18,7 @@ export default class ShirtImage extends Component {
 
         } 
     }
-
+    
     componentDidMount() {
         window.axios = require('axios');
         let api_token = document.querySelector('meta[name="api-token"]');
