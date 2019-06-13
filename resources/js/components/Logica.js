@@ -41,20 +41,6 @@ class ProovedorLogica extends Component {
         }).then (res=> {console.log(res); console.log(res.data)
         });
     }
-
-    editarRemera=(id)=>{
-        window.axios = require('axios');
-        let api_token = document.querySelector('meta[name="api-token"]');
-    
-        if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-
-        Axios.post(`/api/editarRemera/${id}`, {
-            color_remera: this.state.color,
-            tipo_remera: this.state.tipo,
-            cuello_remera: this.state.cuello
-        }).then (res=> {console.log(res); console.log(res.data)
-        });
-    }
     render() {
         return (
             <ContextoLogica.Provider value={{
@@ -63,8 +49,6 @@ class ProovedorLogica extends Component {
                 cambiarCuello:this.cambiarCuello,
                 cambiarTipo:this.cambiarTipo,
                 guardarRemera:this.guardarRemera,
-                eliminarRemera:this.eliminarRemera,
-                editarRemera:this.editarRemera,
                 
             }}>
                 {this.props.children}

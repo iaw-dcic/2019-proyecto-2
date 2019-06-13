@@ -81,7 +81,7 @@ export default class Remera extends Component{
 
           <div className="col-10 mx-auto col-lg-12 panelControlador">
             <label className="titulo">
-                   Estas son sus creaciones, si desea editar alguna, presione en la imagen!
+                   Estas son sus creaciones!
             </label>
 
             <div className="py-5">

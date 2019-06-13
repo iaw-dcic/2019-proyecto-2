@@ -6843,7 +6843,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "body\r\n{\r\n  background-color: whitesmoke;\r\n}\r\n\r\n.panelBotones{\r\n    display: inline-block;\r\n    width: 250px;\r\n    height: 50px auto;\r\n    text-align: center;\r\n}\r\n.Botones{\r\n    width: 10px;\r\n    height: auto;\r\n    text-align: center;\r\n    margin: auto;\r\n    display: inline-block;\r\n    margin-left: 50px;\r\n}\r\n.Botones{\r\n    width: 10px;\r\n    height: auto;\r\n    text-align: center;\r\n    margin: auto;\r\n    display: inline-block;\r\n    margin-left: 50px;\r\n}\r\n.PanelImagen{\r\n    background-size: 30px;\r\n    size: 30px;\r\n    text-align: center;\r\n    width: 200px;\r\n    height: 200px auto;\r\n}\r\n.imagen{\r\n    width: 500px; \r\n    height:500px;\r\n}\r\n\r\n.TituloSeccion{\r\n    font-family: 'Abel', sans-serif;\r\n    font-size: 20px;\r\n}\r\n\r\n.BotonGeneral\r\n{\r\n    text-decoration: none;\r\n    padding: 5px;\r\n    font-weight: 30;\r\n    font-size: 15px;\r\n    color: #ffffff;\r\n    background-color: #657e8f;\r\n    border-radius: 6px;\r\n    border: 2px solid #777ca7;\r\n    margin-top: 10px;\r\n}\r\n.BotonGeneral:hover{\r\n    color: #1883ba;\r\n    background-color: #ffffff;\r\n}\r\n\r\n.panelControlador\r\n{\r\n    display: block;\r\n    width: 250px;\r\n    height: 50px auto;\r\n    text-align: center;\r\n}\r\n.titulo{\r\n    font-family: 'Lora', serif;\r\n    font-size: 30px;\r\n}\r\n.tituloEliminarEditar{\r\n    font-family: 'Lora', serif;\r\n    font-size: 40px;\r\n    text-align: center;\r\n}\r\n\r\n.panelModificar\r\n{\r\n    text-align: center;\r\n    display: block;\r\n}\r\n.botonModificar\r\n{\r\n    margin-top: 10px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    text-align: center;\r\n}\r\n.botonModificar:hover{\r\n    color: #1883ba;\r\n    background-color: #ffffff;\r\n}\r\n", ""]);
+exports.push([module.i, "body\r\n{\r\n  background-color: whitesmoke;\r\n}\r\n\r\n.panelBotones{\r\n\r\n    width: 250px;\r\n    height: 50px auto;\r\n    text-align: center;\r\n    margin:auto;\r\n}\r\n\r\n.Botones{\r\n    width: 10px;\r\n    height: auto;\r\n    text-align: center;\r\n    margin: auto;\r\n    display: inline-block;\r\n    margin-left: 50px;\r\n}\r\n.PanelImagen{\r\n    background-size: 30px;\r\n    size: 30px;\r\n    text-align: center;\r\n    width: 200px;\r\n    height: 200px auto;\r\n}\r\n.imagen{\r\n    width: 500px; \r\n    height:500px;\r\n}\r\n\r\n.TituloSeccion{\r\n    font-family: 'Abel', sans-serif;\r\n    font-size: 20px;\r\n}\r\n\r\n.BotonGeneral\r\n{\r\n    text-decoration: none;\r\n    padding: 5px;\r\n    font-weight: 30;\r\n    font-size: 15px;\r\n    color: #ffffff;\r\n    background-color: #657e8f;\r\n    border-radius: 6px;\r\n    border: 2px solid #777ca7;\r\n    margin-top: 10px;\r\n    text-align: center;\r\n}\r\n.BotonGeneral:hover{\r\n    color: #1883ba;\r\n    background-color: #ffffff;\r\n}\r\n\r\n.panelControlador\r\n{\r\n    display: block;\r\n    width: 250px;\r\n    height: 50px auto;\r\n    text-align: center;\r\n}\r\n.titulo{\r\n    font-family: 'Lora', serif;\r\n    font-size: 30px;\r\n}\r\n.tituloEliminarEditar{\r\n    font-family: 'Lora', serif;\r\n    font-size: 30px;\r\n    text-align: center;\r\n}\r\n\r\n.panelModificar\r\n{\r\n    text-align: center;\r\n    display: block;\r\n}\r\n.botonModificar\r\n{\r\n    margin-top: 10px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    text-align: center;\r\n}\r\n.botonModificar:hover{\r\n    color: #1883ba;\r\n    background-color: #ffffff;\r\n}\r\n", ""]);
 
 // exports
 
@@ -67323,13 +67323,11 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img-container p-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/editarRemera/".concat(id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "img/" + color + cuello + tipo + ".png",
         alt: "modeloRemera",
         className: "card-img-top"
-      })))));
+      }))));
     }
   }]);
 
@@ -67993,7 +67991,7 @@ function (_Component) {
         className: "col-10 mx-auto col-lg-12 panelControlador"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "titulo"
-      }, "Estas son sus creaciones, si desea editar alguna, presione en la imagen!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Estas son sus creaciones!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "py-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
@@ -68304,20 +68302,6 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "editarRemera", function (id) {
-      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-      var api_token = document.querySelector('meta[name="api-token"]');
-      if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/editarRemera/".concat(id), {
-        color_remera: _this.state.color,
-        tipo_remera: _this.state.tipo,
-        cuello_remera: _this.state.cuello
-      }).then(function (res) {
-        console.log(res);
-        console.log(res.data);
-      });
-    });
-
     return _this;
   }
 
@@ -68329,9 +68313,7 @@ function (_Component) {
           cambiarColor: this.cambiarColor,
           cambiarCuello: this.cambiarCuello,
           cambiarTipo: this.cambiarTipo,
-          guardarRemera: this.guardarRemera,
-          eliminarRemera: this.eliminarRemera,
-          editarRemera: this.editarRemera
+          guardarRemera: this.guardarRemera
         })
       }, this.props.children);
     }

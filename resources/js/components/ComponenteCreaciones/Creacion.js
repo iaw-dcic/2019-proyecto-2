@@ -11,9 +11,9 @@ class Creacion extends Component {
             <div className="col-9 mx-auto col-md-6 col-lg-3 my-3">
                 <div className="card">
                     <div className="img-container p-5">
-                        <Link to={`/editarRemera/${id}`}>
+ 
                             <img src={"img/"+color+cuello+tipo+".png"} alt="modeloRemera" className="card-img-top" />
-                        </Link>
+
                     </div>                      
                 </div>
             </div>
