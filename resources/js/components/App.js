@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import TodoApp from './TodoApp'
 
 class App extends Component {
+
     render () {
-    return (
-        <BrowserRouter>
-        <div>
-            <Example />
-        </div>
-        </BrowserRouter>
-    )
+        return (
+            <BrowserRouter>
+            
+                <Switch>
+                    <Route exact path="/" component={TodoApp}/>
+                    {/* <Route component={NotFound}/> */}
+                </Switch>
+            </BrowserRouter>
+        )
     }
 }
 

@@ -1,0 +1,60 @@
+.tamanio{
+    max-width: 540px;
+    width: 300px;
+    height: 40px;
+
+}
+
+.tamanio-img{
+    width: 40px;
+    height: 40px;
+}
+
+.colorFondo{
+    background-color: whitesmoke;
+}
+
+.ubicacion-semi{
+    padding-top: 120px;
+}
+
+.ubicacion-semi-2{
+    padding-top: 235px;
+}
+
+.ubicacion-final{
+    padding-top: 350px;
+}
+
+.ubicacion-tercero{
+    padding-top: 200px
+}
+
+.fondo-react{
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.fondo{
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 170%;
+}
+
+.mover-abajo{
+    padding-top: 100px
+}
+
+.flotar{
+    float: left;
+}
+
+.centrar{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.ocultar{
+    display: none;
+}
