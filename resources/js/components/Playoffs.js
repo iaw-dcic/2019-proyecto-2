@@ -273,7 +273,7 @@ export default class Playoffs extends Component {
                 'Authorization': 'Bearer ' + api_token.content
             }
         }
-        const res = await fetch('/pr2/api/ultimopronostico', miInit)
+        const res = await fetch('/api/ultimopronostico', miInit)
         const something = await res.json();
         this.setState({ pronost: something })
 

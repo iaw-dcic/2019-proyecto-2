@@ -69054,7 +69054,7 @@ function (_Component) {
                   }
                 };
                 _context3.next = 5;
-                return fetch('/pr2/api/ultimopronostico', miInit);
+                return fetch('/api/ultimopronostico', miInit);
 
               case 5:
                 res = _context3.sent;
