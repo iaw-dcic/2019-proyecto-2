@@ -109,7 +109,7 @@ class Listar extends Component {
 
                 break;
             default:
-                console.log('error');
+                console.log(equipo.id);
 
         }
 
