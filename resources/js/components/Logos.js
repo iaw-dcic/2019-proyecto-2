@@ -19,15 +19,15 @@ export default class Logos extends Component {
 
         axios.get('/api/logos').then(response => {
             this.setState({ logos: response.data })
-        })
+        });
     }
 
     eliminarLogo(e){
-        this.props.addLogo("")
+        this.props.addLogo("");
     }
 
     cambiarLogo(id){
-        this.props.addLogo(id)
+        this.props.addLogo(id);
     }
     
     render() {
