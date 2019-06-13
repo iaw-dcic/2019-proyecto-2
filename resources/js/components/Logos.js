@@ -26,7 +26,7 @@ export default class Logos extends Component {
         this.props.addLogo("")
     }
 
-    cambiarLogo(e, id){
+    cambiarLogo(id){
         this.props.addLogo(id)
     }
     
@@ -43,7 +43,7 @@ export default class Logos extends Component {
                     <a className="thumbnail">
                         {
                             this.state.logos.map((item) => (
-                                <img key={item.logo} className="img-thumbnail" src={"/images/logos/" + item.logo + ".png"} onClick={(e) => this.cambiarLogo(e, item.logo)} ></img>
+                                <img key={item.logo} className="img-thumbnail" src={"/images/logos/" + item.logo + ".png"} onClick={(e) => this.cambiarLogo(item.logo)} ></img>
                             ))
                         }
                     </a>

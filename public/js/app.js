@@ -65905,7 +65905,7 @@ function (_Component) {
     }
   }, {
     key: "cambiarLogo",
-    value: function cambiarLogo(e, id) {
+    value: function cambiarLogo(id) {
       this.props.addLogo(id);
     }
   }, {
@@ -65931,7 +65931,7 @@ function (_Component) {
           className: "img-thumbnail",
           src: "/images/logos/" + item.logo + ".png",
           onClick: function onClick(e) {
-            return _this3.cambiarLogo(e, item.logo);
+            return _this3.cambiarLogo(item.logo);
           }
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
