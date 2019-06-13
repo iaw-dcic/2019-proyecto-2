@@ -60,6 +60,19 @@ export default class TournamentBracket extends Component {
            .catch(function (error) {
               console.log(error);
            });
+        if(localStorage.length == 0){
+            self.setState({mount: 1});
+        } 
+        else {
+            self.setState({
+                octavos: localStorage.getItem('octavos').split(','),
+                cuartos: localStorage.getItem('cuartos').split(','),
+                semis: localStorage.getItem('semis').split(','),
+                final: localStorage.getItem('final').split(','),
+                champ: localStorage.getItem('campeon'),
+                mount: 1
+            });
+        }
     }
 
     search(e){
@@ -133,10 +146,10 @@ export default class TournamentBracket extends Component {
 
     newProde(){
         this.setState({
-            cuartos: ["", "", "", "", "", "", "", ""],
-            semis: ["", "", "", ""],
-            final: ["", ""],
-            campeon: '',            
+            cuartos: [" ? ", " ? ", " ? " , " ? ", " ? ", " ? ", " ? ", " ? "],
+            semis: [" ? ", " ? ", " ? ", " ? "],
+            final: [" ? ", " ? "],
+            campeon: ' ? ',            
             prode_id: null,
         });
     }
@@ -159,7 +172,7 @@ export default class TournamentBracket extends Component {
         this.setState({
             cuartos: cuartosAux 
         });
-        if(this.state.semis[Math.floor(newIndex/2)] != ' ? '){
+        if(this.state.semis[Math.floor(newIndex/2)] != ' ? ' && this.state.semis[Math.floor(newIndex/2)] != '?' ){
            this.handleClickCuartos(newIndex); 
         }        
       }
@@ -171,7 +184,7 @@ export default class TournamentBracket extends Component {
         this.setState({
             semis: semisAux 
         })
-        if(this.state.final[Math.floor(newIndex/2)] != ' ? '){
+        if(this.state.final[Math.floor(newIndex/2)] != ' ? ' && this.state.final[Math.floor(newIndex/2)] != '?' ){
             this.handleClickSemis(newIndex); 
          }    
     }
@@ -183,7 +196,7 @@ export default class TournamentBracket extends Component {
         this.setState({
             final: finalAux 
         })
-        if(this.state.campeon != ' ? '){
+        if(this.state.campeon != ' ? '  && this.state.campeon != '?'){
             this.handleClickFinal(newIndex); 
          }
         
@@ -199,6 +212,17 @@ export default class TournamentBracket extends Component {
  
     
     render() {
+        if (this.state.mount != 0){
+            if (this.state.id != 0){
+                localStorage.clear();
+            } else {
+                localStorage.setItem('octavos', this.state.octavos);
+                localStorage.setItem('cuartos', this.state.cuartos);
+                localStorage.setItem('semis', this.state.semis);
+                localStorage.setItem('final', this.state.final);
+                localStorage.setItem('champ', this.state.champ);
+            }
+        }
         return (
         
         <div>    
@@ -226,6 +250,7 @@ export default class TournamentBracket extends Component {
                     </div>
         </div>
         </div>
+        
         <div className="round-details">Mi Pronostico, identificador: {this.state.prode_id}<br/><span className="date"></span></div>  
         <div className="container">   
         

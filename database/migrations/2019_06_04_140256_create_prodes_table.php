@@ -16,12 +16,12 @@ class CreateProdesTable extends Migration
         Schema::create('prodes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('octavos');
-            $table->string('cuartos');
-            $table->string('semis');
-            $table->string('final');
-            $table->string('user_id');
-            $table->string('campeon');
+            $table->string('octavos')->nullable();
+            $table->string('cuartos')->nullable();
+            $table->string('semis')->nullable();
+            $table->string('final')->nullable();
+            $table->string('user_id')->nullable();
+            $table->string('campeon')->nullable();
 
 
         });

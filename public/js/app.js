@@ -66494,6 +66494,21 @@ function (_Component) {
       })["catch"](function (error) {
         console.log(error);
       });
+
+      if (localStorage.length == 0) {
+        self.setState({
+          mount: 1
+        });
+      } else {
+        self.setState({
+          octavos: localStorage.getItem('octavos').split(','),
+          cuartos: localStorage.getItem('cuartos').split(','),
+          semis: localStorage.getItem('semis').split(','),
+          "final": localStorage.getItem('final').split(','),
+          champ: localStorage.getItem('campeon'),
+          mount: 1
+        });
+      }
     }
   }, {
     key: "search",
@@ -66567,10 +66582,10 @@ function (_Component) {
     key: "newProde",
     value: function newProde() {
       this.setState({
-        cuartos: ["", "", "", "", "", "", "", ""],
-        semis: ["", "", "", ""],
-        "final": ["", ""],
-        campeon: '',
+        cuartos: [" ? ", " ? ", " ? ", " ? ", " ? ", " ? ", " ? ", " ? "],
+        semis: [" ? ", " ? ", " ? ", " ? "],
+        "final": [" ? ", " ? "],
+        campeon: ' ? ',
         prode_id: null
       });
     }
@@ -66597,7 +66612,7 @@ function (_Component) {
         cuartos: cuartosAux
       });
 
-      if (this.state.semis[Math.floor(newIndex / 2)] != ' ? ') {
+      if (this.state.semis[Math.floor(newIndex / 2)] != ' ? ' && this.state.semis[Math.floor(newIndex / 2)] != '?') {
         this.handleClickCuartos(newIndex);
       }
     }
@@ -66611,7 +66626,7 @@ function (_Component) {
         semis: semisAux
       });
 
-      if (this.state["final"][Math.floor(newIndex / 2)] != ' ? ') {
+      if (this.state["final"][Math.floor(newIndex / 2)] != ' ? ' && this.state["final"][Math.floor(newIndex / 2)] != '?') {
         this.handleClickSemis(newIndex);
       }
     }
@@ -66625,7 +66640,7 @@ function (_Component) {
         "final": finalAux
       });
 
-      if (this.state.campeon != ' ? ') {
+      if (this.state.campeon != ' ? ' && this.state.campeon != '?') {
         this.handleClickFinal(newIndex);
       }
     }
@@ -66640,6 +66655,18 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this2 = this;
+
+      if (this.state.mount != 0) {
+        if (this.state.id != 0) {
+          localStorage.clear();
+        } else {
+          localStorage.setItem('octavos', this.state.octavos);
+          localStorage.setItem('cuartos', this.state.cuartos);
+          localStorage.setItem('semis', this.state.semis);
+          localStorage.setItem('final', this.state["final"]);
+          localStorage.setItem('champ', this.state.champ);
+        }
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "bracket"
