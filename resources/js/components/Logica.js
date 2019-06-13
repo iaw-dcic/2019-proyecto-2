@@ -4,7 +4,7 @@ import Axios from 'axios';
 const ContextoLogica= React.createContext();
 
 class ProovedorLogica extends Component {
-    
+
     state={
         color: localStorage.getItem('color') ? localStorage.getItem('color') : 'Negro',
         cuello: localStorage.getItem('cuello') ? localStorage.getItem('cuello') : 'Redondo',
@@ -42,18 +42,19 @@ class ProovedorLogica extends Component {
         });
     }
 
-    eliminarRemera=(id)=>{
+    editarRemera=(id)=>{
         window.axios = require('axios');
         let api_token = document.querySelector('meta[name="api-token"]');
     
         if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
-        Axios.post(`/api/eliminarRemera/${id}`, {
-           id_remera: id,
+        Axios.post(`/api/editarRemera/${id}`, {
+            color_remera: this.state.color,
+            tipo_remera: this.state.tipo,
+            cuello_remera: this.state.cuello
         }).then (res=> {console.log(res); console.log(res.data)
         });
     }
-
     render() {
         return (
             <ContextoLogica.Provider value={{
@@ -62,7 +63,9 @@ class ProovedorLogica extends Component {
                 cambiarCuello:this.cambiarCuello,
                 cambiarTipo:this.cambiarTipo,
                 guardarRemera:this.guardarRemera,
-                eliminarRemera:this.eliminarRemera
+                eliminarRemera:this.eliminarRemera,
+                editarRemera:this.editarRemera,
+                
             }}>
                 {this.props.children}
             </ContextoLogica.Provider>

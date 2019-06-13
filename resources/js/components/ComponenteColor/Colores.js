@@ -12,9 +12,13 @@ class Colores extends Component {
         return (
             <div className="panelColores">
                 <ConsumidorLogica>
-                    {(value) => ( 
-                         <button  className={nombre} onClick={() => value.cambiarColor(this.props.color)}></button>
-                    )}
+                    {(value) => { 
+                        return(
+                            <div>
+                                <button  className={nombre} onClick={() => value.cambiarColor(this.props.color)}></button>
+                            </div>
+                        )
+                    }}
                 </ConsumidorLogica>
             </div>
         );

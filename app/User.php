@@ -37,9 +37,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function remeras(){
-        return $this->hasMany(Remeras::class);
-    }
     public function generateToken()
     {
         $this->api_token = str_random(60);

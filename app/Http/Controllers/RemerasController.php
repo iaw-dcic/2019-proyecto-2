@@ -56,10 +56,11 @@ class RemerasController extends Controller
      */
     public function show()
     {
-        $remeras=Remeras::where('id_usuario', auth('api')->user()->id)->get();
-        $remeras=Remeras::all();
-        return $remeras->toJson();
-
+       $user=Auth::user();
+       $remeras=Remeras::where([
+           ['id_usuario', '=', $user->id]
+       ])->get();
+       return $remeras->toJson();
     }
 
     /**
@@ -108,5 +109,11 @@ class RemerasController extends Controller
         }
         return response()->json(['result' => 'fail']);
     }
-        
+
+    public function mostrarRemera($id)
+    {
+        $remera = Remeras::find($id);
+        return $remera->toJson();
+    }
+    
 }

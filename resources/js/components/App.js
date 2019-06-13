@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Remera from './ComponenteRemera/Remera'
-import Header from './Header'
-import ListaCreaciones from './ComponenteCreaciones/ListaCreaciones'
 import {ProovedorLogica} from './Logica'
 import Default from './ComponenteDefault/Default'
+import EditarRemera from './ComponenteEditar/Editar'
 
 class App extends Component {
     render () {
@@ -13,10 +12,9 @@ class App extends Component {
             <ProovedorLogica>
                 <React.Fragment>
                     <BrowserRouter>
-                         <Header />
                         <Switch>
                             <Route exact path="/" component={Remera} />
-                            <Route path="/misCreaciones" component={ListaCreaciones}/>
+                            <Route exact path="/editarRemera/:id" component={EditarRemera} />
                             <Route component={Default}/>
                         </Switch>
                     </BrowserRouter>

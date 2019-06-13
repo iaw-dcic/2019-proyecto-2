@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Creacion from './Creacion'
+import Axios from 'axios';
 
 class ListaCreaciones extends Component {
     state={
@@ -7,7 +8,12 @@ class ListaCreaciones extends Component {
     }
 
     componentDidMount () {
-        axios.get('api/creaciones').then(response => {
+        Axios.get('api/creaciones').then(response => {
+            window.axios = require('axios');
+            let api_token = document.querySelector('meta[name="api-token"]');
+        
+            if (api_token) window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+    
           this.setState({
             creaciones: response.data
           })
