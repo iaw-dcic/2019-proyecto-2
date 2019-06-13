@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import TournamentBracket from './TournamentBracket';
+
 
 class App extends Component {
     render () {
     return (
         <BrowserRouter>
-        <div>
-            <Example />
-        </div>
+            <Switch>
+                <Route exact path="/home" component={TournamentBracket}/>
+            </Switch>
         </BrowserRouter>
     )
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('react-app'))
+ReactDOM.render(<App />, document.getElementById('react-app'));
