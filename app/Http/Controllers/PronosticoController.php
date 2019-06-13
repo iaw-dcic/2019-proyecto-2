@@ -163,12 +163,14 @@ class PronosticoController extends Controller
 
     public function eliminar_pronostico($id ){
         $user=Auth::user();
-        $arr= Torneo::all();
-        $t = $arr[$id];
-        if($t->user_id==$user->id){
-             $lista=DB::table('torneo')->where('id','=',$t->id)->delete();         
-        } 
-        return Response::json($arr);
+        $t= Torneo::where([ ['user_id', '=', $user->id] ])->get();
+        $arr = $t[$id];
+
+        if($arr->user_id==$user->id){
+            $partidos=Torneo::where([ ['id', '=', $arr->id] ])->delete();
+        }
+        $res=Torneo::where([ ['id', '=', $user->id] ])->get();
+        return Response::json($res);
     }
 
     public function get_pronostico($id ){

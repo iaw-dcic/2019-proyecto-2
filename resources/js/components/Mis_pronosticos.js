@@ -45,8 +45,10 @@ export default class Mis_pronosticos extends Component {
 
       handleEliminarPronostico(id) {
         
-        if(id != '') {
+        
             try {
+                localStorage.setItem('eliminar',id);
+                console.log('Eliminar '+ id);
                 axios.delete('api/eliminar_pronostico/'+id)
                     .then(res => {
                         console.log(res);
@@ -56,7 +58,7 @@ export default class Mis_pronosticos extends Component {
             catch (event) {
                 console.log('Axios request failed', event);
             }
-        }
+        
     }
 
      handleModificarPronostico(id) {//id de la posicion en el arreglo de mysql

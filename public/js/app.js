@@ -68907,27 +68907,27 @@ function (_Component) {
       var token = document.head.querySelector('meta[name="csrf-token"]');
       window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      var g1 = "";
-      var g2 = "";
-      var g3 = "";
-      var g4 = "";
-      var g5 = "";
-      var g6 = "";
-      var g7 = "";
-      if (localStorage.hasOwnProperty('g1')) g1 = localStorage.getItem('g1');
-      if (localStorage.hasOwnProperty('g2')) g2 = localStorage.getItem('g2');
-      if (localStorage.hasOwnProperty('g3')) g3 = localStorage.getItem('g3');
-      if (localStorage.hasOwnProperty('g4')) g4 = localStorage.getItem('g4');
-      if (localStorage.hasOwnProperty('g5')) g5 = localStorage.getItem('g5');
-      if (localStorage.hasOwnProperty('g6')) g6 = localStorage.getItem('g6');
-      if (localStorage.hasOwnProperty('g7')) g7 = localStorage.getItem('g7');
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_equipos').then(function (response) {
         _this2.setState({
-          equipos: response.equipos,
-          ganador1: response.ganador1
+          equipos: response.data
         });
 
         console.log(response.data);
+      });
+      var mod = localStorage.getItem('modificar');
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronostico/' + mod).then(function (response) {
+        _this2.setState({
+          ganador1: response.data[0] - 1,
+          ganador2: response.data[1] - 1,
+          ganador3: response.data[2] - 1,
+          ganador4: response.data[3] - 1,
+          ganador5: response.data[4] - 1,
+          ganador6: response.data[5] - 1,
+          ganador7: response.data[6] - 1
+        });
+
+        console.log(response.data);
+        console.log(_this2.state);
       });
     }
   }, {
@@ -69031,7 +69031,8 @@ function (_Component) {
           ganador4: this.state.ganador4,
           ganador5: this.state.ganador5,
           ganador6: this.state.ganador6,
-          ganador7: this.state.ganador7
+          ganador7: this.state.ganador7,
+          mod: localStorage.getItem('modificar')
         }).then(function (res) {
           console.log(res);
           console.log(res.data);
@@ -69243,7 +69244,7 @@ function (_Component) {
         type: "button",
         className: "btn",
         onClick: function onClick(event) {
-          return _this3.handleChangeGuardar(event);
+          return _this3.handleChangeGuardar();
         }
       }, "GUARDAR"));
     }
@@ -69766,14 +69767,14 @@ function (_Component) {
   }, {
     key: "handleEliminarPronostico",
     value: function handleEliminarPronostico(id) {
-      if (id != '') {
-        try {
-          axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('api/eliminar_pronostico/' + id).then(function (res) {
-            console.log(res);
-          });
-        } catch (event) {
-          console.log('Axios request failed', event);
-        }
+      try {
+        localStorage.setItem('eliminar', id);
+        console.log('Eliminar ' + id);
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('api/eliminar_pronostico/' + id).then(function (res) {
+          console.log(res);
+        });
+      } catch (event) {
+        console.log('Axios request failed', event);
       }
     }
   }, {
