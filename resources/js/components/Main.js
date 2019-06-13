@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Nuevo_pronostico from './nuevo_pronostico'
 import Mis_pronosticos from './Mis_pronosticos'
+import Mi_pronostico from './Mi_pronostico'
 import { Row, Column } from 'react-foundation';
 
 
@@ -13,7 +14,7 @@ export default class Example extends Component {
     constructor() {
         super()
         this.state = {
-            content: <Mis_pronosticos />
+            content: ""
         }
         
     }

@@ -163,11 +163,96 @@ class PronosticoController extends Controller
 
     public function eliminar_pronostico($id ){
         $user=Auth::user();
-        $t= Torneo::find($id);
+        $arr= Torneo::all();
+        $t = $arr[$id];
         if($t->user_id==$user->id){
-             $lista=DB::table('torneo')->where('id','=',$id)->delete();         
+             $lista=DB::table('torneo')->where('id','=',$t->id)->delete();         
         } 
+        return Response::json($arr);
     }
+
+    public function get_pronostico($id ){
+        $user=Auth::user();
+        $t= Torneo::all();
+        $arr = $t[$id];
+        $partidos=Partido::where([ ['id_torneo', '=', $arr->id] ])->get();
+
+
+        $arr = [];
+        foreach ($partidos as $partido) {
+            $arr[] = $partido->id_equipo_ganador;
+        }
+        return Response::json($arr);
+
+        
+        
+    }
+
+    public function editar_pronostico(Request $request){
+            
+        $user=Auth::user();
+        $data = $request->all();
+        $equipos = $data['equipos'];
+        $ganador1 = $data['ganador1']+1;
+        $ganador2 = $data['ganador2']+1;
+        $ganador3 = $data['ganador3']+1;
+        $ganador4 = $data['ganador4']+1;
+        $ganador5 = $data['ganador5']+1;
+        $ganador6 = $data['ganador6']+1;
+        $ganador7 = $data['ganador7']+1;
+        $modificar= $data['mod'];
+
+        $t= Torneo::all();
+        $torneo = $t[$modificar];
+       
+         $partidos=Partido::where([ ['id_torneo', '=', $torneo->id] ])->get();
+
+
+
+
+        $partido1= $partidos[0];
+        $partido1->id_equipo_ganador=$ganador1;
+        $partido1->save();
+
+        $partido2= $partidos[1];
+        $partido2->id_equipo_ganador=$ganador2;
+        $partido2->save();
+
+        $partido3= $partidos[2];
+        $partido3->id_equipo_ganador=$ganador3;
+        $partido3->save();
+
+        $partido4= $partidos[3];
+        $partido4->id_equipo_ganador=$ganador4;
+        $partido4->save();
+
+        $semis1= $partidos[4];
+        $semis1->id_equipo_local=$ganador1;
+        $semis1->id_equipo_visitante=$ganador2;
+        $semis1->id_equipo_ganador=$ganador5;
+        $semis1->save();
+
+        $semis2= $partidos[5];
+        $semis2->id_equipo_local=$ganador3;
+        $semis2->id_equipo_visitante=$ganador4;
+        $semis2->id_equipo_ganador=$ganador6;
+        $semis2->save();
+
+        $final= $partidos[6];
+        $final->id_equipo_local=$ganador5;
+        $final->id_equipo_visitante=$ganador6;
+        $final->id_equipo_ganador=$ganador7;
+        $final->save();
+        try {
+
+            return Response()->json([$data]);
+        } catch (\Exception $e) {
+            abort(500);
+        }
+        
+    }
+
+
 
 
     

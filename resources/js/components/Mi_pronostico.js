@@ -4,7 +4,7 @@ import axios from 'axios';
 import Main from './Main.js';
 
 
-export default class Mis_pronosticos extends Component {
+export default class Mi_pronostico extends Component {
     constructor(){
       super();
       
@@ -31,47 +31,32 @@ componentDidMount() {
 
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
         window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-     
-
-
-
-        var g1="";
-        var g2="";
-        var g3="";
-        var g4="";
-        var g5="";
-        var g6="";
-        var g7="";
-        if(localStorage.hasOwnProperty('g1'))
-            g1=localStorage.getItem('g1');
-        if(localStorage.hasOwnProperty('g2'))
-            g2=localStorage.getItem('g2');
-        
-        if(localStorage.hasOwnProperty('g3'))
-            g3=localStorage.getItem('g3');
-        
-        if(localStorage.hasOwnProperty('g4'))
-            g4=localStorage.getItem('g4');
-        
-        if(localStorage.hasOwnProperty('g5'))
-            g5=localStorage.getItem('g5');
-        
-        if(localStorage.hasOwnProperty('g6'))
-            g6=localStorage.getItem('g6');
-        
-        if(localStorage.hasOwnProperty('g7'))
-            g7=localStorage.getItem('g7');
+           
         
           axios.get('/api/get_equipos').then(response => {
             this.setState({
-                equipos: response.equipos,
-                ganador1: response.ganador1
+                equipos: response.data,
             })
             console.log(response.data)
           });
-  
-
-       } 
+          
+           var mod=localStorage.getItem('modificar');
+           axios.get('/api/get_pronostico/'+mod).then(response => {
+            this.setState({
+                ganador1:response.data[0]-1,
+                ganador2:response.data[1]-1,
+                ganador3:response.data[2]-1,
+                ganador4:response.data[3]-1,
+                ganador5:response.data[4]-1,
+                ganador6:response.data[5]-1,
+                ganador7:response.data[6]-1,
+                
+            })
+            console.log(response.data)
+            console.log(this.state)
+          });
+  }
+       
 
 
 
@@ -149,7 +134,8 @@ componentDidMount() {
               ganador4:this.state.ganador4,
               ganador5:this.state.ganador5,
               ganador6:this.state.ganador6,
-              ganador7:this.state.ganador7
+              ganador7:this.state.ganador7,
+              mod:localStorage.getItem('modificar')
 
             }).then(res => {
                 console.log(res);
@@ -312,7 +298,7 @@ render() {
 
 
 
-                  <button type="button" className="btn" onClick={(event) => this.handleChangeGuardar(event)}>GUARDAR</button> 
+                  <button type="button" className="btn" onClick={(event) => this.handleChangeGuardar()}>GUARDAR</button> 
 
                   </div>
 

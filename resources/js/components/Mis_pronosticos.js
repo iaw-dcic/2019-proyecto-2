@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Main from './Main.js';
+import Mi_pronostico from './Mi_pronostico';
 import { Link } from 'react-router-dom'
+
+import { Row, Column } from 'react-foundation';
 
 export default class Mis_pronosticos extends Component {
     constructor(){
       super();
       this.state={
         
-        pronosticos: [],   
+        pronosticos: [],
+        content:"",
+
       };
 
 
@@ -54,6 +59,13 @@ export default class Mis_pronosticos extends Component {
         }
     }
 
+     handleModificarPronostico(id) {//id de la posicion en el arreglo de mysql
+       localStorage.setItem('modificar',id);
+        this.setState({
+            content: <Mi_pronostico />
+        });
+    
+    }
 
 
 
@@ -61,18 +73,19 @@ export default class Mis_pronosticos extends Component {
 
          
         return(
-                            
+                        <div className="container">   
+                         <Row>
                              <div className="card-body center">
                                 
-                                  
                                     { 
                                       this.state.pronosticos.map((name,id) => 
                                             ( <div className='row'>
                                                <div className="col-sm-4">
-                                                    <button className="btn" key = {id} >Pronostico {id+1} Modificar</button>
+                                                    <button className="btn" onClick={(event) => this.handleModificarPronostico(id)}
+                                                     key = {id} >Pronostico {id+1} Modificar</button>
                                                </div> 
                                                <div className="col-sm-4">
-                                                    <button className="btn" onClick={(event) => this.handleEliminarPronostico(id+1)}
+                                                    <button className="btn" onClick={(event) => this.handleEliminarPronostico(id)}
                                                      key = {id} >Pronostico {id+1} Eliminar </button>
                                                </div> 
                                               </div>   
@@ -80,17 +93,16 @@ export default class Mis_pronosticos extends Component {
                                       )
                                     }
                               </div>
-                                
-
-
-
-
-
-
-
-
-                             
-               
+                       </Row>  
+                         <br/>
+                         <br/>
+                       
+                        <Row>  
+                            {this.state.content}
+                        </Row>  
+                  
+                           </div> 
+  
           )
             
           

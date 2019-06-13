@@ -68643,8 +68643,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _nuevo_pronostico_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nuevo_pronostico.js */ "./resources/js/components/nuevo_pronostico.js");
-/* harmony import */ var _miPronostico_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./miPronostico.js */ "./resources/js/components/miPronostico.js");
-/* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Main.js */ "./resources/js/components/Main.js");
+/* harmony import */ var _Mis_pronosticos_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mis_pronosticos.js */ "./resources/js/components/Mis_pronosticos.js");
+/* harmony import */ var _Mi_Pronostico_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Mi_Pronostico.js */ "./resources/js/components/Mi_Pronostico.js");
+/* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Main.js */ "./resources/js/components/Main.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -68662,6 +68663,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -68692,13 +68694,13 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
-        component: _Main_js__WEBPACK_IMPORTED_MODULE_5__["default"]
+        component: _Main_js__WEBPACK_IMPORTED_MODULE_6__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/home",
-        component: _Main_js__WEBPACK_IMPORTED_MODULE_5__["default"]
+        component: _Main_js__WEBPACK_IMPORTED_MODULE_6__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/misPronosticos",
-        component: _miPronostico_js__WEBPACK_IMPORTED_MODULE_4__["default"]
+        path: "/get_pronosticos",
+        component: _Mis_pronosticos_js__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/crear_pronostico",
         component: _nuevo_pronostico_js__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -68729,8 +68731,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _nuevo_pronostico__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nuevo_pronostico */ "./resources/js/components/nuevo_pronostico.js");
 /* harmony import */ var _Mis_pronosticos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Mis_pronosticos */ "./resources/js/components/Mis_pronosticos.js");
-/* harmony import */ var react_foundation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-foundation */ "./node_modules/react-foundation/lib/index.js");
-/* harmony import */ var react_foundation__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_foundation__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Mi_pronostico__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mi_pronostico */ "./resources/js/components/Mi_pronostico.js");
+/* harmony import */ var react_foundation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-foundation */ "./node_modules/react-foundation/lib/index.js");
+/* harmony import */ var react_foundation__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_foundation__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -68748,6 +68751,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -68774,7 +68778,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
     _this.state = {
-      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mis_pronosticos__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+      content: ""
     };
     return _this;
   }
@@ -68802,7 +68806,7 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_4__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_5__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"
@@ -68818,7 +68822,7 @@ function (_Component) {
         onClick: function onClick(event) {
           return _this2.MisPronosticos();
         }
-      }, "Mis pron\xF3sticos "))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_4__["Row"], null, this.state.content));
+      }, "Mis pron\xF3sticos "))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_5__["Row"], null, this.state.content));
     }
   }]);
 
@@ -68829,141 +68833,16 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Mis_pronosticos.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/Mis_pronosticos.js ***!
-  \****************************************************/
+/***/ "./resources/js/components/Mi_Pronostico.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Mi_Pronostico.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mis_pronosticos; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Main.js */ "./resources/js/components/Main.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-var Mis_pronosticos =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Mis_pronosticos, _Component);
-
-  function Mis_pronosticos() {
-    var _this;
-
-    _classCallCheck(this, Mis_pronosticos);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Mis_pronosticos).call(this));
-    _this.state = {
-      pronosticos: []
-    };
-    return _this;
-  }
-
-  _createClass(Mis_pronosticos, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-      var api_token = document.querySelector('meta[name="api-token"]');
-      var token = document.head.querySelector('meta[name="csrf-token"]');
-      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronosticos').then(function (response) {
-        _this2.setState({
-          pronosticos: response.data
-        });
-
-        console.log(response.data);
-      });
-    }
-  }, {
-    key: "handleEliminarPronostico",
-    value: function handleEliminarPronostico(id) {
-      if (id != '') {
-        try {
-          axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('api/eliminar_pronostico/' + id).then(function (res) {
-            console.log(res);
-          });
-        } catch (event) {
-          console.log('Axios request failed', event);
-        }
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body center"
-      }, this.state.pronosticos.map(function (name, id) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-4"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn",
-          key: id
-        }, "Pronostico ", id + 1, " Modificar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-4"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn",
-          onClick: function onClick(event) {
-            return _this3.handleEliminarPronostico(id + 1);
-          },
-          key: id
-        }, "Pronostico ", id + 1, " Eliminar ")));
-      }));
-    }
-  }]);
-
-  return Mis_pronosticos;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/miPronostico.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/miPronostico.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mis_pronosticos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mi_pronostico; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -68994,17 +68873,17 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Mis_pronosticos =
+var Mi_pronostico =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Mis_pronosticos, _Component);
+  _inherits(Mi_pronostico, _Component);
 
-  function Mis_pronosticos() {
+  function Mi_pronostico() {
     var _this;
 
-    _classCallCheck(this, Mis_pronosticos);
+    _classCallCheck(this, Mi_pronostico);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Mis_pronosticos).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Mi_pronostico).call(this));
     _this.state = {
       equipos: [],
       ganador1: "",
@@ -69018,7 +68897,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Mis_pronosticos, [{
+  _createClass(Mi_pronostico, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -69367,6 +69246,575 @@ function (_Component) {
           return _this3.handleChangeGuardar(event);
         }
       }, "GUARDAR"));
+    }
+  }]);
+
+  return Mi_pronostico;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Mi_pronostico.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Mi_pronostico.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mi_pronostico; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Main.js */ "./resources/js/components/Main.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var Mi_pronostico =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Mi_pronostico, _Component);
+
+  function Mi_pronostico() {
+    var _this;
+
+    _classCallCheck(this, Mi_pronostico);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Mi_pronostico).call(this));
+    _this.state = {
+      equipos: [],
+      ganador1: "",
+      ganador2: "",
+      ganador3: "",
+      ganador4: "",
+      ganador5: "",
+      ganador6: "",
+      ganador7: ""
+    };
+    return _this;
+  }
+
+  _createClass(Mi_pronostico, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_equipos').then(function (response) {
+        _this2.setState({
+          equipos: response.data
+        });
+
+        console.log(response.data);
+      });
+      var mod = localStorage.getItem('modificar');
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronostico/' + mod).then(function (response) {
+        _this2.setState({
+          ganador1: response.data[0] - 1,
+          ganador2: response.data[1] - 1,
+          ganador3: response.data[2] - 1,
+          ganador4: response.data[3] - 1,
+          ganador5: response.data[4] - 1,
+          ganador6: response.data[5] - 1,
+          ganador7: response.data[6] - 1
+        });
+
+        console.log(response.data);
+        console.log(_this2.state);
+      });
+    }
+  }, {
+    key: "handleChangeCuartos",
+    value: function handleChangeCuartos(i) {
+      switch (i) {
+        case 0:
+        case 1:
+          this.setState({
+            ganador1: i
+          });
+          localStorage.setItem('ganador1', i);
+          break;
+
+        case 2:
+        case 3:
+          this.setState({
+            ganador2: i
+          });
+          localStorage.setItem('ganador2', i);
+          break;
+
+        case 4:
+        case 5:
+          this.setState({
+            ganador3: i
+          });
+          localStorage.setItem('ganador3', i);
+          break;
+
+        case 6:
+        case 7:
+          this.setState({
+            ganador4: i
+          });
+          localStorage.setItem('ganador4', i);
+          break;
+      }
+    }
+  }, {
+    key: "handleChangeSemis",
+    value: function handleChangeSemis(i) {
+      switch (i) {
+        case 1:
+          this.setState({
+            ganador5: this.state.ganador1
+          });
+          localStorage.setItem('ganador5', this.state.ganador1);
+          break;
+
+        case 2:
+          this.setState({
+            ganador5: this.state.ganador2
+          });
+          localStorage.setItem('ganador5', this.state.ganador2);
+          break;
+
+        case 3:
+          this.setState({
+            ganador6: this.state.ganador3
+          });
+          localStorage.setItem('ganador5', this.state.ganador3);
+          break;
+
+        case 4:
+          this.setState({
+            ganador6: this.state.ganador4
+          });
+          localStorage.setItem('ganador5', this.state.ganador4);
+          break;
+      }
+    }
+  }, {
+    key: "handleChangeFinal",
+    value: function handleChangeFinal(i) {
+      switch (i) {
+        case 5:
+          this.setState({
+            ganador7: this.state.ganador5
+          });
+          localStorage.setItem('ganador7', this.state.ganador5);
+          break;
+
+        case 6:
+          this.setState({
+            ganador7: this.state.ganador6
+          });
+          localStorage.setItem('ganador7', this.state.ganador6);
+          break;
+      }
+    }
+  }, {
+    key: "handleChangeGuardar",
+    value: function handleChangeGuardar(event) {
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/editar_pronostico', {
+          equipos: this.state.equipos,
+          ganador1: this.state.ganador1,
+          ganador2: this.state.ganador2,
+          ganador3: this.state.ganador3,
+          ganador4: this.state.ganador4,
+          ganador5: this.state.ganador5,
+          ganador6: this.state.ganador6,
+          ganador7: this.state.ganador7,
+          mod: localStorage.getItem('modificar')
+        }).then(function (res) {
+          console.log(res);
+          console.log(res.data);
+        });
+      } catch (event) {
+        console.log('Axios request failed', event);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bracket"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "round quarterfinals"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "winners"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchups"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(0);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Brazil")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(1);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Colombia")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(2);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Chile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(3);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Paraguay"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "connector"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "merger"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "line"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "winners"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchups"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(4);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Argentina")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(5);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Uruguay")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(6);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Venezuela")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeCuartos(7);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Peru"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "connector"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "merger"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "line"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "round semifinals"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "winners"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchups"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemis(1);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador1])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemis(2);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador2])))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemis(3);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador3])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeSemis(4);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador4]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "connector"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "merger"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "line"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "round finals"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "winners"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchups"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeFinal(5);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador5])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeFinal(6);
+        }
+      }, "GANA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador6]))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "round finals"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "winners"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchups"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matchup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participants"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "participant winner"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.equipos[this.state.ganador7]))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn",
+        onClick: function onClick(event) {
+          return _this3.handleChangeGuardar();
+        }
+      }, "GUARDAR"));
+    }
+  }]);
+
+  return Mi_pronostico;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Mis_pronosticos.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/Mis_pronosticos.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mis_pronosticos; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Main.js */ "./resources/js/components/Main.js");
+/* harmony import */ var _Mi_pronostico__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mi_pronostico */ "./resources/js/components/Mi_pronostico.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_foundation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-foundation */ "./node_modules/react-foundation/lib/index.js");
+/* harmony import */ var react_foundation__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_foundation__WEBPACK_IMPORTED_MODULE_6__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+var Mis_pronosticos =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Mis_pronosticos, _Component);
+
+  function Mis_pronosticos() {
+    var _this;
+
+    _classCallCheck(this, Mis_pronosticos);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Mis_pronosticos).call(this));
+    _this.state = {
+      pronosticos: [],
+      content: ""
+    };
+    return _this;
+  }
+
+  _createClass(Mis_pronosticos, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      var api_token = document.querySelector('meta[name="api-token"]');
+      var token = document.head.querySelector('meta[name="csrf-token"]');
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronosticos').then(function (response) {
+        _this2.setState({
+          pronosticos: response.data
+        });
+
+        console.log(response.data);
+      });
+    }
+  }, {
+    key: "handleEliminarPronostico",
+    value: function handleEliminarPronostico(id) {
+      if (id != '') {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('api/eliminar_pronostico/' + id).then(function (res) {
+            console.log(res);
+          });
+        } catch (event) {
+          console.log('Axios request failed', event);
+        }
+      }
+    }
+  }, {
+    key: "handleModificarPronostico",
+    value: function handleModificarPronostico(id) {
+      //id de la posicion en el arreglo de mysql
+      localStorage.setItem('modificar', id);
+      this.setState({
+        content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mi_pronostico__WEBPACK_IMPORTED_MODULE_4__["default"], null)
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_6__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body center"
+      }, this.state.pronosticos.map(function (name, id) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-4"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn",
+          onClick: function onClick(event) {
+            return _this3.handleModificarPronostico(id);
+          },
+          key: id
+        }, "Pronostico ", id + 1, " Modificar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-4"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn",
+          onClick: function onClick(event) {
+            return _this3.handleEliminarPronostico(id);
+          },
+          key: id
+        }, "Pronostico ", id + 1, " Eliminar ")));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_6__["Row"], null, this.state.content));
     }
   }]);
 
