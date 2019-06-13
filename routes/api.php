@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //rutas de los componentes.
 
 //AVM REMERA
-Route::post('/guardar','remeraController@guardar');
-Route::delete('/delete/{remera_id}', 'remeraController@eliminar');
+Route::post('/guardar','RemeraController@guardar');
+Route::delete('/delete/{remera_id}', 'RemeraController@eliminar');
 //Route::post('/Remera','RemeraController@modificar')->middleware('auth:api');
 
 //Elementos agregadoss
@@ -31,4 +31,4 @@ Route::get('/talles','ElementosController@getTalles');
 
 
 //Este es para mostrar las remeras guardadas del usuario.
-Route::get('/getRemeras','remeraController@getRemeras');
+Route::get('/getRemeras','RemeraController@getRemeras');

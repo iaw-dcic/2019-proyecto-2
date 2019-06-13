@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Shirt;
 
-class remeraController extends Controller
+class RemeraController extends Controller
 {
 
     public function __construct()
