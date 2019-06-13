@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import TournamentBracket from './TournamentBracket'
+import Navbar from './Navbar'
+
+import '../../css/custom.css';
 
 class App extends Component {
     render () {
     return (
         <BrowserRouter>
         <div>
-            <Example />
+            <Navbar/>
+            <TournamentBracket />
         </div>
         </BrowserRouter>
     )

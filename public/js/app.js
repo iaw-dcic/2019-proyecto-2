@@ -188,7 +188,6 @@ var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
 var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./node_modules/axios/lib/helpers/isURLSameOrigin.js");
 var createError = __webpack_require__(/*! ../core/createError */ "./node_modules/axios/lib/core/createError.js");
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ "./node_modules/axios/lib/helpers/btoa.js");
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -200,22 +199,6 @@ module.exports = function xhrAdapter(config) {
     }
 
     var request = new XMLHttpRequest();
-    var loadEvent = 'onreadystatechange';
-    var xDomain = false;
-
-    // For IE 8/9 CORS support
-    // Only supports POST and GET calls and doesn't returns the response headers.
-    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if ( true &&
-        typeof window !== 'undefined' &&
-        window.XDomainRequest && !('withCredentials' in request) &&
-        !isURLSameOrigin(config.url)) {
-      request = new window.XDomainRequest();
-      loadEvent = 'onload';
-      xDomain = true;
-      request.onprogress = function handleProgress() {};
-      request.ontimeout = function handleTimeout() {};
-    }
 
     // HTTP basic authentication
     if (config.auth) {
@@ -230,8 +213,8 @@ module.exports = function xhrAdapter(config) {
     request.timeout = config.timeout;
 
     // Listen for ready state
-    request[loadEvent] = function handleLoad() {
-      if (!request || (request.readyState !== 4 && !xDomain)) {
+    request.onreadystatechange = function handleLoad() {
+      if (!request || request.readyState !== 4) {
         return;
       }
 
@@ -248,9 +231,8 @@ module.exports = function xhrAdapter(config) {
       var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
       var response = {
         data: responseData,
-        // IE sends 1223 instead of 204 (https://github.com/axios/axios/issues/201)
-        status: request.status === 1223 ? 204 : request.status,
-        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+        status: request.status,
+        statusText: request.statusText,
         headers: responseHeaders,
         config: config,
         request: request
@@ -1063,54 +1045,6 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/btoa.js":
-/*!************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/btoa.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
-
-
-/***/ }),
-
 /***/ "./node_modules/axios/lib/helpers/buildURL.js":
 /*!****************************************************!*\
   !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
@@ -1525,7 +1459,7 @@ module.exports = function spread(callback) {
 
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
-var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js");
+var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
 
 /*global toString:true*/
 
@@ -1825,6 +1759,28 @@ module.exports = {
   extend: extend,
   trim: trim
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/node_modules/is-buffer/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
 
 
 /***/ }),
@@ -6508,6 +6464,112 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/css/custom.css":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/css/custom.css ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "* {\r\n    box-sizing: border-box;\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n\r\nbody {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    line-height: 1.4;\r\n}\r\n\r\n.rojo {\r\n    color: red;\r\n}\r\n\r\nspan:hover {\r\n    cursor: pointer;\r\n}\r\n\r\n/*\r\n*   Brackets style\r\n*/\r\n\r\n/*\r\n *  Flex Layout Specifics\r\n*/\r\n\r\nmain {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.round {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    width: 200px;\r\n    list-style: none;\r\n    padding: 0;\r\n}\r\n\r\n.round .spacer {\r\n    flex-grow: 1;\r\n}\r\n\r\n.round .spacer:first-child, .round .spacer:last-child {\r\n    flex-grow: .5;\r\n}\r\n\r\n.round .game-spacer {\r\n    flex-grow: 1;\r\n}\r\n\r\n/*\r\n   *  General Styles\r\n  */\r\n\r\nbody {\r\n    font-family: sans-serif;\r\n    font-size: small;\r\n    padding: 10px;\r\n    line-height: 1.4em;\r\n}\r\n\r\nli.game {\r\n    padding-left: 20px;\r\n}\r\n\r\nli.game.winner {\r\n    font-weight: bold;\r\n}\r\n\r\nli.game span {\r\n    float: right;\r\n    margin-right: 5px;\r\n}\r\n\r\nli.game-top {\r\n    border-bottom: 1px solid #aaa;\r\n}\r\n\r\nli.game-spacer {\r\n    border-right: 1px solid #aaa;\r\n    min-height: 40px;\r\n}\r\n\r\nli.game-bottom {\r\n    border-top: 1px solid #aaa;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/fbjs/lib/emptyFunction.js":
 /*!************************************************!*\
   !*** ./node_modules/fbjs/lib/emptyFunction.js ***!
@@ -7689,38 +7751,6 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 }
 
 module.exports = hoistNonReactStatics;
-
-
-/***/ }),
-
-/***/ "./node_modules/is-buffer/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/is-buffer/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
 
 
 /***/ }),
@@ -60723,7 +60753,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65422,6 +65452,515 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js":
 /*!****************************************************************!*\
   !*** ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js ***!
@@ -65479,6 +66018,60 @@ function warning(condition, message) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (warning);
+
+
+/***/ }),
+
+/***/ "./node_modules/v8/index.js":
+/*!**********************************!*\
+  !*** ./node_modules/v8/index.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* ================================================================
+ * v8 by xdf(xudafeng[at]126.com)
+ *
+ * first created at : Tue Jun 30 2015 23:32:56 GMT+0800 (CST)
+ *
+ * ================================================================
+ * Copyright  xdf
+ *
+ * Licensed under the MIT License
+ * You may not use this file except in compliance with the License.
+ *
+ * ================================================================ */
+
+
+
+module.exports = __webpack_require__(/*! ./lib/v8 */ "./node_modules/v8/lib/v8.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/v8/lib/v8.js":
+/*!***********************************!*\
+  !*** ./node_modules/v8/lib/v8.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* ================================================================
+ * v8 by xdf(xudafeng[at]126.com)
+ *
+ * first created at : Tue Jun 30 2015 23:32:56 GMT+0800 (CST)
+ *
+ * ================================================================
+ * Copyright  xdf
+ *
+ * Licensed under the MIT License
+ * You may not use this file except in compliance with the License.
+ *
+ * ================================================================ */
+
+
 
 
 /***/ }),
@@ -65597,6 +66190,36 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/css/custom.css":
+/*!**********************************!*\
+  !*** ./resources/css/custom.css ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../node_modules/postcss-loader/src??ref--6-2!./custom.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/css/custom.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -65693,7 +66316,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Example */ "./resources/js/components/Example.js");
+/* harmony import */ var _TournamentBracket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TournamentBracket */ "./resources/js/components/TournamentBracket.js");
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
+/* harmony import */ var _css_custom_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../css/custom.css */ "./resources/css/custom.css");
+/* harmony import */ var _css_custom_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_css_custom_css__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65711,6 +66337,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -65731,7 +66359,7 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Example__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TournamentBracket__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }]);
 
@@ -65742,20 +66370,17 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
+/***/ "./resources/js/components/Navbar.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Navbar.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Example; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65766,51 +66391,591 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
-var Example =
+var Navbar =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Example, _Component);
+  _inherits(Navbar, _Component);
 
-  function Example() {
-    _classCallCheck(this, Example);
+  function Navbar() {
+    var _getPrototypeOf2;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Example).apply(this, arguments));
+    var _this;
+
+    _classCallCheck(this, Navbar);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Navbar)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "onSubmit", function (e) {
+      e.preventDefault(); //console.log("submit");
+
+      axios.post('/logout').then(function (res) {
+        console.log(res.data);
+        window.location.reload();
+      });
+    });
+
+    return _this;
   }
 
-  _createClass(Example, [{
+  _createClass(Navbar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-md navbar-light bg-white shadow-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Test Component"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, "I'm an test component!")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "navbar-brand",
+        href: "#"
+      }, "Prode"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "collapse navbar-collapse",
+        id: "navbarSupportedContent"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav mr-auto"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav ml-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "navbarDropdown",
+        className: "nav-link dropdown-toggle",
+        href: "#",
+        role: "button",
+        "data-toggle": "dropdown"
+      }, "Victor", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "caret"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu dropdown-menu-right",
+        "aria-labelledby": "navbarDropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "logout-form",
+        onSubmit: this.onSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Logout"
+      }))))))));
     }
   }]);
 
-  return Example;
+  return Navbar;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
+/* harmony default export */ __webpack_exports__["default"] = (Navbar);
 
+/***/ }),
+
+/***/ "./resources/js/components/TournamentBracket.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/TournamentBracket.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Warriors_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Warriors.png */ "./resources/js/components/Warriors.png");
+/* harmony import */ var _Warriors_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Warriors_png__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var v8__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! v8 */ "./node_modules/v8/index.js");
+/* harmony import */ var v8__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(v8__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+var TournamentBracket =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TournamentBracket, _Component);
+
+  function TournamentBracket() {
+    var _this;
+
+    _classCallCheck(this, TournamentBracket);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TournamentBracket).call(this));
+
+    _defineProperty(_assertThisInitialized(_this), "advanceTo", function (id, advanceTo) {
+      //console.log(id)
+      //console.log(advanceTo);
+      switch (advanceTo) {
+        case 'ec1':
+          _this.setState({
+            ec1: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'ec2':
+          _this.setState({
+            ec2: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'ec3':
+          _this.setState({
+            ec3: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'ec4':
+          _this.setState({
+            ec4: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'wc1':
+          _this.setState({
+            wc1: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'wc2':
+          _this.setState({
+            wc2: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'wc3':
+          _this.setState({
+            wc3: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'wc4':
+          _this.setState({
+            wc4: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'ef1':
+          _this.setState({
+            ef1: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'ef2':
+          _this.setState({
+            ef2: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'wf1':
+          _this.setState({
+            wf1: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'wf2':
+          _this.setState({
+            wf2: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'f1':
+          _this.setState({
+            f1: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'f2':
+          _this.setState({
+            f2: _this.state.teams[id - 1]
+          });
+
+          break;
+
+        case 'champ':
+          _this.setState({
+            champ: _this.state.teams[id - 1]
+          });
+
+          break;
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "resetBracket", function (e) {
+      _this.setState({
+        e1: _this.state.teams[0],
+        e2: _this.state.teams[1],
+        e3: _this.state.teams[2],
+        e4: _this.state.teams[3],
+        e5: _this.state.teams[4],
+        e6: _this.state.teams[5],
+        e7: _this.state.teams[6],
+        e8: _this.state.teams[7],
+        w1: _this.state.teams[8],
+        w2: _this.state.teams[9],
+        w3: _this.state.teams[10],
+        w4: _this.state.teams[11],
+        w5: _this.state.teams[12],
+        w6: _this.state.teams[13],
+        w7: _this.state.teams[14],
+        w8: _this.state.teams[15],
+        ec1: {},
+        ec2: {},
+        ec3: {},
+        ec4: {},
+        wc1: {},
+        wc2: {},
+        wc3: {},
+        wc4: {},
+        ef1: {},
+        ef2: {},
+        wf1: {},
+        wf2: {},
+        f1: {},
+        f2: {},
+        champ: {}
+      });
+    });
+
+    _this.state = {
+      teams: [],
+      e1: {},
+      e2: {},
+      e3: {},
+      e4: {},
+      e5: {},
+      e6: {},
+      e7: {},
+      e8: {},
+      w1: {},
+      w2: {},
+      w3: {},
+      w4: {},
+      w5: {},
+      w6: {},
+      w7: {},
+      w8: {},
+      ec1: {},
+      ec2: {},
+      ec3: {},
+      ec4: {},
+      wc1: {},
+      wc2: {},
+      wc3: {},
+      wc4: {},
+      ef1: {},
+      ef2: {},
+      wf1: {},
+      wf2: {},
+      f1: {},
+      f2: {},
+      champ: {}
+    };
+    return _this;
+  }
+
+  _createClass(TournamentBracket, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/teams').then(function (res) {
+        _this2.setState({
+          teams: res.data,
+          e1: res.data[0],
+          e2: res.data[1],
+          e3: res.data[2],
+          e4: res.data[3],
+          e5: res.data[4],
+          e6: res.data[5],
+          e7: res.data[6],
+          e8: res.data[7],
+          w1: res.data[8],
+          w2: res.data[9],
+          w3: res.data[10],
+          w4: res.data[11],
+          w5: res.data[12],
+          w6: res.data[13],
+          w7: res.data[14],
+          w8: res.data[15]
+        }); //console.log(this.state.teams[0].team_name);
+
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "2019 NBA Finals"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "round round-1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.e1.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e1.id, "ec1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom"
+      }, this.state.e8.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e8.id, "ec1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.e4.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e4.id, "ec2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.e5.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e5.id, "ec2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.e2.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e2.id, "ec3")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.e7.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e7.id, "ec3")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.e3.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e3.id, "ec4")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.e6.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.e6.id, "ec4")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.w1.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w1.id, "wc1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.w8.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w8.id, "wc1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.w4.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w4.id, "wc2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.w5.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w5.id, "wc2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.w2.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w2.id, "wc3")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.w7.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w7.id, "wc3")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.w3.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w3.id, "wc4")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.w6.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.w6.id, "wc4")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "round round-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.ec1.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.ec1.id, "ef1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.ec2.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.ec2.id, "ef1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.ec3.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.ec3.id, "ef2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.ec4.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.ec4.id, "ef2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.wc1.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.wc1.id, "wf1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.wc2.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.wc2.id, "wf1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.wc3.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.wc3.id, "wf2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.wc4.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.wc4.id, "wf2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "round round-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.ef1.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.ef1.id, "f1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.ef2.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.ef2.id, "f1")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.wf1.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.wf1.id, "f2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.wf2.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.wf2.id, "f2")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "round round-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top "
+      }, this.state.f1.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.f1.id, "champ")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-spacer"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-bottom "
+      }, this.state.f2.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.advanceTo.bind(this, this.state.f2.id, "champ")
+      }, "Avanzar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spacer"
+      }, "\xA0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "round round-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "game game-top"
+      }, this.state.champ.team_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success",
+        onClick: this.resetBracket
+      }, "Reiniciar")));
+    }
+  }]);
+
+  return TournamentBracket;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (TournamentBracket);
+
+/***/ }),
+
+/***/ "./resources/js/components/Warriors.png":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Warriors.png ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Warriors.png?0ce95534a54616b926730c9c214b50fe";
 
 /***/ }),
 
@@ -65832,8 +66997,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\proyecto-2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\xampp\htdocs\proyecto-2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\xampp\htdocs\proyecto-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
