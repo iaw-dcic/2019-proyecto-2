@@ -69741,6 +69741,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Mis_pronosticos).call(this));
     _this.state = {
       pronosticos: [],
+      PanelVisible: true,
       content: ""
     };
     return _this;
@@ -69758,7 +69759,8 @@ function (_Component) {
       window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/get_pronosticos').then(function (response) {
         _this2.setState({
-          pronosticos: response.data
+          pronosticos: response.data,
+          PanelVisible: true
         });
 
         console.log(response.data);
@@ -69783,17 +69785,16 @@ function (_Component) {
       //id de la posicion en el arreglo de mysql
       localStorage.setItem('modificar', id);
       this.setState({
+        PanelVisible: false,
         content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mi_pronostico__WEBPACK_IMPORTED_MODULE_4__["default"], null)
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "pintarPanel",
+    value: function pintarPanel() {
       var _this3 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_6__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body center"
       }, this.state.pronosticos.map(function (name, id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -69815,7 +69816,51 @@ function (_Component) {
           },
           key: id
         }, "Pronostico ", id + 1, " Eliminar ")));
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_6__["Row"], null, this.state.content));
+      }));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var PanelVisible = this.state.PanelVisible;
+      var panel;
+
+      if (PanelVisible) {
+        panel = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-body center"
+        }, this.state.pronosticos.map(function (name, id) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col-sm-4"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "btn",
+            onClick: function onClick(event) {
+              return _this4.handleModificarPronostico(id);
+            },
+            key: id
+          }, "Pronostico ", id + 1, " Modificar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col-sm-4"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "btn",
+            onClick: function onClick(event) {
+              return _this4.handleEliminarPronostico(id);
+            },
+            key: id
+          }, "Pronostico ", id + 1, " Eliminar ")));
+        }));
+      } else {
+        panel = "";
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_6__["Row"], null, panel), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_foundation__WEBPACK_IMPORTED_MODULE_6__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-20"
+      }, this.state.content))));
     }
   }]);
 

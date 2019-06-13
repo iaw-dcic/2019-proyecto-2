@@ -13,6 +13,7 @@ export default class Mis_pronosticos extends Component {
       this.state={
         
         pronosticos: [],
+        PanelVisible:true,
         content:"",
 
       };
@@ -35,6 +36,7 @@ export default class Mis_pronosticos extends Component {
           axios.get('/api/get_pronosticos').then(response => {
             this.setState({
                 pronosticos: response.data,
+                PanelVisible:true,
             })
             console.log(response.data)
           });
@@ -62,22 +64,17 @@ export default class Mis_pronosticos extends Component {
     }
 
      handleModificarPronostico(id) {//id de la posicion en el arreglo de mysql
+
        localStorage.setItem('modificar',id);
         this.setState({
+             PanelVisible:false,
             content: <Mi_pronostico />
         });
     
     }
 
-
-
-    render() {
-
-         
-        return(
-                        <div className="container">   
-                         <Row>
-                             <div className="card-body center">
+    pintarPanel(){
+      return <div className="card-body center">
                                 
                                     { 
                                       this.state.pronosticos.map((name,id) => 
@@ -94,13 +91,52 @@ export default class Mis_pronosticos extends Component {
                                              )
                                       )
                                     }
-                              </div>
-                       </Row>  
-                         <br/>
-                         <br/>
-                       
+              </div>
+    }
+
+
+    render() {
+
+    const PanelVisible = this.state.PanelVisible;
+    let panel;
+
+    if (PanelVisible) {
+      panel =  <div className="card-body center">
+                                
+                                    { 
+                                      this.state.pronosticos.map((name,id) => 
+                                            ( <div className='row'>
+                                               <div className="col-sm-4">
+                                                    <button className="btn" onClick={(event) => this.handleModificarPronostico(id)}
+                                                     key = {id} >Pronostico {id+1} Modificar</button>
+                                               </div> 
+                                               <div className="col-sm-4">
+                                                    <button className="btn" onClick={(event) => this.handleEliminarPronostico(id)}
+                                                     key = {id} >Pronostico {id+1} Eliminar </button>
+                                               </div> 
+                                              </div>   
+                                             )
+                                      )
+                                    }
+              </div>
+                                             
+    } else {
+      panel = ""                             
+    }
+
+        return(
+                        <div className="container">   
+                         <Row>
+                          {panel}
+
+                         </Row> 
+                        
                         <Row>  
-                            {this.state.content}
+                        <div className="row justify-content-center">
+                            <div className="col-md-20">        
+                                {this.state.content}
+                            </div>
+                         </div>       
                         </Row>  
                   
                            </div> 
@@ -111,6 +147,8 @@ export default class Mis_pronosticos extends Component {
           
     };
 
+
+   
       
          
 }
