@@ -20,7 +20,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Guards
+    | Authentication API PASSPORT
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    */
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guards - PASSPORT
     |--------------------------------------------------------------------------
     |
     | Next, you may define every authentication guard for your application.
@@ -42,9 +52,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
-            'hash' => false,
         ],
     ],
 
