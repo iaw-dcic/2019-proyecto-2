@@ -80578,8 +80578,16 @@ function (_Component) {
       this.todos();
 
       for (var key in this.state) {
-        //para que me limpie el pronostico dsp de que agrego uno nuevo
-        if (localStorage.hasOwnProperty(key)) localStorage.removeItem(key);
+        if (localStorage.hasOwnProperty(key)) {
+          var value = localStorage.getItem(key);
+
+          try {
+            value = JSON.parse(value);
+            this.setState(_defineProperty({}, key, value));
+          } catch (e) {
+            this.setState(_defineProperty({}, key, value));
+          }
+        }
       }
     }
   }, {
@@ -81011,6 +81019,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         onClick: this.addNewProduct,
+        disabled: this.state.pronosticoActual != null,
         className: "btn-changes btn btn-success"
       }, "Guardar nuevo"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
