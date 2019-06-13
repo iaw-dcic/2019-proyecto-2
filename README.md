@@ -1,6 +1,8 @@
 # Proyecto 2: React - REST - Laravel - MySQL
 
-Repositorio de base para el Proyecto 2 - 2019 - React
+DEPLOY:
+
+http://spoctor.herokuapp.com/home
 
 ## Creación del Fork
 
