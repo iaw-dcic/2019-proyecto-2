@@ -25,6 +25,8 @@ class AddNumToMatches extends Migration
      */
     public function down()
     {
-      Schema::drop('add_num_to_matches');
+      Schema::table('matches', function (Blueprint $table) {
+          $table->dropColumn(['num']);
+      });
     }
 }
