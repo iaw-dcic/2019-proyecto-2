@@ -208,7 +208,7 @@ class Listar extends Component {
             this.setState({
                 id: id,
             });
-            console.log(r.data)
+
             //Request de prodes del usuario
             axios({
                 method: 'get',
@@ -247,14 +247,20 @@ class Listar extends Component {
 
     }
     pintar_equipos() {
-        return this.state.equipos.map((e, i) =>
-            <Tabla key={i} e={e} ganadorO={this.ganadorO.bind(this)} />
-        );
+        return this.state.equipos.map((e, i) => {
+
+            if (i < 8)
+                return <Tabla key={i} e={e} ganadorO={this.ganadorO.bind(this)} />
+        });
+
     }
+
     pintar_equipos2() {
-        return this.state.equipos.map((e, i) =>
-            <TablaD key={i} e={e} ganadorO={this.ganadorO.bind(this)} />
-        );
+        return this.state.equipos.map((e, i) => {
+            if (i >= 8)
+                return <TablaD key={i} e={e} ganadorO={this.ganadorO.bind(this)} />
+        });
+
     }
 
 
@@ -368,7 +374,7 @@ class Listar extends Component {
 
     eliminar() {
         let result = window.confirm("¿Esta seguro que desea borrar el prode seleccionado?");
-        if (result){
+        if (result) {
             axios({
                 method: 'delete',
                 url: `api/prode/` + this.state.prode_id,
@@ -378,25 +384,28 @@ class Listar extends Component {
             }).catch(function (error) {
                 console.log(error);
             });
-        this.setState({
-            prode_id:0
-        });
-        this.new();
+            this.setState({
+                prode_id: 0
+            });
+            this.new();
+
 
         }
     }
 
     render() {
         let guardar;
+
         if (this.state.guardar) {
             if (this.state.prode_id == 0)
                 guardar = <PanelBotones cuartos={this.state.cuartos} semis={this.state.semis} final={this.state.final} campeon={this.state.campeon} new={this.new.bind(this)} />;
             else
-                guardar = <Button color="danger" onClick={() => { this.editarProde() }}>Actualizar Prode</Button>;
+                guardar = <Button color="light" onClick={() => { this.editarProde() }}>Actualizar Prode</Button>;
         }
 
         return (
-            <div className="container-fluid">
+            <div className="clase container-fluid">
+
                 <div className="btn-group">
                     <button type="button" className="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mis Prodes
@@ -408,114 +417,105 @@ class Listar extends Component {
                     </div>
                 </div>
 
+                <Table responsive className="tabla table-borderless text-center">
 
-                <div className="text-center row flex-row flex-nowrap">
-                    <div className="row">
-                        <div className="col-xs-4">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th className="text-center">Octavos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.pintar_equipos()}
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th className="text-center">Cuartos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaC cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th className="text-center">Semifinal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaS semis={this.state.semis} ganadorS={this.ganadorS.bind(this)} />
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th className="text-center">Final</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaF final={this.state.final} campeon={this.state.campeon} ganadorF={this.ganadorF.bind(this)} />
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th className="text-center">Semifinal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaSD semis={this.state.semis} ganadorS={this.ganadorS.bind(this)} />
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th className="text-center">Cuartos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <TablaCD cuartos={this.state.cuartos} ganadorC={this.ganadorC.bind(this)} />
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <Table responsive className="table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th className="text-center">Octavos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.pintar_equipos2()}
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
+                    <tbody>
+                        <tr>
+                            <td >
+                                <Table responsive className="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-center">Octavos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.pintar_equipos()}
+                                    </tbody>
+                                </Table>
+                            </td>
+                            <td>
+                                <Table responsive className="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-center">Cuartos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <TablaC cuartos={this.state.cuartos} otroCuadro={this.state.otroCuadro} ganadorC={this.ganadorC.bind(this)} />
+                                    </tbody>
+                                </Table>
+                            </td>
+                            <td>
+                                <Table responsive className="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-center">Semifinal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <TablaS semis={this.state.semis} ganadorS={this.ganadorS.bind(this)} />
+                                    </tbody>
+                                </Table>
+                            </td>
+                            <td >
+                                <Table responsive className="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-center">Final</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <TablaF final={this.state.final} campeon={this.state.campeon} ganadorF={this.ganadorF.bind(this)} />
+                                    </tbody>
+                                </Table>
+                            </td>
+                            <td>
+                                <Table responsive className="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-center">Semifinal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <TablaSD semis={this.state.semis} ganadorS={this.ganadorS.bind(this)} />
+                                    </tbody>
+                                </Table>
+                            </td>
+                            <td className="text-center">
+                                <Table responsive className="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-center">Cuartos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <TablaCD cuartos={this.state.cuartos} ganadorC={this.ganadorC.bind(this)} />
+                                    </tbody>
+                                </Table>
+                            </td>
+                            <td>
+                                <Table responsive className="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-center">Octavos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.pintar_equipos2()}
+                                    </tbody>
+                                </Table>
+                            </td>
+                        </tr>
+                    </tbody>
 
-
-                </div>
-                <div className="btn-group btn-group-justified">
+                </Table>
+                <div className="row text-center btn-group btn-group-justified">
                     <Button color="primary" onClick={() => { { this.reiniciar(event) } }}>Reiniciar </Button>
                     {guardar}
                     {this.borrar()}
                 </div>
+
+
 
 
             </div>

@@ -11,9 +11,8 @@ export default class Tabla extends React.Component {
 
     }
     render() {
-        if ((this.props.e.id) < 9) {
             return (
-                <tbody>
+
                     <tr className="size">
 
                         <td>
@@ -22,16 +21,9 @@ export default class Tabla extends React.Component {
                             </Card>
                         </td>
                     </tr>
-                </tbody>
-            );
-        } else {
-            return (
 
-                <tbody>
-
-                </tbody>
             );
-        }
+
 
     }
 }

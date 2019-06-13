@@ -11,9 +11,7 @@ export default class TablaD extends React.Component {
 
     }
     render() {
-        if ((this.props.e.id )>= 9) {
             return (
-                <tbody>
                     <tr className="size">
                         <td>
                         <Card className="text-center">
@@ -22,16 +20,7 @@ export default class TablaD extends React.Component {
                        </Card>
                         </td>
                     </tr>
-                </tbody>
             );
-        } else{
-            return (
-
-                <tbody>
-
-                </tbody>
-            );
-        }
 
     }
 }

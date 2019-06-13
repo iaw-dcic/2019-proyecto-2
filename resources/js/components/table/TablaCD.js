@@ -59,7 +59,7 @@ export default class TablaCD extends React.Component {
 
         this.cambiarEstado()
         return (
-            <tbody>
+            <div>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
                 <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[4]) }} color="danger">{this.props.cuartos[4].name}({this.props.cuartos[4].pais})</Button></Card></td></tr>
@@ -69,7 +69,7 @@ export default class TablaCD extends React.Component {
                 <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[2]}  disabled={this.estanTodos()}onClick={() => { this.props.ganadorC(event, this.props.cuartos[6]) }} color="danger">{this.props.cuartos[6].name}({this.props.cuartos[6].pais})</Button></Card></td></tr>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
                 <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[3]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[7]) }} color="danger">{this.props.cuartos[7].name}({this.props.cuartos[7].pais})</Button></Card></td></tr>
-            </tbody>
+            </div>
         );
     }
 

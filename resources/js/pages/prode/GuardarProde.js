@@ -108,7 +108,7 @@ class GuardarProde extends React.Component {
 
                                     <Button type="submit" color="primary" onClick={() => { this.toggle() }}> Guardar</Button>
 
-                                    <Button color="secondary" color="danger" onClick={this.toggle}>Cancel</Button>
+                                    <Button color="secondary" color="danger" onClick={()=>{ this.toggle ; {this.props.new()}}}>Cancel</Button>
 
 
                                 </Form>

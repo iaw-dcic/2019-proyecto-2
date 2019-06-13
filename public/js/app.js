@@ -1729,7 +1729,7 @@ module.exports = function spread(callback) {
 
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
-var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js");
+var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
 
 /*global toString:true*/
 
@@ -2029,6 +2029,28 @@ module.exports = {
   extend: extend,
   trim: trim
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/node_modules/is-buffer/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
 
 
 /***/ }),
@@ -6835,7 +6857,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".size{\n    width: 330px;\n    height: 70px;\n}\n\n\nrow > .col-xs-3 {\n    display:flex;\n    flex: 0 0 25%;\n    max-width: 25%\n}\n\n.flex-nowrap {\n    flex-wrap: nowrap!important;\n    /* overflow-x: scroll; */\n\n}\n.flex-row {\n    display:flex;\n    justify-content:center!important;\n    flex-direction: row!important;\n}\n/* The heart of the matter*/\n\n\n", ""]);
+exports.push([module.i, ".size{\n    width: 330px;\n    height: 70px;\n}\n\n.clase{\n    margin-left: 5%!important ;\n    margin-right: 5%!important;\n}\n.tabla{\n    overflow-x: scroll!important;\n    overflow-y: scroll!important;\n}\n", ""]);
 
 // exports
 
@@ -9692,38 +9714,6 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 }
 
 module.exports = hoistNonReactStatics;
-
-
-/***/ }),
-
-/***/ "./node_modules/is-buffer/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/is-buffer/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
 
 
 /***/ }),
@@ -95091,9 +95081,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xl"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_teams_Listar__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_teams_Listar__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -95115,9 +95103,8 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _pages_teams_Listar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/teams/Listar */ "./resources/js/pages/teams/Listar.js");
-/* harmony import */ var _pages_prode_GuardarProde__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/prode/GuardarProde */ "./resources/js/pages/prode/GuardarProde.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _pages_prode_GuardarProde__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/prode/GuardarProde */ "./resources/js/pages/prode/GuardarProde.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -95135,7 +95122,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -95178,12 +95164,12 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        color: "danger",
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "light",
         onClick: function onClick() {
           _this2.abrirModal(event);
         }
-      }, "Guardar Prode"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_prode_GuardarProde__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Guardar Prode"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_prode_GuardarProde__WEBPACK_IMPORTED_MODULE_1__["default"], {
         abrir_modal: this.state.abrir_modal,
         cuartos: this.props.cuartos,
         semis: this.props.semis,
@@ -95382,20 +95368,16 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      if (this.props.e.id < 9) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-          className: "text-center"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          onClick: function onClick() {
-            _this.props.ganadorO(event, _this.props.e);
-          },
-          color: "dark"
-        }, this.props.e.name, "(", this.props.e.pais, ")")))));
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null);
-      }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        onClick: function onClick() {
+          _this.props.ganadorO(event, _this.props.e);
+        },
+        color: "dark"
+      }, this.props.e.name, "(", this.props.e.pais, ")"))));
     }
   }]);
 
@@ -95470,47 +95452,37 @@ function (_React$Component) {
       visibility[1] = false;
       visibility[2] = false;
       visibility[3] = false;
+      var i;
 
-      if (this.props.cuartos[0].id > 0) {
-        visibility[0] = true;
-        this.setState = {
-          visibility: visibility
-        };
-      }
-
-      if (this.props.cuartos[1].id > 0) {
-        visibility[1] = true;
-        this.setState = {
-          visibility: visibility
-        };
-      }
-
-      if (this.props.cuartos[2].id > 0) {
-        visibility[2] = true;
-        this.setState = {
-          visibility: visibility
-        };
-      }
-
-      if (this.props.cuartos[3].id > 0) {
-        visibility[3] = true;
-        this.setState = {
-          visibility: visibility
-        };
+      for (i = 0; i < 4; i++) {
+        if (this.props.cuartos[i].id > 0) {
+          visibility[i] = true;
+          this.setState = {
+            visibility: visibility
+          };
+        }
       }
     }
   }, {
     key: "estanTodos",
     value: function estanTodos() {
       if (this.state.visibility[0] && this.state.visibility[1] && this.state.visibility[2] && this.state.visibility[3]) return false;else return true;
-    }
+    } // pintarCuartos(){
+    //     this.cambiarEstado();
+    //     return this.props.cuartos.map((e, i) =>{
+    //         return  <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>,
+    //         <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[i]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[i]) }} color="danger">{this.props.cuartos[i].name}({this.props.cuartos[i].pais})</Button></Card></td></tr>
+    //     })
+    // }
+    // No queda bien haciendolo asi
+
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       this.cambiarEstado();
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         hidden: "false"
@@ -95691,7 +95663,7 @@ function (_React$Component) {
       var _this2 = this;
 
       this.cambiarEstado();
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         hidden: "false"
@@ -95815,20 +95787,16 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      if (this.props.e.id >= 9) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          className: "size"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-          className: "text-center"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          onClick: function onClick() {
-            _this.props.ganadorO(event, _this.props.e);
-          },
-          color: "dark"
-        }, this.props.e.name, "(", this.props.e.pais, ")")))));
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null);
-      }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        onClick: function onClick() {
+          _this.props.ganadorO(event, _this.props.e);
+        },
+        color: "dark"
+      }, this.props.e.name, "(", this.props.e.pais, ")"))));
     }
   }]);
 
@@ -96517,7 +96485,12 @@ function (_React$Component) {
           }
         }, " Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], (_React$createElement = {
           color: "secondary"
-        }, _defineProperty(_React$createElement, "color", "danger"), _defineProperty(_React$createElement, "onClick", _this2.toggle), _React$createElement), "Cancel"));
+        }, _defineProperty(_React$createElement, "color", "danger"), _defineProperty(_React$createElement, "onClick", function onClick() {
+          _this2.toggle;
+          {
+            _this2.props["new"]();
+          }
+        }), _React$createElement), "Cancel"));
       })))));
     }
   }]);
@@ -96780,9 +96753,8 @@ function (_Component) {
 
         _this2.setState({
           id: id
-        });
+        }); //Request de prodes del usuario
 
-        console.log(r.data); //Request de prodes del usuario
 
         axios__WEBPACK_IMPORTED_MODULE_1___default()({
           method: 'get',
@@ -96820,7 +96792,7 @@ function (_Component) {
       var _this3 = this;
 
       return this.state.equipos.map(function (e, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tabla__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        if (i < 8) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tabla__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: i,
           e: e,
           ganadorO: _this3.ganadorO.bind(_this3)
@@ -96833,7 +96805,7 @@ function (_Component) {
       var _this4 = this;
 
       return this.state.equipos.map(function (e, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaD__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        if (i >= 8) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaD__WEBPACK_IMPORTED_MODULE_7__["default"], {
           key: i,
           e: e,
           ganadorO: _this4.ganadorO.bind(_this4)
@@ -97004,7 +96976,7 @@ function (_Component) {
           campeon: this.state.campeon,
           "new": this["new"].bind(this)
         });else guardar = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-          color: "danger",
+          color: "light",
           onClick: function onClick() {
             _this8.editarProde();
           }
@@ -97012,7 +96984,7 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container-fluid"
+        className: "clase container-fluid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -97032,22 +97004,15 @@ function (_Component) {
             prode_id: 0
           });
         }
-      }, "Nuevo Prode"), this.misProdes())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "text-center row flex-row flex-nowrap"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xs-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+      }, "Nuevo Prode"), this.misProdes())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+        responsive: true,
+        className: "tabla table-borderless text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         className: "text-center"
-      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -97056,11 +97021,7 @@ function (_Component) {
         cuartos: this.state.cuartos,
         otroCuadro: this.state.otroCuadro,
         ganadorC: this.ganadorC.bind(this)
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -97068,11 +97029,7 @@ function (_Component) {
       }, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaS__WEBPACK_IMPORTED_MODULE_5__["default"], {
         semis: this.state.semis,
         ganadorS: this.ganadorS.bind(this)
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -97081,11 +97038,7 @@ function (_Component) {
         "final": this.state["final"],
         campeon: this.state.campeon,
         ganadorF: this.ganadorF.bind(this)
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -97093,10 +97046,8 @@ function (_Component) {
       }, "Semifinal"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaSD__WEBPACK_IMPORTED_MODULE_9__["default"], {
         semis: this.state.semis,
         ganadorS: this.ganadorS.bind(this)
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
@@ -97105,17 +97056,13 @@ function (_Component) {
       }, "Cuartos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_TablaCD__WEBPACK_IMPORTED_MODULE_8__["default"], {
         cuartos: this.state.cuartos,
         ganadorC: this.ganadorC.bind(this)
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         responsive: true,
         className: "table-borderless"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         className: "text-center"
-      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos2()))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn-group btn-group-justified"
+      }, "Octavos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.pintar_equipos2())))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row text-center btn-group btn-group-justified"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "primary",
         onClick: function onClick() {

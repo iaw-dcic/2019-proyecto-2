@@ -23,25 +23,12 @@ export default class TablaC extends React.Component {
         visibility[1]=false
         visibility[2]=false
         visibility[3]=false
-        if (this.props.cuartos[0].id > 0) {
-            visibility[0] = true;
+        var i;
+        for(i=0;i<4;i++)
+        if (this.props.cuartos[i].id > 0) {
+            visibility[i] = true;
             this.setState = {
                 visibility: visibility
-            }
-        }if (this.props.cuartos[1].id > 0) {
-            visibility[1] = true;
-            this.setState = {
-                visibility: visibility
-            }
-        }if (this.props.cuartos[2].id > 0) {
-            visibility[2] = true;
-            this.setState = {
-                visibility: visibility,
-            }
-        }if (this.props.cuartos[3].id > 0) {
-            visibility[3] = true;
-            this.setState = {
-                visibility: visibility,
             }
         }
     }
@@ -53,14 +40,22 @@ export default class TablaC extends React.Component {
             return true;
     }
 
+    // pintarCuartos(){
+    //     this.cambiarEstado();
+    //     return this.props.cuartos.map((e, i) =>{
+    //         return  <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>,
+    //         <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[i]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[i]) }} color="danger">{this.props.cuartos[i].name}({this.props.cuartos[i].pais})</Button></Card></td></tr>
 
+    //     })
+    // }
+    // No queda bien haciendolo asi
 
 
 
     render() {
         this.cambiarEstado()
         return (
-            <tbody>
+            <div>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
 
                 <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[0]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[0]) }} color="danger">{this.props.cuartos[0].name}({this.props.cuartos[0].pais})</Button></Card></td></tr>
@@ -69,8 +64,8 @@ export default class TablaC extends React.Component {
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
                 <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[2]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[2]) }} color="danger">{this.props.cuartos[2].name}({this.props.cuartos[2].pais})</Button></Card></td></tr>
                 <tr className="size"><td hidden="false"><Tarjeta2 /></td></tr>
-                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[3]} disabled={this.estanTodos()}  onClick={() => { this.props.ganadorC(event, this.props.cuartos[3]) }} color="danger">{this.props.cuartos[3].name}({this.props.cuartos[3].pais})</Button></Card></td></tr>
-            </tbody>
+                <tr className="size"><td><Card className="text-center"><Button hidden={!this.state.visibility[3]} disabled={this.estanTodos()} onClick={() => { this.props.ganadorC(event, this.props.cuartos[3]) }} color="danger">{this.props.cuartos[3].name}({this.props.cuartos[3].pais})</Button></Card></td></tr>
+            </div>
         );
     }
 

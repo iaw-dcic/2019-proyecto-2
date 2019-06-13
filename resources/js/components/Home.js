@@ -8,10 +8,8 @@ class Home extends Component {
 
         return (
             <div className="row text-center">
-                <div className="col-xl">
                     <Listar />
                 </div>
-            </div>
 
 
         );

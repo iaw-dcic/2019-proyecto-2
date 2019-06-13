@@ -3,29 +3,11 @@
     height: 70px;
 }
 
-
-row > .col-xs-3 {
-    display:flex;
-    flex: 0 0 25%;
-    max-width: 25%
+.clase{
+    margin-left: 5%!important ;
+    margin-right: 5%!important;
 }
-
-.flex-nowrap {
-    -webkit-flex-wrap: nowrap!important;
-    -ms-flex-wrap: nowrap!important;
-    flex-wrap: nowrap!important;
-    /* overflow-x: scroll; */
-
+.tabla{
+    overflow-x: scroll!important;
+    overflow-y: scroll!important;
 }
-.flex-row {
-    display:flex;
-    justify-content:center!important;
-    -webkit-box-orient: horizontal!important;
-    -webkit-box-direction: normal!important;
-    -webkit-flex-direction: row!important;
-    -ms-flex-direction: row!important;
-    flex-direction: row!important;
-}
-/* The heart of the matter*/
-
-

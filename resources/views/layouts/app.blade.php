@@ -35,7 +35,7 @@
                 {{-- collapse --}}
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
                         <span class="navbar-toggler-icon"></span>
-                 </button>
+                </button>
 
 
 
@@ -46,7 +46,6 @@
                         </a>
                     <ul class="navbar-nav">
                     <!-- Authentication Links -->
-                    <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -56,6 +55,9 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
+
+
+
                     @else
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-target="dropdown_target"  data-toggle="dropdown">
@@ -75,6 +77,9 @@
                                 </form>
                             </div>
                         </li>
+                        <li>
+                                <a class="nav-link" href="/readme">Readme</a>
+                            </li>
                     @endguest
                    </ul>
 

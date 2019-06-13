@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Listar from '../pages/teams/Listar';
 import GuardarProde from '../pages/prode/GuardarProde'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -30,7 +29,7 @@ class PanelBotones extends Component {
     render() {
         return (
             <div>
-                <Button color="danger" onClick={() => { this.abrirModal(event) }}>Guardar Prode</Button>
+                <Button color="light" onClick={() => { this.abrirModal(event) }}>Guardar Prode</Button>
                 <GuardarProde abrir_modal={this.state.abrir_modal} cuartos={this.props.cuartos} semis={this.props.semis} final={this.props.final}campeon={this.props.campeon} new={this.props.new.bind(this)} />
 
             </div>
