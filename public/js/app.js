@@ -80659,7 +80659,7 @@ function (_Component) {
                 });
 
               case 6:
-                this.componentWillMount();
+                window.location.reload(); //refresh
 
                 for (key in this.state) {
                   //para que me limpie el pronostico dsp de que agrego uno nuevo
@@ -80782,7 +80782,7 @@ function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.put(path, prediction).then(function (response) {
         alert("pronostico editado !");
       });
-      this.componentWillMount();
+      window.location.reload();
     }
   }, {
     key: "todos",
@@ -81019,6 +81019,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         onClick: this.addNewProduct,
+        disabled: this.state.pronosticoActual != null,
         className: "btn-changes btn btn-success"
       }, "Guardar nuevo"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",

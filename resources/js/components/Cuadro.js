@@ -125,7 +125,7 @@ componentWillMount() { //LOCAL STORAGE
       console.log(response);
     });
 
-this.componentWillMount();
+        window.location.reload(); //refresh
 
     for (let key in this.state) { //para que me limpie el pronostico dsp de que agrego uno nuevo
      if (localStorage.hasOwnProperty(key))
@@ -213,7 +213,7 @@ this.componentWillMount();
       .then(response => {
           alert("pronostico editado !");
       })
-    this.componentWillMount();
+    window.location.reload();
   }
 
   todos(){ //TODOS LOS PRONOSTICOS
@@ -398,7 +398,7 @@ this.componentWillMount();
               onChange={this.handleFieldChange}
             />
             </div>
-            <button type="submit" onClick={this.addNewProduct}  className="btn-changes btn btn-success">Guardar nuevo</button>
+            <button type="submit" onClick={this.addNewProduct}  disabled = {this.state.pronosticoActual!= null}  className="btn-changes btn btn-success">Guardar nuevo</button>
 
 
             <button type="submit" onClick={this.editProduct} disabled = {this.state.pronosticoActual== null} className="btn-changes btn btn-success">Grabar</button>
