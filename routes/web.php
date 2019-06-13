@@ -13,4 +13,9 @@
 
 
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+Route::view('/{path?}', 'react')->middleware('auth');
+
+//Route::post('remeras', 'RemerasController@store');
+//Route::get('creaciones', 'RemerasController@show');
+//Route::post('eliminarRemera/{id}', 'RemerasController@destroy');
+
