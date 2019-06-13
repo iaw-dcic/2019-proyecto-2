@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Logos from './Logos';
 import PanelDerecho from './PanelDerecho'
-import ListadoEditar from './ListadoEditar';
 import Container from './Container';
 
 export default class ShirtImage extends Component {
@@ -120,6 +119,30 @@ export default class ShirtImage extends Component {
             localStorage.setItem("logo", JSON.stringify(""));
         }
     }
+    addLogo = (newLogo) =>{
+        this.setState({
+            logo:newLogo
+        });
+    }
+
+    cambiarTalle = (newTalle) =>{
+        this.setState({
+            talle:newTalle
+        });
+    }
+
+    cambiarTela = (newTela) =>{
+        this.setState({
+            tela:newTela
+        });
+    }
+
+    cambiarColorRemera = (newColor) =>{
+        this.setState({
+            remera:newColor
+        });
+    }
+
 
     crearDiseño(e) {
         axios.post('/api/crearDiseño', {
