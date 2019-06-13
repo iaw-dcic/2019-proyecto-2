@@ -294,19 +294,43 @@ export default class TournamentBracket extends Component {
                         </div>
                         <button onClick={() => this.save()} className="button .btn-success">Guardar</button>
                         <button onClick={() => this.delete()} className="button .btn-success">Eliminar</button>
+                        <button onClick={() => this.edit()} className="button .btn-success">Editar</button>
                         <button onClick={() => this.newProde()} className="button .btn-success">Nuevo Prode</button>
                     </div>
         </div>
         </div>
-
-
         <div className="round-details">Mi Pronostico, identificador: {this.state.prode_id}<br/><span className="date"></span></div>  
         <div className="container">   
         
         <div className="split split-one">
             <div className="round round-two">
             <div className="round-details">Octavos de final<br/><span className="date"></span></div>       
-            {this.createTableOctavos1}             
+                <ul className="matchup">
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[0])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(0)} className="button">{this.state.octavos[0]}</button></li>
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[1])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(1)} className="button">{this.state.octavos[1]}</button></li>  
+                </ul>
+                <ul className="matchup">
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[2])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(2)} className="button">{this.state.octavos[2]}</button></li>
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[3])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(3)} className="button">{this.state.octavos[3]}</button></li>  
+                </ul>
+                <ul className="matchup">
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[4])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(4)} className="button">{this.state.octavos[4]}</button></li>
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[5])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(5)} className="button">{this.state.octavos[5]}</button></li>  
+                </ul>
+                <ul className="matchup">
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[6])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(6)} className="button">{this.state.octavos[6]}</button></li>
+                    <li className="team team-bottom"><span className="score"><img src= {this.getTeamImage(this.state.octavos[7])} width="26px" height="26px" alt=" ? "/>
+                    </span><button onClick={() => this.handleClickOctavos(7)} className="button">{this.state.octavos[7]}</button></li>  
+                </ul>
+
+               
             </div>  
             
             <div className="round round-three">
