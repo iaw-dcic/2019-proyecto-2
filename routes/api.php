@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('octavos', 'TeamController@getOctavos')->middleware('auth:api');
+Route::get('teams', 'TeamController@index')->middleware('auth:api');
+Route::post('teams', 'TeamController@store')->middleware('auth:api');
+Route::get('teams/{prode}', 'TeamController@show')->middleware('auth:api');
+Route::put('teams/{prode}', 'TeamController@update')->middleware('auth:api');
+Route::delete('teams/{prode}','TeamController@destroy')->middleware('auth:api');

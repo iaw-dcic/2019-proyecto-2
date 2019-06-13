@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import { BrowserRouter as Router} from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
 
-class App extends Component {
+export default class App extends Component {
     render () {
-    return (
-        <BrowserRouter>
-        <div>
-            <Example />
-        </div>
-        </BrowserRouter>
-    )
+        return (
+            <div>
+                <Router>
+                <div>
+                    <Header />
+                    <Footer />
+                </div>
+                </Router>
+            </div>
+        );
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('react-app'))
+if(document.getElementById('react-app')){
+    ReactDOM.render(<App />, document.getElementById('react-app'));
+}
