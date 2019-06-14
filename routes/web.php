@@ -12,5 +12,9 @@
 */
 
 
+
 Auth::routes();
-Route::view('/{path?}', 'react');//->middleware('auth');
+Route::get('/perfil', 'UserController@profile')->name ('Perfil')->middleware('auth');
+Route::post('/perfil', 'UserController@update_profile')->middleware('auth');
+
+Route::view('/{path?}', 'react')->middleware('auth');
