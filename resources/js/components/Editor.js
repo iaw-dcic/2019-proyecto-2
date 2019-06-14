@@ -8,9 +8,6 @@ import axios from 'axios';
 
 export default class Editor extends Component {
 
-
-    //TENGO que guardar la estampa en el state de la remera.
-
     constructor(props) {
         super(props);
         this.state = {
@@ -30,7 +27,51 @@ export default class Editor extends Component {
         axios.get('/api/getRemeras').then(response => {
             this.setState({ remerasGuardadas: response.data })
             console.log(response.data);
-        })
+        });
+
+        if (localStorage.hasOwnProperty('colorActual')) {
+            var currentColour = localStorage.getItem('colorActual');
+            try {
+                currentColour = JSON.parse(currentColour);
+                this.setState({
+                    colorActual: currentColour,
+                });
+            }
+            catch{
+                this.setState({
+                    remera: 'images/negra.jpg'
+                });
+            }
+        }
+        if (localStorage.hasOwnProperty('talleActual')) {
+            var currentSize = localStorage.getItem('talleActual');
+            try {
+                currentSize = JSON.parse(currentSize);
+                this.setState({
+                    talleActual: currentSize
+                });
+            }
+            catch{
+                this.setState({
+                    talle: 'M'
+                });
+            }
+        }
+
+        if (localStorage.hasOwnProperty('stampaActual')) {
+            var currentStampa = localStorage.getItem('stampaActual');
+            try {
+                currentStampa = JSON.parse(currentStampa);
+                this.setState({
+                    stampaActual: currentStampa
+                });
+            }
+            catch{
+                this.setState({
+                    stampaActual: 'images/design2.png'
+                });
+            }
+        }
     }
 
     //eliminarRemera = (remera) => {}
@@ -85,6 +126,8 @@ export default class Editor extends Component {
         })
     }
 
+
+
     render() {
         return (
             <div className="container">
@@ -97,6 +140,7 @@ export default class Editor extends Component {
                             widthR="550" heightR="500"
                             widthS="150" heightS="500"
                             size="big"
+                            talle={this.state.talleActual}
                         />
                     </div>
                     <div className="col-md-4">

@@ -60788,7 +60788,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65979,7 +65979,6 @@ var Editor =
 function (_Component) {
   _inherits(Editor, _Component);
 
-  //TENGO que guardar la estampa en el state de la remera.
   function Editor(props) {
     var _this;
 
@@ -65998,6 +65997,54 @@ function (_Component) {
 
         console.log(response.data);
       });
+
+      if (localStorage.hasOwnProperty('colorActual')) {
+        var currentColour = localStorage.getItem('colorActual');
+
+        try {
+          currentColour = JSON.parse(currentColour);
+
+          _this.setState({
+            colorActual: currentColour
+          });
+        } catch (_unused) {
+          _this.setState({
+            remera: 'images/negra.jpg'
+          });
+        }
+      }
+
+      if (localStorage.hasOwnProperty('talleActual')) {
+        var currentSize = localStorage.getItem('talleActual');
+
+        try {
+          currentSize = JSON.parse(currentSize);
+
+          _this.setState({
+            talleActual: currentSize
+          });
+        } catch (_unused2) {
+          _this.setState({
+            talle: 'M'
+          });
+        }
+      }
+
+      if (localStorage.hasOwnProperty('stampaActual')) {
+        var currentStampa = localStorage.getItem('stampaActual');
+
+        try {
+          currentStampa = JSON.parse(currentStampa);
+
+          _this.setState({
+            stampaActual: currentStampa
+          });
+        } catch (_unused3) {
+          _this.setState({
+            stampaActual: 'images/design2.png'
+          });
+        }
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "cambiarColor", function (color) {
@@ -66091,7 +66138,8 @@ function (_Component) {
         heightR: "500",
         widthS: "150",
         heightS: "500",
-        size: "big"
+        size: "big",
+        talle: this.state.talleActual
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Colores__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -66183,6 +66231,7 @@ function (_Component) {
           key: item.id,
           color: item.colour,
           stampa: item.stampa,
+          talle: item.talle,
           widthR: "60",
           heightR: "70",
           widthS: "30",
@@ -66265,7 +66314,7 @@ function (_Component) {
         width: this.props.widthS,
         height: this.props.heightS,
         alt: ""
-      }));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, this.props.talle));
     }
   }]);
 

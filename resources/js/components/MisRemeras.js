@@ -20,6 +20,7 @@ export default class MisRemeras extends Component {
                                     key={item.id}
                                     color={item.colour}
                                     stampa={item.stampa}
+                                    talle={item.talle}
                                     widthR="60" heightR="70"
                                     widthS="30" heightS="70"
                                     size="small"
