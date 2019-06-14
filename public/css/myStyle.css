@@ -1,0 +1,55 @@
+.stampa-big{
+    position:absolute;
+    height:150px;
+    width:200px;
+    top: 150px;
+    left : 200px;
+    z-index: 1;
+  }
+  
+  .remera-big{
+    position:absolute;
+    width:550px;
+    height:500px;
+    z-index: -1;
+  }
+
+  .stampa-small{
+    position:absolute;
+    height:50px;
+    width:50px;
+    z-index: 1;
+    margin-left:74px;
+    margin-top: 60px
+  }
+  
+  .remera-small{
+    position: absolute;
+    width:150px;
+    margin: 20px;
+    z-index: -1;
+  }
+
+  .container-absolute{
+    position:relative;
+    margin-right: 190px;
+    margin-bottom: 190px; 
+  }
+
+  .boton-eliminar{
+    margin-left: 100px;
+  }
+
+  .remera{
+    margin-bottom:350px;
+    margin-top: 20px;
+  }
+
+  .align-center{
+    text-align: center;
+  }
+
+  .mis-remeras{
+    width: 100%;
+    overflow-x: scroll;
+  }
