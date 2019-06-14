@@ -123,24 +123,28 @@ export default class ShirtImage extends Component {
         this.setState({
             logo:newLogo
         });
+        localStorage.setItem("logo", JSON.stringify(newLogo));
     }
 
     cambiarTalle = (newTalle) =>{
         this.setState({
             talle:newTalle
         });
+        localStorage.setItem("talle", JSON.stringify(newTalle));
     }
 
     cambiarTela = (newTela) =>{
         this.setState({
             tela:newTela
         });
+        localStorage.setItem("tela", JSON.stringify(newTela));
     }
 
     cambiarColorRemera = (newColor) =>{
         this.setState({
             remera:newColor
         });
+        localStorage.setItem("remera", JSON.stringify(newColor));
     }
 
 

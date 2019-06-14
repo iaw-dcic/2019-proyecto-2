@@ -60723,7 +60723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66357,24 +66357,32 @@ function (_Component) {
       _this.setState({
         logo: newLogo
       });
+
+      localStorage.setItem("logo", JSON.stringify(newLogo));
     });
 
     _defineProperty(_assertThisInitialized(_this), "cambiarTalle", function (newTalle) {
       _this.setState({
         talle: newTalle
       });
+
+      localStorage.setItem("talle", JSON.stringify(newTalle));
     });
 
     _defineProperty(_assertThisInitialized(_this), "cambiarTela", function (newTela) {
       _this.setState({
         tela: newTela
       });
+
+      localStorage.setItem("tela", JSON.stringify(newTela));
     });
 
     _defineProperty(_assertThisInitialized(_this), "cambiarColorRemera", function (newColor) {
       _this.setState({
         remera: newColor
       });
+
+      localStorage.setItem("remera", JSON.stringify(newColor));
     });
 
     _this.state = {
