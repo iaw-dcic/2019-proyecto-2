@@ -14,7 +14,7 @@ class CreatePredictionsTable extends Migration
     public function up()
     {
         Schema::create('predictions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
             $table->string('name');
             $table->unsignedBigInteger('user_id');

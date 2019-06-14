@@ -46,56 +46,48 @@ class PredictionController extends Controller
 
     public function storeCuadro(Request $request){ //guardo los partidos en el pronostico
       $cuartos1= Match::create([
-              'num' => '20',
               'team1_id'=> $request->get('cuartos0'),
               'team2_id'=>$request->get('cuartos1'),
               'prediction' =>  $request->get('pronostico'),
               'ronda' => '4',
         ]);
        $cuartos2= Match::create([
-         'num' => '20',
              'team1_id'=> $request->get('cuartos2'),
              'team2_id'=> $request->get('cuartos3'),
              'prediction' => $request->get('pronostico'),
              'ronda' => '4',
         ]);
          $cuartos3= Match::create([
-           'num' => '20',
               'team1_id'=> $request->get('cuartos4'),
               'team2_id'=> $request->get('cuartos5'),
               'prediction' => $request->get('pronostico'),
               'ronda' => '4',
         ]);
          $cuartos4= Match::create([
-           'num' => '20',
              'team1_id'=> $request->get('cuartos6'),
              'team2_id'=> $request->get('cuartos7'),
              'prediction' =>  $request->get('pronostico'),
              'ronda' => '4',
         ]);
          $semi1= Match::create([
-           'num' => '20',
              'team1_id'=> $request->get('semifinal0'),
              'team2_id'=> $request->get('semifinal1'),
              'prediction' =>    $request->get('pronostico'),
               'ronda' => '2',
           ]);
          $semi2= Match::create([
-           'num' => '20',
              'team1_id'=> $request->get('semifinal2'),
              'team2_id'=> $request->get('semifinal3'),
              'prediction' =>    $request->get('pronostico'),
               'ronda' => '2',
           ]);
          $final= Match::create([
-           'num' => '20',
                'team1_id'=> $request->get('final0'),
                'team2_id'=> $request->get('final1'),
                'prediction' =>   $request->get('pronostico'),
                'ronda' => '1',
           ]);
           $ganador= Match::create([
-            'num' => '20',
                 'team1_id'=> $request->get('ganador'),
                 'team2_id'=> $request->get('ganador'),
                 'prediction' =>    $request->get('pronostico'),

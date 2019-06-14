@@ -80906,14 +80906,14 @@ function (_Component) {
           type: "button",
           className: "btn btn-info",
           onClick: function onClick(e) {
-            return _this6.onClick1(e, match.team1_id, match.num - 1);
+            return _this6.onClick1(e, match.team1_id, match.id - 1);
           }
         }, match.team1_id), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("time", null, "vs"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", _defineProperty({
           id: match.team2_id,
           type: "button",
           className: "btn btn-info",
           onClick: function onClick(e) {
-            return _this6.onClick1(e, match.team2_id, match.num - 1);
+            return _this6.onClick1(e, match.team2_id, match.id - 1);
           }
         }, "type", "button"), match.team2_id));
       });
