@@ -28,53 +28,9 @@ export default class Editor extends Component {
             this.setState({ remerasGuardadas: response.data })
             console.log(response.data);
         });
-
-        if (localStorage.hasOwnProperty('colorActual')) {
-            var currentColour = localStorage.getItem('colorActual');
-            try {
-                currentColour = JSON.parse(currentColour);
-                this.setState({
-                    colorActual: currentColour,
-                });
-            }
-            catch{
-                this.setState({
-                    remera: 'images/negra.jpg'
-                });
-            }
-        }
-        if (localStorage.hasOwnProperty('talleActual')) {
-            var currentSize = localStorage.getItem('talleActual');
-            try {
-                currentSize = JSON.parse(currentSize);
-                this.setState({
-                    talleActual: currentSize
-                });
-            }
-            catch{
-                this.setState({
-                    talle: 'M'
-                });
-            }
-        }
-
-        if (localStorage.hasOwnProperty('stampaActual')) {
-            var currentStampa = localStorage.getItem('stampaActual');
-            try {
-                currentStampa = JSON.parse(currentStampa);
-                this.setState({
-                    stampaActual: currentStampa
-                });
-            }
-            catch{
-                this.setState({
-                    stampaActual: 'images/design2.png'
-                });
-            }
-        }
     }
 
-    //eliminarRemera = (remera) => {}
+
 
     cambiarColor = (color) => {
         this.setState({

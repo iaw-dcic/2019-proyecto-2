@@ -65997,54 +65997,6 @@ function (_Component) {
 
         console.log(response.data);
       });
-
-      if (localStorage.hasOwnProperty('colorActual')) {
-        var currentColour = localStorage.getItem('colorActual');
-
-        try {
-          currentColour = JSON.parse(currentColour);
-
-          _this.setState({
-            colorActual: currentColour
-          });
-        } catch (_unused) {
-          _this.setState({
-            remera: 'images/negra.jpg'
-          });
-        }
-      }
-
-      if (localStorage.hasOwnProperty('talleActual')) {
-        var currentSize = localStorage.getItem('talleActual');
-
-        try {
-          currentSize = JSON.parse(currentSize);
-
-          _this.setState({
-            talleActual: currentSize
-          });
-        } catch (_unused2) {
-          _this.setState({
-            talle: 'M'
-          });
-        }
-      }
-
-      if (localStorage.hasOwnProperty('stampaActual')) {
-        var currentStampa = localStorage.getItem('stampaActual');
-
-        try {
-          currentStampa = JSON.parse(currentStampa);
-
-          _this.setState({
-            stampaActual: currentStampa
-          });
-        } catch (_unused3) {
-          _this.setState({
-            stampaActual: 'images/design2.png'
-          });
-        }
-      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "cambiarColor", function (color) {
