@@ -18,6 +18,7 @@ class CreateMatchesTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('team1_id');
             $table->unsignedInteger('team2_id');
+            $table->unsignedInteger('num')->nullable();
             $table->unsignedInteger('prediction')->nullable();
             $table->integer('ronda');
         });
