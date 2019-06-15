@@ -1,0 +1,17 @@
+.superponer{
+    position: absolute;
+    background-position: center;
+    padding-top: 20%;
+    padding-left: 10%;
+
+
+}
+.superponer-edicion{
+    position: absolute; 
+    width:50%;
+    margin: 0 25%;
+}
+.divAv{
+    height: 750px;
+    text-align: left;
+}

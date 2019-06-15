@@ -1,0 +1,22 @@
+.size{
+    width:100px;
+    height:100px;
+    padding-bottom: 5%;
+    
+   
+}
+.boton{
+    padding-bottom: 5%;
+    z-index:2;   
+}
+
+.previos{
+    min-height: 500px;
+}
+.size-prev{
+    width:300px;
+    height:300px;
+    padding-bottom: 5%;
+    
+    
+}

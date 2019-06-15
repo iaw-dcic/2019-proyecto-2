@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo|PT+Sans&display=swap');
+
+.subTitle1{
+    background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+}
+
+.subTitle2{
+    background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+}
+
+.subTitle3{
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+
+}
+
+.reason{
+    display: inline-table;
+    box-sizing: border-box;
+    width: 100%;
+    height:100%;
+    padding-top: 0%;
+    padding-bottom: 2%;
+     
+ }
+
+ .reason > h1{
+    font-weight: bolder;
+    font-size: 50px;
+ }
+
+ .reason > h3{
+    font-family: 'Arvo', serif;
+    font-weight: 800;
+    font-size:50px;
+    padding-top: 0;
+    padding-bottom: 2%;
+ }
+
+.reason > p {
+
+    font-size:30px;
+    font-weight: 200;
+    padding-bottom: 2.5%;
+    font-family: 'PT Sans', sans-serif;
+}

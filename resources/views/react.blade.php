@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -6,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="api-token" content="{{Auth::user()->api_token}}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -18,8 +20,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+   
 </head>
-<body>
-    <div id="react-app"></div>
-</body>
+@section('content')
+    
+    <div id="react-app">
+        <!-- ACA ES DONDE REACT DEBERÁ CREAR LA PÁGINA-->
+    </div>
+@endsection('content')
 </html>
