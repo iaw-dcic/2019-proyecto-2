@@ -16,3 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/team', 'TeamController@index');
+Route::middleware('auth:api')->get('/prediction', 'PredictionController@index');
+Route::middleware('auth:api')->post('/prediction', 'PredictionController@store');
+//Route::resource('/match', 'MatchController');
+Route::middleware('auth:api')->post('/match', 'MatchController@store');
+
+Route::middleware('auth:api')->post('/prediction/delete', 'PredictionController@destroy');
+
+Route::middleware('auth:api')->get('/prediction/show/{id}', 'PredictionController@show');
+
+Route::get('/token', 'TeamController@token');
