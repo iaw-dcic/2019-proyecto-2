@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ListaPartido;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,6 +10,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+
+    public function listaPartidos(){
+        return $this->hasMany(ListaPartido::class);
+    }
 
     /**
      * The attributes that are mass assignable.

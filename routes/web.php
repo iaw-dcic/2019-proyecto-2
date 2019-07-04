@@ -13,4 +13,17 @@
 
 
 Auth::routes();
+Route::get('/equipos', 'EquipoController@index')->name('index');
+// Route::get('/partidos-init', 'ListaPartidoControlle@getInicialPartidos');
+Route::put("/partidos", 'ListaPartidoController@update')->middleware('auth');
+Route::post("/partidos", 'ListaPartidoController@store')->middleware('auth');
+Route::get("/partidos/{id}", 'ListaPartidoController@getLista');
+Route::get("/partidos", 'ListaPartidoController@getAllPartidos');
+
 Route::view('/{path?}', 'react');//->middleware('auth');
+Route::get("/partidos", 'ListaPartidoController@getAllPartidos');
+
+//redireccionar invalidos 
+Route::any('{query}', 
+  function() { return redirect('/'); })
+  ->where('query', '.*');

@@ -1,4 +1,13 @@
 {
+    "babel": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-react"
+        ],
+        "plugins": [
+            "@babel/plugin-proposal-class-properties"
+        ]
+    },
     "private": true,
     "scripts": {
         "dev": "npm run development",
