@@ -1,8 +1,12 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
+@import 'styles';
+
+// Archivos externos
+@import url('../libs/animate/animate.min.css');
+@import url('../libs/brackets/jquery.bracket.min.css');
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

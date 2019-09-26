@@ -1,0 +1,213 @@
+@import 'styles/register';
+@import 'styles/footer';
+@import 'styles/navbar';
+@import 'styles/pagina-principal';
+@import 'styles/pronosticos';
+
+body {
+    background-color: #f5f5f5;
+    color: #4e4e4e;
+
+    p{
+        margin: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #1e1e1e;
+    }
+
+    a {
+        color: #1e1e1e;
+        transition: all 0.5s ease-in-out;
+        &:hover {
+            color: $primary-color;
+            text-decoration: none;
+            transition: all 0.5s ease-in-out;
+        }
+    }
+}
+
+
+.box-shadow, .paralax-mf, .card-equipo {
+    box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.1);
+}
+
+.overlay-mf {
+    background-color: $primary-color;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .7;
+}
+
+.line-mf {
+    width: 40px;
+    height: 5px;
+    background-color: $primary-color;
+    margin: 0 auto;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    background: $primary-color;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 1;
+    font-size: 16px;
+    border-radius: 50%;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.5s;
+    z-index: 11;
+
+    i {
+        padding-top: 12px;
+        color: #fff;
+    }
+}
+
+  /* Prelaoder */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+
+    &:before {
+        content: "";
+        position: fixed;
+        top: calc(50% - 30px);
+        left: calc(50% - 30px);
+        border: 6px solid #f2f2f2;
+        border-top: 6px solid $primary-color;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: animate-preloader 1s linear infinite;
+        animation: animate-preloader 1s linear infinite;
+    }
+}
+
+@-webkit-keyframes animate-preloader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+}
+
+  @keyframes animate-preloader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+}
+
+/*Sections*/
+section.equipos, section.partidos, section.pronosticos {
+    padding-top: 4rem;
+
+    .title-a {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .subtitle-a {
+        color: #4e4e4e;
+    }
+
+    .line-mf {
+        width: 40px;
+        height: 5px;
+        background-color: $primary-color;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
+
+
+@media (min-width: 577px) {
+    .counter-box {
+        margin-bottom: 1.8rem;
+    }
+}
+
+@media (min-width: 767px) {
+    .card-blog {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-b.navbar-trans .nav-item,
+    .navbar-b.navbar-reduce .nav-item {
+      padding-left: 10px;
+    }
+
+    .navbar-b.navbar-trans .nav-link:before,
+    .navbar-b.navbar-reduce .nav-link:before {
+      margin-left: 18px;
+    }
+
+    .intro .intro-title {
+      font-size: 4.5rem;
+    }
+
+    .intro .intro-subtitle {
+      font-size: 2.5rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .back-to-top {
+      bottom: 15px;
+    }
+}
+
+.bg-image {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (max-width: 1024px) {
+    .bg-image {
+      background-attachment: scroll;
+    }
+}
+
+
+div.jQBracket{
+    .tools{
+        visibility: hidden;
+        flex: none;
+    }
+
+    .bracket {
+        float: none;
+    }
+}
+

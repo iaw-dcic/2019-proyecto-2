@@ -1,0 +1,23 @@
+section.footer {
+    position: relative;
+    padding: 2rem 2rem 0;
+    background-image: url(../../images/footer-bg.jpg);
+
+    footer {
+        text-align: center;
+        color: #fff;
+        padding-bottom: 4rem;
+    }
+
+    footer .copyright {
+        margin-bottom: .3rem;
+    }
+
+    footer .credits {
+        margin-bottom: 0;
+    }
+
+    footer .credits a {
+        color: #fff;
+    }
+}
