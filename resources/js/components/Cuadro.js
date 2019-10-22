@@ -317,10 +317,12 @@ componentWillMount() { //LOCAL STORAGE
     .then(response => {
       this.setState({
         teams: response.data
-      });
-      let found = teams.find(element => element.id == i);
+        console.log(teams);
 
-      return found.name;
+        let found = teams.find(element => element.id == i);
+
+        return found.name;
+      });
     })
   }
 
