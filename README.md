@@ -2,6 +2,6 @@
 
 Pronóstico deportivo de play-offs de la NBA. Un usuario puede crear sus pronósticos deportivos prediciendo quién será el equipo ganador de la temporada. 
 
-#Demo:
+# Demo:
 
 http://spoctor.herokuapp.com/home
