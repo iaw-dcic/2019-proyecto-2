@@ -313,6 +313,7 @@ componentWillMount() { //LOCAL STORAGE
 
 
   getNombre(i){
+        this.initToken();
     axios.get('/api/teams')
     .then(response => {
       this.setState({
