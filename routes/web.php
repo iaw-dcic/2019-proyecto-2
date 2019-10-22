@@ -15,9 +15,3 @@
 Auth::routes();
 
 Route::view("/{path?}", "react")->middleware("auth");
-
-//Route::get("/predictions/{prediction}","PredictionController@show");
-//Route::post("/predictions/{prediction}","PredictionController@storeCuadro");
-
-//Route::put("/predictions/{prediction}","PredictionController@update"); //cuando edito una prediccion
-//Route::delete("/predictions/{prediction}", "PredictionController@delete"); //cuando elimino una prediccion

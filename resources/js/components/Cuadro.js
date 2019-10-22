@@ -13,6 +13,7 @@ export default class Cuadro extends Component {
          super();
           this.state = {
            name: '',
+           teams: [],
            matches: [],
            predictions: [],
            ganador: "",
@@ -39,6 +40,7 @@ export default class Cuadro extends Component {
   this.addNewProduct=this.addNewProduct.bind(this);
   this.todos=this.todos.bind(this);
   this.octavos=this.octavos.bind(this);
+  this.teams=this.teams.bind(this);
   this.cuartos=this.cuartos.bind(this);
   this.semis=this.semis.bind(this);
   this.setPronostico=this.setPronostico.bind(this);
@@ -310,11 +312,25 @@ componentWillMount() { //LOCAL STORAGE
   }
 
 
+  getNombre(i){
+    axios.get('/api/teams')
+    .then(response => {
+      this.setState({
+        teams: response.data
+      });
+      var found = teams.find(function(element) {
+          return element.id==i;
+      });
+
+      return found.name;
+    })
+  }
+
   octavos(){
       return this.state.matches.map(match => {
        return(
               <li key={match.num}  className="team-item">
-                    <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.num-1)}>{match.team1_id}</button>
+                    <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.num-1)}>{this.getNombre(match.team1_id)}</button>
                       <time>vs</time>
                     <button  id={match.team2_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team2_id,match.num-1)} type="button">{match.team2_id}</button>
               </li>
