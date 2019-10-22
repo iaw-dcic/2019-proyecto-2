@@ -328,7 +328,7 @@ componentWillMount() { //LOCAL STORAGE
       return this.state.matches.map(match => {
        return(
               <li key={match.num}  className="team-item">
-                    <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.num-1)}>{match.team1_id}</button>
+                    <button id={match.team1_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team1_id, match.num-1)}>{this.getNombre(match.team1_id)}</button>
                       <time>vs</time>
                     <button  id={match.team2_id} type="button" className= "btn btn-info" onClick={(e) => this.onClick1(e,match.team2_id,match.num-1)} type="button">{match.team2_id}</button>
               </li>
