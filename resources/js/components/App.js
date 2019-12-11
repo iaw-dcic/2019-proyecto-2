@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import MisDiseños from './MisDiseños'
+import ShirtImage from './ShirtImage';
+
 
 class App extends Component {
-    render () {
-    return (
-        <BrowserRouter>
-        <div>
-            <Example />
-        </div>
-        </BrowserRouter>
-    )
+
+    componentDidMount() {
+        localStorage.clear();
+    }
+
+    render() {
+        return (
+            <BrowserRouter>
+                <Switch>
+                      <Route exact path="/home" component={ShirtImage}></Route>
+                      <Route path="/misDiseños" component={MisDiseños}></Route>
+                      <Route path="/home/:id" component={ShirtImage}></Route>
+                </Switch>
+            </BrowserRouter>
+        )
     }
 }
-
 ReactDOM.render(<App />, document.getElementById('react-app'))
