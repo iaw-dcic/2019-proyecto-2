@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Example from './Example'
+import HomePage from './HomePage'
+import Main from './Main'
+import Equipo from './Equipo'
+import Cuadro from './Cuadro'
+import { Link } from 'react-router-dom'
 
 class App extends Component {
-    render () {
+
+  render () {
     return (
-        <BrowserRouter>
+      <BrowserRouter>
         <div>
-            <Example />
+          <Cuadro />
         </div>
-        </BrowserRouter>
+      </BrowserRouter>
     )
-    }
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('react-app'))
